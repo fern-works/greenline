@@ -1,0 +1,29 @@
+{
+  "commit": "e8417d4e7724558a4f74a5e9e1854b5dc8350bb9",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "e43792970a0a6b6c13a21c387cc150fdd311d264d396c9ec874df8a9cf8f526d"
+    },
+    {
+      "path": "airgap-secrets/SKILL.md",
+      "sha256": "0ac38da77189131c4e0a49382a264451885b2cd2010588b1fa21e1192ed5eb9c"
+    },
+    {
+      "path": "answer-plainly/SKILL.md",
+      "sha256": "8b61870f982a87302ff707ab97b4d76e97f1847e6b11e6a348ee3e04178c3ae7"
+    },
+    {
+      "path": "fail-loud/SKILL.md",
+      "sha256": "a7a8728c1b23a1ea7eed5d7790f7e30b2144737f3a9534550dd338ffb4efd577"
+    },
+    {
+      "path": "sweep-tests/SKILL.md",
+      "sha256": "93097065569ae3a4102d3f8165408d9a79393d1aaa7cb5b6c2c50da641ef88f7"
+    },
+    {
+      "path": "sweep-tests/bin/mutate.mjs",
+      "sha256": "ad8431165324c5dc9a9048306cb48d6d9999e14f41789ebd410ebee5620690f5"
+    }
+  ]
+}

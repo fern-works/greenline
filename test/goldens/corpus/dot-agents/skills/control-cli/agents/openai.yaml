@@ -1,0 +1,3 @@
+interface:
+  display_name: "Control CLI"
+  short_description: "Build or adapt a local harness to drive, inspect, and profile an interactive CLI or TUI without external services. Use to drive a CLI end to end, reproduce a terminal bug, chase startup regressions, memory leaks, hangs, or prompt flows, or record a terminal demo."

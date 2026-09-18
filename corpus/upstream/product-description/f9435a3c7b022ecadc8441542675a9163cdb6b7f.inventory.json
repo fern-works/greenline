@@ -1,0 +1,41 @@
+{
+  "commit": "f9435a3c7b022ecadc8441542675a9163cdb6b7f",
+  "files": [
+    {
+      "path": "product-description/SKILL.md",
+      "sha256": "1771a81a429d888f2de971e168026667a4f2ab7573efb70ea3e854c7b3ffd7b2"
+    },
+    {
+      "path": "product-description/references/README-template.md",
+      "sha256": "97929b08347ca18d62bc786f450626def0e5512f97fddd06a9a8b6faf0673167"
+    },
+    {
+      "path": "product-description/references/bug-triage-template.md",
+      "sha256": "d1a91b699e2b81ef0568cc57a23da078b3a57b3d75e88bc686d573e2653bf9e4"
+    },
+    {
+      "path": "product-description/references/check-links.py",
+      "sha256": "2cff940703ccc50a2ac19de68d07fd77be9cf463be7c5421eed7905f0f76a68b"
+    },
+    {
+      "path": "product-description/references/document-template.md",
+      "sha256": "d099e7e15f1287e758cd8e732d1959eaf266ed214fb7ad3ee80098e5ca8a5d88"
+    },
+    {
+      "path": "product-description/references/glossary-guide.md",
+      "sha256": "1ee3581be11a5254b0736f8ea09c795aaa78922d5051707a506abfb19794d9da"
+    },
+    {
+      "path": "product-description/references/goal-template.md",
+      "sha256": "dd47600dc4629b2d7964a1137e9fad2cf9096ad4e741f4894c566cf105406a67"
+    },
+    {
+      "path": "product-description/references/product-kinds.md",
+      "sha256": "710ed644295352a69121d8d5b5aab3538f677aca94a911f9932452774c85a079"
+    },
+    {
+      "path": "product-description/references/verification-template.md",
+      "sha256": "39447bb851fb8cecb3a023f6db1e9e5e2d36ff1a7086bc7cbee2e1b2befa09d6"
+    }
+  ]
+}

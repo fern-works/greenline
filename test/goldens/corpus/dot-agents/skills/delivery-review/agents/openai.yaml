@@ -1,0 +1,5 @@
+interface:
+  display_name: "Delivery Review"
+  short_description: "Review an explicit committed range for implemented work or a ticket already in reviewing, along two axes: Standards (the repo's documented standards and installed guideline skills) and Spec (does the code match what the spec asked?). Use for 'review the branch', 'review since X', or a PR."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Control UI"
+  short_description: "Build or adapt a local browser harness to drive and inspect a web, IDE, or Electron UI. Use to click through the app, check it in the browser, take screenshots or accessibility snapshots, capture perf profiles, or reproduce a UI bug."

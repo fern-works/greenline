@@ -1,0 +1,5 @@
+# greenline: the ephemeral skill workspace (tmp/<skill>/).
+# Nothing here is ever committed; evidence a ticket relies on is
+# promoted to the owning ticket's evidence instead.
+*
+!.gitignore

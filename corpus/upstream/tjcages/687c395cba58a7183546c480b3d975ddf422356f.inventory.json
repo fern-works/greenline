@@ -1,0 +1,29 @@
+{
+  "commit": "687c395cba58a7183546c480b3d975ddf422356f",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "47b777456fa844833aa6101254cd40fb9550c9ff1beaa8072e93c7ca7abdab93"
+    },
+    {
+      "path": "progress-check/EXAMPLES.md",
+      "sha256": "461db9df1487f619a0c2104b1740d712554bced64c12fa8e1577bb0fdde7073f"
+    },
+    {
+      "path": "progress-check/METHODOLOGY.md",
+      "sha256": "a4090f47b602ce10ea98848e7e3240f62cdc9cbe41c5098b4caecbd3501b10c0"
+    },
+    {
+      "path": "progress-check/RESPONSE.md",
+      "sha256": "a44b8dcb05f2bd2397ef95cd6b9e02a0d65eae95af8b937616a674f13b966493"
+    },
+    {
+      "path": "progress-check/SKILL.md",
+      "sha256": "f7a7ed411260d593599175cd4fd146986b612b5a6b2853b74b8fd2abdf53b9f5"
+    },
+    {
+      "path": "progress-check/agents/openai.yaml",
+      "sha256": "b5201d1d51794af9704fd355f142a46b901696ba5f86cf1e01e763c6d60bcc67"
+    }
+  ]
+}

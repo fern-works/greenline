@@ -1,0 +1,5 @@
+interface:
+  display_name: "To Tickets"
+  short_description: "Break a plan, spec, or the current conversation into a set of tracer-bullet ticket files in .greenline/work/tickets/, each declaring its blocking edges as depends_on ids."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Implement"
+  short_description: "Build one frontier ticket in a fresh context, or make one settled fix with no ceremony on the light path. Use for 'build TKT-NNN', 'next ticket', and small clear changes: fix, add, rename, adjust."
+policy:
+  allow_implicit_invocation: false

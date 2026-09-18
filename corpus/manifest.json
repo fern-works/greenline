@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 8,
+  "upstreams": [
+    {
+      "name": "mattpocock-skills",
+      "repo": "https://github.com/mattpocock/skills",
+      "commit": "3cca18b368ae95cdbdebbff572ccafa662551015",
+      "license": "MIT",
+      "snapshot": "upstream/mattpocock-skills/3cca18b368ae95cdbdebbff572ccafa662551015"
+    },
+    {
+      "name": "ponytail",
+      "repo": "https://github.com/dietrichgebert/ponytail",
+      "commit": "356918eba965ee1eac64bd3a7f0dd02108350de5",
+      "license": "MIT",
+      "snapshot": "upstream/ponytail/356918eba965ee1eac64bd3a7f0dd02108350de5"
+    },
+    {
+      "name": "cursor-team-kit",
+      "repo": "https://github.com/cursor/plugins",
+      "commit": "f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d",
+      "license": "MIT",
+      "snapshot": "upstream/cursor-team-kit/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d"
+    },
+    {
+      "name": "pstack",
+      "repo": "https://github.com/cursor/plugins",
+      "commit": "f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d",
+      "license": "MIT",
+      "snapshot": "upstream/pstack/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d"
+    },
+    {
+      "name": "product-description",
+      "repo": "https://gist.github.com/steveruizok/83ae5c53f2784ebf8f5fe0a3fb94480f",
+      "commit": "f9435a3c7b022ecadc8441542675a9163cdb6b7f",
+      "license": "MIT",
+      "snapshot": "upstream/product-description/f9435a3c7b022ecadc8441542675a9163cdb6b7f",
+      "holder": "Copyright (c) 2026 Steve Ruiz"
+    },
+    {
+      "name": "freddie-northam",
+      "repo": "https://github.com/freddie-northam/skills",
+      "commit": "e8417d4e7724558a4f74a5e9e1854b5dc8350bb9",
+      "license": "MIT",
+      "snapshot": "upstream/freddie-northam/e8417d4e7724558a4f74a5e9e1854b5dc8350bb9"
+    },
+    {
+      "name": "ericclemmons",
+      "repo": "https://gist.github.com/ericclemmons/96cc6c774e2062e6660f1acb97506940",
+      "commit": "79756870d126c97dbd2c8c7ceb57ef6f8eea5dbc",
+      "license": "MIT",
+      "snapshot": "upstream/ericclemmons/79756870d126c97dbd2c8c7ceb57ef6f8eea5dbc",
+      "holder": "Copyright (c) 2026 Eric Clemmons"
+    },
+    {
+      "name": "humanlayer",
+      "repo": "https://github.com/humanlayer/skills",
+      "commit": "3c2629142c5d437428269b1b722b08c0b87f574d",
+      "license": "MIT",
+      "snapshot": "upstream/humanlayer/3c2629142c5d437428269b1b722b08c0b87f574d"
+    },
+    {
+      "name": "cathrynlavery",
+      "repo": "https://github.com/cathrynlavery/diagram-design",
+      "commit": "8d8b2993ee2256ee7dfc0eeb3b5713aba3b60792",
+      "license": "MIT",
+      "snapshot": "upstream/cathrynlavery/8d8b2993ee2256ee7dfc0eeb3b5713aba3b60792"
+    },
+    {
+      "name": "almendili",
+      "repo": "https://github.com/almendili/skills",
+      "commit": "572d2591157f09103c93c9d65aed054dd635c1d3",
+      "license": "MIT",
+      "snapshot": "upstream/almendili/572d2591157f09103c93c9d65aed054dd635c1d3",
+      "holder": "Copyright (c) 2026 Alaa Mendili"
+    },
+    {
+      "name": "tjcages",
+      "repo": "https://github.com/tjcages/skills",
+      "commit": "687c395cba58a7183546c480b3d975ddf422356f",
+      "license": "MIT",
+      "snapshot": "upstream/tjcages/687c395cba58a7183546c480b3d975ddf422356f"
+    }
+  ],
+  "skills": [
+    {
+      "name": "project-router",
+      "class": "entry"
+    },
+    {
+      "name": "what-to-build",
+      "class": "stage"
+    },
+    {
+      "name": "groundwork",
+      "class": "stage"
+    },
+    {
+      "name": "review-lens",
+      "class": "discipline"
+    },
+    {
+      "name": "concurrency-method",
+      "class": "discipline"
+    },
+    {
+      "name": "grilling",
+      "class": "situational",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "grilling",
+        "path": "skills/productivity/grilling"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "grill-with-docs",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "grill-with-docs",
+        "path": "skills/engineering/grill-with-docs"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "domain-modeling",
+      "class": "situational",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "domain-modeling",
+        "path": "skills/engineering/domain-modeling"
+      },
+      "ledger": {
+        "id": "roster-keepers-2026-09-15",
+        "revision": "3e2c27247b13c74370325a3b14d909d4f071c1ec28fec50296ce1102b1222a92"
+      }
+    },
+    {
+      "name": "wayfinder",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "wayfinder",
+        "path": "skills/engineering/wayfinder"
+      },
+      "ledger": {
+        "id": "fold-walk-2026-09-11",
+        "revision": "4b1e5f0191b00b89c750682071b313216c4388c5cb35808b20e68b5efbaa80b0"
+      }
+    },
+    {
+      "name": "research",
+      "class": "support",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "research",
+        "path": "skills/engineering/research"
+      },
+      "ledger": {
+        "id": "cold-review-wording-2026-09-12",
+        "revision": "94485ae8778f578047b23955f08ef610e2d8a9832925b003d88fc0c31e65c706"
+      }
+    },
+    {
+      "name": "prototype",
+      "class": "support",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "prototype",
+        "path": "skills/engineering/prototype"
+      },
+      "ledger": {
+        "id": "roster-keepers-fix-2026-09-15",
+        "revision": "c275515eaa080c76604f0facb489a69c623815360bc75ce03df97eb1d53dc77f"
+      }
+    },
+    {
+      "name": "to-spec",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "to-spec",
+        "path": "skills/engineering/to-spec"
+      },
+      "ledger": {
+        "id": "series-s7-roster-2026-09-11",
+        "revision": "42b3d2e95f7125b315f300de669f2d08bbdfa85d16c4da8db5527489a826f6e7"
+      }
+    },
+    {
+      "name": "to-tickets",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "to-tickets",
+        "path": "skills/engineering/to-tickets"
+      },
+      "ledger": {
+        "id": "fold-walk-2026-09-11",
+        "revision": "4b1e5f0191b00b89c750682071b313216c4388c5cb35808b20e68b5efbaa80b0"
+      }
+    },
+    {
+      "name": "implement",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "implement",
+        "path": "skills/engineering/implement"
+      },
+      "ledger": {
+        "id": "light-path-negative-2026-09-15",
+        "revision": "7a6005193c9795b43ff2b57ae4584a2a404eb718f38d3019698ee14c8f3b4323"
+      }
+    },
+    {
+      "name": "tdd",
+      "class": "discipline",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "tdd",
+        "path": "skills/engineering/tdd"
+      },
+      "ledger": {
+        "id": "series-s7-roster-2026-09-11",
+        "revision": "42b3d2e95f7125b315f300de669f2d08bbdfa85d16c4da8db5527489a826f6e7"
+      }
+    },
+    {
+      "name": "codebase-design",
+      "class": "discipline",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "codebase-design",
+        "path": "skills/engineering/codebase-design"
+      },
+      "ledger": {
+        "id": "series-s7-roster-2026-09-11",
+        "revision": "42b3d2e95f7125b315f300de669f2d08bbdfa85d16c4da8db5527489a826f6e7"
+      }
+    },
+    {
+      "name": "delivery-review",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "code-review",
+        "path": "skills/engineering/code-review"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "diagnosing-bugs",
+      "class": "stage",
+      "activation": "implicit",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "diagnosing-bugs",
+        "path": "skills/engineering/diagnosing-bugs"
+      },
+      "ledger": {
+        "id": "light-path-negative-2026-09-15",
+        "revision": "7a6005193c9795b43ff2b57ae4584a2a404eb718f38d3019698ee14c8f3b4323"
+      }
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "class": "stage",
+      "upstream": {
+        "family": "mattpocock-skills",
+        "name": "improve-codebase-architecture",
+        "path": "skills/engineering/improve-codebase-architecture"
+      },
+      "ledger": {
+        "id": "roster-keepers-fix-2026-09-15",
+        "revision": "c275515eaa080c76604f0facb489a69c623815360bc75ce03df97eb1d53dc77f"
+      }
+    },
+    {
+      "name": "ponytail",
+      "class": "discipline",
+      "upstream": {
+        "family": "ponytail",
+        "name": "ponytail",
+        "path": ".agents/rules/ponytail.md"
+      },
+      "ledger": {
+        "id": "fold-2026-09-11",
+        "revision": "99699e4a746ce0c054be8db23c9bb6cd86ddca4ddd453784ddd7e6499dac2cff"
+      }
+    },
+    {
+      "name": "ponytail-review",
+      "class": "stage",
+      "upstream": {
+        "family": "ponytail",
+        "name": "ponytail-review",
+        "path": "skills/ponytail-review"
+      },
+      "ledger": {
+        "id": "fold-2026-09-11",
+        "revision": "99699e4a746ce0c054be8db23c9bb6cd86ddca4ddd453784ddd7e6499dac2cff"
+      }
+    },
+    {
+      "name": "verify-this",
+      "class": "stage",
+      "activation": "implicit",
+      "upstream": {
+        "family": "cursor-team-kit",
+        "name": "verify-this",
+        "path": "cursor-team-kit/skills/verify-this"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "control-cli",
+      "class": "support",
+      "upstream": {
+        "family": "cursor-team-kit",
+        "name": "control-cli",
+        "path": "cursor-team-kit/skills/control-cli"
+      },
+      "ledger": {
+        "id": "fold-2026-09-11",
+        "revision": "99699e4a746ce0c054be8db23c9bb6cd86ddca4ddd453784ddd7e6499dac2cff"
+      }
+    },
+    {
+      "name": "control-ui",
+      "class": "support",
+      "upstream": {
+        "family": "cursor-team-kit",
+        "name": "control-ui",
+        "path": "cursor-team-kit/skills/control-ui"
+      },
+      "ledger": {
+        "id": "roster-keepers-fix-2026-09-15",
+        "revision": "c275515eaa080c76604f0facb489a69c623815360bc75ce03df97eb1d53dc77f"
+      }
+    },
+    {
+      "name": "unslop",
+      "class": "discipline",
+      "upstream": {
+        "family": "pstack",
+        "name": "unslop",
+        "path": "pstack/skills/unslop"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "technical-writing",
+      "class": "discipline",
+      "upstream": {
+        "family": "pstack",
+        "name": "technical-writing",
+        "path": "pstack/skills/technical-writing"
+      },
+      "ledger": {
+        "id": "fold-2026-09-11",
+        "revision": "99699e4a746ce0c054be8db23c9bb6cd86ddca4ddd453784ddd7e6499dac2cff"
+      }
+    },
+    {
+      "name": "model-the-domain",
+      "class": "discipline",
+      "upstream": {
+        "family": "pstack",
+        "name": "principle-model-the-domain",
+        "path": "pstack/skills/principle-model-the-domain"
+      },
+      "ledger": {
+        "id": "pull-2026-09-11",
+        "revision": "c54a4a82c3ed003ddc7df81fa6af2dd83c42640b2664613b18e3fe08f62104be"
+      }
+    },
+    {
+      "name": "type-system-discipline",
+      "class": "discipline",
+      "upstream": {
+        "family": "pstack",
+        "name": "principle-type-system-discipline",
+        "path": "pstack/skills/principle-type-system-discipline"
+      },
+      "ledger": {
+        "id": "pull-2026-09-11",
+        "revision": "c54a4a82c3ed003ddc7df81fa6af2dd83c42640b2664613b18e3fe08f62104be"
+      }
+    },
+    {
+      "name": "boundary-discipline",
+      "class": "discipline",
+      "upstream": {
+        "family": "pstack",
+        "name": "principle-boundary-discipline",
+        "path": "pstack/skills/principle-boundary-discipline"
+      },
+      "ledger": {
+        "id": "pull-2026-09-11",
+        "revision": "c54a4a82c3ed003ddc7df81fa6af2dd83c42640b2664613b18e3fe08f62104be"
+      }
+    },
+    {
+      "name": "product-description",
+      "class": "stage",
+      "upstream": {
+        "family": "product-description",
+        "name": "product-description",
+        "path": "SKILL.md"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "fail-loud",
+      "class": "discipline",
+      "upstream": {
+        "family": "freddie-northam",
+        "name": "fail-loud",
+        "path": "skills/fail-loud"
+      },
+      "ledger": {
+        "id": "baseline-copies-2026-09-11",
+        "revision": "148971372660aac0859e1af7837b1c2e4c7ec2f75b18c5be956fa55819005728"
+      }
+    },
+    {
+      "name": "airgap-secrets",
+      "class": "discipline",
+      "upstream": {
+        "family": "freddie-northam",
+        "name": "airgap-secrets",
+        "path": "skills/airgap-secrets"
+      },
+      "ledger": {
+        "id": "roster-keepers-2026-09-15",
+        "revision": "3e2c27247b13c74370325a3b14d909d4f071c1ec28fec50296ce1102b1222a92"
+      }
+    },
+    {
+      "name": "answer-plainly",
+      "class": "discipline",
+      "upstream": {
+        "family": "freddie-northam",
+        "name": "answer-plainly",
+        "path": "skills/answer-plainly"
+      },
+      "ledger": {
+        "id": "fold-2026-09-11",
+        "revision": "99699e4a746ce0c054be8db23c9bb6cd86ddca4ddd453784ddd7e6499dac2cff"
+      }
+    },
+    {
+      "name": "sweep-tests",
+      "class": "stage",
+      "upstream": {
+        "family": "freddie-northam",
+        "name": "sweep-tests",
+        "path": "skills/sweep-tests"
+      },
+      "ledger": {
+        "id": "series-s7-roster-2026-09-11",
+        "revision": "42b3d2e95f7125b315f300de669f2d08bbdfa85d16c4da8db5527489a826f6e7"
+      }
+    },
+    {
+      "name": "record-architecture-decisions",
+      "class": "stage",
+      "activation": "implicit",
+      "upstream": {
+        "family": "ericclemmons",
+        "name": "record-architecture-decisions",
+        "path": "SKILL.md"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    },
+    {
+      "name": "show-me",
+      "class": "situational",
+      "upstream": {
+        "family": "humanlayer",
+        "name": "show-me",
+        "path": "plugins/show-me/skills/show-me"
+      },
+      "ledger": {
+        "id": "replay-s7-show-me-2026-09-11",
+        "revision": "99da655ba6fd3248d63214ec9dcf866b2e9f2d3db1d006c7d9d51c093e3161c7"
+      }
+    },
+    {
+      "name": "diagram-design",
+      "class": "situational",
+      "optIn": true,
+      "upstream": {
+        "family": "cathrynlavery",
+        "name": "diagram-design",
+        "path": "skills/diagram-design"
+      },
+      "ledger": {
+        "id": "series-s7-roster-2026-09-11",
+        "revision": "42b3d2e95f7125b315f300de669f2d08bbdfa85d16c4da8db5527489a826f6e7"
+      },
+      "credits": "icon catalog credits [Tabler Icons](https://github.com/tabler/tabler-icons) (MIT), [Simple Icons](https://github.com/simple-icons/simple-icons) (CC0), [log-z/logos](https://github.com/log-z/logos) (MIT), and [Devicon](https://github.com/devicons/devicon) (MIT). Their original notices in preserved assets remain intact. Source attribution does not imply endorsement by the represented brands."
+    },
+    {
+      "name": "architecture-map",
+      "class": "situational",
+      "activation": "explicit",
+      "optIn": true,
+      "upstream": {
+        "family": "almendili",
+        "name": "architecture-map",
+        "path": "architecture-map"
+      },
+      "ledger": {
+        "id": "fold-walk-2026-09-11",
+        "revision": "4b1e5f0191b00b89c750682071b313216c4388c5cb35808b20e68b5efbaa80b0"
+      }
+    },
+    {
+      "name": "progress-check",
+      "class": "situational",
+      "upstream": {
+        "family": "tjcages",
+        "name": "progress-check",
+        "path": "progress-check/skills/progress-check"
+      },
+      "ledger": {
+        "id": "vocabulary-owner-2026-09-12",
+        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+      }
+    }
+  ],
+  "intents": [
+    {
+      "intent": "New feature, ambiguity, or continuity (\"what were we doing?\")",
+      "skills": ["project-router"]
+    },
+    {
+      "intent": "What should we build next",
+      "skills": ["what-to-build"]
+    },
+    {
+      "intent": "Shape a change",
+      "skills": ["grill-with-docs"]
+    },
+    {
+      "intent": "Multi-session uncertainty, mapped one decision at a time",
+      "skills": ["wayfinder"]
+    },
+    {
+      "intent": "Settled decisions → spec",
+      "skills": ["to-spec"]
+    },
+    {
+      "intent": "Spec → tickets",
+      "skills": ["to-tickets"]
+    },
+    {
+      "intent": "Build one ready ticket",
+      "skills": ["implement"]
+    },
+    {
+      "intent": "Small settled fix, no ceremony",
+      "skills": ["implement"]
+    },
+    {
+      "intent": "Review committed work",
+      "skills": ["delivery-review"]
+    },
+    {
+      "intent": "Verify a claim or a fix with evidence",
+      "skills": ["verify-this"]
+    },
+    {
+      "intent": "Record a durable technical decision the work surfaced",
+      "skills": ["record-architecture-decisions"]
+    },
+    {
+      "intent": "Known failure or regression",
+      "skills": ["diagnosing-bugs"]
+    },
+    {
+      "intent": "Survey architecture",
+      "skills": ["improve-codebase-architecture"]
+    },
+    {
+      "intent": "Prune or audit a test suite with mutation proof",
+      "skills": ["sweep-tests"]
+    },
+    {
+      "intent": "On a committed range, what can be deleted",
+      "skills": ["ponytail-review"]
+    },
+    {
+      "intent": "Describe how the product behaves for its user, feature by feature",
+      "skills": ["product-description"]
+    },
+    {
+      "intent": "Set this repo up properly",
+      "skills": ["groundwork"]
+    },
+    {
+      "intent": "Answer one open question with evidence, for a stage that needs it",
+      "skills": ["research", "prototype"]
+    },
+    {
+      "intent": "Exercise or diagnose a CLI",
+      "skills": ["control-cli"]
+    },
+    {
+      "intent": "Exercise or diagnose a UI",
+      "skills": ["control-ui"]
+    },
+    {
+      "intent": "Write or change tests",
+      "skills": ["tdd"]
+    },
+    {
+      "intent": "Before writing code, does it need to exist",
+      "skills": ["ponytail"]
+    },
+    {
+      "intent": "Design module interfaces and depth",
+      "skills": ["codebase-design"]
+    },
+    {
+      "intent": "Parse inputs and handle boundary errors",
+      "skills": ["boundary-discipline", "fail-loud"]
+    },
+    {
+      "intent": "Model domain states and types",
+      "skills": ["model-the-domain", "type-system-discipline"]
+    },
+    {
+      "intent": "Adding concurrency, or an ordering bug",
+      "skills": ["concurrency-method"]
+    },
+    {
+      "intent": "Judging a review finding or its severity",
+      "skills": ["review-lens"]
+    },
+    {
+      "intent": "A key, a token, or a .env file is in reach",
+      "skills": ["airgap-secrets"]
+    },
+    {
+      "intent": "Cut AI tells from any prose",
+      "skills": ["unslop"]
+    },
+    {
+      "intent": "Structure a document, README, or PR description",
+      "skills": ["technical-writing"]
+    },
+    {
+      "intent": "Explain a result plainly",
+      "skills": ["answer-plainly"]
+    },
+    {
+      "intent": "Anything unclear, mid-work or mid-chat: clear it now",
+      "skills": ["grilling"]
+    },
+    {
+      "intent": "Explain a structure in chat",
+      "skills": ["show-me"]
+    },
+    {
+      "intent": "Report progress while long work runs",
+      "skills": ["progress-check"]
+    },
+    {
+      "intent": "Told to change how or how often you report progress",
+      "skills": ["progress-check"]
+    },
+    {
+      "intent": "A term is doing two jobs, or which word to use is asked: name it, and offer to write it down",
+      "skills": ["domain-modeling"]
+    },
+    {
+      "intent": "Draw a durable diagram for an artifact or decision",
+      "skills": ["diagram-design"]
+    },
+    {
+      "intent": "Build or refresh the repository's architecture map",
+      "skills": ["architecture-map"]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "What To Build"
+  short_description: "Propose what this product could do next at three altitudes: sharpen a shipped slice, extend one, or open ground the product does not stand on yet. Use for 'what should we build next', 'any ideas for this app', 'what's missing', 'is this done or is there more in it', and quick-win hunts. Not for refactors, which belong to the architecture survey."
+policy:
+  allow_implicit_invocation: false

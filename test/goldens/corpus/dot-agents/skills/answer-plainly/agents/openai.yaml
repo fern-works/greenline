@@ -1,0 +1,3 @@
+interface:
+  display_name: "Answer Plainly"
+  short_description: "Use when the user asks a direct question about a codebase, a result, a status, or a risk; when reporting what you did; and whenever you are about to write \"significantly\", \"much faster\", \"should work\", \"generally\", or \"nearly all\"."

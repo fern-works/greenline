@@ -1,0 +1,3 @@
+interface:
+  display_name: "Unslop"
+  short_description: "Cut AI tells from any writing: replies, artifacts, commit messages, PR prose, docs. Apply to every prose surface before it lands."

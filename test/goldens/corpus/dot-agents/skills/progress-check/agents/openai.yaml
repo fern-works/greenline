@@ -1,0 +1,3 @@
+interface:
+  display_name: "Progress Check"
+  short_description: "Give sparse, evidence-based progress updates during long-running work: observable milestones weighted by work and risk, an update only when something material changed, one rounded-down bar. Fires in the worker moment, a claimed ticket or a multi-milestone build, never for short answers or work with no intermediate state. Also fires the moment the user asks to change how or how often you report progress, whether more updates, total silence or estimated clocks, BEFORE any such preference is saved anywhere."

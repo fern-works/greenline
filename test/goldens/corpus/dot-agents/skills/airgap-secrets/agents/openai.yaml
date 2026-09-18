@@ -1,0 +1,3 @@
+interface:
+  display_name: "Airgap Secrets"
+  short_description: "Use whenever a task touches a .env file, a key, a token, or a credential: reading configuration, writing client-side code, staging a commit, building a container image, or handling a leak that was just found."

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Record Architecture Decisions"
+  short_description: "Record small Architecture Decision Records (ADRs) for durable technical choices. Use when a change chooses among meaningful alternatives, abandons an ideal approach over a discovered constraint, establishes a cross-component contract or convention, accepts a consequential trade-off, or supersedes an earlier decision. Also use it before completing any non-trivial ticket, to evaluate whether the work produced an ADR-worthy decision."

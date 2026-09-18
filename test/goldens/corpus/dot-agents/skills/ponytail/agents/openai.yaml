@@ -1,0 +1,3 @@
+interface:
+  display_name: "Ponytail"
+  short_description: "Minimalism guideline for any coding work. Before writing code, climb the lazy-senior ladder: does it need to exist, is it already in the repo, does the stdlib or platform cover it, can it be one line. Mark every deliberate shortcut with a ponytail: comment naming its ceiling. Load during implementation, refactoring, reviews, and dependency choices."

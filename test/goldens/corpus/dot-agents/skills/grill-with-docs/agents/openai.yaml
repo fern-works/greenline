@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill With Docs"
+  short_description: "A relentless interview that shapes an initiative and records each settled ruling in the initiative's decisions.md. Use when a shaping conversation must outlive the session."
+policy:
+  allow_implicit_invocation: false

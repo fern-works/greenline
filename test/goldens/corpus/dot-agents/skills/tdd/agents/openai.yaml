@@ -1,0 +1,3 @@
+interface:
+  display_name: "TDD"
+  short_description: "Test-driven development: load before writing code in any build stage, red before green at the seams the spec already pinned. Also fires on 'red-green-refactor' and integration tests."

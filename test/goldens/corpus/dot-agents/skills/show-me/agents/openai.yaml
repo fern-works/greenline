@@ -1,0 +1,3 @@
+interface:
+  display_name: "Show Me"
+  short_description: "Explain the current topic visually in the reply: pseudocode, call trees, component trees, shallow file trees, shape diffs, and diagrams or a one-file HTML view where a renderer exists. Use whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison, or a change to an existing shape, and whenever the user asks to be shown."

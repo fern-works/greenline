@@ -1,0 +1,5 @@
+interface:
+  display_name: "Groundwork"
+  short_description: "Establish the missing engineering baseline for a repository's purpose and prove first green. Use for a request to set a repo up properly or bring it to a working baseline; preserve established components and avoid unnecessary infrastructure."
+policy:
+  allow_implicit_invocation: false

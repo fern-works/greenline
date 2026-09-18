@@ -1,0 +1,109 @@
+{
+  "commit": "572d2591157f09103c93c9d65aed054dd635c1d3",
+  "files": [
+    {
+      "path": "architecture-map/SKILL.md",
+      "sha256": "959d108dc0662bd05e9815156e57c6569d3d6b89484c4b37eaeaab679e6a61bb"
+    },
+    {
+      "path": "architecture-map/assets/components/ArchitectureMap.tsx",
+      "sha256": "c5d6a26387a885826eb7b3cab7ae6247b6a9f97c75cf80cfb82e59888469ffd6"
+    },
+    {
+      "path": "architecture-map/assets/components/BuildingGlyph.tsx",
+      "sha256": "82eb7f7e0347172960ab049dd8b0800bc1d127a6fbf1db9164ffd496341316eb"
+    },
+    {
+      "path": "architecture-map/assets/components/DistrictLayer.tsx",
+      "sha256": "46388b840a4a676a6c186cc0a01fdf966bdec04525eb116b6327df68382e0fc5"
+    },
+    {
+      "path": "architecture-map/assets/components/EdgeLayer.tsx",
+      "sha256": "a6e9c733a8f01f7c7a6b0b5ab48e7a74c0dea153e173844484274cd5b0815aed"
+    },
+    {
+      "path": "architecture-map/assets/components/IsoCanvas.tsx",
+      "sha256": "b62c80fae79aa72b14062bceb394a6a01a78d886dac97a0b0a9a7ddfaa4b07f1"
+    },
+    {
+      "path": "architecture-map/assets/components/SidePanels.tsx",
+      "sha256": "9c37cabc5e2467e7619670bdad4c83d3338a91339e68427d04451da88d8d22bc"
+    },
+    {
+      "path": "architecture-map/assets/components/keyframes.css",
+      "sha256": "eb95ccaf3a445e0b71769fb50a8e76120dd1304e053342acdd35fb6ce0739fb9"
+    },
+    {
+      "path": "architecture-map/assets/components/theme.ts",
+      "sha256": "ad2f3e15157ce9bf55c10856a8aa99c06ff2ee3b67a33b30c8d5f81a1ef471b4"
+    },
+    {
+      "path": "architecture-map/assets/core/README.md",
+      "sha256": "f431a26441df0ee19afaa3eb63311eccfe09ec83c8e2efd05f2e41fdd321131a"
+    },
+    {
+      "path": "architecture-map/assets/core/archetypes.ts",
+      "sha256": "dca3f0a282c6dbd50e7a17d248993ce2d46ff6f5140ceca4f85d3d83b24cbdcb"
+    },
+    {
+      "path": "architecture-map/assets/core/districts.ts",
+      "sha256": "7d1d5b26a081b48c810eac75005d8029d5cc9d7b928609bea3c3072e73d1fc6e"
+    },
+    {
+      "path": "architecture-map/assets/core/iso.ts",
+      "sha256": "1e7ee6597b26410b27838c1f246a358fa68b02f900b9c6457586ea5e5a591b89"
+    },
+    {
+      "path": "architecture-map/assets/core/layout.ts",
+      "sha256": "f8587084e287797c3a53879c396f0bd2133e8922fb5c275da7ed5669bf51294a"
+    },
+    {
+      "path": "architecture-map/assets/core/program.ts",
+      "sha256": "22a6a288ebab2baa274f25494c4be914bdd189326d0df85678593190b6768e5f"
+    },
+    {
+      "path": "architecture-map/assets/core/routes.ts",
+      "sha256": "87a7b9315398255a39392f88362ec1364cb488ba5610cab2b7e874bf7bed3571"
+    },
+    {
+      "path": "architecture-map/assets/core/scene.ts",
+      "sha256": "b3a0dabe18101328fd11029e2cf45271d09da8f5a6a839ec353d5da2840e8af3"
+    },
+    {
+      "path": "architecture-map/assets/core/types.ts",
+      "sha256": "bdc1e9c8d376bd34c2b545dfebb11b658855a383a181a7e0b8a9773528ff2c1e"
+    },
+    {
+      "path": "architecture-map/assets/stores/useFlowClock.ts",
+      "sha256": "d0221cc52ed15937a46826a7fdcab36565d934ca5e0961b5299b3f5ab3a8cdfd"
+    },
+    {
+      "path": "architecture-map/assets/stores/useMapCamera.ts",
+      "sha256": "9a3cb9f8c35ed6a5438b7fa173e7ceaefda60aa7db26fcc71f16f953d6608eed"
+    },
+    {
+      "path": "architecture-map/assets/stores/useMapView.ts",
+      "sha256": "31de6d8b93400c2ce61573136ab002633e4eb3d8b385529e967e663fa97dbe74"
+    },
+    {
+      "path": "architecture-map/references/authoring.md",
+      "sha256": "70bd5191cf89128f1625bb25afec2f85c0e3067150abb5bdbf9dc483ed5f295f"
+    },
+    {
+      "path": "architecture-map/references/frameworks.md",
+      "sha256": "f9c6222b999aed4ff6cce0c9ba5e8f52157dd486f6388d78ffede9620787c543"
+    },
+    {
+      "path": "architecture-map/references/geometry.md",
+      "sha256": "c55f57c9c2df5a6c7338c4e29f34187121f84b166fed14f6c17674826cb7d39f"
+    },
+    {
+      "path": "architecture-map/scripts/architecture-sync.mjs",
+      "sha256": "45436500f2dc19700689d47a6385347f2f81760b1b8eddd24b9b4caf71e1e6e8"
+    },
+    {
+      "path": "architecture-map/scripts/propose-coverage.mjs",
+      "sha256": "9f933813edfa738fbe5c5bc10de3625ae43b2efe7b975210a8597fc8c57e5874"
+    }
+  ]
+}

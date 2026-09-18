@@ -1,0 +1,19 @@
+.DS_Store
+
+# Toolchain output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Harness-local settings and caches
+.claude/settings.local.json
+.codex-log/
+
+# Scratch (the goldens' managed .greenline/tmp/.gitignore is a golden, never scratch)
+tmp/
+!test/goldens/**/tmp/
+!test/goldens/**/tmp/.gitignore
+
+# Agentic QA raw output (reports stay committed)
+site/dist/

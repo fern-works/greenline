@@ -1,0 +1,3 @@
+interface:
+  display_name: "Concurrency Method"
+  short_description: "Deciding whether code should be concurrent, and reasoning about a concurrent design once it is. Use when adding threading, async, goroutines, workers, or parallelism; when a race or an ordering bug appears; when deciding whether to parallelize; when reviewing a concurrent design."

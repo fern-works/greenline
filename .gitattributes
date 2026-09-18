@@ -1,0 +1,8 @@
+# Byte fidelity everywhere: what is committed is what checks out, on
+# every platform. Git's working-tree conversion (Windows autocrlf)
+# rewrote every text file to CRLF on the Windows runners, breaking the
+# pinned upstream snapshot hashes and the corpus patch markers — and a
+# blanket eol=lf would corrupt the other direction: the vendored
+# diagram-design files and their frozen upstream legitimately carry the
+# CRLF their upstream author wrote. No conversion, ever, either way.
+* -text

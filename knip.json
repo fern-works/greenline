@@ -1,0 +1,7 @@
+{
+  "entry": ["scripts/*.mjs", "test/**/*.test.ts", "tools/oxlint/anti-slop/index.ts"],
+  "project": ["src/**/*.ts", "tools/**/*.ts", "scripts/**/*.mjs"],
+  "ignoreDependencies": ["dependency-cruiser", "jscpd"],
+  "ignore": ["tools/oxlint/anti-slop/**"],
+  "exclude": ["types"]
+}

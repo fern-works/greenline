@@ -1,0 +1,3 @@
+interface:
+  display_name: "Fail Loud"
+  short_description: "Use when writing a catch block, a default value, a retry wrapper, or a mock outside a test directory; when an external dependency fails during a task; and when a deadline or a demonstration makes a working-looking result tempting."

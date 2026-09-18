@@ -1,0 +1,5 @@
+interface:
+  display_name: "Improve Codebase Architecture"
+  short_description: "Scan a codebase for deepening opportunities and present them as a visual report, then grill through the one you pick. Use for 'refactor what next', 'tech debt', 'this repo is a mess, where do I start', or a scoped architecture review."
+policy:
+  allow_implicit_invocation: false

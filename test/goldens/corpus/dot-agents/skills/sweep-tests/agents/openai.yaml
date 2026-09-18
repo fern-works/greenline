@@ -1,0 +1,5 @@
+interface:
+  display_name: "Sweep Tests"
+  short_description: "Prune or audit a test suite with mutation proof, as its own announced task on a green suite. Invoke it by name when tests break on refactors that change no behavior, coverage is high but defects still ship, or production code carries seams only tests use."
+policy:
+  allow_implicit_invocation: false

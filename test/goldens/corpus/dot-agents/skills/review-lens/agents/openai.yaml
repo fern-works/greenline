@@ -1,0 +1,3 @@
+interface:
+  display_name: "Review Lens"
+  short_description: "The reviewer's stance, register of design red flags, and severity ladder, above every language's own review lens. Use when reviewing code or a diff, when deciding whether an observation is a finding at all, when placing a finding's severity, when a reaction fired before the reasoning did, and when writing a repo's own review list."

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Prototype"
+  short_description: "Build a throwaway prototype, a spike, to answer one design question. Use when the user wants to sanity-check whether a state model or logic feels right, mock up a couple of UI options, or 'just try it and see'."

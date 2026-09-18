@@ -1,0 +1,11 @@
+{
+  "threshold": 1,
+  "reporters": ["consoleFull"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/docs/**",
+    "**/.agents/**",
+    "**/.claude/**",
+    "**/tools/oxlint/anti-slop/**"
+  ]
+}

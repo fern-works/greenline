@@ -1,0 +1,17 @@
+{
+  "commit": "79756870d126c97dbd2c8c7ceb57ef6f8eea5dbc",
+  "files": [
+    {
+      "path": "record-architecture-decisions/README.md",
+      "sha256": "f85b1d25460fe223a3303795d4cffa4abf5584a5f2c31f917101e26585f769e0"
+    },
+    {
+      "path": "record-architecture-decisions/SKILL.md",
+      "sha256": "7606bcfb081c60b697edd872b6069c1338ee5b65c97bf3c5f774fac38418f790"
+    },
+    {
+      "path": "record-architecture-decisions/template.md",
+      "sha256": "3ee1e0d58341a0b4573fad4561988531502a5d486443b176c1621af58db32596"
+    }
+  ]
+}
