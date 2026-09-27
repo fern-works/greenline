@@ -1,0 +1,26 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": true,
+  "operation": "capabilities",
+  "callId": "example-call-capabilities",
+  "origin": null,
+  "snapshot": null,
+  "delivery": {
+    "units": [],
+    "bytes": 0
+  },
+  "limits": null,
+  "result": {
+    "operations": ["snapshot", "vocabulary", "list", "read", "resolve", "changes"],
+    "tools": [
+      "garden_snapshot",
+      "garden_vocabulary",
+      "garden_list",
+      "garden_read",
+      "garden_resolve",
+      "garden_changes"
+    ]
+  },
+  "error": null
+}

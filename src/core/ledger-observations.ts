@@ -274,9 +274,9 @@ export function observeConsultation(
     ordering: "unknown",
     detail,
   });
-  if (entry.source.kind === "cabinet")
+  if (entry.source.kind === "garden")
     return unavailable(
-      "Cabinet service delivery comes from generated receipts; native capture has not been established here.",
+      "Garden service delivery comes from generated receipts; native capture has not been established here.",
     );
   if (reference === undefined)
     return {

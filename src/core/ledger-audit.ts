@@ -1,14 +1,7 @@
 import type { AuditedArtifact } from "./artifact-audit.ts";
 import type { Artifact } from "./artifact.ts";
 import type { ExecutionLedger, LedgerEvidence, LedgerRecord } from "./execution-ledger.ts";
-
-/** Structural evidence findings do not adjudicate engineering applicability. */
-export interface LedgerFinding {
-  readonly kind: "missing" | "reference" | "incomplete" | "contradicted" | "unverified";
-  readonly severity: "error" | "warning";
-  readonly path: string;
-  readonly message: string;
-}
+import type { LedgerFinding } from "./ledger-finding.ts";
 
 function requiredRoles(artifact: Artifact): readonly LedgerRecord["role"][] {
   if (artifact.type === "initiative") return [];
@@ -79,60 +72,6 @@ export function auditLedgerWork(
           path: `.greenline/ledger/records/${record.id}.json`,
           message: `Application ${application.consultation} remains unverified: ${application.reason}`,
         });
-    if (
-      ledger.guidance?.state === "configured" &&
-      record.role === "implementation" &&
-      record.resultCommit !== undefined
-    ) {
-      const requests = (ledger.receipts ?? []).filter(
-        (request) => request.owner.record === record.id,
-      );
-      const received = requests.some(
-        (request) =>
-          request.publicationUse === "current" &&
-          request.receipts.some(
-            (receipt) =>
-              receipt.operation === "read" &&
-              receipt.outcome === "received" &&
-              receipt.units.some((unit) => unit.coverage === "full"),
-          ),
-      );
-      if (!received)
-        findings.push({
-          kind: requests.length ? "incomplete" : "missing",
-          severity: "error",
-          path: `.greenline/ledger/records/${record.id}.json`,
-          message: requests.length
-            ? "Configured implementation has no completed current-publication unit retrieval; metadata, failed or historical reads do not supply it."
-            : "Configured implementation has no receipt collection. This is missing evidence, not proof of zero retrieval.",
-        });
-      if (
-        requests.some((request) =>
-          request.receipts.some((receipt) => receipt.outcome === "pending"),
-        )
-      )
-        findings.push({
-          kind: "incomplete",
-          severity: "error",
-          path: `.greenline/ledger/records/${record.id}.json`,
-          message: "A retrieval is still pending; interrupted delivery is not a completed call.",
-        });
-      if (
-        received &&
-        !record.consultations.some(
-          (entry) =>
-            entry.source.kind === "cabinet" &&
-            (entry.decision === "selected" || entry.decision === "exception"),
-        )
-      )
-        findings.push({
-          kind: "unverified",
-          severity: "warning",
-          path: `.greenline/ledger/records/${record.id}.json`,
-          message:
-            "Service retrieval is observed, but no guidance selection or application has been declared.",
-        });
-    }
     if (record.role === "maintenance") {
       const outside = [
         ...new Set(
@@ -360,8 +299,11 @@ export interface LedgerSummary {
   };
   readonly retrievals?: readonly {
     readonly request: string;
+    /** Who answered: the garden connector. */
+    readonly source: "garden";
     readonly record: string | null;
-    readonly snapshot: string;
+    /** The one publication the request bound; null while unresolved, and for a comparison. */
+    readonly snapshot: string | null;
     readonly publicationUse: "current" | "historical";
     readonly calls: number;
     readonly received: number;
@@ -394,8 +336,9 @@ export function summarizeLedger(ledger: ExecutionLedger): LedgerSummary {
     ...summary,
     retrievals: ledger.receipts.map((request) => ({
       request: request.id,
+      source: request.source,
       record: request.owner.record,
-      snapshot: request.binding.snapshot.id,
+      snapshot: request.binding.state === "publication" ? request.binding.snapshot.id : null,
       publicationUse: request.publicationUse,
       calls: request.receipts.length,
       received: request.receipts.filter((receipt) => receipt.outcome === "received").length,

@@ -1,0 +1,53 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": true,
+  "operation": "read",
+  "callId": "example-call-read",
+  "origin": "https://garden.example/",
+  "snapshot": {
+    "id": "example-publication-a",
+    "publishedAt": "2026-01-01T00:00:00.000Z"
+  },
+  "delivery": {
+    "units": [
+      {
+        "id": "example-prerequisite",
+        "revision": "2c9b3b577036484d8fd034e3f04220e7fcd4a6c24a15dae5f21e108251dc240e",
+        "contentHash": "e4b8ed50296714f026a6d860194b8d34d291cec5e0b07124adbc73b75ef042e4",
+        "bytes": 546
+      },
+      {
+        "id": "example-rule",
+        "revision": "aeac74735d30cbaf048380f01d0166412d106a2c367a6262a50f3fd5ec29c4b2",
+        "contentHash": "ebfa459986c396971ad885f7964ac08410d12d6fada2a9472f6b2cfc46fb5927",
+        "bytes": 575
+      }
+    ],
+    "bytes": 1121
+  },
+  "limits": {
+    "timeoutMs": 30000,
+    "maxUnits": 16,
+    "maxBytes": 262144
+  },
+  "result": {
+    "units": [
+      {
+        "id": "example-prerequisite",
+        "family": "example",
+        "content": "---\nid: \"example-prerequisite\"\ntitle: \"Example prerequisite\"\nkind: \"rule\"\nwhen: \"Reading the contract fixtures.\"\nsummary: \"A synthetic unit for the garden.result/v1 fixtures.\"\nlanguage: []\npurpose: []\ntechnology: []\ntask: [\"implement\"]\nconcern: [\"example concern\"]\noption_group: null\nrequires: []\ncontains: []\nsee_also: []\nverification: {\"verified\":\"2026-01-01\",\"window_days\":90}\ncompatibility: []\nsources: [{\"kind\":\"attribution\",\"ref\":\"garden contract fixture\"}]\nlineage: []\n---\n\nSynthetic text: the prerequisite a contract fixture reads first.\n",
+        "revision": "2c9b3b577036484d8fd034e3f04220e7fcd4a6c24a15dae5f21e108251dc240e",
+        "contentHash": "e4b8ed50296714f026a6d860194b8d34d291cec5e0b07124adbc73b75ef042e4"
+      },
+      {
+        "id": "example-rule",
+        "family": "example",
+        "content": "---\nid: \"example-rule\"\ntitle: \"Example rule\"\nkind: \"rule\"\nwhen: \"Reading the contract fixtures.\"\nsummary: \"A synthetic unit for the garden.result/v1 fixtures.\"\nlanguage: []\npurpose: []\ntechnology: []\ntask: [\"implement\"]\nconcern: [\"example concern\"]\noption_group: null\nrequires: [\"example-prerequisite\"]\ncontains: []\nsee_also: []\nverification: {\"verified\":\"2026-01-01\",\"window_days\":90}\ncompatibility: []\nsources: [{\"kind\":\"attribution\",\"ref\":\"garden contract fixture\"}]\nlineage: []\n---\n\nSynthetic text: the unit a contract fixture reads. Its bytes are not garden's guidance.\n",
+        "revision": "aeac74735d30cbaf048380f01d0166412d106a2c367a6262a50f3fd5ec29c4b2",
+        "contentHash": "ebfa459986c396971ad885f7964ac08410d12d6fada2a9472f6b2cfc46fb5927"
+      }
+    ]
+  },
+  "error": null
+}

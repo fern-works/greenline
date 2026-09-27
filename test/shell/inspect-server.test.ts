@@ -14,6 +14,7 @@ import { join } from "node:path";
 import { runCli } from "../../src/shell/cli/runner.ts";
 import { startInspector, type InspectorHandle } from "../../src/shell/inspect/server.ts";
 import { fixtureInstallation } from "../fixtures/corpus.ts";
+import { RECEIPTS_FIXTURE, RECEIPTS_FIXTURE_ID } from "../fixtures/receipts.ts";
 import { RecordingWriter } from "../helpers/writer.ts";
 
 /**
@@ -257,7 +258,64 @@ describe("greenline inspect, served", () => {
       "agents/openai.yaml",
     ]);
     expect(state.ledger.receipts).toEqual([]);
+    expect(state.receipts).toEqual([]);
+    expect(state.receiptProblems).toEqual([]);
     expect(Array.isArray(state.checks)).toBe(true);
+  });
+
+  it("shows the collections it can read beside a malformed one, and names that one", async () => {
+    const root = makeWorkspace();
+    const receipts = join(root, ".greenline/ledger/receipts");
+    mkdirSync(receipts, { recursive: true });
+    writeFileSync(join(receipts, `${RECEIPTS_FIXTURE_ID}.json`), `${RECEIPTS_FIXTURE}\n`);
+    writeFileSync(join(receipts, "22222222-2222-4222-8222-222222222222.json"), "{ not json\n");
+    const url = await serve(root);
+    const state = await (await fetch(`${url}api/state`)).json();
+    expect(state.receipts.map((request: { id: string }) => request.id)).toEqual([
+      RECEIPTS_FIXTURE_ID,
+    ]);
+    expect(state.receiptProblems).toEqual([
+      {
+        file: ".greenline/ledger/receipts/22222222-2222-4222-8222-222222222222.json",
+        message: expect.stringContaining("request evidence"),
+      },
+    ]);
+    const page = await (await fetch(url)).text();
+    expect(page).toContain("state.receiptProblems.map");
+  });
+
+  it("shows each schema-4 request collection with its source, publication and calls, never a body", async () => {
+    const root = makeWorkspace();
+    mkdirSync(join(root, ".greenline/ledger/receipts"), { recursive: true });
+    writeFileSync(
+      join(root, ".greenline/ledger/receipts", `${RECEIPTS_FIXTURE_ID}.json`),
+      `${RECEIPTS_FIXTURE}\n`,
+    );
+    const url = await serve(root);
+    const page = await (await fetch(url)).text();
+    expect(page).toContain("Consultation receipts");
+    expect(page).toContain("function receiptHtml(request)");
+    const state = await (await fetch(`${url}api/state`)).json();
+    expect(state.receipts).toEqual([
+      expect.objectContaining({
+        source: "garden",
+        binding:
+          "publication example-publication-a (published 2026-01-01T00:00:00.000Z), at https://garden.example/",
+        calls: [
+          expect.objectContaining({ sequence: 1, operation: "snapshot" }),
+          expect.objectContaining({
+            sequence: 2,
+            operation: "resolve",
+            metadata: ["example-listed"],
+          }),
+          expect.objectContaining({
+            sequence: 3,
+            operation: "read",
+            full: [{ id: "example-rule", revision: "b".repeat(64) }],
+          }),
+        ],
+      }),
+    ]);
   });
 
   it("saves choices separately and explicit sync preserves unresolved orphans", async () => {

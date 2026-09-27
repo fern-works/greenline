@@ -30,7 +30,7 @@ The originating spec is the one the ticket's `consumes` pins: read the ticket an
 
 ### 3. Identify the standards sources
 
-Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`, together with the scoped repository decisions in `.greenline/DECISIONS.md` and the initiative's `decisions.md`, the actual configuration, the installed guideline skills whose methods apply, and, when guidance is configured, the language and shared guidance retrieved under this review's own request handle by the request loop in AGENTS.md. Derive the applicable obligations from the task, the diff and those sources, independently of the implementer's selections; an implementer's selected list, or a repository path to an absent guidance file, is not a source. A source's prestige or location gives it no authority.
+Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`, together with the scoped repository decisions in `.greenline/DECISIONS.md` and the initiative's `decisions.md`, the actual configuration, the installed guideline skills whose methods apply, and any guidance this review consults under its own account. Derive the applicable obligations from the task, the diff and those sources, independently of the implementer's selections; an implementer's selected list, or a repository path to an absent guidance file, is not a source. A source's prestige or location gives it no authority.
 
 On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
 
@@ -59,7 +59,7 @@ Beside the smell baseline, both axes carry review-lens and its REGISTER.md: the 
 **Standards sub-agent prompt** should include:
 
 - The full diff command and commit list, with the exact ticket and range identities.
-- The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full (the sub-agent has no other access to it), the scoped decisions, and the retrieval access it needs for its own guidance reads under this review's request handle (`greenline guidance read <ids> --read-only --from-request <handle> --role review`, so each read leaves its advisory stub under the dispatching request).
+- The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full (the sub-agent has no other access to it), and the scoped decisions.
 - The brief: "Report, per file/hunk where relevant, (a) every place the diff violates a documented standard: cite the standard (file + the rule, or the decision, or the guidance unit and its revision); and (b) any baseline smell you spot: name it and quote the hunk. Distinguish hard violations from judgement calls: documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented repo standard overrides the baseline. Skip anything tooling enforces. Under 400 words."
 
 **Spec sub-agent prompt** should include:

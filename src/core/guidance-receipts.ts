@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { CABINET_PROTOCOL, type CabinetBinding, type Query } from "./cabinet.ts";
 import { providerUrl } from "./guidance-configuration.ts";
 import {
   contractFailure,
@@ -9,6 +8,14 @@ import {
   type ContractParseFailed,
 } from "./contract.ts";
 import type { Result } from "../commons/result.ts";
+
+/**
+ * Request and receipt collections, schema 4 (`docs/guidance-requests.md`):
+ * one body-free collection per request, written by one store. A collection
+ * names its source, the garden connector; its binding is unresolved until
+ * the first successful call names a publication, then one publication or a
+ * comparison pair, and never moves again.
+ */
 
 /** Caller-frozen limits, reused by every call on this request. */
 export interface RequestLimits {
@@ -32,12 +39,48 @@ export type ReceiptUnit =
     };
 /** What a finished call actually covered; a call still running has no coverage yet. */
 export type ReceiptCoverage = "received" | "partial" | "failed";
+/** The six read operations a request may record. */
+export type GuidanceOperation = "snapshot" | "vocabulary" | "list" | "read" | "resolve" | "changes";
+/** Who answered the request's calls: the garden connector, the one source a collection names. */
+export type RequestSource = "garden";
+/** A list query: any subset of the facets, kind and responsibility, each a list of values. */
+export interface ReceiptQuery {
+  readonly language?: readonly string[];
+  readonly purpose?: readonly string[];
+  readonly technology?: readonly string[];
+  readonly task?: readonly string[];
+  readonly concern?: readonly string[];
+  readonly kind?: readonly string[];
+  readonly responsibility?: readonly string[];
+}
+/** One publication's public identity. */
+export interface RequestPublication {
+  readonly id: string;
+  readonly publishedAt: string;
+}
+/**
+ * What the request's calls read: nothing yet, one publication, or the pair a
+ * comparison names. Only a failed first call leaves a request unresolved.
+ */
+export type RequestBinding =
+  | { readonly state: "unresolved"; readonly origin: string }
+  | {
+      readonly state: "publication";
+      readonly origin: string;
+      readonly snapshot: RequestPublication;
+    }
+  | {
+      readonly state: "comparison";
+      readonly origin: string;
+      readonly from: RequestPublication;
+      readonly to: RequestPublication;
+    };
 /** Generated service-delivery facts; output to a model remains independently unconfirmed. */
 export interface GuidanceReceipt {
   readonly id: string;
   readonly sequence: number;
-  readonly operation: "list" | "read" | "resolve" | "vocabulary";
-  readonly query: Query | null;
+  readonly operation: GuidanceOperation;
+  readonly query: ReceiptQuery | null;
   readonly requested: readonly string[];
   readonly closure: boolean;
   readonly excluded: readonly string[];
@@ -62,7 +105,7 @@ export interface GuidanceAdvisory {
   readonly sequence: number;
   readonly request: string;
   readonly role: string | null;
-  readonly operation: "list" | "read" | "resolve" | "vocabulary";
+  readonly operation: GuidanceOperation;
   readonly units: readonly ReceiptUnit[];
   readonly count: number | null;
   readonly outcome: ReceiptCoverage;
@@ -70,8 +113,9 @@ export interface GuidanceAdvisory {
 }
 /** One body-free collection per request/contributor, or an inline read-only binding. */
 export interface GuidanceRequest {
-  readonly schemaVersion: 3;
+  readonly schemaVersion: 4;
   readonly id: string;
+  readonly source: RequestSource;
   readonly owner: {
     readonly record: string | null;
     readonly context: string | null;
@@ -80,7 +124,7 @@ export interface GuidanceRequest {
   };
   readonly parent: string | null;
   readonly createdAt: string;
-  readonly binding: CabinetBinding;
+  readonly binding: RequestBinding;
   readonly publicationUse: "current" | "historical";
   readonly limits: RequestLimits;
   readonly receipts: readonly GuidanceReceipt[];
@@ -88,48 +132,67 @@ export interface GuidanceRequest {
 }
 
 const text = z.string().min(1);
+/** A control, format, private-use or unassigned character (Unicode's `C` category). */
+const INVISIBLE = /\p{C}/u;
+/**
+ * Whether text holds no control, format, private-use or unassigned character.
+ * The command lines apply it to the values a receipt will keep (a call id, a
+ * governed root) before anything is read; repository paths elsewhere keep
+ * their own grammar.
+ */
+export function isVisibleText(value: string): boolean {
+  return !INVISIBLE.test(value);
+}
+const VISIBLE_RULE = "no control, format, private-use or unassigned character";
+/**
+ * Text a receipt keeps from its caller, its repository or its provider:
+ * the requested values, the query's values, the governed roots, a failure's
+ * kind and input, the contributor's context and work id, and the bound
+ * publication ids. It holds no invisible character, so a collection written
+ * or edited with one is refused as it is read.
+ */
+const visible = z.string().refine((value) => !INVISIBLE.test(value), VISIBLE_RULE);
+const visibleText = text.refine((value) => !INVISIBLE.test(value), VISIBLE_RULE);
+/**
+ * The harness's own tool-call identity as a receipt keeps it: non-empty and
+ * free of control, format, private-use and unassigned characters, so no
+ * receipt holds invisible text. Both commands refuse any other value before
+ * a receipt is written.
+ */
+export const nativeCallSchema: z.ZodType<string> = text.refine(
+  (value) => !INVISIBLE.test(value),
+  "a call id with no control, format, private-use or unassigned character",
+);
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
 const unitId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const recordId = z.string().regex(/^[a-z][a-z0-9-]*$/);
 const instant = z.iso.datetime({ offset: true });
-const words = z.array(text);
+const visibleWords = z.array(visibleText);
 const query = z
   .object({
-    language: words.default([]),
-    purpose: words.default([]),
-    technology: words.default([]),
-    task: words.default([]),
-    concern: words.default([]),
-    kind: words.default([]),
-    responsibility: words.default([]),
+    language: visibleWords.default([]),
+    purpose: visibleWords.default([]),
+    technology: visibleWords.default([]),
+    task: visibleWords.default([]),
+    concern: visibleWords.default([]),
+    kind: visibleWords.default([]),
+    responsibility: visibleWords.default([]),
   })
   .strict();
-const vocabulary = z
+const origin = text.refine((value) => providerUrl(value) === value, "a canonical provider URL");
+const publication = z
   .object({
-    language: words,
-    purpose: words,
-    technology: words,
-    task: words,
-    concern: words,
-    kind: words,
-    responsibility: words,
+    id: visibleText.refine(
+      (value) => value !== "current" && value !== "." && value !== ".." && value.isWellFormed(),
+    ),
+    publishedAt: instant,
   })
   .strict();
-const binding = z
-  .object({
-    origin: text.refine((value) => providerUrl(value) === value, "a canonical provider URL"),
-    protocol: z.literal(CABINET_PROTOCOL),
-    snapshot: z
-      .object({
-        id: text.refine(
-          (value) => value !== "current" && value !== "." && value !== ".." && value.isWellFormed(),
-        ),
-        publishedAt: instant,
-      })
-      .strict(),
-    vocabulary,
-  })
-  .strict();
+const binding = z.discriminatedUnion("state", [
+  z.object({ state: z.literal("unresolved"), origin }).strict(),
+  z.object({ state: z.literal("publication"), origin, snapshot: publication }).strict(),
+  z.object({ state: z.literal("comparison"), origin, from: publication, to: publication }).strict(),
+]);
 /** Boundary grammar for frozen call budgets. */
 export const requestLimitsSchema: z.ZodType<RequestLimits> = z
   .object({
@@ -149,7 +212,9 @@ const unit = z.discriminatedUnion("coverage", [
     .strict(),
   z.object({ id: unitId, coverage: z.literal("full"), revision: hash, contentHash: hash }).strict(),
 ]);
-const operation = z.enum(["list", "read", "resolve", "vocabulary"]);
+const operation = z.enum(["snapshot", "vocabulary", "list", "read", "resolve", "changes"]);
+/** Operations whose answer is a count of candidates, never delivered units. */
+const counted: ReadonlySet<GuidanceOperation> = new Set(["list", "changes"]);
 const contributorRole = z.enum([
   "implementation",
   "review",
@@ -163,18 +228,18 @@ const receipt: z.ZodType<GuidanceReceipt> = z
     sequence: z.number().int().positive(),
     operation,
     query: query.nullable(),
-    requested: words,
+    requested: visibleWords,
     closure: z.boolean(),
     excluded: z.array(unitId),
-    roots: z.array(text),
+    roots: visibleWords,
     policyRevision: hash,
     units: z.array(unit),
     count: z.number().int().nonnegative().nullable(),
     outcome: z.enum(["pending", "received", "partial", "failed"]),
-    error: z.object({ kind: text, input: z.string() }).strict().nullable(),
+    error: z.object({ kind: visibleText, input: visible }).strict().nullable(),
     startedAt: instant,
     finishedAt: instant.nullable(),
-    nativeCall: text.nullable().optional(),
+    nativeCall: nativeCallSchema.nullable().optional(),
   })
   .strict()
   .superRefine((entry, context) => {
@@ -184,15 +249,16 @@ const receipt: z.ZodType<GuidanceReceipt> = z
       problem("query", "only list carries a query");
     if ((entry.outcome === "pending") !== (entry.finishedAt === null))
       problem("finishedAt", "pending and completed calls have distinct timestamps");
-    // A list's candidates are reproducible from its query under the bound
-    // snapshot, so a list receipt records the count and no unit entries
-    // (S6: whole-corpus lists put thousands of ids into consumer repositories).
-    if (entry.operation === "list" && entry.units.length !== 0)
-      problem("units", "a list receipt records its count, not its candidates");
+    // A list's candidates, and a comparison's changed units, are reproducible
+    // from the call under its binding, so their receipts record a count and
+    // no unit entries (S6: whole-corpus lists put thousands of ids into
+    // consumer repositories).
+    if (counted.has(entry.operation) && entry.units.length !== 0)
+      problem("units", "a list or comparison receipt records its count, not its candidates");
     if (
       entry.outcome === "received" &&
       (entry.error !== null ||
-        (entry.operation === "list" ? entry.count === null : entry.count !== entry.units.length))
+        (counted.has(entry.operation) ? entry.count === null : entry.count !== entry.units.length))
     )
       problem("count", "successful coverage must equal the generated unit inventory");
     if ((entry.outcome === "failed" || entry.outcome === "partial") && entry.error === null)
@@ -218,8 +284,8 @@ const advisory: z.ZodType<GuidanceAdvisory> = z
   .superRefine((entry, context) => {
     const problem = (path: string, message: string): void =>
       context.addIssue({ code: "custom", path: [path], message });
-    if (entry.operation === "list" && entry.units.length !== 0)
-      problem("units", "a list stub records its count, not its candidates");
+    if (counted.has(entry.operation) && entry.units.length !== 0)
+      problem("units", "a list or comparison stub records its count, not its candidates");
     if (new Set(entry.units.map((value) => value.id)).size !== entry.units.length)
       problem("units", "duplicate delivered unit");
     if (entry.units.some((value) => (entry.operation === "read") !== (value.coverage === "full")))
@@ -227,15 +293,16 @@ const advisory: z.ZodType<GuidanceAdvisory> = z
   });
 const request: z.ZodType<GuidanceRequest> = z
   .object({
-    schemaVersion: z.literal(3),
+    schemaVersion: z.literal(4),
     id: z.uuid(),
+    source: z.literal("garden"),
     owner: z
       .object({
         record: recordId.nullable(),
-        context: text.nullable(),
+        context: visibleText.nullable(),
         role: contributorRole.nullable(),
         work: z
-          .object({ id: text, revision: z.number().int().positive() })
+          .object({ id: visibleText, revision: z.number().int().positive() })
           .strict()
           .nullable()
           .optional(),
@@ -251,43 +318,44 @@ const request: z.ZodType<GuidanceRequest> = z
   })
   .strict()
   .superRefine((value, context) => {
+    const problem = (path: (string | number)[], message: string): void =>
+      context.addIssue({ code: "custom", path, message });
     if (value.owner.record !== null && (value.owner.context === null || value.owner.role === null))
-      context.addIssue({
-        code: "custom",
-        path: ["owner"],
-        message: "a durable request names its contributor",
-      });
+      problem(["owner"], "a durable request names its contributor");
     // Only a durable collection dispatches: a read-only binding is never
     // written down, so nothing can be filed under it.
     if (value.owner.record === null && value.advisories.length !== 0)
-      context.addIssue({
-        code: "custom",
-        path: ["advisories"],
-        message: "a read-only binding dispatches no recorded consultation",
-      });
+      problem(["advisories"], "a read-only binding dispatches no recorded consultation");
+    // Only a failed first call leaves a request unresolved.
+    if (
+      value.binding.state === "unresolved" &&
+      value.receipts.some((entry) => entry.outcome === "received" || entry.outcome === "partial")
+    )
+      problem(["binding"], "a successful call fixes the request's publication");
+    // A comparison has its own collection and never continues a read request.
+    const compares = value.receipts.filter((entry) => entry.operation === "changes").length;
+    if (
+      (value.binding.state === "comparison" && compares !== value.receipts.length) ||
+      (value.binding.state === "publication" && compares !== 0) ||
+      (compares !== 0 && compares !== value.receipts.length)
+    )
+      problem(["receipts"], "a comparison collection holds comparisons only");
+    if (
+      value.binding.state !== "publication" &&
+      value.receipts.some((entry) => entry.units.some((unit) => unit.coverage === "full"))
+    )
+      problem(["binding"], "a full delivery names its publication");
     if (new Set(value.receipts.map((entry) => entry.id)).size !== value.receipts.length)
-      context.addIssue({ code: "custom", path: ["receipts"], message: "duplicate call identity" });
+      problem(["receipts"], "duplicate call identity");
     value.receipts.forEach((entry, index) => {
       if (entry.sequence !== index + 1)
-        context.addIssue({
-          code: "custom",
-          path: ["receipts", index, "sequence"],
-          message: "receipt sequence is discontinuous",
-        });
+        problem(["receipts", index, "sequence"], "receipt sequence is discontinuous");
     });
     if (new Set(value.advisories.map((entry) => entry.id)).size !== value.advisories.length)
-      context.addIssue({
-        code: "custom",
-        path: ["advisories"],
-        message: "duplicate read-only call identity",
-      });
+      problem(["advisories"], "duplicate read-only call identity");
     value.advisories.forEach((entry, index) => {
       if (entry.sequence !== index + 1)
-        context.addIssue({
-          code: "custom",
-          path: ["advisories", index, "sequence"],
-          message: "advisory sequence is discontinuous",
-        });
+        problem(["advisories", index, "sequence"], "advisory sequence is discontinuous");
     });
   });
 

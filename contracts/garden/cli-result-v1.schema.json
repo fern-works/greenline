@@ -1,0 +1,687 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "garden.result/v1",
+  "description": "The one JSON document the garden command prints on stdout for a reply, and the structured content of a garden mcp tool result. A success names its operation, carries that operation's result and a null error, exit 0; a refusal carries one typed error, a null result and an empty delivery, exit 2. Help and version are plain text, not this document. Full unit bodies appear only in a read's result, bound to the delivery's identity, revision, content hash and byte count; no document carries a key or a private server record.",
+  "oneOf": [
+    { "$ref": "#/$defs/snapshotSuccess" },
+    { "$ref": "#/$defs/vocabularySuccess" },
+    { "$ref": "#/$defs/listSuccess" },
+    { "$ref": "#/$defs/readSuccess" },
+    { "$ref": "#/$defs/resolveSuccess" },
+    { "$ref": "#/$defs/changesSuccess" },
+    { "$ref": "#/$defs/capabilitiesSuccess" },
+    { "$ref": "#/$defs/refusal" }
+  ],
+  "$defs": {
+    "format": {
+      "description": "The contract and its version; a reader refuses any other value.",
+      "const": "garden.result/v1"
+    },
+    "clientVersion": {
+      "description": "The version of the client that wrote the document.",
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "callId": {
+      "description": "The call's identity: the caller's, visible ASCII of 1 to 128 characters, or one the client generated once for the call.",
+      "type": "string",
+      "pattern": "^[!-~]{1,128}$"
+    },
+    "origin": {
+      "description": "The canonical endpoint every request of the call went to: HTTPS, or HTTP on a loopback address, with no credential, query or fragment, ending in a slash.",
+      "type": "string",
+      "pattern": "^(?:https://[^/?#@\\s]+|http://(?:127(?:\\.[0-9]{1,3}){3}|\\[::1\\])(?::[0-9]+)?)/(?:[^?#\\s]*/)?$"
+    },
+    "publicationId": {
+      "description": "An exact publication identity: never current, which a call resolves once into its exact identity.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!current$|\\.{1,2}$)"
+    },
+    "instant": {
+      "description": "An exact time, as the service states it: seconds and their fraction optional, in UTC or with an offset.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T(?:[01][0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9](?:\\.[0-9]+)?)?(?:Z|[+-](?:[01][0-9]|2[0-3]):[0-5][0-9])$"
+    },
+    "utcInstant": {
+      "description": "An exact time in UTC, as a comparison states it: seconds and their fraction optional.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T(?:[01][0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9](?:\\.[0-9]+)?)?Z$"
+    },
+    "publication": {
+      "description": "One publication's exact identity and time.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "publishedAt"],
+      "properties": {
+        "id": { "$ref": "#/$defs/publicationId" },
+        "publishedAt": { "$ref": "#/$defs/instant" }
+      }
+    },
+    "publicationPair": {
+      "description": "The two exact publications a comparison names.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "$ref": "#/$defs/publication" },
+        "to": { "$ref": "#/$defs/publication" }
+      }
+    },
+    "unitId": {
+      "description": "A unit's identity.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "sha256": {
+      "description": "A SHA-256 digest in lowercase hexadecimal.",
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "deliveredUnit": {
+      "description": "One full body delivered: its unit, its revision (SHA-256 of JSON.stringify([family, text])), its content hash (SHA-256 of the UTF-8 text) and the text's UTF-8 byte count.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "revision", "contentHash", "bytes"],
+      "properties": {
+        "id": { "$ref": "#/$defs/unitId" },
+        "revision": { "$ref": "#/$defs/sha256" },
+        "contentHash": { "$ref": "#/$defs/sha256" },
+        "bytes": { "type": "integer", "minimum": 0, "maximum": 262144 }
+      }
+    },
+    "noDelivery": {
+      "description": "No full body delivered: every operation but a successful read, and every refusal, which never claims a delivery.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["units", "bytes"],
+      "properties": {
+        "units": { "type": "array", "maxItems": 0, "items": { "$ref": "#/$defs/deliveredUnit" } },
+        "bytes": { "const": 0 }
+      }
+    },
+    "readDelivery": {
+      "description": "The full bodies a read delivered, in the order of its result, and their total UTF-8 bytes.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["units", "bytes"],
+      "properties": {
+        "units": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": { "$ref": "#/$defs/deliveredUnit" }
+        },
+        "bytes": { "type": "integer", "minimum": 0, "maximum": 262144 }
+      }
+    },
+    "operationLimits": {
+      "description": "The deadline every operation but read ran under.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timeoutMs", "maxUnits", "maxBytes"],
+      "properties": {
+        "timeoutMs": { "type": "integer", "minimum": 1, "maximum": 30000 },
+        "maxUnits": { "type": "null" },
+        "maxBytes": { "type": "null" }
+      }
+    },
+    "readLimits": {
+      "description": "The deadline, the unit limit and the content byte limit a read ran under.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timeoutMs", "maxUnits", "maxBytes"],
+      "properties": {
+        "timeoutMs": { "type": "integer", "minimum": 1, "maximum": 30000 },
+        "maxUnits": { "type": "integer", "minimum": 1, "maximum": 16 },
+        "maxBytes": { "type": "integer", "minimum": 1, "maximum": 262144 }
+      }
+    },
+    "values": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "facetValues": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "unitIds": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/unitId" }
+    },
+    "day": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "vocabulary": {
+      "description": "Every value a facet, kind or responsibility may carry in the publication.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "purpose",
+        "technology",
+        "task",
+        "concern",
+        "kind",
+        "responsibility"
+      ],
+      "properties": {
+        "language": { "$ref": "#/$defs/values" },
+        "purpose": { "$ref": "#/$defs/values" },
+        "technology": { "$ref": "#/$defs/values" },
+        "task": { "$ref": "#/$defs/values" },
+        "concern": { "$ref": "#/$defs/values" },
+        "kind": { "$ref": "#/$defs/values" },
+        "responsibility": { "$ref": "#/$defs/values" }
+      }
+    },
+    "listRecord": {
+      "description": "A unit's listing metadata: enough to choose it, never its body. Listing metadata is not a delivery.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "when",
+        "summary",
+        "language",
+        "purpose",
+        "technology",
+        "task",
+        "concern",
+        "option_group",
+        "requires",
+        "contains",
+        "see_also",
+        "verification"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/unitId" },
+        "title": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": [
+            "rule",
+            "pattern",
+            "explanation",
+            "option",
+            "recipe",
+            "disagreement",
+            "reference"
+          ]
+        },
+        "when": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 1 },
+        "language": { "$ref": "#/$defs/facetValues" },
+        "purpose": { "$ref": "#/$defs/facetValues" },
+        "technology": { "$ref": "#/$defs/facetValues" },
+        "task": { "$ref": "#/$defs/facetValues" },
+        "concern": { "$ref": "#/$defs/facetValues" },
+        "option_group": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["responsibility", "member"],
+              "properties": {
+                "responsibility": { "type": "string", "minLength": 1 },
+                "member": { "type": "string", "minLength": 1 }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "requires": { "$ref": "#/$defs/unitIds" },
+        "contains": { "$ref": "#/$defs/unitIds" },
+        "see_also": { "$ref": "#/$defs/unitIds" },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["verified", "window_days"],
+          "properties": {
+            "verified": { "$ref": "#/$defs/day" },
+            "window_days": { "type": "integer", "minimum": 1 },
+            "watch": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["condition"],
+                "properties": {
+                  "condition": { "type": "string", "minLength": 1 },
+                  "due": { "$ref": "#/$defs/day" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "listResult": {
+      "description": "The units matching a list's filters, in id order, with their exact count; nothing is ranked.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshot", "count", "units"],
+      "properties": {
+        "snapshot": { "$ref": "#/$defs/publicationId" },
+        "count": { "type": "integer", "minimum": 0 },
+        "units": { "type": "array", "items": { "$ref": "#/$defs/listRecord" } }
+      }
+    },
+    "unitText": {
+      "description": "One full unit: its family and its exact original text, with the revision and the content hash its delivery entry names.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "family", "content", "revision", "contentHash"],
+      "properties": {
+        "id": { "$ref": "#/$defs/unitId" },
+        "family": { "type": "string", "minLength": 1 },
+        "content": { "type": "string" },
+        "revision": { "$ref": "#/$defs/sha256" },
+        "contentHash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "readResult": {
+      "description": "The units a read delivered: prerequisites before the units that require them, each once.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["units"],
+      "properties": {
+        "units": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": { "$ref": "#/$defs/unitText" }
+        }
+      }
+    },
+    "resolveResult": {
+      "description": "The unit that carries the anchor in the publication.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anchor", "id"],
+      "properties": {
+        "anchor": { "type": "string", "minLength": 1 },
+        "id": { "$ref": "#/$defs/unitId" }
+      }
+    },
+    "reason": {
+      "description": "A publication's or a member's stated reason, or null; never a path to a private work or research record.",
+      "anyOf": [
+        { "type": "string", "minLength": 1, "pattern": "^(?![\\s\\S]*docs/(?:work|research)/)" },
+        { "type": "null" }
+      ]
+    },
+    "comparisonEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "publishedAt", "reason"],
+      "properties": {
+        "id": { "$ref": "#/$defs/publicationId" },
+        "publishedAt": { "$ref": "#/$defs/utcInstant" },
+        "reason": { "$ref": "#/$defs/reason" }
+      }
+    },
+    "comparisonSide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "contentHash", "reason"],
+      "properties": {
+        "revision": { "$ref": "#/$defs/sha256" },
+        "contentHash": { "$ref": "#/$defs/sha256" },
+        "reason": { "$ref": "#/$defs/reason" }
+      }
+    },
+    "unitChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "before", "after"],
+      "properties": {
+        "id": { "$ref": "#/$defs/unitId" },
+        "before": { "anyOf": [{ "$ref": "#/$defs/comparisonSide" }, { "type": "null" }] },
+        "after": { "anyOf": [{ "$ref": "#/$defs/comparisonSide" }, { "type": "null" }] }
+      }
+    },
+    "changesResult": {
+      "description": "A comparison of two exact publications by revision and content hash; it delivers no unit body and satisfies no read.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "from",
+        "to",
+        "added",
+        "changed",
+        "removed",
+        "count",
+        "vocabularyChanged"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "from": { "$ref": "#/$defs/comparisonEndpoint" },
+        "to": { "$ref": "#/$defs/comparisonEndpoint" },
+        "added": { "type": "array", "items": { "$ref": "#/$defs/unitChange" } },
+        "changed": { "type": "array", "items": { "$ref": "#/$defs/unitChange" } },
+        "removed": { "type": "array", "items": { "$ref": "#/$defs/unitChange" } },
+        "count": { "type": "integer", "minimum": 0 },
+        "vocabularyChanged": { "type": "boolean" }
+      }
+    },
+    "capabilitiesResult": {
+      "description": "What the client offers, offline: the six operations and the six MCP tools, in this order.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operations", "tools"],
+      "properties": {
+        "operations": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "prefixItems": [
+            { "const": "snapshot" },
+            { "const": "vocabulary" },
+            { "const": "list" },
+            { "const": "read" },
+            { "const": "resolve" },
+            { "const": "changes" }
+          ],
+          "items": false
+        },
+        "tools": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "prefixItems": [
+            { "const": "garden_snapshot" },
+            { "const": "garden_vocabulary" },
+            { "const": "garden_list" },
+            { "const": "garden_read" },
+            { "const": "garden_resolve" },
+            { "const": "garden_changes" }
+          ],
+          "items": false
+        }
+      }
+    },
+    "errorKind": {
+      "description": "What stopped the call. cancelled: the caller cancelled it. deadline: its one deadline passed. unavailable: the service could not be reached, failed (5xx) or limited the rate (429). unauthorized: no key, or the service refused the key (401) or its entitlement (403). invalid-result: a malformed or partial answer, one that broke the wire contract (malformed, inconsistent, unverified, another protocol, a redirect, a requires cycle) or was cut off after its headers arrived. private-data: the key would have left its bearer credential (a call's argument or endpoint spells it, an answer carries it back, or the reply would spell it), so nothing carrying it was sent or written. excluded: the read reached an id the caller excluded. budget: the read would exceed its unit or byte limit. not-found: the publication, unit or anchor named is not there. invalid-request: the caller's own input or command line was refused.",
+      "enum": [
+        "cancelled",
+        "deadline",
+        "unavailable",
+        "unauthorized",
+        "invalid-result",
+        "private-data",
+        "excluded",
+        "budget",
+        "not-found",
+        "invalid-request"
+      ]
+    },
+    "snapshotSuccess": {
+      "description": "snapshot: the publication resolved, current once or an exact id.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "snapshot" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "$ref": "#/$defs/origin" },
+        "snapshot": { "$ref": "#/$defs/publication" },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": { "$ref": "#/$defs/operationLimits" },
+        "result": { "$ref": "#/$defs/publication" },
+        "error": { "type": "null" }
+      }
+    },
+    "vocabularySuccess": {
+      "description": "vocabulary: the publication's vocabulary.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "vocabulary" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "$ref": "#/$defs/origin" },
+        "snapshot": { "$ref": "#/$defs/publication" },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": { "$ref": "#/$defs/operationLimits" },
+        "result": { "$ref": "#/$defs/vocabulary" },
+        "error": { "type": "null" }
+      }
+    },
+    "listSuccess": {
+      "description": "list: the matching units' metadata, which is not a delivery.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "list" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "$ref": "#/$defs/origin" },
+        "snapshot": { "$ref": "#/$defs/publication" },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": { "$ref": "#/$defs/operationLimits" },
+        "result": { "$ref": "#/$defs/listResult" },
+        "error": { "type": "null" }
+      }
+    },
+    "readSuccess": {
+      "description": "read: the full units delivered, each bound to its delivery entry.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "read" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "$ref": "#/$defs/origin" },
+        "snapshot": { "$ref": "#/$defs/publication" },
+        "delivery": { "$ref": "#/$defs/readDelivery" },
+        "limits": { "$ref": "#/$defs/readLimits" },
+        "result": { "$ref": "#/$defs/readResult" },
+        "error": { "type": "null" }
+      }
+    },
+    "resolveSuccess": {
+      "description": "resolve: the unit carrying the anchor.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "resolve" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "$ref": "#/$defs/origin" },
+        "snapshot": { "$ref": "#/$defs/publication" },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": { "$ref": "#/$defs/operationLimits" },
+        "result": { "$ref": "#/$defs/resolveResult" },
+        "error": { "type": "null" }
+      }
+    },
+    "changesSuccess": {
+      "description": "changes: the comparison, bound to both exact publications.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "changes" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "$ref": "#/$defs/origin" },
+        "snapshot": { "$ref": "#/$defs/publicationPair" },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": { "$ref": "#/$defs/operationLimits" },
+        "result": { "$ref": "#/$defs/changesResult" },
+        "error": { "type": "null" }
+      }
+    },
+    "capabilitiesSuccess": {
+      "description": "capabilities: what the client offers, answered offline with no origin, publication or limits.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": true },
+        "operation": { "const": "capabilities" },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "type": "null" },
+        "snapshot": { "type": "null" },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": { "type": "null" },
+        "result": { "$ref": "#/$defs/capabilitiesResult" },
+        "error": { "type": "null" }
+      }
+    },
+    "refusal": {
+      "description": "A typed refusal: the operation refused (null when the command line named none of the six operations, a refused capabilities or help command line included), what the call had fixed before it stopped (the endpoint, the publication resolved, the limits it ran under), no result and no delivery.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "clientVersion",
+        "ok",
+        "operation",
+        "callId",
+        "origin",
+        "snapshot",
+        "delivery",
+        "limits",
+        "result",
+        "error"
+      ],
+      "properties": {
+        "format": { "$ref": "#/$defs/format" },
+        "clientVersion": { "$ref": "#/$defs/clientVersion" },
+        "ok": { "const": false },
+        "operation": {
+          "enum": ["snapshot", "vocabulary", "list", "read", "resolve", "changes", null]
+        },
+        "callId": { "$ref": "#/$defs/callId" },
+        "origin": { "anyOf": [{ "$ref": "#/$defs/origin" }, { "type": "null" }] },
+        "snapshot": { "anyOf": [{ "$ref": "#/$defs/publication" }, { "type": "null" }] },
+        "delivery": { "$ref": "#/$defs/noDelivery" },
+        "limits": {
+          "anyOf": [
+            { "$ref": "#/$defs/operationLimits" },
+            { "$ref": "#/$defs/readLimits" },
+            { "type": "null" }
+          ]
+        },
+        "result": { "type": "null" },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "subject"],
+          "properties": {
+            "kind": { "$ref": "#/$defs/errorKind" },
+            "subject": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,10 +8,6 @@ import {
   parseJson,
   type ContractParseFailed,
 } from "./contract.ts";
-import {
-  guidanceConfigurationSchema,
-  type GuidanceConfiguration,
-} from "./guidance-configuration.ts";
 import type { GuidanceRequest } from "./guidance-receipts.ts";
 
 const text = z.string().trim().min(1);
@@ -122,7 +118,6 @@ const recordSchema: z.ZodType<LedgerRecord> = z
       .readonly(),
     baseCommit: commit.optional(),
     resultCommit: commit.optional(),
-    guidance: guidanceConfigurationSchema.optional(),
     guidanceAnnotations: z.array(guidanceAnnotationSchema).optional(),
     selections: z.array(selectionSchema).readonly().default([]),
     applications: z.array(applicationSchema).readonly().default([]),
@@ -184,9 +179,9 @@ export interface LedgerEvidence {
 export type ConsultationSource =
   | (LedgerEvidence & { readonly kind: "repository" })
   | {
-      readonly kind: "cabinet";
+      /** A delivery the garden connector recorded: an optional attachment, never an obligation. */
+      readonly kind: "garden";
       readonly origin: string;
-      readonly protocol: number;
       readonly snapshot: string;
       readonly unit: string;
       readonly revision: string;
@@ -229,7 +224,6 @@ export interface LedgerRecord {
   readonly scopes: readonly string[];
   readonly baseCommit?: string | undefined;
   readonly resultCommit?: string | undefined;
-  readonly guidance?: GuidanceConfiguration | undefined;
   readonly guidanceAnnotations?:
     | readonly {
         readonly consultation: string;
@@ -302,8 +296,6 @@ export interface LedgerObservedChange {
 
 /** Authored accounts and independently measured observations remain separate. */
 export interface ExecutionLedger {
-  /** Installed manifest authority; absent only outside an initialized consumer workspace. */
-  readonly guidance?: GuidanceConfiguration;
   readonly records: readonly LedgerAccount[];
   readonly evidence: readonly LedgerEvidenceCheck[];
   readonly consultations: readonly LedgerConsultationCheck[];

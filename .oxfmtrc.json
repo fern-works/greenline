@@ -5,16 +5,15 @@
     ".claude/**",
     "workshop/skills/tool-*/**",
     "corpus/upstream/**",
-    "corpus/units/**/*.md",
-    "corpus/units/**/candidate/**",
     "test/goldens/**",
     "tools/oxlint/anti-slop/**",
     "AGENTS.md",
     "CLAUDE.md",
     "corpus/ledger/records/**",
     "corpus/skills/**",
-    "corpus/sources/**",
     "corpus/ledger/witnesses/**",
-    "corpus/ledger/sources-before-the-ledger.md"
+    "corpus/ledger/sources-before-the-ledger.md",
+    "contracts/garden/cli-result-v1.schema.json",
+    "contracts/garden/fixtures/**"
   ]
 }

@@ -2,7 +2,7 @@
 
 Generated from `corpus/ledger/records/`; do not edit.
 
-Source: https://github.com/mattpocock/skills at 3cca18b368ae95cdbdebbff572ccafa662551015, `skills/engineering/tdd`. Drift: 21 of 177 lines changed (12%). Records: baseline-copies-2026-09-11, pull-2026-09-11, fold-2026-09-11, fold-walk-2026-09-11, series-s7-roster-2026-09-11.
+Source: https://github.com/mattpocock/skills at 3cca18b368ae95cdbdebbff572ccafa662551015, `skills/engineering/tdd`. Drift: 21 of 177 lines changed (12%). Records: baseline-copies-2026-09-11, pull-2026-09-11, fold-2026-09-11, fold-walk-2026-09-11, series-s7-roster-2026-09-11, retrieval-pointers-2026-09-26.
 
 ## harness: greenline renders its own frontmatter: quoted name and description, the description from the manifest override where one existed, no upstream activation flag
 
@@ -30,7 +30,7 @@ Record `fold-2026-09-11`, 1 hunk.
 
 ## lifecycle: the owning ticket and the Testing Decisions its consumed spec records are read while exploring so settled seams are inherited; the seam confirmation is satisfied by an accepted ticket or spec or a standing testing grant (for a compact change, the accepted observable behavior and existing public interface), and the user is asked only for a consequential seam choice outside the grant; a test-value or doubles judgment retrieves configured guidance through the request loop with receipts carrying delivery and the account carrying application evidence
 
-Record `fold-2026-09-11`, 2 hunks.
+Record `fold-2026-09-11`, 1 hunk.
 
 ### `h:a814db9e2b3ee223` in `SKILL.md`
 
@@ -39,11 +39,15 @@ Record `fold-2026-09-11`, 2 hunks.
 +When exploring the codebase, read the owning ticket and any Testing Decisions its consumed spec records, so settled seams are inherited rather than asked again, and read `CONTEXT.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
 ```
 
-### `h:482d310bcc0ce041` in `SKILL.md`
+## lifecycle: the owning ticket and the Testing Decisions its consumed spec records are read while exploring so settled seams are inherited; the seam confirmation is satisfied by an accepted ticket or spec or a standing testing grant (for a compact change, the accepted observable behavior and existing public interface), and the user is asked only for a consequential seam choice outside the grant; a test-value or doubles judgment is governed by the repository's decisions and these methods, any guidance consulted for it has its delivery carried by generated receipts and the account carries application evidence
+
+Record `retrieval-pointers-2026-09-26`, 1 hunk.
+
+### `h:f133657d05f236cb` in `SKILL.md`
 
 ```diff
 -See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
-+See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines. For a judgment about test value or doubles in this repository, when guidance is configured, retrieve through the request loop in AGENTS.md with the testing task and concern and the actual language and runner; generated receipts carry the delivery, and the current account carries your application evidence.
++See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines. For a judgment about test value or doubles in this repository, the repository's decisions and these methods govern; the delivery of any guidance consulted for it, with the testing task and concern and the actual language and runner, is carried by generated receipts, and the current account carries your application evidence.
 ```
 
 ## method: upstream confirms the seams with the user before any test; greenline lets an accepted ticket or spec, or a standing testing grant, stand as that confirmation and asks only about a consequential unresolved seam, which changes when the method stops to ask Confirmed by the operator on 2026-09-11 (method-rulings.md).
@@ -104,3 +108,4 @@ Removed file, 3 lines.
 - `h:cb7f8da881abd812` in `fold-walk-2026-09-11`: the walk's correction rewrote this hunk in place; its replacement is claimed above
 - `h:21cbf7f97a6a3dea` in `series-s7-roster-2026-09-11`: re-recorded with the operator's ruling as authority; the same hunk is claimed above
 - `h:78dbbf0cd44c94b6` in `series-s7-roster-2026-09-11`: re-recorded with the operator's ruling as authority; the same hunk is claimed above
+- `h:482d310bcc0ce041` in `retrieval-pointers-2026-09-26`: rewritten in place without the configured-guidance retrieval through the removed request loop; its replacement is claimed above

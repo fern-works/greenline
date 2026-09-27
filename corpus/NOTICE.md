@@ -22,7 +22,7 @@ file’s original location remains the manifest’s `upstream.path`. At tjcages 
 from `progress-check/shared/`. Comparing the symlink path alone cannot recover
 those bytes.
 
-A source's updates run through the maintainer's roster procedure (its refresh
+A source's updates run through the workshop's roster procedure (its refresh
 branch, for a preserved skill) or ingest procedure (for guidance), including
 source comparison, licence and preservation checks, integration,
 recording and verification. A source change does not silently publish a new

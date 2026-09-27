@@ -7,16 +7,17 @@ Run it inside an initialized Git repository.
 ## What you can read
 
 - **Work and checks:** current artifacts and read-only diagnostics.
-- **Receipts and accounts:** generated guidance deliveries and contributor
-  declarations, with evidence limits kept separate.
+- **Receipts and accounts:** each garden consultation's receipt, its
+  publication and every call's operation, outcome and units, and the
+  contributor declarations, with evidence limits kept separate.
 - **Repository policy:** the decisions book, root statements, latest manual-save
   evidence and the House rulings in AGENTS.md.
-- **Installation:** harness and skill choices, guidance configuration, actual
+- **Installation:** harness and skill choices, the enabled connectors, actual
   installed files and changes compared with Git HEAD.
 
 Missing Git baselines and unreadable files are reported as unavailable. Installed
 orphans remain visible until you deliberately resolve them. The inspector never
-requests guidance bodies from the service.
+starts garden or contacts a service.
 
 ## Saving a choice
 
@@ -35,8 +36,9 @@ prove that the decision's consequences have been handled.]{claim: Local policy e
 **Save and sync are separate actions.** Use Sync installation after changing
 harnesses or skill availability. A failed sync leaves the saved choice intact.
 Conflicting managed content and orphans require explicit resolution; user edits
-are never silently erased. Guidance configuration changes need no body download.
-Credentials come from the process environment and cannot be entered or saved here.
+are never silently erased. Connectors are enabled and disabled with
+`greenline connectors`, not here. Credentials come from the process environment
+and cannot be entered or saved here.
 
 ## When it refuses
 
@@ -46,5 +48,6 @@ port needs another port. Foreign browser origins are refused. A missing CLI
 installation payload needs restoration before the inspector can render desired
 output. `greenline doctor` can still report independent repository facts.
 
-Delivery receipts prove what the service returned to the client. They do not
-prove that a model received, understood or applied that knowledge.
+A receipt shows what garden returned to a request. It does not prove that a
+model read, understood or applied that knowledge. With no connector enabled,
+the page shows that no consultation was made.

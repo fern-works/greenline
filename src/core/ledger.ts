@@ -32,8 +32,6 @@ import {
 
 /** The four kinds of entry the ruling of 2026-09-16 names; everything else is a view. */
 export type LedgerKind = "copy" | "native" | "unit" | "publication";
-/** The four kinds as a list, for a command that offers them. */
-export const LEDGER_KINDS = ["copy", "native", "unit", "publication"] as const;
 
 /** A predecessor or a pin: an entry by its id and its digest. */
 export interface LedgerReference {
@@ -628,7 +626,7 @@ export function authorityClaims(entry: LedgerEntry): readonly AuthorityClaim[] {
   });
 }
 
-/** A subject's pin, by id and digest, from the manifest or a reshape record. */
+/** A subject's pin, by id and digest, from the manifest. */
 export interface SubjectPin {
   readonly subject: string;
   readonly pin: LedgerReference;
@@ -668,7 +666,7 @@ export function auditPins(
   return issues;
 }
 
-/** The ledger index: every entry, newest last, with its kind, its subjects and its reason. */
+/** The public ledger index: every entry newest last, without publication member evidence. */
 export function renderLedgerIndex(chain: readonly LedgerEntry[]): string {
   const lines = [
     "# The ledger",
@@ -684,7 +682,10 @@ export function renderLedgerIndex(chain: readonly LedgerEntry[]): string {
     }[] = entry.raw.changes;
     entry.subjects.forEach((subject, index) => {
       const change = changes[index];
-      const reason = change?.reason ?? "";
+      const reason =
+        entry.kind === "publication"
+          ? "Recorded the reviewed cabinet publication."
+          : (change?.reason ?? "");
       const retired =
         change?.retirement === undefined
           ? ""
@@ -712,54 +713,6 @@ function markdownTable(header: readonly string[], rows: readonly (readonly strin
     `| ${widths.map((width) => "-".repeat(width)).join(" | ")} |`,
     ...rows.map(line),
   ].join("\n");
-}
-
-/** A unit family's provenance page: every unit entry that touched it, or the sentence that none has. */
-export function renderFamilyProvenance(family: string, chain: readonly LedgerEntry[]): string {
-  const lines = [
-    `# ${family}: provenance`,
-    "",
-    "Generated from `corpus/ledger/records/`; do not edit.",
-    "",
-  ];
-  const touching = chain.filter(
-    (entry) =>
-      entry.version === 3 && entry.kind === "unit" && entry.subjects.includes(`family:${family}`),
-  );
-  if (touching.length === 0) {
-    lines.push(
-      "No entry touches this family yet: its units predate the ledger, and the sources read for them stand in the sources register's frozen appendix.",
-      "",
-    );
-    return lines.join("\n");
-  }
-  for (const entry of touching) {
-    if (entry.version !== 3 || entry.raw.kind !== "unit") continue;
-    const change = entry.raw.changes.find((item) => item.family === family);
-    if (change === undefined) continue;
-    lines.push(
-      `## ${entry.date}: ${entry.id}`,
-      "",
-      `Origin: digest \`${change.origin.digest}\`, ${change.origin.pin}. ${change.reason.replace(/\s+/g, " ")}`,
-      "",
-    );
-    if (change.spans.length > 0)
-      lines.push(
-        markdownTable(
-          ["Span", "Disposition"],
-          change.spans.map((span) => [span.lines, span.disposition]),
-        ),
-        "",
-      );
-    lines.push(
-      markdownTable(
-        ["Unit", "Grade", "Revision"],
-        change.units.map((unit) => [`\`${unit.id}\``, unit.grade, unit.revision.slice(0, 12)]),
-      ),
-      "",
-    );
-  }
-  return lines.join("\n");
 }
 
 /**
@@ -806,7 +759,7 @@ export function renderSourcesRegister(chain: readonly LedgerEntry[], appendix: s
   return [
     "# Sources",
     "",
-    "This register is a view of the ledger, rendered by `node scripts/ledger.mjs render` and never edited: first every source an entry has named since 2026-09-16, then the rows as they stood before the ledger, frozen as an appendix (the ruling D7 of 2026-09-16). A source's standing is the entry that names it; a source read and rejected is a unit entry against the family it was read for, with no span and no unit, listed here as rejected.",
+    "This register is a view of the ledger, rendered by `node scripts/ledger.mjs render` and never edited: first every source an entry has named since 2026-09-16, then the rows as they stood before the ledger, frozen as an appendix (the ruling D7 of 2026-09-16). A source's standing is the entry that names it: a copy entry, or a native entry whose origin names a research digest; a native entry whose origin is the house is not listed. A source read and rejected before 2026-09-26 is a unit entry against the family it was read for, with no span and no unit, listed here as rejected; a read since then that produced no copy or native entry is not recorded in the ledger.",
     "",
     "## From the ledger",
     "",

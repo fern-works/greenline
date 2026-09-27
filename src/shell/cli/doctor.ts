@@ -7,7 +7,8 @@ import { renderProjection } from "../../core/render.ts";
 import { auditArtifacts } from "../../core/artifact-audit.ts";
 import { readRepositoryManifest, readRepositoryDecisions } from "../repository-state.ts";
 import { readExecutionLedger } from "../execution-ledger.ts";
-import { auditLedgerWork, summarizeLedger, type LedgerFinding } from "../../core/ledger-audit.ts";
+import { auditLedgerWork, summarizeLedger } from "../../core/ledger-audit.ts";
+import type { LedgerFinding } from "../../core/ledger-finding.ts";
 import { findGitRoot } from "../git.ts";
 import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { snapshotWorkspace } from "../workspace.ts";
@@ -17,8 +18,10 @@ import { type RepositoryEnvironment, envRead } from "./command-environment.ts";
 import { type CommandOutcome, fail, contractDiagnostics, succeed } from "./command-outcome.ts";
 import { withBrokenBlockConflicts, entryDiagnostic } from "./install-plan.ts";
 import { artifactFailureDiagnostics, findingDiagnostic } from "./artifact-diagnostics.ts";
+import type { ConnectorStatus, ConnectorsConfiguration } from "../../core/connectors/registry.ts";
+import { connectorReadiness, type ConnectorReadiness } from "../connectors/readiness.ts";
 
-/** Read repository diagnostics without modifying files or contacting the cabinet. */
+/** Read repository diagnostics without modifying files or contacting any provider. */
 export function runDoctor(env: RepositoryEnvironment): CommandOutcome {
   const io: FileIo = createNodeFileIo();
   const root = findGitRoot(env.cwd);
@@ -29,6 +32,7 @@ export function runDoctor(env: RepositoryEnvironment): CommandOutcome {
   }
   const diagnostics: Diagnostic[] = [];
   const skillNames = env.installation?.skills.map((skill) => skill.name);
+  let connectors: ConnectorReport | undefined;
 
   const manifestText = envRead(io, join(root, ".greenline", "manifest.json"));
   if (manifestText === undefined)
@@ -46,6 +50,10 @@ export function runDoctor(env: RepositoryEnvironment): CommandOutcome {
       diagnostics.push(
         ...contractDiagnostics(GL.manifestInvalid, parsed.error.issues, parsed.error.source),
       );
+    else {
+      connectors = reportConnectors(parsed.value.connectors, env.environment ?? {});
+      diagnostics.push(...connectors.diagnostics);
+    }
     const decisions = readRepositoryDecisions(root, io);
     if (decisions._tag === "err")
       diagnostics.push(
@@ -201,16 +209,109 @@ export function runDoctor(env: RepositoryEnvironment): CommandOutcome {
     }
   }
   const state = readExecutionLedger(root, io);
-  if (state._tag === "err")
-    return fail([
+  if (state._tag === "err") {
+    const refused = fail([
       ...diagnostics,
       ...(state.error._tag === "ContractParseFailed"
         ? contractDiagnostics(GL.repositoryStateInvalid, state.error.issues, state.error.source)
         : [diagnostic(GL.repositoryStateInvalid, "error", state.error.message)]),
     ]);
+    // The connectors are an independent fact: a refused ledger does not hide them.
+    return connectors === undefined
+      ? refused
+      : { ...refused, connectors: connectors.statuses, text: connectors.text };
+  }
   const tree = collected._tag === "ok" ? collected.value.parsed : [];
   diagnostics.push(...auditLedgerWork(state.value, tree).map(ledgerDiagnostic));
-  return { ...succeed([], diagnostics), ledger: summarizeLedger(state.value) };
+  const outcome = { ...succeed([], diagnostics), ledger: summarizeLedger(state.value) };
+  return connectors === undefined
+    ? outcome
+    : { ...outcome, connectors: connectors.statuses, text: connectors.text };
+}
+
+/** The connectors' registered and installed state, the lines that say it and the findings an enabled one raises. */
+interface ConnectorReport {
+  readonly statuses: readonly ConnectorStatus[];
+  readonly diagnostics: readonly Diagnostic[];
+  readonly text: string;
+}
+
+const MANIFEST = ".greenline/manifest.json";
+
+/**
+ * Read each registered connector against this machine, offline: nothing is
+ * started or consulted, and a key variable is checked for presence, never
+ * read. A disabled connector raises nothing; an enabled one whose
+ * executable would not run here, or whose key variable is unset, raises a
+ * GL0125 warning that says what to do.
+ */
+function reportConnectors(
+  connectors: ConnectorsConfiguration,
+  environment: NodeJS.ProcessEnv,
+): ConnectorReport {
+  const readiness = connectorReadiness(
+    connectors,
+    environment,
+    process.platform === "win32" ? "win32" : "posix",
+  );
+  return {
+    statuses: readiness.map((item) => item.status),
+    diagnostics: readiness.flatMap(readinessDiagnostics),
+    text: `connectors\n${readiness.map(readinessLines).join("")}`,
+  };
+}
+
+function readinessDiagnostics(item: ConnectorReadiness): readonly Diagnostic[] {
+  if (item.status.state === "disabled" || !("executable" in item)) return [];
+  const { id, executable } = item.status;
+  const found: Diagnostic[] = [];
+  if (item.executable.state === "not-absolute")
+    found.push(
+      diagnostic(
+        GL.connectorConfiguration,
+        "warning",
+        `${id} is enabled, but ${item.executable.message}`,
+        MANIFEST,
+      ),
+    );
+  if (item.executable.state === "missing")
+    found.push(
+      diagnostic(
+        GL.connectorConfiguration,
+        "warning",
+        `${id} is enabled, but its executable '${executable}' ${
+          executable === id ? "is not on the PATH" : "does not exist or cannot run"
+        }; greenline does not install it: install the ${id} command, or name its absolute path with 'greenline connectors enable ${id} --url URL --executable PATH'`,
+        MANIFEST,
+      ),
+    );
+  if (!item.key.present)
+    found.push(
+      diagnostic(
+        GL.connectorConfiguration,
+        "warning",
+        `${id} is enabled, but ${item.key.variable} is not set in this environment; ${id} reads its key from it, and greenline stores no credential`,
+      ),
+    );
+  return found;
+}
+
+function readinessLines(item: ConnectorReadiness): string {
+  const { id } = item.status;
+  if (item.status.state === "disabled" || !("executable" in item))
+    return `  ${id}: disabled; nothing is consulted and no process starts ('greenline connectors enable ${id} --url URL' enables it)\n`;
+  const executable =
+    item.executable.state === "found"
+      ? `${item.status.executable} (runs ${item.executable.file})`
+      : item.executable.state === "missing"
+        ? `${item.status.executable} (not found)`
+        : `${item.status.executable} (not an absolute path on this platform)`;
+  return (
+    `  ${id}: enabled\n` +
+    `    endpoint: ${item.status.endpoint}\n` +
+    `    executable: ${executable}\n` +
+    `    key: ${item.key.variable} ${item.key.present ? "set" : "not set"}\n`
+  );
 }
 
 function ledgerDiagnostic(finding: LedgerFinding): Diagnostic {

@@ -10,16 +10,16 @@ import { parseManifest, serializeManifest, type Manifest } from "../../src/core/
 
 describe("serializeManifest", () => {
   const manifest: Manifest = {
-    guidance: { state: "unconfigured" },
-    schemaVersion: 5,
+    schemaVersion: 6,
     targets: ["codex"],
     skills: { exclude: ["grilling"], include: [] },
+    connectors: {},
   };
 
   it("serializes deterministically with fixed field order", () => {
     const text = serializeManifest(manifest);
     expect(text).toBe(
-      '{\n  "schemaVersion": 5,\n  "targets": [\n    "codex"\n  ],\n  "skills": {\n    "exclude": [\n      "grilling"\n    ],\n    "include": []\n  },\n  "guidance": {\n    "state": "unconfigured"\n  }\n}\n',
+      '{\n  "schemaVersion": 6,\n  "targets": [\n    "codex"\n  ],\n  "skills": {\n    "exclude": [\n      "grilling"\n    ],\n    "include": []\n  }\n}\n',
     );
   });
 

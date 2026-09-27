@@ -15,7 +15,7 @@ When exploring the codebase, read the owning ticket and any Testing Decisions it
 
 Tests verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't. A good test reads like a specification: "user can checkout with valid cart" tells you exactly what capability exists, and it survives refactors because it doesn't care about internal structure.
 
-See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines. For a judgment about test value or doubles in this repository, when guidance is configured, retrieve through the request loop in AGENTS.md with the testing task and concern and the actual language and runner; generated receipts carry the delivery, and the current account carries your application evidence.
+See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines. For a judgment about test value or doubles in this repository, the repository's decisions and these methods govern; the delivery of any guidance consulted for it, with the testing task and concern and the actual language and runner, is carried by generated receipts, and the current account carries your application evidence.
 
 ## Seams: where tests go
 

@@ -151,6 +151,11 @@ authorizes changing it. Removing availability leaves owned files as orphans
 until they are explicitly removed: inspect sync's JSON effects and pass the
 chosen exact paths to `--force-managed`, preserving edited files.
 
+The garden connector's method is installed only while the owner has enabled
+garden with `greenline connectors enable garden --url URL`, never through
+`skills.include`, and `greenline connectors disable garden` removes it again.
+Enabling and disabling garden are the owner's steps, never the agent's.
+
 ## Repository memory
 
 A repository's existing home for a kind of memory is that home: a decisions
@@ -219,11 +224,13 @@ The owner settled TypeScript for the existing API. Keep its current tools.
 
 An exclusion is exactly `{ "kind": "unit", "id": "<unit-id>" }` or
 `{ "kind": "option-group", "responsibility": "<responsibility>" }`.
-Use identities and responsibility values from the requested publication's
-metadata and vocabulary. The CLI checks them when retrieving; it expands unit
-containment, never directory ancestry. The agent must select the actual governed
-root rather than substituting a child path. Unknown or absent prohibited
-identities refuse a full read. Empty exclusions forbid no units.
+Use identities and responsibility values from the bound publication's
+metadata and vocabulary. The garden bridge applies them when it reads: a unit
+exclusion passes to garden, and an option group expands through a recorded
+listing into its members and the units they contain, never directory ancestry;
+a group with no members refuses the read. The agent must select the actual
+governed root rather than substituting a child path. Empty exclusions forbid no
+units.
 
 Before closing meaningful work, retain lasting choices in the decisions book and
 link their rationale rather than copying it into multiple homes. Existing evidence

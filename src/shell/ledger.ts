@@ -1,6 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { z } from "zod";
 import { sha256Hex } from "../commons/hash.ts";
 import type { Result } from "../commons/result.ts";
 import {
@@ -19,13 +18,11 @@ import {
   ledgerTip,
   orderLedger,
   parseLedgerEntry,
-  renderFamilyProvenance,
   renderLedgerIndex,
   renderNotices,
   renderSourcesRegister,
   type LedgerEntry,
   type LedgerEntryV3,
-  type LedgerReference,
   type SubjectPin,
 } from "../core/ledger.ts";
 import { GENERATED_PROVENANCE_PAGE, loadCorpusManifest } from "./corpus.ts";
@@ -50,8 +47,6 @@ export const LEDGER_RECORDS = "ledger/records";
 export const LEDGER_WITNESSES: typeof WITNESSES = WITNESSES;
 /** The generated index under the corpus root. */
 export const LEDGER_INDEX = "ledger/INDEX.md";
-/** The unit families' directory under the corpus root; each family's reshape record carries its pin. */
-const UNITS = "units";
 /** The sources register's rows as they stood before the ledger, frozen on 2026-09-16 (the ruling D7); the view appends them. */
 export const SOURCES_APPENDIX = "ledger/sources-before-the-ledger.md";
 /** The frozen appendix's digest; a changed appendix is refused. */
@@ -140,16 +135,21 @@ function ledgerWitnessIssues(
 /**
  * Freeze one live file as a witness at its own path. A path is frozen once:
  * a frozen witness whose bytes differ from the live file is refused, since
- * the entries that name it hash its digest.
+ * the entries that name it hash its digest. A witness an earlier entry of
+ * the chain froze is cited again from its frozen bytes once its live file has
+ * left the tree; a witness file no entry names at its digest is refused.
  */
 export function freezeWitness(
   repositoryRoot: string,
   corpusRoot: string,
   recorded: string,
 ): Result<FrozenWitness, ContractParseFailed> {
+  const live = existsSync(join(repositoryRoot, recorded));
   let bytes: Buffer;
   try {
-    bytes = readFileSync(join(repositoryRoot, recorded));
+    bytes = readFileSync(
+      live ? join(repositoryRoot, recorded) : join(corpusRoot, WITNESSES, recorded),
+    );
   } catch (cause) {
     return contractFailure(recorded, [
       { path: recorded, message: `the file to freeze could not be read: ${String(cause)}` },
@@ -164,6 +164,14 @@ export function freezeWitness(
     ]);
   }
   const revision = sha256Hex(bytes);
+  if (!live && !chainFroze(corpusRoot, recorded, revision))
+    return contractFailure(recorded, [
+      {
+        path: recorded,
+        message:
+          "the live file is absent and no entry of the chain froze this witness at its digest",
+      },
+    ]);
   const frozen = readAuthorityWitness(corpusRoot, recorded);
   if (frozen._tag === "ok" && sha256Hex(frozen.value) !== revision)
     return contractFailure(recorded, [
@@ -179,6 +187,19 @@ export function freezeWitness(
   });
 }
 
+/** Whether an entry of the chain names this witness as an authority at this digest. */
+function chainFroze(corpusRoot: string, recorded: string, revision: string): boolean {
+  const chain = readChain(corpusRoot);
+  return (
+    chain._tag === "ok" &&
+    chain.value.some((entry) =>
+      authorityClaims(entry).some(
+        (claim) => claim.authority.path === recorded && claim.authority.revision === revision,
+      ),
+    )
+  );
+}
+
 /** One vendored copy measured against its frozen upstream. */
 export function measureSubject(
   corpusRoot: string,
@@ -190,74 +211,6 @@ export function measureSubject(
   return item === undefined
     ? contractFailure(corpusRoot, [{ path: skill, message: "no vendored copy by that name" }])
     : contractOk(item);
-}
-
-/** One unit family as measured: its pin from its reshape record, and each unit file's digest. */
-export interface MeasuredFamily {
-  readonly family: string;
-  readonly pin: LedgerReference | undefined;
-  readonly units: readonly { readonly id: string; readonly revision: string }[];
-}
-
-// The reshape record is read for its pin only; every other field passes through untouched.
-const familyRecord = z
-  .object({ ledger: z.object({ id: z.string(), revision: z.string() }).strict().optional() })
-  .loose();
-
-/** A family's reshape record, the file this shell moves the pin in. */
-function familyRecordPath(corpusRoot: string, family: string): string {
-  return join(corpusRoot, UNITS, family, "reshape.json");
-}
-
-/**
- * Measure one unit family: the units are the Markdown files whose names
- * start in lower case (a generated page starts in upper case), each at
- * its digest; the pin is the reshape record's `ledger` field.
- */
-export function measureFamily(
-  corpusRoot: string,
-  family: string,
-): Result<MeasuredFamily, ContractParseFailed> {
-  const directory = join(corpusRoot, UNITS, family);
-  const record = familyRecordPath(corpusRoot, family);
-  if (!existsSync(record))
-    return contractFailure(corpusRoot, [{ path: family, message: "no unit family by that name" }]);
-  try {
-    const parsed = familyRecord.safeParse(JSON.parse(readFileSync(record, "utf8")));
-    if (!parsed.success)
-      return contractFailure(record, [
-        { path: family, message: "the reshape record's pin is malformed" },
-      ]);
-    const units = readdirSync(directory, { withFileTypes: true })
-      .filter((item) => item.isFile() && item.name.endsWith(".md") && /^[a-z]/.test(item.name))
-      .map((item) => item.name)
-      .sort()
-      .map((name) => ({
-        id: name.slice(0, -3),
-        revision: sha256Hex(readFileSync(join(directory, name))),
-      }));
-    return contractOk({ family, pin: parsed.data.ledger, units });
-  } catch (cause) {
-    return contractFailure(directory, [
-      { path: family, message: `could not read the family: ${String(cause)}` },
-    ]);
-  }
-}
-
-/** Every unit family under the corpus root: the directories that carry a reshape record. */
-export function measureFamilies(
-  corpusRoot: string,
-): Result<readonly MeasuredFamily[], ContractParseFailed> {
-  const root = join(corpusRoot, UNITS);
-  if (!existsSync(root)) return contractOk([]);
-  const families: MeasuredFamily[] = [];
-  for (const item of readdirSync(root, { withFileTypes: true })) {
-    if (!item.isDirectory() || !existsSync(familyRecordPath(corpusRoot, item.name))) continue;
-    const measured = measureFamily(corpusRoot, item.name);
-    if (measured._tag === "err") return measured;
-    families.push(measured.value);
-  }
-  return contractOk(families);
 }
 
 function copyStates(
@@ -281,40 +234,26 @@ function copyStates(
   return contractOk(states);
 }
 
-/** The subjects outside the copy audit that carry no pin: native skills without one in the manifest, families without one in their reshape record. */
-function unpinnedSubjects(
-  manifest: CorpusManifest,
-  families: readonly MeasuredFamily[],
-): readonly string[] {
-  return [
-    ...manifest.skills.flatMap((entry) =>
-      entry.ledger === undefined && !isVendored(entry) ? [`skill:${entry.name}`] : [],
-    ),
-    ...families.flatMap((family) => (family.pin === undefined ? [`family:${family.family}`] : [])),
-  ];
+/** The subjects outside the copy audit that carry no pin: native skills without one in the manifest. */
+function unpinnedSubjects(manifest: CorpusManifest): readonly string[] {
+  return manifest.skills.flatMap((entry) =>
+    entry.ledger === undefined && !isVendored(entry) ? [`skill:${entry.name}`] : [],
+  );
 }
 
-/** The pins that exist outside the copy audit: a native skill's in the manifest, a family's in its reshape record. */
-function otherPins(
-  manifest: CorpusManifest,
-  families: readonly MeasuredFamily[],
-): readonly SubjectPin[] {
-  return [
-    ...manifest.skills.flatMap((entry) =>
-      entry.ledger === undefined || isVendored(entry)
-        ? []
-        : [{ subject: `skill:${entry.name}`, pin: entry.ledger }],
-    ),
-    ...families.flatMap((family) =>
-      family.pin === undefined ? [] : [{ subject: `family:${family.family}`, pin: family.pin }],
-    ),
-  ];
+/** The pins that exist outside the copy audit: a native skill's in the manifest. */
+function otherPins(manifest: CorpusManifest): readonly SubjectPin[] {
+  return manifest.skills.flatMap((entry) =>
+    entry.ledger === undefined || isVendored(entry)
+      ? []
+      : [{ subject: `skill:${entry.name}`, pin: entry.ledger }],
+  );
 }
 
 /**
  * The views a valid state carries, rendered from the chain and the trees
  * (workshop/components/ledger.md, "The views"): the index; one provenance
- * page per vendored copy and per unit family; the sources register with
+ * page per vendored copy; the sources register with
  * its frozen appendix; the consumer notices. The corpus root sits under
  * the repository root, where the register and the notices live.
  */
@@ -322,7 +261,6 @@ export function renderLedgerViews(
   corpusRoot: string,
   chain: readonly LedgerEntry[],
   measured: readonly MeasuredSkill[],
-  families: readonly MeasuredFamily[],
   manifest: CorpusManifest,
 ): Result<readonly FileWrite[], ContractParseFailed> {
   const repositoryRoot = dirname(corpusRoot);
@@ -439,10 +377,6 @@ export function renderLedgerViews(
       path: join(corpusRoot, "skills", item.skill, GENERATED_PROVENANCE_PAGE),
       content: renderSkillDivergence(item, records),
     })),
-    ...families.map((family) => ({
-      path: join(corpusRoot, UNITS, family.family, GENERATED_PROVENANCE_PAGE),
-      content: renderFamilyProvenance(family.family, chain),
-    })),
     {
       path: join(repositoryRoot, "docs/SOURCES.md"),
       content: renderSourcesRegister(chain, appendix),
@@ -489,30 +423,69 @@ function auditIssues(
   corpusRoot: string,
   chain: readonly LedgerEntry[],
   manifest: CorpusManifest,
-  families: readonly MeasuredFamily[],
   states: readonly DivergenceState[],
   pending: readonly FrozenWitness[] = [],
 ): readonly InvalidField[] {
   return [
     ...auditCopies(chain, states),
-    ...auditPins(chain, otherPins(manifest, families), unpinnedSubjects(manifest, families)),
+    ...auditPins(chain, otherPins(manifest), unpinnedSubjects(manifest)),
     ...ledgerWitnessIssues(corpusRoot, chain, pending),
   ];
 }
 
 /**
- * The gate's check. Refused now: a broken chain; a copy without a pin or
- * with a stale one; a live hunk no entry claims or a claimed hunk no
- * longer live; a stale pin on a native skill or a family; a witness
- * missing or changed; a private path (at the parse); a view that differs
- * from its render; the frozen appendix changed; a unit whose source ref
- * resolves to no row of the digest registry, a live note without its row
- * or its header, a historical row whose blob at its commit has another
- * digest, a digest origin that names no row or another pin; a native
- * skill or a family the chain records without a pin. A native skill or a family without a pin is
- * refused from the stage that records their entries (the ledger plan's
- * stage E), a unit's source ref from the same stage, and a snapshot's
- * publication entry from stage F; the component page names each.
+ * The combined prefix's twenty entries by id, as the cutover commit 45652038
+ * left them (workshop/components/ledger.md, "The files"); every entry after
+ * them is greenline's own.
+ */
+const PREFIX_ENTRIES: ReadonlySet<string> = new Set([
+  "baseline-copies-2026-09-11",
+  "descriptions-practice-the-catalog-2026-09-11",
+  "pull-2026-09-11",
+  "fold-2026-09-11",
+  "fold-walk-2026-09-11",
+  "series-s7-roster-2026-09-11",
+  "replay-s7-show-me-2026-09-11",
+  "replay-s7-delivery-review-2026-09-11",
+  "ready-copies-2026-09-12",
+  "ready-review-role-2026-09-12",
+  "ready-review-bound-2026-09-12",
+  "ready-review-convention-2026-09-12",
+  "ready-review-installation-2026-09-12",
+  "vocabulary-owner-2026-09-12",
+  "cold-review-wording-2026-09-12",
+  "roster-keepers-2026-09-15",
+  "roster-keepers-fix-2026-09-15",
+  "light-path-negative-2026-09-15",
+  "first-publication-2026-09-18",
+  "staging-comparison-publication-2026-09-20",
+]);
+
+/** A unit or publication entry outside the combined prefix: garden records those, and greenline never does. */
+function kindIssues(chain: readonly LedgerEntry[]): readonly InvalidField[] {
+  return chain.flatMap((entry) =>
+    entry.version === 3 && !RECORDED_KINDS.includes(entry.raw.kind) && !PREFIX_ENTRIES.has(entry.id)
+      ? [
+          {
+            path: entry.id,
+            message: `a ${entry.raw.kind} entry outside the combined prefix is garden's; greenline records ${RECORDED_KINDS.join(" and ")} entries`,
+          },
+        ]
+      : [],
+  );
+}
+
+/**
+ * The gate's check. Refused now: a broken chain; a unit or publication
+ * entry outside the combined prefix; a copy without a pin or with a stale
+ * one; a live hunk no entry claims or a claimed hunk no longer live; a
+ * stale pin on a native skill; a witness missing or changed; a private
+ * path (at the parse); a view that differs from its render; the frozen
+ * appendix changed; a live note without its row or its header, a
+ * historical row whose blob at its commit has another digest, a digest
+ * origin that names no row or another pin; a native skill the chain
+ * records without a pin. The prefix's unit and publication entries are
+ * read and ordered with the rest; their families left with garden.
  */
 export function verifyLedger(
   corpusRoot: string,
@@ -524,23 +497,16 @@ export function verifyLedger(
     return contractFailure(corpusRoot, [{ path: "manifest", message: manifest.error.message }]);
   const measured = measureDivergence(corpusRoot);
   if (measured._tag === "err") return measured;
-  const families = measureFamilies(corpusRoot);
-  if (families._tag === "err") return families;
   const states = copyStates(corpusRoot, measured.value);
   if (states._tag === "err") return states;
   const issues = [
-    ...auditIssues(corpusRoot, chain.value, manifest.value, families.value, states.value),
+    ...kindIssues(chain.value),
+    ...auditIssues(corpusRoot, chain.value, manifest.value, states.value),
     ...digestIssues(dirname(corpusRoot), corpusRoot),
   ];
   const registry = readDigestRegistry(corpusRoot);
   if (registry._tag === "ok") issues.push(...originIssues(chain.value, registry.value.rows));
-  const views = renderLedgerViews(
-    corpusRoot,
-    chain.value,
-    measured.value,
-    families.value,
-    manifest.value,
-  );
+  const views = renderLedgerViews(corpusRoot, chain.value, measured.value, manifest.value);
   if (views._tag === "err") return views;
   for (const page of views.value) {
     try {
@@ -567,83 +533,21 @@ function pinnedSkills(entry: LedgerEntryV3): readonly string[] {
   }
 }
 
-/** The families whose reshape-record pin a unit entry moves. */
-function pinnedFamilies(entry: LedgerEntryV3): readonly string[] {
-  return entry.kind === "unit" ? entry.changes.map((change) => change.family) : [];
-}
-
-/** A family's reshape record with its pin moved, the rest of the file passed through. */
-function familyPinWrite(
-  corpusRoot: string,
-  family: string,
-  pin: LedgerReference,
-): Result<FileWrite, ContractParseFailed> {
-  const path = familyRecordPath(corpusRoot, family);
-  try {
-    const parsed = familyRecord.safeParse(JSON.parse(readFileSync(path, "utf8")));
-    if (!parsed.success)
-      return contractFailure(path, [
-        { path: family, message: "the reshape record's pin is malformed" },
-      ]);
-    return contractOk({
-      path,
-      content: `${JSON.stringify({ ...parsed.data, ledger: pin }, null, 2)}\n`,
-    });
-  } catch (cause) {
-    return contractFailure(path, [
-      { path: family, message: `could not read the reshape record: ${String(cause)}` },
-    ]);
-  }
-}
-
-/** The units an entry names, each checked against the tree at its revision. */
-function unitIssues(
-  entry: LedgerEntryV3,
-  families: readonly MeasuredFamily[],
-): readonly InvalidField[] {
-  const issues: InvalidField[] = [];
-  const byFamily = new Map(families.map((family) => [family.family, family]));
-  const everywhere = new Map(
-    families.flatMap((family) => family.units.map((unit) => [unit.id, unit.revision] as const)),
-  );
-  if (entry.kind === "unit")
-    for (const change of entry.changes) {
-      const family = byFamily.get(change.family);
-      if (family === undefined) {
-        issues.push({ path: change.family, message: "no unit family by that name" });
-        continue;
-      }
-      const revisions = new Map(family.units.map((unit) => [unit.id, unit.revision]));
-      for (const unit of change.units)
-        if (revisions.get(unit.id) !== unit.revision)
-          issues.push({
-            path: change.family,
-            message: `unit ${unit.id} is not in the family at that revision`,
-          });
-    }
-  if (entry.kind === "publication")
-    for (const change of entry.changes)
-      for (const unit of change.units)
-        if (everywhere.get(unit.id) !== unit.revision)
-          issues.push({ path: change.snapshot, message: `no unit ${unit.id} at that revision` });
-  return issues;
-}
+/** The kinds greenline appends; its chain also holds the prefix's unit and publication entries, which it reads and never extends. */
+export const RECORDED_KINDS: readonly LedgerEntryV3["kind"][] = ["copy", "native"];
 
 /**
- * Append one version-3 entry of any of the four kinds: refused when its
- * identity is taken, its predecessor is not the tip, a copy's stated
- * source, licence or result differs from what is measured, a retirement
- * names a skill the manifest still lists, whose copy still exists, that
- * the chain never recorded as a copy or already retired, or names a
- * replacement off the roster, a unit or a publication names a unit the
- * tree does not hold at that revision, or the extended chain does not
- * audit clean. The witnesses the entry names
- * are the ones in `frozen`, from `freezeWitness`, or already in the tree.
- * The writes, one plan in this order: the frozen witnesses, the manifest
- * when a skill's pin moves, each reshape record when a family's pin
- * moves, the regenerated views, and the entry last, so a plan that stops
- * before the entry lands converges on a retry. A snapshot's pin is the
- * cabinet's publication log, outside this tree.
+ * Append one version-3 copy or native entry: refused when it is of another
+ * kind, its identity is taken, its predecessor is not the tip, a copy's
+ * stated source, licence or result differs from what is measured, a
+ * retirement names a skill the manifest still lists, whose copy still
+ * exists, that the chain never recorded as a copy or already retired, or
+ * names a replacement off the roster, or the extended chain does not audit
+ * clean. The witnesses the entry names are the ones in `frozen`, from
+ * `freezeWitness`, or already in the tree. The writes, one plan in this
+ * order: the frozen witnesses, the manifest when a skill's pin moves, the
+ * regenerated views, and the entry last, so a plan that stops before the
+ * entry lands converges on a retry.
  */
 export function appendEntry(
   corpusRoot: string,
@@ -652,6 +556,14 @@ export function appendEntry(
 ): Result<readonly FileWrite[], ContractParseFailed> {
   const parsed = parseLedgerEntry(JSON.stringify(entry), entry.id);
   if (parsed._tag === "err") return parsed;
+  if (!RECORDED_KINDS.includes(entry.kind))
+    return contractFailure(entry.id, [
+      {
+        path: "kind",
+        message: `greenline records ${RECORDED_KINDS.join(" and ")} entries; a ${entry.kind} entry is garden's`,
+      },
+    ]);
+  const recordText = `${JSON.stringify(entry, null, 2)}\n`;
   const existing = readChain(corpusRoot);
   if (existing._tag === "err") return existing;
   if (existing.value.some((item) => item.id === entry.id))
@@ -677,8 +589,6 @@ export function appendEntry(
     return contractFailure(corpusRoot, [{ path: "manifest", message: manifest.error.message }]);
   const measured = measureDivergence(corpusRoot);
   if (measured._tag === "err") return measured;
-  const families = measureFamilies(corpusRoot);
-  if (families._tag === "err") return families;
   const pin = { id: parsed.value.id, revision: parsed.value.revision };
   const touched = new Set(pinnedSkills(entry));
   for (const name of touched)
@@ -750,8 +660,6 @@ export function appendEntry(
           { path: change.skill, message: "the entry's result differs from the measured copy" },
         ]);
     }
-  const unitProblems = unitIssues(entry, families.value);
-  if (unitProblems.length > 0) return contractFailure(entry.id, unitProblems);
   // A digest origin names a registry row by its id and its pin.
   const registry = readDigestRegistry(corpusRoot);
   if (registry._tag === "err") return registry;
@@ -763,37 +671,14 @@ export function appendEntry(
       touched.has(item.name) ? { ...item, ledger: pin } : item,
     ),
   };
-  const movedFamilies = new Set(pinnedFamilies(entry));
-  const nextFamilies = families.value.map((family) =>
-    movedFamilies.has(family.family) ? { ...family, pin } : family,
-  );
-  const familyWrites: FileWrite[] = [];
-  for (const family of movedFamilies) {
-    const write = familyPinWrite(corpusRoot, family, pin);
-    if (write._tag === "err") return write;
-    familyWrites.push(write.value);
-  }
   const states = copyStates(
     corpusRoot,
     measured.value.map((item) => (touched.has(item.skill) ? { ...item, record: pin } : item)),
   );
   if (states._tag === "err") return states;
-  const issues = auditIssues(
-    corpusRoot,
-    extended.chain,
-    nextManifest,
-    nextFamilies,
-    states.value,
-    frozen,
-  );
+  const issues = auditIssues(corpusRoot, extended.chain, nextManifest, states.value, frozen);
   if (issues.length > 0) return contractFailure(entry.id, issues);
-  const views = renderLedgerViews(
-    corpusRoot,
-    extended.chain,
-    measured.value,
-    nextFamilies,
-    nextManifest,
-  );
+  const views = renderLedgerViews(corpusRoot, extended.chain, measured.value, nextManifest);
   if (views._tag === "err") return views;
   return contractOk([
     ...frozen.map((witness) => witness.write),
@@ -805,11 +690,10 @@ export function appendEntry(
           },
         ]
       : []),
-    ...familyWrites,
     ...views.value,
     {
       path: join(corpusRoot, LEDGER_RECORDS, `${entry.id}.json`),
-      content: `${JSON.stringify(entry, null, 2)}\n`,
+      content: recordText,
     },
   ]);
 }

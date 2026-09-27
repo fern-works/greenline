@@ -7,7 +7,7 @@ import { fixtureInstallation } from "../fixtures/corpus.ts";
 import { compileInstallation } from "../../src/shell/installation.ts";
 
 // Real npm packing is the package boundary; these subprocess cases may exceed 100 ms.
-function packageFixture(readme: string, scripts?: { cabinet: string }): string {
+function packageFixture(readme: string, scripts?: { build: string }): string {
   const root = mkdtempSync(join(tmpdir(), "greenline-packed-paths-"));
   mkdirSync(join(root, "dist/bin"), { recursive: true });
   mkdirSync(join(root, "dist/corpus"), { recursive: true });
@@ -54,7 +54,7 @@ it.each([
 
 it("G3 refuses development scripts in the consumer manifest", () => {
   const root = packageFixture("# Fixture\n", {
-    cabinet: "node dist/cabinet/greenline-cabinet.mjs",
+    build: "tsdown",
   });
   try {
     const result = audit(root);
@@ -79,5 +79,35 @@ it("G3 checks the real package prefix before accepting a placeholder path", () =
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+it("refuses a packed file that names a guidance unit id a publication entry of the ledger names, and only the whole id", () => {
+  const records = mkdtempSync(join(tmpdir(), "greenline-leak-records-"));
+  writeFileSync(
+    join(records, "a-publication.json"),
+    JSON.stringify({
+      kind: "publication",
+      changes: [{ units: [{ id: "example-leaked-unit" }, { id: "example-loops" }] }],
+    }),
+  );
+  writeFileSync(join(records, "a-copy.json"), JSON.stringify({ kind: "copy", changes: [] }));
+  const leaked = packageFixture("Read the example-leaked-unit unit.\n");
+  const bounded = packageFixture("Read about example-leaked-units and example-loopsmith.\n");
+  const audited = (root: string) =>
+    spawnSync(
+      process.execPath,
+      [join(import.meta.dirname, "../../scripts/check-consumer-package.mjs"), root, records],
+      { encoding: "utf8" },
+    );
+  try {
+    const refused = audited(leaked);
+    expect(refused.status).toBe(1);
+    expect(refused.stderr).toContain(
+      "README.md: guidance unit identity example-leaked-unit in package",
+    );
+    expect(audited(bounded).stderr).not.toContain("guidance unit identity");
+  } finally {
+    for (const path of [records, leaked, bounded]) rmSync(path, { recursive: true, force: true });
   }
 });

@@ -198,10 +198,9 @@ describe("init", () => {
     expect(read(root, ".greenline/manifest.json")).toBe(
       JSON.stringify(
         {
-          schemaVersion: 5,
+          schemaVersion: 6,
           targets: ["codex", "claude-code"],
           skills: { exclude: [], include: [] },
-          guidance: { state: "unconfigured" },
         },
         null,
         2,
@@ -259,7 +258,7 @@ describe("init targets (ADR 0029)", () => {
   it("asks which harness trees to install when no flag chose, and writes only the chosen tree", () => {
     const root = makeRepo();
     const terminal = answering("claude-code");
-    const result = run(root, ["init", "--guidance", "none"], terminal.prompt);
+    const result = run(root, ["init"], terminal.prompt);
     expect(result.code).toBe(0);
     expect(terminal.asked).toHaveLength(1);
     expect(JSON.parse(read(root, ".greenline/manifest.json")).targets).toEqual(["claude-code"]);
@@ -278,12 +277,10 @@ describe("init targets (ADR 0029)", () => {
     expect(existsSync(join(root, "AGENTS.md"))).toBe(false);
   });
 
-  it("never asks when both configuration flags are explicit, or --yes accepts their defaults", () => {
+  it("never asks when the targets flag is explicit, or --yes accepts its default", () => {
     const flagged = makeRepo();
     const terminal = answering("both");
-    expect(
-      run(flagged, ["init", "--targets", "codex", "--guidance", "none"], terminal.prompt).code,
-    ).toBe(0);
+    expect(run(flagged, ["init", "--targets", "codex"], terminal.prompt).code).toBe(0);
     expect(terminal.asked).toHaveLength(0);
     expect(JSON.parse(read(flagged, ".greenline/manifest.json")).targets).toEqual(["codex"]);
     const accepted = makeRepo();
@@ -295,12 +292,13 @@ describe("init targets (ADR 0029)", () => {
     ]);
   });
 
-  it("G3 names the explicit guidance command instead of re-asking on an initialized workspace", () => {
+  it("names greenline sync instead of re-asking on an initialized workspace", () => {
     const root = makeRepo();
     expect(run(root, ["init", "--yes"]).code).toBe(0);
     const again = run(root, ["init", "--json"]);
     expect(again.code).toBe(1);
-    expect(again.out).toContain("greenline init --guidance");
+    expect(again.out).toContain("run 'greenline sync' to reconcile installed files");
+    expect(again.out).not.toContain("--guidance");
   });
 });
 
@@ -469,10 +467,9 @@ describe("orphans", () => {
       join(root, ".greenline", "manifest.json"),
       JSON.stringify(
         {
-          schemaVersion: 5,
+          schemaVersion: 6,
           targets: targets ?? ["codex", "claude-code"],
           skills: { exclude },
-          guidance: { state: "unconfigured" },
         },
         null,
         2,

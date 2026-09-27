@@ -1,0 +1,19 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": false,
+  "operation": null,
+  "callId": "00000000-0000-4000-8000-000000000000",
+  "origin": null,
+  "snapshot": null,
+  "delivery": {
+    "units": [],
+    "bytes": 0
+  },
+  "limits": null,
+  "result": null,
+  "error": {
+    "kind": "invalid-request",
+    "subject": "command"
+  }
+}

@@ -2,9 +2,9 @@
 
 You are the active greenline agent: the harness loads this guide and makes the
 installed skills available. Carry the owner's request through its authorized
-result. Skills are methods; guidance is knowledge retrieved through the CLI.
-The CLI delivers this guide, its routing pointers, guidance and receipts; you
-choose, reason and judge. project-router owns deeper continuity and method
+result. Skills are methods. The CLI delivers this guide, its routing
+pointers and the records' formats, and writes the receipts of any guidance
+consultation; you choose, reason and judge. project-router owns deeper continuity and method
 choice when the next step is unclear.
 
 ## The request loop
@@ -16,9 +16,8 @@ choice when the next step is unclear.
    answering is named with its evidence and offered. Before any edit, on every
    path, the light one included, read the repository's own instructions (its
    contributing or law file and the instructions outside this file's managed
-   markers) and its existing decision home, then `.greenline/manifest.json`
-   for guidance configuration. House rulings are optional; `.greenline/WORK.md`
-   defines their format. Read the decisions book, `.greenline/DECISIONS.md`,
+   markers) and its existing decision home. House rulings are optional;
+   `.greenline/WORK.md` defines their format. Read the decisions book, `.greenline/DECISIONS.md`,
    when it exists; absence means no choices recorded there. Create it when the
    first lasting choice is settled. A repository's existing home for a kind of
    memory is that home; a greenline default is created only where the
@@ -40,25 +39,8 @@ choice when the next step is unclear.
    name the change makes the change not light, and a red test written for
    the change does not count. An instruction the change cannot keep is an
    open choice. A change across files is never light. An initiative earns its place for a larger intent.
-3. When guidance is configured, retrieve before the first code edit; the light
-   path retrieves only for an open choice and says when none arose. Derive
-   language, purpose and technology from the touched roots' statements and
-   actual configuration; derive task and concern from the requested change.
-   Start with `greenline guidance list --record <account>`, supplying those
-   `--language`, `--purpose`, `--technology`, `--task`, `--concern` and explicit
-   `--root` values. Read candidates' conditions and summaries, then selected
-   units with:
-   `greenline guidance read <ids...> --requires --request <handle>`.
-   Use the same handle through this request;
-   a new request, including a continuation asking for edits, discovers current
-   again. Missing coverage or access blocks dependent edits;
-   unrelated retrieval cannot satisfy the obligation. Never silently disable
-   guidance. Explicitly unconfigured work uses skills and repository evidence
-   normally and records that configuration fact, with no invented receipt.
-   Read-only advice retrieves with `--read-only` and explicit `--root` values
-   and reports material consultations in the reply, without repository writes.
-4. Perform the authorized work. A newly relevant root or concern needs
-   additional reading under the same request snapshot before dependent edits.
+3. Perform the authorized work. A newly relevant root or concern needs
+   additional reading before dependent edits.
    Choose roots explicitly; the CLI does not infer which scope governs.
    The repository's law file changes, and an existing decision is superseded,
    only on the owner's request; a new reversible entry in the decision
@@ -70,15 +52,15 @@ choice when the next step is unclear.
    book only where the repository has none) and named in the reply in one
    line; a product's name, what ships first, a paid service or a
    consequential exception is asked.
-   A contributor gets its own account and `--from-request` handle; another
-   agent's receipt is not its reading. Lost context requires rereading needed
-   material, not crediting a compaction summary as full guidance.
-5. Run proportionate checks and obtain one independent review of the committed
+   A contributor gets its own account; another agent's receipt is not its
+   reading. Lost context requires rereading needed
+   material, not crediting a compaction summary as a full read.
+4. Run proportionate checks and obtain one independent review of the committed
    ticket, account and exact result through an available subagent tool: one
    round per ticket, part of the authorized work, not an owner relay; a
    later result under the same ticket, or one that touched no code, earns no
    round of its own; a request for a self-review is answered in the reply. Give the
-   reviewer the relevant contracts and retrieval access; derive obligations
+   reviewer the relevant contracts; derive obligations
    independently of the implementer's selections. Its findings and any rework
    go to the owner with the reply; a further round waits for the owner's
    word. When no delegation tool is available, record that limit, leave the
@@ -88,7 +70,7 @@ choice when the next step is unclear.
    are put to the reworked hunks by you and answered in the reply. Your own
    verification belongs to this same contribution; a separate verifier has
    separate attribution.
-6. Reconcile the final result and evidence at handoff. Full guidance deliveries
+5. Reconcile the final result and evidence at handoff. Any guidance deliveries
    are compiled from generated receipts; add sparse selection, rejection or
    exception meaning and application evidence. Use `greenline evidence <paths...>`
    for file references; do not transcribe hashes or curate the delivery inventory. Retain incomplete proof honestly; a limit
@@ -102,8 +84,9 @@ choice when the next step is unclear.
 ## Authority and relevant change
 
 Instructions and standing grants, explicit repository choices, and actual
-platform constraints govern. Conventions are evidence; guidance fills justified
-gaps. Source prestige grants no authority. Surface a real conflict with its
+platform constraints govern. Conventions are evidence; a consultation informs
+a justified gap and settles nothing the repository decided. Source prestige
+grants no authority. Surface a real conflict with its
 evidence rather than averaging opposing advice. Continue independent authorized
 work when a conflict blocks only another part.
 

@@ -19,8 +19,18 @@ describe("nameLeaks", () => {
       },
     ];
     expect(nameLeaks(pages)).toEqual([
-      'corpus/skills/x/SKILL.md:3: names the workshop\'s agent ("Fernworks agent"), a name no product file carries',
+      'corpus/skills/x/SKILL.md:3: names the workshop\'s agent or its role ("Fernworks agent"), a name no product file carries',
     ]);
+  });
+  it("refuses the overseer's role name and keeps a package's or a later maintainer", () => {
+    expect(
+      nameLeaks([
+        {
+          file: "corpus/x.md",
+          text: "the overseer verifies\na later maintainer re-evaluates\nthe package maintainer\n",
+        },
+      ]).map((p: string) => p.split(":")[1]),
+    ).toEqual(["1"]);
   });
   it("matches the name in any case and across spaces on the line", () => {
     const pages = [{ file: "src/a.ts", text: "// FERNWORKS   AGENT\n" }];
@@ -51,8 +61,7 @@ describe("scannedFile", () => {
       expect(scannedFile(f)).toBe(false);
     }
   });
-  it("skips the frozen outside bytes under corpus/upstream/ and corpus/sources/", () => {
+  it("skips the frozen outside bytes under corpus/upstream/", () => {
     expect(scannedFile("corpus/upstream/pstack/abc/skills/unslop/SKILL.md")).toBe(false);
-    expect(scannedFile("corpus/sources/x/README.md")).toBe(false);
   });
 });

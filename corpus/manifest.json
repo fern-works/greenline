@@ -5,87 +5,91 @@
       "name": "mattpocock-skills",
       "repo": "https://github.com/mattpocock/skills",
       "commit": "3cca18b368ae95cdbdebbff572ccafa662551015",
-      "license": "MIT",
-      "snapshot": "upstream/mattpocock-skills/3cca18b368ae95cdbdebbff572ccafa662551015"
+      "snapshot": "upstream/mattpocock-skills/3cca18b368ae95cdbdebbff572ccafa662551015",
+      "license": "MIT"
     },
     {
       "name": "ponytail",
       "repo": "https://github.com/dietrichgebert/ponytail",
       "commit": "356918eba965ee1eac64bd3a7f0dd02108350de5",
-      "license": "MIT",
-      "snapshot": "upstream/ponytail/356918eba965ee1eac64bd3a7f0dd02108350de5"
+      "snapshot": "upstream/ponytail/356918eba965ee1eac64bd3a7f0dd02108350de5",
+      "license": "MIT"
     },
     {
       "name": "cursor-team-kit",
       "repo": "https://github.com/cursor/plugins",
       "commit": "f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d",
-      "license": "MIT",
-      "snapshot": "upstream/cursor-team-kit/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d"
+      "snapshot": "upstream/cursor-team-kit/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d",
+      "license": "MIT"
     },
     {
       "name": "pstack",
       "repo": "https://github.com/cursor/plugins",
       "commit": "f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d",
-      "license": "MIT",
-      "snapshot": "upstream/pstack/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d"
+      "snapshot": "upstream/pstack/f5bdd6826fd0a0d9cbc4347134c3a74a200b9d9d",
+      "license": "MIT"
     },
     {
       "name": "product-description",
       "repo": "https://gist.github.com/steveruizok/83ae5c53f2784ebf8f5fe0a3fb94480f",
       "commit": "f9435a3c7b022ecadc8441542675a9163cdb6b7f",
-      "license": "MIT",
       "snapshot": "upstream/product-description/f9435a3c7b022ecadc8441542675a9163cdb6b7f",
+      "license": "MIT",
       "holder": "Copyright (c) 2026 Steve Ruiz"
     },
     {
       "name": "freddie-northam",
       "repo": "https://github.com/freddie-northam/skills",
       "commit": "e8417d4e7724558a4f74a5e9e1854b5dc8350bb9",
-      "license": "MIT",
-      "snapshot": "upstream/freddie-northam/e8417d4e7724558a4f74a5e9e1854b5dc8350bb9"
+      "snapshot": "upstream/freddie-northam/e8417d4e7724558a4f74a5e9e1854b5dc8350bb9",
+      "license": "MIT"
     },
     {
       "name": "ericclemmons",
       "repo": "https://gist.github.com/ericclemmons/96cc6c774e2062e6660f1acb97506940",
       "commit": "79756870d126c97dbd2c8c7ceb57ef6f8eea5dbc",
-      "license": "MIT",
       "snapshot": "upstream/ericclemmons/79756870d126c97dbd2c8c7ceb57ef6f8eea5dbc",
+      "license": "MIT",
       "holder": "Copyright (c) 2026 Eric Clemmons"
     },
     {
       "name": "humanlayer",
       "repo": "https://github.com/humanlayer/skills",
       "commit": "3c2629142c5d437428269b1b722b08c0b87f574d",
-      "license": "MIT",
-      "snapshot": "upstream/humanlayer/3c2629142c5d437428269b1b722b08c0b87f574d"
+      "snapshot": "upstream/humanlayer/3c2629142c5d437428269b1b722b08c0b87f574d",
+      "license": "MIT"
     },
     {
       "name": "cathrynlavery",
       "repo": "https://github.com/cathrynlavery/diagram-design",
       "commit": "8d8b2993ee2256ee7dfc0eeb3b5713aba3b60792",
-      "license": "MIT",
-      "snapshot": "upstream/cathrynlavery/8d8b2993ee2256ee7dfc0eeb3b5713aba3b60792"
+      "snapshot": "upstream/cathrynlavery/8d8b2993ee2256ee7dfc0eeb3b5713aba3b60792",
+      "license": "MIT"
     },
     {
       "name": "almendili",
       "repo": "https://github.com/almendili/skills",
       "commit": "572d2591157f09103c93c9d65aed054dd635c1d3",
-      "license": "MIT",
       "snapshot": "upstream/almendili/572d2591157f09103c93c9d65aed054dd635c1d3",
+      "license": "MIT",
       "holder": "Copyright (c) 2026 Alaa Mendili"
     },
     {
       "name": "tjcages",
       "repo": "https://github.com/tjcages/skills",
       "commit": "687c395cba58a7183546c480b3d975ddf422356f",
-      "license": "MIT",
-      "snapshot": "upstream/tjcages/687c395cba58a7183546c480b3d975ddf422356f"
+      "snapshot": "upstream/tjcages/687c395cba58a7183546c480b3d975ddf422356f",
+      "license": "MIT"
     }
   ],
   "skills": [
     {
       "name": "project-router",
-      "class": "entry"
+      "class": "entry",
+      "ledger": {
+        "id": "practice-without-guidance-2026-09-26",
+        "revision": "87ad285c62d783a889854bc1bd2e3770bcf5f32914af44a8558c042a9e313235"
+      }
     },
     {
       "name": "what-to-build",
@@ -93,11 +97,19 @@
     },
     {
       "name": "groundwork",
-      "class": "stage"
+      "class": "stage",
+      "ledger": {
+        "id": "practice-without-guidance-2026-09-26",
+        "revision": "87ad285c62d783a889854bc1bd2e3770bcf5f32914af44a8558c042a9e313235"
+      }
     },
     {
       "name": "review-lens",
-      "class": "discipline"
+      "class": "discipline",
+      "ledger": {
+        "id": "practice-without-guidance-2026-09-26",
+        "revision": "87ad285c62d783a889854bc1bd2e3770bcf5f32914af44a8558c042a9e313235"
+      }
     },
     {
       "name": "concurrency-method",
@@ -216,8 +228,8 @@
         "path": "skills/engineering/implement"
       },
       "ledger": {
-        "id": "light-path-negative-2026-09-15",
-        "revision": "7a6005193c9795b43ff2b57ae4584a2a404eb718f38d3019698ee14c8f3b4323"
+        "id": "review-contracts-2026-09-26",
+        "revision": "540b373de33dcc710048c2f4f96e4ee1960e9b8f364e095a93949cf916626dd0"
       }
     },
     {
@@ -229,8 +241,8 @@
         "path": "skills/engineering/tdd"
       },
       "ledger": {
-        "id": "series-s7-roster-2026-09-11",
-        "revision": "42b3d2e95f7125b315f300de669f2d08bbdfa85d16c4da8db5527489a826f6e7"
+        "id": "retrieval-pointers-2026-09-26",
+        "revision": "e8f01b00c5704c981d3d835e658967f077850a26bd343b0c29f669d0943c7416"
       }
     },
     {
@@ -255,8 +267,8 @@
         "path": "skills/engineering/code-review"
       },
       "ledger": {
-        "id": "vocabulary-owner-2026-09-12",
-        "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
+        "id": "retrieval-pointers-2026-09-26",
+        "revision": "e8f01b00c5704c981d3d835e658967f077850a26bd343b0c29f669d0943c7416"
       }
     },
     {
@@ -551,6 +563,14 @@
         "id": "vocabulary-owner-2026-09-12",
         "revision": "7d7c29d12d7fe1ebd9d15606b8b08212422da060eb4eb5e2c6c5f2177cb514eb"
       }
+    },
+    {
+      "name": "use-garden",
+      "class": "discipline",
+      "ledger": {
+        "id": "use-garden-2026-09-26",
+        "revision": "75d2a76310265e1a317fa0d79d2383824b590fb5fc119746b9a035543317d652"
+      }
     }
   ],
   "intents": [
@@ -645,6 +665,10 @@
     {
       "intent": "Design module interfaces and depth",
       "skills": ["codebase-design"]
+    },
+    {
+      "intent": "An open engineering choice the repository does not settle, where garden's published guidance would inform it",
+      "skills": ["use-garden"]
     },
     {
       "intent": "Parse inputs and handle boundary errors",

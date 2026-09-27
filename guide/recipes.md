@@ -41,12 +41,12 @@ structured rulings; those instructions still govern the agent. The installed
 WORK.md shows the optional stanza and where to write it. Longer governing documents can be referenced
 from the decisions book.
 
-## Fresh knowledge and settled choices
+## Knowledge and settled choices
 
-In a configured repository, every code-changing request starts with current
-guidance. The agent works within your decisions; new advice does not silently
-replace a framework or change an exclusion. It brings back a consequential
-conflict with evidence. Nothing runs while the agent is idle.
+The agent works within your decisions. Advice it reads, from garden when the
+connector is enabled, does not silently replace a framework or change an
+exclusion. It brings back a consequential conflict with evidence. Nothing runs
+while the agent is idle.
 
 An inspector save leaves the latest change's hashes and time for the next
 invocation. The agent checks relevant consequences while preserving your intent.
@@ -54,9 +54,10 @@ Direct edits remain visible through the files and Git history.
 
 ## Reading another option
 
-Ask “Compare Go options for this service without changing files.” If guidance
-is configured, the agent queries and reads relevant units, reports its
-consultations in the reply, and writes no receipt file. Reading another
+Ask “Compare Go options for this service without changing files.” The agent
+answers from the installed methods and the repository's evidence. With the
+garden connector enabled it may also consult garden, when the comparison is
+an open choice, and it names what it consulted in the reply. Reading another
 language does not add it to your repository's choices.
 
 ## Editing work by hand

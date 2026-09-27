@@ -1,8 +1,12 @@
 import { join } from "node:path";
-import { providerUrl, type GuidanceConfiguration } from "../../core/guidance-configuration.ts";
 import { planManagedFiles } from "../../core/managed-file.ts";
 import { serializeLock } from "../../core/lock.ts";
-import { serializeManifest, type TargetName } from "../../core/manifest.ts";
+import {
+  MANIFEST_SCHEMA_VERSION,
+  serializeManifest,
+  type Manifest,
+  type TargetName,
+} from "../../core/manifest.ts";
 import { renderProjection } from "../../core/render.ts";
 import { findGitRoot } from "../git.ts";
 import { applyFilePlan } from "../fs/apply.ts";
@@ -61,28 +65,6 @@ type TargetsResolution =
   | { readonly kind: "chosen"; readonly targets: readonly TargetName[] }
   | { readonly kind: "unchosen" };
 
-function resolveGuidance(
-  request: RunRequest,
-  env: CliEnvironment,
-): GuidanceConfiguration | undefined {
-  let value = request.guidance;
-  if (value === undefined && request.yes) return { state: "unconfigured" };
-  if (value === undefined) {
-    const choice = env.prompt?.choose("Use a guidance provider for this repository?", [
-      { key: "configured", label: "Configure a guidance provider" },
-      { key: "unconfigured", label: "Use skills without guidance" },
-    ]);
-    if (choice === "unconfigured") return { state: "unconfigured" };
-    if (choice !== "configured") return undefined;
-    value = env.prompt?.input?.(
-      "Guidance provider URL (the API key stays in GREENLINE_GUIDANCE_KEY):",
-    );
-  }
-  if (value === "none") return { state: "unconfigured" };
-  const provider = value === undefined ? undefined : providerUrl(value);
-  return provider === undefined ? undefined : { state: "configured", provider };
-}
-
 /** Plan and apply a fresh installation while preserving owned-file guards. */
 export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcome {
   const io: FileIo = createNodeFileIo();
@@ -107,20 +89,12 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
     ]);
   }
   const targets = resolved.targets;
-  const guidance = resolveGuidance(request, env);
-  if (guidance === undefined)
-    return fail([
-      diagnostic(
-        GL.guidanceConfiguration,
-        "error",
-        "init needs an explicit guidance choice: pass --guidance none, or --guidance with an HTTPS (or loopback HTTP) provider URL without credentials or query parameters",
-      ),
-    ]);
-  const manifest = {
-    schemaVersion: 5 as const,
+  // Init asks nothing about a connector and enables none: each stays disabled until enabled explicitly.
+  const manifest: Manifest = {
+    schemaVersion: MANIFEST_SCHEMA_VERSION,
     targets,
     skills: { exclude: [], include: [] },
-    guidance,
+    connectors: {},
   };
   const desired = renderProjection(manifest, env.installation);
   const snapshot = snapshotWorkspace(root, desired, io, new Set<string>());
@@ -138,9 +112,9 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
   if (snapshot.manifestText !== undefined)
     return fail([
       diagnostic(
-        GL.guidanceConfiguration,
+        GL.workspaceInitialized,
         "error",
-        "An installed manifest appeared during init; retry with an explicit --guidance choice.",
+        "An installed manifest appeared during init; run 'greenline sync' to reconcile installed files.",
       ),
     ]);
 

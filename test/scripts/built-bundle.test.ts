@@ -52,7 +52,7 @@ describe("the built bundle in a throwaway repository", () => {
   });
 
   it("init installs both harness trees, the manifest, the lock and the managed block", () => {
-    const r = run(repo, "init", "--yes", "--guidance", "none", "--json");
+    const r = run(repo, "init", "--yes", "--json");
     expect(r.status, r.err).toBe(0);
     expect(envelope(r).ok).toBe(true);
     for (const p of [
@@ -155,7 +155,7 @@ describe("the built bundle in a throwaway repository", () => {
 
   it("the default roster installs the engineering methods and keeps assets opt-in", () => {
     const standalone = freshRepo(root, "standalone");
-    const r = run(standalone, "init", "--yes", "--guidance", "none", "--json");
+    const r = run(standalone, "init", "--yes", "--json");
     expect(r.status).toBe(0);
     expect(envelope(r).ok).toBe(true);
     expect(existsSync(join(standalone, ".claude/skills/implement/SKILL.md"))).toBe(true);

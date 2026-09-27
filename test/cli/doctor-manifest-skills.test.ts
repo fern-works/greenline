@@ -35,10 +35,9 @@ it.each(["include", "exclude"])(
       writeFileSync(
         join(root, ".greenline/manifest.json"),
         JSON.stringify({
-          schemaVersion: 5,
+          schemaVersion: 6,
           targets: ["codex", "claude-code"],
           skills: { [field]: ["grilling", "griling", "GRILLING"] },
-          guidance: { state: "unconfigured" },
         }),
       );
       const before = tree(root);
@@ -101,10 +100,9 @@ it("D11 doctor accepts optIn names in both lists even when those methods are not
     writeFileSync(
       join(root, ".greenline/manifest.json"),
       JSON.stringify({
-        schemaVersion: 5,
+        schemaVersion: 6,
         targets: ["codex", "claude-code"],
         skills: { include: ["architecture-map"], exclude: ["architecture-map"] },
-        guidance: { state: "unconfigured" },
       }),
     );
     const before = tree(root);
@@ -126,10 +124,9 @@ it("D11 roster-less doctor reports unavailable installation without guessing ski
     writeFileSync(
       join(root, ".greenline/manifest.json"),
       JSON.stringify({
-        schemaVersion: 5,
+        schemaVersion: 6,
         targets: ["codex", "claude-code"],
         skills: { include: ["griling"] },
-        guidance: { state: "unconfigured" },
       }),
     );
     const unavailable = contractFailure("installation", [

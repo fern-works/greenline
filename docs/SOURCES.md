@@ -1,10 +1,16 @@
 # Sources
 
-This register is a view of the ledger, rendered by `node scripts/ledger.mjs render` and never edited: first every source an entry has named since 2026-09-16, then the rows as they stood before the ledger, frozen as an appendix (the ruling D7 of 2026-09-16). A source's standing is the entry that names it; a source read and rejected is a unit entry against the family it was read for, with no span and no unit, listed here as rejected.
+This register is a view of the ledger, rendered by `node scripts/ledger.mjs render` and never edited: first every source an entry has named since 2026-09-16, then the rows as they stood before the ledger, frozen as an appendix (the ruling D7 of 2026-09-16). A source's standing is the entry that names it: a copy entry, or a native entry whose origin names a research digest; a native entry whose origin is the house is not listed. A source read and rejected before 2026-09-26 is a unit entry against the family it was read for, with no span and no unit, listed here as rejected; a read since then that produced no copy or native entry is not recorded in the ledger.
 
 ## From the ledger
 
-No entry names a source yet.
+| Source                                                       | Standing                                             | Entry                           | Date       |
+| ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------- | ---------- |
+| https://github.com/mattpocock/skills at `3cca18b368ae` (MIT) | in the product as the `delivery-review` roster skill | `garden-removal-2026-09-26`     | 2026-09-26 |
+| https://github.com/mattpocock/skills at `3cca18b368ae` (MIT) | in the product as the `implement` roster skill       | `retrieval-pointers-2026-09-26` | 2026-09-26 |
+| https://github.com/mattpocock/skills at `3cca18b368ae` (MIT) | in the product as the `tdd` roster skill             | `retrieval-pointers-2026-09-26` | 2026-09-26 |
+| https://github.com/mattpocock/skills at `3cca18b368ae` (MIT) | in the product as the `delivery-review` roster skill | `retrieval-pointers-2026-09-26` | 2026-09-26 |
+| https://github.com/mattpocock/skills at `3cca18b368ae` (MIT) | in the product as the `implement` roster skill       | `review-contracts-2026-09-26`   | 2026-09-26 |
 
 ## Before the ledger, frozen on 2026-09-16
 

@@ -31,7 +31,7 @@ describe("G3 contribution accounts", () => {
     for (const extra of [
       { consultations: [selection] },
       { selections: [{ ...selection, observed: true }] },
-      { selections: [{ ...selection, source: { kind: "cabinet", path: "unit" } }] },
+      { selections: [{ ...selection, source: { kind: "garden", path: "unit" } }] },
     ])
       expect(parseLedgerRecord(JSON.stringify({ ...input, ...extra }), "record")._tag).toBe("err");
   });

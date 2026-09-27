@@ -1,0 +1,68 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": true,
+  "operation": "list",
+  "callId": "example-call-list",
+  "origin": "https://garden.example/",
+  "snapshot": {
+    "id": "example-publication-a",
+    "publishedAt": "2026-01-01T00:00:00.000Z"
+  },
+  "delivery": {
+    "units": [],
+    "bytes": 0
+  },
+  "limits": {
+    "timeoutMs": 10000,
+    "maxUnits": null,
+    "maxBytes": null
+  },
+  "result": {
+    "snapshot": "example-publication-a",
+    "count": 2,
+    "units": [
+      {
+        "id": "example-prerequisite",
+        "title": "Example prerequisite",
+        "kind": "rule",
+        "when": "Reading the contract fixtures.",
+        "summary": "A synthetic unit for the garden.result/v1 fixtures.",
+        "language": [],
+        "purpose": [],
+        "technology": [],
+        "task": ["implement"],
+        "concern": ["example concern"],
+        "option_group": null,
+        "requires": [],
+        "contains": [],
+        "see_also": [],
+        "verification": {
+          "verified": "2026-01-01",
+          "window_days": 90
+        }
+      },
+      {
+        "id": "example-rule",
+        "title": "Example rule",
+        "kind": "rule",
+        "when": "Reading the contract fixtures.",
+        "summary": "A synthetic unit for the garden.result/v1 fixtures.",
+        "language": [],
+        "purpose": [],
+        "technology": [],
+        "task": ["implement"],
+        "concern": ["example concern"],
+        "option_group": null,
+        "requires": ["example-prerequisite"],
+        "contains": [],
+        "see_also": [],
+        "verification": {
+          "verified": "2026-01-01",
+          "window_days": 90
+        }
+      }
+    ]
+  },
+  "error": null
+}

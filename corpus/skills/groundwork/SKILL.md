@@ -1,7 +1,7 @@
 ---
 name: groundwork
 description: "Establish the missing engineering baseline for a repository's purpose and prove first green. Use for a request to set a repo up properly or bring it to a working baseline; preserve established components and avoid unnecessary infrastructure."
-source: "greenline native setup workflow; shared work, guidance, and accounting contracts own its integration."
+source: "greenline native setup workflow; shared work and accounting contracts own its integration."
 ---
 
 # Groundwork
@@ -14,11 +14,9 @@ only consequential choices the request and evidence leave open.
 
 ## Establish configuration
 
-If initialization is part of the request, establish the guidance choice:
-a provider URL, or explicit skills-only work, and the intended harness trees.
-For both harnesses, use `greenline init --targets codex,claude-code --guidance URL`
-or `greenline init --targets codex,claude-code --guidance none`; keep keys in the process environment.
-An existing configured repository is not reset because a request fails.
+If initialization is part of the request, establish the intended harness
+trees. For both harnesses, use `greenline init --targets codex,claude-code`.
+An existing initialized repository is not reset because a request fails.
 
 ## Establish purpose and constraints
 
@@ -40,7 +38,7 @@ Use one compact ticket when the baseline is a bounded change. An initiative
 and multiple tickets earn their place when distinct outcomes or dependencies
 need them. `.greenline/WORK.md` owns those records; no fixed ticket count or
 extra grant artifact is required. The current execution account includes
-preparatory guidance work and the resulting setup.
+preparatory work and the resulting setup.
 
 Assess which of these outcomes the purpose actually needs:
 
@@ -57,10 +55,8 @@ Assess which of these outcomes the purpose actually needs:
 - Domain vocabulary or architectural decisions when there is something
   durable to name or explain; empty documents do not improve the baseline.
 
-Preserve established choices outside the requested change. For configured work,
-query relevant language, purpose and responsibility facets, compare candidates'
-conditions and read coherent options. Resolve volatile compatibility from primary
-sources when it matters. Choose only roles the component needs; an option is
+Preserve established choices outside the requested change. Resolve volatile
+compatibility from primary sources when it matters. Choose only roles the component needs; an option is
 not an obligation to install a dependency or invent a service.
 
 ## Prove first green

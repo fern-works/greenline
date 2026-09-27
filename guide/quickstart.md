@@ -1,6 +1,7 @@
 # Quickstart
 
 Install greenline in a Git repository, then describe the work to your agent.
+You need no account, no key and no service.
 
 ## Install the current pre-beta build
 
@@ -8,20 +9,19 @@ Version 0.1.0 has not been published. Use its supplied or locally built tarball:
 
 ```bash
 npm install --global /path/to/greenline-0.1.0.tgz
-greenline init --targets codex,claude-code --guidance none
+greenline init --targets codex,claude-code
 ```
 
 After publication, `npx greenline@0.1.0 init` selects this release. An unversioned
 registry command can still select the older product until then. The source of
 the tool and the skills is public at https://github.com/fern-works/greenline
-under the MIT licence; the guidance is a separate, paid service.
+under the MIT licence.
 
-At an interactive terminal, `greenline init` asks both questions.
-Choose Codex, Claude Code, or both. `--targets codex,claude-code` answers
-from a script. Then choose a guidance provider or no guidance.
-`--guidance URL` or `--guidance none` answers that question from a script.
-`--yes` accepts both harnesses and no guidance. Init creates .greenline, installs
-the default skill roster, and adds a shared managed instruction block.
+At an interactive terminal, `greenline init` asks which harness trees to
+install: choose Codex, Claude Code, or both. `--targets codex,claude-code`
+answers from a script, and `--yes` accepts both harnesses. Init creates
+.greenline, installs the default skill roster, and adds a shared managed
+instruction block. It asks nothing else.
 
 diagram-design and architecture-map carry optional assets. Include either
 by name in .greenline/manifest.json's skills.include list, then run
@@ -47,20 +47,20 @@ focus on that change. Commit durable project work and evidence as they become re
   needs. You do not have to relay between already-authorized stages.
 - **“Explain this endpoint; don't change files.”** The answer stays read-only.
 
-## How guidance follows the work
+## Your repository's choices
 
 Your agent reads settled repository choices and actual constraints. Separate
 roots can have different languages, purposes and exceptions. A new install
 invents no toolchain.
 
-With a configured provider, [each code-changing request retrieves current guidance
-before editing]{claim: Configured code changes retrieve guidance before editing; an outage is a failure}. [Its subsequent reads use the same publication.]{claim: Knowledge is retrieved for each request under one consistent publication} Set
-`GREENLINE_GUIDANCE_KEY` in the harness process environment; never commit it.
-A missing key or outage stops guided work with an error.
+[Without garden, the same agent uses installed skills and repository evidence.]{claim: Work without garden uses the same methods with no guidance calls}
+That is the default: no command contacts a service, and questions about your
+repository alone consult nothing. Nothing runs while the agent is idle.
 
-[Without guidance, the same agent uses installed skills and repository evidence.]{claim: Explicitly unconfigured work uses the same methods with no guidance calls}
-Its execution account records that configuration. Questions about your repository
-alone do not query the guidance service. Nothing runs while the agent is idle.
+garden, a separate product of maintained engineering knowledge, is reached
+only through its optional connector, which a repository's owner enables with
+`greenline connectors`. [The garden connector](./connector.md) explains what
+enabling it changes and what a consultation leaves behind.
 
 ## Useful commands
 
@@ -71,10 +71,9 @@ greenline sync
 ```
 
 Doctor owns the structural verdict. Status includes that same diagnosis alongside
-the work index; both exit nonzero for errors. Neither changes files or judges
-engineering choices.
+the work index; both exit nonzero for errors. Both also report the connectors,
+offline. Neither changes files or judges engineering choices.
 Sync reconciles installed methods and instructions from the CLI you are running.
-Guidance publications are separate from installed methods.
 
 <!-- diagram: artifact-anatomy -->
 
@@ -86,9 +85,9 @@ Guidance publications are separate from installed methods.
 .greenline/work/evidence/      relied-on instruments and raw results
 .greenline/work/<initiative>/  optional planning artifacts
 .greenline/DECISIONS.md        decisions book (created with the first lasting choice)
-.greenline/manifest.json       installation and guidance configuration
+.greenline/manifest.json       installation choices and enabled connectors
 .greenline/ledger/records/     contributor accounts
-.greenline/ledger/receipts/    generated guidance delivery facts
+.greenline/ledger/receipts/    consultation receipts, while garden is enabled
 .greenline/policy-changes.json latest inspector save evidence
 AGENTS.md / CLAUDE.md          shared instructions inside managed markers
 .agents/skills/                Codex methods and their support files
@@ -109,6 +108,7 @@ the markers using WORK.md's format. [Existing user text outside those markers st
 entries into it. An existing user catalog causes a conflict. Preserve it in a
 user-owned location before explicitly forcing replacement; keep house skills
 available through their own harness-supported discovery files.
-Independent guidance remains outside this tree. Authored records are yours;
+No engineering knowledge is stored in this tree; a receipt keeps what a
+consultation received, never its text. Authored records are yours;
 generated methods and managed regions reconcile through sync.
 Next: [the pipeline](./pipeline.md).

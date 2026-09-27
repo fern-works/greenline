@@ -36,9 +36,12 @@ export function runStatus(env: RepositoryEnvironment): CommandOutcome {
   const view: ProjectView = buildStatusView(collected.value.parsed);
   // The stanza is the user's text; status lists it and never writes it.
   const houseRulings = parseHouseRulings(envRead(io, join(root, "AGENTS.md")) ?? "");
-  const text: string = renderStatusText(view) + renderHouseRulingsText(houseRulings);
+  const doctor = runDoctor(env);
+  // The connectors' lines, when the manifest could be read, follow the work view.
+  const text: string =
+    renderStatusText(view) + renderHouseRulingsText(houseRulings) + (doctor.text ?? "");
   return {
-    ...runDoctor(env),
+    ...doctor,
     text,
     view,
     houseRulings,

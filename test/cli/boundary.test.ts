@@ -36,18 +36,42 @@ function sourceFiles(dir: string): readonly string[] {
   return files;
 }
 
+function boundaryViolations(
+  sources: readonly { readonly file: string; readonly text: string }[],
+): readonly string[] {
+  const violations: string[] = [];
+  for (const { file, text } of sources) {
+    for (const rule of FORBIDDEN) {
+      const match = text.match(rule.token);
+      if (match !== null) violations.push(`${file}: ${JSON.stringify(match[0])} (${rule.act})`);
+    }
+  }
+  return violations;
+}
+
 describe("architectural boundary", () => {
   it("keeps skill selection, request classification, and workflow progression out of the CLI", () => {
-    const violations: string[] = [];
-    for (const file of sourceFiles(join(process.cwd(), "src"))) {
-      const text = readFileSync(file, "utf8");
-      for (const rule of FORBIDDEN) {
-        const match = text.match(rule.token);
-        if (match !== null) {
-          violations.push(`${file}: ${JSON.stringify(match[0])} (${rule.act})`);
-        }
-      }
-    }
+    const violations = boundaryViolations(
+      sourceFiles(join(process.cwd(), "src")).map((file) => ({
+        file,
+        text: readFileSync(file, "utf8"),
+      })),
+    );
     expect(violations).toEqual([]);
+  });
+
+  it("finds each act's token in any module, across a line break included", () => {
+    expect(
+      boundaryViolations([
+        { file: join("src", "shell", "cli", "consumer.ts"), text: "const phase = 'run';" },
+        {
+          file: join("src", "shell", "cli", "multiline-consumer.ts"),
+          text: "select\nskill",
+        },
+      ]),
+    ).toEqual([
+      `${join("src", "shell", "cli", "consumer.ts")}: "phase" (phase progression)`,
+      `${join("src", "shell", "cli", "multiline-consumer.ts")}: ${JSON.stringify("select\nskill")} (skill selection)`,
+    ]);
   });
 });

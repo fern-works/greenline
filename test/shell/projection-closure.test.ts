@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { compileInstallation } from "../../src/shell/installation.ts";
 import { renderProjection } from "../../src/core/render.ts";
 import { findBrokenReferences } from "../../src/core/links.ts";
-import { fixtureConfiguration } from "../fixtures/corpus.ts";
+import { fixtureConfiguration, gardenEnabledConfiguration } from "../fixtures/corpus.ts";
 import type { Manifest } from "../../src/core/manifest.ts";
 
 // One roster, full preserved support trees, explicit optional integrations, and no guidance payload.
@@ -25,7 +25,11 @@ const configurations: readonly Manifest[] = [
 
     skills: { include: optional, exclude: ["ponytail"] },
   },
+  gardenEnabledConfiguration,
+  { ...gardenEnabledConfiguration, skills: { include: optional, exclude: ["ponytail"] } },
 ];
+/** garden's skill installs only through its connector: while garden is enabled and not excluded. */
+const CONNECTOR_SKILL = "use-garden";
 
 function markerHolds(content: string, name: string, marker: string): boolean {
   const referenced =
@@ -44,7 +48,9 @@ describe("projection closure", () => {
       for (const skill of release.skills) {
         const included =
           !configuration.skills.exclude.includes(skill.name) &&
-          (!skill.optIn || configuration.skills.include.includes(skill.name));
+          (skill.name === CONNECTOR_SKILL
+            ? configuration.connectors.garden !== undefined
+            : !skill.optIn || configuration.skills.include.includes(skill.name));
         for (const target of configuration.targets) {
           const prefix = `${target === "codex" ? ".agents" : ".claude"}/skills/${skill.name}/`;
           expect(files.some((file) => file.path === prefix + "SKILL.md")).toBe(included);
@@ -63,17 +69,6 @@ describe("projection closure", () => {
           renderProjection(configuration, release).filter((file) => file.kind === "file"),
         ),
       ).toEqual([]);
-  });
-  it("does not change installed methods when guidance configuration changes", () => {
-    expect(
-      renderProjection(
-        {
-          ...fixtureConfiguration,
-          guidance: { state: "configured", provider: "https://example.com/" },
-        },
-        release,
-      ),
-    ).toEqual(renderProjection(fixtureConfiguration, release));
   });
   it("names absent optional integrations as optional in installed instructions", () => {
     for (const configuration of configurations)

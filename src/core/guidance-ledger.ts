@@ -2,6 +2,7 @@ import type { Result } from "../commons/result.ts";
 import { contractFailure, contractOk, type ContractParseFailed } from "./contract.ts";
 import { receiptConsultationId, type GuidanceRequest } from "./guidance-receipts.ts";
 import type {
+  ConsultationSource,
   LedgerRecord,
   LedgerAccount,
   LedgerConsultation,
@@ -14,7 +15,10 @@ export interface CompiledGuidanceLedger {
   readonly consultations: readonly LedgerConsultationCheck[];
 }
 
-/** Include every full delivery, even in a failed batch; metadata queries stay in receipts. */
+/**
+ * Include every full delivery, even in a failed batch; metadata queries stay in
+ * receipts. garden's collections are optional attachments any account may carry.
+ */
 export function compileGuidanceLedger(
   records: readonly LedgerRecord[],
   requests: readonly GuidanceRequest[],
@@ -33,13 +37,6 @@ export function compileGuidanceLedger(
       problems.push({ path: request.id, message: "receipt contributor differs from its account" });
       continue;
     }
-    if (record.guidance?.state === "unconfigured") {
-      problems.push({
-        path: record.id,
-        message: "an unconfigured account carries cabinet receipts",
-      });
-      continue;
-    }
     if (
       request.owner.work &&
       (request.owner.work.id !== record.work?.id ||
@@ -49,29 +46,33 @@ export function compileGuidanceLedger(
       continue;
     }
     const consultations = entries.get(record.id) ?? [];
+    entries.set(record.id, consultations);
+    // The schema admits a full delivery only under one bound publication.
+    if (request.binding.state !== "publication") continue;
+    const snapshot = request.binding.snapshot.id;
     for (const receipt of request.receipts) {
       for (const unit of receipt.units) {
         if (unit.coverage !== "full") continue;
         const id = receiptConsultationId(request.id, receipt.sequence, unit.id);
         const annotation = record.guidanceAnnotations?.find((value) => value.consultation === id);
+        const delivery = {
+          origin: request.binding.origin,
+          snapshot,
+          unit: unit.id,
+          revision: unit.revision,
+          contentHash: unit.contentHash,
+          request: request.id,
+          receipt: receipt.id,
+        };
+        const source: ConsultationSource = { kind: "garden", ...delivery };
         const consultation: LedgerConsultation = {
           id,
           kind: "guidance",
-          source: {
-            kind: "cabinet",
-            origin: request.binding.origin,
-            protocol: request.binding.protocol,
-            snapshot: request.binding.snapshot.id,
-            unit: unit.id,
-            revision: unit.revision,
-            contentHash: unit.contentHash,
-            request: request.id,
-            receipt: receipt.id,
-          },
+          source,
           stage: "unknown",
           decision: annotation?.decision ?? "unassessed",
           reason:
-            annotation?.reason ?? "Cabinet delivery recorded; application has not been judged.",
+            annotation?.reason ?? "Garden delivery recorded; application has not been judged.",
         };
         consultations.push(
           annotation?.authority === undefined
@@ -87,7 +88,6 @@ export function compileGuidanceLedger(
         });
       }
     }
-    entries.set(record.id, consultations);
   }
   const compiled = records.map((record) => {
     const delivered = entries.get(record.id) ?? [];

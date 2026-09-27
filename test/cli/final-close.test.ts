@@ -1,9 +1,10 @@
 import { expect, it } from "vitest";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parseArgs } from "../../src/shell/cli/args.ts";
 import { runCli } from "../../src/shell/cli/runner.ts";
+import { GL } from "../../src/shell/cli/output.ts";
 import { contractFailure } from "../../src/core/contract.ts";
 import { fixtureInstallation } from "../fixtures/corpus.ts";
 import { ticketMd } from "../fixtures/artifacts.ts";
@@ -47,20 +48,27 @@ it("G3 status retains work while refusing the same unsupported completion as doc
   }
 });
 
-it("G3 doctor reports its verdict without a meaningless effects line", () => {
+it("G3 doctor reports its verdict and the connectors without a meaningless effects line", () => {
   const env = workspace();
   try {
-    expect(env.run(["doctor"])).toEqual({ code: 0, out: "greenline doctor\n  ok\n", err: "" });
+    expect(env.run(["doctor"])).toEqual({
+      code: 0,
+      out:
+        "greenline doctor\nconnectors\n" +
+        "  garden: disabled; nothing is consulted and no process starts ('greenline connectors enable garden --url URL' enables it)\n" +
+        "  ok\n",
+      err: "",
+    });
   } finally {
     env.close();
   }
 });
 
-it("G3 root help presents guidance and evidence with the other commands", () => {
+it("root help presents evidence with the other commands and lists no guidance command", () => {
   const result = parseArgs(["--help"], "test");
   if (result.kind !== "help") throw new Error("Root help did not render");
-  expect(result.text).toMatch(/\nCommands:\n[\s\S]*\n  guidance /);
   expect(result.text).toMatch(/\nCommands:\n[\s\S]*\n  evidence /);
+  expect(result.text).not.toMatch(/\n  guidance /);
 });
 
 it("G3 invalid installation diagnostics locate the package file and its field separately", () => {
@@ -87,4 +95,13 @@ it("G3 invalid installation diagnostics locate the package file and its field se
   } finally {
     env.close();
   }
+});
+
+it("the doctor reference names every diagnostic code the CLI emits, the connector's GL0125 among them", () => {
+  const reference = readFileSync(join(import.meta.dirname, "../../guide/doctor.md"), "utf8");
+  const rows = new Set([...reference.matchAll(/^\| (GL\d{4}) \|/gm)].map((match) => match[1]));
+  expect(rows.has(GL.connectorConfiguration)).toBe(true);
+  // Every code has a table row, but GL0140, which the page states in its own paragraph.
+  expect(Object.values(GL).filter((code) => !rows.has(code))).toEqual([]);
+  expect(reference).toContain("**GL0140**");
 });

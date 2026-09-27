@@ -4,25 +4,17 @@ import { parseGuidanceRequest } from "../../src/core/guidance-receipts.ts";
 describe("G3 receipt boundary", () => {
   it("G3 refuses body-bearing or discontinuous receipt collections", () => {
     const base = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      source: "garden",
       publicationUse: "current",
       id: "11111111-1111-4111-8111-111111111111",
       owner: { record: "change-one", context: "ctx", role: "implementation" },
       parent: null,
       createdAt: "2026-09-09T00:00:00.000Z",
       binding: {
+        state: "publication",
         origin: "https://example.com/",
-        protocol: 1,
         snapshot: { id: "snap", publishedAt: "2026-09-09T00:00:00.000Z" },
-        vocabulary: {
-          language: [],
-          purpose: [],
-          technology: [],
-          task: [],
-          concern: [],
-          kind: [],
-          responsibility: [],
-        },
       },
       limits: { maxUnits: 16, maxBytes: 262144, timeoutMs: 30000 },
       receipts: [],

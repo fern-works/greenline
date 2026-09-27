@@ -1,6 +1,5 @@
 import { ticketMd } from "../fixtures/artifacts.ts";
 import { parseArgs } from "../../src/shell/cli/args.ts";
-import { parseGuidanceArgs } from "../../src/shell/cli/guidance-args.ts";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -68,19 +67,6 @@ it("G3 help for the help command returns useful root help", () => {
   const result = parseArgs(["help", "help"], "test");
   expect(result.kind).toBe("help");
   if (result.kind === "help") expect(result.text).toContain("Usage: greenline");
-});
-
-it("G3 guidance help for the help command returns useful group help", () => {
-  const result = parseGuidanceArgs(["help", "help"]);
-  expect(result.kind).toBe("help");
-  if (result.kind === "help") expect(result.text).toContain("Usage: greenline guidance");
-});
-
-it("G3 missing guidance operation is an actionable error, not empty success", () => {
-  expect(parseGuidanceArgs([])).toEqual({
-    kind: "error",
-    message: "choose list, read, resolve or vocabulary; run 'greenline guidance --help'",
-  });
 });
 
 it("G3 init and sync effects use repository-relative file paths", () => {
@@ -175,33 +161,6 @@ it("G3 the published root-statement example validates in a fresh workspace", () 
     const result = env.run(["doctor", "--json"]);
     expect(result.code).toBe(0);
     expect(JSON.parse(result.out).diagnostics).toEqual([]);
-  } finally {
-    env.close();
-  }
-});
-
-it("G3 an installed guidance update refuses an inapplicable force flag before saving", () => {
-  const env = workspace();
-  try {
-    expect(env.run(["init", "--yes"]).code).toBe(0);
-    const path = join(env.root, ".greenline/manifest.json");
-    const before = readFileSync(path, "utf8");
-    const result = env.run([
-      "init",
-      "--guidance",
-      "https://guidance.example/",
-      "--force-managed",
-      "bogus.md",
-      "--json",
-    ]);
-    expect(result.code).toBe(1);
-    expect(JSON.parse(result.out).diagnostics).toContainEqual({
-      code: "GL0124",
-      severity: "error",
-      path: ".greenline/manifest.json",
-      message: expect.stringContaining("--force-managed"),
-    });
-    expect(readFileSync(path, "utf8")).toBe(before);
   } finally {
     env.close();
   }

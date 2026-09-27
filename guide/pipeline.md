@@ -29,8 +29,9 @@ An initiative lists its members; joining one does not move a ticket's files.
 
 ## Build: one ticket, one worktree
 
-The agent claims work within your authorization, reads relevant methods and
-guidance, and implements against acceptance. The ticket records its result
+The agent claims work within your authorization, reads the relevant methods
+and, with garden enabled, consults it when a choice is open, and implements
+against acceptance. The ticket records its result
 commit; its execution account records consultations, choices, and application
 evidence. One implementer owns a worktree.
 

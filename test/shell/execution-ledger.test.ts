@@ -22,10 +22,9 @@ function fixture() {
   writeFileSync(
     join(root, ".greenline/manifest.json"),
     JSON.stringify({
-      schemaVersion: 5,
+      schemaVersion: 6,
       targets: ["codex"],
       skills: { include: [], exclude: [] },
-      guidance: { state: "unconfigured" },
     }),
   );
   writeFileSync(join(root, "RULES.md"), "Keep the existing runner.\n");
@@ -75,63 +74,20 @@ it("records changed evidence without discarding the authored account", () => {
   );
 });
 
-it("G3 audits a finished implementation from the configured manifest when the account omits guidance", () => {
+it("refuses an account that still declares a guidance configuration, with no converter (D-20)", () => {
   const { root, record, path } = fixture();
-  writeFileSync(
-    join(root, ".greenline/manifest.json"),
-    JSON.stringify({
-      schemaVersion: 5,
-      targets: ["codex"],
-      skills: { include: [], exclude: [] },
-      guidance: { state: "configured", provider: "https://example.com/" },
-    }),
-  );
-  writeFileSync(
-    path,
-    JSON.stringify({
-      ...record,
-      role: "implementation",
-      work: { id: "TKT-001", revision: 1 },
-      resultCommit: "b".repeat(40),
-    }),
-  );
-  const ledger = readExecutionLedger(root, createNodeFileIo());
-  if (ledger._tag === "err") throw ledger.error;
-  expect(auditLedgerWork(ledger.value, [])).toEqual(
-    expect.arrayContaining([
-      expect.objectContaining({
-        kind: "missing",
-        severity: "error",
-        message: expect.stringContaining("receipt collection"),
-      }),
-    ]),
-  );
-});
-
-it("G3 refuses account guidance that contradicts the installed manifest", () => {
-  const { root, record, path } = fixture();
-  const guidance = { state: "configured", provider: "https://example.com/" };
-  writeFileSync(
-    join(root, ".greenline/manifest.json"),
-    JSON.stringify({
-      schemaVersion: 5,
-      targets: ["codex"],
-      skills: { include: [], exclude: [] },
-      guidance,
-    }),
-  );
   for (const declaration of [
     { state: "unconfigured" },
-    { ...guidance, provider: "https://other.example/" },
+    { state: "configured", provider: "https://example.com/" },
   ]) {
     writeFileSync(path, JSON.stringify({ ...record, guidance: declaration }));
     const result = readExecutionLedger(root, createNodeFileIo());
     expect(result._tag).toBe("err");
-    if (result._tag === "ok") throw new Error("mismatched guidance accepted");
+    if (result._tag === "ok") throw new Error("a guidance declaration was accepted");
     expect(result.error._tag).toBe("ContractParseFailed");
     if (result.error._tag !== "ContractParseFailed") throw result.error;
     expect(result.error.issues).toEqual([
-      { path: "guidance", message: "Declared guidance differs from .greenline/manifest.json." },
+      expect.objectContaining({ message: expect.stringContaining("guidance") }),
     ]);
   }
 });

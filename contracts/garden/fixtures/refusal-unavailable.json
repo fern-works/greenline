@@ -1,0 +1,23 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": false,
+  "operation": "snapshot",
+  "callId": "example-call-unavailable",
+  "origin": "https://garden.example/",
+  "snapshot": null,
+  "delivery": {
+    "units": [],
+    "bytes": 0
+  },
+  "limits": {
+    "timeoutMs": 10000,
+    "maxUnits": null,
+    "maxBytes": null
+  },
+  "result": null,
+  "error": {
+    "kind": "unavailable",
+    "subject": "current"
+  }
+}

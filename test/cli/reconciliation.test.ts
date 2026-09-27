@@ -3,7 +3,6 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, it } from "vitest";
 import { parseArgs } from "../../src/shell/cli/args.ts";
-import { parseGuidanceArgs } from "../../src/shell/cli/guidance-args.ts";
 import { runCli } from "../../src/shell/cli/runner.ts";
 import { fixtureInstallation } from "../fixtures/corpus.ts";
 import { RecordingWriter } from "../helpers/writer.ts";
@@ -13,49 +12,6 @@ it("refuses the removed doctor dry-run flag while preserving sync dry-run", () =
   const sync = parseArgs(["sync", "--dry-run"], "test");
   expect(sync.kind).toBe("run");
   if (sync.kind === "run") expect(sync.request.dryRun).toBe(true);
-});
-it("guidance help names each operation and its actual flags without provider access", () => {
-  for (const operation of ["list", "read", "resolve", "vocabulary"]) {
-    const flags =
-      operation === "list"
-        ? [
-            "--language",
-            "--purpose",
-            "--technology",
-            "--task",
-            "--concern",
-            "--kind",
-            "--responsibility",
-          ]
-        : operation === "read"
-          ? ["--requires", "--exclude"]
-          : [];
-    for (const args of [
-      [operation, "--help"],
-      ["help", operation],
-    ]) {
-      const help = parseGuidanceArgs(args);
-      expect(help.kind).toBe("help");
-      if (help.kind !== "help") continue;
-      expect(help.text).toContain(`Usage: greenline guidance ${operation}`);
-      for (const flag of [
-        ...flags,
-        "--root",
-        "--record",
-        "--read-only",
-        "--request",
-        "--from-request",
-        "--call",
-        "--context",
-        "--max-bytes",
-        "--max-units",
-        "--snapshot",
-        "--timeout-ms",
-      ])
-        expect(help.text).toContain(flag);
-    }
-  }
-  expect(parseGuidanceArgs(["read", "unit", "--verify"]).kind).toBe("error");
 });
 it("doctor and status locate every invalid ledger field instead of reporting only an issue count", () => {
   const root = mkdtempSync(join(tmpdir(), "gl-ledger-error-"));
@@ -72,7 +28,6 @@ it("doctor and status locate every invalid ledger field instead of reporting onl
         role: "implementation",
         scopes: ["."],
         work: { id: "TKT-001", revision: 1 },
-        guidance: { state: "unconfigured" },
       }),
     );
     for (const command of ["doctor", "status"]) {

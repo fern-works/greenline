@@ -1,7 +1,7 @@
 # Contributing
 
-This repository is a generated public copy of greenline's open half; the
-work happens in a private repository of record, and every commit here is an
+This repository is a generated public copy of greenline; the work
+happens in a private repository of record, and every commit here is an
 export from it. A contribution is therefore imported there, not merged
 here, as the section below states.
 
@@ -43,14 +43,14 @@ named. Between releases this repository does not move.
 
 ## What is not here
 
-The engineering guidance is a paid service and is not in this tree; the
-service's code, the private records behind the provenance pages, and the
-maintainer's workshop are in the repository of record. A pull request that
-would need them cannot be imported; open an issue instead.
+garden's engineering knowledge, a separate product, is not in this tree; garden's code is in its own repository, and the private records
+behind the provenance pages and the maintainer's workshop are in the
+repository of record. A pull request that would need them cannot be
+imported; open an issue instead.
 
 ## Where to look
 
 - The guide: https://fernworks.dev/greenline/docs/
-- The cabinet contract the tool's client follows: `docs/cabinet-contract.md`
+- The garden result contract the connector reads: `contracts/garden/README.md`
 - The package's shape and its audit: `docs/PACKAGE.md`
 - A security concern: `SECURITY.md`

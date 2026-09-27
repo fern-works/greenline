@@ -1,7 +1,8 @@
 import type { Installation } from "./installation.ts";
 import type { CorpusIntent } from "./corpus.ts";
 import type { Manifest } from "./manifest.ts";
-import { SKILL_CLASSES, displayName, isSkillIncluded, type SkillSource } from "./skill.ts";
+import { isSkillMounted } from "./connectors/registry.ts";
+import { SKILL_CLASSES, displayName, type SkillSource } from "./skill.ts";
 
 /**
  * Renderers (`docs/SPEC.md` §6). Pure and deterministic: identical
@@ -171,7 +172,7 @@ export function renderProjection(
 ): readonly DesiredFile[] {
   const { skills, intents, ledgerGuide, agentGuide, workGuide } = installation;
   const selected = [...skills]
-    .filter((skill) => isSkillIncluded(skill, manifest.skills))
+    .filter((skill) => isSkillMounted(skill, manifest.skills, manifest.connectors))
     .sort((a, b) => (a.name < b.name ? -1 : 1));
   const files: DesiredFile[] = [];
 

@@ -43,24 +43,14 @@ it.each([
       writeFileSync(
         join(root, ".greenline/manifest.json"),
         JSON.stringify({
-          schemaVersion: 5,
+          schemaVersion: 6,
           targets: ["codex", "claude-code"],
           skills: { [field]: ["grilling", "griling", "GRILLING"] },
-          guidance: { state: "unconfigured" },
         }),
       );
       const before = tree(root);
       const writer = new RecordingWriter();
-      const code = runCli(
-        [
-          command,
-          ...(command === "init" ? ["--guidance", "https://guidance.example/"] : []),
-          "--json",
-        ],
-        writer.writer,
-        "next",
-        env,
-      );
+      const code = runCli([command, "--json"], writer.writer, "next", env);
       expect({ code, envelope: JSON.parse(writer.out), stderr: writer.err }).toEqual({
         code: 1,
         envelope: {
@@ -103,27 +93,15 @@ it.each(["init", "sync"])(
       writeFileSync(
         join(root, ".greenline/manifest.json"),
         JSON.stringify({
-          schemaVersion: 5,
+          schemaVersion: 6,
           targets: ["codex"],
           skills: { include: ["no-such-include"], exclude: ["no-such-exclude"] },
-          guidance: { state: "unconfigured" },
         }),
       );
       writeFileSync(join(root, ".greenline/tmp/.write.lock"), "another writer owns this lock\n");
       const before = tree(root);
       const writer = new RecordingWriter();
-      expect(
-        runCli(
-          [
-            command,
-            ...(command === "init" ? ["--guidance", "https://guidance.example/"] : []),
-            "--json",
-          ],
-          writer.writer,
-          "test",
-          env,
-        ),
-      ).toBe(1);
+      expect(runCli([command, "--json"], writer.writer, "test", env)).toBe(1);
       expect(JSON.parse(writer.out)).toEqual({
         schemaVersion: 1,
         command,
@@ -179,10 +157,9 @@ it("D11 sync accepts an available optional skill before it is installed and pres
     writeFileSync(
       join(root, ".greenline/manifest.json"),
       JSON.stringify({
-        schemaVersion: 5,
+        schemaVersion: 6,
         targets: ["codex"],
         skills: { include: ["architecture-map"], exclude: ["grilling"] },
-        guidance: { state: "unconfigured" },
       }),
     );
     const writer = new RecordingWriter();

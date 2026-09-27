@@ -2,31 +2,23 @@ import { mkdtempSync, mkdirSync, existsSync, rmSync, readFileSync, symlinkSync }
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { GuidanceRequests } from "../../src/shell/guidance-requests.ts";
+import { GuidanceRequests, ReceiptStoreFailed } from "../../src/shell/guidance-requests.ts";
 import { parseGuidanceRequest } from "../../src/core/guidance-receipts.ts";
 
 function request() {
   const parsed = parseGuidanceRequest(
     JSON.stringify({
-      schemaVersion: 3,
+      schemaVersion: 4,
+      source: "garden",
       id: "11111111-1111-4111-8111-111111111111",
       owner: { record: "work-one", context: "ctx", role: "implementation" },
       parent: null,
       createdAt: "2026-09-09T00:00:00.000Z",
       publicationUse: "current",
       binding: {
+        state: "publication",
         origin: "https://example.com/",
-        protocol: 1,
         snapshot: { id: "snap", publishedAt: "2026-09-09T00:00:00.000Z" },
-        vocabulary: {
-          language: [],
-          purpose: [],
-          technology: [],
-          task: [],
-          concern: [],
-          kind: [],
-          responsibility: [],
-        },
       },
       limits: { maxUnits: 16, maxBytes: 262144, timeoutMs: 30000 },
       receipts: [],
@@ -103,7 +95,7 @@ describe("G3 request persistence", () => {
         operation: "read" as const,
         units: [
           {
-            id: "arch-values-crossing-inward",
+            id: "example-values-unit",
             coverage: "full" as const,
             revision: "b".repeat(64),
             contentHash: "c".repeat(64),
@@ -138,7 +130,10 @@ describe("G3 request persistence", () => {
     try {
       mkdirSync(join(root, ".greenline/ledger"), { recursive: true });
       symlinkSync(outside, join(root, ".greenline/ledger/receipts"));
-      expect(new GuidanceRequests(root).create(request())._tag).toBe("err");
+      const refused = new GuidanceRequests(root).create(request());
+      expect(refused._tag).toBe("err");
+      if (refused._tag === "ok") throw new Error("a symlinked receipt directory was written");
+      expect(refused.error).toBeInstanceOf(ReceiptStoreFailed);
     } finally {
       rmSync(root, { recursive: true, force: true });
       rmSync(outside, { recursive: true, force: true });

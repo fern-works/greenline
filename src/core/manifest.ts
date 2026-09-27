@@ -1,9 +1,10 @@
 import { z } from "zod";
 import type { Result } from "../commons/result.ts";
 import {
-  guidanceConfigurationSchema,
-  type GuidanceConfiguration,
-} from "./guidance-configuration.ts";
+  connectorChoiceIssues,
+  connectorsSchema,
+  type ConnectorsConfiguration,
+} from "./connectors/registry.ts";
 import {
   checkContractVersion,
   contractFailure,
@@ -13,14 +14,15 @@ import {
   type ContractParseFailed,
 } from "./contract.ts";
 
-export const MANIFEST_SCHEMA_VERSION = 5 as const;
+export const MANIFEST_SCHEMA_VERSION = 6 as const;
 export type TargetName = "codex" | "claude-code";
 /** Repository installation choices; engineering policy stays in the decision home. */
 export interface Manifest {
-  readonly schemaVersion: 5;
+  readonly schemaVersion: 6;
   readonly targets: readonly TargetName[];
   readonly skills: { readonly exclude: readonly string[]; readonly include: readonly string[] };
-  readonly guidance: GuidanceConfiguration;
+  /** The enabled connectors; an absent entry, or an absent map, means disabled. */
+  readonly connectors: ConnectorsConfiguration;
 }
 const schema = z
   .object({
@@ -33,7 +35,7 @@ const schema = z
       })
       .strict()
       .default({ exclude: [], include: [] }),
-    guidance: guidanceConfigurationSchema,
+    connectors: connectorsSchema.default({}),
   })
   .strict();
 /** Parse the installation contract, checking skill membership when its roster is available. */
@@ -58,6 +60,8 @@ export function parseManifest(
       return contractFailure(source, [
         { path: field, message: `Duplicate entry: ${values.join(", ")}` },
       ]);
+  const connectorIssues = connectorChoiceIssues(parsed.data.skills, parsed.data.connectors);
+  if (connectorIssues.length > 0) return contractFailure(source, connectorIssues);
   if (skillNames !== undefined) {
     const roster = new Set(skillNames);
     const issues = (["include", "exclude"] as const).flatMap((field) =>
@@ -76,28 +80,14 @@ export function parseManifest(
   }
   return contractOk(parsed.data);
 }
-/** Explicit configuration updates preserve every other current installation choice. */
-export function configureManifestGuidance(
-  input: string,
-  guidance: GuidanceConfiguration,
-  source: string,
-  skillNames: readonly string[],
-): Result<Manifest, ContractParseFailed> {
-  const parsed = parseManifest(input, source, skillNames);
-  return parsed._tag === "err" ? parsed : contractOk({ ...parsed.value, guidance });
-}
-/** Deterministic manifest serialization. */
+/** Deterministic manifest serialization; the connectors map appears only when it holds an entry. */
 export function serializeManifest(manifest: Manifest): string {
-  return (
-    JSON.stringify(
-      {
-        schemaVersion: manifest.schemaVersion,
-        targets: manifest.targets,
-        skills: manifest.skills,
-        guidance: manifest.guidance,
-      },
-      null,
-      2,
-    ) + "\n"
-  );
+  const choices = {
+    schemaVersion: manifest.schemaVersion,
+    targets: manifest.targets,
+    skills: manifest.skills,
+  };
+  const enabled = Object.values(manifest.connectors).some((entry) => entry !== undefined);
+  const document = enabled ? { ...choices, connectors: manifest.connectors } : choices;
+  return JSON.stringify(document, null, 2) + "\n";
 }

@@ -7,6 +7,12 @@ export interface CliEnvironment {
   readonly version: string;
   readonly installation: Installation;
   readonly prompt?: PromptPort;
+  /**
+   * The process environment, read by status and doctor for a connector's
+   * `PATH` and the presence of its key variable, never a value; absent, as
+   * in a test that gives none, it is an empty environment.
+   */
+  readonly environment?: NodeJS.ProcessEnv;
 }
 /** Repository diagnostics can describe missing installation assets without substituting one. */
 export type RepositoryEnvironment = Omit<CliEnvironment, "installation"> & {

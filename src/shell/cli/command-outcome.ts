@@ -1,5 +1,6 @@
 import { isAbsolute, relative, sep } from "node:path";
 import { isRepositoryPath } from "../../commons/repository-path.ts";
+import type { ConnectorStatus } from "../../core/connectors/registry.ts";
 import { type LedgerSummary } from "../../core/ledger-audit.ts";
 import { diagnostic, type Diagnostic, type EffectJson } from "./output.ts";
 import type { ProjectView } from "../../core/status.ts";
@@ -16,6 +17,8 @@ export interface CommandOutcome {
   /** The House rulings stanza's dash lines; set only by status. */
   readonly houseRulings?: readonly string[];
   readonly ledger?: LedgerSummary;
+  /** The connectors' registered and installed state; set by the `connectors` group, status and doctor. */
+  readonly connectors?: readonly ConnectorStatus[];
 }
 
 function isClean(diagnostics: readonly Diagnostic[]): boolean {

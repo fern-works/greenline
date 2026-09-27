@@ -5,7 +5,7 @@ import { dirname, join, resolve } from "node:path";
 
 if (process.argv[2] === "--refuse-root-pack") {
   process.stderr.write(
-    "This is the maintainer checkout. Run pnpm build, then npm pack ./dist/package. The prepared consumer package has no development scripts or service.\n",
+    "This is the overseer checkout. Run pnpm build, then npm pack ./dist/package. The prepared consumer package has no development scripts or service.\n",
   );
   process.exitCode = 1;
 } else {
@@ -52,6 +52,8 @@ if (process.argv[2] === "--refuse-root-pack") {
     ["THIRD_PARTY_NOTICES.md", "THIRD_PARTY_NOTICES.md"],
     ["dist/bin/greenline.mjs", "dist/bin/greenline.mjs"],
     ["dist/corpus/installation.json", "dist/corpus/installation.json"],
+    // The inspector embeds the Geist fonts in the bundle; their licence travels with it.
+    ["assets/inspect-fonts/OFL.txt", "assets/inspect-fonts/OFL.txt"],
   ]) {
     const destination = join(target, path);
     mkdirSync(dirname(destination), { recursive: true });

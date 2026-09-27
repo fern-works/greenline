@@ -1,18 +1,15 @@
 import { z } from "zod";
 import type { Result } from "../commons/result.ts";
 import { isRepositoryPath } from "../commons/repository-path.ts";
-import { CabinetAccessFailed, type Vocabulary, type ListResult } from "./cabinet.ts";
-import { err, ok } from "../commons/result.ts";
 import {
   contractFailure,
   contractOk,
   issuesFrom,
   parseJson,
   type ContractParseFailed,
-  type InvalidField,
 } from "./contract.ts";
 
-/** A repository prohibition, naming a unit or the cabinet's existing responsibility group. */
+/** A repository prohibition, naming a unit or a responsibility group of the guidance consulted. */
 export type RootExclusion =
   | { readonly kind: "unit"; readonly id: string }
   | { readonly kind: "option-group"; readonly responsibility: string };
@@ -59,28 +56,15 @@ const statements = z.array(statement).superRefine((entries, context) => {
   });
 });
 
-/** Parse root intent and group prohibitions against supplied vocabulary; never infer scope or write policy. */
+/** Parse root intent and prohibitions; never infer scope or write policy. */
 export function parseRootStatements(
   input: string,
   source: string,
-  vocabulary: Vocabulary,
 ): Result<readonly RootStatement[], ContractParseFailed> {
   const parsed = statements.safeParse(parseJson(input));
-  if (!parsed.success) return contractFailure(source, issuesFrom(parsed.error.issues));
-  const issues: InvalidField[] = [];
-  parsed.data.forEach((entry, index) =>
-    entry.exclusions.forEach((exclusion, position) => {
-      if (
-        exclusion.kind === "option-group" &&
-        !vocabulary.responsibility.includes(exclusion.responsibility)
-      )
-        issues.push({
-          path: `[${index}].exclusions[${position}].responsibility`,
-          message: "unknown responsibility",
-        });
-    }),
-  );
-  return issues.length ? contractFailure(source, issues) : contractOk(parsed.data);
+  return parsed.success
+    ? contractOk(parsed.data)
+    : contractFailure(source, issuesFrom(parsed.error.issues));
 }
 
 /** Ordinary authored decisions with one optional, explicitly named root-statement block. */
@@ -89,11 +73,10 @@ export interface DecisionDocument {
   readonly roots: readonly RootStatement[];
 }
 
-/** Local reads check structure; retrieval additionally checks the bound vocabulary. */
+/** The decisions book: its body and its one optional root-statement block, checked for structure. */
 export function parseDecisionDocument(
   input: string,
   source: string,
-  vocabulary?: Vocabulary,
 ): Result<DecisionDocument, ContractParseFailed> {
   const starts = [...input.matchAll(/^```greenline-roots\s*$/gm)];
   const blocks = [...input.matchAll(/^```greenline-roots\s*\n([\s\S]*?)^```\s*$/gm)];
@@ -101,13 +84,7 @@ export function parseDecisionDocument(
     return contractFailure(source, [
       { path: "roots", message: "Use one complete greenline-roots JSON block." },
     ]);
-  const content = blocks[0]?.[1] ?? "[]";
-  const local = statements.safeParse(parseJson(content));
-  if (!local.success) return contractFailure(source, issuesFrom(local.error.issues));
-  const roots =
-    vocabulary === undefined
-      ? contractOk(local.data)
-      : parseRootStatements(content, source, vocabulary);
+  const roots = parseRootStatements(blocks[0]?.[1] ?? "[]", source);
   return roots._tag === "err" ? roots : contractOk({ body: input, roots: roots.value });
 }
 
@@ -127,56 +104,22 @@ export function rootLanguages(
   return [...languages].sort();
 }
 
-/** Expand explicit root prohibitions using metadata only; no inferred inheritance or body reads. */
-export function rootExclusions(
+/** The prohibitions governed roots declare: unit ids, and responsibility groups still to expand. */
+export interface RootExclusionSubjects {
+  readonly units: readonly string[];
+  readonly groups: readonly string[];
+}
+
+/** The prohibitions the governed roots declare, units and responsibility groups apart, each once. */
+export function rootExclusionSubjects(
   statements: readonly RootStatement[],
   roots: readonly string[],
-  catalog: ListResult,
-  explicit: readonly string[] = [],
-): Result<ReadonlySet<string>, CabinetAccessFailed> {
-  const units = new Map(catalog.units.map((unit) => [unit.id, unit]));
-  const excluded = new Set<string>();
-  const visiting = new Set<string>();
-  const visit = (id: string): Result<void, CabinetAccessFailed> => {
-    if (visiting.has(id)) return err(new CabinetAccessFailed("invalid response", "contains cycle"));
-    if (excluded.has(id)) return ok(undefined);
-    const unit = units.get(id);
-    if (unit === undefined)
-      return err(
-        new CabinetAccessFailed(
-          "configuration",
-          `excluded unit ${id} is absent from this snapshot`,
-        ),
-      );
-    visiting.add(id);
-    for (const child of unit.contains) {
-      const result = visit(child);
-      if (result._tag === "err") return result;
-    }
-    visiting.delete(id);
-    excluded.add(id);
-    return ok(undefined);
-  };
-  const ids = [...explicit];
-  for (const statement of statements.filter((statement) => roots.includes(statement.root)))
+): RootExclusionSubjects {
+  const units = new Set<string>();
+  const groups = new Set<string>();
+  for (const statement of statements.filter((entry) => roots.includes(entry.root)))
     for (const exclusion of statement.exclusions)
-      if (exclusion.kind === "unit") ids.push(exclusion.id);
-      else {
-        const members = catalog.units.filter(
-          (unit) => unit.option_group?.responsibility === exclusion.responsibility,
-        );
-        if (members.length === 0)
-          return err(
-            new CabinetAccessFailed(
-              "configuration",
-              `excluded option group ${exclusion.responsibility} has no members in this snapshot`,
-            ),
-          );
-        ids.push(...members.map((unit) => unit.id));
-      }
-  for (const id of ids) {
-    const result = visit(id);
-    if (result._tag === "err") return result;
-  }
-  return ok(excluded);
+      if (exclusion.kind === "unit") units.add(exclusion.id);
+      else groups.add(exclusion.responsibility);
+  return { units: [...units].sort(), groups: [...groups].sort() };
 }

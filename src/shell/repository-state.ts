@@ -3,9 +3,9 @@ import { lstatSync, realpathSync } from "node:fs";
 import { join, sep } from "node:path";
 import type { Result } from "../commons/result.ts";
 import { contractFailure, type ContractParseFailed } from "../core/contract.ts";
+import { parseLedgerRecord, type LedgerRecord } from "../core/execution-ledger.ts";
 import { parseManifest, type Manifest } from "../core/manifest.ts";
 import { parseDecisionDocument, type DecisionDocument } from "../core/root-statements.ts";
-import type { Vocabulary } from "../core/cabinet.ts";
 import type { FileIo } from "./fs/io.ts";
 
 /** Confined repository policy read; absence is explicit and never a guessed configuration. */
@@ -43,14 +43,29 @@ export function readRepositoryManifest(
     ? result
     : parseManifest(result.value, ".greenline/manifest.json", skillNames);
 }
+/** One execution account by id; a record that fails its schema or names another id is not that account. */
+export function readRepositoryAccount(
+  root: string,
+  io: FileIo,
+  id: string,
+): Result<LedgerRecord, ContractParseFailed> {
+  const path = `.greenline/ledger/records/${id}.json`;
+  if (!/^[a-z][a-z0-9-]*$/.test(id))
+    return contractFailure(path, [{ path: "", message: "An account id is kebab-case." }]);
+  const result = read(root, path, io, undefined);
+  if (result._tag === "err") return result;
+  const parsed = parseLedgerRecord(result.value, path);
+  return parsed._tag === "ok" && parsed.value.id !== id
+    ? contractFailure(path, [{ path: "id", message: "The account names another id." }])
+    : parsed;
+}
 /** Read ordinary decisions; an absent decision book makes no engineering choice. */
 export function readRepositoryDecisions(
   root: string,
   io: FileIo,
-  vocabulary?: Vocabulary,
 ): Result<DecisionDocument, ContractParseFailed> {
   const result = read(root, ".greenline/DECISIONS.md", io, "");
   return result._tag === "err"
     ? result
-    : parseDecisionDocument(result.value, ".greenline/DECISIONS.md", vocabulary);
+    : parseDecisionDocument(result.value, ".greenline/DECISIONS.md");
 }

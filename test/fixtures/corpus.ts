@@ -52,8 +52,13 @@ export function fixtureInstallation(overrides: Partial<InstallationInput> = {}):
   return result.value;
 }
 export const fixtureConfiguration: Manifest = {
-  schemaVersion: 5,
+  schemaVersion: 6,
   targets: ["codex", "claude-code"],
   skills: { include: [], exclude: [] },
-  guidance: { state: "unconfigured" },
+  connectors: {},
+};
+/** The same workspace with the garden connector enabled: the goldens' second state. */
+export const gardenEnabledConfiguration: Manifest = {
+  ...fixtureConfiguration,
+  connectors: { garden: { endpoint: "https://garden.example/", executable: "garden" } },
 };

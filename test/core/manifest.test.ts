@@ -10,7 +10,7 @@ import {
 const SOURCE: string = ".greenline/manifest.json";
 
 function manifestJson(body: string): string {
-  return `{ "schemaVersion": ${MANIFEST_SCHEMA_VERSION}, "guidance": {"state":"unconfigured"}, ${body} }`;
+  return `{ "schemaVersion": ${MANIFEST_SCHEMA_VERSION}, ${body} }`;
 }
 
 describe("parseManifest", () => {
@@ -109,8 +109,7 @@ describe("M7.1 manifest has no blanket review acknowledgement", () => {
     expect(
       parseManifest(
         JSON.stringify({
-          guidance: { state: "unconfigured" },
-          schemaVersion: 5,
+          schemaVersion: 6,
           targets: ["codex"],
           review: "2026-09-06",
         }),
@@ -122,8 +121,7 @@ describe("M7.1 manifest has no blanket review acknowledgement", () => {
 
 describe("manifest include list (ADR 0029)", () => {
   const base = {
-    guidance: { state: "unconfigured" },
-    schemaVersion: 5,
+    schemaVersion: 6,
     targets: ["codex"],
   };
 

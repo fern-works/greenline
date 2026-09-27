@@ -12,7 +12,7 @@ import {
 import type { SkillSource } from "./skill.ts";
 import type { CorpusIntent } from "./corpus.ts";
 
-/** Only engineering methods and runtime prose are installed; cabinet publications are independent. */
+/** Only engineering methods and runtime prose are installed; published guidance is garden's and never installed. */
 export interface InstallationInput {
   readonly skills: readonly SkillSource[];
   readonly intents: readonly CorpusIntent[];

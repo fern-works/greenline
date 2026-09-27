@@ -124,7 +124,7 @@ describe("parseLedgerEntry", () => {
             family: "go",
             origin: { digest: "bodner-learning-go", pin: "epub sha256 477b" },
             spans: [{ lines: "L1-L9", disposition: "retain" }],
-            units: [{ id: "go-law", revision: "f".repeat(64), grade: "confirms" }],
+            units: [{ id: "example-law", revision: "f".repeat(64), grade: "confirms" }],
             reason: "the book read against the family",
           },
         ],
@@ -139,7 +139,7 @@ describe("parseLedgerEntry", () => {
             snapshot: "snap-1",
             previous: null,
             at: "2026-09-16T10:00:00Z",
-            units: [{ id: "go-law", revision: "f".repeat(64), reason: "first publication" }],
+            units: [{ id: "example-law", revision: "f".repeat(64), reason: "first publication" }],
             reason: "the first snapshot",
           },
         ],
@@ -497,7 +497,7 @@ describe("the chain across versions", () => {
             family: "go",
             origin: { digest: "bodner-learning-go", pin: "epub sha256 477b" },
             spans: [{ lines: "L1-L9", disposition: "retain" }],
-            units: [{ id: "go-law", revision: "f".repeat(64), grade: "confirms" }],
+            units: [{ id: "example-law", revision: "f".repeat(64), grade: "confirms" }],
             reason: "the book read against the family",
           },
         ],
@@ -516,5 +516,33 @@ describe("the chain across versions", () => {
     const text = renderLedgerIndex(orderLedger([baseline, routerHouse, copy]).chain);
     expect(text.indexOf("router-house (native)")).toBeGreaterThan(text.indexOf("baseline (copy)"));
     expect(text).toContain("- **skill:method**: a later edit");
+  });
+  it("keeps publication member identities and detailed reasons out of the public index", () => {
+    const publication = parse(
+      v3({
+        id: "public-safe-publication",
+        kind: "publication",
+        changes: [
+          {
+            snapshot: `snapshot-${"0".repeat(64)}`,
+            previous: null,
+            at: "2026-09-20T10:00:00.000Z",
+            units: [
+              {
+                id: "paid-unit-identity",
+                revision: "f".repeat(64),
+                reason: "Detailed member evidence.",
+              },
+            ],
+            reason: "Change paid-unit-identity because its private guidance says so.",
+          },
+        ],
+      }),
+    );
+    const text = renderLedgerIndex([publication]);
+    expect(text).toContain(`- **snapshot:snapshot-${"0".repeat(64)}**`);
+    expect(text).toContain("Recorded the reviewed cabinet publication.");
+    expect(text).not.toContain("paid-unit-identity");
+    expect(text).not.toContain("private guidance says so");
   });
 });

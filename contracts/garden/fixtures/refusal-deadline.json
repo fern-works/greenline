@@ -1,0 +1,26 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": false,
+  "operation": "list",
+  "callId": "example-call-deadline",
+  "origin": "https://garden.example/",
+  "snapshot": {
+    "id": "example-publication-a",
+    "publishedAt": "2026-01-01T00:00:00.000Z"
+  },
+  "delivery": {
+    "units": [],
+    "bytes": 0
+  },
+  "limits": {
+    "timeoutMs": 10000,
+    "maxUnits": null,
+    "maxBytes": null
+  },
+  "result": null,
+  "error": {
+    "kind": "deadline",
+    "subject": "list"
+  }
+}

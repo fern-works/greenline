@@ -1,0 +1,60 @@
+{
+  "format": "garden.result/v1",
+  "clientVersion": "0.0.0",
+  "ok": true,
+  "operation": "changes",
+  "callId": "example-call-changes",
+  "origin": "https://garden.example/",
+  "snapshot": {
+    "from": {
+      "id": "example-publication-a",
+      "publishedAt": "2026-01-01T00:00:00.000Z"
+    },
+    "to": {
+      "id": "example-publication-b",
+      "publishedAt": "2026-01-02T00:00:00.000Z"
+    }
+  },
+  "delivery": {
+    "units": [],
+    "bytes": 0
+  },
+  "limits": {
+    "timeoutMs": 10000,
+    "maxUnits": null,
+    "maxBytes": null
+  },
+  "result": {
+    "schemaVersion": 1,
+    "from": {
+      "id": "example-publication-a",
+      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "reason": null
+    },
+    "to": {
+      "id": "example-publication-b",
+      "publishedAt": "2026-01-02T00:00:00.000Z",
+      "reason": null
+    },
+    "added": [],
+    "changed": [
+      {
+        "id": "example-rule",
+        "before": {
+          "revision": "965fb7308520d4e3d8cf7ac62e74fff658b77e4cb2096a3dc440f078db4117f4",
+          "contentHash": "c73151262ce639b0b727de28945924dc18ebe423001ea1394d7094daeb2aaae0",
+          "reason": null
+        },
+        "after": {
+          "revision": "54ccba0f2e9bfc6578440189948506e7cbc5be24a14bb70c2dc30f1a1e9a5da3",
+          "contentHash": "4a078b55f7040e46f29b53bd1083d08167150c1c153586204ce6b731bdd7d651",
+          "reason": null
+        }
+      }
+    ],
+    "removed": [],
+    "count": 1,
+    "vocabularyChanged": false
+  },
+  "error": null
+}

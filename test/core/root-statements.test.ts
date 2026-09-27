@@ -1,20 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   parseRootStatements,
+  rootExclusionSubjects,
   rootLanguages,
   type RootStatement,
 } from "../../src/core/root-statements.ts";
-import type { Vocabulary } from "../../src/core/cabinet.ts";
-
-const vocabulary: Vocabulary = {
-  language: [],
-  purpose: [],
-  technology: [],
-  task: [],
-  concern: [],
-  kind: [],
-  responsibility: ["api framework"],
-};
 
 const web = {
   root: "apps/web",
@@ -29,28 +19,10 @@ const web = {
 };
 
 describe("G3 root statements", () => {
-  it("G3 refuses an unknown group prohibition instead of silently prohibiting nothing", () => {
-    const result = parseRootStatements(
-      JSON.stringify([
-        { ...web, exclusions: [{ kind: "option-group", responsibility: "api framwork" }] },
-      ]),
-      "DECISIONS.md",
-      vocabulary,
-    );
-    expect(result._tag).toBe("err");
-    if (result._tag === "err")
-      expect(result.error.issues).toEqual([
-        { path: "[0].exclusions[0].responsibility", message: "unknown responsibility" },
-      ]);
-  });
   it.each(["../outside", "apps/../web", "/outside", "C:/outside", "apps\\web", ""])(
     "G3 refuses unconfined root %s with a located error",
     (root) => {
-      const result = parseRootStatements(
-        JSON.stringify([{ ...web, root }]),
-        "DECISIONS.md",
-        vocabulary,
-      );
+      const result = parseRootStatements(JSON.stringify([{ ...web, root }]), "DECISIONS.md");
       expect(result._tag).toBe("err");
       if (result._tag === "err")
         expect(result.error.issues).toEqual([
@@ -62,25 +34,23 @@ describe("G3 root statements", () => {
     const adoption = parseRootStatements(
       JSON.stringify([{ ...web, adopted: ["typescript-example-rule"] }]),
       "DECISIONS.md",
-      vocabulary,
     );
     expect(adoption._tag).toBe("err");
     if (adoption._tag === "err") expect(adoption.error.issues[0]?.message).toContain("adopted");
     const exclusion = parseRootStatements(
       JSON.stringify([{ ...web, exclusions: [{ kind: "unit" }] }]),
       "DECISIONS.md",
-      vocabulary,
     );
     expect(exclusion._tag).toBe("err");
     if (exclusion._tag === "err")
       expect(exclusion.error.issues[0]?.path).toBe("[0].exclusions[0].id");
   });
   it("G3 accepts no statements as unknown scope and refuses malformed input", () => {
-    expect(parseRootStatements("[]", "DECISIONS.md", vocabulary)).toEqual({
+    expect(parseRootStatements("[]", "DECISIONS.md")).toEqual({
       _tag: "ok",
       value: [],
     });
-    const result = parseRootStatements("[broken", "DECISIONS.md", vocabulary);
+    const result = parseRootStatements("[broken", "DECISIONS.md");
     expect(result._tag).toBe("err");
     if (result._tag === "err") expect(result.error.source).toBe("DECISIONS.md");
   });
@@ -88,7 +58,6 @@ describe("G3 root statements", () => {
     const result = parseRootStatements(
       JSON.stringify([web, { ...web, technologies: ["eslint"] }]),
       "DECISIONS.md",
-      vocabulary,
     );
     expect(result._tag).toBe("err");
     if (result._tag === "err")
@@ -105,7 +74,7 @@ describe("G3 root statements", () => {
       decision: "#scripts-unsettled",
       exclusions: [],
     };
-    expect(parseRootStatements(JSON.stringify([web, child]), "DECISIONS.md", vocabulary)).toEqual({
+    expect(parseRootStatements(JSON.stringify([web, child]), "DECISIONS.md")).toEqual({
       _tag: "ok",
       value: [web, child],
     });
@@ -144,5 +113,32 @@ describe("G3 root languages", () => {
     expect(
       rootLanguages([settled("apps/api", []), settled("apps/web", ["typescript"])], ["apps/api"]),
     ).toEqual([]);
+  });
+});
+
+describe("the exclusions a read's governed roots declare", () => {
+  it("collects the named roots' own exclusions, sorted once each, and never a sibling's or a parent's", () => {
+    const parsed = parseRootStatements(
+      JSON.stringify([
+        web,
+        { ...web, root: "apps/api", exclusions: [{ kind: "unit", id: "api-only-rule" }] },
+        {
+          ...web,
+          root: ".",
+          exclusions: [{ kind: "option-group", responsibility: "root-wide choice" }],
+        },
+      ]),
+      "fence",
+    );
+    if (parsed._tag === "err") throw parsed.error;
+    expect(rootExclusionSubjects(parsed.value, ["apps/web"])).toEqual({
+      units: ["typescript-example-rule"],
+      groups: ["api framework"],
+    });
+    expect(rootExclusionSubjects(parsed.value, ["apps/web", "apps/api", "apps/web"])).toEqual({
+      units: ["api-only-rule", "typescript-example-rule"],
+      groups: ["api framework"],
+    });
+    expect(rootExclusionSubjects(parsed.value, ["apps/other"])).toEqual({ units: [], groups: [] });
   });
 });

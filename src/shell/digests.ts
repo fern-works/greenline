@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { basename, join, relative, sep } from "node:path";
+import { join, relative, sep } from "node:path";
 import { z } from "zod";
 import { sha256Hex } from "../commons/hash.ts";
 import { isRepositoryPath } from "../commons/repository-path.ts";
@@ -12,20 +12,18 @@ import {
   type InvalidField,
 } from "../core/contract.ts";
 import type { LedgerEntry } from "../core/ledger.ts";
-import { loadFixtureSnapshot } from "./cabinet.ts";
 
 /**
- * The digest registry (workshop/components/ledger.md, "The digests"; the
+ * The digest registry (workshop/components/ledger.md, "The code"; the
  * ruling D6): one row per research digest and rulings file, live in the
  * tree with the id and the pin its header block states, or held in git at
- * the commit the archive names and pinned by the blob's digest. A unit's
- * `sources` name what it was written from, and a native or unit entry's
- * digest origin names a row by id and pin; the `ledger` row resolves both.
+ * the commit the archive names and pinned by the blob's digest. A native
+ * entry's digest origin names a row by id and pin, and the `ledger` row
+ * resolves it; the rows the prefix's unit sources named stay as the prefix
+ * left them.
  */
-/** The commit the archive names as the last that holds the removed research notes and rulings. */
-export const HISTORY = "c7e6306e";
 /** The registry's path under the corpus root. */
-export const REGISTRY = "ledger/digests.json";
+const REGISTRY = "ledger/digests.json";
 /** The research notes' directory under the repository root; every Markdown file under it but the index is a note. */
 const RESEARCH = "docs/research";
 /** The header block's four fields, each owed by a live note. */
@@ -114,27 +112,6 @@ export function headerField(text: string, field: string): string | undefined {
 
 /** The header block's id, the name a ref resolves to. */
 export const headerId = (text: string): string | undefined => headerField(text, "id");
-
-/** How one ref resolves: a form that names no file, a registry row, or nothing. */
-export type RefResolution =
-  | { readonly form: "treatment" | "attribution" | "url" }
-  | { readonly row: DigestRow }
-  | { readonly unmapped: string };
-
-/**
- * Resolve one source ref against the registry: a `treatment` or an
- * `attribution` is a form; a `docs` URL is a form; every other ref names a
- * file by its path, or a digest by its file name, with an optional anchor.
- */
-export function resolveRef(kind: string, ref: string, rows: readonly DigestRow[]): RefResolution {
-  if (kind === "treatment" || kind === "attribution") return { form: kind };
-  if (kind === "docs" && /^https?:\/\//.test(ref)) return { form: "url" };
-  const file = ref.split("#")[0] ?? ref;
-  const found = rows.find((item) => item.path === file || basename(item.path) === basename(file));
-  return found === undefined
-    ? { unmapped: `${kind} ${ref} resolves to no digest header or rulings file` }
-    : { row: found };
-}
 
 /** A live note's header against its row: the four fields present, the id and the pin the row's. */
 function headerIssues(path: string, text: string, expected: DigestRow): readonly InvalidField[] {
@@ -236,23 +213,13 @@ export function originIssues(
 
 /**
  * The digests' audit: the registry parses; every live note has its row and
- * its header; every historical row's blob has its digest; every unit's
- * source ref resolves.
+ * its header; every historical row's blob has its digest.
  */
 export function digestIssues(repositoryRoot: string, corpusRoot: string): readonly InvalidField[] {
   const registry = readDigestRegistry(corpusRoot);
   if (registry._tag === "err") return registry.error.issues;
-  const issues: InvalidField[] = [
+  return [
     ...liveIssues(repositoryRoot, registry.value.rows),
     ...historicalIssues(repositoryRoot, registry.value.rows),
   ];
-  const snapshot = loadFixtureSnapshot(join(corpusRoot, "units"));
-  if (snapshot._tag === "err")
-    return [...issues, { path: "units", message: snapshot.error.message }];
-  for (const unit of snapshot.value.units.values())
-    for (const source of unit.sources) {
-      const resolved = resolveRef(source.kind, source.ref, registry.value.rows);
-      if ("unmapped" in resolved) issues.push({ path: unit.id, message: resolved.unmapped });
-    }
-  return issues;
 }

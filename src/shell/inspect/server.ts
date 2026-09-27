@@ -7,10 +7,16 @@ import { parseJson } from "../../core/contract.ts";
 import { err } from "../../commons/result.ts";
 import { sha256Hex } from "../../commons/hash.ts";
 import { parseManifest, serializeManifest, type Manifest } from "../../core/manifest.ts";
-import { guidanceConfigurationSchema } from "../../core/guidance-configuration.ts";
+import { isConnectorSkill, type SkillChoices } from "../../core/connectors/registry.ts";
 import { parseDecisionDocument, type RootStatement } from "../../core/root-statements.ts";
 import { parseHouseRulings } from "../../core/house-rulings.ts";
-import { lineDiff, withStanza, type DiffLine } from "../../core/inspect.ts";
+import {
+  lineDiff,
+  receiptView,
+  withStanza,
+  type DiffLine,
+  type ReceiptRequestView,
+} from "../../core/inspect.ts";
 import { parseLock } from "../../core/lock.ts";
 import { renderProjection } from "../../core/render.ts";
 import { buildStatusView, type ProjectView } from "../../core/status.ts";
@@ -19,6 +25,7 @@ import { AtomicWriteFailed, createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { applyFilePlan } from "../fs/apply.ts";
 import { withWorkspaceWrite } from "../fs/workspace-write.ts";
 import { readExecutionLedger } from "../execution-ledger.ts";
+import { GuidanceRequests } from "../guidance-requests.ts";
 import { collectArtifacts } from "../artifacts.ts";
 import { runCommand } from "../cli/commands.ts";
 import type { CliEnvironment } from "../cli/command-environment.ts";
@@ -43,6 +50,10 @@ export interface InspectorState {
   }[];
   readonly houseRulings: { readonly stanza: string; readonly rulings: readonly string[] };
   readonly ledger: ExecutionLedger | null;
+  /** The schema-4 request collections, body-free, as the evidence view shows them. */
+  readonly receipts: readonly ReceiptRequestView[];
+  /** The collection files, or the directory, that could not be read, each with the refusal; doctor names the finding. */
+  readonly receiptProblems: readonly { readonly file: string; readonly message: string }[];
   readonly work: ProjectView;
   readonly checks: readonly Diagnostic[];
   readonly files: readonly {
@@ -176,6 +187,8 @@ function inspectorState(root: string, env: CliEnvironment): InspectorState | { e
     markerText._tag === "ok" ? parseJson(markerText.value) : { schemaVersion: 1, changes: [] },
   );
   if (!markerData.success) return { error: "Policy change evidence is invalid." };
+  const survey = new GuidanceRequests(root, io).survey();
+  const RECEIPTS = ".greenline/ledger/receipts";
   const ledger = readExecutionLedger(root, io),
     artifacts = collectArtifacts(join(root, ".greenline/work"));
   const doctor = runCommand(
@@ -201,17 +214,31 @@ function inspectorState(root: string, env: CliEnvironment): InspectorState | { e
     decisions: texts.value.decisions,
     houseRulings: { stanza: rulings.map((r) => `- ${r}`).join("\n"), rulings },
     ledger: ledger._tag === "ok" ? ledger.value : null,
+    // Each collection is read as it stands, so the valid ones show beside those that cannot be read, even while the account audit refuses the set (doctor names why).
+    receipts:
+      survey._tag === "ok"
+        ? receiptView(survey.value.flatMap((item) => ("request" in item ? [item.request] : [])))
+        : [],
+    receiptProblems:
+      survey._tag === "ok"
+        ? survey.value.flatMap((item) =>
+            "failure" in item ? [{ file: `${RECEIPTS}/${item.file}`, message: item.failure }] : [],
+          )
+        : [{ file: RECEIPTS, message: survey.error.message }],
     work: buildStatusView(artifacts._tag === "ok" ? artifacts.value.parsed : []),
     checks: doctor.diagnostics,
     files,
     changes: { baseline: baseline?.revision ?? null, files: changes, unavailable },
-    skills: env.installation.skills.map((skill) => ({
-      name: skill.name,
-      installed: files.some(
-        (file) => file.path.endsWith(`/skills/${skill.name}/SKILL.md`) && file.content !== null,
-      ),
-      optIn: skill.optIn === true,
-    })),
+    // A connector's skill is its connector's to install, so it is never offered as a choice.
+    skills: env.installation.skills
+      .filter((skill) => !isConnectorSkill(skill.name))
+      .map((skill) => ({
+        name: skill.name,
+        installed: files.some(
+          (file) => file.path.endsWith(`/skills/${skill.name}/SKILL.md`) && file.content !== null,
+        ),
+        optIn: skill.optIn === true,
+      })),
   };
 }
 const revision = z.string().regex(/^[a-f0-9]{64}$/);
@@ -226,7 +253,6 @@ const settings = z
       .object({ include: z.array(z.string()), exclude: z.array(z.string()) })
       .strict()
       .optional(),
-    guidance: guidanceConfigurationSchema.optional(),
   })
   .strict();
 const prose = z.object({ expectedRevision: revision, body: z.string() }).strict();
@@ -240,6 +266,22 @@ const markers = z
     ),
   })
   .strict();
+/**
+ * The saved skill choices: the page's, for the skills it lists, and the
+ * manifest's own entries for a connector's skill, which the page never
+ * lists. A save can therefore neither write an exclusion that would block
+ * enabling a connector later nor drop one the owner wrote by hand.
+ */
+function keepConnectorChoices(written: SkillChoices, current: SkillChoices): SkillChoices {
+  const merge = (page: readonly string[], manifest: readonly string[]): readonly string[] => [
+    ...page.filter((name) => !isConnectorSkill(name)),
+    ...manifest.filter(isConnectorSkill),
+  ];
+  return {
+    include: merge(written.include, current.include),
+    exclude: merge(written.exclude, current.exclude),
+  };
+}
 function save(
   root: string,
   endpoint: string,
@@ -287,8 +329,10 @@ function save(
       const next = {
         ...current.value,
         targets: write.targets ?? current.value.targets,
-        skills: write.skills ?? current.value.skills,
-        guidance: write.guidance ?? current.value.guidance,
+        skills:
+          write.skills === undefined
+            ? current.value.skills
+            : keepConnectorChoices(write.skills, current.value.skills),
       };
       const checked = parseManifest(serializeManifest(next), path);
       if (checked._tag === "err") return { error: checked.error.message };

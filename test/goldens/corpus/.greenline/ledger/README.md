@@ -8,35 +8,31 @@ work, grants no authority, and never becomes the next request's standing guidanc
 
 Create `.greenline/ledger/records/<id>.json` before a code change. Use an unused
 kebab-case id, a required contributor context label, actor, role, owning work id
-and revision, and affected scopes. Copy the manifest's guidance configuration.
-Use the native context id when available; otherwise use an explicit local label
-(such as `local:repair-builder`) without claiming it is a captured harness id.
-The manifest remains the authority: an omitted declaration cannot disable the
-retrieval audit, and a contradictory declaration fails the contract.
+and revision, and affected scopes. Use the native context id when available;
+otherwise use an explicit local label (such as `local:repair-builder`) without
+claiming it is a captured harness id.
 
-For configured work, use `greenline guidance list --record <id>` with task facets
-and explicit `--root` values. Read selected units with `--request <handle>` and
-`--requires`. A new owner request gets a new handle; a contributor uses its
-own account and `--from-request`. The agent chooses roots; the default is the
-account's explicit scopes. DECISIONS.md carries their root statements.
+When the owner has enabled the garden connector, a relevant garden consultation
+runs through `greenline connectors call garden <operation>`: `--record <id>`
+opens its request under this account and `--request <handle>` continues it,
+with the same roots. A new owner request gets a new request, and a contributor
+opens its own under its own account. The agent chooses roots; the default is
+the account's explicit scopes. DECISIONS.md carries their root statements. No
+account owes a garden consultation; its receipts record what garden delivered
+when one was relevant.
 
 The CLI writes one receipt collection per request in
-`.greenline/ledger/receipts/`. Every validated full delivery appears in the
-compiled account, including earlier deliveries in a failed batch. Metadata
+`.greenline/ledger/receipts/`, in collection schema 4. Its `source` is garden,
+and its `binding` names the one publication the request reads, or a
+comparison's pair; a collection whose first call failed stays
+`unresolved`, and a binding never moves. Every validated full delivery appears
+in the compiled account, including earlier deliveries in a failed batch. Metadata
 queries remain metadata; an internal exclusion lookup is a generated list
 receipt. `roots`, `policyRevision` and expanded `excluded` identities record
 which local restrictions were used. Do not hand-edit receipts or transcribe
 the delivery inventory. Receipt persistence must succeed before successful
 mutating retrieval output. An absent collection is missing evidence, not proof
 of zero retrieval.
-
-A reviewer you dispatch reads with `--read-only --from-request <handle>` and
-keeps its own receipt in the tool result. That call still reaches the cabinet,
-so the collection you dispatched from gains a stub in `advisories`: the read-only
-request, the operation, the units with their revisions, the outcome, and the role
-the reviewer declared with `--role`. It sits beside your calls, never among them.
-The reviewer's reading stays the reviewer's: your account compiles no
-consultation from it, and a stub answers none of your own retrieval.
 
 Add sparse `guidanceAnnotations` to the generated consultation ids returned by
 read: a useful selection, meaningful rejection, deferral or authorized exception.
@@ -55,8 +51,8 @@ is required.
 ## Authored record
 
 Every account must include `"schemaVersion": 3` and a nonempty `context`.
-This starting unconfigured implementation account validates while work is ready
-or implementing; replace its identities and scope with the actual work:
+This starting implementation account validates while work is ready or
+implementing; replace its identities and scope with the actual work:
 
 ```json
 {
@@ -66,8 +62,7 @@ or implementing; replace its identities and scope with the actual work:
   "actor": "agent",
   "role": "implementation",
   "scopes": ["."],
-  "work": { "id": "TKT-001", "revision": 1 },
-  "guidance": { "state": "unconfigured" }
+  "work": { "id": "TKT-001", "revision": 1 }
 }
 ```
 
@@ -81,7 +76,6 @@ The current fields are:
   the ticket’s `result_commit`. A completed review account also requires
   `resultCommit`: the implementation commit at the end of the review’s `range`,
   not a new commit made by the reviewer. Keep that value on later lifecycle states.
-- `guidance`: the configured provider or explicit unconfigured state.
 - `selections`: concise method or repository-source declarations when useful.
   Each names `id`, `kind` (skill, guidance or document), repository `source`,
   actual `stage` (before-work, during-work or after-work), `decision` and `reason`.
@@ -166,7 +160,6 @@ commit even when the account was committed later:
   "role": "review",
   "scopes": ["."],
   "work": { "id": "REV-001", "revision": 1 },
-  "guidance": { "state": "unconfigured" },
   "resultCommit": "<implementation-commit>",
   "reviews": [
     {
@@ -193,11 +186,6 @@ applied correctly. Missing and truncated capture remain limited. A parent's
 reading is not a child's reading, and a compaction summary is not full delivery.
 Repository-controlled copies are not authenticated or tamper-resistant.
 
-Explicitly unconfigured work needs no receipt or invented consultation.
-Read-only advice uses `--read-only` and explicit `--root` values for full reads,
-writes no collection of its own, and reports material consultation in its reply.
-The returned opaque handle carries metadata only. Advice dispatched from a
-durable request leaves its stub in that collection; advice with no such request
-leaves the repository unchanged. A stub records that the call happened, not that
-the reviewer read or applied what came back. Delivery and accounting award no
+Work that consults nothing needs no receipt or invented consultation. The
+returned opaque handle carries metadata only. Delivery and accounting award no
 compliance score.

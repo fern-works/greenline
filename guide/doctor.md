@@ -2,7 +2,8 @@
 
 `greenline doctor` validates the workspace and the artifacts and
 is read-only. It owns the structural verdict; `greenline status` includes the
-same diagnosis alongside the work view. Errors exit nonzero; warnings do not.
+same diagnosis alongside the work view. Both report the connectors as well.
+Errors exit nonzero; warnings do not.
 Each finding names a code, severity and message, with a file when applicable.
 Repository files use paths relative to the Git root; GL0140 can name an installed
 package file outside that root. Invalid fields appear separately in the message.
@@ -28,7 +29,8 @@ This page explains the findings and their recovery steps.
 | GL0116 | Init needs the harness trees                      | no `--targets` and no terminal to ask; pass `--targets codex,claude-code` (either or both) or `--yes` for both                                                                                                                                                                                                                                                                                                                                                                                       |
 | GL0121 | Workflow without a remote (warning)               | a workflow file exists in .github/workflows but no Git remote is configured; inspect whether that workflow is intended. This diagnostic does not create or announce a workflow                                                                                                                                                                                                                                                                                                                       |
 | GL0123 | Repository state invalid or another writer active | Repair the named policy/evidence file. Retry after the writer finishes; clear an interrupted lock only after confirming no writer remains.                                                                                                                                                                                                                                                                                                                                                           |
-| GL0124 | Guidance configuration needs an explicit choice   | Use `greenline init --guidance none` or `greenline init --guidance URL`. On an initialized workspace, this changes the manifest; use `greenline sync` to reconcile installed files.                                                                                                                                                                                                                                                                                                                  |
+| GL0124 | Workspace already initialized                     | init runs once per workspace; use `greenline sync` to reconcile installed files.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| GL0125 | Connector not ready, or its settings refused      | Enabling refuses a URL that is not HTTPS (or HTTP on a loopback address), carries credentials, a query or a fragment, an executable that is neither `garden` nor an absolute path, and a `skills.exclude` naming the connector's skill; nothing is written. Doctor and status warn when garden is enabled and its executable would not run here, or `GARDEN_API_KEY` is not set: install the garden command or name its path with `--executable`, and set the key where the agent runs.              |
 
 A missing or invalid installation payload is **GL0140**. Reinstall the intended
 CLI build. Status and independent doctor checks remain available without writes.
@@ -38,9 +40,14 @@ them. It is not a post-run count of files still present. Verify removal from the
 filesystem or a subsequent doctor run before reporting it. Empty parent
 directories are left in place.
 
-Guidance service failures use typed errors such as configuration, unauthorized,
-unavailable and excluded; those are reported by the guidance commands. Doctor
-does not contact the service or certify its availability.
+Doctor and status print each connector's state. A disabled connector raises
+nothing: nothing is consulted and no process starts. For an enabled one they
+show its endpoint, the executable that would run and whether its key variable
+is set, and they check this without starting it; the key's value is never read
+or printed. garden's own failures are typed in the reply of
+`greenline connectors call garden` and recorded in its receipt
+([the garden connector](./connector.md)). Doctor does not start garden, contact a
+service or certify its availability.
 
 ## Artifacts (GL02xx)
 
@@ -63,7 +70,7 @@ does not contact the service or certify its availability.
 | ------ | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GL0301 | Required account or result identity missing        | Before `implemented`, set `resultCommit` on the implementation account to the ticket’s `result_commit`. A completed review account needs that same implementation commit, the end of its `range`. Correct the named account and work identity; do not invent earlier consultations. A missing ticket `result_commit` is repaired on the ticket under GL0208/GL0209, not by creating a duplicate account. |
 | GL0302 | Record or evidence reference unresolved            | Repair the named pin, recover its historical bytes, or state the evidence limit.                                                                                                                                                                                                                                                                                                                         |
-| GL0303 | Handoff accounting incomplete                      | Complete pending retrievals and record the result actually checked. A configured implementation needs a current-publication full read.                                                                                                                                                                                                                                                                   |
+| GL0303 | Handoff accounting incomplete                      | Complete pending retrievals and record the result actually checked.                                                                                                                                                                                                                                                                                                                                      |
 | GL0304 | The execution account contradicts evidence         | Preserve the discrepancy and correct the account. A late read cannot become an earlier one; product edits cannot be claimed as maintenance; one contribution has one account, so a rework is carried in the existing implementation account, not a second one (a warning).                                                                                                                               |
 | GL0306 | Application or review remains unverified (warning) | Supply the missing support or retain the limitation. Structural validity is not semantic proof.                                                                                                                                                                                                                                                                                                          |
 

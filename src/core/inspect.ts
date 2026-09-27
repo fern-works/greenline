@@ -1,3 +1,4 @@
+import type { GuidanceRequest, ReceiptUnit, RequestBinding } from "./guidance-receipts.ts";
 import { splitManagedBlock } from "./managed-block.ts";
 import { HEADING } from "./markdown.ts";
 import { POLICY_BLOCK_KEY } from "./render.ts";
@@ -151,4 +152,90 @@ function replaceStanza(
   const after = lines.slice(end).join("\n");
   const text = `${before === "" ? "" : `${before}\n`}${stanza}${after}`;
   return { text, where };
+}
+
+/** One call of a request as the inspector shows it: what was asked and what came back, body-free. */
+export interface ReceiptCallView {
+  readonly sequence: number;
+  readonly operation: string;
+  /** `pending` while the call runs; `received`, `partial` or `failed` once it ended. */
+  readonly outcome: string;
+  /** The units delivered whole, each with its revision. */
+  readonly full: readonly { readonly id: string; readonly revision: string }[];
+  /** The units listed by their metadata alone. */
+  readonly metadata: readonly string[];
+  /** A failed call's kind, as the bridge recorded it; never a body. */
+  readonly error: string | null;
+  readonly startedAt: string;
+  readonly finishedAt: string | null;
+}
+
+/** One schema-4 request collection as the inspector shows it. */
+export interface ReceiptRequestView {
+  readonly id: string;
+  /** Who answered the calls: the garden connector. */
+  readonly source: string;
+  /** What the calls read, nothing yet, one publication or a comparison pair, and where. */
+  readonly binding: string;
+  readonly owner: string;
+  readonly createdAt: string;
+  readonly calls: readonly ReceiptCallView[];
+  /** Read-only consultations another contributor dispatched under this request. */
+  readonly advisories: number;
+}
+
+/** The binding in words: the publication or the pair, and the origin it was read from. */
+function bindingText(binding: RequestBinding): string {
+  switch (binding.state) {
+    case "unresolved":
+      return `unresolved, at ${binding.origin}`;
+    case "publication":
+      return `publication ${binding.snapshot.id} (published ${binding.snapshot.publishedAt}), at ${binding.origin}`;
+    case "comparison":
+      return `comparison of ${binding.from.id} with ${binding.to.id}, at ${binding.origin}`;
+  }
+}
+
+/** A call's units, split by what the receipt says was delivered. */
+function unitsOf(units: readonly ReceiptUnit[]): Pick<ReceiptCallView, "full" | "metadata"> {
+  return {
+    full: units.flatMap((unit) =>
+      unit.coverage === "full" ? [{ id: unit.id, revision: unit.revision }] : [],
+    ),
+    metadata: units.flatMap((unit) => (unit.coverage === "metadata" ? [unit.id] : [])),
+  };
+}
+
+/**
+ * The request collections under `.greenline/ledger/receipts/` as the
+ * inspector's evidence view reads them: each request's source, its binding,
+ * its owner and every call's operation, outcome, units and failure kind, in
+ * the order the calls were made. A receipt keeps no body, so neither does
+ * the view; it shows what a request received, never what was applied.
+ */
+export function receiptView(requests: readonly GuidanceRequest[]): readonly ReceiptRequestView[] {
+  return [...requests]
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id))
+    .map((request) => ({
+      id: request.id,
+      source: request.source,
+      binding: bindingText(request.binding),
+      owner:
+        [request.owner.record, request.owner.context, request.owner.role]
+          .filter((part): part is string => part !== null)
+          .join(", ") || "no record named",
+      createdAt: request.createdAt,
+      calls: [...request.receipts]
+        .sort((a, b) => a.sequence - b.sequence)
+        .map((receipt) => ({
+          sequence: receipt.sequence,
+          operation: receipt.operation,
+          outcome: receipt.outcome,
+          ...unitsOf(receipt.units),
+          error: receipt.error === null ? null : receipt.error.kind,
+          startedAt: receipt.startedAt,
+          finishedAt: receipt.finishedAt,
+        })),
+      advisories: request.advisories.length,
+    }));
 }

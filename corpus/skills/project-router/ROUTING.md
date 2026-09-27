@@ -80,7 +80,7 @@ never started on its own; the requesting stage owns the verdict.
 
 ## Engineering disciplines
 
-AGENTS.md owns retrieval and authority. Choose disciplines by the reasoning
+AGENTS.md owns authority. Choose disciplines by the reasoning
 needed and apply them on your own judgment, never announced: codebase-design
 for a deep module or boundary, ponytail for deletion and reuse,
 model-the-domain for incoherent state, type-system-discipline for expressing

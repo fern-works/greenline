@@ -9,7 +9,7 @@ You are reviewing a diff, and your output is findings on it: the
 stance decides what counts as one, two instruments raise the
 candidates, and the severity pass places what survives. This is the
 shared stance for reviews; language-specific obligations come from the
-repository and, when configured, retrieved guidance as described below.
+repository and any guidance consulted, as described below.
 
 ## The stance
 
@@ -105,14 +105,13 @@ is where a convention is taught as well as enforced.
 
 ## Where the lens stops
 
-AGENTS.md owns authority and retrieval. Derive obligations from the exact task,
+AGENTS.md owns authority. Derive obligations from the exact task,
 diff and repository decisions, independently of the implementer's selections.
 A finding names an applicable rule, concrete failure, effect and bounded remedy;
 check its counter-case. Distinguish contract violations from advisory improvement.
-When guidance is configured, use the request loop to retrieve relevant language
-and shared knowledge for escape hatches, test judgment and counter-cases. When
-unconfigured, use repository instructions, actual configuration and these
-installed methods; no absent guidance unit is required reading. A review does not authorize a new toolchain decision.
+Use repository instructions, actual configuration and these installed
+methods, and any guidance consulted for escape hatches, test judgment and
+counter-cases; no absent guidance unit is required reading. A review does not authorize a new toolchain decision.
 The register
 is silent on security and API compatibility, on performance except
 that a speed claim made in a diff with no measurement beside it is a

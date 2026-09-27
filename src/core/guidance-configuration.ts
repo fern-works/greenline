@@ -1,11 +1,9 @@
-import { z } from "zod";
-
-/** The two deliberate installation states. Credentials never belong in either. */
-export type GuidanceConfiguration =
-  | { readonly state: "unconfigured" }
-  | { readonly state: "configured"; readonly provider: string };
-
-/** Canonical provider endpoint; undefined for credentials, unsafe HTTP or URL parameters. */
+/**
+ * A canonical provider endpoint: HTTPS, or HTTP on a loopback host, without
+ * credentials, query parameters or a fragment, and with a trailing slash;
+ * undefined otherwise. The garden connector's endpoint and a receipt's
+ * origin are read through it.
+ */
 export function providerUrl(input: string): string | undefined {
   try {
     const url = new URL(input);
@@ -24,26 +22,3 @@ export function providerUrl(input: string): string | undefined {
     return undefined;
   }
 }
-
-/** Shared boundary grammar for installation and recorded configuration facts. */
-export const guidanceConfigurationSchema: z.ZodType<GuidanceConfiguration> = z.discriminatedUnion(
-  "state",
-  [
-    z.object({ state: z.literal("unconfigured") }).strict(),
-    z
-      .object({
-        state: z.literal("configured"),
-        provider: z.string().transform((value, context) => {
-          const parsed = providerUrl(value);
-          if (parsed !== undefined) return parsed;
-          context.addIssue({
-            code: "custom",
-            message:
-              "use HTTPS or loopback HTTP without credentials, query parameters or a fragment",
-          });
-          return z.NEVER;
-        }),
-      })
-      .strict(),
-  ],
-);

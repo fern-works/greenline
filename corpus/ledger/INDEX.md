@@ -202,3 +202,36 @@ Generated from `corpus/ledger/records/`; do not edit. Each entry is one file und
 
 - **skill:implement**: The run r15-compact-oss-codex (J-12, its judge's F1 and F2) found the light path taken with a red test that did not name the change and an unkept instruction resolved alone; the block now states the negative case in its own words and the copy follows. The earlier claim is carried forward.
 - **skill:diagnosing-bugs**: The same negative case, stated in the opening paragraph's light path to match the block. The earlier claim is carried forward.
+
+## 2026-09-18: first-publication-2026-09-18 (publication)
+
+- **snapshot:snapshot-f895f1c31e5faea7dd43cfbc9ccd1b2607c18a6f0f9dcd2b2ed13bac31774047**: Recorded the reviewed cabinet publication.
+
+## 2026-09-20: staging-comparison-publication-2026-09-20 (publication)
+
+- **snapshot:snapshot-272f1c9dc7b62bfa51f1b6c3aed855dc25d02b0e4f7b0d9f9c29f71ccb087a0f**: Recorded the reviewed cabinet publication.
+
+## 2026-09-26: use-garden-2026-09-26 (native)
+
+- **skill:use-garden**: Written here as the method the garden connector installs while it is enabled: when a consultation is relevant and when it is not, the separately installed garden command and its key, the repository's authority over any result, bounded reads through greenline connectors call garden under one pinned publication, and honest failure handling; it follows the operator's rulings of 2026-09-22 that the agent consults garden when relevant without a per-lookup question, never as a duty before every edit, and that one optional skill owns the instructions behind a short conditional pointer.
+
+## 2026-09-26: garden-removal-2026-09-26 (copy)
+
+- **skill:delivery-review**: J-34 S5, the removal: the built-in greenline guidance commands left greenline, garden owning guidance now, so the standards brief no longer names a read command the reviewer could run under the dispatching request; the reviewer's own consultation, when garden is enabled and one is relevant, runs under its own account as the use-garden method states.
+
+## 2026-09-26: retrieval-pointers-2026-09-26 (copy)
+
+- **skill:implement**: J-34 S5, the removal: the block's retrieval step left with the built-in guidance commands, so the copy no longer sends the agent to a retrieval loop in AGENTS.md before the first edit; a consultation, when garden is enabled and one is relevant, is the use-garden method's, and its delivery facts still come from generated receipts.
+- **skill:tdd**: J-34 S5, the removal: the block's retrieval step and the configured-guidance state left with the built-in guidance commands, so the copy no longer tells a test-value or doubles judgment to retrieve through a request loop in AGENTS.md when guidance is configured.
+- **skill:delivery-review**: J-34 S5, the removal: the configured-guidance state and the block's request loop left with the built-in guidance commands, so the standards sources no longer name guidance retrieved under the review's request handle by that loop; guidance this review consults under its own account stays a source.
+
+## 2026-09-26: review-contracts-2026-09-26 (copy)
+
+- **skill:implement**: J-34 S5, the removal: the built-in guidance read path left greenline for garden, so the delivery-review request no longer gives the reviewer the retrieval access that path served; the reviewer is given the relevant contracts, and the method order the operator ruled on 2026-09-11 is unchanged.
+
+## 2026-09-26: practice-without-guidance-2026-09-26 (native)
+
+- **block:corpus/runtime/agent.md**: Written here for the split of 2026-09-26, when guidance left greenline for garden (J-34 S5 and S6): the request loop loses its retrieval step and the manifest read for guidance configuration, its five steps renumbered; the working-here paragraph, the handoff's delivery sentence, the authority paragraph and the secrets paragraph speak of a guidance consultation that informs a gap without settling what the repository decided, and the block names no provider, since the connector's pointer is added only while the owner enables it; the contributor's --from-request handle of the removed commands is gone. This entry records that change; the block's earlier text predates the chain and is not claimed by it.
+- **skill:groundwork**: Written here for the split of 2026-09-26 (J-34 S5 and S6): init establishes the harness trees only, with greenline init --targets codex,claude-code and no --guidance flag; the configured-work facet query and the preparatory guidance wording are gone, and the source line no longer names a guidance contract. This entry records that change; the skill's earlier text predates the chain and is not claimed by it.
+- **skill:review-lens**: Written here for the split of 2026-09-26 (J-34 S5): the lens no longer points at a retrieval loop the block owned or at a configured or unconfigured guidance state; obligations come from the repository and its installed methods, and from any guidance consulted. This entry records that change; the skill's earlier text predates the chain and is not claimed by it.
+- **skill:project-router**: Written here for the split of 2026-09-26 (J-34 S5): ROUTING.md's disciplines paragraph says AGENTS.md owns authority, the retrieval it named having left with the block's retrieval step. This entry records that change; the skill's earlier text predates the chain and is not claimed by it.

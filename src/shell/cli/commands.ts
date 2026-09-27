@@ -6,7 +6,7 @@ import { readRepositoryManifest } from "../repository-state.ts";
 import type { ContractParseFailed } from "../../core/contract.ts";
 import { findGitRoot } from "../git.ts";
 import type { RunRequest, WorkspaceRequest } from "./args.ts";
-import { GL, diagnostic } from "./output.ts";
+import { GL, diagnostic, type Diagnostic } from "./output.ts";
 import { type CliEnvironment } from "./command-environment.ts";
 import {
   type CommandOutcome,
@@ -18,7 +18,7 @@ import { runDoctor } from "./doctor.ts";
 import { runStatus } from "./status.ts";
 import { runInit } from "./init.ts";
 import { runSync } from "./sync.ts";
-import { configureInstalledGuidance } from "./configure-guidance.ts";
+import { initializedWorkspace } from "./init-existing.ts";
 
 /** Missing installation blocks dependent work, while repository facts remain inspectable without writes. */
 export function runUnavailableInstallation(
@@ -37,16 +37,18 @@ export function runUnavailableInstallation(
   return {
     ...observed,
     ok: false,
-    diagnostics: [
-      ...observed.diagnostics,
-      diagnostic(
-        "GL0140",
-        "error",
-        `${error.issues.map((issue) => `${issue.path || "installation"}: ${issue.message}`).join("; ")} Installation-dependent checks and mutations are unavailable; repository facts remain readable.`,
-        error.source,
-      ),
-    ],
+    diagnostics: [...observed.diagnostics, installationUnavailable(error)],
   };
+}
+
+/** GL0140: the CLI's installation payload is missing or invalid, so nothing that needs it runs. */
+export function installationUnavailable(error: ContractParseFailed): Diagnostic {
+  return diagnostic(
+    "GL0140",
+    "error",
+    `${error.issues.map((issue) => `${issue.path || "installation"}: ${issue.message}`).join("; ")} Installation-dependent checks and mutations are unavailable; repository facts remain readable.`,
+    error.source,
+  );
 }
 
 /** Execute a parsed request and return its outcome. */
@@ -64,7 +66,7 @@ export function runCommand(request: WorkspaceRequest, env: CliEnvironment): Comm
         contractDiagnostics(GL.manifestInvalid, manifest.error.issues, manifest.error.source),
       );
   }
-  const configured = configureInstalledGuidance(request, env.cwd, skillNames);
+  const configured = initializedWorkspace(request, env.cwd);
   if (configured !== undefined) return configured;
   if (
     root === undefined ||

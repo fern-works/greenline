@@ -6,6 +6,7 @@
  * so every command is testable through a recorded stream and the
  * bundle keeps a single stdout/stderr surface.
  */
+import type { ConnectorStatus } from "../../core/connectors/registry.ts";
 import type { LedgerSummary } from "../../core/ledger-audit.ts";
 import type { ProjectView } from "../../core/status.ts";
 
@@ -46,7 +47,8 @@ export const GL = {
   initTargetsUnchosen: "GL0116",
   doctorWorkflowWithoutRemote: "GL0121",
   repositoryStateInvalid: "GL0123",
-  guidanceConfiguration: "GL0124",
+  workspaceInitialized: "GL0124",
+  connectorConfiguration: "GL0125",
   artifactFrontmatter: "GL0201",
   artifactIdDuplicate: "GL0202",
   artifactReferenceUnresolved: "GL0203",
@@ -96,6 +98,8 @@ export interface Envelope {
   /** The House rulings stanza's dash lines, present only on status. */
   readonly houseRulings?: readonly string[];
   readonly ledger?: LedgerSummary;
+  /** The connectors' registered and installed state, present on the `connectors` group, status and doctor. */
+  readonly connectors?: readonly ConnectorStatus[];
 }
 
 /** The streams a command may write to. */
@@ -109,6 +113,21 @@ export function writeEnvelope(writer: CliWriter, envelope: Envelope): void {
   writer.stdout.write(`${JSON.stringify(envelope, null, 2)}\n`);
 }
 
+/** The human count of a command's effects, with the orphan rule when an orphan is among them. */
+export function effectSummary(effects: readonly EffectJson[]): string {
+  const counts: Record<string, number> = {};
+  for (const effect of effects) {
+    counts[effect.kind] = (counts[effect.kind] ?? 0) + 1;
+  }
+  const summary = Object.entries(counts)
+    .map(([kind, count]) => `${count} ${kind}`)
+    .join(", ");
+  const line = `  ${summary === "" ? "no effects" : summary}\n`;
+  return (counts["orphan"] ?? 0) > 0
+    ? `${line}  an orphan is a managed file no longer generated; it stays until \`--force-managed <path>\` removes it\n`
+    : line;
+}
+
 /** Emit a compact human summary of the same facts the envelope carries. */
 export function writeHumanResult(writer: CliWriter, envelope: Envelope, text?: string): void {
   writer.stdout.write(`greenline ${envelope.command}\n`);
@@ -116,19 +135,7 @@ export function writeHumanResult(writer: CliWriter, envelope: Envelope, text?: s
     // A command with a rendered view prints it; effect counts don't apply.
     writer.stdout.write(text);
   } else if (envelope.command !== "doctor") {
-    const counts: Record<string, number> = {};
-    for (const effect of envelope.effects) {
-      counts[effect.kind] = (counts[effect.kind] ?? 0) + 1;
-    }
-    const summary = Object.entries(counts)
-      .map(([kind, count]) => `${count} ${kind}`)
-      .join(", ");
-    writer.stdout.write(`  ${summary === "" ? "no effects" : summary}\n`);
-    if ((counts["orphan"] ?? 0) > 0) {
-      writer.stdout.write(
-        "  an orphan is a managed file no longer generated; it stays until `--force-managed <path>` removes it\n",
-      );
-    }
+    writer.stdout.write(effectSummary(envelope.effects));
   }
   for (const item of envelope.diagnostics) {
     const path = item.path === undefined ? "" : ` (${item.path})`;

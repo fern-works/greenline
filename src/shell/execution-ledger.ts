@@ -19,7 +19,6 @@ import type { FileIo, AtomicWriteFailed } from "./fs/io.ts";
 import { GuidanceRequests } from "./guidance-requests.ts";
 import { compileGuidanceLedger } from "../core/guidance-ledger.ts";
 import { parseManifest } from "../core/manifest.ts";
-import type { GuidanceConfiguration } from "../core/guidance-configuration.ts";
 
 interface Witness {
   readonly status: LedgerEvidenceCheck["status"];
@@ -264,14 +263,13 @@ export function readExecutionLedger(
   const requests = new GuidanceRequests(root, io).all();
   if (requests._tag === "err")
     return contractFailure("guidance receipts", [{ path: "", message: requests.error.message }]);
-  let guidance: GuidanceConfiguration | undefined;
   const path = join(root, ".greenline/manifest.json");
   const manifestText = io.read(path);
   if (manifestText._tag === "err") {
     if (manifestText.error.step !== "absent" || records.length > 0 || requests.value.length > 0)
       return contractFailure(path, [
         {
-          path: "guidance",
+          path: "manifest",
           message: "A readable installed manifest is required to audit consumer records.",
         },
       ]);
@@ -282,36 +280,23 @@ export function readExecutionLedger(
         !realpathSync(path).startsWith(realpathSync(root) + sep)
       )
         return contractFailure(path, [
-          { path: "guidance", message: "The manifest must remain inside the repository." },
+          { path: "manifest", message: "The manifest must remain inside the repository." },
         ]);
     } catch {
       return contractFailure(path, [
-        { path: "guidance", message: "The installed manifest is unavailable." },
+        { path: "manifest", message: "The installed manifest is unavailable." },
       ]);
     }
     const manifest = parseManifest(manifestText.value, path);
     if (manifest._tag === "err") return manifest;
-    guidance = manifest.value.guidance;
-    for (const record of records)
-      if (
-        record.guidance !== undefined &&
-        JSON.stringify(record.guidance) !== JSON.stringify(guidance)
-      )
-        return contractFailure(`${directory}/${record.id}.json`, [
-          {
-            path: "guidance",
-            message: "Declared guidance differs from .greenline/manifest.json.",
-          },
-        ]);
   }
   const compiled = compileGuidanceLedger(records, requests.value);
   if (compiled._tag === "err") return compiled;
-  const ledger: ExecutionLedger = {
+  return ok({
     records: compiled.value.records,
     evidence,
     consultations: [...consultations, ...compiled.value.consultations],
     observedChanges,
     receipts: requests.value,
-  };
-  return ok(guidance === undefined ? ledger : { ...ledger, guidance });
+  });
 }
