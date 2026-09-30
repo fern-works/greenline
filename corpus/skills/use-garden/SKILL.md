@@ -1,6 +1,6 @@
 ---
 name: use-garden
-description: "Consulting garden, the separately installed guidance command this repository's owner enabled, when an open engineering choice the repository does not settle would be informed by published guidance. Use for a choice between approaches, a pattern or pitfall for a technology or concern the change touches, or a unit a repository decision names; not for a question about this repository's own facts or a change whose choices are already settled."
+description: "Consulting garden, the separately installed guidance command this repository's owner enabled, when an open engineering choice the repository does not settle, made in a change or only recommended, would be informed by published guidance. Use for a choice between approaches, a pattern or pitfall for a technology or concern the work touches, or a unit a repository decision names; not for a question about this repository's own facts or a change whose choices are already settled."
 ---
 
 # Use garden
@@ -26,6 +26,14 @@ installed methods do not settle, and published guidance would inform it:
 - a unit or an anchor that a repository decision or an earlier consultation
   names by its id.
 
+The choice may be the whole request. A request that asks only for a
+recommendation on such a choice is consultable like a change that makes it:
+the recommendation is the work the consultation informs, and it runs under an
+answer's account, below. It is still answered, not acted on: that account and
+its receipts are the only files it writes. The block's rule against retrieving
+guidance or creating accounting merely to answer covers a factual question
+about this repository only.
+
 These trigger no read:
 
 - a factual question about this repository: inspect its files and answer;
@@ -39,6 +47,7 @@ These trigger no read:
 Enabling permits relevant consultation. It never makes a read due before
 every edit, at the start of a session or as a ritual before a handoff. A
 consultation is part of the work it informs and is not announced as a step.
+Never announce or imply a consultation that was not made.
 
 ## What must be in place
 
@@ -52,8 +61,16 @@ consultation is part of the work it informs and is not announced as a step.
   Check only whether the variable is present; never print it, write it to a
   file or the manifest, or ask for it in the conversation.
 - **An execution account.** Every consultation is recorded under the account
-  of the contribution it serves, as `.greenline/ledger/README.md` describes.
-  Work with no account, an answer or a light fix, consults nothing.
+  of the contribution it serves, as `.greenline/ledger/README.md` describes:
+  work on a ticket consults under that ticket's account. An answer, a
+  recommendation that changes no file, has no ticket. It gets the smallest
+  account the ledger allows, a planning account with no work artifact
+  (`"role": "planning"`, `"work": null`, the roots the question concerns as
+  its scopes), created before its first call; [operations.md](operations.md)
+  shows one. That account records the consultation and nothing else: doctor
+  reports as an error any observed file change under it beyond the account and
+  its receipts, and a later request to make the change gets its own ticket
+  and account.
 
 You never enable, disable, install or reconfigure garden yourself. Those are
 the owner's steps, taken with `greenline connectors enable garden --url URL`
@@ -122,6 +139,13 @@ governs.
 
 ## When a consultation fails
 
+A relevant consultation is attempted even when garden looks unavailable. A
+status or doctor warning that the command is missing or the key is unset is
+no reason to skip the call: make it through `greenline connectors call
+garden`, under the work's account, or an answer's planning account created
+for it, so the failure is recorded as a receipt with its kind. Then meet that
+kind below, with one notice and no permission question.
+
 A failed call prints its kind and never a result. Each kind has one outcome:
 
 | What happened | What you do |
@@ -136,9 +160,12 @@ A failed call prints its kind and never a result. Each kind has one outcome:
 | `evidence`: the receipt could not be written or confirmed | The consultation is not recorded and its result was not printed. Report the evidence failure as it is, not as an outage, and leave any lock file for the owner to inspect. Never run the garden command directly to get the result another way. |
 
 When a repository rule or the task genuinely needs what garden could not
-deliver, hold the action that depends on it, name the missing guidance and
-why the action needs it, and continue the work that does not depend on it. A
-failure that blocks nothing needs no hold.
+deliver, hold only the action that guidance governs, name the missing
+guidance and why the action needs it, and continue the rest of the work. The
+hold is as narrow as the rule's own words: a rule that conditions a harness
+change on garden's guidance holds that harness change, never a test case
+added under the existing harness. A failure that blocks nothing needs no
+hold, and ordinary local work never waits for garden.
 
 Give one notice per request, not one per failed call: once the person knows
 garden was not consulted in this request, a later failed call is not announced

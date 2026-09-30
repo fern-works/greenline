@@ -167,7 +167,7 @@ invoked: use another that fits, or report the missing capability.
 | Write or change tests | tdd |
 | Before writing code, does it need to exist | ponytail |
 | Design module interfaces and depth | codebase-design |
-| An open engineering choice the repository does not settle, where garden's published guidance would inform it | use-garden |
+| An open engineering choice the repository does not settle, made in a change or only recommended, where garden's published guidance would inform it | use-garden |
 | Parse inputs and handle boundary errors | boundary-discipline, fail-loud |
 | Model domain states and types | model-the-domain, type-system-discipline |
 | Adding concurrency, or an ordering bug | concurrency-method |

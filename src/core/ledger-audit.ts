@@ -72,21 +72,21 @@ export function auditLedgerWork(
           path: `.greenline/ledger/records/${record.id}.json`,
           message: `Application ${application.consultation} remains unverified: ${application.reason}`,
         });
+    const observed = [
+      ...new Set(
+        ledger.observedChanges
+          .filter((change) => change.record === record.id)
+          .flatMap((change) => change.paths),
+      ),
+    ].sort();
     if (record.role === "maintenance") {
-      const outside = [
-        ...new Set(
-          ledger.observedChanges
-            .filter((change) => change.record === record.id)
-            .flatMap((change) => change.paths)
-            .filter(
-              (path) =>
-                !["AGENTS.md", "CLAUDE.md", "agents/openai.yaml"].includes(path) &&
-                ![".greenline/", ".agents/skills/", ".claude/skills/"].some((prefix) =>
-                  path.startsWith(prefix),
-                ),
-            ),
-        ),
-      ].sort();
+      const outside = observed.filter(
+        (path) =>
+          !["AGENTS.md", "CLAUDE.md", "agents/openai.yaml"].includes(path) &&
+          ![".greenline/", ".agents/skills/", ".claude/skills/"].some((prefix) =>
+            path.startsWith(prefix),
+          ),
+      );
       if (outside.length > 0)
         findings.push({
           kind: "contradicted",
@@ -95,6 +95,22 @@ export function auditLedgerWork(
           message: `Maintenance accounting includes observed changes outside greenline's installed files: ${outside.join(", ")}. Link the contribution to its ticket and account for the actual work.`,
         });
     }
+    // An answer's planning account writes only itself and its consultation's receipts.
+    const beyond =
+      record.role === "planning" && record.work === null
+        ? observed.filter(
+            (path) =>
+              path !== `.greenline/ledger/records/${record.id}.json` &&
+              !path.startsWith(".greenline/ledger/receipts/"),
+          )
+        : [];
+    if (beyond.length > 0)
+      findings.push({
+        kind: "contradicted",
+        severity: "error",
+        path: `.greenline/ledger/records/${record.id}.json`,
+        message: `A planning account with no work records an answer and writes only itself and its receipts, but observed changes include: ${beyond.join(", ")}. Link the contribution to its ticket and account for the actual work.`,
+      });
     const owner = record.work === null ? undefined : byId.get(record.work.id);
     if (
       record.work !== null &&

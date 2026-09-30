@@ -19,7 +19,10 @@ with the same roots. A new owner request gets a new request, and a contributor
 opens its own under its own account. The agent chooses roots; the default is
 the account's explicit scopes. DECISIONS.md carries their root statements. No
 account owes a garden consultation; its receipts record what garden delivered
-when one was relevant.
+when one was relevant. An answer that consults garden, a recommendation that
+changes no file, has no ticket: it consults under a planning account with no
+`work`, created before its first call, which records the consultation and
+nothing else.
 
 The CLI writes one receipt collection per request in
 `.greenline/ledger/receipts/`, in collection schema 4. Its `source` is garden,
@@ -121,9 +124,13 @@ or `.greenline/ledger/evidence/<contribution>/` for standalone upkeep. Scratch
 files are promoted before a claim relies on them. Paths cannot escape the repo.
 
 Roles are implementation, planning, review, verification and maintenance.
-Maintenance without
-work covers upkeep of greenline's installed files only; code work has a ticket and implementation
-account. A compact ticket is its own intent and acceptance contract.
+Two may have no work: maintenance covers upkeep of greenline's installed files
+only, and planning without work covers an answer that consults garden and
+changes no file. Doctor reports as an error an observed change outside the
+installed files under the first, and under the second any observed change
+beyond its own record and `.greenline/ledger/receipts/`. Code work has a
+ticket and implementation account. A compact ticket is its own intent and
+acceptance contract.
 
 Commit the coherent implementation result, then finalize its evidence account:
 an account cannot contain the hash of the commit containing its final self-reference.

@@ -206,6 +206,15 @@ await row("name-boundary", () => {
     );
   }
 });
+// ROW: the settled Fernworks promises — this repository's private local copy
+// is present at the operator-approved digest recorded in docs/SPEC.md. The row
+// reads no sibling checkout, network or provider and is absent from --public.
+await row("fernworks-promises", async () => {
+  const { fernworksPromiseProblems } = await import("./lib/fernworks-promises.mjs");
+  const problems = fernworksPromiseProblems(".");
+  if (problems.length)
+    throw new Error(`Fernworks promises refused ${problems.length}: ${problems.join("; ")}`);
+});
 // ROW: every golden file on disk is tracked (CI on main was red for weeks:
 // the scratch rule `tmp/` hid each golden's managed .greenline/tmp/.gitignore
 // from git, so the checkout lacked a file the goldens test expects while
@@ -443,9 +452,6 @@ await row("board", async () => {
 // ROW: the dev policy size — AGENTS.md is measured and reported; the cap is
 // an extreme one that catches runaway growth, never a target (the operator's
 // ruling of 2026-09-12: semantic prose carries no word budget).
-// ROW: the site builds from the guide — greenline.dev's docs are
-// generated from guide/*.md (the single source of truth); a guide
-// edit that breaks the build or a link fails here, not in deploy.
 // ROW: the inspector's fonts module is generated from greenline's own
 // licensed copy under assets/inspect-fonts/, independent of the website's
 // files; the row renders the generator's output in memory and refuses
@@ -465,31 +471,6 @@ await row("inspect-fonts", async () => {
       "src/shell/inspect/fonts.ts differs from the generator's output; run node scripts/gen-inspect-fonts.mjs",
     );
 });
-// ROW: the site builds from the product's inputs (the decoupling plan's
-// contract T5): the exporter writes the site-input bundle into a directory
-// outside the checkout, and the build reads that bundle alone, never the
-// corpus, the ledger or Git.
-let siteInputs;
-await row("site-build", () => {
-  siteInputs = mkdtempSync(join(tmpdir(), "greenline-site-inputs-"));
-  execFileSync(process.execPath, ["scripts/export-site-inputs.mjs", "--out", siteInputs], {
-    encoding: "utf8",
-  });
-  execFileSync(process.execPath, ["scripts/build-site.mjs", "--from", siteInputs], {
-    encoding: "utf8",
-  });
-});
-// ROW: the site's provenance section (the ledger plan's stage D): every vendored skill's page is built, linked from the index, with every claimed and live hunk on it, read against the same bundle.
-await row("site-provenance", () => {
-  if (!existsSync("site/dist") || siteInputs === undefined)
-    return skip("no built site (the site-build row runs first)");
-  execFileSync(
-    process.execPath,
-    ["scripts/check-site-provenance.mjs", "site/dist", "--from", siteInputs],
-    { encoding: "utf8" },
-  );
-});
-if (siteInputs !== undefined) rmSync(siteInputs, { recursive: true, force: true });
 await row("agents-md-budget", () => {
   const words = readFileSync("AGENTS.md", "utf8").split(/\s+/).filter(Boolean).length;
   process.stdout.write(`  AGENTS.md: ${words} words (extreme cap 5000)\n`);
@@ -866,22 +847,6 @@ await row("consumer-package", () => {
   if (notRun) return skip(notRun[0]);
 });
 if (full) {
-  // ROW: the rendered site (the second refactor's ruling 42): every built route
-  // in headless Chrome at a phone width and a desktop width; a console error, a
-  // failed request, a horizontal overflow or a missing landmark fails it.
-  await row("site-render", () => {
-    if (!existsSync("site/dist")) return skip("no built site (the site-build row runs first)");
-    // The script exits with 3 where no browser stands (a machine without
-    // Chrome): unproven, named, and not a failure.
-    const run = spawnSync(process.execPath, ["scripts/check-site-render.mjs"], {
-      encoding: "utf8",
-    });
-    if (run.status === 3) return skip("no browser found; the site render is unproven here");
-    if (run.status !== 0)
-      throw new Error(
-        `check-site-render: ${(run.stderr || run.stdout).trim().split("\n").slice(-6).join("\n")}`,
-      );
-  });
   await row("cli-smoke", () => {
     if (!existsSync("src")) return skip("no sources yet (M1 not started)");
     const cliBundle = "dist/bin/greenline.mjs";

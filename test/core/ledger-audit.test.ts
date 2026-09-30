@@ -308,3 +308,53 @@ it("names a second implementation account for the same contributor on the same w
     ),
   ).toBe(false);
 });
+
+it("J-39 S1 refuses an observed change beyond its own account and its receipts under an answer's planning account with no work, where maintenance keeps its installed files", () => {
+  const answer = {
+    ...record.value,
+    id: "sanitizer-advice",
+    role: "planning" as const,
+    work: null,
+    resultCommit: undefined,
+    selections: [],
+    consultations: [],
+  };
+  const upkeep = { ...answer, id: "upkeep", role: "maintenance" as const };
+  const witness = { kind: "git" as const, base: "def5678", result: "abc1234" };
+  // The answer's own files: its account and the receipts its consultation writes.
+  const own = [
+    ".greenline/ledger/records/sanitizer-advice.json",
+    ".greenline/ledger/receipts/0b4c9a52-1d7e-4f3a-9c61-2f8e5d7a4b10.json",
+  ];
+  const audit = (paths: readonly string[]) =>
+    auditLedgerWork(
+      {
+        ...ledger,
+        records: [answer, upkeep],
+        observedChanges: [
+          { record: "sanitizer-advice", paths, witness },
+          { record: "upkeep", paths: [".greenline/DECISIONS.md"], witness },
+        ],
+      },
+      [],
+    );
+  // An answer that changed nothing, or only its own files, stands without an owning artifact.
+  expect(auditLedgerWork({ ...ledger, records: [answer] }, [])).toEqual([]);
+  expect(audit(own)).toEqual([]);
+  // Every other observed path is refused under the answer, a greenline file and another account among them.
+  for (const path of [
+    "src/app.ts",
+    ".greenline/DECISIONS.md",
+    ".greenline/ledger/records/upkeep.json",
+  ]) {
+    const findings = audit([...own, path].sort());
+    expect(findings).toEqual([
+      expect.objectContaining({
+        kind: "contradicted",
+        severity: "error",
+        path: ".greenline/ledger/records/sanitizer-advice.json",
+        message: expect.stringContaining(`observed changes include: ${path}.`),
+      }),
+    ]);
+  }
+});

@@ -61,11 +61,25 @@ describe("G3 contribution accounts", () => {
   });
 });
 
-it("accepts maintenance without an owning artifact and refuses a review or an implementation without one", () => {
-  expect(parseLedgerRecord(JSON.stringify({ ...input, role: "maintenance" }), "record")._tag).toBe(
-    "ok",
+it("J-39 S1 accepts maintenance and an answer's planning account without an owning artifact and refuses a review, an implementation or a verification without one", () => {
+  for (const role of ["maintenance", "planning"])
+    expect(parseLedgerRecord(JSON.stringify({ ...input, role }), "record")._tag).toBe("ok");
+  // The minimal recorded request: the fields an account needs, work null.
+  const answer = parseLedgerRecord(
+    JSON.stringify({
+      schemaVersion: 3,
+      id: "sanitizer-advice",
+      context: "local:sanitizer-advice",
+      actor: "agent",
+      role: "planning",
+      work: null,
+      scopes: ["."],
+    }),
+    "record",
   );
-  for (const role of ["review", "implementation"]) {
+  if (answer._tag === "err") throw answer.error;
+  expect(answer.value.work).toBeNull();
+  for (const role of ["review", "implementation", "verification"]) {
     const result = parseLedgerRecord(JSON.stringify({ ...input, role }), "record");
     expect(result._tag).toBe("err");
     if (result._tag !== "err") continue;

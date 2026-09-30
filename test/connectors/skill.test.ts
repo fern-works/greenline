@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
+import { parseLedgerRecord } from "../../src/core/execution-ledger.ts";
 import { splitManagedBlock } from "../../src/core/managed-block.ts";
 import type { Manifest } from "../../src/core/manifest.ts";
 import { POLICY_BLOCK_KEY, renderProjection } from "../../src/core/render.ts";
@@ -22,7 +23,7 @@ const installation = compiled.value;
 
 /** The one sentence the block carries for garden, and only while garden is enabled. */
 const POINTER =
-  "An open engineering choice the repository does not settle, where garden's published guidance would inform it";
+  "An open engineering choice the repository does not settle, made in a change or only recommended, where garden's published guidance would inform it";
 const URL = "https://garden.example/";
 /** Every file the skill installs across both harness trees. */
 const SKILL_FILES: readonly string[] = [
@@ -68,12 +69,17 @@ function installedBlock(root: string): string {
   return splitManagedBlock(read(root, "AGENTS.md"), POLICY_BLOCK_KEY).block ?? "";
 }
 
-/** The installed text of the skill, as a harness reads it. */
-function skillText(): string {
+/** The installed text of one of the skill's files, as a harness reads it. */
+function installedText(name: string): string {
   const file = renderProjection(ENABLED, installation).find(
-    (entry) => entry.path === ".claude/skills/use-garden/SKILL.md",
+    (entry) => entry.path === `.claude/skills/use-garden/${name}`,
   );
-  return (file?.content ?? "").replace(/\s+/g, " ");
+  return file?.content ?? "";
+}
+
+/** The installed text of the skill, whitespace folded. */
+function skillText(): string {
+  return installedText("SKILL.md").replace(/\s+/g, " ");
 }
 
 describe("use-garden in the corpus", () => {
@@ -237,6 +243,88 @@ describe("relevant against unnecessary lookups, on the installed text", () => {
     expect(row).toContain("Do not repeat the same call.");
     const access = text.slice(text.indexOf("| `unauthorized`"), text.indexOf("| `private-data`"));
     expect(access).not.toContain("private-data");
+  });
+});
+
+describe("J-39 S1: a recommendation consults under an answer's account, the hold stays narrow, and a consultation that cannot run is still attempted", () => {
+  /** The folded installed text from one marker up to the next, or to the end. */
+  function section(from: string, to?: string): string {
+    const text = skillText();
+    const start = text.indexOf(from);
+    expect(start, from).toBeGreaterThanOrEqual(0);
+    return text.slice(start, to === undefined ? text.length : text.indexOf(to, start));
+  }
+  const relevant = () => section("## When a consultation is relevant", "These trigger no read:");
+  const failing = () => section("## When a consultation fails");
+
+  it("the routing row and the skill's rule carry one condition: a request for a recommendation alone is consultable", () => {
+    const row = installation.intents.find((entry) => entry.skills.includes("use-garden"));
+    expect(row?.intent).toContain("made in a change or only recommended");
+    expect(relevant()).toContain(
+      "A request that asks only for a recommendation on such a choice is consultable like a change that makes it",
+    );
+    // The factual question, the settled change and the light path still read nothing.
+    const skip = section("These trigger no read:", "## What must be in place");
+    expect(skip).toContain(
+      "a factual question about this repository: inspect its files and answer",
+    );
+    expect(skip).toContain("a change whose choices are already settled, the light path among them");
+  });
+
+  it("the block's rule against accounting merely to answer covers a factual question only, and a recommendation is still not acted on", () => {
+    expect(relevant()).toContain(
+      "The block's rule against retrieving guidance or creating accounting merely to answer covers a factual question about this repository only.",
+    );
+    expect(relevant()).toContain("It is still answered, not acted on");
+  });
+
+  it("a consultation that was not made is never announced", () => {
+    expect(
+      section("Enabling permits relevant consultation.", "## What must be in place"),
+    ).toContain("Never announce or imply a consultation that was not made.");
+  });
+
+  it("the skill names the minimal recorded request, a planning account with no work artifact, and no longer turns an answer away", () => {
+    const account = section("**An execution account.**", "You never enable");
+    expect(account).toContain("a planning account with no work artifact");
+    expect(account).toContain('`"role": "planning"`, `"work": null`');
+    expect(account).toContain(
+      "doctor reports as an error any observed file change under it beyond the account and its receipts",
+    );
+    expect(skillText()).not.toContain(
+      "Work with no account, an answer or a light fix, consults nothing",
+    );
+  });
+
+  it("the answer's account the operations page shows is one the ledger admits: planning, no work", () => {
+    const page = installedText("operations.md");
+    const example = /## An answer's account[\s\S]*?```json\n([\s\S]*?)```/.exec(page)?.[1];
+    expect(example).toBeDefined();
+    const parsed = parseLedgerRecord(example ?? "", "operations.md");
+    if (parsed._tag === "err") throw parsed.error;
+    expect(parsed.value).toMatchObject({ role: "planning", work: null });
+  });
+
+  it("the hold covers only the action the missing guidance governs, the harness rule's own example stated, and ordinary local work continues", () => {
+    const text = failing();
+    expect(text).toContain("hold only the action that guidance governs");
+    expect(text).toContain(
+      "a rule that conditions a harness change on garden's guidance holds that harness change, never a test case added under the existing harness",
+    );
+    expect(text).toContain("ordinary local work never waits for garden");
+    expect(text).not.toContain("hold the action that depends on it");
+  });
+
+  it("a relevant consultation that cannot run is still attempted through the connector, with or without an account before it, so its failure is a receipt", () => {
+    const text = failing();
+    expect(text).toContain(
+      "A relevant consultation is attempted even when garden looks unavailable.",
+    );
+    expect(text).toContain(
+      "under the work's account, or an answer's planning account created for it",
+    );
+    expect(text).toContain("so the failure is recorded as a receipt with its kind");
+    expect(text).toContain("with one notice and no permission question");
   });
 });
 

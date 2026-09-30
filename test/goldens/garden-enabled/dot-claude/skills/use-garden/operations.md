@@ -30,6 +30,27 @@ anything. The six operations:
 - `--context <id>` must match the account's context when given; `--call <id>`
   records the harness's own tool-call identity when it has one.
 
+## An answer's account
+
+A recommendation that changes no file consults under a planning account with
+no work artifact, written as `.greenline/ledger/records/<id>.json` before the
+first `--record` call:
+
+```json
+{
+  "schemaVersion": 3,
+  "id": "sanitizer-advice",
+  "context": "local:sanitizer-advice",
+  "actor": "agent",
+  "role": "planning",
+  "work": null,
+  "scopes": ["."]
+}
+```
+
+Its receipts are generated like any request's, and its `guidanceAnnotations`
+say what the recommendation took from each unit read.
+
 ## The reply
 
 A success is one JSON document on stdout with exit status 0. It names the

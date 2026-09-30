@@ -40,7 +40,6 @@
     "lint": "oxlint .",
     "test": "vitest run --passWithNoTests",
     "skills:sync": "node scripts/skills-sync.mjs",
-    "site": "node scripts/build-site.mjs",
     "release": "node scripts/release.mjs"
   },
   "dependencies": {

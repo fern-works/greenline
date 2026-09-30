@@ -5,6 +5,7 @@
     ".claude/**",
     "workshop/skills/tool-*/**",
     "corpus/upstream/**",
+    "docs/FERNWORKS-PROMISES.md",
     "test/goldens/**",
     "tools/oxlint/anti-slop/**",
     "AGENTS.md",

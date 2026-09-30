@@ -568,8 +568,8 @@
       "name": "use-garden",
       "class": "discipline",
       "ledger": {
-        "id": "use-garden-2026-09-26",
-        "revision": "75d2a76310265e1a317fa0d79d2383824b590fb5fc119746b9a035543317d652"
+        "id": "use-garden-answers-2026-09-28",
+        "revision": "1781745ed091dde2c37961b37a9f1bb7cf058a8339692f7a9855ea069b0eb475"
       }
     }
   ],
@@ -667,7 +667,7 @@
       "skills": ["codebase-design"]
     },
     {
-      "intent": "An open engineering choice the repository does not settle, where garden's published guidance would inform it",
+      "intent": "An open engineering choice the repository does not settle, made in a change or only recommended, where garden's published guidance would inform it",
       "skills": ["use-garden"]
     },
     {

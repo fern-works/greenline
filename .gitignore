@@ -16,4 +16,3 @@ tmp/
 !test/goldens/**/tmp/.gitignore
 
 # Agentic QA raw output (reports stay committed)
-site/dist/

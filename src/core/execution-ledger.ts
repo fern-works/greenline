@@ -96,8 +96,13 @@ const guidanceAnnotationSchema = z
     (entry) => entry.decision !== "exception" || entry.authority !== undefined,
     "an exception needs its authority",
   );
-/** The one role a record may carry with no owning artifact: upkeep of the installed files. */
-const WORKLESS_ROLES: readonly LedgerRecord["role"][] = ["maintenance"];
+/**
+ * The roles a record may carry with no owning artifact: upkeep of the
+ * installed files, and an answer's planning account, the minimal recorded
+ * request an answer consults under; the ledger audit refuses an observed
+ * change outside what each allows.
+ */
+const WORKLESS_ROLES: readonly LedgerRecord["role"][] = ["maintenance", "planning"];
 const recordSchema: z.ZodType<LedgerRecord> = z
   .object({
     schemaVersion: z.literal(3),
@@ -129,7 +134,7 @@ const recordSchema: z.ZodType<LedgerRecord> = z
   .superRefine((record, context) => {
     const problem = (path: string, message: string): void =>
       context.addIssue({ code: "custom", path: [path], message });
-    // Upkeep has no owning artifact; every other role names its work.
+    // Upkeep and an answer have no owning artifact; every other role names its work.
     if (record.work === null && !WORKLESS_ROLES.includes(record.role))
       problem("work", "this contribution needs its owning artifact");
     if (new Set(record.selections.map((entry) => entry.id)).size !== record.selections.length)

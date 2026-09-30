@@ -49,7 +49,10 @@ function enabled(prefix: string): GardenWorkspace {
   return garden;
 }
 
-/** The request collections a workspace holds, each file's text. */
+/**
+ * The request collections a workspace holds, each file's text, read when no
+ * write is in flight: every entry, so a stray temporary file is read too.
+ */
 function receiptFiles(root: string): readonly string[] {
   const directory = join(root, ".greenline/ledger/receipts");
   return existsSync(directory)
@@ -57,7 +60,38 @@ function receiptFiles(root: string): readonly string[] {
     : [];
 }
 
-/** The one request a workspace holds. */
+/** A file or directory that is not there, or no longer there. */
+const vanished = z.object({ code: z.literal("ENOENT") });
+
+/**
+ * The sealed request collections a workspace holds while another process may
+ * still be writing them, each file's text. The writer puts a collection at
+ * `<id>.json` through a temporary `.<id>.json.<uuid>.tmp` renamed into place,
+ * so only a collection's own name is read, never a dot-prefixed or temporary
+ * one, and an entry gone between the listing and the read is not yet there.
+ */
+function sealedReceiptFiles(root: string): readonly string[] {
+  const directory = join(root, ".greenline/ledger/receipts");
+  let names: readonly string[];
+  try {
+    names = readdirSync(directory);
+  } catch (error) {
+    if (vanished.safeParse(error).success) return [];
+    throw error;
+  }
+  const texts: string[] = [];
+  for (const name of names) {
+    if (name.startsWith(".") || !name.endsWith(".json")) continue;
+    try {
+      texts.push(readFileSync(join(directory, name), "utf8"));
+    } catch (error) {
+      if (!vanished.safeParse(error).success) throw error;
+    }
+  }
+  return texts;
+}
+
+/** The one request a workspace holds, read when no write is in flight: any other entry fails it. */
 function only(garden: GardenWorkspace) {
   const directory = join(garden.root, ".greenline/ledger/receipts");
   const names = existsSync(directory) ? readdirSync(directory) : [];
@@ -208,6 +242,65 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(runs(garden)).toEqual([]);
   });
 
+  it("J-39 S1 an answer's planning account with no work owns a request: a read and, with the client gone, its missing-executable failure are recorded under it, and doctor refuses nothing", async () => {
+    const garden = enabled("answer");
+    const answer = "sanitizer-advice";
+    // The minimal recorded request an answer consults under: planning, no work artifact.
+    writeFileSync(
+      join(garden.root, `.greenline/ledger/records/${answer}.json`),
+      `${JSON.stringify({
+        schemaVersion: 3,
+        id: answer,
+        context: `local:${answer}`,
+        actor: "agent",
+        role: "planning",
+        work: null,
+        scopes: ["."],
+      })}\n`,
+    );
+    const owner = { record: answer, context: `local:${answer}`, role: "planning", work: null };
+    const delivered = await call(garden, ["read", "--record", answer, "--id", "example-rule"], {
+      key: "synthetic-key",
+    });
+    expect(delivered.code).toBe(0);
+    expect(delivered.out).toContain(BODY);
+    const bound = stored(garden, delivered.reply.request ?? "");
+    expect(bound.owner).toEqual(owner);
+    expect(bound.binding).toEqual({ state: "publication", origin: ENDPOINT, snapshot: A });
+    expect(bound.receipts[0]).toMatchObject({ operation: "read", outcome: "received" });
+    // The client gone: the attempt still records its typed failure under the same account.
+    const absent = join(garden.bin, "no-such-garden");
+    expect(
+      run(garden.root, [
+        "connectors",
+        "enable",
+        "garden",
+        "--url",
+        ENDPOINT,
+        "--executable",
+        absent,
+      ]).code,
+    ).toBe(0);
+    const missing = await call(garden, ["snapshot", "--record", answer]);
+    expect(missing.code).toBe(1);
+    expect(missing.reply.error?.kind).toBe("missing-executable");
+    const failed = stored(garden, missing.reply.request ?? "");
+    expect(failed.owner).toEqual(owner);
+    expect(failed.receipts[0]).toMatchObject({
+      outcome: "failed",
+      units: [],
+      error: { kind: "missing-executable" },
+    });
+    evidenceKept(garden);
+    const doctor = JSON.parse(run(garden.root, ["doctor", "--json"], { environment: {} }).out);
+    expect(doctor.diagnostics.filter((d: { severity: string }) => d.severity === "error")).toEqual(
+      [],
+    );
+    expect(doctor.ledger.records).toEqual(
+      expect.arrayContaining([{ id: answer, role: "planning", work: null, resultCommit: null }]),
+    );
+  });
+
   it("an old client: an older garden that refuses the command line is recorded as its refusal, never a success", async () => {
     const garden = enabled("old-client");
     await failsAs(garden, ["snapshot"], "old-client", "invalid-request");
@@ -329,14 +422,11 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     child.stderr.on("data", (chunk: Buffer) => {
       stderr += chunk.toString("utf8");
     });
-    // Wait until the pending receipt is on disk: the interrupt handler is set before it is written,
-    // and whether garden has started or not, an interrupt from here on cancels the call.
-    const receipts = join(garden.root, ".greenline/ledger/receipts");
+    // Wait until the pending receipt is sealed on disk: the interrupt handler is set before it is
+    // written, and whether garden has started or not, an interrupt from here on cancels the call.
+    // greenline is still writing while this polls, so the poll reads only sealed collections.
     const pending = (): boolean =>
-      existsSync(receipts) &&
-      readdirSync(receipts).some((name) =>
-        readFileSync(join(receipts, name), "utf8").includes('"outcome": "pending"'),
-      );
+      sealedReceiptFiles(garden.root).some((text) => text.includes('"outcome": "pending"'));
     for (let tries = 0; tries < 800 && !pending(); tries += 1)
       await new Promise((resolve) => setTimeout(resolve, 25));
     expect(pending()).toBe(true);
