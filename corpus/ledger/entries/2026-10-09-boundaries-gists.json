@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-boundaries-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-deep-modules-gists",
+    "sha256": "156d0605fbed84918821177e319873f0f86951799cdce675575317f51d3d38c0"
+  },
+  "subject": "skill:boundaries",
+  "recipe": "df20350e0d060159d1f18b7636cb4a0daf143dc75ab490c7e7b3eafd6402b9ba",
+  "result": "60cf1161f5a30a84d49837b7e031349bc648362ca1343ed02775985899e7f469",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: boundary-discipline and fail-loud are one habit, boundary-discipline its spine"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 35,
+        "taken": 34,
+        "exact": 34,
+        "retention": 1,
+        "coverage": 0.9714285714285714,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 30,
+        "taken": 29,
+        "exact": 29,
+        "retention": 1,
+        "coverage": 0.9666666666666667,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 115
+  }
+}

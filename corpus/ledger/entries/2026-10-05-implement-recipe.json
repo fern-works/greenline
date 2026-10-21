@@ -1,0 +1,31 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-implement-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-grill-with-docs-recipe",
+    "sha256": "7f8e1021a201fbc9ac2a61848ec896634d06e02136e85bb155b6feeaa5b090ef"
+  },
+  "subject": "skill:implement",
+  "recipe": "e5aad91a7c5b9171a4b98622d5987305c9604625c228cd63176b402102ac4130",
+  "result": "e4d97fcbd396a20c8bdac8aa5a63df4d5d3c4148b399de2e22a1dd8a031f5f11",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves implement to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at review-contracts-2026-09-26.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+    },
+    {
+      "date": "2026-09-11",
+      "words": "its method items carry the operator's ruling of 2026-09-11 (review-contracts-2026-09-26), in the operator's words \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": true,
+    "sources": [],
+    "growth": 751
+  }
+}

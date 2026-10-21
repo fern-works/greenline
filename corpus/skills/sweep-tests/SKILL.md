@@ -5,7 +5,9 @@ description: "Prune or audit a test suite with mutation proof, as its own announ
 
 # Test value sweep
 
-This skill is a standing program, not an initiative stage. It fires by name, when tests break on refactors that change no behavior, when coverage is high but defects still ship, or when production code carries seams only tests use, and it runs on a green suite in its own dedicated ticket, never inside another ticket's build. A red check goes to diagnosing-bugs; the review of the sweep's committed result is delivery-review's. It deletes nothing it has not proved by mutation, adds no test, and never certifies its own review.
+Sweep tests is the start for a test suite that needs pruning or an audit. It fires by name, when tests break on refactors that change no behavior, when coverage is high but defects still ship, or when production code carries seams only tests use, and it runs on a green suite as a change of its own, never inside another change's build: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming sweep-tests, and run the line from `frame`, the sweep itself being the change's build. Propose regular or above, since the sweep's result is reviewed by an agent other than the sweeper only where the review step runs independent; where the owner chooses quick, no review runs, and the close section names that limit. A red check goes to diagnose. It deletes nothing it has not proved by mutation, adds no test, and never certifies its own review without naming that limit.
+
+Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.
 
 A test must justify its presence. A test that changes when the implementation
 changes, while the behavior stays the same, asserts implementation. Delete it.
@@ -18,12 +20,12 @@ those tests demanded them. When the test goes, the seam goes with it.
 **Run this only when the suite is green.**
 
 A red check makes test deletion fraud, not maintenance. When a check is red,
-repair the source through diagnosing-bugs, and restart the sweep from the top
+repair the source through diagnose, and restart the sweep from the top
 once the suite is green again. You may not touch a test at all until the suite
 is green again.
 
-This skill is a separate task with its own ticket in `.greenline/work/tickets/`.
-Announce it. Never run it inside another ticket's build.
+This skill is a separate change with its own change record.
+Announce it. Never run it inside another change's build.
 
 ## Prove each deletion
 
@@ -96,8 +98,8 @@ configuration string or a plugin registry is invisible to your grep. **A sweep
 without a score has proved nothing. A sweep with one has proved something
 narrow.** Say which.
 
-Write the before-report and the after-report to different paths under the
-sweep ticket's evidence home, `.greenline/work/evidence/TKT-NNN/`. A runner
+Write the before-report and the after-report to different paths in the
+sweep change's folder. A runner
 that overwrites its own baseline leaves you unable to find the mutant you lost.
 
 **A runner that reports per-test identities names one killer for each mutant:
@@ -176,12 +178,12 @@ The table lists each test you deleted and each seam you removed. Prose is not
 the report.
 
 The baselines, the identified survivors and kills, both reports, the table and
-the resulting checks stay with the sweep's ticket under its evidence home, and
+the resulting checks stay with the sweep's change in its folder, and
 acceptance is judged against those measurements: an aggregate score alone
 cannot prove that each baseline mutant remains killed. The sweep is
-implementation work. Commit its result under the ticket and hand it to
-delivery-review like any implementation; the sweeper never writes its own
-review record.
+implementation work. Commit its result with the change's trailer for its
+review step, like any build; no review runs only
+where the owner chose quick, and the close section names that limit.
 
 ## Don't
 
@@ -202,6 +204,6 @@ review record.
 
 ## Handoff
 
-Consumes: a green suite and the sweep's own ticket at ready
-Produces: the before and after mutation reports at different paths, the deletion and seam table, and the baselines and kills, under .greenline/work/evidence/TKT-NNN/; the ticket at implementing then implemented with its committed result
-Next: delivery-review reviews the sweep's ticket like any implementation
+Consumes: a green suite and the request to sweep it
+Produces: the before and after mutation results at different paths, the deletion and seam table, and the baselines and kills, in the change's folder under .greenline/ledger/<id>/; the sweep committed as the change's build
+Next: frame, under the mode the owner approves; the sweep is the change's build, and review and verify follow at the depths its mode gives

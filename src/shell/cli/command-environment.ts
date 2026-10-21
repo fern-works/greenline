@@ -8,7 +8,7 @@ export interface CliEnvironment {
   readonly installation: Installation;
   readonly prompt?: PromptPort;
   /**
-   * The process environment, read by status and doctor for a connector's
+   * The process environment, read by status for a connector's
    * `PATH` and the presence of its key variable, never a value; absent, as
    * in a test that gives none, it is an empty environment.
    */

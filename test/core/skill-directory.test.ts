@@ -4,7 +4,8 @@ import type { SkillFile } from "../../src/core/skill.ts";
 
 const entry = {
   name: "delivery-review",
-  class: "stage" as const,
+  kind: "step",
+  slot: "review",
   activation: "explicit" as const,
 };
 
@@ -62,7 +63,8 @@ describe("skillFromDirectory", () => {
     expect(result.value).toEqual({
       name: "delivery-review",
       description: "Review the diff.",
-      class: "stage",
+      kind: "step",
+      slot: "review",
       activation: "explicit",
       body: "# Review\n\nRead the range.\n",
       supportFiles: [
@@ -72,12 +74,15 @@ describe("skillFromDirectory", () => {
     });
   });
 
-  it("carries the opt-in tag only when the entry sets it", () => {
+  it("S16a carries the extra and trial flags only when the entry sets them", () => {
     const files = directory('---\nname: "delivery-review"\ndescription: "d"\n---\n\nbody');
     const plain = skillFromDirectory(entry, files);
-    const tagged = skillFromDirectory({ ...entry, optIn: true }, files);
-    expect(plain._tag === "ok" && plain.value.optIn).toBeUndefined();
-    expect(tagged._tag === "ok" && tagged.value.optIn).toBe(true);
+    const tagged = skillFromDirectory({ ...entry, extra: true, trial: true }, files);
+    expect(plain._tag === "ok" && ["extra" in plain.value, "trial" in plain.value]).toEqual([
+      false,
+      false,
+    ]);
+    expect(tagged._tag === "ok" && [tagged.value.extra, tagged.value.trial]).toEqual([true, true]);
   });
 
   it("refuses a frontmatter name that differs from the roster name", () => {

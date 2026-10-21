@@ -16,40 +16,26 @@ anything. The six operations:
 
 ## The flags every operation takes
 
-- `--record <account>` opens a new request owned by that execution account;
-  `--request <handle>` continues one. Exactly one of the two is given.
+- `--change <id>` opens a new request that serves that open or stopped change;
+  `--request <handle>` continues one. A question's consultation gives neither
+  on its first call, and a continuation gives `--request` alone.
 - `--snapshot <publication>` on the first call of a new request reads an
   exact, historical publication; without it the first call asks for the
   current one. `snapshot` takes `--id` instead.
 - `--root <path>` names a governed root, repeatable; the default is the
-  account's scopes. The roots decide which exclusions apply.
+  repository root. The roots decide which exclusions apply.
 - `--max-units`, `--max-bytes` and `--timeout-ms` set the request's budget
   when it opens: each read delivers at most 16 units and 262144 content
   bytes, and each call ends within 30000 ms. A continuation cannot change
   them.
-- `--context <id>` must match the account's context when given; `--call <id>`
-  records the harness's own tool-call identity when it has one.
+- `--call <id>` records the harness's own tool-call identity when it has one.
 
-## An answer's account
+## A question's consultation
 
-A recommendation that changes no file consults under a planning account with
-no work artifact, written as `.greenline/ledger/records/<id>.json` before the
-first `--record` call:
-
-```json
-{
-  "schemaVersion": 3,
-  "id": "sanitizer-advice",
-  "context": "local:sanitizer-advice",
-  "actor": "agent",
-  "role": "planning",
-  "work": null,
-  "scopes": ["."]
-}
-```
-
-Its receipts are generated like any request's, and its `guidanceAnnotations`
-say what the recommendation took from each unit read.
+A recommendation that changes no file names no change: its first call gives
+neither `--change` nor `--request`. Its receipts are generated like any
+request's, and the reply says what the recommendation took from each unit
+read, by the consultation ids the read returned.
 
 ## The reply
 
@@ -58,7 +44,7 @@ A success is one JSON document on stdout with exit status 0. It names the
 `supportingReceipts` (the listing that expanded an excluded responsibility
 group),
 the `consultations` a read produced, each a unit id and the consultation id
-the account's annotations use, and the `result` garden returned, with the
+the change's sections cite, and the `result` garden returned, with the
 unit bodies for a read. The result is shown once and is never stored.
 
 A refusal or failure is one JSON document on stderr with exit status 1,
@@ -84,9 +70,12 @@ runs.
 | `process`            | the command ended without a reply, or could not start                                 |
 | `output-cap`         | the command printed more than 2 MiB                                                   |
 | `protocol`           | the reply was not one valid garden result for the call made                           |
-| `configuration`      | garden is disabled, the account differs, or the policy or endpoint changed            |
+| `configuration`      | garden is disabled, the change is not open or stopped, or the policy or endpoint changed            |
 | `evidence`           | the receipt could not be written or confirmed, so the call is not recorded            |
 
 The receipts are generated under `.greenline/ledger/receipts/`, one
 collection per request. Never edit one by hand; `.greenline/ledger/README.md`
-says what they hold and what the account adds.
+says what they hold and where a change's sections name what a consultation
+changed.
+
+The decisions book, whose root statements the facets of a `list` derive from, is `.greenline/DECISIONS.md`; the ledger guide, `.greenline/ledger/README.md`, says how a change's sections name what a consultation changed.

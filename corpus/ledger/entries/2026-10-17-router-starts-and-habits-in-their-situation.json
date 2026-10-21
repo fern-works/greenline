@@ -1,0 +1,66 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-17-router-starts-and-habits-in-their-situation",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-17-review-brief-read-at-inline-only",
+    "sha256": "5c56952a54aff9cb8504e8a9911098f21c9889972655a9a825976f3f8db56e8d"
+  },
+  "subject": "skill:router",
+  "recipe": "402021e82f6e46737c5f7a5c7ead71198e9000ebcf4d94072552b9694131820e",
+  "result": "c7283771a1442c5d8c0d07e19b7a3f1caa71f2a36c85b6b0c3046ef569b741ff",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Starts and habits load only in their rows' situations",
+  "reason": "The router loads a start or a habit only in its row's situation, secrets with a secret in reach, and a session with nothing to resume asks for the request, since QA runs loaded both outside their situations.",
+  "authorisedBy": {
+    "date": "2026-10-17",
+    "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1440
+  }
+}

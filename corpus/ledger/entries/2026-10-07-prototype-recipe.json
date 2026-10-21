@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-prototype-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-delivery-review-recipe",
+    "sha256": "5635016282d923fa9ea5d7e229dd94e2489055d639ad643c65b7350799b12539"
+  },
+  "subject": "skill:prototype",
+  "recipe": "b954ef13b66d49463b8f84d5ca53bb3ca2309ce1585b57d6dff97c1ba66fa785",
+  "result": "330881c0370e63cf08b8e524080816b88b573ca2a1dce15cc41fbc459e5c89d3",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves prototype to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at roster-keepers-fix-2026-09-15.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 198,
+        "taken": 194,
+        "exact": 194,
+        "retention": 1,
+        "coverage": 0.9797979797979798,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 450
+  }
+}

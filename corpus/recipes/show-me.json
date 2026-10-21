@@ -1,0 +1,174 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "show-me",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "show-me"
+    },
+    {
+      "field": "description",
+      "value": "Explain the current topic visually in the reply: pseudocode, call trees, component trees, shallow file trees, shape diffs, and diagrams or a one-file HTML view where a renderer exists. Use whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison, or a change to an existing shape, and whenever the owner asks to be shown."
+    }
+  ],
+  "sources": ["humanlayer"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Show me\n\nshow-me is the habit for the moment a reply would walk through a flow, a hierarchy, a state machine, a comparison or a change to an existing shape, and for the owner asking to be shown, at whatever step the work is in or in a plain answer. It applies on your own judgment, unasked, and it writes no record of its own: the visual sits in the reply, beside the answer, in a form the current client renders, and earns its place only when it makes the explanation clearer. Answer first, then show: the prose habit governs the claim and the prose around the visual. A durable diagram the owner did not ask for is offered in one line. On the ask or the yes, `diagram-design` (extra, installs on request) draws it where it is installed; where it is not, offer it as AGENTS.md says, or draw the diagram as text into the repository's existing docs home.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the habit's own voice: the situations its block row keys it by, that it applies unasked and writes no record of its own, the visual living in the reply; the prose habit beside it for the claim; and a durable diagram offered in one line, drawn by diagram-design where it is installed and offered as the block offers an extra where it is not, or drawn as text into the repository's docs home. Re-cut at S18b: the prose habit replaces answer-plainly and unslop, which S18a merged into it, show-me stays implicit against upstream's explicit-only invocation (R22), and the extra is marked as the block marks it.",
+          "gist": "Opens the habit: visuals sit in the reply; durable diagrams are offered"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "humanlayer",
+          "file": "show-me/SKILL.md",
+          "segments": [
+            "409e74262701",
+            "41bb6bde6cb5",
+            "ec4661376caf",
+            "7afb81517faf",
+            "061619cab453",
+            "20494bcd029b",
+            "a7afbaa581a3",
+            "4e4f52d0ce4c",
+            "31205d5176c1",
+            "0f9f07ba535d",
+            "a8c138402ed3"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "humanlayer",
+          "file": "show-me/SKILL.md",
+          "segments": [
+            "28829459db32",
+            "f58baa2a7307",
+            "52378459ba16",
+            "2a8cf6a62c92",
+            "ed4084d2ba8b",
+            "780f0e1ff77f",
+            "4bf1d6e4776b",
+            "48a9d4b5cf49",
+            "10324c98140f",
+            "2f876d7507d1",
+            "4b28ec6b1e0b",
+            "ccd51ed85b3a",
+            "bfae26a9bb8c",
+            "410f1a07d279"
+          ],
+          "edits": [
+            {
+              "segment": "bfae26a9bb8c",
+              "find": "Mermaid, write one focused HTML file —",
+              "replace": "a text view, write one focused HTML file,",
+              "kind": "home",
+              "reason": "the HTML bullet keeps its file in the change's working files under .greenline/tmp/<id>/ and a plain answer's outside the repository, and compares density against a text view instead of the Mermaid option the copy removed because neither harness renders it",
+              "gist": "HTML views go in working files; a text view replaces Mermaid"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "During a change the file is one of the change's working files; a plain answer writes it outside the repository. Then open it for the user with the harness's shell tool:",
+          "kind": "home",
+          "reason": "The HTML bullet keeps its file in the change's working files under .greenline/tmp/<id>/, and a plain answer's outside the repository, and compares density against a text view instead of the Mermaid option the copy removed because neither harness renders it. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The HTML file goes in working files, or outside the repository",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "```\nopen .greenline/tmp/<id>/{description}.html\n```",
+          "kind": "harness",
+          "reason": "Upstream's Bash(open ...) is Claude Code's tool-call notation; the copy shows the plain shell command the harness's shell tool runs, at the change's working files.",
+          "gist": "Shows the plain open command, not Claude Code's tool-call notation"
+        },
+        {
+          "passage": "taken",
+          "source": "humanlayer",
+          "file": "show-me/SKILL.md",
+          "segments": [
+            "0644f427b1e2",
+            "96f78224f2aa",
+            "dea6a70df0f0",
+            "45dfbd50616f",
+            "64c1309efeec"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Durable output: none. The visual lives in the reply, and an HTML view in the change's working files under `.greenline/tmp/<id>/`, deleted when the change closes.",
+          "kind": "scope",
+          "reason": "The habit's closing line agrees with the opening paragraph: nothing durable, the visual in the reply and an HTML view in the change's working files; the durable diagram's offer is the opening paragraph's.",
+          "gist": "The closing line agrees: nothing durable, the visual in the reply"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Show me: the practice's mechanics\n\nThis page holds where show-me's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nDuring a change a page is a working file under `.greenline/tmp/<id>/`, such as `.greenline/tmp/<id>/{description}.html`.",
+          "kind": "home",
+          "reason": "show-me's mechanics: the working files a page sits in during a change, held apart since J-93 S2.",
+          "gist": "The working files a page sits in"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "humanlayer",
+      "file": "show-me/SKILL.md",
+      "segment": "32d1a14e9585",
+      "kind": "harness",
+      "reason": "mermaid renders in neither harness TUI, so the worked sequenceDiagram taught a form the reader cannot see.",
+      "gist": "Mermaid renders in neither terminal client, so its worked diagram goes"
+    },
+    {
+      "source": "humanlayer",
+      "file": "show-me/SKILL.md",
+      "segment": "97c3b975f3e6",
+      "kind": "harness",
+      "reason": "mermaid renders in neither harness TUI, so the worked sequenceDiagram taught a form the reader cannot see.",
+      "gist": "Mermaid renders in neither terminal client, so its worked diagram goes"
+    },
+    {
+      "source": "humanlayer",
+      "file": "show-me/SKILL.md",
+      "segment": "931ec3e2b418",
+      "kind": "home",
+      "reason": "the HTML bullet keeps its file in the change's working files under .greenline/tmp/<id>/ and a plain answer's outside the repository, and compares density against a text view instead of the Mermaid option the copy removed because neither harness renders it",
+      "gist": "HTML views go in working files; a text view replaces Mermaid"
+    },
+    {
+      "source": "humanlayer",
+      "file": "show-me/SKILL.md",
+      "segment": "fc2344df683f",
+      "kind": "harness",
+      "reason": "Upstream's Bash(open ...) is Claude Code's tool-call notation; the copy shows the plain shell command the harness's shell tool runs, at the greenline scratch path.",
+      "gist": "The plain shell command replaces Claude Code's Bash(open) notation"
+    }
+  ]
+}

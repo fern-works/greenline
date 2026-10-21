@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-attack-the-premise",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-fix-root-causes",
+    "sha256": "5968571ae9f1ce4389e795646290ee2f0c9e388cf89b50202185e04b43c1beac"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-attack-the-premise"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Write the premise down after two failed fixes",
+  "reason": "After two failed fixes that share a premise, the premise is written down before a third, beside systematic-debugging's stop in the re-cut diagnosing-bugs recipe.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 15)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 15)"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "diagnosing-bugs",
+    "catches": "A fix applied where a failure surfaces, before its cause is found, or stacked on a premise earlier fixes disproved",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

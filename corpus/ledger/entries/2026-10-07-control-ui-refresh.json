@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-control-ui-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-control-cli-refresh",
+    "sha256": "507ebc8c03aa5a018dab7bb35db255d22c9f5c970bd1f22fb28e7e71310f0a37"
+  },
+  "subject": "skill:control-ui",
+  "recipe": "e409208561acd6fb49a3697014abc433e9e1c42ba3abeaa47bd404f63fee06ea",
+  "result": "3087072ef3bb21a876af114a3c8496324eca6506b4dc189d07de944fa578bdad",
+  "pages": [],
+  "gist": "Upstream unchanged; the licence now comes from the plugin directory",
+  "reason": "Refreshes control-ui to cursor-team-kit d0ef80d86795: no segment changed, so the recipe re-anchors as it stands. The repository root has no licence file, so the snapshot's LICENSE is the plugin directory's own, byte-identical to before.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 53,
+        "taken": 52,
+        "exact": 50,
+        "retention": 0.9615384615384616,
+        "coverage": 0.9811320754716981,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 199
+  }
+}

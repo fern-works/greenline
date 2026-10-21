@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-code-simplification",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-ponytail-ponytail-debt",
+    "sha256": "201265fbd905b53b6248cc1ec6507eb630877948d71ef47539ea2f2bd013e5ee"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/code-simplification"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Three simplification rules join ponytail; language notes go to garden",
+  "reason": "Chesterton's fence, the exact-behavior check and refactor-apart-from-feature enter the re-cut ponytail recipe, against the agent instructions file and the repository's conventions. Its language section goes to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21; contradictions 24 to 26)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21; contradictions 24 to 26)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its language section",
+        "locator": "skills/code-simplification/SKILL.md, \"Language-Specific Guidance\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "ponytail",
+    "catches": "Code that did not need to exist, added because nobody asked whether it did",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 350
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 350
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 350
+      }
+    ],
+    "ships": "default"
+  }
+}

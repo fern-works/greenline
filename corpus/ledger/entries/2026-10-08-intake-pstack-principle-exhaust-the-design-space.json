@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-exhaust-the-design-space",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-brainstorming",
+    "sha256": "504921d7056d57d3aa2c5797abfbf3e4811d41bdf5399b809e1005d8ac989305"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-exhaust-the-design-space"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Strengthens prototype's rule that variants differ in structure",
+  "reason": "Its trigger and exclusions strengthen prototype's rule that variants are structurally different, as a correction of the owner's own method.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "prototype",
+    "catches": "A novel design built in its first shape because no alternative was sketched",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 220
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 220
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 220
+      }
+    ],
+    "ships": "default"
+  }
+}

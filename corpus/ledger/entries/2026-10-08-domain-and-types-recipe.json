@@ -1,0 +1,54 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-domain-and-types-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-deep-modules-recipe",
+    "sha256": "d3469cb7cb8d23deda9667a10b42589873347fc42d62ccf3359e8977001b1e91"
+  },
+  "subject": "skill:domain-and-types",
+  "recipe": "9b3142f0c0901affd55bda65dd01fad3fcd817f7d35d20b483ee9293d644abb2",
+  "result": "f122c10443807b08df035962ef44cee4b6305255589e01f9bb09ae662a0d5f3b",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Model-the-domain and type-system-discipline become one habit",
+  "reason": "domain-and-types joins model-the-domain and type-system-discipline as one habit, model-the-domain its spine, with principle-redesign-from-first-principles grafted for a requirement that meets an existing design.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 92,
+        "taken": 86,
+        "exact": 85,
+        "retention": 0.9883720930232558,
+        "coverage": 0.9347826086956522,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 100
+  }
+}

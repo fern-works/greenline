@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-codebase-design-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-to-spec-recipe",
+    "sha256": "dc707c2e539afb6b1de908b011b74247ce8a2b4c23140a9d7c026c5d6f54341a"
+  },
+  "subject": "skill:codebase-design",
+  "recipe": "9e5e768b1735076f530560b77d12abf3a3912d468af2dccd429743845cd03944",
+  "result": "4db2f8d49b4092a629daeff96576c42994481e577a406cf2b1e17bad55814bd7",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves codebase-design to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at series-s7-roster-2026-09-11.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 152,
+        "taken": 151,
+        "exact": 150,
+        "retention": 0.9933774834437086,
+        "coverage": 0.993421052631579,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 187
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-control-cli-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-unslop-recipe",
+    "sha256": "468b18a30d29ee7b1e208836fb52df396d788b05bc33824e4fe4a3a28cbae676"
+  },
+  "subject": "skill:control-cli",
+  "recipe": "44ca1c777f5132d8fe0e9969074a161c55e9b8879e1ce38532a24bc378a26367",
+  "result": "9c5e456752c341824aaa6c39a3ab5b704396131d82869385504a2bf82c3b5c3a",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves control-cli to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at fold-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 47,
+        "taken": 46,
+        "exact": 45,
+        "retention": 0.9782608695652174,
+        "coverage": 0.9787234042553191,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 206
+  }
+}

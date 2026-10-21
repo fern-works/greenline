@@ -1,0 +1,154 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-review-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-prose-front-and-references",
+    "sha256": "4836e0846a609befa542c5c03e95352b2b180ed9ac2f6108179df48d86e5b88e"
+  },
+  "subject": "skill:review",
+  "recipe": "bb9fefb5e5a20b05a28751b036eabbdf7571c370c6de57ac4b82694f7b10360a",
+  "result": "a716432d954a6db5668d1ca3bf70b1a35d27b5db93b83f2be6a744fbf580c166",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/brief.md"
+    },
+    {
+      "path": "references/greenline.md"
+    },
+    {
+      "path": "references/reviewers.md"
+    }
+  ],
+  "gist": "Review's depths and mechanics move from its front to its references",
+  "reason": "The front keeps the upstream prose; its depth bullets, now naming the three modes, and its paths, commands and record forms move to references/greenline.md (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10); within pstack, premature abstraction being worse than duplication wins over its helper-extraction line; ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller; thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-09-26",
+      "words": "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): review's \"Start the reviewers\" moves to references/reviewers.md, its \"Judge the findings\" staying because \"Act on them\" names its buckets at any depth with a fix round"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-12",
+      "words": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\": review's reviewer's brief is a page of its own, references/brief.md, read whole by the reviewer and by the builder only at the inline depth; the brief's imported breakage block becomes conditions, its claim about every codebase dropped and an intended effect put on the set-aside list rather than left unreported; the workshop's notes leave the installed lens; the repository overrides the excess lens, and a MUST KILL that cites no rule is rung 3; the review section is a table with the bucket a column; and the reviewers page loses its leftovers and gains the builder's link"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", and the card of that day, \"Words at the list edit the entry; at a ticket's open they override\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a request that names a mode is taken as chosen and goes on with no yes awaited, a question asked only for a choice it leaves open; the record names every floor found and, where the owner names a mode below one, says so with choice owner and the floor's reason; a mode named at the ticket list edits the entry and one named at a ticket's open overrides it; the builder reads the reviewer's brief at the inline depth only; and at the written frame depth every open behaviour goes to the owner through the interview, an inline frame line crediting the owner only with the owner's answers"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices, with the ruling of 2026-10-18 that the close is a skill step: a reviewer's or verifier's brief is written by greenline brief from the record into the change's folder, its first line the command's mark, and never by the builder, which starts the agent with its path and never opens, copies, diffs or derives a brief file; status reports a brief file the command did not write; and the close cites each brief the command wrote, from the status listing"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: a fresh agent's brief names the agent's own scratch folder by its absolute path and says the host's temporary directory is never used, a working file there a finding, and greenline check run with the brief's --step and --round sets TMPDIR to that folder for the command it records; the record names each fresh agent started with its step and number, a restart one more line and one more count, and greenline status reports a cost below the starts the record names as a finding the close clears before done"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 80,
+        "taken": 56,
+        "exact": 54,
+        "retention": 0.9642857142857143,
+        "coverage": 0.7,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 254,
+        "taken": 38,
+        "exact": 36,
+        "retention": 0.9473684210526315,
+        "coverage": 0.14960629921259844,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "cursor-team-kit",
+        "segments": 53,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.1320754716981132,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 255,
+        "taken": 16,
+        "exact": 16,
+        "retention": 1,
+        "coverage": 0.06274509803921569,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "ponytail",
+        "segments": 66,
+        "taken": 38,
+        "exact": 38,
+        "retention": 1,
+        "coverage": 0.5757575757575758,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 5854
+  }
+}

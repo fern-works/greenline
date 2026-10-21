@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-project-router-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-architecture-map-rename",
+    "sha256": "726923521a56b93c0c5892a49b6ae661b68f12f4d727a70aca6fb743eb3c3545"
+  },
+  "skill": "project-router",
+  "slice": "S17 of the plan modes-records-recipes",
+  "replacedBy": "router",
+  "recipe": "7939040ca81c241d835635c38cac178aa4424b0049b6129d5cc96f40841772b8",
+  "gist": "Renamed router, its text kept",
+  "reason": "project-router is router now, its text kept and only its name changed.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

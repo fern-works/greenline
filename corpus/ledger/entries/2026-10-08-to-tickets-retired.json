@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-to-tickets-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-to-spec-retired",
+    "sha256": "7776af64b0d3bae36333b1b18aae8f8ffedcdec4539ae6a01b5a38aedee3404e"
+  },
+  "skill": "to-tickets",
+  "slice": "S13 of the plan modes-records-recipes",
+  "replacedBy": "plan",
+  "recipe": "416b44b5e3c954e454b9eda807fe20a390fb378bd94910c496da0d1036bd23a0",
+  "gist": "To-tickets becomes the spine of plan's tickets part",
+  "reason": "to-tickets is the spine of plan's tickets part, each ticket now with its own mode.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

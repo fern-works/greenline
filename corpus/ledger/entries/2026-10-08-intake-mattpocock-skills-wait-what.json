@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-mattpocock-skills-wait-what",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-foundational-thinking",
+    "sha256": "f75567b411e60ea53b00e4144dd3dab993b00e131d5670a9f5b874cb1b972bf2"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "6fd947921b935b7e1e69293a200400f0fdd5c15f",
+    "path": "skills/productivity/wait-what"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "The re-pitch enters answer-plainly in greenline's words",
+  "reason": "Not a stub: the re-pitch with context, simplified technical English and the glossary's terms enters the re-cut answer-plainly recipe in greenline's words.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Lift, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Lift, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "answer-plainly",
+    "catches": "An owner restating a request because the agent's report did not land",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 40
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 40
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 40
+      }
+    ],
+    "ships": "default"
+  }
+}

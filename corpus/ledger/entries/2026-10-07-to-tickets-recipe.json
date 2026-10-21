@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-to-tickets-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-domain-modeling-recipe",
+    "sha256": "41827f1fb45f8ff1d74f53b5c9685790b84d56bfa8c64c3a7fadf2e2651a8c32"
+  },
+  "subject": "skill:to-tickets",
+  "recipe": "493d8a96e796b47280b34a43e12dc0a822f087b5956beff0eaba1ee532e44c6e",
+  "result": "8e529fd0159e2222fc6c20e92f35f4e7dcef57483903e9d764bad2d600c896f5",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves to-tickets to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at fold-walk-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 76,
+        "taken": 46,
+        "exact": 44,
+        "retention": 0.9565217391304348,
+        "coverage": 0.6052631578947368,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 515
+  }
+}

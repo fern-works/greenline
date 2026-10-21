@@ -51,7 +51,7 @@ interface ConnectorDefinition {
   readonly summary: string;
   /** The bare command its entry may name, resolved on the PATH; any other executable is a path. */
   readonly command: string;
-  /** The opt-in skill mounted, with its conditional pointer, only while the connector is enabled. */
+  /** The connector's skill, mounted with its conditional pointer only while the connector is enabled. */
   readonly skill: string;
   /** The local prerequisites enabling leaves to the person, stated without contacting anything. */
   readonly prerequisite: string;

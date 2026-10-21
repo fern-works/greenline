@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-control-cli-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-verify-this-retired",
+    "sha256": "33e2abcf4b2d53486426fa4194c15b85f7f1ba5624508782666bb3543bc47530"
+  },
+  "skill": "control-cli",
+  "slice": "S15 of the plan modes-records-recipes",
+  "replacedBy": "verify",
+  "recipe": "44ca1c777f5132d8fe0e9969074a161c55e9b8879e1ce38532a24bc378a26367",
+  "gist": "Becomes verify's reference for terminal evidence",
+  "reason": "control-cli is verify's reference file now, references/control-cli.md, read when an item's evidence needs a terminal transcript, a timing or a profile.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

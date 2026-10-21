@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-humanlayer-visual-pr",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-cursor-team-kit-make-pr-easy-to-review",
+    "sha256": "6948dff6769d465dff62b4534280b76c1602bf19c526935e792f1c75bde11012"
+  },
+  "source": {
+    "repository": "https://github.com/humanlayer/skills",
+    "commit": "ca7c8088db69e315a8b2deea43820270457f8f3c",
+    "path": "plugins/visual-pr/skills/visual-pr"
+  },
+  "pin": "humanlayer",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its notes field joins pr-writing",
+  "reason": "Its notes field joins the new habit pr-writing; its show-me copy and its gh and .humanlayer workflow are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "pr-writing",
+    "catches": "A PR or commit body that restates the diff and leaves out the why, the verification and the risk",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 60
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 60
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 60
+      }
+    ],
+    "ships": "trial"
+  }
+}

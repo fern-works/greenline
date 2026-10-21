@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-interview-me",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-07-diagram-design-verifier-pointers",
+    "sha256": "329707ba69489410e6a2531cb4aacb8b0dba577897ee241a92a03b8893081ef4"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/interview-me"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Four questioning moves join frame, on grilling's spine",
+  "reason": "Its intent hypothesis, want-against-should probe, out-of-scope restate and predict-the-next-three stop enter the re-cut frame recipe on grilling's spine; batching follows grilling.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 1)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 1)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "grilling",
+    "catches": "A frame decision built on an intent or requirement the agent assumed rather than heard from the owner",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 700
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 700
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 700
+      }
+    ],
+    "ships": "default"
+  }
+}

@@ -1,4 +1,3 @@
-import { ticketMd } from "../fixtures/artifacts.ts";
 import { parseArgs } from "../../src/shell/cli/args.ts";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -54,7 +53,7 @@ it.each(["init", "sync"])(
   },
 );
 
-it.each(["init", "sync", "doctor", "status", "inspect"])(
+it.each(["init", "sync", "status", "inspect"])(
   "G3 help %s returns its own usage instead of an outputHelp stub",
   (command) => {
     const result = parseArgs(["help", command], "test");
@@ -87,48 +86,6 @@ it("G3 init and sync effects use repository-relative file paths", () => {
     env.close();
   }
 });
-it("G3 artifact and ledger findings locate the same ticket from the repository root", () => {
-  const env = workspace();
-  try {
-    expect(env.run(["init", "--yes"]).code).toBe(0);
-    mkdirSync(join(env.root, ".greenline/work/tickets"), { recursive: true });
-    writeFileSync(
-      join(env.root, ".greenline/work/tickets/TKT-001.md"),
-      ticketMd("001", {
-        status: "complete",
-        resultCommit: "a1b2c3d",
-        acceptance: [{ text: "Saved", done: false }],
-      }),
-    );
-    const result = env.run(["doctor", "--json"]);
-    expect(result.code).toBe(1);
-    const rows = JSON.parse(result.out).diagnostics;
-    for (const code of ["GL0208", "GL0209", "GL0301"]) {
-      const row = rows.find((entry: { code: string }) => entry.code === code);
-      expect(row?.path).toBe(".greenline/work/tickets/TKT-001.md");
-    }
-  } finally {
-    env.close();
-  }
-});
-it.each(["doctor", "status"])(
-  "G3 %s locates malformed records without an absolute checkout path",
-  (command) => {
-    const env = workspace();
-    try {
-      expect(env.run(["init", "--yes"]).code).toBe(0);
-      mkdirSync(join(env.root, ".greenline/ledger/records"), { recursive: true });
-      writeFileSync(join(env.root, ".greenline/ledger/records/repair.json"), "{}");
-      const result = env.run([command, "--json"]);
-      expect(result.code).toBe(1);
-      for (const row of JSON.parse(result.out).diagnostics)
-        expect(row.path).toBe(".greenline/ledger/records/repair.json");
-      expect(result.out).not.toContain(env.root);
-    } finally {
-      env.close();
-    }
-  },
-);
 it("G3 decision errors distinguish the document path from the invalid field", () => {
   const env = workspace();
   try {
@@ -137,7 +94,7 @@ it("G3 decision errors distinguish the document path from the invalid field", ()
       join(env.root, ".greenline/DECISIONS.md"),
       '```greenline-roots\n[{"root":".","purpose":null,"languages":[],"technologies":[],"exclusions":[]}]\n```\n',
     );
-    const result = env.run(["doctor", "--json"]);
+    const result = env.run(["status", "--json"]);
     expect(result.code).toBe(1);
     expect(JSON.parse(result.out).diagnostics).toContainEqual({
       code: "GL0123",
@@ -158,7 +115,7 @@ it("G3 the published root-statement example validates in a fresh workspace", () 
     const example = /````markdown\n(# Decisions[\s\S]*?)\n````/.exec(contract)?.[1];
     if (example === undefined) throw new Error("Root-statement example missing");
     writeFileSync(join(env.root, ".greenline/DECISIONS.md"), example);
-    const result = env.run(["doctor", "--json"]);
+    const result = env.run(["status", "--json"]);
     expect(result.code).toBe(0);
     expect(JSON.parse(result.out).diagnostics).toEqual([]);
   } finally {

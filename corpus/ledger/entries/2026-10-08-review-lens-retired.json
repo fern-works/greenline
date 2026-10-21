@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-review-lens-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-delivery-review-retired",
+    "sha256": "18e1c1b3c26950e9164d064f2239249eebab66640b30f712d0ca7042fb857153"
+  },
+  "skill": "review-lens",
+  "slice": "S15 of the plan modes-records-recipes",
+  "replacedBy": "review",
+  "recipe": "47cfa25fcc1fe0181b29cacb556368631d5469620d12533a3fc0618360ae7695",
+  "gist": "Becomes review's lens and register",
+  "reason": "review-lens is review's lens now: its stance, reflex check and limits are references/lens.md, its register references/REGISTER.md, and its severity ladder stands in the reviewer's brief.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

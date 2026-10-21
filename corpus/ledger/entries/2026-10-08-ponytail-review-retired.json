@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-ponytail-review-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-review-lens-retired",
+    "sha256": "3239e55c4f8ed290847faefed68f0524d8fd90638cc65cab301f20e7a670536d"
+  },
+  "skill": "ponytail-review",
+  "slice": "S15 of the plan modes-records-recipes",
+  "replacedBy": "review",
+  "recipe": "83a153cadde348a27f8a77e5592b5a40f66e507243efd67083edd19711abddc8",
+  "gist": "Becomes review's excess lens",
+  "reason": "ponytail-review is review's excess lens now, references/excess.md, run on the Standards axis or alone when asked what can be deleted, with ponytail-audit's hunt and comment-sicko's rules grafted.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

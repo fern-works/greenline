@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-writing-plans",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-planning-and-task-breakdown",
+    "sha256": "38e935756a4ecdc39cb73c054e438661db780e498f77fc51e89820bea0ac7c54"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/writing-plans"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Interfaces, constraints and self-review join plan",
+  "reason": "Its per-task interfaces, global constraints and five-check self-review enter the re-cut plan recipe; its subagent-driven handoff and worktree line are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (R20, R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (R20, R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "to-tickets",
+    "catches": "A plan whose tasks are too large, vague or ill-shaped to build and verify one at a time",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "plan",
+        "depth": "none",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "plan",
+        "depth": "written",
+        "cost": 650
+      },
+      {
+        "mode": "high",
+        "step": "plan",
+        "depth": "written",
+        "cost": 650
+      },
+      {
+        "mode": "max",
+        "step": "plan",
+        "depth": "written",
+        "cost": 650
+      }
+    ],
+    "ships": "default"
+  }
+}

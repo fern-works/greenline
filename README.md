@@ -1,11 +1,14 @@
 # greenline
 
-greenline helps a coding agent choose engineering methods from ordinary
-requests and carry work across sessions with durable intent and evidence.
-It supports Codex and Claude Code.
+greenline gives a coding agent an engineering practice and carries work
+across sessions with one record per change. It supports Codex and Claude
+Code.
 
-Skills supply methods and working disciplines. Your agent chooses what the
-task needs, works within your decisions, and records the result. greenline
+Before any edit the agent proposes one of four modes, fast, medium, high or
+max, and waits for your answer; your choice is final. Each mode runs the
+same seven steps at its own depth, and every change, in every mode, leaves
+one change record under `.greenline/ledger/`. Skills supply the steps, the
+starts and the habits, and the agent works within your decisions. greenline
 works offline, with no account, no key and no service, and every part of it
 is free and open source.
 
@@ -24,8 +27,9 @@ Commit the generated installation before starting feature work. The
 ## What this repository is
 
 This is the public copy of greenline: the command-line tool, the roster of
-skills with the upstream snapshots they were copied from, the runtime block,
-the provenance pages, the guide, and the tests and build that prove them. It is generated from a private repository of record by an
+skills with the upstream snapshots they were copied from, the recipes that
+define each skill and the ledger that records every change to them, the
+runtime block, the guide, and the tests and build that prove them. It is generated from a private repository of record by an
 export, one commit per release; nothing is authored here. Pull requests are
 welcome and are imported into the repository of record rather than merged
 here; [CONTRIBUTING](https://github.com/fern-works/greenline/blob/main/CONTRIBUTING.md)
@@ -42,12 +46,13 @@ package.
 The code and the skills in this repository are under the [MIT License](LICENSE);
 the Geist fonts the inspector embeds are under the SIL Open Font License,
 whose text is `assets/inspect-fonts/OFL.txt`.
-Every copied skill names its source repository and commit on its provenance
-page: in the package under `provenance/`, one page per skill beside the
-ledger's index, and in the repository beside each skill; the
-[third-party notices](THIRD_PARTY_NOTICES.md) travel with the package and
-every installed method. The same pages are
-rendered at [fernworks.dev/greenline/provenance/](https://fernworks.dev/greenline/provenance/).
+Every skill is defined by its recipe in this repository, which names each
+source by its pinned repository and commit and states every difference from
+it with its reason; every change to a recipe is an entry of the ledger in
+this repository, whose index ships in the package under `provenance/`. The
+[third-party notices](THIRD_PARTY_NOTICES.md) travel with
+the package and every installed method. The website renders each skill's
+provenance at [fernworks.dev/greenline/skills/](https://fernworks.dev/greenline/skills/).
 greenline does not imply upstream endorsement.
 
 fern-works on GitHub, fernworks on npm and fernworks.dev are one owner.

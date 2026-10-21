@@ -79,7 +79,7 @@ Drafting reads the code; verification watches the product. The `verification/` d
 1. **Pilot: {the pilot feature}.** Small and self-contained. Used to settle the template, tone, and depth.
 2. **Foundations: {the input model / the core model}.** Everything else refers to it.
 3. **{The hardest area}.** The bulk of the experience and the hardest part. Written third so the template is already proven.
-4. **Everything else.** Once the template and two exemplars exist, the remaining documents can be drafted in parallel, followed by a consistency pass and a verification pass across the whole set.
+4. **Everything else.** Once the template and two exemplars exist, the remaining documents can be drafted one after another, followed by a consistency pass and a verification pass across the whole set.
 
 Progress is tracked in the [coverage table](#coverage) below.
 
@@ -96,7 +96,7 @@ Progress is tracked in the [coverage table](#coverage) below.
 ```
 README.md                        this file
 goal.md                          the standing instructions for whoever drafts
-AGENTS.md, CLAUDE.md             entry points for agents: read README.md, then goal.md
+AGENTS.md                        the entry point for agents: read README.md, then goal.md
 glossary.md                      shared vocabulary
 bug-triage.md                    suspected defects collected from every document, with repro steps and decisions needed
 

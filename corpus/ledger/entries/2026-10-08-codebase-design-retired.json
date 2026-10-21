@@ -1,0 +1,26 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-codebase-design-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-diagnose-rename",
+    "sha256": "72fce051d98ee997686b38efaebefb92afa9cfcd284c8b52536b63a8dc6d24ab"
+  },
+  "skill": "codebase-design",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "deep-modules",
+  "recipe": "57da905bbd26604bb455015a652d46c0638a6b98464b750111cc879f5b9b8ace",
+  "gist": "Renamed deep-modules, with reader-load rules grafted",
+  "reason": "codebase-design is deep-modules' spine now, renamed, with principle-minimize-reader-load grafted.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the intake R3, \"everything is good\""
+    }
+  ]
+}

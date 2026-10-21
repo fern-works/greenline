@@ -4,13 +4,14 @@ import { compileInstallation } from "../../src/shell/installation.ts";
 import { renderProjection } from "../../src/core/render.ts";
 import { findBrokenReferences } from "../../src/core/links.ts";
 import { fixtureConfiguration, gardenEnabledConfiguration } from "../fixtures/corpus.ts";
-import type { Manifest } from "../../src/core/manifest.ts";
+import { trialSkillNames, type Manifest } from "../../src/core/manifest.ts";
 
 // One roster, full preserved support trees, explicit optional integrations, and no guidance payload.
 const compiled = compileInstallation(join(import.meta.dirname, "../../corpus"));
 if (compiled._tag === "err") throw compiled.error;
 const release = compiled.value;
-const optional = release.skills.filter((skill) => skill.optIn).map((skill) => skill.name);
+const optional = release.skills.filter((skill) => skill.extra).map((skill) => skill.name);
+const trials = trialSkillNames(release.modes, release.skills);
 const configurations: readonly Manifest[] = [
   ...(["codex", "claude-code"] as const).flatMap((target) =>
     [[], optional].map((include) => ({
@@ -27,6 +28,7 @@ const configurations: readonly Manifest[] = [
   },
   gardenEnabledConfiguration,
   { ...gardenEnabledConfiguration, skills: { include: optional, exclude: ["ponytail"] } },
+  { ...fixtureConfiguration, skills: { include: optional, exclude: [] }, trials },
 ];
 /** garden's skill installs only through its connector: while garden is enabled and not excluded. */
 const CONNECTOR_SKILL = "use-garden";
@@ -46,11 +48,15 @@ describe("projection closure", () => {
       const files = renderProjection(configuration, release);
       expect(renderProjection(configuration, release)).toEqual(files);
       for (const skill of release.skills) {
+        // A trial start or habit installs only where the workspace's trials name it (S17).
+        const trialEnabled =
+          !trials.includes(skill.name) || configuration.trials.includes(skill.name);
         const included =
           !configuration.skills.exclude.includes(skill.name) &&
+          trialEnabled &&
           (skill.name === CONNECTOR_SKILL
             ? configuration.connectors.garden !== undefined
-            : !skill.optIn || configuration.skills.include.includes(skill.name));
+            : !skill.extra || configuration.skills.include.includes(skill.name));
         for (const target of configuration.targets) {
           const prefix = `${target === "codex" ? ".agents" : ".claude"}/skills/${skill.name}/`;
           expect(files.some((file) => file.path === prefix + "SKILL.md")).toBe(included);
@@ -70,16 +76,27 @@ describe("projection closure", () => {
         ),
       ).toEqual([]);
   });
-  it("names absent optional integrations as optional in installed instructions", () => {
+  it("S18b names an absent extra as optional in installed instructions, marked extra and never opt-in", () => {
     for (const configuration of configurations)
       for (const file of renderProjection(configuration, release).filter(
         (file) => file.path.endsWith(".md") && !file.path.endsWith("/ROUTING.md"),
       ))
         for (const name of optional) {
           if (configuration.skills.include.includes(name)) continue;
-          expect(markerHolds(file.content, name, "opt-in"), `${file.path} names ${name}`).toBe(
-            true,
-          );
+          expect(markerHolds(file.content, name, "extra"), `${file.path} names ${name}`).toBe(true);
         }
+  });
+  it("S18b the roster carries the four trial starts and the five trial habits, installed only where trials name them", () => {
+    expect([...trials].sort()).toEqual([
+      "benchmark-checklist",
+      "build-the-lever",
+      "constraint-driven-development",
+      "correct",
+      "guard-the-context-window",
+      "idea-refine",
+      "improve-instructions",
+      "pr-writing",
+      "to-questionnaire",
+    ]);
   });
 });

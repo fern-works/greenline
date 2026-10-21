@@ -1,0 +1,39 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-use-garden-split-review-fixes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-plan-split-review-fixes",
+    "sha256": "1d68d6377eb302898eb4e88eb5867ca10ce7d9e47b0c0ff5a95c633621054b30"
+  },
+  "subject": "skill:use-garden",
+  "recipe": "921d3207e221d7199b499813135d8c1f54c7de21734930332f6fa1ab37b9d6a9",
+  "result": "fcbea1eaad01dc9e7f0c3d412a25594e74c184e656121ba0e2a679bac14c7800",
+  "pages": "unknown",
+  "gist": "The connector call's flags leave the front for operations.md",
+  "reason": "The front names the connector call's flags by their nouns, the flags on operations.md, and its second pointer to that page leaves (J-93 S2, the review's fix cycle).",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-22",
+      "words": "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 2595
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-use-garden-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-progress-check-gists",
+    "sha256": "24b521b4ddbeaef83f6bcde668205ef4f2c3a1e4a9bf89f86a605732d69669a5"
+  },
+  "subject": "skill:use-garden",
+  "recipe": "62014bc348b20c82be385aad6f101ef64b8c265ea20619e987b4f735de394724",
+  "result": "fd2c47fcc6f4cbc236676de488b011beb05f4fc3f3208297edfeb60918935c5c",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-22",
+      "words": "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 2550
+  }
+}

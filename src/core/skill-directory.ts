@@ -1,16 +1,16 @@
 import { z } from "zod";
 import { err, ok, type Result } from "../commons/result.ts";
 import { parseJson } from "./contract.ts";
-import type { ActivationMode, SkillClass, SkillFile, SkillSource } from "./skill.ts";
+import type { ActivationMode, SkillFacts, SkillFile, SkillSource } from "./skill.ts";
 
 const stringSchema = z.string();
 
 /**
  * A roster skill is one directory (`corpus/skills/<name>/`, ADR 0039):
  * `SKILL.md` with its frontmatter and body, and every other file as a
- * support file, verbatim. Nothing composes at build time; a vendored
- * copy was edited by hand and its differences from upstream are
- * measured by the divergence ledger, not declared here.
+ * support file, verbatim. Nothing composes at build time; the directory
+ * is generated from its recipe, which states every difference from
+ * upstream (`workshop/components/recipes.md`), not declared here.
  */
 
 class SkillDirectoryFailed extends Error {
@@ -33,7 +33,7 @@ export interface SkillFrontmatter {
  * that follows (one leading blank line stripped). Values may be plain
  * scalars, double-quoted scalars (unwrapped and unescaped), or block
  * scalars (`>` folded to one line, `|` kept as lines): the shapes the
- * copies and their upstreams actually use.
+ * copies and their sources actually use.
  */
 export function parseSkillFrontmatter(
   content: string,
@@ -92,9 +92,11 @@ const GENERATED_FILES: ReadonlySet<string> = new Set(["agents/openai.yaml"]);
 export function skillFromDirectory(
   entry: {
     readonly name: string;
-    readonly class: SkillClass;
+    readonly kind: string;
+    readonly slot?: string | undefined;
     readonly activation: ActivationMode;
-    readonly optIn?: true | undefined;
+    readonly extra?: true | undefined;
+    readonly trial?: true | undefined;
   },
   files: readonly SkillFile[],
 ): Result<SkillSource, SkillDirectoryFailed> {
@@ -121,13 +123,19 @@ export function skillFromDirectory(
   const supportFiles = files
     .filter((file) => file.path !== "SKILL.md")
     .map((file) => ({ path: file.path, content: file.content }));
-  const source: SkillSource = {
+  // An optional fact is set only when stated, so a skill's shape is the
+  // payload's exactly.
+  const facts: SkillFacts = {};
+  if (entry.slot !== undefined) facts.slot = entry.slot;
+  if (entry.extra !== undefined) facts.extra = entry.extra;
+  if (entry.trial !== undefined) facts.trial = entry.trial;
+  return ok({
     name: entry.name,
     description: parsed.value.frontmatter.description,
-    class: entry.class,
+    kind: entry.kind,
     activation: entry.activation,
+    ...facts,
     body: parsed.value.body,
     supportFiles,
-  };
-  return ok(entry.optIn === undefined ? source : { ...source, optIn: entry.optIn });
+  });
 }

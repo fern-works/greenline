@@ -1,0 +1,42 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-router-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-close-gists",
+    "sha256": "18f12bfaa0f8319505f8c4f7750e29d414a99771def2aa280157553440515692"
+  },
+  "subject": "skill:router",
+  "recipe": "6642a2a22dea68ba046169920cd5af86e6dff973c05f1616504bf13f9d77687b",
+  "result": "59a6ce674848a4e9e4fdd330fb70bed9e60c1bc6ee58e66a53a2664d5ba93388",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1015
+  }
+}

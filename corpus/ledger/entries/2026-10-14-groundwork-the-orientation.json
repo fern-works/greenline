@@ -1,0 +1,58 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-groundwork-the-orientation",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-plan-ticket-id-at-open",
+    "sha256": "61e02d054bd1b537b91246d6b619b0b594a01cd63b7190c93debb299d449e9e2"
+  },
+  "subject": "skill:groundwork",
+  "recipe": "a2a091634ace342d0f1d21fd3ff8b509507a47fc1e0b003cfe2af11f75d1d772",
+  "result": "fc29ea072a27b1c12df43ae2f7da9adcb0af0f565c6113ccfd0eae092a27f919",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "On an empty tree groundwork is the orientation, its own change",
+  "reason": "On an empty tree groundwork is the orientation: its own change before a first feature request, or that request's own change when it asks to set the repository up.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+  },
+  "ruling": [
+    {
+      "date": "2026-08-30",
+      "words": "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\", and the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (the row of 2026-09-26)"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, no harness named"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 730
+  }
+}

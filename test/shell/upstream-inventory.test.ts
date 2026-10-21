@@ -35,7 +35,7 @@ describe("upstream snapshot byte-equivalence (every pinned family)", () => {
   if (manifestResult._tag !== "ok") return;
   const manifest = manifestResult.value;
 
-  for (const family of manifest.upstreams) {
+  for (const family of manifest.sources) {
     // SAFETY: the inventory is repo-owned generated JSON with a known shape;
     // the tests below re-derive every value from the snapshot itself.
     const inventory = JSON.parse(

@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-receiving-code-review",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-requesting-code-review",
+    "sha256": "564e1bdb700b4ae64895ccf5d0fbb4cd1f72f2bb3679e8bd148417e6b64a1513"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/receiving-code-review"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "The builder's half of review joins after the lead judgment",
+  "reason": "The builder's half of review, clarify first, check each finding against the code, fix one at a time with a test, push back with evidence, enters the re-cut review recipe after the lead judgment.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "delivery-review",
+    "catches": "A review whose noise is acted on, whose real defects are dismissed, or that misses breakage outside the diff",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "review",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "review",
+        "depth": "independent",
+        "cost": 500
+      },
+      {
+        "mode": "high",
+        "step": "review",
+        "depth": "independent",
+        "cost": 500
+      },
+      {
+        "mode": "max",
+        "step": "review",
+        "depth": "looped",
+        "cost": 500
+      }
+    ],
+    "ships": "default"
+  }
+}

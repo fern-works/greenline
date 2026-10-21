@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-grill-with-docs-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-grilling-recipe",
+    "sha256": "66dcbca4cb0773223782e3d12195143c3d0927fa0b64a9edb359e8eb61701be2"
+  },
+  "subject": "skill:grill-with-docs",
+  "recipe": "4db236da4edabf2b17b213c01e0eb3377838bcdc84a3cb709c7df12a56f42c43",
+  "result": "01d6d4a414f77bd16775175199893b368117d8c971a8e8890c4f4e79d9a866b5",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves grill-with-docs to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": {
+    "date": "2026-10-04",
+    "words": "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+    }
+  ],
+  "measure": {
+    "stub": true,
+    "sources": [],
+    "growth": 289
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-product-description-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-pr-writing-front-and-references",
+    "sha256": "4f46bc4dcc7aec94599d3fa3b9c93355c2788c980f519c32f24f27c6ec13abe1"
+  },
+  "subject": "skill:product-description",
+  "recipe": "649ec37f8d258eaecff798abf45fb74a987c5be85b58a9192a97ad53ecde480b",
+  "result": "92dc93592fe9ef39109246342ab2f7d949fe10a617940c6c8bf60c552e2c93cc",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "product-description's paths and commands move to a references page",
+  "reason": "The front names greenline's homes and commands by their nouns and points at a references page, which holds their paths and commands (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "product-description",
+        "segments": 618,
+        "taken": 612,
+        "exact": 605,
+        "retention": 0.988562091503268,
+        "coverage": 0.9902912621359223,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 679
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-type-system-discipline-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-technical-writing-recipe",
+    "sha256": "42674d030983602080ab75b8aabd0b2eb5f5a776ad3d9c5ff2335c4cde84c451"
+  },
+  "subject": "skill:type-system-discipline",
+  "recipe": "c01938bbb556c1c25869b308002b473da89dcca536306f9e3637643f53494850",
+  "result": "23a01451ca118a1fa3491f1cf905ccd87514ae32cec15fe670146f183e8d6e37",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves type-system-discipline to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at pull-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 61,
+        "taken": 58,
+        "exact": 58,
+        "retention": 1,
+        "coverage": 0.9508196721311475,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

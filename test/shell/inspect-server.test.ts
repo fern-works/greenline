@@ -26,11 +26,11 @@ const VERSION: string = "0.1.0";
 const tempDirs: string[] = [];
 const handles: InspectorHandle[] = [];
 
-function environment(root: string) {
+function environment(root: string, release = fixtureInstallation()) {
   return {
     cwd: root,
     version: VERSION,
-    installation: fixtureInstallation(),
+    installation: release,
   };
 }
 
@@ -47,8 +47,8 @@ function makeWorkspace(release = fixtureInstallation()): string {
   return dir;
 }
 
-async function serve(root: string): Promise<string> {
-  const handle = await startInspector(root, environment(root), 0);
+async function serve(root: string, release = fixtureInstallation()): Promise<string> {
+  const handle = await startInspector(root, environment(root, release), 0);
   handles.push(handle);
   return handle.url;
 }
@@ -203,6 +203,96 @@ describe("greenline inspect, served", () => {
     expect(readFileSync(path, "utf8")).toBe(before);
   });
 
+  it("S16b edits the proceed and trials settings as it edits local policy, and refuses a value the modes do not hold", async () => {
+    const root = makeWorkspace();
+    const url = await serve(root);
+    const state = await (await fetch(`${url}api/state`)).json();
+    // J-93 S1: no step is a trial, so the fixture, which holds no trial skill, offers none.
+    expect(state.settings).toEqual({
+      proceed: ["none", "quick", "regular", "careful"],
+      trials: [],
+    });
+    expect(state.manifest).toMatchObject({ proceed: "none", trials: [] });
+    const path = join(root, ".greenline/manifest.json");
+    const saved = await fetch(`${url}api/manifest`, {
+      method: "POST",
+      body: JSON.stringify({
+        expectedRevision: state.editRevision,
+        proceed: "quick",
+        trials: [],
+      }),
+    });
+    expect(saved.status).toBe(200);
+    expect(JSON.parse(readFileSync(path, "utf8"))).toMatchObject({
+      proceed: "quick",
+      trials: [],
+    });
+    const marker = JSON.parse(readFileSync(join(root, ".greenline/policy-changes.json"), "utf8"));
+    expect(marker.changes).toEqual([expect.objectContaining({ path: ".greenline/manifest.json" })]);
+    const before = readFileSync(path, "utf8");
+    const again = await (await fetch(`${url}api/state`)).json();
+    for (const wrong of [
+      { proceed: "fastest" },
+      { trials: ["review"] },
+      { trials: ["anticipate"] },
+    ]) {
+      const refused = await fetch(`${url}api/manifest`, {
+        method: "POST",
+        body: JSON.stringify({ expectedRevision: again.editRevision, ...wrong }),
+      });
+      expect(refused.status).toBe(400);
+      expect(readFileSync(path, "utf8")).toBe(before);
+    }
+  });
+
+  it("S17 offers the trial skills, and a save keeps an enabled trial skill", async () => {
+    const trialStart = {
+      name: "idea-sharpener",
+      description: "A trial start for a vague idea.",
+      kind: "start",
+      activation: "explicit" as const,
+      trial: true as const,
+      body: "Sharpen the idea.",
+    };
+    const release = fixtureInstallation({
+      skills: [...fixtureInstallation().skills, trialStart],
+      intents: [{ intent: "An idea is still vague", skills: ["idea-sharpener"] }],
+    });
+    const root = makeWorkspace(release);
+    const url = await serve(root, release);
+    const state = await (await fetch(`${url}api/state`)).json();
+    expect(state.settings.trials).toEqual(["idea-sharpener"]);
+    // The trials setting installs a trial skill, so the page never offers it among the skills.
+    expect(state.skills.map((skill: { name: string }) => skill.name)).not.toContain(
+      "idea-sharpener",
+    );
+    const path = join(root, ".greenline/manifest.json");
+    // The page's whole body as page.ts builds it: a listed default skill unchecked, one not
+    // installed, is written as an exclusion; an extra checked as an inclusion.
+    type Listed = { name: string; installed: boolean; extra: boolean };
+    const listed: readonly Listed[] = state.skills;
+    const saved = await fetch(`${url}api/manifest`, {
+      method: "POST",
+      body: JSON.stringify({
+        expectedRevision: state.editRevision,
+        targets: ["codex", "claude-code"],
+        skills: {
+          include: listed.filter((skill) => skill.extra && skill.installed).map((s) => s.name),
+          exclude: listed.filter((skill) => !skill.extra && !skill.installed).map((s) => s.name),
+        },
+        proceed: "none",
+        trials: ["idea-sharpener"],
+      }),
+    });
+    expect(saved.status).toBe(200);
+    const written = JSON.parse(readFileSync(path, "utf8"));
+    expect(written.trials).toEqual(["idea-sharpener"]);
+    expect(written.skills.exclude).not.toContain("idea-sharpener");
+    const page = await (await fetch(url)).text();
+    expect(page).toContain("<h3>Trials</h3>");
+    expect(page).not.toContain("Trial steps");
+  });
+
   it("refuses every stale editor and foreign browser origins without changing repository state", async () => {
     const root = makeWorkspace();
     const url = await serve(root);
@@ -237,7 +327,7 @@ describe("greenline inspect, served", () => {
     const url = await serve(root);
     const page = await fetch(url);
     expect(page.status).toBe(200);
-    expect(await page.text()).toContain("Your workspace");
+    expect(await page.text()).toContain("<h1>Installation</h1>");
     const state = await (await fetch(`${url}api/state`)).json();
     expect(state.installation).toBe(environment(root).installation.revision);
     expect(state.editRevision).toMatch(/^[0-9a-f]{64}$/);
@@ -247,17 +337,28 @@ describe("greenline inspect, served", () => {
       ".agents/skills/delivery-review/agents/openai.yaml",
       ".agents/skills/grilling/SKILL.md",
       ".agents/skills/grilling/agents/openai.yaml",
+      ".claude/settings.json",
       ".claude/skills/delivery-review/SKILL.md",
       ".claude/skills/grilling/SKILL.md",
+      ".codex/hooks.json",
       ".greenline/THIRD_PARTY_NOTICES.md",
       ".greenline/WORK.md",
+      ".greenline/hooks/commit-msg",
+      ".greenline/hooks/dsh.json",
+      ".greenline/hooks/post-rewrite",
+      ".greenline/hooks/pre-commit",
+      ".greenline/hooks/pre-push",
+      ".greenline/hooks/pre-rebase",
+      ".greenline/hooks/prepare-commit-msg",
+      ".greenline/hooks/reference-transaction",
       ".greenline/ledger/README.md",
       ".greenline/tmp/.gitignore",
       "AGENTS.md",
       "CLAUDE.md",
       "agents/openai.yaml",
     ]);
-    expect(state.ledger.receipts).toEqual([]);
+    expect(state.ledger).toBeUndefined();
+    expect(state.work).toBeUndefined();
     expect(state.receipts).toEqual([]);
     expect(state.receiptProblems).toEqual([]);
     expect(Array.isArray(state.checks)).toBe(true);
@@ -284,7 +385,7 @@ describe("greenline inspect, served", () => {
     expect(page).toContain("state.receiptProblems.map");
   });
 
-  it("shows each schema-4 request collection with its source, publication and calls, never a body", async () => {
+  it("shows each request collection with its source, publication and calls, never a body", async () => {
     const root = makeWorkspace();
     mkdirSync(join(root, ".greenline/ledger/receipts"), { recursive: true });
     writeFileSync(
@@ -293,7 +394,7 @@ describe("greenline inspect, served", () => {
     );
     const url = await serve(root);
     const page = await (await fetch(url)).text();
-    expect(page).toContain("Consultation receipts");
+    expect(page).toContain("<h1>Receipts</h1>");
     expect(page).toContain("function receiptHtml(request)");
     const state = await (await fetch(`${url}api/state`)).json();
     expect(state.receipts).toEqual([

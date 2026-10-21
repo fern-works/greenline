@@ -1,0 +1,3 @@
+interface:
+  display_name: "Deep Modules"
+  short_description: "Design deep modules at any step: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface, with the layers a reader must trace and the state a reader must hold kept small. Use when designing or improving one module's interface, placing a seam, making code testable, finding code hard to trace, or exploring alternative interfaces; a repository-wide survey belongs to architecture-survey."

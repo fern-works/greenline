@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-no-comments",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-ponytail-ponytail-audit",
+    "sha256": "c5ea8a8583fb283acba017f459fc196dcdb6e07411615bf084bad1e0a32a489b"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/no-comments"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Comment rules become a reference for the excess lens",
+  "reason": "The rules of its agent file, pstack/agents/comment-sicko.md, become a reference passage the review step's agent reads in ponytail-review's excess lens, with no agent of its own and no persona voice.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "ponytail-review",
+    "catches": "A comment that narrates or excuses code where the code should be reshaped",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "review",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "review",
+        "depth": "independent",
+        "cost": 350
+      },
+      {
+        "mode": "high",
+        "step": "review",
+        "depth": "independent",
+        "cost": 350
+      },
+      {
+        "mode": "max",
+        "step": "review",
+        "depth": "looped",
+        "cost": 350
+      }
+    ],
+    "ships": "default"
+  }
+}

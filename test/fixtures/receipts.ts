@@ -28,10 +28,10 @@ export const RECEIPTS_FIXTURE_ID = "11111111-1111-4111-8111-111111111111";
  */
 export const RECEIPTS_FIXTURE: string = JSON.stringify(
   {
-    schemaVersion: 4,
+    schemaVersion: 5,
     id: RECEIPTS_FIXTURE_ID,
     source: "garden",
-    owner: { record: "work-one", context: "ctx", role: "maintenance" },
+    owner: { kind: "change", change: "2026-09-26-fix-login" },
     parent: null,
     createdAt: "2026-09-26T00:00:00.000Z",
     binding: {

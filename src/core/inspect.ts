@@ -1,4 +1,9 @@
-import type { GuidanceRequest, ReceiptUnit, RequestBinding } from "./guidance-receipts.ts";
+import {
+  type RequestOwner,
+  type GuidanceRequest,
+  type ReceiptUnit,
+  type RequestBinding,
+} from "./guidance-receipts.ts";
 import { splitManagedBlock } from "./managed-block.ts";
 import { HEADING } from "./markdown.ts";
 import { POLICY_BLOCK_KEY } from "./render.ts";
@@ -6,7 +11,7 @@ import { POLICY_BLOCK_KEY } from "./render.ts";
 /**
  * The inspector's views (ADR 0028): pure builders over what the CLI
  * already holds, so the page served on localhost shows the same
- * truth sync and doctor act on. Nothing here reads a file or decides
+ * truth sync and status act on. Nothing here reads a file or decides
  * anything; the shell feeds these and serves what they return.
  */
 
@@ -170,7 +175,7 @@ export interface ReceiptCallView {
   readonly finishedAt: string | null;
 }
 
-/** One schema-4 request collection as the inspector shows it. */
+/** One request collection, of either schema, as the inspector shows it. */
 export interface ReceiptRequestView {
   readonly id: string;
   /** Who answered the calls: the garden connector. */
@@ -182,6 +187,16 @@ export interface ReceiptRequestView {
   readonly calls: readonly ReceiptCallView[];
   /** Read-only consultations another contributor dispatched under this request. */
   readonly advisories: number;
+}
+
+/** Who a request belongs to, in words: a change, or no one. */
+function ownerText(owner: RequestOwner): string {
+  switch (owner.kind) {
+    case "change":
+      return `change ${owner.change}`;
+    case "none":
+      return "no owner: a question's consultation";
+  }
 }
 
 /** The binding in words: the publication or the pair, and the origin it was read from. */
@@ -220,10 +235,7 @@ export function receiptView(requests: readonly GuidanceRequest[]): readonly Rece
       id: request.id,
       source: request.source,
       binding: bindingText(request.binding),
-      owner:
-        [request.owner.record, request.owner.context, request.owner.role]
-          .filter((part): part is string => part !== null)
-          .join(", ") || "no record named",
+      owner: ownerText(request.owner),
       createdAt: request.createdAt,
       calls: [...request.receipts]
         .sort((a, b) => a.sequence - b.sequence)

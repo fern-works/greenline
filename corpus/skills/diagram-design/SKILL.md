@@ -1,25 +1,27 @@
 ---
 name: "diagram-design"
-description: "Create branded, durable diagrams as standalone HTML/SVG/PNG for artifacts and decisions, saved under .greenline/diagrams/ and linked from the owning artifact. Covers architecture, flowchart, sequence, state machine, ER, timeline, waterfall, and dozens more forms; redraws .drawio, Mermaid and Excalidraw sources at a chosen size and detail."
+description: "Create branded, durable diagrams as standalone HTML/SVG/PNG for a change, a plan or a decision, saved in the workspace's diagrams folder and linked from the record or the document they illustrate. Covers architecture, flowchart, sequence, state machine, ER, timeline, waterfall, and dozens more forms; redraws .drawio, Mermaid and Excalidraw sources at a chosen size and detail."
 ---
 
 # Diagram Design
 
-This skill draws a durable diagram for an artifact or a decision: a standalone HTML, SVG or PNG file saved under `.greenline/diagrams/<work-id>/` and linked from the artifact it illustrates. Offer it in one line when a durable diagram would serve and the user did not ask for one, and start on the user's yes; a quick sketch that lives in the reply belongs to show-me. Everything here is invoked by asking in natural language: no plugin commands are installed, the client-profile verbs do not apply, and the only doctor is `greenline doctor`.
+diagram-design is an extra habit, installed on request, for the moment a durable diagram would serve a change, a plan or a decision: a standalone HTML, SVG or PNG file saved in a folder of the workspace's diagrams folder, named by the change id or the plan name it serves, and linked from the record or the document it illustrates. Offer it in one line when a durable diagram would serve and the owner did not ask for one, and start on the owner's yes; a quick sketch that lives in the reply belongs to show-me. It writes no record of its own: the section of the step that needed the diagram links it. Everything here is invoked by asking in natural language: no plugin commands are installed, and the client-profile verbs and upstream's doctor commands do not apply.
 
-Create visual diagrams as self-contained HTML files with inline SVG and CSS, following an opinionated editorial design system.
+Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.
 
-Forty visual types. Semantic patterns describe behavior independently; type references describe layout. Details load from `references/` only when selected.
+Create diagrams as self-contained HTML files with inline SVG and an editorial design system.
+
+Forty-four visual types. Semantic patterns describe behavior; type references describe layout.
 
 ---
 
 ## 0. First-time setup: the effective style guide
 
-**Before generating your first diagram in a project, resolve the effective style guide.** It is `.greenline/diagrams/style-guide.md` when that file exists: unmanaged workspace state, and the only copy to edit. Otherwise it is the installed [`references/style-guide.md`](references/style-guide.md) at its shipped defaults, which `greenline sync` and `greenline doctor` own and which is never edited.
+**Before generating your first diagram in a project, resolve the effective style guide.** It is the project's style guide in the diagrams folder when that file exists: unmanaged workspace state, and the only copy to edit. Otherwise it is the installed [`references/style-guide.md`](references/style-guide.md) at its shipped defaults, which the installation owns and which is never edited.
 
-Don't silently ship default-skinned diagrams into a branded project.
+Do not silently ship default-skinned diagrams into a branded project.
 
-The profile is default: there is no home-directory profile store, no repository-root marker, and no first-run gate to pause on, so do not ask before drawing; say in the reply which guide the diagram used. When the user wants diagrams in their brand, write the project's tokens to `.greenline/diagrams/style-guide.md` as a full copy of the installed guide with its semantic roles changed, from the skill or folder sections of [`references/onboarding.md`](references/onboarding.md) or from tokens the user pastes; onboarding from a website URL is out of scope offline.
+The profile is default: there is no home-directory profile store, no repository-root marker, and no first-run gate to pause on, so do not ask before drawing; say in the reply which guide the diagram used. When the user wants diagrams in their brand, write the project's tokens to the project's style guide in the diagrams folder as a full copy of the installed guide with its semantic roles changed, from the skill or folder sections of [`references/onboarding.md`](references/onboarding.md) or from tokens the user pastes; onboarding from a website URL is out of scope offline.
 
 ---
 
@@ -40,13 +42,13 @@ Applied to schematics:
 
 ## 2. When to Use
 
-Use for any of the 40 visual types (§3) when a reader will learn more from a visual than from prose, a table, or a bulleted list.
+Use for any of the 44 visual types (§3) when a reader will learn more from a visual than from prose, a table, or a bulleted list.
 
 **Don't use for:**
 
 - Quick unicode diagrams → use **show-me**.
 - Lists of things → table or bullets.
-- Simple before/after → table.
+- Attribute-only before/after → table; topology changes → Architecture delta.
 - One-shape "diagrams" → just write the sentence.
 
 Before drawing, ask: *Would the reader learn more from this than from a well-written paragraph?* If no, don't draw.
@@ -67,15 +69,17 @@ When behavior, state, enforcement, or risk carries the meaning, first load [`ref
 | Controls grouped by where they are enforced | **Governance / control catalog** → Layer stack |
 | Defenses compensate for prior gaps and residual risk propagates | **Compensating security layers** → Layer stack |
 | Hierarchical, ID-addressable decomposition needing per-block I/O, constraints, and a code link | **Traceable block decomposition** → Tree |
+| One subject progresses through phases, waits, retries, cancellation, and terminal outcomes | **Lifecycle phase map** → State Machine |
 
 The pattern owns semantic primitives and its tighter budget; the type owns layout grammar. Use [`references/animation.md`](references/animation.md) only when motion is requested or materially clarifies ordered change; static remains the default.
 
-### Visual-type guide (40)
+### Visual-type guide (44)
 
 | If you're showing… | Use | Reference |
 |---|---|---|
-| Components + connections in a system | **Architecture** | [type-architecture.md](references/type-architecture.md) |
-| Legacy IT landscape grouped by phase/department; documents the *before* state in modernization proposals | **IT current-state** | [type-it-state.md](references/type-it-state.md) |
+| Components + connections in one system snapshot | **Architecture** | [type-architecture.md](references/type-architecture.md) |
+| Structural change between synchronized Before / After topologies, with a Changes ledger | **Architecture delta** | [type-architecture-delta.md](references/type-architecture-delta.md) |
+| Legacy IT landscape by phase or department; shows the *before* state | **IT current-state** | [type-it-state.md](references/type-it-state.md) |
 | Decision logic with branches | **Flowchart** | [type-flowchart.md](references/type-flowchart.md) |
 | Time-ordered messages between actors | **Sequence** | [type-sequence.md](references/type-sequence.md) |
 | States + transitions + guards | **State machine** | [type-state.md](references/type-state.md) |
@@ -85,19 +89,22 @@ The pattern owns semantic primitives and its tighter budget; the type owns layou
 | Two-axis positioning / prioritization | **Quadrant** | [type-quadrant.md](references/type-quadrant.md) |
 | Multiple entities scored across 3–5 quantitative criteria | **Radar / Spider** | [type-radar.md](references/type-radar.md) |
 | One quantitative series across cyclic categories; angle=category, radius=magnitude | **Polar chart** | [type-polar.md](references/type-polar.md) |
-| Reinforcing cycle / flywheel where the last step feeds the first and a shared hub accumulates state | **Loop** | [type-loop.md](references/type-loop.md) |
+| Reinforcing cycle; the last step feeds the first and a hub accumulates state | **Loop** | [type-loop.md](references/type-loop.md) |
 | Hierarchy through containment / scope | **Nested** | [type-nested.md](references/type-nested.md) |
 | Parent → children relationships | **Tree** | [type-tree.md](references/type-tree.md) |
 | Human/agent/team ownership, reporting, routing, escalation | **Org chart** | [type-org-chart.md](references/type-org-chart.md) |
 | Stacked abstraction levels | **Layer stack** | [type-layers.md](references/type-layers.md) |
+| Parts of one object pulled apart along one axis: a teardown, an unboxing, assembly order | **Exploded axonometric** | [type-exploded.md](references/type-exploded.md) |
+| One floor or site seen from above at an angle: rooms with furniture, buildings by phase | **Axonometric plan** | [type-axonometric-plan.md](references/type-axonometric-plan.md) |
 | Overlap between sets | **Venn** | [type-venn.md](references/type-venn.md) |
 | Ranked hierarchy or conversion drop-off | **Pyramid / funnel** | [type-pyramid.md](references/type-pyramid.md) |
 | Quantitative comparison across categories | **Bar chart** | [type-bar.md](references/type-bar.md) |
 | A start total bridged to an end total by signed contributions (budget bridge, headcount deltas) | **Waterfall** | [type-waterfall.md](references/type-waterfall.md) |
 | Part-of-whole where the relative sizes are the story | **Treemap** | [type-treemap.md](references/type-treemap.md) |
+| Cross-tabulated data; fill encodes value per cell | **Heatmap** | [type-heatmap.md](references/type-heatmap.md) |
 | Continuous trends over time, change between exactly two states (slopegraph), one distribution per series (ridgeline), or rank movement across several snapshots (bump) | **Line chart** | [type-line.md](references/type-line.md) |
 | Tasks and phases on a timeline | **Gantt** | [type-gantt.md](references/type-gantt.md) |
-| Distribution and correlation between two variables, three with area-sized marks (bubble), or one variable with a dot per item (beeswarm) | **Scatter plot** | [type-scatter.md](references/type-scatter.md) |
+| Correlation or distribution of two variables; bubble (three variables) and beeswarm (one variable, dot per item) variants | **Scatter plot** | [type-scatter.md](references/type-scatter.md) |
 | End-to-end data stack on a container cluster | **High-Level** | [type-high-level.md](references/type-high-level.md) |
 | Multi-actor sequential process with data handoffs | **Process** | [type-process.md](references/type-process.md) |
 | Multi-tier data storage with quality levels and access policies | **Medallion** | [type-medallion.md](references/type-medallion.md) |
@@ -146,7 +153,7 @@ These mark "AI slop" schematics of any type:
 | `rounded-2xl` on boxes | Max radius 6–10px or none |
 | Coral on every "important" node | Coral is 1–2 editorial accents, not a signaling system |
 | Reproducing Mermaid's renderer layout | Imports automatic spacing and routing instead of making an editorial layout |
-| Any breach of the six §6 connector rules | Diagonal slants, labels touching their stroke, masks clipped by a later node, overlapping paths, shared attach points, transit behind a non-endpoint box — each is an automatic fail; §6 states them in full |
+| Any breach of the six §6 connector rules | Automatic fail: diagonal slants, labels touching their stroke, masks clipped by a later node, overlapping paths, shared attach points, transit behind a non-endpoint box |
 
 Type-specific anti-patterns live in each type reference linked in the guide.
 
@@ -154,7 +161,7 @@ Type-specific anti-patterns live in each type reference linked in the guide.
 
 ## 5. Design System
 
-**The design system is skinnable.** All colors, typography, and tokens live in a single source of truth: the effective style guide of §0, which is [`references/style-guide.md`](references/style-guide.md) until the project writes `.greenline/diagrams/style-guide.md`. This file describes semantic roles (`paper`, `ink`, `muted`, `accent`, `link`, …). The default skin is a cool editorial palette (white-smoke paper, jet-black ink, atomic-tangerine accent, blue-slate muted, silver hairlines); to apply your own brand, write the project's copy as §0 describes, and never edit the installed one.
+**The design system is skinnable.** [`references/style-guide.md`](references/style-guide.md), or the project's style guide once the project writes it (§0), is the single source of truth for colors, typography, tokens, and the default palette; this file names semantic roles (`paper`, `ink`, `muted`, `accent`, `link`, …). To apply a brand, write the project's copy as §0 describes, and never edit the installed one.
 
 > When specs below or in type references mention "ink", "accent", "muted", etc., look up the current hex value in `style-guide.md`.
 
@@ -171,34 +178,13 @@ Type-specific anti-patterns live in each type reference linked in the guide.
 
 **Focal rule:** `accent` goes on 1–2 elements max. Everything else is `ink` / `muted` / `soft`. If you're tempted to accent 4 things, you haven't decided what's focal yet.
 
-### Node type → treatment
+**Node treatments** (focal, backend/API/step, store/state, external/cloud, input/user, optional/async, security/boundary): fill and stroke per [style-guide.md § Node type → treatment](references/style-guide.md#node-type--treatment).
 
-| Type | Fill | Stroke |
-|---|---|---|
-| **Focal** (1–2 max) | `accent-tint` | `accent` |
-| **Backend / API / Step** | white | `ink` |
-| **Store / State** | `ink @ 0.05` | `muted` |
-| **External / Cloud** | `ink @ 0.03` | `ink @ 0.30` |
-| **Input / User** | `muted @ 0.10` | `soft` |
-| **Optional / Async** | `ink @ 0.02` | `ink @ 0.20` dashed `4,3` |
-| **Security / Boundary** | `accent @ 0.05` | `accent @ 0.50` dashed `4,4` |
+**Typography:** Instrument Serif for the H1 title and italic callouts, Geist sans 600 for node names, Geist Mono for sublabels, eyebrows, and arrow labels. Sizes, weights, and the font `<link>`: [style-guide.md § Typography](references/style-guide.md#typography); per-preset type ramp: [output-spec.md](references/output-spec.md).
 
-### Typography (summary — full spec in style-guide.md)
-
-- **Title** — Instrument Serif, 1.75rem, 400 — H1 only
-- **Node name** — Geist (sans), 12px, 600 — human-readable labels
-- **Sublabel** — Geist Mono, 9px — ports, URLs, field types
-- **Eyebrow / tag** — Geist Mono, 7–8px, uppercase, tracked — type tags, axis labels
-- **Arrow label** — Geist Mono, 8px — annotation on arrows
-- **Editorial aside** — Instrument Serif *italic*, 14px — callouts only
-
-**CJK labels** — Geist and Instrument Serif carry no Hangul or Han; extend the family and keep CJK at 12px+. Rules: [Korean](references/style-guide.md#korean-labels), [Chinese](references/style-guide.md#traditional-chinese-labels).
+**Non-Latin labels** — extend the family: [Korean](references/style-guide.md#korean-labels), [Chinese](references/style-guide.md#traditional-chinese-labels), [Cyrillic](references/style-guide.md#cyrillic-labels).
 
 **Mono is for technical content only** — never as a blanket "dev" font, and never JetBrains Mono.
-
-```html
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
-```
 
 ---
 
@@ -212,148 +198,27 @@ Universal building blocks. Type-specialized primitives (lifeline, activation bar
 - Terminal / CLI-window variant → [primitive-terminal.md](references/primitive-terminal.md)
 - Optional explanatory motion → [animation.md](references/animation.md)
 
-### Background
+Exact markup (background, dotted paper, markers, node box, arrow label, legend) and the long form of each connector rule: [`references/primitives-core.md`](references/primitives-core.md). The static templates (`template.html`, `template-dark.html`, `template-full.html`) already define the background and the `arrow`, `arrow-accent`, and `arrow-link` markers; `template-motion.html` defines only its own prefixed marker, so add the others from primitives-core.md when a motion diagram needs them.
 
-**Default: clean paper, no dot pattern.** Single `<rect>` filled with `paper`. Don't wrap the diagram in a secondary container background — the diagram sits directly on the page.
-
-```svg
-<rect width="100%" height="100%" fill="#f5f5f5"/>
-```
-
-**Optional: dotted paper variant.** When a long-form editorial diagram benefits from textured ground (essays, hero diagrams on a dedicated page), opt in by adding the `dots` pattern and a second rect:
-
-```svg
-<defs>
-  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
-    <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
-  </pattern>
-</defs>
-<rect width="100%" height="100%" fill="#f5f5f5"/>
-<rect width="100%" height="100%" fill="url(#dots)" opacity="0.6"/>
-```
-
-Don't use the dot pattern when the diagram sits inside a product page, slide, or card — the texture compounds with surrounding chrome and reads as noise.
-
-### Arrow markers (define all three, always)
-
-```svg
-<marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-  <polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/>
-</marker>
-<marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-  <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
-</marker>
-<marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-  <polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/>
-</marker>
-```
-
-| Arrow | Stroke | When |
-|---|---|---|
-| Default | muted `#4f5d75` | Internal, generic |
-| Accent | coral `#eb6c36` | Primary / highlighted / headline |
-| Link-blue | `#2e5aa8` | HTTP/API calls, external systems |
-| Dashed | `stroke-dasharray="5,4"` + any color | Optional, passive, return, async |
-
-**Draw arrows before boxes** so z-order puts lines behind nodes.
+- **Arrows:** `muted` by default, `accent` for the headline path, `link` for HTTP/API and external calls, dashed `5,4` for optional, passive, return, or async. Draw arrows before boxes so lines sit behind nodes.
+- **Node box:** an opaque paper mask rect, then the styled box at `rx=6`, a rectangular type tag at `rx=2` (not a pill), the name in Geist 600, and a Geist Mono sublabel.
 
 ### Mandatory connector rules
 
-These six rules are **non-negotiable**. Run the pre-output checklist (§9) to verify before producing any diagram.
+Non-negotiable, and §9 checks each one. Full text and edge cases: [primitives-core.md § Mandatory connector rules](references/primitives-core.md#mandatory-connector-rules).
 
-1. **Rounded right-angle (orthogonal) connectors are mandatory.** Never use diagonal `<line>` or straight slanted paths between nodes that don't share an x or y axis. Every bend must be a quarter-arc with `r=8` (or `r=6` minimum for tight layouts). See `references/type-architecture.md` for the elbow-path formula. Reserve plain straight `<line>` only for connections whose endpoints share the same x or y coordinate. Diagonal connectors are an automatic fail.
-
-2. **Label-to-connector margin: 6–10px gap, always.** A label must never sit *on* its arrow — the connector must remain visible. Place the label centered above (or beside, for vertical segments) the line with a **minimum 6px gap** between the bottom of the label's mask rect and the connector stroke. The opaque mask rect prevents the arrow from bleeding through, but the *visible* gap between mask edge and line preserves the reader's ability to trace the connection. If the label is large enough that 6px feels cramped, push it to 8–10px. Never let the mask rect touch or overlap the stroke.
-
-3. **No overlapping connectors.** Two connectors must never share the same stroke path, run parallel on top of each other, or be drawn on top of each other for any segment. When two orthogonal arrows must cross at a single point, apply the **bridge / hop** primitive (see `references/type-architecture.md` § Crossing arrows). When two arrows naturally want to overlap, offset their routing by ≥12px so each line is independently traceable. If you find yourself stacking connectors, redesign the layout — it means two nodes are too close, or the diagram is over budget (split into overview + detail).
-
-4. **Shared edge → fan the attach points.** When two or more connectors enter or exit the *same edge* of a box, each must have its own distinct attach point along that edge — **no two connectors may share a single point on a box**. Spread the attach points evenly along the edge with **≥12px** between adjacent points (8px minimum for very small boxes). Routing rules:
-   - For N connectors on an edge of length L, attach point `k` (1..N) sits at offset `L * k / (N + 1)` from the edge's leading corner.
-   - When the connectors fan out to destinations on different sides, route each one orthogonally from its own attach point — no merging strokes near the box.
-   - When two parallel connectors run in the same direction, keep them ≥12px apart along their entire length, not just at the attach point. Each arrow must remain independently traceable end-to-end.
-
-   No connector may hide another. If you can't tell two arrows apart at a glance, the layout has failed.
-
-5. **A connector must not pass behind a box that isn't its source or destination — except when the box is geometrically unavoidable on a direct orthogonal path.** Reroute around intervening boxes by default. The only legitimate exception is when a cross-cutting node (e.g., a footer service, a horizontal layer bar) physically sits between the connector's source and destination on the only straight path between them. In that exception:
-   - The stroke must be **dashed** (e.g., `stroke-dasharray="4,3"`) to signal "transit, not interaction" — it tells the reader the intervening box is not an endpoint.
-   - The label sits at the **visible end** of the connector (typically near the source) so it doesn't fall behind the intervening box.
-   - No marker (arrowhead) may land on the intervening box's edge — the marker resolves at the true destination only.
-
-   When in doubt, reroute. The exception exists for the narrow case where rerouting is geometrically impossible, not as a shortcut to avoid layout work.
-
-6. **A label mask must not overlap a node drawn after it.** Rule 2 keeps the label off its own connector; this one keeps it off the boxes. Because nodes are painted after labels, a mask that lands partly inside a node is covered by the node fill and the text renders as a fragment sitting on the node border. Place the label on a segment of the connector that runs through open canvas: for a connector leaving a node's right edge, that means clearing the node's `x + width` before the mask starts. A mask fully *inside* a node is a badge chip and is fine; a mask overlapping a zone container is fine too, since zones are painted first. No geometry verifier ships with the installed skill; check this rule by inspection.
-
-### Node box — full pattern
-
-```svg
-<!-- 1. Opaque paper mask — prevents arrows bleeding through transparent fills -->
-<rect x="X" y="Y" width="W" height="H" rx="6" fill="#f5f5f5"/>
-<!-- 2. Styled box -->
-<rect x="X" y="Y" width="W" height="H" rx="6" fill="FILL" stroke="STROKE" stroke-width="1"/>
-<!-- 3. Rectangular type tag (rx=2, NOT a pill) -->
-<rect x="X+8" y="Y+6" width="28" height="12" rx="2" fill="transparent" stroke="STROKE@0.40" stroke-width="0.8"/>
-<text x="X+22" y="Y+15" fill="STROKE@0.8" font-size="7" font-family="'Geist Mono', monospace"
-      text-anchor="middle" letter-spacing="0.08em">API</text>
-<!-- 4. Node name (Geist sans — human-readable) -->
-<text x="CX" y="CY+2" fill="#2d3142" font-size="12" font-weight="600"
-      font-family="'Geist', sans-serif" text-anchor="middle">Node Name</text>
-<!-- 5. Technical sublabel (Geist Mono) -->
-<text x="CX" y="CY+18" fill="#4f5d75" font-size="9"
-      font-family="'Geist Mono', monospace" text-anchor="middle">tech:port</text>
-```
-
-### Arrow labels — always mask, always with margin
-
-Every arrow label needs an opaque rect behind it. Without one it bleeds through the line. **And the label must sit with a visible gap above the connector — never on top of it.**
-
-```svg
-<!-- Mask sits 14px above the arrow (8px text height + 6px gap). Stroke is at ARROW_Y. -->
-<rect x="MID_X-18" y="ARROW_Y-20" width="36" height="12" rx="2" fill="#f5f5f5"/>
-<text x="MID_X" y="ARROW_Y-11" fill="#7a8399" font-size="8"
-      font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">WRITE</text>
-```
-
-Rules:
-
-- ≤14 characters, all-caps, centered on segment midpoint.
-- **Mandatory 6–10px gap** between the bottom of the mask rect and the arrow stroke. The connector must remain visible — a label that hides its own arrow is a hard fail.
-- Never `writing-mode` vertical.
-- For vertical segments, place the label to the side (not on the line) with the same 6–10px horizontal gap.
-
-### Legend — horizontal strip at the bottom
-
-**Never put the legend inside the diagram area.** Place as a horizontal strip after all nodes, with a hairline separator:
-
-```svg
-<line x1="30" y1="LEGEND_Y-8" x2="VIEWBOX_W-30" y2="LEGEND_Y-8"
-      stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
-<text x="30" y="LEGEND_Y+8" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace"
-      letter-spacing="0.14em">LEGEND</text>
-<!-- Items — horizontal row, ~160px apart -->
-```
-
-Expand SVG `viewBox` height by ~60px.
+1. **Orthogonal only.** Connectors between off-axis nodes are rounded right-angle elbows at `r=8` (`r=6` minimum in tight layouts); a straight `<line>` only when both ends share x or y. Diagonals fail.
+2. **Label gap.** Every arrow label (14 characters max, all caps, centered on its segment) sits on an opaque mask with a visible 6 to 10px gap from its stroke, beside vertical segments, never on the line.
+3. **No overlaps.** No shared or stacked strokes: offset parallel routes by 12px or more, and use the bridge/hop at a single crossing.
+4. **Fan attach points.** Connectors on one box edge each get their own point at `L * k / (N + 1)`, 12px or more apart (8px on very small boxes).
+5. **No transit behind a non-endpoint box.** Reroute. Only when the box is geometrically unavoidable: dashed stroke (`4,3`), label at the visible end, no marker on the intervening box.
+6. **Mask before node.** A label mask must not overlap a node drawn after it; badge masks fully inside a node and masks over earlier zones are fine. No geometry verifier ships with the installed skill; check this rule by inspection.
 
 ---
 
 ## 7. Layout & Spacing
 
-### 4px grid
-
-**All values — font sizes, padding, node dimensions, gaps, x/y coords — divisible by 4.** Non-negotiable.
-
-| Category | Allowed values |
-|---|---|
-| Font sizes | 8, 12, 16, 20, 24, 28, 32, 40 |
-| Node width / height | 80, 96, 112, 120, 128, 140, 144, 160, 180, 200, 240, 320 |
-| x / y coordinates | multiples of 4 |
-| Gap between nodes | 20, 24, 32, 40, 48 |
-| Padding inside boxes | 8, 12, 16 |
-| Border radius | 4, 6, 8 |
-
-Exempt: stroke widths (0.8, 1, 1.2), opacity values, and the 22×22 dot-pattern.
-
-Quick check: if a coordinate ends in 1, 2, 3, 5, 6, 7, 9 — fix it.
+Structural geometry sits on a 4px grid: node origins, widths, heights, gaps, and padding divide by 4. Type sizes follow the role ramp in [output-spec.md](references/output-spec.md), not the grid. Allowed values, the off-grid exceptions, and page layout: [`references/layout-budget.md`](references/layout-budget.md).
 
 ### Complexity budget (per diagram)
 
@@ -362,78 +227,18 @@ Quick check: if a coordinate ends in 1, 2, 3, 5, 6, 7, 9 — fix it.
 | Max nodes | 9 |
 | Max arrows / transitions | 12 |
 | Max coral elements | 2 |
-| Max lifelines (sequence) | 5 |
-| Max combined fragments (sequence) | 1 (default); 2 only if each is single-region `opt`/`loop` |
-| Max `alt` regions (sequence) | 2 |
-| Max fragment nesting (sequence) | 1 |
-| Max lanes (swimlane) | 5 |
-| Max items (quadrant) | 12 |
-| Max entities (ER) | 8 |
-| Max nesting levels (nested) | 6 |
-| Max tree depth | 4 |
-| Max org chart depth | 4 |
-| Max org chart nodes | 12 |
-| Max layers (layer stack) | 6 |
-| Max circles (venn) | 3 |
-| Max layers (pyramid) | 6 |
-| Max radar axes | 5 |
-| Max radar series | 5 |
-| Max focal radar series | 1 |
-| Max polar categories | 8 |
-| Max polar series | 1 |
-| Max focal polar categories | 1 |
-| Max bars (bar chart) | 8 |
-| Max bars (waterfall) | 8 incl. totals, 1 subtotal |
-| Max cells (treemap) | 8 |
-| Max series (line chart) | 5 |
-| Max tasks (Gantt) | 12 |
-| Max points (scatter plot) | 30 |
-| Max stages / nodes / flows (sankey) | 3 / 8 / 12 |
-| Max categories (fishbone) | 6 bones, 3 sub-causes each |
-| Max components / links (wardley) | 9 / 12, 2 movement arrows |
-| Max columns / cards (kanban) | 5 / 12 total, 4 per column |
-| Max stages / rows (user journey) | 6 / 3, 2 pain markers |
-| Max zones / nodes / paths (deployment) | 3 / 6 / 8, 9 artifacts |
-| Max nodes / edges (dependency) | 9 / 14, 4 ranks, 1 cycle |
-| Max classes / relationships (UML class) | 7 / 8, 5 members per compartment |
-| Max activities / slices / cards (story map) | 5 / 3 / 12 |
-| Max tables / columns / FKs (db schema) | 5 / 8 shown / 6 |
 | Max annotation callouts | 2 |
 | Max motion (optional) | 8 steps, 12 marked items, 2 simultaneous items — see [animation.md](references/animation.md) |
 
+Per-type limits (lifelines, lanes, series, bars, stages, and the rest): [layout-budget.md § Complexity budget](references/layout-budget.md#complexity-budget-per-diagram). Check your type's row before drawing.
+
 If you exceed, split into two diagrams (overview + detail).
-
-### Page layout
-
-1. **Header** — eyebrow (Geist Mono), title (Instrument Serif), optional subtitle (Geist muted).
-2. **Diagram container** — default: **clean, borderless**, no background — the SVG sits directly on the page paper. Optional *framed* variant (for card-heavy layouts or hero placements): `paper-2` bg + 1px `rule` border + 8px radius + `1.5rem` padding + `overflow-x: auto`.
-3. **Summary cards** — 2–3 col grid with *varied* widths (e.g., `1.1fr 1fr 0.9fr`).
-4. **Footer** — colophon in Geist Mono, muted, hairline top border.
 
 ---
 
 ## 8. Summary Card Pattern
 
-Don't use 3 identical generic cards. Vary the treatment:
-
-```html
-<div class="card">
-  <p class="eyebrow">SECTION LABEL</p>
-  <div class="card-header">
-    <span class="card-dot coral"></span>
-    <h3>Card Title</h3>
-  </div>
-  <ul><li>Item</li></ul>
-</div>
-```
-
-Rules:
-
-- `background: #ffffff` (not paper — slight lift without shadow)
-- `border: 1px solid rgba(45,49,66,0.12)`
-- `border-radius: 6px`, `padding: 1.25rem`
-- **No `box-shadow`**
-- Card dots: 7px, `border-radius: 50%` — ink / muted / coral / link / soft variants
+Don't use 3 identical generic cards. Vary the treatment: column widths such as `1.1fr 1fr 0.9fr`, a white background with a 1px hairline border and 6px radius, no `box-shadow`. Markup and the card-dot variants: [layout-budget.md § Summary Card Pattern](references/layout-budget.md#summary-card-pattern).
 
 ---
 
@@ -470,17 +275,18 @@ Run before producing any diagram.
 - [ ] `<title>` is the first child of `<svg>` (before `<defs>`) and both `<title>` and `<desc>` are filled in?
 - [ ] `<title>` / `<desc>` IDs are prefixed for this diagram and variant — never bare `title` / `desc`?
 - [ ] Arrows drawn before boxes?
-- [ ] **Every connector between off-axis nodes uses a rounded right-angle elbow (`r=8`)? No diagonal `<line>` slants?**
-- [ ] **Every arrow label has a visible 6–10px gap above its connector? (Mask rect not touching the stroke.)**
-- [ ] **No two connectors overlap, share a stroke path, or run on top of each other? Crossings use the bridge/hop primitive?**
-- [ ] **When several connectors enter or exit the same edge of a box, each has its own attach point (≥12px apart)? No connector hides another?**
-- [ ] **No connector passes behind a non-endpoint box, except the unavoidable-intervening-box case (§6 rule 5) — and in that case, the stroke is dashed and the label sits at the visible end?**
-- [ ] **No label mask overlaps a node drawn after it? (Node fill would clip the text; §6 rule 6. No geometry verifier ships here, so check by inspection.)**
+- [ ] **§6 rule 1:** off-axis connectors are `r=8` elbows, no diagonal slants?
+- [ ] **§6 rule 2:** a visible 6 to 10px gap between every label mask and its connector?
+- [ ] **§6 rule 3:** no overlapping or stacked connectors; bridge/hop at crossings?
+- [ ] **§6 rule 4:** a distinct attach point per connector on a shared edge, 12px or more apart, none hiding another?
+- [ ] **§6 rule 5:** no transit behind a non-endpoint box, except the unavoidable case (dashed, label at the visible end)?
+- [ ] **§6 rule 6:** no label mask overlapping a node drawn after it? (No geometry verifier ships here, so check by inspection.)
 - [ ] Every arrow label has an opaque `fill="#f5f5f5"` rect behind it?
 - [ ] Legend is a horizontal bottom strip, not floating?
 - [ ] No vertical `writing-mode` text?
 - [ ] `viewBox` expanded for the legend strip (~60px)?
-- [ ] Every font size, coord, width, height, gap divisible by 4?
+- [ ] **`min-width` equals the viewBox width, and the SVG sits in a local `overflow-x: auto` wrapper? (Otherwise a phone scrolls the whole page — or an `overflow: hidden` ancestor clips the diagram with no scrollbar at all. See [output-spec.md](references/output-spec.md).)**
+- [ ] Node origins, dimensions, gaps, padding on the 4px grid; type sizes on the role ramp?
 - [ ] From the installed skill directory, did `python3 scripts/self_check.py <file>` pass? (Accessible-SVG contract, single-file safety, motion basics.)
 - [ ] If animated, does the complete static/no-JS frame work, does reduced motion hide/disable playback, and is the controller copied verbatim from `assets/template-motion.html`? Neither the motion verifier nor the skin linter ships with the installed skill; manually check print and static-query states on top of the self-check.
 
@@ -506,9 +312,9 @@ Every diagram ships in three variants (see `assets/`):
 | **Full editorial** | `assets/template-full.html`, `example-<type>-full.html` | Long-form posts where the diagram is the hero. |
 | **Consultant special** (quadrant only) | `example-quadrant-consultant.html` | BCG/McKinsey-style 2×2 scenario matrix. See [type-quadrant.md](references/type-quadrant.md#consultant-special-2x2-scenario-matrix). |
 
-**Sketchy variant** (optional, applied to any of the above) — see [primitive-sketchy.md](references/primitive-sketchy.md). SVG turbulence filter wobbles strokes for a hand-drawn feel. Good for essays, not for technical docs.
+**Sketchy variant** (optional, applied to any of the above): a hand-drawn stroke filter for essays, not technical docs. See [primitive-sketchy.md](references/primitive-sketchy.md).
 
-**Terminal variant** (optional, replaces any of the above) — see [primitive-terminal.md](references/primitive-terminal.md). Start from `assets/template-terminal.html`; terminal examples use the `example-<type>-terminal.html` naming pattern. Charcoal CLI-window chrome, monospace, one red-orange accent. Good for dev-tool posts; not brand-tokenized, so skip it for onboarded output.
+**Terminal variant** (optional, replaces any of the above): CLI-window chrome for dev-tool posts. Start from `assets/template-terminal.html` and follow [primitive-terminal.md](references/primitive-terminal.md); examples are named `example-<type>-terminal.html`. Not brand-tokenized, so skip it for onboarded output.
 
 **Animation** (optional presentation layer) — see [animation.md](references/animation.md). Modes are `none` (default), `reveal`, `step`, and `loop`; motion never changes the static meaning or raises the complexity budget.
 
@@ -542,7 +348,7 @@ Set these four import decisions **before** drawing. Full spec: [output-spec.md](
 | Dial | Options | Default |
 |---|---|---|
 | **Format** | `html` · `svg` · `png` · `html+png` | `html` |
-| **Size** | `doc-inline` · `doc-wide` · `slide-16x9` · `slide-4x3` · `social-og` · `social-square` · `print-a4-landscape` · `print-letter-landscape` · `fit` | `doc-inline` |
+| **Size** | `doc-inline` · `doc-wide` · `slide-16x9` · `slide-4x3` · `social-og` · `social-square` · `print-a4-landscape` · `print-a3-landscape` · `print-letter-landscape` · `fit` | `doc-inline` |
 | **Detail** | `faithful` (≤24 nodes, zoned) · `balanced` (≤12) · `simplified` (≤7) | `balanced` |
 | **Audience** | `engineer` · `mixed` · `executive` — governs wording, not count | `mixed` |
 
@@ -552,7 +358,7 @@ The size preset sets the `viewBox` **and** the type ramp; `faithful` is the only
 
 ## 12. Output
 
-Always produce a single self-contained `.html` file, saved to `.greenline/diagrams/<work-id>/` under the owning ticket or initiative (for example `.greenline/diagrams/TKT-001/flow.html`), never loose at the repository root:
+Always produce a single self-contained `.html` file, saved in a folder of the diagrams folder named by the change id or the plan name it serves (for example `2026-10-08-retry-deadline/flow.html`), never loose at the repository root:
 
 - Embedded CSS (no external except Google Fonts)
 - Inline SVG (no external images)
@@ -560,23 +366,23 @@ Always produce a single self-contained `.html` file, saved to `.greenline/diagra
 
 Renders correctly in any modern browser. Motion-enabled output must render its complete meaning without JavaScript; under `prefers-reduced-motion: reduce` it shows the complete static frame and hides/disables playback controls.
 
-Link the file from the artifact it illustrates; a diagram that explains a durable spec is durable state. Adding the link is an annotative edit (links, typos and formatting change no meaning), so it never increments that artifact's `revision`; only a change of meaning bumps, and in doubt, bump and re-pin the consumers.
+Link the file from the change record or the plan document it illustrates; a diagram that explains a lasting choice is durable state, and the link is part of the change that adds it.
 
 ### Accessible SVG contract
 
-Every diagram is an accessible figure by default:
+Every diagram is an accessible figure by default (long form: [primitives-core.md § Accessible SVG contract](references/primitives-core.md#accessible-svg-contract)):
 
-1. Its `<svg>` carries `role="img"` and `aria-labelledby` naming the diagram's `<title>` and `<desc>`.
-2. `<title>` is the first child of `<svg>`, before `<defs>`. Assistive technology may ignore a title placed later.
-3. The IDs are prefixed per diagram and variant: `<slug>-title` / `<slug>-desc`, where the slug matches the file (`loop`, `loop-dark`, `loop-full`). Bare `title` / `desc` IDs are banned — two inline diagrams would otherwise share one ID, and the second could be announced with the first's name.
-4. `<title>` is the short name of the subject — roughly the page `<h1>`, and about 60 characters or fewer.
-5. `<desc>` is one sentence stating what the diagram shows in terms a reader needs without the image. Describe the content, not the geometry: “Org chart showing a command center routing work to specialist agents and escalation owners,” not “A box at the top with five boxes below it.” A shape-by-shape narration is worse than no useful description.
-6. Decorative-only SVG, such as the specimen glyphs in `assets/icons.html`, carries `aria-hidden="true"` instead.
+1. `<svg>` carries `role="img"` and `aria-labelledby` naming its `<title>` and `<desc>`.
+2. `<title>` is the first child of `<svg>`, before `<defs>`.
+3. IDs are `<slug>-title` / `<slug>-desc`, the slug matching the file (`loop`, `loop-dark`, `loop-full`); never bare `title` / `desc`.
+4. `<title>` is the subject's short name, roughly the page `<h1>`, 60 characters or fewer.
+5. `<desc>` is one sentence about the content, not the geometry.
+6. Decorative-only SVG, such as the glyphs in `assets/icons.html`, carries `aria-hidden="true"` instead.
 
 ### Exporting to PNG / SVG
 
-When the user asks to export, save, rasterize, or convert a generated diagram to `.png` or `.svg`, load [`references/export.md`](references/export.md) and follow the procedure there. Both formats deliver the diagram only (the `<svg>` node) — editorial wrappers like cards and headers are dropped by design. Export is **manual** — never produce export files unprompted.
+When the user asks to export, save, rasterize, or convert a generated diagram to `.png` or `.svg`, load [`references/export.md`](references/export.md) and follow the procedure there. For the SVG half, prefer the packaged helper `scripts/export_svg.py` (it carries class-based CSS into the fragment and namespaces `<defs>` IDs so exports stay inline-safe). Both formats deliver the diagram only (the `<svg>` node) — editorial wrappers like cards and headers are dropped by design. Export is **manual** — never produce export files unprompted.
 
 For an imported diagram, pixel dimensions come from the `viewBox` × scale factor, so its size decision belongs to §11, not to export. For any diagram that needs an exact frame (an OG card or a slide image), see [`export.md` § Sizing the export](references/export.md).
 
-Durable output: .greenline/diagrams/<work-id>/, linked from the owning artifact by an annotative edit that bumps no revision; offered in one line when a durable diagram would serve and the user did not ask for one, started on the user's yes.
+Durable output: .greenline/diagrams/<work-id>/, linked from the record or the plan document it illustrates; offered in one line when a durable diagram would serve and the user did not ask for one, started on the user's yes.

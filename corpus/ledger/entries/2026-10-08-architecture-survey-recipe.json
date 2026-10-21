@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-architecture-survey-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-diagnose-recipe",
+    "sha256": "a4905339fd7fe5e5f78df1151e6139a80d68a1b84469c69ab30d7488c9f8bbc6"
+  },
+  "subject": "skill:architecture-survey",
+  "recipe": "5801a66a38f3a6f3cecd789484f7b43328f509d5fddbc571d7cbf040c7c0469c",
+  "result": "84fa783c9b58dcf82796d53083ce8d9e3c47ba32c39c19117daf93703c148820",
+  "pages": [
+    {
+      "path": "HTML-REPORT.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Improve-codebase-architecture renamed and re-cut as a start",
+  "reason": "architecture-survey is improve-codebase-architecture renamed and re-cut as a start: its walk is one delegated agent or its own reading, its report lives in the working files, and its glossary and decision writes wait for close.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the walk one delegated agent or the agent's own and the designs made one after another (R20: \"we are not doing worktrees and parralel susbs at all\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 147,
+        "taken": 126,
+        "exact": 109,
+        "retention": 0.8650793650793651,
+        "coverage": 0.8571428571428571,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 1317
+  }
+}

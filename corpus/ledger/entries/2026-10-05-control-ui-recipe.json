@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-control-ui-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-control-cli-recipe",
+    "sha256": "a83cfb949763539f0f38c6ad5f20b80948d052541216b21ea950bbfe71e9af34"
+  },
+  "subject": "skill:control-ui",
+  "recipe": "e409208561acd6fb49a3697014abc433e9e1c42ba3abeaa47bd404f63fee06ea",
+  "result": "3087072ef3bb21a876af114a3c8496324eca6506b4dc189d07de944fa578bdad",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves control-ui to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at roster-keepers-fix-2026-09-15.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 53,
+        "taken": 52,
+        "exact": 50,
+        "retention": 0.9615384615384616,
+        "coverage": 0.9811320754716981,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 199
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-grill-with-docs-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-grilling-retired",
+    "sha256": "7e338297314905e184cf20f4e215fa6d13a5aba9eda2e959b512e78ea67c9777"
+  },
+  "skill": "grill-with-docs",
+  "slice": "S13 of the plan modes-records-recipes",
+  "replacedBy": "frame",
+  "recipe": "4db236da4edabf2b17b213c01e0eb3377838bcdc84a3cb709c7df12a56f42c43",
+  "gist": "Its trigger and document reading go to frame",
+  "reason": "grill-with-docs, a stub, gives frame's written depth its trigger and its reading of the documents first.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\" (C15)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\" (C15)"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-diagnose-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-router-recipe",
+    "sha256": "afde7d1c293a440fcc5374b6638ea4d1ff2a23ee819292597f9d28d0a5c9a159"
+  },
+  "subject": "skill:diagnose",
+  "recipe": "1c6ab6b412595a2195b934b35fd43b46757403dd3454b1ae4375bfcb3a7081dd",
+  "result": "3535661d68b8dd1b8556a7467c71eabe17813836dd0d05af5ff13755a7da809c",
+  "pages": "unknown",
+  "gist": "Diagnose is diagnosing-bugs as a start, with five sources grafted",
+  "reason": "diagnose is diagnosing-bugs as spine with five sources grafted: systematic-debugging, debugging-and-error-recovery, principle-fix-root-causes, principle-attack-the-premise and performance-optimization's keep-or-revert step. It is a start whose loop lives in the working files; its repair is a change run from frame.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 302,
+        "taken": 46,
+        "exact": 45,
+        "retention": 0.9782608695652174,
+        "coverage": 0.152317880794702,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 122,
+        "exact": 119,
+        "retention": 0.9754098360655737,
+        "coverage": 0.9606299212598425,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 40,
+        "taken": 18,
+        "exact": 17,
+        "retention": 0.9444444444444444,
+        "coverage": 0.45,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 363,
+        "taken": 237,
+        "exact": 229,
+        "retention": 0.9662447257383966,
+        "coverage": 0.6528925619834711,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 800
+  }
+}

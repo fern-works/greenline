@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 5,
+  "kinds": [
+    {
+      "name": "step",
+      "mechanism": "reach",
+      "record": "section",
+      "place": "ordered",
+      "budget": "counts",
+      "when": "A step runs where the change's mode reaches it on the line, at the depth the mode gives it, and the agent never chooses it."
+    },
+    {
+      "name": "start",
+      "mechanism": "open",
+      "record": "section",
+      "place": "beside",
+      "budget": "free",
+      "when": "A start is chosen once, from the situation a request begins in, and hands the job to a mode."
+    },
+    {
+      "name": "habit",
+      "mechanism": "arise",
+      "record": "none",
+      "place": "beside",
+      "budget": "free",
+      "when": "A habit loads when its situation arises, at any step, and writes no record of its own."
+    }
+  ],
+  "steps": [
+    { "name": "frame", "whenSplit": "plan", "fixPass": false },
+    { "name": "plan", "whenSplit": "plan", "fixPass": false },
+    { "name": "anticipate", "whenSplit": "plan", "fixPass": false },
+    { "name": "build", "whenSplit": "ticket", "fixPass": false },
+    { "name": "review", "whenSplit": "ticket", "fixPass": true },
+    { "name": "verify", "whenSplit": "both", "fixPass": true },
+    { "name": "close", "whenSplit": "both", "fixPass": false }
+  ],
+  "modes": [
+    {
+      "name": "quick",
+      "promise": "quick, the builder alone",
+      "typicalRequest": "a settled one-commit fix",
+      "fixRounds": 0,
+      "budget": { "words": 9500 },
+      "steps": {
+        "frame": { "depth": "inline" },
+        "plan": { "depth": "inline" },
+        "anticipate": { "depth": "none" },
+        "build": { "depth": "inline" },
+        "review": { "depth": "none" },
+        "verify": { "depth": "inline" },
+        "close": { "depth": "inline" }
+      }
+    },
+    {
+      "name": "regular",
+      "promise": "one fresh review and one fix pass",
+      "typicalRequest": "a bounded change with a clear goal",
+      "fixRounds": 1,
+      "budget": { "words": 10400 },
+      "steps": {
+        "frame": { "depth": "written" },
+        "plan": { "depth": "written" },
+        "anticipate": { "depth": "none" },
+        "build": { "depth": "written" },
+        "review": { "depth": "independent", "agents": 1 },
+        "verify": { "depth": "written" },
+        "close": { "depth": "written" }
+      }
+    },
+    {
+      "name": "careful",
+      "promise": "the premise attacked, two reviews and a fresh verifier",
+      "typicalRequest": "open decisions, a floor, or several tickets",
+      "fixRounds": 2,
+      "budget": { "words": 11700 },
+      "steps": {
+        "frame": { "depth": "written" },
+        "plan": { "depth": "written" },
+        "anticipate": { "depth": "independent", "agents": 1 },
+        "build": { "depth": "written" },
+        "review": { "depth": "independent", "agents": 2 },
+        "verify": { "depth": "independent", "agents": 1 },
+        "close": { "depth": "written" }
+      }
+    }
+  ],
+  "floors": [
+    { "name": "security", "risk": "secrets or security", "mode": "careful" },
+    { "name": "data-migration", "risk": "a data migration", "mode": "careful" },
+    { "name": "concurrency", "risk": "concurrency", "mode": "careful" },
+    { "name": "public-contract", "risk": "a public contract", "mode": "careful" },
+    {
+      "name": "unchecked-behavior",
+      "risk": "a behavior change with no check that could fail",
+      "mode": "careful"
+    }
+  ]
+}

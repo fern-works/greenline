@@ -7,14 +7,13 @@ import { describe, expect, it } from "vitest";
  * reference skill selection, request classification, or workflow
  * progression. The tokens below are the vocabulary of those acts; the
  * CLI's own file-state words (create/update/conflict/orphan) are not,
- * and the planner keeps using them. The literal skill name
- * `project-router` is exempt from the routing token: the working laws
- * the renderer carries are corpus prose that must name their method
- * owners (ADR 0020), and a law naming a skill is not the CLI routing.
+ * and the planner keeps using them. No CLI module names the start
+ * `router` (project-router until S17 of the plan modes-records-recipes),
+ * so the routing token holds without the exemption that name once had.
  */
 
 const FORBIDDEN: readonly { token: RegExp; act: string }[] = [
-  { token: /(?<!project-)\brout(es?|ing|er)\b/, act: "routing" },
+  { token: /\brout(es?|ing|er)\b/, act: "routing" },
   { token: /\bschedul(e|es|ed|ing|er)\b/, act: "scheduling" },
   { token: /\brecommend(ed|ation|s)?\b/, act: "recommending" },
   { token: /\bprioriti[sz]e[sd]?\b/, act: "prioritizing" },

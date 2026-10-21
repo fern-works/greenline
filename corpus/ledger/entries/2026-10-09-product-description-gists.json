@@ -1,0 +1,53 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-product-description-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-groundwork-gists",
+    "sha256": "8914e7c95114bea8fdfced4e92a1dd958cd30ae054110d69d1a57395c97a0970"
+  },
+  "subject": "skill:product-description",
+  "recipe": "c78e4d5de584f20a4aba4f273a0b60c8a8e2adb7241207440e8db0e59a9985ed",
+  "result": "807e31cc2db1e6635ac4827bc3f5a1c93515393c3527b3b1e90330df7d9e4c88",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "product-description",
+        "segments": 618,
+        "taken": 612,
+        "exact": 605,
+        "retention": 0.988562091503268,
+        "coverage": 0.9902912621359223,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 563
+  }
+}

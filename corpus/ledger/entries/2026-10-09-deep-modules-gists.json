@@ -1,0 +1,75 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-deep-modules-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-ponytail-gists",
+    "sha256": "2d869905ddce8978e0c5cc10ad4d9c00868663ce83fd737defe350ed9d03cfc2"
+  },
+  "subject": "skill:deep-modules",
+  "recipe": "88a074ced98532ae04dc01de96729ccdef88dd903ae34e629904107439abddff",
+  "result": "ed68724ecc7bd9a08f797967a0962249d792eee0564793605c1e7b842efb6bec",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\"), with R20 of 2026-10-07 (\"we are not doing worktrees and parralel susbs at all\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), the old tests retained through a deepening"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 152,
+        "taken": 144,
+        "exact": 135,
+        "retention": 0.9375,
+        "coverage": 0.9473684210526315,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 32,
+        "taken": 18,
+        "exact": 17,
+        "retention": 0.9444444444444444,
+        "coverage": 0.5625,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 319
+  }
+}

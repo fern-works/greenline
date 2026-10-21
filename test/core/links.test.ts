@@ -34,8 +34,8 @@ describe("findBrokenReferences", () => {
   it("ignores links into the surrounding project", () => {
     const broken = findBrokenReferences([
       {
-        path: "skills/domain-modeling/CONTEXT-FORMAT.md",
-        content: "[o](./src/ordering/CONTEXT.md)",
+        path: "skills/domain-modeling/GLOSSARY-FORMAT.md",
+        content: "[o](./src/ordering/GLOSSARY.md)",
       },
     ]);
     expect(broken).toEqual([]);
@@ -48,7 +48,7 @@ describe("findBrokenReferences", () => {
 
   // Template files describe the repo the consumer will create, not the
   // projection: their links intentionally point at files that do not
-  // exist here (QA run 041 — four GL0114 warnings on every doctor run).
+  // exist here (QA run 041: four GL0114 warnings on every diagnosis run).
   it("skips -template.md files whose links describe the target repo", () => {
     const broken = findBrokenReferences([
       {

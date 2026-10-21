@@ -1,0 +1,60 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-domain-modeling-glossary",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-diagnosing-bugs-glossary",
+    "sha256": "14c04743effa033bbeb13b5ab6728976acae21dd3d9c2119ef9c1ab559cb65d9"
+  },
+  "subject": "skill:domain-modeling",
+  "recipe": "ce2ae9bdd5571b3dae75249b6ee3196818a6c693fbe5ee3de9a5e4a54b98bf11",
+  "result": "d7f1b973b67e795d3a017e84a5e7ab37beb6913a7b98688c880bf61c3731ad7b",
+  "pages": [
+    {
+      "path": "CONTEXT-FORMAT.md"
+    },
+    {
+      "path": "GLOSSARY-FORMAT.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Follows upstream's rename; retention rises above the minimum",
+  "reason": "Follows upstream's rename: the glossary home is GLOSSARY.md, so the twenty pointer edits that kept the old names go and upstream's renamed sentences, tree and format page are taken. Retention rises above the minimum.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-09-15",
+      "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "its retention under the minimum is the copy as it stands, its installed text unchanged by the refresh the operator asked for on 2026-10-07 in the words \"lets pull the fresh upstream for all the sources\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    },
+    {
+      "date": "2026-10-01",
+      "words": "its retention now meets the minimum, so the inventory ruling of its refresh entry on the docs/DECISIONS.md row of 2026-10-01 on existing divergence is retired"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 107,
+        "exact": 103,
+        "retention": 0.9626168224299065,
+        "coverage": 0.9385964912280702,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 389
+  }
+}

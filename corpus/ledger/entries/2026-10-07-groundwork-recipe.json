@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-groundwork-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-concurrency-method-recipe",
+    "sha256": "70175c22e0e12003f1acb38bfe68ddc94046fabbd8c5083d1047f3cc9d598859"
+  },
+  "subject": "skill:groundwork",
+  "recipe": "3490cf39d0de617a0b838cf16af42652145dbbb03e96457e8707eb12f762194c",
+  "result": "f121b3c54e79f7e15c734eca3d06c7cd57057c1d2a610c80f88c43ed65c00e59",
+  "pages": "unknown",
+  "gist": "A native skill moves to its recipe, its body unchanged",
+  "reason": "Moves groundwork, a native skill, to its recipe under Q1 of 2026-10-04: its body byte for byte, its front matter in canonical quoted form. The old chain pinned it at practice-without-guidance-2026-09-26.",
+  "authorisedBy": {
+    "date": "2026-08-30",
+    "words": "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\", and the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (the row of 2026-09-26)"
+  },
+  "ruling": [
+    {
+      "date": "2026-08-30",
+      "words": "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\", and the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (the row of 2026-09-26)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 636
+  }
+}

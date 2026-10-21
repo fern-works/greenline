@@ -1,0 +1,425 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "sweep-tests",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "sweep-tests"
+    },
+    {
+      "field": "description",
+      "value": "Prune or audit a test suite with mutation proof, as its own announced task on a green suite. Invoke it by name when tests break on refactors that change no behavior, coverage is high but defects still ship, or production code carries seams only tests use."
+    }
+  ],
+  "sources": ["freddie-northam"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": ["81eded364280"]
+        },
+        {
+          "passage": "written",
+          "text": "Sweep tests is the start for a test suite that needs pruning or an audit. It fires by name, when tests break on refactors that change no behavior, when coverage is high but defects still ship, or when production code carries seams only tests use, and it runs on a green suite as a change of its own, never inside another change's build: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming sweep-tests, and run the line from `frame`, the sweep itself being the change's build. Propose regular or above, since the sweep's result is reviewed by an agent other than the sweeper only where the review step runs independent; where the owner chooses quick, no review runs, and the close section names that limit. A red check goes to diagnose. It deletes nothing it has not proved by mutation, adds no test, and never certifies its own review without naming that limit.",
+          "kind": "method",
+          "reason": "one opening paragraph in the skill's voice after the title: a standing program, not an initiative stage, fired by name on a green suite in its own dedicated ticket and never inside another ticket's build; a red check goes to diagnosing-bugs and the review of the committed result to delivery-review; it deletes nothing unproved by mutation, adds no test and never certifies its own review; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "Opens sweep-tests: prune a green suite as a change of its own",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record, a start hands the job to a mode the owner approves, and what a record relies on lives in the change's folder; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names and steps; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": [
+            "c5bd4edb584c",
+            "920dd6d0370e",
+            "8a7dd61d04a9",
+            "8f3587f7d84a",
+            "919d3cf171e6",
+            "813f7b8bf1fe",
+            "2a9b8dd7b17f",
+            "c3a431ca7240",
+            "552913d665ba"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "When a check is red,\nrepair the source through diagnose, and restart the sweep from the top\nonce the suite is green again.",
+          "kind": "method",
+          "reason": "the gate's 'repair the source' names its owner, diagnosing-bugs, and the sweep restarts from the top once the suite is green, a step upstream lacks; upstream's rule that no test is touched until then stands Confirmed by the operator on 2026-09-11 (method-rulings.md); re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "A red check is repaired through diagnose, then the sweep restarts",
+          "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record, a start hands the job to a mode the owner approves, and what a record relies on lives in the change's folder; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names and steps",
+          "credits": ["freddie-northam"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": ["6e4b98dbe3ea"],
+          "edits": [
+            {
+              "segment": "6e4b98dbe3ea",
+              "find": " is green\n",
+              "replace": "\nis green ",
+              "kind": "method",
+              "reason": "the gate's 'repair the source' names its owner, diagnosing-bugs, and the sweep restarts from the top once the suite is green, a step upstream lacks; upstream's rule that no test is touched until then stands Confirmed by the operator on 2026-09-11 (method-rulings.md).",
+              "gist": "Repair goes through its owner, and the sweep restarts once green",
+              "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "This skill is a separate change with its own change record.",
+          "kind": "pointer",
+          "reason": "upstream's 'separate task' is a dedicated ticket in .greenline/work/tickets/, and 'another task' is another ticket's build; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The sweep is a separate change with its own record"
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": [
+            "6928cc7c4569",
+            "492a43615d5d",
+            "cfa2bf3ff67f",
+            "2e23432d30cd",
+            "cbbec4ac4257",
+            "9f20cf4e5116",
+            "4fa1a621da39",
+            "edd2b8fad953",
+            "ba12c8eba86b",
+            "ba6575e61c2b",
+            "164287148b3f",
+            "dd197e745637"
+          ],
+          "edits": [
+            {
+              "segment": "492a43615d5d",
+              "find": "task",
+              "replace": "change's build",
+              "kind": "pointer",
+              "reason": "upstream's 'another task' is another change's build: the sweep is never run inside one, as the installed work guide makes each change its own record.",
+              "gist": "Never run inside another change's build, since each change keeps its record"
+            }
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "Only when the repository has none, use the tool that ships here, `bin/mutate.mjs`\nin this skill's installed directory. Find it with the glob\n`**/sweep-tests/bin/mutate.mjs` under the installed skills rather than assuming\na harness:",
+          "kind": "harness",
+          "reason": "the <skill-dir> in upstream's command is this skill's installed directory, found by the glob **/sweep-tests/bin/mutate.mjs under the installed skills rather than by assuming a harness; the command itself is unchanged",
+          "gist": "Locates bin/mutate.mjs by glob under the installed skills; the command is unchanged",
+          "credits": ["freddie-northam"]
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": ["9308ec8ec07e", "799c9c610ab1", "58194d978ce8"]
+        },
+        {
+          "passage": "written",
+          "text": "Validate the measurement before judging a survivor. The bundled tool masks\nstrings and comments for its comparison and numeric operators, but its raw-text\nternary operator can still swap a quoted ternary example inside a comment, and\nits \"defect your suite ships\" line is a candidate, not a diagnosis. A mutation\nthat changes no executable behavior, or whose validity is unresolved, is an\ninvalid measurement, not a shipped defect: the run proves no deletion, so keep\nthe tests and seams, record the invalid measurement with the sweep's evidence,\nand use an already available capable runner only within the authorized scope.\nNever add a test for a comment, and never drop a baseline mutant to make the\nscore pass.\n\nA survivor inside error-handling code is the sweep's highest-value finding.\nCode that has not run does not work, and error handlers run rarest of all: a\nstudy of production failures in distributed data-intensive systems (Yuan et\nal., OSDI 2014) found 92% of catastrophic failures came from incorrect handling\nof non-fatal errors the software explicitly signaled. A test that exercises an\nerror path is never pruned as redundant on coverage grounds alone; weigh its\ndeletion against what its mutants proved.",
+          "kind": "method",
+          "reason": "the bundled mutate.mjs masks strings and comments but its raw-text ternary operator can swap a quoted ternary inside a comment, so a survivor is judged only after the measurement is validated, and a survivor on an error path is the highest-value finding and is never pruned on coverage alone: two criteria upstream does not state Confirmed by the operator on 2026-09-11 (method-rulings.md).",
+          "gist": "Validates the measurement before judging survivors; error-path survivors rank highest",
+          "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits"
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": [
+            "5ab0fbc12e2f",
+            "dacd44213c9c",
+            "1d10406894ce",
+            "51d66bb9bf82",
+            "e5b1454e7577",
+            "bd0c42cda333",
+            "475bb88d906d",
+            "8e2dcdeca1da",
+            "adf86bb6c5e5",
+            "b46fb7c2951c",
+            "3b1a770f6b4d",
+            "0c38ac04147e",
+            "a2eb16c02a98",
+            "fe0fd165406f",
+            "657130eed555",
+            "e67f7fbb7b12",
+            "177381423c3f",
+            "3ea519e5d9ca",
+            "dbba5a56b3b7",
+            "bb0250bd7f0b",
+            "9a908f85e69b",
+            "037b5216d6ea"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Write the before-report and the after-report to different paths in the\nsweep change's folder.",
+          "kind": "home",
+          "reason": "the before-report and the after-report go to different paths under the sweep ticket's evidence home, .greenline/work/evidence/TKT-NNN/; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Both reports go to separate paths in the sweep change's folder",
+          "credits": ["freddie-northam"]
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": ["b28b04e7eed5"],
+          "edits": [
+            {
+              "segment": "b28b04e7eed5",
+              "find": " that\n",
+              "replace": "\nthat ",
+              "kind": "home",
+              "reason": "the before-report and the after-report go to different paths under the sweep ticket's evidence home, .greenline/work/evidence/TKT-NNN/",
+              "gist": "Before and after reports go to different paths in the change's folder"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "**A runner that reports per-test identities names one killer for each mutant:\nthe first test that reached it.**",
+          "kind": "correction",
+          "reason": "upstream's 'the report names one killer for each mutant' holds only for a runner that reports per-test identities; the bundled mutate.mjs reports suite-level killed and survived outcomes and names no killer, so that attribution is never invented and its absence is not evidence that a test is redundant; the rest of the paragraph (run order, not ownership; shortlist, never proof; the rerun is the proof) is upstream's",
+          "gist": "The bundled tool names no killer; never invent one or infer redundancy",
+          "credits": ["freddie-northam"]
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": ["6d545a4ea4b4"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "The bundled\n`mutate.mjs` reports suite-level killed and survived outcomes and names no\nkiller; do not invent that attribution, and its silence is not evidence that a\ntest is redundant.",
+          "kind": "correction",
+          "reason": "upstream's 'the report names one killer for each mutant' holds only for a runner that reports per-test identities; the bundled mutate.mjs reports suite-level killed and survived outcomes and names no killer, so that attribution is never invented and its absence is not evidence that a test is redundant; the rest of the paragraph (run order, not ownership; shortlist, never proof; the rerun is the proof) is upstream's",
+          "gist": "The bundled tool names no killer; never invent one or infer redundancy",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": [
+            "661cc89f3d89",
+            "10643258f2c1",
+            "906f3740d352",
+            "f92fe0a578c3",
+            "e6ed7524ba37",
+            "f7172dc485db",
+            "11f041928e52",
+            "df0a4dd1f79e",
+            "4fa2c53d2eac",
+            "b935ffd5ab7a",
+            "1148e25850e9",
+            "1862f6bffa30",
+            "9afae1ac1c1c",
+            "0928ab520aff",
+            "70bfb0a57749",
+            "fce1d6a29b7a",
+            "f4a2e9f3372e",
+            "c5820e65289c",
+            "048eff61a59e",
+            "b848fcb18747",
+            "800b4fa39bdc",
+            "18d9a712a507",
+            "43285368d183",
+            "587f9d996fc1",
+            "28f76b4b604f",
+            "a7a4b02d77d5",
+            "3cc376ace282",
+            "bb355b7c6212",
+            "fb610cbe2dd6",
+            "08bebc0b2491",
+            "b2bc425fabfd",
+            "123b4ee32051",
+            "33ae85a59011",
+            "ace696196a3d",
+            "ef31ac2a6efb",
+            "5a84328a9336",
+            "18c9685d18cc",
+            "c148a56b1d05",
+            "6c709ad09b62",
+            "a7571c92c377",
+            "83b539ff1084",
+            "91ae84efa3d6",
+            "d85713fd3541",
+            "f85765313123",
+            "47d63a699a25",
+            "9471b5a97d59",
+            "7fb8c1ce01a5",
+            "386201aaa6c2",
+            "cff3c99e28c2",
+            "ae46eb8b831b",
+            "355a41a8b410",
+            "185cc7ab3407",
+            "51bc95986e3f",
+            "e428044af525",
+            "090ce015f254"
+          ],
+          "edits": [
+            {
+              "segment": "661cc89f3d89",
+              "find": "\nonly real net ",
+              "replace": " only real net\n",
+              "kind": "correction",
+              "reason": "upstream's 'the report names one killer for each mutant' holds only for a runner that reports per-test identities; the bundled mutate.mjs reports suite-level killed and survived outcomes and names no killer, so that attribution is never invented and its absence is not evidence that a test is redundant; the rest of the paragraph (run order, not ownership; shortlist, never proof; the rerun is the proof) is upstream's",
+              "gist": "The bundled tool names no killer; never invent one or infer redundancy"
+            },
+            {
+              "segment": "10643258f2c1",
+              "find": "\nreport to ",
+              "replace": " report to\n",
+              "kind": "correction",
+              "reason": "upstream's 'the report names one killer for each mutant' holds only for a runner that reports per-test identities; the bundled mutate.mjs reports suite-level killed and survived outcomes and names no killer, so that attribution is never invented and its absence is not evidence that a test is redundant; the rest of the paragraph (run order, not ownership; shortlist, never proof; the rerun is the proof) is upstream's",
+              "gist": "The bundled tool names no killer; never invent one or infer redundancy"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "The baselines, the identified survivors and kills, both reports, the table and\nthe resulting checks stay with the sweep's change in its folder, and\nacceptance is judged against those measurements: an aggregate score alone\ncannot prove that each baseline mutant remains killed. The sweep is\nimplementation work. Commit its result with the change's trailer for its\nreview step, like any build; no review runs only\nwhere the owner chose quick, and the close section names that limit.",
+          "kind": "pointer",
+          "reason": "the sweep's evidence and its review: the Report section says the baselines, survivors and kills, both reports, the table and the resulting checks stay with the sweep's ticket under its evidence home, acceptance is judged against those measurements since an aggregate score cannot prove each baseline mutant remains killed, and the committed result goes to delivery-review like any implementation with the sweeper never writing its own review record; the Handoff section names the green suite and the sweep's own ticket consumed, the reports and table produced under .greenline/work/evidence/TKT-NNN/ with the ticket implementing then implemented, and delivery-review next; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "Evidence stays in the change's folder, and review judges the sweep"
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "sweep-tests/SKILL.md",
+          "segments": [
+            "803b04bba620",
+            "0148af2e0739",
+            "da45c7561a90",
+            "1909a424369b",
+            "98c75a271f35",
+            "26993422a5f3",
+            "273151be1fcb",
+            "a6fd90f1d13e",
+            "f2ef2d83d428",
+            "93ef631a6c52",
+            "38204c4255dc",
+            "e6270b67d258",
+            "5100f885a715",
+            "20ffee0a0018"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: a green suite and the request to sweep it\nProduces: the before and after mutation results at different paths, the deletion and seam table, and the baselines and kills, in the change's folder under .greenline/ledger/<id>/; the sweep committed as the change's build\nNext: frame, under the mode the owner approves; the sweep is the change's build, and review and verify follow at the depths its mode gives",
+          "kind": "pointer",
+          "reason": "the sweep's evidence and its review: the Report section says the baselines, survivors and kills, both reports, the table and the resulting checks stay with the sweep's ticket under its evidence home, acceptance is judged against those measurements since an aggregate score cannot prove each baseline mutant remains killed, and the committed result goes to delivery-review like any implementation with the sweeper never writing its own review record; the Handoff section names the green suite and the sweep's own ticket consumed, the reports and table produced under .greenline/work/evidence/TKT-NNN/ with the ticket implementing then implemented, and delivery-review next; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "Evidence stays in the change's folder, and review judges the sweep"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Sweep tests: the practice's mechanics\n\nThis page holds where sweep-tests's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe sweep's change record is `.greenline/ledger/<id>.md` and its folder `.greenline/ledger/<id>/`.",
+          "kind": "home",
+          "reason": "sweep-tests' mechanics: the ledger the sweep's record and folder live in, held apart since J-93 S2.",
+          "gist": "The sweep's record and folder"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [
+    {
+      "path": "bin/mutate.mjs",
+      "source": "freddie-northam",
+      "file": "sweep-tests/bin/mutate.mjs"
+    }
+  ],
+  "drops": [
+    {
+      "source": "freddie-northam",
+      "file": "sweep-tests/SKILL.md",
+      "segment": "c02706ee0de9",
+      "kind": "method",
+      "reason": "the gate's 'repair the source' names its owner, diagnose, and the sweep restarts from the top once the suite is green, a step upstream lacks; upstream's rule that no test is touched until then stands Confirmed by the operator on 2026-09-11 (method-rulings.md).",
+      "gist": "Repairing the source now goes through diagnose, with a restart once green",
+      "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "sweep-tests/SKILL.md",
+      "segment": "6eb02151ac91",
+      "kind": "pointer",
+      "reason": "upstream's 'separate task' is a dedicated ticket in .greenline/work/tickets/, and 'another task' is another ticket's build",
+      "gist": "A separate task becomes a separate change with its own record"
+    },
+    {
+      "source": "freddie-northam",
+      "file": "sweep-tests/SKILL.md",
+      "segment": "37efff1ac02b",
+      "kind": "harness",
+      "reason": "the <skill-dir> in upstream's command is this skill's installed directory, found by the glob **/sweep-tests/bin/mutate.mjs under the installed skills rather than by assuming a harness; the command itself is unchanged",
+      "gist": "Locates bin/mutate.mjs by glob under the installed skills; the command is unchanged",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "sweep-tests/SKILL.md",
+      "segment": "d601f7f27da1",
+      "kind": "home",
+      "reason": "the before-report and the after-report go to different paths under the sweep ticket's evidence home, .greenline/work/evidence/TKT-NNN/",
+      "gist": "Before and after reports go to different paths in the change's folder",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 12
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "sweep-tests/SKILL.md",
+      "segment": "c8fac87dd158",
+      "kind": "correction",
+      "reason": "upstream's 'the report names one killer for each mutant' holds only for a runner that reports per-test identities; the bundled mutate.mjs reports suite-level killed and survived outcomes and names no killer, so that attribution is never invented and its absence is not evidence that a test is redundant; the rest of the paragraph (run order, not ownership; shortlist, never proof; the rerun is the proof) is upstream's",
+      "gist": "The bundled tool names no killer; never invent one or infer redundancy",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    }
+  ]
+}

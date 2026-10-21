@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-diagnosing-bugs-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-prototype-recipe",
+    "sha256": "37eb9841794ea5f883f0bc9f83443f4e1e90dac70225287c77c603f7f70abdf8"
+  },
+  "subject": "skill:diagnosing-bugs",
+  "recipe": "262b5cfa928b2025d45479f6422c1507592d575039e61cacd0789ce84e9083c1",
+  "result": "f0793002a2c962d0929e4186b5f1367befb5b792dd7daca07fee10a466c5f58d",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves diagnosing-bugs to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at light-path-negative-2026-09-15.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 124,
+        "exact": 120,
+        "retention": 0.967741935483871,
+        "coverage": 0.9763779527559056,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 408
+  }
+}

@@ -14,7 +14,6 @@ commit is signed off (`git commit -s`).
 
 What is not here: garden's engineering knowledge, a separate product the
 optional connector reaches through the separately installed `garden`
-command; garden's code; the private records behind the provenance pages;
-the maintainer's workshop. The result contract the connector reads is
+command; garden's code; the maintainer's workshop and its working records. The result contract the connector reads is
 `contracts/garden/README.md`; the package's shape and its audit are
 `docs/PACKAGE.md`.

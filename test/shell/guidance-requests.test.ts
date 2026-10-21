@@ -8,10 +8,10 @@ import { parseGuidanceRequest } from "../../src/core/guidance-receipts.ts";
 function request() {
   const parsed = parseGuidanceRequest(
     JSON.stringify({
-      schemaVersion: 4,
+      schemaVersion: 5,
       source: "garden",
       id: "11111111-1111-4111-8111-111111111111",
-      owner: { record: "work-one", context: "ctx", role: "implementation" },
+      owner: { kind: "change", change: "2026-09-09-fix-login" },
       parent: null,
       createdAt: "2026-09-09T00:00:00.000Z",
       publicationUse: "current",

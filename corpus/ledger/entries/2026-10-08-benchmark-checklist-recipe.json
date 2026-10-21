@@ -1,0 +1,46 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-benchmark-checklist-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-to-questionnaire-recipe",
+    "sha256": "cbcc409129152b5ef1f3dfeb9c0c2624802516c52c37d0658d298695f5c605b1"
+  },
+  "subject": "skill:benchmark-checklist",
+  "recipe": "4d4c355d71b96f638d3b3acfd8f8e42d8cce3929a9fdccad799084116e86897d",
+  "result": "7dccedfce78b8c6925ca2ae24eec7b0da6004c2da7d6e0bb1a02b4ec27d2976e",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Enters as a trial habit for measured numbers",
+  "reason": "benchmark-checklist enters as a trial habit on pstack's benchmark-checklist with principle-explain-the-number grafted; for a measured number its alternating runs replace the verify step's single baseline then treatment.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradiction 12 as recommended, benchmark-checklist's alternating sides for a measured number and verify's method for every other claim; its PR and hill-climb playbooks dropped"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 90,
+        "taken": 66,
+        "exact": 66,
+        "retention": 1,
+        "coverage": 0.7333333333333333,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 216
+  }
+}

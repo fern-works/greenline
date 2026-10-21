@@ -1,0 +1,34 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-modes-words-budget",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-context-engineering-placed",
+    "sha256": "bfcd7efb7c27769c662600d83e35bfdbac5585fdc4f49c2a5467cff1fc29c81f"
+  },
+  "subject": "modes",
+  "recipe": "4b219e00bca2d952055dd080efa42b3caddeedfb022c4a8b3813807270947eee",
+  "result": "5bc6dec69586b385bc477ff914c90a2738d1b6783c352289b56620c3270e9ec0",
+  "pages": "unknown",
+  "gist": "Each mode gets a words budget: fast 12000, the others 16000",
+  "reason": "The modes definition moves to schema 3 and gives each mode a words budget, the most words an agent reads there: fast 12000 and the others 16000, measured and rounded up. No step, depth, agent, round or floor changes.",
+  "authorisedBy": {
+    "date": "2026-10-07",
+    "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-idea-refine",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-cursor-team-kit-fix-ci",
+    "sha256": "61f39225104a80bd5005628bb5f1154e28a6173aa1d5f0e7fd0e02e8f3e1c2b4"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/idea-refine"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Enters as the trial start idea-refine",
+  "reason": "A new trial start idea-refine beside what-to-build, its questions asked in the reply and its script dropped; its one-pager lives in the working files.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"yes go ahead\" (R21; contradiction 33)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"yes go ahead\" (R21; contradiction 33)"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "idea-refine",
+    "catches": "A first version of an idea built with its assumptions unstated",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "trial"
+  }
+}

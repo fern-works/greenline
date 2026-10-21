@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-diagnosing-bugs-glossary",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-codebase-design-glossary",
+    "sha256": "68a8f572dbc2b9e6875aca47dfb4b4148f8a30478afd7cbd75d887d32e13c11d"
+  },
+  "subject": "skill:diagnosing-bugs",
+  "recipe": "214c9ecf792921818edeffc4400f550c0fa44e738c9f4136abc42cd108f3ced8",
+  "result": "3afa05d862af937efccf73164e18c42abe26ce5d9e544fca659f4ec6abb7e350",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Follows upstream's rename to GLOSSARY.md, dropping one pointer edit",
+  "reason": "Follows upstream's rename: the glossary home is GLOSSARY.md, as the installed work guide now names it. The pointer edit that kept CONTEXT in one sentence of SKILL.md is removed; other edits stay.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 124,
+        "exact": 120,
+        "retention": 0.967741935483871,
+        "coverage": 0.9763779527559056,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 408
+  }
+}

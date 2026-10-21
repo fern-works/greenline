@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-doubt-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-outcome-oriented-execution",
+    "sha256": "a1d2312582822359351d6dd1bee0ce9562a32952b8108719a98effe88beaae7f"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/doubt-driven-development"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Fills the trial step anticipate with a fresh doubt pass",
+  "reason": "Fills the trial step anticipate: one delegated agent where anticipate is looped, a self-questioning form recorded as degraded elsewhere. Cross-model escalation and persona notes are dropped; any-step use stays a gap, a habit that would spend an agent.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"yes go ahead\" (R21; its any-step use an R17 gap)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"yes go ahead\" (R21; its any-step use an R17 gap)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "anticipate",
+    "catches": "A plan whose hidden failure modes reach the build because the builder's own context validates them",
+    "evidence": "claimed",
+    "move": "fill",
+    "boldest": {
+      "move": "reshape",
+      "needs": "a measured run here showing an independent anticipate at high catches what the written depth misses"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "anticipate",
+        "depth": "none",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "anticipate",
+        "depth": "inline",
+        "cost": 1600
+      },
+      {
+        "mode": "high",
+        "step": "anticipate",
+        "depth": "written",
+        "cost": 1600
+      },
+      {
+        "mode": "max",
+        "step": "anticipate",
+        "depth": "looped",
+        "cost": 1600
+      }
+    ],
+    "ships": "trial"
+  }
+}

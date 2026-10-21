@@ -1,0 +1,57 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-router-resumes-on-the-branch",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-pr-writing-keeps-the-writing",
+    "sha256": "a2c3794740557e42dcc5ce5a41cedfeb24a38f5c567b548976651b2108f7cb66"
+  },
+  "subject": "skill:router",
+  "recipe": "44b856411449b94ed48ff4aa5beac8981b1f9a44f84bce456c80ca3722eadfad",
+  "result": "819e23d221221fc62601a54aa4f7a3236fe432b72c803527e33bf87c127bf917",
+  "pages": [
+    {
+      "path": "ROUTING.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The router resumes a change on its branch",
+  "reason": "The router resumes a change on the local branch its commits carry the trailer on, reading a change stopped there from that branch, and a ticket opens on its planning change's branch.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1160
+  }
+}

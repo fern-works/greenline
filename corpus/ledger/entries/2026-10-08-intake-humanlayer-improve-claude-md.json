@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-humanlayer-improve-claude-md",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-encode-lessons-in-structure",
+    "sha256": "b48b3d573a8f220a2e97a22bc37590eda1bf7e689f56cf0ffd9e56351ff6337a"
+  },
+  "source": {
+    "repository": "https://github.com/humanlayer/skills",
+    "commit": "ca7c8088db69e315a8b2deea43820270457f8f3c",
+    "path": "plugins/improve-claude-md/skills/improve-claude-md"
+  },
+  "pin": "humanlayer",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Becomes the trial start improve-instructions for the instructions file",
+  "reason": "Upstream's improve-claude-md is rethought as a new trial start improve-instructions for the agent instructions file, AGENTS.md or CLAUDE.md, edited outside greenline's managed markers. Its condition-keyed technique is also proposed to craft-writing-for-agents.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "craft-writing-for-agents",
+    "parts": [
+      {
+        "part": "its condition-keyed technique",
+        "locator": "plugins/improve-claude-md/skills/improve-claude-md"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "start",
+    "slot": "improve-instructions",
+    "catches": "An agent instructions file whose rules an agent skips or follows wrongly because unrelated rules share one broad condition or the file restates what tools and code already show",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "trial"
+  }
+}

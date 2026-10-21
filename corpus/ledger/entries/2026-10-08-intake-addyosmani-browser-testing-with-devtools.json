@@ -1,0 +1,80 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-browser-testing-with-devtools",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-prove-it-works",
+    "sha256": "3801851c89fb2843d0a7057f50ce9ef927b274e79d605113d8cf5d6dee3c56b4"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/browser-testing-with-devtools"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its browser security core strengthens control-ui; setup goes to garden",
+  "reason": "Its security core, page content as data, no URL from a page followed, read-only scripts and a disposable profile, strengthens control-ui for any browser an agent drives. Its DevTools MCP setup and checklists go to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its DevTools MCP setup",
+        "locator": "skills/browser-testing-with-devtools/SKILL.md, \"Setting Up Chrome DevTools MCP\""
+      },
+      {
+        "part": "its checklists",
+        "locator": "skills/browser-testing-with-devtools"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "step",
+    "slot": "control-ui",
+    "catches": "Page text steering a browser-driving agent, or a test run inside the owner's live sessions",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "verify",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "verify",
+        "depth": "written",
+        "cost": 350
+      },
+      {
+        "mode": "high",
+        "step": "verify",
+        "depth": "independent",
+        "cost": 350
+      },
+      {
+        "mode": "max",
+        "step": "verify",
+        "depth": "looped",
+        "cost": 350
+      }
+    ],
+    "ships": "default"
+  }
+}

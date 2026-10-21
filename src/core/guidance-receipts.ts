@@ -8,13 +8,16 @@ import {
   type ContractParseFailed,
 } from "./contract.ts";
 import type { Result } from "../commons/result.ts";
+import { CHANGE_ID } from "./change.ts";
 
 /**
- * Request and receipt collections, schema 4 (`docs/guidance-requests.md`):
+ * Request and receipt collections, schema 5 (`docs/guidance-requests.md`):
  * one body-free collection per request, written by one store. A collection
- * names its source, the garden connector; its binding is unresolved until
- * the first successful call names a publication, then one publication or a
- * comparison pair, and never moves again.
+ * names its source, the garden connector, and its owner: a change, or no one
+ * for a question's consultation. Its binding is unresolved until the first
+ * successful call names a publication, then one publication or a comparison
+ * pair, and never moves again. A collection of any other version or owner is
+ * refused, and nothing converts it.
  */
 
 /** Caller-frozen limits, reused by every call on this request. */
@@ -111,17 +114,16 @@ export interface GuidanceAdvisory {
   readonly outcome: ReceiptCoverage;
   readonly at: string;
 }
-/** One body-free collection per request/contributor, or an inline read-only binding. */
+/** Who a collection belongs to: a change by its id, or no one, for a question's consultation. */
+export type RequestOwner =
+  | { readonly kind: "change"; readonly change: string }
+  | { readonly kind: "none" };
+/** One body-free collection per request, schema 5. */
 export interface GuidanceRequest {
-  readonly schemaVersion: 4;
+  readonly schemaVersion: 5;
+  readonly owner: RequestOwner;
   readonly id: string;
   readonly source: RequestSource;
-  readonly owner: {
-    readonly record: string | null;
-    readonly context: string | null;
-    readonly role: string | null;
-    readonly work?: { readonly id: string; readonly revision: number } | null | undefined;
-  };
   readonly parent: string | null;
   readonly createdAt: string;
   readonly binding: RequestBinding;
@@ -147,8 +149,7 @@ const VISIBLE_RULE = "no control, format, private-use or unassigned character";
 /**
  * Text a receipt keeps from its caller, its repository or its provider:
  * the requested values, the query's values, the governed roots, a failure's
- * kind and input, the contributor's context and work id, and the bound
- * publication ids. It holds no invisible character, so a collection written
+ * kind and input, and the bound publication ids. It holds no invisible character, so a collection written
  * or edited with one is refused as it is read.
  */
 const visible = z.string().refine((value) => !INVISIBLE.test(value), VISIBLE_RULE);
@@ -165,7 +166,6 @@ export const nativeCallSchema: z.ZodType<string> = text.refine(
 );
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
 const unitId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-const recordId = z.string().regex(/^[a-z][a-z0-9-]*$/);
 const instant = z.iso.datetime({ offset: true });
 const visibleWords = z.array(visibleText);
 const query = z
@@ -291,80 +291,75 @@ const advisory: z.ZodType<GuidanceAdvisory> = z
     if (entry.units.some((value) => (entry.operation === "read") !== (value.coverage === "full")))
       problem("units", "metadata and full delivery must remain distinct");
   });
-const request: z.ZodType<GuidanceRequest> = z
-  .object({
-    schemaVersion: z.literal(4),
-    id: z.uuid(),
-    source: z.literal("garden"),
-    owner: z
-      .object({
-        record: recordId.nullable(),
-        context: visibleText.nullable(),
-        role: contributorRole.nullable(),
-        work: z
-          .object({ id: visibleText, revision: z.number().int().positive() })
-          .strict()
-          .nullable()
-          .optional(),
-      })
-      .strict(),
-    parent: z.uuid().nullable(),
-    createdAt: instant,
-    binding,
-    publicationUse: z.enum(["current", "historical"]),
-    limits: requestLimitsSchema,
-    receipts: z.array(receipt),
-    advisories: z.array(advisory),
-  })
+// The fields keep the order a collection is written in: the store compares what it reads with what it wrote.
+const head = { id: z.uuid(), source: z.literal("garden") };
+const body = {
+  parent: z.uuid().nullable(),
+  createdAt: instant,
+  binding,
+  publicationUse: z.enum(["current", "historical"]),
+  limits: requestLimitsSchema,
+  receipts: z.array(receipt),
+  advisories: z.array(advisory),
+};
+type Problem = (path: (string | number)[], message: string) => void;
+// A change's id: a date and a slug, the record's file name (src/core/change.ts).
+const owner = z.discriminatedUnion("kind", [
+  z.object({ kind: z.literal("change"), change: z.string().regex(CHANGE_ID) }).strict(),
+  z.object({ kind: z.literal("none") }).strict(),
+]);
+const schema5 = z
+  .object({ schemaVersion: z.literal(5), ...head, owner, ...body })
   .strict()
-  .superRefine((value, context) => {
-    const problem = (path: (string | number)[], message: string): void =>
-      context.addIssue({ code: "custom", path, message });
-    if (value.owner.record !== null && (value.owner.context === null || value.owner.role === null))
-      problem(["owner"], "a durable request names its contributor");
-    // Only a durable collection dispatches: a read-only binding is never
-    // written down, so nothing can be filed under it.
-    if (value.owner.record === null && value.advisories.length !== 0)
-      problem(["advisories"], "a read-only binding dispatches no recorded consultation");
-    // Only a failed first call leaves a request unresolved.
-    if (
-      value.binding.state === "unresolved" &&
-      value.receipts.some((entry) => entry.outcome === "received" || entry.outcome === "partial")
-    )
-      problem(["binding"], "a successful call fixes the request's publication");
-    // A comparison has its own collection and never continues a read request.
-    const compares = value.receipts.filter((entry) => entry.operation === "changes").length;
-    if (
-      (value.binding.state === "comparison" && compares !== value.receipts.length) ||
-      (value.binding.state === "publication" && compares !== 0) ||
-      (compares !== 0 && compares !== value.receipts.length)
-    )
-      problem(["receipts"], "a comparison collection holds comparisons only");
-    if (
-      value.binding.state !== "publication" &&
-      value.receipts.some((entry) => entry.units.some((unit) => unit.coverage === "full"))
-    )
-      problem(["binding"], "a full delivery names its publication");
-    if (new Set(value.receipts.map((entry) => entry.id)).size !== value.receipts.length)
-      problem(["receipts"], "duplicate call identity");
-    value.receipts.forEach((entry, index) => {
-      if (entry.sequence !== index + 1)
-        problem(["receipts", index, "sequence"], "receipt sequence is discontinuous");
-    });
-    if (new Set(value.advisories.map((entry) => entry.id)).size !== value.advisories.length)
-      problem(["advisories"], "duplicate read-only call identity");
-    value.advisories.forEach((entry, index) => {
-      if (entry.sequence !== index + 1)
-        problem(["advisories", index, "sequence"], "advisory sequence is discontinuous");
-    });
-  });
+  .superRefine((value, context) =>
+    calls(value, (path, message) => context.addIssue({ code: "custom", path, message })),
+  );
 
-/** Validate a complete collection; missing or damaged evidence is never an empty inventory. */
+/** What every collection's calls owe: the binding, the comparison's own collection, the sequences. */
+function calls(value: GuidanceRequest, problem: Problem): void {
+  // Only a failed first call leaves a request unresolved.
+  if (
+    value.binding.state === "unresolved" &&
+    value.receipts.some((entry) => entry.outcome === "received" || entry.outcome === "partial")
+  )
+    problem(["binding"], "a successful call fixes the request's publication");
+  // A comparison has its own collection and never continues a read request.
+  const compares = value.receipts.filter((entry) => entry.operation === "changes").length;
+  if (
+    (value.binding.state === "comparison" && compares !== value.receipts.length) ||
+    (value.binding.state === "publication" && compares !== 0) ||
+    (compares !== 0 && compares !== value.receipts.length)
+  )
+    problem(["receipts"], "a comparison collection holds comparisons only");
+  if (
+    value.binding.state !== "publication" &&
+    value.receipts.some((entry) => entry.units.some((unit) => unit.coverage === "full"))
+  )
+    problem(["binding"], "a full delivery names its publication");
+  if (new Set(value.receipts.map((entry) => entry.id)).size !== value.receipts.length)
+    problem(["receipts"], "duplicate call identity");
+  value.receipts.forEach((entry, index) => {
+    if (entry.sequence !== index + 1)
+      problem(["receipts", index, "sequence"], "receipt sequence is discontinuous");
+  });
+  if (new Set(value.advisories.map((entry) => entry.id)).size !== value.advisories.length)
+    problem(["advisories"], "duplicate read-only call identity");
+  value.advisories.forEach((entry, index) => {
+    if (entry.sequence !== index + 1)
+      problem(["advisories", index, "sequence"], "advisory sequence is discontinuous");
+  });
+}
+
+/**
+ * Validate a complete collection; missing or damaged evidence is never an
+ * empty inventory. A collection of another version, or with another owner,
+ * is refused.
+ */
 export function parseGuidanceRequest(
   input: string,
   source: string,
 ): Result<GuidanceRequest, ContractParseFailed> {
-  const parsed = request.safeParse(parseJson(input));
+  const parsed = schema5.safeParse(parseJson(input));
   return parsed.success
     ? contractOk(parsed.data)
     : contractFailure(source, issuesFrom(parsed.error.issues));

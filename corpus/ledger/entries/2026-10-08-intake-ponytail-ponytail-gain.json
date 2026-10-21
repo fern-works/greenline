@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-ponytail-ponytail-gain",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-code-simplification",
+    "sha256": "f6cf164814e050ac3d4ab7ee30e017d7996acb40109d06f69b2c6a2a707f69c1"
+  },
+  "source": {
+    "repository": "https://github.com/dietrichgebert/ponytail",
+    "commit": "552acd5efd0aeae2583a12efe39373d2f076f25e",
+    "path": "skills/ponytail-gain"
+  },
+  "pin": "ponytail",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Prints a benchmark; no situation to serve",
+  "reason": "No situation; it prints the plugin's benchmark, a reported measurement that may witness ponytail at its re-cut.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Decline, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Decline, \"everything is good\""
+    }
+  ]
+}

@@ -1,3 +1,0 @@
-interface:
-  display_name: "Project Router"
-  short_description: "Resolve the current request, its durable work, and the methods it needs. Use for continuation, a new intent, or uncertainty about the next engineering step."

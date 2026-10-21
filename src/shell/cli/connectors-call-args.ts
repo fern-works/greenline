@@ -37,12 +37,11 @@ export type GardenCallRead =
 /** One call and the greenline request it belongs to. */
 export interface GardenCallCommand {
   readonly read: GardenCallRead;
-  /** The account a new request belongs to. */
-  readonly record: string | undefined;
+  /** The change a new request belongs to. */
+  readonly change: string | undefined;
   /** The request a call continues. */
   readonly request: string | undefined;
   readonly roots: readonly string[];
-  readonly context: string | undefined;
   /** The harness's own tool-call identity, recorded as supplied once it holds no invisible character. */
   readonly call: string | undefined;
   readonly maxUnits: number | undefined;
@@ -55,7 +54,7 @@ const required = z.string().min(1);
 const count = z.coerce.number().int().positive().optional();
 const repeated = z.array(z.string()).default([]);
 const requestOptions = z.object({
-  record: optional,
+  change: optional,
   request: optional,
   root: z
     .array(
@@ -67,7 +66,6 @@ const requestOptions = z.object({
         ),
     )
     .default([]),
-  context: optional,
   call: nativeCallSchema.optional(),
   maxUnits: count,
   maxBytes: count,
@@ -120,15 +118,14 @@ export function parseGardenCallArgs(
     garden
       .command(name)
       .description(description)
-      .option("--record <id>", "the execution account a new request belongs to")
+      .option("--change <id>", "the open or stopped change a new request belongs to")
       .option("--request <handle>", "continue this request, under its publication and policy")
       .option(
         "--root <path>",
-        "a governed root (repeatable; default the account's scopes)",
+        "a governed root (repeatable; default the repository root)",
         collect,
         [],
       )
-      .option("--context <id>", "the context identity; it must match the account")
       .option("--call <id>", "the harness's own tool-call identity, if it has one")
       .option("--max-units <number>", "freeze the request's unit limit (default and most 16)")
       .option("--max-bytes <number>", "freeze its content budget (default and most 262144)")
@@ -147,10 +144,9 @@ export function parseGardenCallArgs(
       }
       command = {
         read: build(reading.data),
-        record: context.data.record,
+        change: context.data.change,
         request: context.data.request,
         roots: context.data.root,
-        context: context.data.context,
         call: context.data.call,
         maxUnits: context.data.maxUnits,
         maxBytes: context.data.maxBytes,

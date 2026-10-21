@@ -1,6 +1,5 @@
 /** Prepare the consumer package without ever rewriting the checkout manifest. */
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { loadCorpusManifest } from "../src/shell/corpus.ts";
 import { dirname, join, resolve } from "node:path";
 
 if (process.argv[2] === "--refuse-root-pack") {
@@ -59,19 +58,11 @@ if (process.argv[2] === "--refuse-root-pack") {
     mkdirSync(dirname(destination), { recursive: true });
     copyFileSync(join(root, from), destination);
   }
-  // The provenance pages ship and are never installed (the ledger plan's
-  // rulings D1 and D2): the ledger index and one page per vendored copy,
-  // under provenance/ in the package.
-  const manifest = loadCorpusManifest(join(root, "corpus"));
-  if (manifest._tag === "err") throw manifest.error;
+  // The ledger's index ships and is never installed (the ledger plan's
+  // rulings D1 and D2), under provenance/ in the package; a skill's
+  // provenance is its recipe in the public source.
   mkdirSync(join(target, "provenance"), { recursive: true });
   copyFileSync(join(root, "corpus/ledger/INDEX.md"), join(target, "provenance/INDEX.md"));
-  for (const skill of manifest.value.skills)
-    if (skill.upstream !== undefined)
-      copyFileSync(
-        join(root, "corpus/skills", skill.name, "PROVENANCE.md"),
-        join(target, "provenance", `${skill.name}.md`),
-      );
   // Write the manifest last: an interrupted preparation cannot present a complete package.
   writeFileSync(join(target, "package.json"), JSON.stringify(consumer, null, 2) + "\n");
   process.stdout.write(

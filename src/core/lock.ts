@@ -12,24 +12,31 @@ import {
 
 /**
  * `.greenline/lock.json` — generated ownership and content-hash record.
- * Schema 4 records the installed method/runtime identity and exact owned-file hashes.
+ * Schema 5 records the installed method/runtime identity, the pinned sources
+ * and exact owned-file hashes.
  */
-export const LOCK_SCHEMA_VERSION = 4 as const;
+export const LOCK_SCHEMA_VERSION = 5 as const;
 
-/** One pinned upstream family the lock records. */
-export interface LockUpstream {
+/**
+ * What an earlier lock schema is told (`docs/SPEC.md` §5): there is no
+ * converter, and sync rebuilds a missing lock.
+ */
+const LOCK_REMEDY = "delete .greenline/lock.json and run 'greenline sync' to rebuild it";
+
+/** One pinned source the lock records. */
+export interface LockSource {
   readonly name: string;
   readonly repo: string;
   readonly commit: string | null;
 }
 
-/** The normalized lockfile: installation identity, upstream source identities and managed-file map. */
+/** The normalized lockfile: installation identity, pinned source identities and managed-file map. */
 export interface LockFile {
-  readonly schemaVersion: 4;
+  readonly schemaVersion: typeof LOCK_SCHEMA_VERSION;
   readonly cliVersion: string;
   /** The installed method/runtime content identity. */
   readonly installationRevision: string;
-  readonly upstreams: readonly LockUpstream[];
+  readonly sources: readonly LockSource[];
   readonly files: ReadonlyMap<string, string>;
 }
 
@@ -40,7 +47,7 @@ const lockSchema = z
     schemaVersion: z.literal(LOCK_SCHEMA_VERSION),
     cliVersion: z.string().min(1),
     installationRevision: z.string().regex(sha256Pattern),
-    upstreams: z.array(
+    sources: z.array(
       z.object({
         name: z.string().min(1),
         repo: z.string().min(1),
@@ -64,14 +71,17 @@ export function parseLock(input: string, source: string): Result<LockFile, Contr
     return contractFailure(source, [{ path: "", message: "lock is not valid JSON" }]);
   }
   const versionIssue = checkContractVersion(raw, "lock", LOCK_SCHEMA_VERSION);
-  if (versionIssue !== undefined) return contractFailure(source, [versionIssue]);
+  if (versionIssue !== undefined)
+    return contractFailure(source, [
+      { ...versionIssue, message: `${versionIssue.message}; ${LOCK_REMEDY}` },
+    ]);
   const parsed = lockSchema.safeParse(raw);
   if (!parsed.success) return contractFailure(source, issuesFrom(parsed.error.issues));
   return contractOk({
     schemaVersion: parsed.data.schemaVersion,
     cliVersion: parsed.data.cliVersion,
     installationRevision: parsed.data.installationRevision,
-    upstreams: parsed.data.upstreams,
+    sources: parsed.data.sources,
     files: new Map(Object.entries(parsed.data.files)),
   });
 }
@@ -87,10 +97,10 @@ export function serializeLock(lock: LockFile): string {
         schemaVersion: lock.schemaVersion,
         cliVersion: lock.cliVersion,
         installationRevision: lock.installationRevision,
-        upstreams: lock.upstreams.map((upstream) => ({
-          name: upstream.name,
-          repo: upstream.repo,
-          commit: upstream.commit,
+        sources: lock.sources.map((entry) => ({
+          name: entry.name,
+          repo: entry.repo,
+          commit: entry.commit,
         })),
         files,
       },

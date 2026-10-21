@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-progress-check-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-unslop-refresh",
+    "sha256": "945bf7aa74cd19b9a08944e04baec9f83ac84b0e008c84ad448744f3e0be7c0f"
+  },
+  "subject": "skill:progress-check",
+  "recipe": "a46dac47d5b51c7de1a020ff5fdcd6f6bb0654e5f85de3f494a92b907b37d51e",
+  "result": "f74930f20198d409b74d3ae1aabba426301585a417ba53d34c9b9e2a58388332",
+  "pages": [],
+  "gist": "Upstream unchanged; the snapshot is byte-identical",
+  "reason": "Refreshes progress-check to tjcages 170f1ca406f9: no segment changed and the snapshot is byte-identical, so the recipe re-anchors as it stands. Three symbolic-link references are held as their targets' bytes, and the LICENSE is progress-check's own.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "tjcages",
+        "segments": 157,
+        "taken": 126,
+        "exact": 123,
+        "retention": 0.9761904761904762,
+        "coverage": 0.802547770700637,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 574
+  }
+}

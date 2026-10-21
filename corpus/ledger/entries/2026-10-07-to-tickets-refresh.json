@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-to-tickets-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-to-spec-refresh",
+    "sha256": "05145d5f41cc8afa0c426953b4d3c8cae721a8819c62fd0c2ae3efccb42a21b6"
+  },
+  "subject": "skill:to-tickets",
+  "recipe": "416b44b5e3c954e454b9eda807fe20a390fb378bd94910c496da0d1036bd23a0",
+  "result": "8e529fd0159e2222fc6c20e92f35f4e7dcef57483903e9d764bad2d600c896f5",
+  "pages": [],
+  "gist": "Upstream's tracker changes are dropped; greenline replaces that branch",
+  "reason": "Refreshes to-tickets to mattpocock-skills 6fd947921b93: one changed and two new segments, all in the real-tracker branch that greenline's ticket lifecycle replaces, are dropped with that branch's reason. The installed text is unchanged.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 78,
+        "taken": 46,
+        "exact": 44,
+        "retention": 0.9565217391304348,
+        "coverage": 0.5897435897435898,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 515
+  }
+}

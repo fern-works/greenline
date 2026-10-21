@@ -1,0 +1,26 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-concurrency-method-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-fail-loud-retired",
+    "sha256": "72f33df6e5d8cfe37559430adb25070201a781f162b84cff893f624d50712a67"
+  },
+  "skill": "concurrency-method",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "concurrency",
+  "recipe": "1e2daf4aed44bc4120f6b28aa18faea5e468b2ffe07b034bb606a3dd5b533ab7",
+  "gist": "Renamed concurrency, with three sources grafted",
+  "reason": "concurrency-method is concurrency now, renamed with three sources grafted.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the intake R3, \"everything is good\""
+    }
+  ]
+}

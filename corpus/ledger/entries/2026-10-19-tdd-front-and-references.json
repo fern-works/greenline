@@ -1,0 +1,122 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-tdd-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-sweep-tests-front-and-references",
+    "sha256": "fc534a2b2c4b44d0cc288dd276ff5a3f3e4092f775016fc649a14dc69883499d"
+  },
+  "subject": "skill:tdd",
+  "recipe": "90127b4e850bedf888497494545208a6862e06c4c834e31783037b91de0cd3df",
+  "result": "fae30e33280e5683ed0119c6928f5cf070493522e5e8be4f5d01824c52e20410",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "tdd's paths and commands move to a references page",
+  "reason": "The front names greenline's homes and commands by their nouns and points at a references page, which holds their paths and commands (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "useful-tests of tjcages, at commit 170f1ca406f926f47433217f731ebf80a613719c, lifted with credit, ideas only, in greenline's words (the operator's ruling of 2026-10-08, \"everything is good\"): name the failure a new test would catch, extend an existing test first, and accept zero new tests only where existing coverage is the check the floor asks for (contradictions 17 and 21, ruled as recommended)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 156,
+        "taken": 14,
+        "exact": 14,
+        "retention": 1,
+        "coverage": 0.08974358974358974,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 84,
+        "taken": 80,
+        "exact": 79,
+        "retention": 0.9875,
+        "coverage": 0.9523809523809523,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 62,
+        "taken": 37,
+        "exact": 35,
+        "retention": 0.9459459459459459,
+        "coverage": 0.5967741935483871,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 264,
+        "taken": 65,
+        "exact": 65,
+        "retention": 1,
+        "coverage": 0.24621212121212122,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 783
+  }
+}

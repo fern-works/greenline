@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-codebase-design-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-ponytail-refresh",
+    "sha256": "3c9c93f56028e5407239af7249158cf0899cd871f4631015c99adc3a229603bd"
+  },
+  "subject": "skill:codebase-design",
+  "recipe": "34bdecd129dc79665cfda7d8e7a43b03184a1c00789a2c715de47e8f908fd7f1",
+  "result": "4db2f8d49b4092a629daeff96576c42994481e577a406cf2b1e17bad55814bd7",
+  "pages": [],
+  "gist": "Keeps CONTEXT.md through upstream's rename to GLOSSARY.md; text unchanged",
+  "reason": "Refreshes codebase-design to mattpocock-skills 6fd947921b93: upstream renamed CONTEXT.md to GLOSSARY.md, kept out by a pointer edit on each renamed sentence, since the installed work guide still names CONTEXT.md. The installed text is unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 152,
+        "taken": 151,
+        "exact": 149,
+        "retention": 0.9867549668874173,
+        "coverage": 0.993421052631579,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 187
+  }
+}

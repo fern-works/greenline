@@ -1,0 +1,2567 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "build",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "build"
+    },
+    {
+      "field": "description",
+      "value": "Turn a change's plan into working code one slice at a time, each slice tested, verified and committed with the change's trailer and the build green between slices, every command's output compared with what the plan expected and every deviation recorded, at the depth the change's mode gives the build step. Use when the mode reaches build, or when the owner asks to build a ready ticket or to make a small settled fix."
+    }
+  ],
+  "sources": ["addyosmani", "pstack", "superpowers", "mattpocock-skills"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Build\n\nBuild turns a change's plan into working code, one slice at a time, each slice tested, verified and committed before the next. It runs where the change's mode reaches the build step, at the depth the mode gives it, and alone when the owner asks to build a ready ticket, which opens its own change record under the mode approved with the ticket list, or to make a small settled fix, which opens its own change record under the mode the owner accepts. It reads the change record's plan section first, or its frame section where the mode skipped the plan, and for a ticket its entry in the plan directory's tickets file and the planning change's plan section. The builder runs every task itself, one after another, and no agent runs beside the conversation. A consequential choice the plan leaves open, a product or a contract choice, returns to the owner rather than being decided during the build. It never reviews its own result or verifies the change's claim: those are the review and verify steps'.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the step skill's own voice: what build produces, where it runs (the step of the change's mode, at that mode's depth) and the direct ask it keeps from implement, a ready ticket, what it reads first, that the builder runs every task itself, that an open product or contract choice returns to the owner as implement said, and that review and verification are other steps'; it replaces implement's scope paragraph and the overviews of the three sources. Since J-93 S2 it names the tickets file by its noun.",
+          "gist": "Opens build: one slice at a time; the builder runs every task"
+        },
+        {
+          "passage": "written",
+          "text": "## The slices",
+          "kind": "scope",
+          "reason": "The heading of the spine's increment cycle, over its overview and its numbered cycle.",
+          "gist": "Heads the spine's increment cycle"
+        },
+        {
+          "passage": "written",
+          "text": "In what follows a task is the plan's, a ticket's work or one task of a change's plan section; a slice, an increment or a unit is one tested and committed piece of a task; and a step is one of the task's steps as the plan lists them, not a step of the change's mode.",
+          "kind": "name",
+          "reason": "The spine says slice and increment, principle-sequence-verifiable-units unit and executing-plans task and step for the plan's own parts; this line ties the words once rather than editing every sentence (C13), and keeps the plan's step apart from a step of the mode.",
+          "gist": "Ties the sources' words once; a plan's step is not a mode's"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["0f9c0b30cb7b", "46bcbb007812", "61f9cebde10e"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["820cbf17edcd", "a6cd057673de", "7f673c2625f8", "b42a0994c082"]
+        },
+        {
+          "passage": "written",
+          "text": "4. **Commit** -- save your progress with a descriptive message",
+          "kind": "pointer",
+          "reason": "Upstream's commit step without its pointer to a git workflow skill no install carries; where each commit goes and what it carries stand on build's references page since J-93 S2.",
+          "gist": "Commit each slice; its branch and trailer are the references page's",
+          "credits": ["addyosmani"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["cef2ea648bf2"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "Use tdd where possible, at pre-agreed seams.",
+          "kind": "name",
+          "reason": "implement's pointer to the tdd skill, kept as greenline's line under R22, its bare roster name in prose as implement had it; the seams are the ones the plan agreed.",
+          "gist": "Keeps implement's pointer to tdd, at the seams the plan agreed",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-sequence-verifiable-units/SKILL.md",
+          "segments": ["96ba457bc86d", "0229fe3774e4", "877ff0b60a03"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["9a698631c61c"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": [
+            "775f9fe65a49",
+            "e72992f2be66",
+            "bc5a5dcacd40",
+            "70713f4c3a59",
+            "8c49c786fe28",
+            "54fb40e3465d",
+            "735f0d7bfb17",
+            "b70649cb477d",
+            "3fbb551450ca"
+          ],
+          "edits": [
+            {
+              "segment": "775f9fe65a49",
+              "find": "0.5",
+              "replace": "0",
+              "kind": "scope",
+              "reason": "Rule 0, simplicity first, is the ponytail habit's and leaves, so scope discipline is the first rule this skill keeps.",
+              "gist": "Rule 0 is ponytail's now, so the next rule takes its number"
+            },
+            {
+              "segment": "3fbb551450ca",
+              "find": "fix it:",
+              "replace": "fix it, and list it in the build section.",
+              "kind": "home",
+              "reason": "What was noticed and not touched is listed in the change record's build section, in place of upstream's example note.",
+              "gist": "What was noticed and left alone is listed in the build section"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": [
+            "d76aa66fe20d",
+            "3e2edb108b2a",
+            "01cab0d312dd",
+            "1ae5a2cae892",
+            "fa7188b310f5"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-sequence-verifiable-units/SKILL.md",
+          "segments": ["2646344cab45"]
+        },
+        {
+          "passage": "written",
+          "text": "Stack commits in the order that proves the work.",
+          "kind": "method",
+          "reason": "Build stacks commits only: the pull request is the landing the close step offers once, on the owner's word, never one opened per piece during the build; upstream's sentence also stacked pull requests.",
+          "gist": "Build stacks commits; the pull request waits for close's landing",
+          "ruling": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-sequence-verifiable-units/SKILL.md",
+          "segments": ["a9f04c6f7661", "dd2fd5858634", "fc134d03f6af"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["d4a6aca06525", "961f23b9e9b3", "bade01b2c5ae"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["a3f4637df21f"]
+        },
+        {
+          "passage": "written",
+          "text": "After each increment, verify with the repository's own commands:",
+          "kind": "pointer",
+          "reason": "Upstream's pointer to a test-driven-development skill's section names a skill no install carries; the repository's own commands are the ones the checklist names.",
+          "gist": "Verifies each increment with the repository's own commands, not an absent skill",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["20f5f9029f82"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["4e657f1f9505"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["def02c448ce5"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": ["41edbb0a519e"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "incremental-implementation/SKILL.md",
+          "segments": [
+            "77228684c32b",
+            "508153c779e6",
+            "ccd4d267c914",
+            "cce936f007a0",
+            "7fd699572ceb"
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "## Against the plan\n\nIn what follows the spec is the plan directory's spec, or, for a change that stands alone, its frame section with its acceptance criteria. Where the plan states what a step's command should show, run the command, read its output, and compare.",
+          "kind": "home",
+          "reason": "The bridge into executing-plans' three outcomes: its plan's Expected lines become what the plan states a step's command should show, and its spec is the plan directory's or, for a change that stands alone, the frame section with its acceptance criteria. Since J-93 S2 it names the spec by its noun.",
+          "gist": "Compares step output with the plan; the spec is spec.md or frame",
+          "credits": ["superpowers"]
+        },
+        {
+          "passage": "taken",
+          "source": "superpowers",
+          "file": "executing-plans/SKILL.md",
+          "segments": ["868a6a25fd45", "d193b1045a99", "e15f2ebfe0b9", "f50eb54397eb"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "superpowers",
+          "file": "executing-plans/SKILL.md",
+          "segments": ["f4d30a507d21", "883178aa5eca"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Rule on the smallest change that satisfies the spec, record it in the build section as a deviation, with what you decided and why, and continue; a choice the spec does not settle, a product or a contract choice, returns to the owner instead. The ruling is carried, not remembered: later tasks that touch the same interface read it from the build section.",
+          "kind": "method",
+          "reason": "executing-plans rules every plan defect itself and keeps the ruling in its ledger; the build section holds it, and only a defect the spec already settles is the builder's, a product or contract choice returning to the owner as implement said (contradiction 5).",
+          "gist": "The builder rules only spec-settled defects; other choices return to the owner",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+          "credits": ["superpowers"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "## The completion contract\n\nBefore a task is called done, all of the following are true, with evidence in this session, not inferred from the diff looking right:\n\n- Every test the task names exists and ran in this task, and you read the output.\n- The final test run for the task passed, recorded as a check of the change, as build's references page says.\n- Every result the plan said a step's command should show was compared against real output.\n- Every deviation from the plan is in the build section, with what you decided and why.",
+          "kind": "method",
+          "reason": "executing-plans' completion contract, its brief, ledger line and task-done script named for greenline's homes: the task's tests, the final run recorded as a check of the change, the plan's expected results, and every deviation in the build section; its pointer to a verification skill no install carries leaves, the verify step being the claim's. The recorder's command stands on the references page since J-93 S2.",
+          "gist": "Done means tests read, the final run recorded, deviations recorded",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["superpowers"]
+        },
+        {
+          "passage": "taken",
+          "source": "superpowers",
+          "file": "executing-plans/SKILL.md",
+          "segments": ["2d2ed9a218f2"]
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the change record's plan section in .greenline/ledger/<id>.md, or its frame section where the mode skipped the plan; for a ticket, its entry in the plan directory's tickets.md and the planning change's plan section\nProduces: the commits on the change's branch, each carrying the trailer Greenline-Change: <id>; the checks greenline check records under .greenline/ledger/<id>/checks/; the build section of .greenline/ledger/<id>.md, one line at the inline depth, and at the written depth what was built with the deviations from the plan, the approaches tried and dropped, and what was noticed and left alone\nNext: the next step of the change's mode",
+          "kind": "method",
+          "reason": "implement's handoff lines kept as greenline's under R22, naming what the build reads and writes in the change record and the branch its commits go to; a step skill's Next names the next step of the change's mode, never a fixed skill, where implement named delivery-review and record-architecture-decisions.",
+          "gist": "The handoff lists the build's outputs and names the mode's next step",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Build: the practice's mechanics\n\nThis page holds build at each mode's depth and where its work lands: the section, the checks it runs, the commits it makes and the files it writes on the way. Read it with `SKILL.md` when the mode reaches build, and when AGENTS.md's index sends you here.",
+          "kind": "method",
+          "reason": "Build's references page opens: build at each mode's depth and where its work lands, which the block's sentences and, since J-93 S2, the front's depth bullets, its commit step's homes and its checklist's recorder moved here.",
+          "gist": "Opens build's mechanics page: its depths, checks and commits",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        },
+        {
+          "passage": "written",
+          "text": "## The depths\n\n- **Inline, at quick.** Build the change by `SKILL.md`'s slices, and write the change record's build section, in `.greenline/ledger/<id>.md`, as one line: what was built and the check that shows it, with any deviation from the plan.\n- **Written, at regular and careful.** Build the change by `SKILL.md`'s slices, and write the build section: what was built, slice by slice; each deviation from the plan, with what you decided and why; each approach tried and dropped, with what dropped it; and what was noticed outside the task and left alone.",
+          "kind": "method",
+          "reason": "Build's depths at each mode and what its section holds: quick's one line of what was built and its check, the written section's slices, deviations, dropped approaches and what was left alone; moved from the front's depth bullets by J-93 S2.",
+          "gist": "Quick writes one line; written records slices, deviations and dropped approaches",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## Checks\n\nEvery check runs through `greenline check`, its red runs included; a probe, a run whose green the change never claims, runs outside it, as the verify skill says. A recorded check fact is never removed or edited: a rerun records a new one, and a probe recorded by mistake is marked with `greenline check --change <id> --probe <fact>`. Every file written on the way and not part of the change, a probe, a scratch script or a before-and-after copy, yours or a fresh agent's, goes under `.greenline/tmp/<id>/`, never the host's temporary directory, and a check's facts cite paths inside the repository.\n\nRun each of `SKILL.md`'s increment checks, and the completion contract's final test run, through `greenline check -- <command>`, its red runs included, so the change's checks record it: the short form takes the open change and the step its record is in, and names that step beside the facts, so give `--change <id> --step <step>` where it names another. A run of the change's code you make only to read, a failing test's detail or a quick look after an edit, is a check too: `greenline check -- node --test --test-name-pattern=<name> <file>` records it, and its output shows as it runs, so read the detail there. Each such command is a check of its own: once its cause is fixed, run it again green, since `done` waits on the latest run of every check. The one run left plain is a probe, a run whose green the change never claims: a baseline at an earlier commit, a mutation run, a negative control. `greenline status --change <id>` counts the commits since the last recorded check, and a count above zero is code committed since that no recorded check saw.",
+          "kind": "method",
+          "reason": "Build's references page: every check recorded through greenline check, the short form and its flags, a run made to read named a check, the plain run a probe alone, and status's count of commits since the last recorded check; scratch under the change's working folder. The checklist's recorder moved here from the front by J-93 S2. The probe's mark and the fact never edited are stated once.",
+          "gist": "Every check recorded through greenline check; only a probe runs plainly",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## Commits\n\nEach slice's commit goes on the change's branch, the one its proposal named or, for a ticket, the planning change's, never another change's, and the change's first commit carries its record, `.greenline/ledger/<id>.md`, since `greenline status` reads history only from the commit where the first change record entered. Every commit carries the trailer `Greenline-Change: <id>` from the moment it is made, as the last line of the message's last paragraph, one block with any trailer the harness adds there, such as `Co-Authored-By`; no commit, an unpushed one included, is reset, amended, rebuilt or rewritten with `filter-branch` to move it. A trailer-shaped line of another key, such as `Related-Change: <id>`, put in a message after a hook refuses it is not an answer to the refusal: report the refusal to the owner and ask. Generated code follows its generator; vendored contributions follow their upstream's contract.",
+          "kind": "method",
+          "reason": "Build's references page: each slice's commit on the change's branch with its trailer, the first carrying the record, and the trailer on every commit, never moved by a rewrite. The commit step's homes moved here from the front by J-93 S2. The trailer is stated once. J-102 S2: a trailer-shaped line of another key after a refusal is no answer to it; the refusal goes to the owner.",
+          "gist": "Commits on the change's branch, each with its trailer, never rewritten",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5); The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); The operator's cards of 2026-10-21, \"Fix first, then ship (Recommended)\" and the scope card naming 1 to 7 (docs/DECISIONS.md, the rows of 2026-10-21): 0.1.0 ships with its hooks whole, and frame, groundwork and build say what the owner's yes is, that the setup record precedes the setup commit, that a trailer-shaped line of another key after a refusal is no answer to it, and that scratch goes under the change's own id"
+        },
+        {
+          "passage": "written",
+          "text": "## Secrets and guidance\n\nProtect secrets and keep guidance bodies in tool output, never in a local library or task compilation; a key or a variable that may hold one is checked for presence, never printed, even while diagnosing.",
+          "kind": "method",
+          "reason": "Build's references page: a secret is checked for presence, never printed. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation.",
+          "gist": "A secret is checked for presence, never printed",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "2710efdf9db8",
+      "kind": "scope",
+      "reason": "The title gives way to the step's own.",
+      "gist": "The source's title gives way to the step's own",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "7337f3d0aa29",
+      "kind": "scope",
+      "reason": "The overview heading gives way to the heading of the slices, over the same sentences.",
+      "gist": "The overview heading gives way to the slices heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "fbd9f4a54a62",
+      "kind": "scope",
+      "reason": "The overview's last sentence only names the discipline; the scope paragraph says what the step does.",
+      "gist": "The last overview sentence only names the discipline; the opening says more",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "scope",
+      "reason": "When to build in slices is the mode's: the step runs where the mode reaches it, and a change of one function is one slice.",
+      "gist": "The mode decides when build runs; one function is one slice",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "08190d8e3baa",
+      "kind": "scope",
+      "reason": "When to build in slices is the mode's: the step runs where the mode reaches it, and a change of one function is one slice.",
+      "gist": "The mode decides when build runs; one function is one slice",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "5981e61995d1",
+      "kind": "scope",
+      "reason": "When to build in slices is the mode's: the step runs where the mode reaches it, and a change of one function is one slice.",
+      "gist": "The mode decides when build runs; one function is one slice",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "706606d99383",
+      "kind": "scope",
+      "reason": "When to build in slices is the mode's: the step runs where the mode reaches it, and a change of one function is one slice.",
+      "gist": "The mode decides when build runs; one function is one slice",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "b5b9fe871d1b",
+      "kind": "scope",
+      "reason": "When to build in slices is the mode's: the step runs where the mode reaches it, and a change of one function is one slice.",
+      "gist": "The mode decides when build runs; one function is one slice",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "e9b496e2e996",
+      "kind": "scope",
+      "reason": "When to build in slices is the mode's: the step runs where the mode reaches it, and a change of one function is one slice.",
+      "gist": "The mode decides when build runs; one function is one slice",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "a7566dcfa1a6",
+      "kind": "scope",
+      "reason": "The increment cycle's heading gives way to the heading of the slices.",
+      "gist": "The increment cycle's heading gives way to the slices heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "1ec547abe949",
+      "kind": "scope",
+      "reason": "The diagram draws the numbered cycle that follows it.",
+      "gist": "The diagram draws the numbered cycle that follows it",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "9415a890b8c2",
+      "kind": "method",
+      "reason": "A commit per slice is allowed, each carrying the change's trailer (contradiction 4); the pointer to a git workflow skill no install carries leaves.",
+      "gist": "Slices commit with the change's trailer; the git skill pointer goes",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "189a154819c7",
+      "kind": "scope",
+      "reason": "Cutting the work into vertical slices is the plan step's, whose tickets are tracer-bullet slices; the build takes them in the plan's order.",
+      "gist": "Cutting vertical slices is plan's; build takes the tickets in order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "9e54e2b0c909",
+      "kind": "scope",
+      "reason": "Cutting the work into vertical slices is the plan step's, whose tickets are tracer-bullet slices; the build takes them in the plan's order.",
+      "gist": "Cutting vertical slices is plan's; build takes the tickets in order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "efa208fd4f2e",
+      "kind": "scope",
+      "reason": "Cutting the work into vertical slices is the plan step's, whose tickets are tracer-bullet slices; the build takes them in the plan's order.",
+      "gist": "Cutting vertical slices is plan's; build takes the tickets in order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "e0b375285a3c",
+      "kind": "scope",
+      "reason": "Cutting the work into vertical slices is the plan step's, whose tickets are tracer-bullet slices; the build takes them in the plan's order.",
+      "gist": "Cutting vertical slices is plan's; build takes the tickets in order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "4204b5934678",
+      "kind": "scope",
+      "reason": "Cutting the work into vertical slices is the plan step's, whose tickets are tracer-bullet slices; the build takes them in the plan's order.",
+      "gist": "Cutting vertical slices is plan's; build takes the tickets in order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "9c67b80bd219",
+      "kind": "method",
+      "reason": "Contract-first slicing builds the backend and the frontend in parallel; greenline builds one slice after another, never in parallel.",
+      "gist": "Contract-first slicing builds in parallel; greenline builds one slice after another",
+      "ruling": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "f18a916f5611",
+      "kind": "method",
+      "reason": "Contract-first slicing builds the backend and the frontend in parallel; greenline builds one slice after another, never in parallel.",
+      "gist": "Contract-first slicing builds in parallel; greenline builds one slice after another",
+      "ruling": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "00a9955fc731",
+      "kind": "method",
+      "reason": "Contract-first slicing builds the backend and the frontend in parallel; greenline builds one slice after another, never in parallel.",
+      "gist": "Contract-first slicing builds in parallel; greenline builds one slice after another",
+      "ruling": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "728684ad14ee",
+      "kind": "scope",
+      "reason": "Putting the riskiest slice first is the plan step's ordering rule, high-risk tasks early; the build takes the plan's order.",
+      "gist": "Riskiest-first is plan's ordering rule; build follows the plan's order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "5a536d61e17d",
+      "kind": "scope",
+      "reason": "Putting the riskiest slice first is the plan step's ordering rule, high-risk tasks early; the build takes the plan's order.",
+      "gist": "Riskiest-first is plan's ordering rule; build follows the plan's order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "95494e1a2990",
+      "kind": "scope",
+      "reason": "Putting the riskiest slice first is the plan step's ordering rule, high-risk tasks early; the build takes the plan's order.",
+      "gist": "Riskiest-first is plan's ordering rule; build follows the plan's order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "49c42b90254d",
+      "kind": "scope",
+      "reason": "Putting the riskiest slice first is the plan step's ordering rule, high-risk tasks early; the build takes the plan's order.",
+      "gist": "Riskiest-first is plan's ordering rule; build follows the plan's order"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "40c547f123e1",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "26532777659b",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "fb0fd3e6c2dd",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "7a828b89462a",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "910bcd4f6d1f",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "e57645b9b590",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "7efb993eaa31",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "ba28c08ddd8c",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "987f4c724252",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "16f0d626a4c4",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "594f65612a6d",
+      "kind": "scope",
+      "reason": "Simplicity first, whether the code needs to exist and how little of it will do, is the ponytail habit's, which loads when code is about to be written.",
+      "gist": "Simplicity first is the ponytail habit's, loaded before code is written"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "54d2d53eeb26",
+      "kind": "home",
+      "reason": "The example note of what was noticed and not touched gives way to the build section, which lists it.",
+      "gist": "The example note gives way to the build section's list",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "3d06309e4c5c",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "384861e466d8",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "fffe4d6f9e44",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "787ac995e4cb",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "44076fd6f433",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "104dd90e88bd",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "f43da21b762c",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "f51309c90a1f",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "ca24d82f84c9",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "8357cc8da408",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "e70acc1c69e1",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "3f3e1863cbed",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "09e86bd7cebc",
+      "kind": "method",
+      "reason": "Feature flags, safe defaults and rollback-friendly increments are knowledge for an engineering choice, handed to garden's maintainer as ruled.",
+      "gist": "Feature flags, safe defaults and rollback are garden's, as ruled",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "be5078e1c4eb",
+      "kind": "scope",
+      "reason": "Directing an agent to build incrementally is addressed to the person who directs it; the builder here follows the slices itself.",
+      "gist": "Directing an agent is the director's concern; the builder works the slices"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "c260bbb1dda1",
+      "kind": "scope",
+      "reason": "Directing an agent to build incrementally is addressed to the person who directs it; the builder here follows the slices itself.",
+      "gist": "Directing an agent is the director's concern; the builder works the slices"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "2fe98bbb6476",
+      "kind": "scope",
+      "reason": "Directing an agent to build incrementally is addressed to the person who directs it; the builder here follows the slices itself.",
+      "gist": "Directing an agent is the director's concern; the builder works the slices"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "e8e166966487",
+      "kind": "scope",
+      "reason": "Directing an agent to build incrementally is addressed to the person who directs it; the builder here follows the slices itself.",
+      "gist": "Directing an agent is the director's concern; the builder works the slices"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "a0861e575004",
+      "kind": "pointer",
+      "reason": "The pointer to a test-driven-development skill's section names a skill no install carries.",
+      "gist": "It cites a test-driven-development skill no install carries",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 17
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "3025f172a1d3",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "4199ba454d6d",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "18940fba5a53",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "6cc2a6f3ac6d",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "6cd58193374e",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "06ab2534dea0",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "ad1cf81ecca7",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "48cb4a42e921",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and one argues for the feature flags handed to garden's maintainer.",
+      "gist": "The rationalisations argue for the practice, one for flags now garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "052cfba57d12",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "4ec7151b84e2",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "af632e47184d",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "a4154de0103c",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "bba042012669",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "39c116fe22b4",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "c7b08d8b416e",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "554ff00c721f",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "0869de3fe474",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "4b707989f914",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "c1078788b528",
+      "kind": "scope",
+      "reason": "The red flags repeat the cycle, the scope rule, the one-thing rule, the build kept green and the checklist's note on repeated runs.",
+      "gist": "The red flags repeat the cycle, its rules and the checklist"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "80937328f4f7",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "68b2b8c31ea5",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "34c50aa69715",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "c9f5ed0107a5",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "54ac617670d4",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "f411dd2e1edd",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "3364ba92d8ae",
+      "kind": "scope",
+      "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
+      "gist": "Its final checks repeat the cycle; the completion contract says when done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "0f2b43836b7d",
+      "kind": "pointer",
+      "reason": "The definition of done points at a reference file no install carries; the completion contract is the step's bar.",
+      "gist": "The completion contract replaces an uninstalled definition-of-done file"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "6d6b63bdfb3f",
+      "kind": "pointer",
+      "reason": "The definition of done points at a reference file no install carries; the completion contract is the step's bar.",
+      "gist": "The completion contract replaces an uninstalled definition-of-done file"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "e22b9dfc05e7",
+      "kind": "pointer",
+      "reason": "The definition of done points at a reference file no install carries; the completion contract is the step's bar.",
+      "gist": "The completion contract replaces an uninstalled definition-of-done file"
+    },
+    {
+      "source": "addyosmani",
+      "file": "incremental-implementation/SKILL.md",
+      "segment": "4eb9118e12d2",
+      "kind": "pointer",
+      "reason": "The definition of done points at a reference file no install carries; the completion contract is the step's bar.",
+      "gist": "The completion contract replaces an uninstalled definition-of-done file"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "b108b763e68f",
+      "kind": "scope",
+      "reason": "The title gives way to the step's own.",
+      "gist": "The source's title gives way to the step's own",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "47c5a53b458d",
+      "kind": "scope",
+      "reason": "Small units each ending in a checkable state, the next not started until the current one is green, is the spine's overview, which stands.",
+      "gist": "Its overview repeats the spine's small checkable units, which stand",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "d141e8675be0",
+      "kind": "scope",
+      "reason": "The why argues for the method; the bracket and the delivery order are taken.",
+      "gist": "The why argues for the practice; the bracket and order are taken"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "ebc3f2b3eb69",
+      "kind": "scope",
+      "reason": "The why argues for the method; the bracket and the delivery order are taken.",
+      "gist": "The why argues for the practice; the bracket and order are taken"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "e1d4c3b17dc1",
+      "kind": "scope",
+      "reason": "The why argues for the method; the bracket and the delivery order are taken.",
+      "gist": "The why argues for the practice; the bracket and order are taken"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "ade8eec9c823",
+      "kind": "method",
+      "reason": "Rebasing onto trunk before the units rewrites the history of the owner's branch, which is the owner's to integrate; only the bracket and the delivery order enter from this source, and the bracket's known-good state is what the build keeps.",
+      "gist": "Rebasing the owner's branch is the owner's call; only the bracket enters",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "7d27a5d5db43",
+      "kind": "pointer",
+      "reason": "A lever that does the edits names a pstack principle no install carries; the bracket's check runs at every unit, as the sentences taken say.",
+      "gist": "An absent pstack principle goes; each unit still runs its check"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "79bee3ee185c",
+      "kind": "pointer",
+      "reason": "A lever that does the edits names a pstack principle no install carries; the bracket's check runs at every unit, as the sentences taken say.",
+      "gist": "An absent pstack principle goes; each unit still runs its check"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "398a857a1e6b",
+      "kind": "pointer",
+      "reason": "The two principle skills it names are not installed.",
+      "gist": "The two principle skills it names are not installed"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "9951e9908da6",
+      "kind": "scope",
+      "reason": "The title gives way to the step's own.",
+      "gist": "The source's title gives way to the step's own",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "f70b5d9c21a7",
+      "kind": "method",
+      "reason": "Inline execution against a subagent per task, with one fresh reviewer at the end, is a choice between orchestrations; the builder runs every task itself and the review is the review step's.",
+      "gist": "The builder runs every task itself; reviewing is the review step's",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "f0a99956e9f8",
+      "kind": "method",
+      "reason": "Inline execution against a subagent per task, with one fresh reviewer at the end, is a choice between orchestrations; the builder runs every task itself and the review is the review step's.",
+      "gist": "The builder runs every task itself; reviewing is the review step's",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "c39c9b60ec8f",
+      "kind": "method",
+      "reason": "Inline execution against a subagent per task, with one fresh reviewer at the end, is a choice between orchestrations; the builder runs every task itself and the review is the review step's.",
+      "gist": "The builder runs every task itself; reviewing is the review step's",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1c128566c8ca",
+      "kind": "method",
+      "reason": "Inline execution against a subagent per task, with one fresh reviewer at the end, is a choice between orchestrations; the builder runs every task itself and the review is the review step's.",
+      "gist": "The builder runs every task itself; reviewing is the review step's",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "fa6cd71bb42b",
+      "kind": "method",
+      "reason": "Inline execution against a subagent per task, with one fresh reviewer at the end, is a choice between orchestrations; the builder runs every task itself and the review is the review step's.",
+      "gist": "The builder runs every task itself; reviewing is the review step's",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "7fbc5410e014",
+      "kind": "method",
+      "reason": "Inline execution against a subagent per task, with one fresh reviewer at the end, is a choice between orchestrations; the builder runs every task itself and the review is the review step's.",
+      "gist": "The builder runs every task itself; reviewing is the review step's",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6e77aa1acdc5",
+      "kind": "scope",
+      "reason": "The core principle restates the cycle and the completion contract that are taken.",
+      "gist": "Its core principle restates the cycle and completion contract taken here",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "ec01b3426242",
+      "kind": "scope",
+      "reason": "The core principle restates the cycle and the completion contract that are taken.",
+      "gist": "Its core principle restates the cycle and completion contract taken here",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "50e78de08ec5",
+      "kind": "scope",
+      "reason": "Narration between tool calls is a harness-wide manner, not a step of the build.",
+      "gist": "Narration between tool calls is a general manner, not a build step"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "84cbdb150738",
+      "kind": "scope",
+      "reason": "Whether the build pauses between tasks is the change's mode and its waits, which the plan step states.",
+      "gist": "The mode and its waits decide pauses, as the plan step states"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "0958e876c2c7",
+      "kind": "scope",
+      "reason": "Whether the build pauses between tasks is the change's mode and its waits, which the plan step states.",
+      "gist": "The mode and its waits decide pauses, as the plan step states"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "9cb58e0ba6c7",
+      "kind": "scope",
+      "reason": "Whether the build pauses between tasks is the change's mode and its waits, which the plan step states.",
+      "gist": "The mode and its waits decide pauses, as the plan step states"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "2fa313e169b2",
+      "kind": "scope",
+      "reason": "Whether the build pauses between tasks is the change's mode and its waits, which the plan step states.",
+      "gist": "The mode and its waits decide pauses, as the plan step states"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "f27a5b93aff9",
+      "kind": "method",
+      "reason": "Ruling on every conflict and ambiguity alone is narrowed: a defect the spec already settles is the builder's, a product or contract choice returns to the owner (contradiction 5).",
+      "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "23b0fc376e93",
+      "kind": "method",
+      "reason": "Ruling on every conflict and ambiguity alone is narrowed: a defect the spec already settles is the builder's, a product or contract choice returns to the owner (contradiction 5).",
+      "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e986111f212e",
+      "kind": "method",
+      "reason": "Ruling on every conflict and ambiguity alone is narrowed: a defect the spec already settles is the builder's, a product or contract choice returns to the owner (contradiction 5).",
+      "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "13e482613e98",
+      "kind": "method",
+      "reason": "Ruling on every conflict and ambiguity alone is narrowed: a defect the spec already settles is the builder's, a product or contract choice returns to the owner (contradiction 5).",
+      "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6007b6f696bd",
+      "kind": "method",
+      "reason": "Ruling on every conflict and ambiguity alone is narrowed: a defect the spec already settles is the builder's, a product or contract choice returns to the owner (contradiction 5).",
+      "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e2e37aeb8789",
+      "kind": "scope",
+      "reason": "What stops the agent, a destructive act, a security-sensitive one, an outside side effect, is the workspace's standing rules, which every step keeps; a broken plan is a defect ruled below.",
+      "gist": "Stopping for destructive or outward acts is every step's standing rule"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "78daf74164a3",
+      "kind": "scope",
+      "reason": "What stops the agent, a destructive act, a security-sensitive one, an outside side effect, is the workspace's standing rules, which every step keeps; a broken plan is a defect ruled below.",
+      "gist": "Stopping for destructive or outward acts is every step's standing rule"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "f0874ec0d168",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "971849424efa",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "225d360307cd",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "25abaeea2fca",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4de2c964145e",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "7c355d628644",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "b24e5e0917b3",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4f8e8acb13d6",
+      "kind": "method",
+      "reason": "When to choose inline execution over a subagent per task, with the harness's subagent references, is a choice between orchestrations; the builder runs every task itself.",
+      "gist": "Choosing inline over subagents goes; the builder runs every task itself",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "0b0e38a27fda",
+      "kind": "scope",
+      "reason": "The process graph draws the task loop, its scripts and its final review, which are not taken.",
+      "gist": "The process graph draws scripts and a final review not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3e1157aec4ac",
+      "kind": "scope",
+      "reason": "The process graph draws the task loop, its scripts and its final review, which are not taken.",
+      "gist": "The process graph draws scripts and a final review not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "0ecddf15e1af",
+      "kind": "method",
+      "reason": "The isolated workspace in a worktree is declined: greenline uses no worktrees; the branch is the owner's choice.",
+      "gist": "The worktree setup is declined; the branch is the owner's choice",
+      "ruling": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "2e2c55cb9c06",
+      "kind": "method",
+      "reason": "The isolated workspace in a worktree is declined: greenline uses no worktrees; the branch is the owner's choice.",
+      "gist": "The worktree setup is declined; the branch is the owner's choice",
+      "ruling": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "9380b8e47c14",
+      "kind": "method",
+      "reason": "The isolated workspace in a worktree is declined: greenline uses no worktrees; the branch is the owner's choice.",
+      "gist": "The worktree setup is declined; the branch is the owner's choice",
+      "ruling": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3257b6842630",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "9570feec8587",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "b93fea1fcaa1",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "fc9aac96dbb9",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "d63ba7b0d2d6",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "abc087c6df2b",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "93b404af02a0",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "660f475ca57a",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "82ee845908ab",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "c3e2edb2888c",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "b80ad077204f",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1c173d5bc6ce",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "14347472e442",
+      "kind": "home",
+      "reason": "The ledger file and the per-plan workspace its scripts create are the change record's: the build section and the change's commits hold what they held, and the record alone resumes a change.",
+      "gist": "The change record replaces the ledger file and resumes the change",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6995aa0992b1",
+      "kind": "scope",
+      "reason": "Reading the plan and its spec first is what the scope paragraph says build reads.",
+      "gist": "Reading the plan and spec first is already in build's opening",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "228a80c51fe6",
+      "kind": "scope",
+      "reason": "Reading the plan and its spec first is what the scope paragraph says build reads.",
+      "gist": "Reading the plan and spec first is already in build's opening",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "05c90240333b",
+      "kind": "scope",
+      "reason": "Reading the plan and its spec first is what the scope paragraph says build reads.",
+      "gist": "Reading the plan and spec first is already in build's opening",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "b6af94d73b82",
+      "kind": "pointer",
+      "reason": "The required sub-skill names a superpowers skill; the tdd habit and the pointer to it stand.",
+      "gist": "The superpowers sub-skill goes; the line naming tdd stands",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "be951604c00a",
+      "kind": "pointer",
+      "reason": "The required sub-skill names a superpowers skill; the tdd habit and the pointer to it stand.",
+      "gist": "The superpowers sub-skill goes; the line naming tdd stands",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1ec21f1e06ff",
+      "kind": "scope",
+      "reason": "The pre-flight scan for conflicting interfaces is the plan's self-review, which checks the types and names across tasks.",
+      "gist": "The pre-flight interface scan is the plan's self-review"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "966170f21435",
+      "kind": "scope",
+      "reason": "The pre-flight scan for conflicting interfaces is the plan's self-review, which checks the types and names across tasks.",
+      "gist": "The pre-flight interface scan is the plan's self-review"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "08fc7f56f5c2",
+      "kind": "scope",
+      "reason": "The pre-flight scan for conflicting interfaces is the plan's self-review, which checks the types and names across tasks.",
+      "gist": "The pre-flight interface scan is the plan's self-review"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e6818b22734e",
+      "kind": "scope",
+      "reason": "The pre-flight scan for conflicting interfaces is the plan's self-review, which checks the types and names across tasks.",
+      "gist": "The pre-flight interface scan is the plan's self-review"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "11e9d4a7d133",
+      "kind": "scope",
+      "reason": "The pre-flight scan for conflicting interfaces is the plan's self-review, which checks the types and names across tasks.",
+      "gist": "The pre-flight interface scan is the plan's self-review"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "d6813fdbcf7c",
+      "kind": "scope",
+      "reason": "Keeping long output out of the context is a harness-wide manner, not a step of the build.",
+      "gist": "Keeping long output out of context is a manner, not a step"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "ba8f05aca582",
+      "kind": "scope",
+      "reason": "Keeping long output out of the context is a harness-wide manner, not a step of the build.",
+      "gist": "Keeping long output out of context is a manner, not a step"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "22707c364670",
+      "kind": "scope",
+      "reason": "Keeping long output out of the context is a harness-wide manner, not a step of the build.",
+      "gist": "Keeping long output out of context is a manner, not a step"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6fdf6ff08534",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "9c7f38463879",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6afd0ec35eee",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "b1f48629439d",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "af514dcd3f32",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "369c3af33129",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "7ffed49e6aaa",
+      "kind": "home",
+      "reason": "Taking a task through its start script and marking a todo are the scripts' and the harness's; the task is the plan's or the ticket's.",
+      "gist": "The task is the plan's or ticket's, not a start script's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "49d7c1c57298",
+      "kind": "scope",
+      "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
+      "gist": "Red before green is the tdd habit's, which the pointer names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "674d171b206d",
+      "kind": "scope",
+      "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
+      "gist": "Red before green is the tdd habit's, which the pointer names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1060abc73718",
+      "kind": "scope",
+      "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
+      "gist": "Red before green is the tdd habit's, which the pointer names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "996c9ae81945",
+      "kind": "scope",
+      "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
+      "gist": "Red before green is the tdd habit's, which the pointer names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "d0e997b2e4c8",
+      "kind": "home",
+      "reason": "The Expected lines of upstream's plan become what the plan states a step's command should show.",
+      "gist": "Expected lines become what the plan says a command should show",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "c04e91218389",
+      "kind": "home",
+      "reason": "The Expected lines of upstream's plan become what the plan states a step's command should show.",
+      "gist": "Expected lines become what the plan says a command should show",
+      "replacedBy": {
+        "path": "references/greenline.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4be0ca0d2e36",
+      "kind": "pointer",
+      "reason": "The debugging skill it names is a superpowers skill; finding the cause, the sentence after it, stands.",
+      "gist": "The superpowers debugging skill goes; finding the cause still stands"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "baf39c44dc98",
+      "kind": "method",
+      "reason": "The ruling and its ledger line become a deviation in the build section, the builder's only for a defect the spec settles (contradiction 5).",
+      "gist": "Rulings become build-section deviations, the builder's only for spec-settled defects",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "5da8bc6823f8",
+      "kind": "method",
+      "reason": "The ruling and its ledger line become a deviation in the build section, the builder's only for a defect the spec settles (contradiction 5).",
+      "gist": "Rulings become build-section deviations, the builder's only for spec-settled defects",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "356e4bcccc88",
+      "kind": "scope",
+      "reason": "Committing is the cycle's, and the review range cut from BASE gives way to the change's commits found by their trailer.",
+      "gist": "Committing is the cycle's; the change's trailer finds its commits, not BASE"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "0488c9e6d997",
+      "kind": "scope",
+      "reason": "Committing is the cycle's, and the review range cut from BASE gives way to the change's commits found by their trailer.",
+      "gist": "Committing is the cycle's; the change's trailer finds its commits, not BASE"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "44af35c8f6e4",
+      "kind": "home",
+      "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
+      "gist": "The completion contract's ledger line and scripts take greenline's names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3a46cc53d39d",
+      "kind": "home",
+      "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
+      "gist": "The completion contract's ledger line and scripts take greenline's names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "c80631ae965f",
+      "kind": "home",
+      "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
+      "gist": "The completion contract's ledger line and scripts take greenline's names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "da207bc7dc30",
+      "kind": "home",
+      "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
+      "gist": "The completion contract's ledger line and scripts take greenline's names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6fb837460ed6",
+      "kind": "home",
+      "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
+      "gist": "The completion contract's ledger line and scripts take greenline's names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "891c2ad7b29b",
+      "kind": "home",
+      "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
+      "gist": "The completion contract's ledger line and scripts take greenline's names",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "223d388cc602",
+      "kind": "pointer",
+      "reason": "The required sub-skill names a superpowers verification skill; the claim of the change is the verify step's.",
+      "gist": "The superpowers verification skill goes; the claim is verify's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "94a74cd91a0b",
+      "kind": "home",
+      "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
+      "gist": "Done scripts and ledger lines go; the contract and checks decide done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "60fa7405010d",
+      "kind": "home",
+      "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
+      "gist": "Done scripts and ledger lines go; the contract and checks decide done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1e112bf76183",
+      "kind": "home",
+      "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
+      "gist": "Done scripts and ledger lines go; the contract and checks decide done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e510a2fadcdc",
+      "kind": "home",
+      "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
+      "gist": "Done scripts and ledger lines go; the contract and checks decide done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "fa1873ae1eb3",
+      "kind": "home",
+      "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
+      "gist": "Done scripts and ledger lines go; the contract and checks decide done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3a25fa569e88",
+      "kind": "home",
+      "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
+      "gist": "Done scripts and ledger lines go; the contract and checks decide done",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "63737e4b030f",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "94f2a5fde0ff",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4149bc153368",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "638158861d73",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3efdecc9638e",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e752b87d0e3e",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "ceb05b469742",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "c1030ef9d55f",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "426dad0a0159",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e43cdca10416",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "83658240a440",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "044f0a44b5e2",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "fa36c4e4f0f6",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "8eb6e087117c",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "818dcd3716c0",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4cc46dde7c19",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "ec25fdd9cd81",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1f97788babbc",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "2f854f084a50",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6cf034f93767",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4b384e60676c",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6e3cbed65382",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "d7713a7b3966",
+      "kind": "method",
+      "reason": "The final review of the whole branch, by a dispatched subagent on the most capable model or by the author, is the review step's, which runs at the depth the mode gives it.",
+      "gist": "The final branch review is the review step's, at the mode's depth",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e6bc65e9bced",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "dd63aedd9f77",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "40e2c9a2feff",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "74772214b190",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "32dd8c38d0f6",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "58db4324feb5",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "86db7fb0000a",
+      "kind": "scope",
+      "reason": "Gathering the rulings into the final message and finishing the branch are the close step's, which audits the record and writes its close section.",
+      "gist": "Collecting rulings and finishing the branch are the close step's"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6163cbb12410",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "e4b1386c9765",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "38cc9c24dc93",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "30d91f14b222",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "1133dec8ab9f",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "de3bb6e9b31c",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "757c47fc6f4b",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "67368309d40d",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "4c527772623f",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "82bc90cc0885",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "0c673ceaad97",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "cee671778960",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "d1dd38f42f4a",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "ba878446d12a",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and several argue for the ledger and the final review, which are not taken.",
+      "gist": "The rationalisations argue for the practice and for parts not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "6ea9ab956697",
+      "kind": "scope",
+      "reason": "The example workflow walks the scripts, the worktree and the final review, which are not taken.",
+      "gist": "The example walks scripts, a worktree and a review, none taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "executing-plans/SKILL.md",
+      "segment": "3235c37b80de",
+      "kind": "scope",
+      "reason": "The example workflow walks the scripts, the worktree and the final review, which are not taken.",
+      "gist": "The example walks scripts, a worktree and a review, none taken"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-sequence-verifiable-units/SKILL.md",
+      "segment": "1930e4d99c01",
+      "kind": "method",
+      "reason": "Build stacks commits only: the pull request is the landing the close step offers once, on the owner's word, never one opened per piece during the build; upstream's sentence also stacked pull requests.",
+      "gist": "Build stacks commits; the pull request waits for close's landing",
+      "ruling": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 13
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-ponytail-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-tdd-recut",
+    "sha256": "25156f73463cbad86e31fd4b29e2e3bc7912dd344aa11ec7a04a9442b15dec63"
+  },
+  "subject": "skill:ponytail",
+  "recipe": "2f3f79d4ce03a08869e16300ced6bfd19da562891c3eeef4f0da904ab87efd47",
+  "result": "ed76b00033b32ff5386c09e08abcefb611134e8d25f2b2d580659e4e025c4282",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "debt.md"
+    },
+    {
+      "path": "simplify.md"
+    }
+  ],
+  "gist": "Re-cut as a habit on its own spine, five sources grafted",
+  "reason": "ponytail is re-cut as a habit on its own spine with principle-subtract-before-you-add, principle-laziness-protocol, principle-migrate-callers-then-delete-legacy-apis, code-simplification and ponytail-debt grafted. A deliberate shortcut is named in the build section.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 130,
+        "taken": 23,
+        "exact": 22,
+        "retention": 0.9565217391304348,
+        "coverage": 0.17692307692307693,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "ponytail",
+        "segments": 56,
+        "taken": 54,
+        "exact": 53,
+        "retention": 0.9814814814814815,
+        "coverage": 0.9642857142857143,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 46,
+        "taken": 32,
+        "exact": 32,
+        "retention": 1,
+        "coverage": 0.6956521739130435,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 256
+  }
+}

@@ -1,0 +1,661 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "progress-check",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "progress-check"
+    },
+    {
+      "field": "description",
+      "value": "Give sparse, evidence-based progress updates during long-running work: observable milestones weighted by work and risk, an update only when something material changed, one rounded-down bar. Use while long work with several milestones runs between replies, never for a short answer or work with no intermediate state; and the moment the owner asks to change how or how often you report progress, whether more updates, total silence or an estimated clock, BEFORE any such preference is saved anywhere."
+    }
+  ],
+  "sources": ["tjcages"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/SKILL.md",
+          "segments": ["c5f671b6b3d2"]
+        },
+        {
+          "passage": "written",
+          "text": "progress-check is the habit for the moment long work runs between replies: a\nchange with several milestones, a build of many slices, delegated agents\nrunning one after another. It never fires on a short answer or on work whose\nonly honest states are started and finished, and its cadence is judgment,\nnever spam. It also fires the moment the owner asks to change how or how often\nyou report, whether more updates, silence or an estimated clock: follow the\npreference within the current task, keep reporting actionable blockers, and\nsave nothing anywhere unless the owner asks for a lasting rule (Persist a\npreference, below). It writes no record of its own: progress stays in the\nconversation, the evidence behind it belongs to the change record's sections\nand the checks the change recorded, and an estimated clock is an\nunmeasured claim this habit never makes.",
+          "kind": "scope",
+          "reason": "The opening paragraph in the habit's own voice: the situations its block rows key it by, long work running between replies (a change with several milestones, a build of many slices, delegated agents one after another) and the owner asking to change how or how often progress is reported; never a short answer or two-state work, on a cadence that is judgment; that it writes no record of its own, the evidence being the change record's and its checks'; and that an estimated clock is never claimed. Re-cut at S18b onto the change record, in place of a ticket held at implementing and its execution account. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the habit: long work between replies, never a short answer"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/SKILL.md",
+          "segments": [
+            "07180f913667",
+            "310a1fa95b92",
+            "6cfcab403c8d",
+            "c812cf11fd3e",
+            "85825280c110"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "- **Persist a preference:** only when the owner asks for a lasting rule. The\n  greenline CLI installs this skill, so there is no install-globally mode here.",
+          "kind": "home",
+          "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it. (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12))",
+          "gist": "Preferences last the task; a lasting rule needs the owner's request",
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/SKILL.md",
+          "segments": ["11f3dec1c5a7", "1f7c2b18902d", "c02ca76e8872"]
+        },
+        {
+          "passage": "written",
+          "text": "Where a change owns the work, the\n   milestones are its acceptance items and every update quotes their evidence.",
+          "kind": "pointer",
+          "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform). Re-cut at S18b onto the change record, in place of the owning ticket and its execution account.",
+          "gist": "Milestones are the change's acceptance items, each update quoting their evidence",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/SKILL.md",
+          "segments": ["5d936564be2d"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "3. Send a routine update only when turns of work have passed since the previous\n   routine update or a step of the change has ended, **and** one of these is\n   true: a milestone completed, verified progress rose by at least 10 percentage\n   points, or the next action materially changed. Never estimate elapsed time to\n   open the gate; an estimated clock is an unmeasured claim.",
+          "kind": "harness",
+          "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode. Re-cut at S18b: the end of a step replaces a ticket's status transition.",
+          "gist": "Routine updates follow turns of work or a step's end, not minutes",
+          "credits": ["tjcages"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/SKILL.md",
+          "segments": ["2c6a1d1f76b4", "370de981a9cd", "feb95ce831f8"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "The update is conversation and nothing else: milestone evidence belongs to the\nchange record and its checks, and no parallel progress file or tracker is\ncreated.",
+          "kind": "pointer",
+          "reason": "Milestone evidence belongs to the change record and its checks, so the update is conversation with no parallel progress file or tracker. Re-cut at S18b onto the change record, in place of the owning ticket and its execution account.",
+          "gist": "Updates stay in conversation; no progress file or tracker is created"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/SKILL.md",
+          "segments": [
+            "9a4562afac68",
+            "d3bb7ffe5f6f",
+            "e15bfc651c94",
+            "0dc90f7851ef",
+            "7ce49b7e078f",
+            "53bfca009c77",
+            "f0f720ecf09b",
+            "d776f7356fde",
+            "d7f89f041fe7",
+            "3ece6d4a5122",
+            "611179d989ab",
+            "3e8047f85817"
+          ],
+          "edits": [
+            {
+              "segment": "9a4562afac68",
+              "find": " evidence, current\n",
+              "replace": "\nevidence, current ",
+              "kind": "pointer",
+              "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+              "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+            },
+            {
+              "segment": "d3bb7ffe5f6f",
+              "find": " bar styled as\n",
+              "replace": "\nbar styled as ",
+              "kind": "pointer",
+              "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+              "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "## Persist a preference",
+          "kind": "home",
+          "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it.",
+          "gist": "A lasting reporting rule goes in the repository, never a machine-global file"
+        },
+        {
+          "passage": "written",
+          "text": "The greenline CLI installs this skill; there is no global installation step\nhere and no machine-global instruction write. A request to change how or how\noften you report is followed within the current task and saved nowhere.\nPersist a preference only when the owner asks for a lasting repository\nrule, as a house ruling in the repository's user-owned instruction home, in the\nformat the work guide defines. The next context reads that rule without\ndemanding a second confirmation.",
+          "kind": "home",
+          "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it. (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12)) Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Preferences last the task; a lasting rule needs the owner's request"
+        },
+        {
+          "passage": "written",
+          "text": "Durable output: none. Applied on its own cadence while long work runs, and the moment the owner asks to change how or how often you report, before any preference is saved anywhere.",
+          "kind": "harness",
+          "reason": "The habit's closing line: Durable output none, applied on its own cadence while long work runs and the moment the owner asks to change the cadence, before any preference is saved. Re-cut at S18b in the habit's words, in place of the worker moment.",
+          "gist": "Closes on nothing durable, applied during long work or a cadence request"
+        }
+      ]
+    },
+    {
+      "path": "EXAMPLES.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/EXAMPLES.md",
+          "segments": [
+            "0fb520b138fd",
+            "637f57c60a6f",
+            "bdaa6fdfde02",
+            "0b7c23ce3e59",
+            "033166d895de",
+            "ae858606c964",
+            "52623cbdd231",
+            "da289fd982c3",
+            "1004bcb8097c",
+            "5e43b108b206",
+            "59fe823b79c2",
+            "75b849183ae2",
+            "3d6f77424cd5",
+            "b9024ad93e26",
+            "1e557d86726f",
+            "3555ac62b14f",
+            "93d3c8206d0c",
+            "ce162334cf5b",
+            "3f645383c526",
+            "c7ec7bac6436",
+            "b20cb9b01cf0"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "This log is upstream's record of its own install runs, kept as written. It is\nnot a command to run here and makes no claim about this installation, which\nthe greenline CLI performs.",
+          "kind": "harness",
+          "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+          "gist": "greenline installs this skill, so the global install mode goes"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/EXAMPLES.md",
+          "segments": [
+            "9c0d6481584a",
+            "9a0c42d2c587",
+            "52ac72b38cfd",
+            "4f926b38136f",
+            "f914cb2af402",
+            "657f7f618e13",
+            "de7098ac4a80",
+            "9ec05ad096ed",
+            "6688ee3ea308",
+            "9b1a4247e9a9"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "METHODOLOGY.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/METHODOLOGY.md",
+          "segments": [
+            "d8febb4b89d9",
+            "4bf3425cc48d",
+            "957e33f09a0a",
+            "bfd0df32ea13",
+            "dd5712b45edb",
+            "518d812d3de8",
+            "d1cd7949ecdc",
+            "004997bfca2a",
+            "3b5c84e6677c",
+            "862a6953d936",
+            "e40e01cb2cc4",
+            "bad08bb72a4f",
+            "52a4ad99d5e4",
+            "a6b54bab214c",
+            "948fb09730f9",
+            "14b4f03dae8e",
+            "2d4848315eb9",
+            "49ec53834d89",
+            "8a78cbffdf60",
+            "d961cb7cc7ac"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "1. Turns of work since the previous routine update, or the end of a step of the\n   change; never an estimate of elapsed time.",
+          "kind": "harness",
+          "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored to turns of work since the previous routine update or the end of a step of the change, an estimated elapsed time never used to open the gate. Re-cut at S18b: the end of a step replaces a ticket's status transition.",
+          "gist": "Counts turns since the last update, never estimated elapsed time"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/METHODOLOGY.md",
+          "segments": [
+            "ef4f2463fd9c",
+            "c4200842ec70",
+            "d661e0efc20c",
+            "c31e0438be4d",
+            "bdbc25944b76",
+            "77780a1bbf5e",
+            "f92c3e300ced",
+            "27bfb59f8431",
+            "f72efcac14b3",
+            "e15bfc651c94",
+            "0dc90f7851ef",
+            "eaa4ae0ae6aa",
+            "6bbf1197a8fb",
+            "16b1ec543d2c",
+            "2f236fad3df8",
+            "e35d0f519b94",
+            "dfe205ea6899",
+            "53bfca009c77",
+            "cd051196c619",
+            "3b0e2848a6b6",
+            "7e0db10b4bc6",
+            "80166c5f01c4",
+            "d5e1f5c46975"
+          ],
+          "edits": [
+            {
+              "segment": "c4200842ec70",
+              "find": "ime",
+              "replace": "urn",
+              "kind": "harness",
+              "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
+              "gist": "Re-anchors the update gate from thirty minutes to turns of work"
+            }
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "## 5. Installation and persistence",
+          "kind": "home",
+          "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it.",
+          "gist": "A lasting reporting rule goes in the repository, never a machine-global file"
+        },
+        {
+          "passage": "written",
+          "text": "The greenline CLI installs this skill; there is no global installation step\nhere and no machine-global instruction write. A reporting preference the user\nstates is followed within the current task and saved nowhere. When the\nowner asks for a lasting repository rule, record it as a house ruling in\nthe repository's user-owned instruction home, in the format\nthe work guide defines; the next context reads it without a second\nconfirmation.",
+          "kind": "harness",
+          "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved). (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12)) Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "No global install step here; lasting rules go in the repository"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/METHODOLOGY.md",
+          "segments": [
+            "5f3178d10bc9",
+            "c627c0eb84e1",
+            "23cca02b74f3",
+            "1d7d09f1c953",
+            "3bebc73fffe5",
+            "c68c90e58371",
+            "dc0cde40e3d8",
+            "bdd17798ffe1",
+            "ddf792769a26",
+            "b7d8de62cbbd",
+            "0ccc516b93c2"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "No readiness score is kept here. Report observable milestone evidence and its\nlimits: the change's acceptance items and the checks the change\nrecorded for it. Global persistence is not a criterion, since the greenline\nCLI installs this skill.",
+          "kind": "pointer",
+          "reason": "Milestone evidence is the change's acceptance items and the checks greenline check recorded for it, so section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform). Re-cut at S18b onto the change record, in place of the owning ticket and the witnesses of its execution account. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Keeps no readiness score; reports acceptance items and recorded checks"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/METHODOLOGY.md",
+          "segments": ["30af4e8d248b"]
+        },
+        {
+          "passage": "written",
+          "text": "- Revisit the turn-and-step cadence and the 10-point default only after real\n  usage shows that they are too sparse or still noisy.",
+          "kind": "harness",
+          "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
+          "gist": "Re-anchors the update gate from thirty minutes to turns of work",
+          "credits": ["tjcages"]
+        }
+      ]
+    },
+    {
+      "path": "RESPONSE.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "progress-check/RESPONSE.md",
+          "segments": [
+            "bf9a8367079a",
+            "b66542635d2a",
+            "d0f1c94380fb",
+            "c934225c654a",
+            "5ee0c959185d",
+            "9aede61e4863",
+            "5c8896ab829e",
+            "5dbeb3ab5173",
+            "d11e0090d401",
+            "cf448a00456d",
+            "9bf34f44c9d1",
+            "20818acf00b9",
+            "781ddaa9f538",
+            "17779e895c68",
+            "e15bfc651c94"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Progress check: the practice's mechanics\n\nThis page holds where progress-check's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe checks a change recorded are those `greenline check` wrote. A house ruling follows the format the work guide, `.greenline/WORK.md`, defines.",
+          "kind": "home",
+          "reason": "progress-check's mechanics: the recorder and the work guide whose format a house ruling follows, held apart since J-93 S2.",
+          "gist": "The recorder and the work guide's ruling format"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "dd6d61be711d",
+      "kind": "home",
+      "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it. (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12))",
+      "gist": "Preferences last the task; a lasting rule needs the owner's request"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "b5918ad584c1",
+      "kind": "harness",
+      "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
+      "gist": "Re-anchors the update gate from thirty minutes to turns of work",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "ae16e53c56d5",
+      "kind": "home",
+      "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it.",
+      "gist": "A lasting reporting rule goes in the repository, never a machine-global file"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "52004144f78f",
+      "kind": "home",
+      "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it. (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12))",
+      "gist": "Preferences last the task; a lasting rule needs the owner's request"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "ba1085ce33a5",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "7b2ef6ed14f0",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "45f647e607f9",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "5308d52d9969",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "b72c8a2b4bdb",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "97278f97bcba",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "c413ab9bd29d",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "07ddca3d9d00",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/SKILL.md",
+      "segment": "a7ce4776ea54",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "1e97e8f6e7fc",
+      "kind": "harness",
+      "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
+      "gist": "Re-anchors the update gate from thirty minutes to turns of work"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "735e74f6fc1e",
+      "kind": "home",
+      "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it.",
+      "gist": "A lasting reporting rule goes in the repository, never a machine-global file"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "5d18b75dc377",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved). (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12))",
+      "gist": "No global install step here; lasting rules go in the repository"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "ba1085ce33a5",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "74c08f3a4142",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "4005e06557f8",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "8762515d9724",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "b074288fcb79",
+      "kind": "harness",
+      "reason": "The greenline CLI installs this skill, so the Install globally mode, its npx skills add command and its native always-on instruction steps are not procedures here and Report progress is the only reporting mode; the mode bullet says so where the mode was introduced, EXAMPLES.md marks the Dogfood log as upstream's own install history rather than a command or a claim about this installation, and the last SKILL.md hunk carries the situational closing line (Durable output: none; applied on its own cadence while long work runs and the moment the user asks to change the cadence, before any preference is saved).",
+      "gist": "greenline installs this skill, so the global install mode goes"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "8fab1f74e61e",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "3536b188f620",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "15e236d6ecbc",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "e82c7dd8c827",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "e1d4158f1ba7",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "1472da99f833",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "2235b439f5b8",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "f2952b209911",
+      "kind": "pointer",
+      "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform); the change's acceptance and checks are the readiness measure.",
+      "gist": "No readiness score: acceptance items and recorded checks measure readiness"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "7fb1f86890b1",
+      "kind": "harness",
+      "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
+      "gist": "Re-anchors the update gate from thirty minutes to turns of work"
+    },
+    {
+      "source": "tjcages",
+      "file": "progress-check/METHODOLOGY.md",
+      "segment": "9675fcb5d018",
+      "kind": "harness",
+      "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
+      "gist": "Re-anchors the update gate from thirty minutes to turns of work",
+      "replacedBy": {
+        "path": "METHODOLOGY.md",
+        "passage": 8
+      }
+    }
+  ]
+}

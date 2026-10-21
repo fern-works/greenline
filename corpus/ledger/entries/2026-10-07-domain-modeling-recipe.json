@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-domain-modeling-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-diagnosing-bugs-recipe",
+    "sha256": "05a6ea120c5122d522b61d56ea5c524a03b2c6855b7a0d12c3b3f3ea5e086ed1"
+  },
+  "subject": "skill:domain-modeling",
+  "recipe": "2bda7438a4c61ef0a3d180de3e0ca82623aca18a5529801896d8d8dbeea72adc",
+  "result": "b9953185f117e433fec0446feb380213d7ca10ca73d9ed855355dcecbbade3f3",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves domain-modeling to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at roster-keepers-2026-09-15.",
+  "authorisedBy": {
+    "date": "2026-09-15",
+    "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-15",
+      "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 107,
+        "exact": 103,
+        "retention": 0.9626168224299065,
+        "coverage": 0.9385964912280702,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 389
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-sweep-tests-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-groundwork-recut",
+    "sha256": "0558f748e796d765376faed54b8780cb6520d350113722564a355f7ebd14a75d"
+  },
+  "subject": "skill:sweep-tests",
+  "recipe": "62766371997f891b34c3281d2c0bd3cc6fe036b85f0120960a38e987285effd5",
+  "result": "a192ee106bc03423e56328d92544e31ed0c16f29605cec9cdf54fd504b630eb3",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut as a start whose sweep is a change of its own",
+  "reason": "sweep-tests is re-cut as a start: the sweep is a change of its own run from frame, the sweep its build, its reports in the change's folder and its result reviewed at the review step.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 124,
+        "taken": 119,
+        "exact": 114,
+        "retention": 0.957983193277311,
+        "coverage": 0.9596774193548387,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 662
+  }
+}

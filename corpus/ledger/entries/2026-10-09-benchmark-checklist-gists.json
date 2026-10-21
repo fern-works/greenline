@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-benchmark-checklist-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-to-questionnaire-gists",
+    "sha256": "67ba61a60c08d82323a4d9b6c052e44f15405d9cf5990564eb336ad3654628dc"
+  },
+  "subject": "skill:benchmark-checklist",
+  "recipe": "fe193e89486fc3a895ad684d43ac5523ac336ff8d3c5d37fc1085bef90c33e5a",
+  "result": "7dccedfce78b8c6925ca2ae24eec7b0da6004c2da7d6e0bb1a02b4ec27d2976e",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradiction 12 as recommended, benchmark-checklist's alternating sides for a measured number and verify's method for every other claim; its PR and hill-climb playbooks dropped"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 90,
+        "taken": 66,
+        "exact": 66,
+        "retention": 1,
+        "coverage": 0.7333333333333333,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 216
+  }
+}

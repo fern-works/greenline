@@ -1,0 +1,5 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a change's commits for defects along two axes, Standards (the repository's documented standards, the smell baseline and the excess lens) and Spec (does the code do what its acceptance asked), by a reviewer briefed with the change record's front matter, its acceptance and its commits and never the builder's diagnosis, then judge every finding and act on it in the mode's fix round, at the depth the change's mode gives the review step. Use when the mode reaches review, or when the owner asks to review the branch, to review since X or a PR, or what can be deleted."
+policy:
+  allow_implicit_invocation: false

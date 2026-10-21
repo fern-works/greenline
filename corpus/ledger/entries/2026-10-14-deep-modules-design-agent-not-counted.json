@@ -1,0 +1,87 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-deep-modules-design-agent-not-counted",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-wayfinder-reader-not-counted",
+    "sha256": "2a1d1f1536bbed95349ac6a45ace824672c6f299951dfccb1e683d747e7f7b7b"
+  },
+  "subject": "skill:deep-modules",
+  "recipe": "244a9ed02b00a614d08703dc9bbd3912d2afadad8cd6ee24e18c8a9f95b7e5b9",
+  "result": "853ec49b1279008eae0e2a47228109cc2000ab43eb97297617ce6262947931f9",
+  "pages": [
+    {
+      "path": "DESIGN-IT-TWICE.md"
+    }
+  ],
+  "gist": "A design agent is named in its section, counted in no cost",
+  "reason": "A design agent the design-it-twice page starts is named in the section of the step it serves and counted in no cost, since the cost counts only the builder and the line's fresh agents.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\"), with R20 of 2026-10-07 (\"we are not doing worktrees and parralel susbs at all\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), the old tests retained through a deepening"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 152,
+        "taken": 144,
+        "exact": 135,
+        "retention": 0.9375,
+        "coverage": 0.9473684210526315,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 32,
+        "taken": 18,
+        "exact": 17,
+        "retention": 0.9444444444444444,
+        "coverage": 0.5625,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 397
+  }
+}

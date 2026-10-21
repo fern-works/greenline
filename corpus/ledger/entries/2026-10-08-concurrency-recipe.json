@@ -1,0 +1,71 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-concurrency-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-boundaries-recipe",
+    "sha256": "d2d9a6b176f94331488243f59b498a80bee3ad6632e55946eb201f479aa52406"
+  },
+  "subject": "skill:concurrency",
+  "recipe": "06ecacc79b2f88e696942a75b9fa684f498e97962c1343394c100e67e4422a4e",
+  "result": "b3abb997a9eb67a8add4be213c7bd796218e57341cfdd40fcdfd6e41c427875e",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "idempotency-key.md"
+    }
+  ],
+  "gist": "Concurrency-method renamed, with a new section on running twice",
+  "reason": "concurrency is concurrency-method renamed, its five sections kept, with principle-separate-before-serializing-shared-state at the third rung and a sixth section on operations that run twice, from principle-make-operations-idempotent and api-and-interface-design.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the sections taken from concurrency-method change no method, under the row of 2026-10-04 (Q1), in the operator's words \"okay then lock in what you recommend\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 152,
+        "taken": 29,
+        "exact": 29,
+        "retention": 1,
+        "coverage": 0.19078947368421054,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 31,
+        "taken": 25,
+        "exact": 25,
+        "retention": 1,
+        "coverage": 0.8064516129032258,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1178
+  }
+}

@@ -10,9 +10,7 @@
     "tools/oxlint/anti-slop/**",
     "AGENTS.md",
     "CLAUDE.md",
-    "corpus/ledger/records/**",
     "corpus/skills/**",
-    "corpus/ledger/witnesses/**",
     "corpus/ledger/sources-before-the-ledger.md",
     "contracts/garden/cli-result-v1.schema.json",
     "contracts/garden/fixtures/**"

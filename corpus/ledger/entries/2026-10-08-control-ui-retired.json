@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-control-ui-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-control-cli-retired",
+    "sha256": "2ed5d8caf37623112663bc0d4792bfe5074c7aceab80d30cd977e08e91b17b14"
+  },
+  "skill": "control-ui",
+  "slice": "S15 of the plan modes-records-recipes",
+  "replacedBy": "verify",
+  "recipe": "e409208561acd6fb49a3697014abc433e9e1c42ba3abeaa47bd404f63fee06ea",
+  "gist": "Becomes verify's reference for browser evidence",
+  "reason": "control-ui is verify's reference file now, references/control-ui.md, read when an item's evidence needs a browser capture, with browser-testing-with-devtools' security core as its guardrails.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

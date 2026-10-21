@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-what-to-build-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-use-garden-recipe",
+    "sha256": "edc1c98e5d5a6ed580682d1e438160dbd6213575184f68f3948d79571a2557f2"
+  },
+  "subject": "skill:what-to-build",
+  "recipe": "8c8974ec9a283aa5c26816bb2c0139cd5c7b5c3decd43a1dcf5182db64a7cbc9",
+  "result": "98b0c21afee12e94edaa920ef153857e1d813d75ba1c6cb011534d89480d4a67",
+  "pages": "unknown",
+  "gist": "A native skill moves to its recipe, its body unchanged",
+  "reason": "Moves what-to-build, a native skill, to its recipe under Q1 of 2026-10-04: its body byte for byte, its front matter in canonical quoted form. The old chain held no entry for it.",
+  "authorisedBy": {
+    "date": "2026-10-04",
+    "words": "A native skill no docs/DECISIONS.md row and no old entry rules; its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A native skill no docs/DECISIONS.md row and no old entry rules; its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 929
+  }
+}

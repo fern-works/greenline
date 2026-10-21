@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-technical-writing-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-model-the-domain-recipe",
+    "sha256": "bc824783513bb4a118ee725f72e94e8a682964199f0d68873f32cdebe79da2a8"
+  },
+  "subject": "skill:technical-writing",
+  "recipe": "f75cdd9223a73d03f80ab462725b31466397a39bcea58617ac31b84aab359519",
+  "result": "a47e9947bd7e7e38cabe6003469fcbf4695de3e2bfc28376fe137d0bd05b3031",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves technical-writing to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at fold-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 198,
+        "taken": 198,
+        "exact": 198,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 35
+  }
+}

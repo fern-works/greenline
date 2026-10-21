@@ -1,4 +1,3 @@
-import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -12,9 +11,13 @@ import {
   renderTmpGitignore,
   renderCodexCatalog,
   renderCodexSkillMetadata,
+  renderLedgerGuide,
+  renderHookFiles,
   renderProjection,
   renderSkillFile,
 } from "../../src/core/render.ts";
+import { jsonAdapterAt, ownedBytes } from "../../src/core/adapters.ts";
+import { SKELETONS_LINE } from "../../src/core/installation.ts";
 import { parseLock, serializeLock } from "../../src/core/lock.ts";
 import { runCli } from "../../src/shell/cli/runner.ts";
 import { fixtureConfiguration, fixtureSkills, fixtureInstallation } from "../fixtures/corpus.ts";
@@ -30,7 +33,7 @@ function skillAt(index: number): SkillSource {
 
 /**
  * End-to-end workspace tests against real temp Git repositories:
- * init, sync, doctor, dry-run, force-managed, override blocking, and
+ * init, sync, status, dry-run, force-managed, override blocking, and
  * fail-closed behavior (`docs/SPEC.md` §12 integration shape).
  */
 
@@ -104,14 +107,29 @@ function generatedTree(root: string): Record<string, string> {
   );
 }
 
+/** The lock's hashes of the hooks' files: each script and file whole, a merged configuration's entries alone (J-93 S3). */
+function hookHashes(): Record<string, string> {
+  return Object.fromEntries(
+    renderHookFiles(fixtureConfiguration, new Set()).map((file) => {
+      const adapter = jsonAdapterAt(file.path);
+      return [file.path, sha256Hex(adapter === undefined ? file.content : ownedBytes(adapter))];
+    }),
+  );
+}
+
+function sortedFiles(files: Record<string, string>): Record<string, string> {
+  return Object.fromEntries(Object.entries(files).sort(([a], [b]) => (a < b ? -1 : 1)));
+}
+
 const expectedLock: string =
   JSON.stringify(
     {
-      schemaVersion: 4,
+      schemaVersion: 5,
       cliVersion: VERSION,
       installationRevision: fixtureInstallation().revision,
-      upstreams: [],
-      files: {
+      sources: [],
+      files: sortedFiles({
+        ...hookHashes(),
         ".agents/skills/delivery-review/SKILL.md": sha256Hex(renderSkillFile(skillAt(0))),
         ".agents/skills/delivery-review/agents/openai.yaml": sha256Hex(
           renderCodexSkillMetadata(skillAt(0)),
@@ -124,21 +142,29 @@ const expectedLock: string =
         ".claude/skills/grilling/SKILL.md": sha256Hex(renderSkillFile(skillAt(1))),
         ".greenline/THIRD_PARTY_NOTICES.md": sha256Hex(fixtureInstallation().notices),
         ".greenline/WORK.md": sha256Hex(fixtureInstallation().workGuide),
-        ".greenline/ledger/README.md": sha256Hex(fixtureInstallation().ledgerGuide),
+        ".greenline/ledger/README.md": sha256Hex(
+          renderLedgerGuide(fixtureInstallation().ledgerGuide, fixtureInstallation().modes),
+        ),
         ".greenline/tmp/.gitignore": sha256Hex(renderTmpGitignore()),
         "AGENTS.md": sha256Hex(
-          renderAgentsPolicyBlock(fixtureSkills, [], fixtureInstallation().agentGuide),
+          renderAgentsPolicyBlock({
+            guide: fixtureInstallation().agentGuide,
+            modes: fixtureInstallation().modes,
+            installed: fixtureSkills,
+            available: fixtureSkills,
+            intents: [],
+          }),
         ),
         "CLAUDE.md": sha256Hex(renderClaudePolicyBlock()),
         "agents/openai.yaml": sha256Hex(renderCodexCatalog(fixtureSkills)),
-      },
+      }),
     },
     null,
     2,
   ) + "\n";
 
 it.each(["changed installation", "missing projection"])(
-  "G3 doctor refuses stale installation without a maintenance queue: %s",
+  "G3 status refuses stale installation without a maintenance queue: %s",
   (change) => {
     const root = makeRepo();
     expect(run(root, ["init", "--yes", "--targets", "codex"]).code).toBe(0);
@@ -152,9 +178,9 @@ it.each(["changed installation", "missing projection"])(
         }),
       );
     } else rmSync(join(root, ".agents/skills/grilling/SKILL.md"));
-    expect(run(root, ["doctor"]).code).toBe(1);
+    expect(run(root, ["status"]).code).toBe(1);
     expect(run(root, ["sync"]).code).toBe(0);
-    expect(run(root, ["doctor"]).code).toBe(0);
+    expect(run(root, ["status"]).code).toBe(0);
   },
 );
 
@@ -179,15 +205,82 @@ it("installs the common ledger guide and protects local edits through the normal
     version: VERSION,
     installation: fixtureInstallation({
       skills: fixtureSkills,
-      ledgerGuide: "# Execution ledger\n\nRecord the actual contribution.\n",
+      ledgerGuide: `# Change records\n\nOne record per change.\n\n${SKELETONS_LINE}\n`,
     }),
   };
   const rec = new RecordingWriter();
   expect(runCli(["init", "--yes"], rec.writer, VERSION, env)).toBe(0);
-  expect(read(root, ".greenline/ledger/README.md")).toBe(env.installation.ledgerGuide);
+  expect(read(root, ".greenline/ledger/README.md")).toBe(
+    renderLedgerGuide(env.installation.ledgerGuide, env.installation.modes),
+  );
   writeFileSync(join(root, ".greenline/ledger/README.md"), "A local edit.\n");
   expect(runCli(["sync"], rec.writer, VERSION, env)).toBe(1);
   expect(read(root, ".greenline/ledger/README.md")).toBe("A local edit.\n");
+});
+
+it("S16b init writes the settings' defaults, sync keeps them, and J-93 S1 no step is a trial the setting names", () => {
+  const root = makeRepo();
+  const env = { cwd: root, version: VERSION, installation: fixtureInstallation() };
+  const rec = new RecordingWriter();
+  expect(runCli(["init", "--yes"], rec.writer, VERSION, env)).toBe(0);
+  // Every mode keeps the whole record: a skeleton holds every step, a skipped one saying so.
+  expect(read(root, ".greenline/ledger/README.md")).toContain("## anticipate\n\nnone at quick");
+  const path = join(root, ".greenline/manifest.json");
+  const proceeding = `${JSON.stringify({ ...JSON.parse(read(root, ".greenline/manifest.json")), proceed: "regular" }, null, 2)}\n`;
+  writeFileSync(path, proceeding);
+  expect(runCli(["sync"], rec.writer, VERSION, env)).toBe(0);
+  expect(read(root, ".greenline/manifest.json")).toBe(proceeding);
+  writeFileSync(path, proceeding.replace('"regular"', '"faster"'));
+  expect(runCli(["sync"], rec.writer, VERSION, env)).toBe(1);
+  expect(rec.err + rec.out).toContain("proceed is none, quick, regular, careful, not 'faster'");
+  const anticipating = `${JSON.stringify({ ...JSON.parse(proceeding), trials: ["anticipate"] }, null, 2)}\n`;
+  writeFileSync(path, anticipating);
+  expect(runCli(["sync"], rec.writer, VERSION, env)).toBe(1);
+  expect(rec.err + rec.out).toContain(
+    "'anticipate' is not a trial skill; the installation holds no trial skill",
+  );
+});
+
+it("S17 a workspace installs and shows a trial start only while its trials setting names it", () => {
+  const root = makeRepo();
+  const trialStart: SkillSource = {
+    name: "idea-sharpener",
+    description: "A trial start for a vague idea.",
+    kind: "start",
+    activation: "explicit",
+    trial: true,
+    body: "Sharpen the idea.",
+  };
+  const installation = fixtureInstallation({
+    skills: [...fixtureSkills, trialStart],
+    intents: [{ intent: "An idea is still vague", skills: ["idea-sharpener"] }],
+  });
+  const env = { cwd: root, version: VERSION, installation };
+  const rec = new RecordingWriter();
+  expect(runCli(["init", "--yes"], rec.writer, VERSION, env)).toBe(0);
+  for (const path of [
+    ".claude/skills/idea-sharpener/SKILL.md",
+    ".agents/skills/idea-sharpener/SKILL.md",
+  ])
+    expect(existsSync(join(root, path)), path).toBe(false);
+  expect(read(root, "AGENTS.md")).not.toContain("idea-sharpener");
+  const path = join(root, ".greenline/manifest.json");
+  const enabled = `${JSON.stringify({ ...JSON.parse(read(root, ".greenline/manifest.json")), trials: ["idea-sharpener"] }, null, 2)}\n`;
+  writeFileSync(path, enabled);
+  expect(runCli(["sync"], rec.writer, VERSION, env)).toBe(0);
+  for (const path of [
+    ".claude/skills/idea-sharpener/SKILL.md",
+    ".agents/skills/idea-sharpener/SKILL.md",
+  ])
+    expect(existsSync(join(root, path)), path).toBe(true);
+  expect(read(root, "AGENTS.md")).toContain(
+    "| An idea is still vague | `idea-sharpener` (trial) |",
+  );
+  writeFileSync(path, enabled.replace('"idea-sharpener"', '"idea-sharpened"'));
+  expect(runCli(["sync"], rec.writer, VERSION, env)).toBe(1);
+  expect(rec.err + rec.out).toContain(
+    "'idea-sharpened' is not a trial skill; the trial skills are idea-sharpener",
+  );
 });
 
 describe("init", () => {
@@ -201,6 +294,10 @@ describe("init", () => {
           schemaVersion: 6,
           targets: ["codex", "claude-code"],
           skills: { exclude: [], include: [] },
+          proceed: "none",
+          trials: [],
+          checks: [],
+          hooks: { git: true, adapters: true },
         },
         null,
         2,
@@ -343,6 +440,33 @@ describe("sync", () => {
     ).toEqual([]);
   });
 
+  it("refuses a schema 4 lock with its version and the remedy, and the remedy converges", () => {
+    const root = makeRepo();
+    expect(run(root, ["init", "--yes"]).code).toBe(0);
+    const lockPath = join(root, ".greenline", "lock.json");
+    const current = JSON.parse(read(root, ".greenline/lock.json"));
+    writeFileSync(lockPath, JSON.stringify({ ...current, schemaVersion: 4 }, null, 2) + "\n");
+    const before = generatedTree(root);
+
+    const refused = run(root, ["sync", "--json"]);
+    expect(refused.code).toBe(1);
+    const envelope = JSON.parse(refused.out);
+    const lockInvalid = envelope.diagnostics.filter(
+      (item: { readonly code: string }) => item.code === "GL0104",
+    );
+    expect(lockInvalid.length).toBe(1);
+    expect(lockInvalid[0].message).toContain("unsupported lock schema version '4' (expected 5)");
+    expect(lockInvalid[0].message).toContain(
+      "delete .greenline/lock.json and run 'greenline sync'",
+    );
+    expect(generatedTree(root)).toEqual(before);
+    expect(JSON.parse(read(root, ".greenline/lock.json")).schemaVersion).toBe(4);
+
+    rmSync(lockPath);
+    expect(run(root, ["sync"]).code).toBe(0);
+    expect(read(root, ".greenline/lock.json")).toBe(expectedLock);
+  });
+
   it("preserves user changes outside the managed block", () => {
     const root = makeRepo();
     run(root, ["init", "--yes"]);
@@ -355,7 +479,7 @@ describe("sync", () => {
   it("blocks on a user-modified block with GL0107 and never mutates", () => {
     const root = makeRepo();
     run(root, ["init", "--yes"]);
-    const tampered = read(root, "AGENTS.md").replace("Installed skills", "HACKED skills");
+    const tampered = read(root, "AGENTS.md").replace("Step skills", "HACKED skills");
     writeFileSync(join(root, "AGENTS.md"), tampered);
     const treeBefore = generatedTree(root);
     const result = run(root, ["sync", "--json"]);
@@ -370,11 +494,11 @@ describe("sync", () => {
     run(root, ["init", "--yes"]);
     writeFileSync(
       join(root, "AGENTS.md"),
-      read(root, "AGENTS.md").replace("Installed skills", "HACKED skills"),
+      read(root, "AGENTS.md").replace("Step skills", "HACKED skills"),
     );
     const result = run(root, ["sync", "--force-managed", "AGENTS.md"]);
     expect(result.code).toBe(0);
-    expect(read(root, "AGENTS.md")).toContain("Installed skills");
+    expect(read(root, "AGENTS.md")).toContain("Step skills");
   });
 
   it("fails closed on a malformed block (GL0108, broken markers)", () => {
@@ -427,7 +551,7 @@ describe("sync", () => {
     run(root, ["init", "--yes"]);
     writeFileSync(
       join(root, "AGENTS.md"),
-      read(root, "AGENTS.md").replace("Installed skills", "HACKED skills"),
+      read(root, "AGENTS.md").replace("Step skills", "HACKED skills"),
     );
     const result = run(root, ["sync", "--dry-run", "--json"]);
     expect(result.code).toBe(0);
@@ -523,12 +647,12 @@ describe("orphans", () => {
     expect(orphanPaths(JSON.parse(second.out))).toEqual([...GRILLING_PATHS].sort());
   });
 
-  it("doctor warns about orphans with GL0112 without failing the run", () => {
+  it("status warns about orphans with GL0112 without failing the run", () => {
     const root = makeRepo();
     run(root, ["init", "--yes"]);
     writeManifest(root, ["grilling"]);
     run(root, ["sync"]);
-    const result = run(root, ["doctor", "--json"]);
+    const result = run(root, ["status", "--json"]);
     expect(result.code).toBe(0);
     const envelope = JSON.parse(result.out);
     expect(envelope.ok).toBe(true);
@@ -619,13 +743,48 @@ describe("orphans", () => {
   });
 });
 
-describe("doctor", () => {
+describe("S20 status diagnoses the installation", () => {
   it("passes a fresh initialized workspace", () => {
     const root = makeRepo();
     run(root, ["init", "--yes"]);
-    const result = run(root, ["doctor", "--json"]);
+    const result = run(root, ["status", "--json"]);
     expect(result.code).toBe(0);
     expect(JSON.parse(result.out)).toMatchObject({ ok: true, effects: [] });
+  });
+
+  it("S20 carries the situation, the changes, the House rulings and the connectors, and no artifact view or ledger", () => {
+    const root = makeRepo();
+    run(root, ["init", "--yes"]);
+    const result = run(root, ["status", "--json"]);
+    expect(Object.keys(JSON.parse(result.out)).sort()).toEqual(
+      [
+        "changes",
+        "command",
+        "connectors",
+        "diagnostics",
+        "effects",
+        "hooks",
+        "houseRulings",
+        "ok",
+        "schemaVersion",
+        "situation",
+      ].sort(),
+    );
+    const human = run(root, ["status"]);
+    expect(human.out).toContain("connectors\n");
+    expect(human.out).not.toContain("no recorded work");
+  });
+
+  it("S20 reads no file under the earlier artifact or account homes", () => {
+    const root = makeRepo();
+    run(root, ["init", "--yes"]);
+    mkdirSync(join(root, ".greenline/work/tickets"), { recursive: true });
+    writeFileSync(join(root, ".greenline/work/tickets/TKT-001.md"), "not front matter\n");
+    mkdirSync(join(root, ".greenline/ledger/records"), { recursive: true });
+    writeFileSync(join(root, ".greenline/ledger/records/work-one.json"), "{");
+    const result = run(root, ["status", "--json"]);
+    expect(result.code).toBe(0);
+    expect(JSON.parse(result.out).diagnostics).toEqual([]);
   });
 
   it("reports a tampered block as a managed conflict (GL0111)", () => {
@@ -633,9 +792,9 @@ describe("doctor", () => {
     run(root, ["init", "--yes"]);
     writeFileSync(
       join(root, "AGENTS.md"),
-      read(root, "AGENTS.md").replace("Installed skills", "HACKED skills"),
+      read(root, "AGENTS.md").replace("Step skills", "HACKED skills"),
     );
-    const result = run(root, ["doctor", "--json"]);
+    const result = run(root, ["status", "--json"]);
     expect(result.code).toBe(1);
     const envelope = JSON.parse(result.out);
     expect(envelope.diagnostics.some((d: { code: string }) => d.code === "GL0111")).toBe(true);
@@ -650,7 +809,7 @@ describe("doctor", () => {
       `"cliVersion": "0.0.9"`,
     );
     writeFileSync(join(root, ".greenline", "lock.json"), lockText);
-    const result = run(root, ["doctor", "--json"]);
+    const result = run(root, ["status", "--json"]);
     expect(result.code).toBe(0);
     expect(
       JSON.parse(result.out).diagnostics.some((d: { code: string }) => d.code === "GL0110"),
@@ -666,9 +825,17 @@ describe("lock contract", () => {
     expect(parsed._tag).toBe("ok");
     if (parsed._tag !== "ok") return;
     expect(parsed.value.cliVersion).toBe(VERSION);
-    expect(parsed.value.upstreams).toEqual([]);
+    expect(parsed.value.sources).toEqual([]);
     expect(parsed.value.files.get("AGENTS.md")).toBe(
-      sha256Hex(renderAgentsPolicyBlock(fixtureSkills, [], fixtureInstallation().agentGuide)),
+      sha256Hex(
+        renderAgentsPolicyBlock({
+          guide: fixtureInstallation().agentGuide,
+          modes: fixtureInstallation().modes,
+          installed: fixtureSkills,
+          available: fixtureSkills,
+          intents: [],
+        }),
+      ),
     );
   });
 });
@@ -703,7 +870,7 @@ describe("init epilogue and the default roster", () => {
         {
           name: "ponytail-review",
           description: "Review minimalism.",
-          class: "stage",
+          kind: "start",
           activation: "explicit",
           body: "Review.",
         },
@@ -731,20 +898,4 @@ describe("init epilogue and the default roster", () => {
     expect(code).toBe(2);
     expect(rec.err).toContain("unknown option");
   });
-});
-
-// Refactored from doctor-record: this diagnostic survives deletion of guidance decisions.
-it("reports a workflow without a remote and stops reporting it when a remote exists", () => {
-  const root = makeRepo();
-  execFileSync("git", ["init", "-q"], { cwd: root });
-  expect(run(root, ["init", "--yes"]).code).toBe(0);
-  mkdirSync(join(root, ".github/workflows"), { recursive: true });
-  writeFileSync(join(root, ".github/workflows/check.yml"), "on: push\n");
-  const codes = () =>
-    JSON.parse(run(root, ["doctor", "--json"]).out).diagnostics.map(
-      (item: { code: string }) => item.code,
-    );
-  expect(codes().filter((code: string) => code === "GL0121")).toHaveLength(1);
-  execFileSync("git", ["remote", "add", "origin", "https://example.com/demo.git"], { cwd: root });
-  expect(codes().filter((code: string) => code === "GL0121")).toHaveLength(0);
 });

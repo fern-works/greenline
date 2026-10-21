@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-unslop-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-type-system-discipline-recipe",
+    "sha256": "241cc3c665e1d77d80771495f0e4d6cbb335065855063525475d406430bf9699"
+  },
+  "subject": "skill:unslop",
+  "recipe": "36a6dab03989c7f404c65a7f33739eaa69c183cd2d82021f10a337985aa334fc",
+  "result": "8ffa30bfc5c924b7f9ec737bfbc00e20042d4c824996b27900206b44358c5ee0",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves unslop to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 123,
+        "taken": 123,
+        "exact": 123,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 73
+  }
+}

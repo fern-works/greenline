@@ -1,0 +1,56 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-guard-the-context-window-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-build-the-lever-recipe",
+    "sha256": "d35f5ef9992c21db8736e2f351ec0d563c00c2c406eeba0d3cdf8c9793d08f38"
+  },
+  "subject": "skill:guard-the-context-window",
+  "recipe": "01372471284389a40c88ff7e0852014f1c03ae4520f8f03cd2054bacb56f1b02",
+  "result": "9003c6295808629e17b9350f2b31c1a6254183ec0cf5577d114aac29a3a379cd",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Enters as a trial habit that keeps raw payloads out",
+  "reason": "guard-the-context-window enters as a trial habit, pstack's principle-guard-the-context-window in portable form with context-engineering's context budget: raw payloads kept out of the thread, no agent spent, the record carrying what a step relies on.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, a copy in its portable form and not a stub, and context-engineering a combine whose context budget joins it, under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 172,
+        "taken": 31,
+        "exact": 31,
+        "retention": 1,
+        "coverage": 0.18023255813953487,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 12,
+        "taken": 8,
+        "exact": 8,
+        "retention": 1,
+        "coverage": 0.6666666666666666,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 216
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-minimize-reader-load",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-separate-before-serializing-shared-state",
+    "sha256": "f13e2c4b42e1f40169a646b135f6a47a276f0151f4c698733cc27c3e761529eb"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-minimize-reader-load"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "State axis, scope ladder and thirty-second test join codebase-design",
+  "reason": "The state axis, its scope ladder and the thirty-second test enter the re-cut codebase-design recipe.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "codebase-design",
+    "catches": "A change that adds a pass-through layer or a mutable scope a reader must hold",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 140
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 140
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 140
+      }
+    ],
+    "ships": "default"
+  }
+}

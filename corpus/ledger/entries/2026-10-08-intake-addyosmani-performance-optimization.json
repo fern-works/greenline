@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-performance-optimization",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-attack-the-premise",
+    "sha256": "19723ebb4c887c34ad62732ed912680761355485557d86ccbcc0cb7696a94368"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/performance-optimization"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Keep-or-revert joins the perf branch; the rest goes to garden",
+  "reason": "Its keep-or-revert step against run-to-run variance enters the re-cut diagnosing-bugs recipe's perf branch; its web, query and caching knowledge goes to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its web, query and caching knowledge",
+        "locator": "skills/performance-optimization"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "start",
+    "slot": "diagnosing-bugs",
+    "catches": "A fix applied where a failure surfaces, before its cause is found, or stacked on a premise earlier fixes disproved",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

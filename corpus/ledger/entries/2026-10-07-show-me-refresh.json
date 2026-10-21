@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-show-me-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-ponytail-review-refresh",
+    "sha256": "6c7e740b30d33e3ecb8b54e30365f5c7cafa32f65e27d80c9a464d5ddd0e8130"
+  },
+  "subject": "skill:show-me",
+  "recipe": "0a8c8199d785c0432daa582f82c4fc5dbfdd9c47af8e1677768ffabf41dc6f67",
+  "result": "7ff41b897b3fda7455385d1703dd857906dfa55241c52b4cf5a96ef15147f50e",
+  "pages": [],
+  "gist": "No text changed; upstream's flag and agent file are not taken",
+  "reason": "Refreshes show-me to humanlayer ca7c8088db69: no segment changed, so the recipe re-anchors as it stands. Upstream's disable-model-invocation flag and agents/openai.yaml are not taken: greenline renders its own front matter and no vendored agent file.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "humanlayer",
+        "segments": 34,
+        "taken": 30,
+        "exact": 29,
+        "retention": 0.9666666666666667,
+        "coverage": 0.8823529411764706,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 269
+  }
+}

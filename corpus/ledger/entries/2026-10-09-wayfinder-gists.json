@@ -1,0 +1,69 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-wayfinder-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-what-to-build-gists",
+    "sha256": "2b27af5378f35a8d47613561bdd369704ad98e4f34d28b318f590dd7dbe7890b"
+  },
+  "subject": "skill:wayfinder",
+  "recipe": "45def5600c79d200451b9eead2811bf5f82444ad2a8b056a4e19a5bb3129c787",
+  "result": "5c0d66235e05c330310fa980f079a2bd3c1b269ede57c12a0d8df70210381775",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "Its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the research tickets resolved one after another and no session beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's ruling R12 of 2026-10-04, \"two wait is good\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 80,
+        "exact": 68,
+        "retention": 0.85,
+        "coverage": 0.7017543859649122,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 986
+  }
+}

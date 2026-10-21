@@ -14,12 +14,16 @@ describe("serializeManifest", () => {
     targets: ["codex"],
     skills: { exclude: ["grilling"], include: [] },
     connectors: {},
+    proceed: "none",
+    trials: [],
+    checks: [],
+    hooks: { git: true, adapters: true },
   };
 
-  it("serializes deterministically with fixed field order", () => {
+  it("serializes deterministically with fixed field order, the settings always written", () => {
     const text = serializeManifest(manifest);
     expect(text).toBe(
-      '{\n  "schemaVersion": 6,\n  "targets": [\n    "codex"\n  ],\n  "skills": {\n    "exclude": [\n      "grilling"\n    ],\n    "include": []\n  }\n}\n',
+      '{\n  "schemaVersion": 6,\n  "targets": [\n    "codex"\n  ],\n  "skills": {\n    "exclude": [\n      "grilling"\n    ],\n    "include": []\n  },\n  "proceed": "none",\n  "trials": [],\n  "checks": [],\n  "hooks": {\n    "git": true,\n    "adapters": true\n  }\n}\n',
     );
   });
 
@@ -33,10 +37,10 @@ describe("serializeManifest", () => {
 
 describe("serializeLock", () => {
   const lock: LockFile = {
-    schemaVersion: 4,
+    schemaVersion: 5,
     cliVersion: "0.1.0",
     installationRevision: "c".repeat(64),
-    upstreams: [{ name: "mattpocock-skills", repo: "mattpocock/skills", commit: null }],
+    sources: [{ name: "mattpocock-skills", repo: "mattpocock/skills", commit: null }],
     files: new Map([
       ["z.txt", "b".repeat(64)],
       ["a.txt", "a".repeat(64)],

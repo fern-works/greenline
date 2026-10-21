@@ -1,0 +1,55 @@
+{
+  "commit": "170f1ca406f926f47433217f731ebf80a613719c",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "47b777456fa844833aa6101254cd40fb9550c9ff1beaa8072e93c7ca7abdab93"
+    },
+    {
+      "path": "pr-writing/EXAMPLES.md",
+      "sha256": "057a6654fcdc385799c68acfefa6bf1aa3537f6e3ee82428cb60a64bea14d4c4"
+    },
+    {
+      "path": "pr-writing/METHODOLOGY.md",
+      "sha256": "2188712d93e4c7acbaf8fd7429e36ca16c544948feed9b74837fe8a375d9f39c"
+    },
+    {
+      "path": "pr-writing/RESPONSE.md",
+      "sha256": "7f32556212aba1daa125d9fb6973d36fc049b1ed70b5451c65e476c4fd3de2bb"
+    },
+    {
+      "path": "pr-writing/SKILL.md",
+      "sha256": "651c14290bc99236e1cbec82d69c7b3d7ec26311f21a27f9cb453f045acb7d0f"
+    },
+    {
+      "path": "progress-check/EXAMPLES.md",
+      "sha256": "461db9df1487f619a0c2104b1740d712554bced64c12fa8e1577bb0fdde7073f"
+    },
+    {
+      "path": "progress-check/METHODOLOGY.md",
+      "sha256": "a4090f47b602ce10ea98848e7e3240f62cdc9cbe41c5098b4caecbd3501b10c0"
+    },
+    {
+      "path": "progress-check/RESPONSE.md",
+      "sha256": "a44b8dcb05f2bd2397ef95cd6b9e02a0d65eae95af8b937616a674f13b966493"
+    },
+    {
+      "path": "progress-check/SKILL.md",
+      "sha256": "f7a7ed411260d593599175cd4fd146986b612b5a6b2853b74b8fd2abdf53b9f5"
+    },
+    {
+      "path": "progress-check/agents/openai.yaml",
+      "sha256": "b5201d1d51794af9704fd355f142a46b901696ba5f86cf1e01e763c6d60bcc67"
+    }
+  ],
+  "entries": [
+    {
+      "name": "progress-check",
+      "path": "progress-check/skills/progress-check"
+    },
+    {
+      "name": "pr-writing",
+      "path": "pr-writing/skills/pr-writing"
+    }
+  ]
+}

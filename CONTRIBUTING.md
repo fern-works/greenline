@@ -11,10 +11,10 @@ here, as the section below states.
 pnpm install --frozen-lockfile
 pnpm build
 pnpm test
-pnpm check --public
+pnpm check
 ```
 
-`pnpm check --public` runs the gate rows that read this tree: the typecheck,
+`pnpm check` runs the gate rows that read this tree: the typecheck,
 the lint, the formatter, the tests, the dependency rules, the build, the
 package audit and the source sweeps. The same command runs in CI on every
 pull request.
@@ -43,9 +43,8 @@ named. Between releases this repository does not move.
 
 ## What is not here
 
-garden's engineering knowledge, a separate product, is not in this tree; garden's code is in its own repository, and the private records
-behind the provenance pages and the maintainer's workshop are in the
-repository of record. A pull request that would need them cannot be
+garden's engineering knowledge, a separate product, is not in this tree; garden's code is in its own repository, and the maintainer's
+workshop and its working records are in the repository of record. A pull request that would need them cannot be
 imported; open an issue instead.
 
 ## Where to look

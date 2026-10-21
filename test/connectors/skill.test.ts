@@ -1,7 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { parseLedgerRecord } from "../../src/core/execution-ledger.ts";
 import { splitManagedBlock } from "../../src/core/managed-block.ts";
 import type { Manifest } from "../../src/core/manifest.ts";
 import { POLICY_BLOCK_KEY, renderProjection } from "../../src/core/render.ts";
@@ -83,11 +82,11 @@ function skillText(): string {
 }
 
 describe("use-garden in the corpus", () => {
-  it("the corpus carries use-garden as an implicit discipline with its support page and one pointer row", () => {
+  it("the corpus carries use-garden as an implicit habit with its support page and one pointer row", () => {
     const skill = installation.skills.find((entry) => entry.name === "use-garden");
-    expect(skill?.class).toBe("discipline");
+    expect(skill?.kind).toBe("habit");
     expect(skill?.activation).toBe("implicit");
-    expect(skill?.optIn).toBeUndefined();
+    expect(skill?.extra).toBeUndefined();
     expect(skill?.supportFiles?.map((file) => file.path)).toEqual(["operations.md"]);
     expect(installation.intents.filter((row) => row.skills.includes("use-garden"))).toEqual([
       { intent: POINTER, skills: ["use-garden"] },
@@ -118,21 +117,15 @@ describe("use-garden in the corpus", () => {
     );
   });
 
-  it("with garden enabled the block adds exactly the roster name and the one pointer row", () => {
+  it("S16a with garden enabled the block adds exactly the one pointer row, among the habits", () => {
     const disabled = renderedBlock(fixtureConfiguration).split("\n");
     const enabled = renderedBlock(ENABLED).split("\n");
     const gardenLines = enabled.filter((line) => /garden/i.test(line));
-    expect(gardenLines).toEqual([
-      expect.stringMatching(/^- discipline: .*\buse-garden$/),
-      `| ${POINTER} | use-garden |`,
-    ]);
+    expect(gardenLines).toEqual([`| ${POINTER} | \`use-garden\` |`]);
     // Every other line of the block is the disabled block's own, in its order.
-    expect(enabled.filter((line) => !/garden/i.test(line))).toEqual(
-      disabled.filter((line) => !line.startsWith("- discipline: ")),
-    );
-    expect(disabled.find((line) => line.startsWith("- discipline: "))).toBe(
-      gardenLines[0]?.replace(/, use-garden$/, ""),
-    );
+    expect(enabled.filter((line) => !/garden/i.test(line))).toEqual(disabled);
+    const habits = enabled.slice(enabled.indexOf("## Habit skills"));
+    expect(habits).toContain(gardenLines[0]);
   });
 });
 
@@ -159,8 +152,8 @@ describe("relevant against unnecessary lookups, on the installed text", () => {
       "a factual question about this repository: inspect its files and answer",
     ],
     [
-      "a settled local change, the light path",
-      "a change whose choices are already settled, the light path among them",
+      "a settled local change, a settled quick fix",
+      "a change whose choices are already settled, a settled quick fix among them",
     ],
     [
       "a question the repository's decisions already answer",
@@ -214,15 +207,15 @@ describe("relevant against unnecessary lookups, on the installed text", () => {
     ]);
   });
 
-  it("the enabled block carries no garden duty: its only garden text is the roster name and the pointer, which asks nothing", () => {
+  it("S16a the enabled block carries no garden duty: its only garden text is the pointer row, which asks nothing", () => {
     const block = renderedBlock(ENABLED);
     const lines = block.split("\n").filter((line) => /garden/i.test(line));
-    expect(lines).toHaveLength(2);
+    expect(lines).toHaveLength(1);
     for (const line of lines)
       expect(line).not.toMatch(/\b(must|always|before every|required|ask|retrieve)\b/i);
     // A factual question about the repository reads nothing, by the block's own general rule.
     expect(block.replace(/\s+/g, " ")).toContain(
-      "For a factual question about this repository, inspect its files and answer: never retrieve guidance or create accounting merely to answer it.",
+      "A factual question about this repository is answered from its files: it retrieves no guidance and is not acted on,",
     );
   });
 
@@ -246,7 +239,7 @@ describe("relevant against unnecessary lookups, on the installed text", () => {
   });
 });
 
-describe("J-39 S1: a recommendation consults under an answer's account, the hold stays narrow, and a consultation that cannot run is still attempted", () => {
+describe("J-39 S1 and S18b: a recommendation consults naming no change, the hold stays narrow, and a consultation that cannot run is still attempted", () => {
   /** The folded installed text from one marker up to the next, or to the end. */
   function section(from: string, to?: string): string {
     const text = skillText();
@@ -263,17 +256,19 @@ describe("J-39 S1: a recommendation consults under an answer's account, the hold
     expect(relevant()).toContain(
       "A request that asks only for a recommendation on such a choice is consultable like a change that makes it",
     );
-    // The factual question, the settled change and the light path still read nothing.
+    // The factual question, the settled change and the settled quick fix still read nothing.
     const skip = section("These trigger no read:", "## What must be in place");
     expect(skip).toContain(
       "a factual question about this repository: inspect its files and answer",
     );
-    expect(skip).toContain("a change whose choices are already settled, the light path among them");
+    expect(skip).toContain(
+      "a change whose choices are already settled, a settled quick fix among them",
+    );
   });
 
-  it("the block's rule against accounting merely to answer covers a factual question only, and a recommendation is still not acted on", () => {
+  it("S18b the block's rule that a factual question retrieves no guidance covers that question only, and a recommendation is still not acted on", () => {
     expect(relevant()).toContain(
-      "The block's rule against retrieving guidance or creating accounting merely to answer covers a factual question about this repository only.",
+      "The block's rule that a factual question retrieves no guidance covers a factual question about this repository only.",
     );
     expect(relevant()).toContain("It is still answered, not acted on");
   });
@@ -284,25 +279,29 @@ describe("J-39 S1: a recommendation consults under an answer's account, the hold
     ).toContain("Never announce or imply a consultation that was not made.");
   });
 
-  it("the skill names the minimal recorded request, a planning account with no work artifact, and no longer turns an answer away", () => {
-    const account = section("**An execution account.**", "You never enable");
-    expect(account).toContain("a planning account with no work artifact");
-    expect(account).toContain('`"role": "planning"`, `"work": null`');
-    expect(account).toContain(
-      "doctor reports as an error any observed file change under it beyond the account and its receipts",
+  it("S18b a consultation names the change it serves, a question's names none, and no execution account remains", () => {
+    const served = section("**The change it serves.**", "You never enable");
+    // J-93 S2: the front names the change by its noun; the flag stands on operations.md (below).
+    expect(served).toContain(
+      "A consultation that serves a change names that change, an open or stopped one, as the ledger guide describes.",
     );
-    expect(skillText()).not.toContain(
-      "Work with no account, an answer or a light fix, consults nothing",
+    expect(served).toContain(
+      "A question's consultation, a recommendation that changes no file, names no change",
     );
+    expect(served).toContain("a later request to make the change opens a change record of its own");
+    for (const text of [skillText(), installedText("operations.md").replace(/\s+/g, " ")]) {
+      expect(text).not.toMatch(/execution account|planning account|--record|doctor/);
+      expect(text).not.toMatch(/\baccounts?\b/);
+    }
   });
 
-  it("the answer's account the operations page shows is one the ledger admits: planning, no work", () => {
-    const page = installedText("operations.md");
-    const example = /## An answer's account[\s\S]*?```json\n([\s\S]*?)```/.exec(page)?.[1];
-    expect(example).toBeDefined();
-    const parsed = parseLedgerRecord(example ?? "", "operations.md");
-    if (parsed._tag === "err") throw parsed.error;
-    expect(parsed.value).toMatchObject({ role: "planning", work: null });
+  it("S18b the operations page opens a request with --change, or with neither flag for a question", () => {
+    const page = installedText("operations.md").replace(/\s+/g, " ");
+    expect(page).toContain(
+      "`--change <id>` opens a new request that serves that open or stopped change",
+    );
+    expect(page).toContain("A question's consultation gives neither on its first call");
+    expect(page).toContain("## A question's consultation");
   });
 
   it("the hold covers only the action the missing guidance governs, the harness rule's own example stated, and ordinary local work continues", () => {
@@ -315,14 +314,12 @@ describe("J-39 S1: a recommendation consults under an answer's account, the hold
     expect(text).not.toContain("hold the action that depends on it");
   });
 
-  it("a relevant consultation that cannot run is still attempted through the connector, with or without an account before it, so its failure is a receipt", () => {
+  it("a relevant consultation that cannot run is still attempted through the connector, with or without a change named, so its failure is a receipt", () => {
     const text = failing();
     expect(text).toContain(
       "A relevant consultation is attempted even when garden looks unavailable.",
     );
-    expect(text).toContain(
-      "under the work's account, or an answer's planning account created for it",
-    );
+    expect(text).toContain("naming the change, or none for a question,");
     expect(text).toContain("so the failure is recorded as a receipt with its kind");
     expect(text).toContain("with one notice and no permission question");
   });
@@ -341,7 +338,7 @@ describe("enable and disable with the real skill", () => {
     expect(connectors(root, "enable", "garden", "--url", URL).code).toBe(0);
     for (const path of SKILL_FILES) expect(existsSync(join(root, path)), path).toBe(true);
     expect(read(root, ".claude/skills/use-garden/SKILL.md")).toContain('name: "use-garden"');
-    expect(installedBlock(root)).toContain(`| ${POINTER} | use-garden |`);
+    expect(installedBlock(root)).toContain(`| ${POINTER} | \`use-garden\` |`);
     expect(read(root, "AGENTS.md")).toMatch(/^# House notes\n/);
     expect(read(root, "AGENTS.md").endsWith("\nKeep this line.\n")).toBe(true);
     expect(connectors(root, "disable", "garden").code).toBe(0);
@@ -365,26 +362,26 @@ describe("enable and disable with the real skill", () => {
     const manifest = JSON.parse(readFileSync(path, "utf8"));
     writeFileSync(
       path,
-      `${JSON.stringify({ ...manifest, skills: { include: [], exclude: ["grilling"] } }, null, 2)}\n`,
+      `${JSON.stringify({ ...manifest, skills: { include: [], exclude: ["boundaries"] } }, null, 2)}\n`,
     );
     expect(run(root, ["sync"], { installation }).code).toBe(0);
-    expect(existsSync(join(root, ".claude/skills/grilling/SKILL.md"))).toBe(true);
+    expect(existsSync(join(root, ".claude/skills/boundaries/SKILL.md"))).toBe(true);
     const forced = run(
       root,
       [
         "sync",
         "--force-managed",
-        ".claude/skills/grilling/SKILL.md",
+        ".claude/skills/boundaries/SKILL.md",
         "--force-managed",
-        ".agents/skills/grilling/SKILL.md",
+        ".agents/skills/boundaries/SKILL.md",
         "--force-managed",
-        ".agents/skills/grilling/agents/openai.yaml",
+        ".agents/skills/boundaries/agents/openai.yaml",
       ],
       { installation },
     );
     expect(forced.code).toBe(0);
-    expect(existsSync(join(root, ".claude/skills/grilling"))).toBe(false);
-    expect(existsSync(join(root, ".agents/skills/grilling"))).toBe(false);
+    expect(existsSync(join(root, ".claude/skills/boundaries"))).toBe(false);
+    expect(existsSync(join(root, ".agents/skills/boundaries"))).toBe(false);
     expect(existsSync(join(root, ".claude/skills"))).toBe(true);
   });
 });
@@ -412,12 +409,12 @@ describe("the inspector and garden's skill", () => {
     const url = await inspector(root);
     const state = await (await fetch(`${url}api/state`)).json();
     const names = state.skills.map((skill: { name: string }) => skill.name);
-    expect(names).toContain("grilling");
+    expect(names).toContain("boundaries");
     expect(names).not.toContain("use-garden");
     // Even a request naming it, as a page that listed it would send, writes nothing for it.
-    const saved = await saveSkills(url, { include: [], exclude: ["grilling", "use-garden"] });
+    const saved = await saveSkills(url, { include: [], exclude: ["boundaries", "use-garden"] });
     expect(saved.status).toBe(200);
-    expect(manifestOf(root).skills).toEqual({ include: [], exclude: ["grilling"] });
+    expect(manifestOf(root).skills).toEqual({ include: [], exclude: ["boundaries"] });
     expect(connectors(root, "enable", "garden", "--url", URL).code).toBe(0);
   });
 
@@ -437,7 +434,7 @@ describe("the inspector and garden's skill", () => {
       path,
       `${JSON.stringify({ ...manifestOf(root), skills: { include: [], exclude: ["use-garden"] } }, null, 2)}\n`,
     );
-    expect((await saveSkills(url, { include: [], exclude: ["grilling"] })).status).toBe(200);
-    expect(manifestOf(root).skills).toEqual({ include: [], exclude: ["grilling", "use-garden"] });
+    expect((await saveSkills(url, { include: [], exclude: ["boundaries"] })).status).toBe(200);
+    expect(manifestOf(root).skills).toEqual({ include: [], exclude: ["boundaries", "use-garden"] });
   });
 });

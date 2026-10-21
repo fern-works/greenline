@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-mattpocock-skills-retro",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-diagnosing-superpowers",
+    "sha256": "78f87ebddce500cf856302aa1831bffe6f02a04e56dc9afdb5fc13bdfeb0d013"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "6fd947921b935b7e1e69293a200400f0fdd5c15f",
+    "path": "skills/engineering/retro"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "An environment retrospective, handed to the workshop",
+  "reason": "A retrospective on the agent's environment is the workshop's method; its guardrail category is noted for garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to craft-thread-audit, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to craft-thread-audit, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "craft-thread-audit",
+    "parts": [
+      {
+        "part": "its retrospective on the agent's environment",
+        "locator": "skills/engineering/retro"
+      }
+    ]
+  }
+}

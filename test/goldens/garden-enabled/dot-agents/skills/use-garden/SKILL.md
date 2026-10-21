@@ -11,7 +11,9 @@ so you may consult it whenever a question below is relevant, without asking
 each time. This method says when a consultation is relevant, what must be in
 place, how a consultation stays bounded, what a result is worth here and what
 to do when a consultation fails. The commands, their flags and their replies
-are in [operations.md](operations.md).
+are in [operations.md](operations.md). This habit writes no record of its own: the CLI
+writes each consultation's receipts, and the section of the step that made the
+choice says what a consultation changed.
 
 ## When a consultation is relevant
 
@@ -28,16 +30,15 @@ installed methods do not settle, and published guidance would inform it:
 
 The choice may be the whole request. A request that asks only for a
 recommendation on such a choice is consultable like a change that makes it:
-the recommendation is the work the consultation informs, and it runs under an
-answer's account, below. It is still answered, not acted on: that account and
-its receipts are the only files it writes. The block's rule against retrieving
-guidance or creating accounting merely to answer covers a factual question
-about this repository only.
+the recommendation is the work the consultation informs, and it names no
+change, below. It is still answered, not acted on: its receipts are the only
+files it writes. The block's rule that a factual question retrieves no
+guidance covers a factual question about this repository only.
 
 These trigger no read:
 
 - a factual question about this repository: inspect its files and answer;
-- a change whose choices are already settled, the light path among them: a
+- a change whose choices are already settled, a settled quick fix among them: a
   fix with no open choice needs no consultation;
 - a question the repository's own decisions already answer, even when
   garden might answer it differently;
@@ -60,47 +61,43 @@ Never announce or imply a consultation that was not made.
   this session runs in. greenline passes it on unread and stores it nowhere.
   Check only whether the variable is present; never print it, write it to a
   file or the manifest, or ask for it in the conversation.
-- **An execution account.** Every consultation is recorded under the account
-  of the contribution it serves, as `.greenline/ledger/README.md` describes:
-  work on a ticket consults under that ticket's account. An answer, a
-  recommendation that changes no file, has no ticket. It gets the smallest
-  account the ledger allows, a planning account with no work artifact
-  (`"role": "planning"`, `"work": null`, the roots the question concerns as
-  its scopes), created before its first call; [operations.md](operations.md)
-  shows one. That account records the consultation and nothing else: doctor
-  reports as an error any observed file change under it beyond the account and
-  its receipts, and a later request to make the change gets its own ticket
-  and account.
+- **The change it serves.** A consultation that serves a change names that
+  change, an open or stopped one, as the ledger guide
+  describes. A question's consultation, a recommendation that changes no file,
+  names no change: its receipts are the only files it writes, and a later
+  request to make the change opens a change record of its own.
 
 You never enable, disable, install or reconfigure garden yourself. Those are
-the owner's steps, taken with `greenline connectors enable garden --url URL`
-and `greenline connectors disable garden`. You never run the garden command
-yourself either: only `greenline connectors call garden` records a receipt
+the owner's steps, taken with the connector's enable and disable commands, which
+[operations.md](operations.md) names. You never run the garden command
+yourself either: only the connector's call, [operations.md](operations.md), records a receipt
 before a result is shown, so a direct run is an unrecorded consultation.
 
 ## How a consultation runs
 
-1. Open a request under the account with the first call, usually a list:
-   `greenline connectors call garden list --record <account>` with the
-   facets the change needs (`--language`, `--technology`, `--task`,
-   `--concern`, `--purpose`, `--kind`) and the `--root` values that govern
-   the touched files. Derive the facets from the root statements in
-   `.greenline/DECISIONS.md` and the actual configuration, and the task and
+1. Open a request with the first call, usually a list:
+   the `list` operation through the connector's call, naming the change it
+   serves, or none for a question's consultation, with the facets the change
+   needs, its language, technology, task, concern, purpose and kind, and the
+   roots that govern the touched files, each by the flag operations.md
+   gives. Derive the facets from the root statements in
+   the decisions book and the actual configuration, and the task and
    concern from the requested change. The `vocabulary` operation lists the
    values a facet may take.
 2. Read each candidate's `when` and `summary` and select the units that bear
-   on the choice. Read them with `greenline connectors call garden read
-   --request <handle> --id <unit> --requires`, which also delivers the units
-   a selected unit requires.
-3. Continue with `--request <handle>` for the rest of this owner request. A
+   on the choice. Read them with the `read` operation,
+   naming the request, each unit and its requirements, which also delivers
+   the units a selected unit requires.
+3. Continue the same request, by its handle, for the rest of this owner request. A
    new owner request, a continuation asking for further edits included,
-   opens a new request with `--record`.
+   opens a new request, naming the change where it serves one.
 
 **One pinned publication per request.** The first successful call fixes the
 publication garden answered from, and every later call of the request reads
-that same publication. A continuation is refused when the repository's policy,
-garden's endpoint or the account changed since the request began; open a new
-request rather than work around the refusal. Nothing is ever silently rebound
+that same publication. A continuation is refused when the repository's policy
+or garden's endpoint changed since the request began, or when the change it
+serves is no longer open or stopped; open a new request rather than work
+around the refusal. Nothing is ever silently rebound
 to another publication.
 
 **The read budget.** Each read delivers at most 16 units and 262144 bytes of
@@ -109,11 +106,11 @@ it opens. A `budget` refusal means selecting fewer units, not opening another
 request to read past the limit.
 
 **Exclusions and prerequisites.** The exclusions the governed roots' statements
-declare are applied to every read without being named; `--exclude <unit>`
-adds one for this read. A unit the repository excludes is never read, even
+declare are applied to every read without being named; the `read` operation's
+exclusion adds one for this read. A unit the repository excludes is never read, even
 when another unit requires it: the `excluded` refusal is the repository's
 prohibition holding, and the dependent unit is used without it or not at all.
-Choose `--root` values explicitly; the command does not infer which root
+Choose the roots explicitly; the command does not infer which root
 governs.
 
 ## What a result is worth here
@@ -133,17 +130,18 @@ governs.
 - Unit bodies stay in the tool output. They are not saved to a file, a local
   library or a compiled task note.
 - The receipt records what garden delivered, never what was applied. Say
-  what a consultation changed in the account's `guidanceAnnotations` and
-  `applications`, with the consultation ids the read returned and the actual
-  code or check evidence, as `.greenline/ledger/README.md` describes.
+  what a consultation changed in the change's sections, with the consultation
+  ids the read returned and the actual code or check evidence, as
+  the ledger guide describes; a question's reply says it in the
+  answer.
 
 ## When a consultation fails
 
 A relevant consultation is attempted even when garden looks unavailable. A
-status or doctor warning that the command is missing or the key is unset is
-no reason to skip the call: make it through `greenline connectors call
-garden`, under the work's account, or an answer's planning account created
-for it, so the failure is recorded as a receipt with its kind. Then meet that
+warning that the command is missing or the key is unset is no reason to skip
+the call: make it through the connector's call, naming the
+change, or none for a question, so the failure is
+recorded as a receipt with its kind. Then meet that
 kind below, with one notice and no permission question.
 
 A failed call prints its kind and never a result. Each kind has one outcome:
@@ -156,7 +154,7 @@ A failed call prints its kind and never a result. Each kind has one outcome:
 | `private-data`: the key would have left garden in the call's arguments, the endpoint or an answer | Nothing carrying it was sent or written. Never put the key, or anything derived from it, into a flag value. When the endpoint or an answer carried it, tell the owner that the configured endpoint needs checking and that the key may be exposed. Do not repeat the same call. |
 | `protocol`, `invalid-result` or `not-found`: the reply did not verify, was incomplete or named no such unit | Nothing from that call is used, and no unit is claimed as read that its receipt does not show delivered. |
 | `budget`, `excluded` or `invalid-request`: the call asked past the budget, for an excluded unit, or with refused arguments | Narrow the call or correct its arguments. Never open another request to get past a limit or an exclusion. |
-| `configuration`: garden disabled, the account, or a changed policy or endpoint | Change no configuration. A changed policy or endpoint means opening a new request with `--record`. |
+| `configuration`: garden disabled, a change no longer open or stopped, or a changed policy or endpoint | Change no configuration. A changed policy or endpoint means opening a new request, naming the change where it serves one. |
 | `evidence`: the receipt could not be written or confirmed | The consultation is not recorded and its result was not printed. Report the evidence failure as it is, not as an outage, and leave any lock file for the owner to inspect. Never run the garden command directly to get the result another way. |
 
 When a repository rule or the task genuinely needs what garden could not

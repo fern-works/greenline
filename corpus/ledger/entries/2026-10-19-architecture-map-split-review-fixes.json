@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-architecture-map-split-review-fixes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-anticipate-split-review-fixes",
+    "sha256": "63a0120a5c679f29e394a3119bb6affea5780e8d46d30bac97721273762169ce"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "d6783961799e80e08ff0fd9cd7c28b2d408f09c2a3942cb3cc7a6c23ff8e962e",
+  "result": "018e52afd8add905c864867d234fba0c6cd61362b78115bf7204a5567b6b5a4c",
+  "pages": "unknown",
+  "gist": "The description names the map's folder by its noun",
+  "reason": "The description names the map's folder by its noun, its path on the references page, since the front rule reads the description too (J-93 S2, the review's fix cycle).",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1034
+  }
+}

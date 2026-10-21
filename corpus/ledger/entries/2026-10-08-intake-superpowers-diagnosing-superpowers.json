@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-diagnosing-superpowers",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-writing-skills",
+    "sha256": "7094af0f458a31faed1c31c5ef6bc55ff2710928c4b323176cbc6d8ab486cfe5"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/diagnosing-superpowers"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Session diagnosis from a transcript, handed to the workshop",
+  "reason": "Diagnosing a finished session from its transcript is the workshop's method; its issue filing is dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to craft-thread-audit, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to craft-thread-audit, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "craft-thread-audit",
+    "parts": [
+      {
+        "part": "diagnosing a finished session from its transcript",
+        "locator": "skills/diagnosing-superpowers"
+      }
+    ]
+  }
+}

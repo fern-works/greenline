@@ -1,0 +1,115 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-18-verify-brief-written-by-the-command",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-18-review-brief-written-by-the-command",
+    "sha256": "ab9e490bfdc41e9a2818f6b521f9d27b2ba9a2c932d64251fdae4662573d43a2"
+  },
+  "subject": "skill:verify",
+  "recipe": "ed7939e24b12b79c2413ef4a208a37056ddca030f00f3d635a1ff01d8268e60a",
+  "result": "180df8c0b6b166072b848027707302f38ec8eb144c8876dc5af76dd9d1b344d8",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The verifier's brief is a file greenline brief writes, never the builder",
+  "reason": "The verifier is started with the path of the brief greenline brief writes from the record, and the builder never handles a brief file, as review's reviewers are briefed.",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices, with the ruling of 2026-10-18 that the close is a skill step: a reviewer's or verifier's brief is written by greenline brief from the record into the change's folder, its first line the command's mark, and never by the builder, which starts the agent with its path and never opens, copies, diffs or derives a brief file; status reports a brief file the command did not write; and the close cites each brief the command wrote, from the status listing"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13); its rationalization tables and its absolutes are dropped as rhetoric; browser-testing-with-devtools' security core enters control-ui as default guardrails; loop-on-ci and frontend-ui-engineering are garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-15",
+      "words": "The operator's finalise words of 2026-10-15 on the QA series' third fix job, \"Finalise J-81 S1 as drafted, fast\": every probe, scratch script and before-and-after copy of a change goes under .greenline/tmp/<id>/, never the host's temporary directory, and a check's facts cite paths inside the repository"
+    },
+    {
+      "date": "2026-10-16",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices, with the ruling of 2026-10-18 that the close is a skill step: a reviewer's or verifier's brief is written by greenline brief from the record into the change's folder, its first line the command's mark, and never by the builder, which starts the agent with its path and never opens, copies, diffs or derives a brief file; status reports a brief file the command did not write; and the close cites each brief the command wrote, from the status listing"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 137,
+        "taken": 134,
+        "exact": 127,
+        "retention": 0.9477611940298507,
+        "coverage": 0.9781021897810219,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 63,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.2222222222222222,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 15,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.6,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 137,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.15328467153284672,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1940
+  }
+}

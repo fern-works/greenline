@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-wayfinder-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-to-tickets-refresh",
+    "sha256": "afd6fda51f94276174c03429bb5a4bc41329081c9aaf5cffadf8d62c47a52e74"
+  },
+  "subject": "skill:wayfinder",
+  "recipe": "17d6c8c2a6fbc5e5f419fd927bdc4d2e41913d3d32a16a6f943753c2b9b0c16d",
+  "result": "245f296eb8f110b6277332c77b88b82c438dde4f7f006a1c5cb3bdafa490f43f",
+  "pages": [],
+  "gist": "Upstream unchanged; the recipe re-anchors as it stands",
+  "reason": "Refreshes wayfinder to mattpocock-skills 6fd947921b93: no segment of its files changed, so the recipe re-anchors as it stands. Its text and measure are unchanged, its retention under the minimum as before.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "Its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 83,
+        "exact": 69,
+        "retention": 0.8313253012048193,
+        "coverage": 0.7280701754385965,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 820
+  }
+}

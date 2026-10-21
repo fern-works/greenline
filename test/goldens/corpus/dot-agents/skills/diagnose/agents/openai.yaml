@@ -1,0 +1,3 @@
+interface:
+  display_name: "Diagnose"
+  short_description: "Find the cause of a known failure or regression before anything is fixed: build a tight loop that goes red, reproduce and minimise, read the evidence, rank hypotheses, instrument, then fix at the cause with a regression test. Use when the owner says \"diagnose\" or \"debug this\", or reports something broken, throwing, failing or slow."

@@ -1,0 +1,42 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-router-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-modes-recipe",
+    "sha256": "ce66859daec95cfe99cdcb9e1bbd1477ddc797b68748120359f7e5124ab87958"
+  },
+  "subject": "skill:router",
+  "recipe": "4b8935251cceb169cd1dbce52b174d26986344ae142f1019454fa53b89519f93",
+  "result": "59a6ce674848a4e9e4fdd330fb70bed9e60c1bc6ee58e66a53a2664d5ba93388",
+  "pages": [
+    {
+      "path": "ROUTING.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Project-router renamed router, its map naming the renamed starts",
+  "reason": "router is project-router renamed: its text is unchanged but for its title and its map of the line, which names the renamed starts and adds rows for the trial starts idea-refine and constraint-driven-development.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1015
+  }
+}

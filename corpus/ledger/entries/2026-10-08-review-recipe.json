@@ -1,0 +1,111 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-review-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-domain-modeling-retired",
+    "sha256": "c0bf7a6e49268fdc8282febb0b4fef101cde5a0d2a58530c4cfaafdbc613b801"
+  },
+  "subject": "skill:review",
+  "recipe": "82d6a6e503926a56862a755fcf98122e6f8b46be734d49851331530c9a6bf0b8",
+  "result": "94a5f5e81e7738fcd118396e7c3c34a694ceb8e1bd22caca2037cdc980593deb",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/REGISTER.md"
+    },
+    {
+      "path": "references/excess.md"
+    },
+    {
+      "path": "references/lens.md"
+    }
+  ],
+  "gist": "Review is made on delivery-review's two axes, reviewers one at a time",
+  "reason": "review is made with delivery-review's two-axis review as its spine: a reviewer's brief and the builder's acting half, grafted with thermo-nuclear-review, requesting-code-review, interrogate and receiving-code-review. Reviewers run one after another, never in parallel.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10); within pstack, premature abstraction being worse than duplication wins over its helper-extraction line; ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller; thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-09-26",
+      "words": "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 80,
+        "taken": 54,
+        "exact": 52,
+        "retention": 0.9629629629629629,
+        "coverage": 0.675,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 254,
+        "taken": 38,
+        "exact": 38,
+        "retention": 1,
+        "coverage": 0.14960629921259844,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "cursor-team-kit",
+        "segments": 53,
+        "taken": 17,
+        "exact": 17,
+        "retention": 1,
+        "coverage": 0.32075471698113206,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 255,
+        "taken": 16,
+        "exact": 16,
+        "retention": 1,
+        "coverage": 0.06274509803921569,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "ponytail",
+        "segments": 66,
+        "taken": 38,
+        "exact": 38,
+        "retention": 1,
+        "coverage": 0.5757575757575758,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 4832
+  }
+}

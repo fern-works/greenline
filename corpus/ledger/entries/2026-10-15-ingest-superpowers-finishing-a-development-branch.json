@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-15-ingest-superpowers-finishing-a-development-branch",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-15-close-landing-checks-the-merge",
+    "sha256": "a190dddd92bd8ac8cbf131e25a00479badde2fd93ba65b0196b75ec7b2102428"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/finishing-a-development-branch"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "The landing confirms its base and checks the merged result",
+  "reason": "Its base confirmation before a local merge and its check of the merged result enter the close step's landing. Its environment detection, menu, worktree cleanup and discard path are not taken, the block owning the setup.",
+  "authorisedBy": {
+    "date": "2026-10-15",
+    "words": "The operator's cards of 2026-10-15 on the batch brief of the test ingestion, \"Combine as a default on my ruling\": superpowers' finishing-a-development-branch combines into the close step's landing as a strengthen of 88 words at every mode, shipping as a default on the operator's ruling in place of a run's or a walk's finding; its claimed evidence is ruled in; its words are accepted at fast; a merge from the owner's worktree is not taken; the bound parts of the three other sources decline, and finishing-a-development-branch's portable form, the landing by the setup with no harness tool and no command spelt out, is taken"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-15",
+      "words": "The operator's cards of 2026-10-15 on the batch brief of the test ingestion, \"Combine as a default on my ruling\": superpowers' finishing-a-development-branch combines into the close step's landing as a strengthen of 88 words at every mode, shipping as a default on the operator's ruling in place of a run's or a walk's finding; its claimed evidence is ruled in; its words are accepted at fast; a merge from the owner's worktree is not taken; the bound parts of the three other sources decline, and finishing-a-development-branch's portable form, the landing by the setup with no harness tool and no command spelt out, is taken"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "close",
+    "catches": "A local merge landed into the wrong base, or a merged result called landed though no check ran on it",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "Observed evidence: a run of the landing at close showing the merged result going red where close called the landing done"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "close",
+        "depth": "inline",
+        "cost": 88
+      },
+      {
+        "mode": "medium",
+        "step": "close",
+        "depth": "written",
+        "cost": 88
+      },
+      {
+        "mode": "high",
+        "step": "close",
+        "depth": "written",
+        "cost": 88
+      },
+      {
+        "mode": "max",
+        "step": "close",
+        "depth": "written",
+        "cost": 88
+      }
+    ],
+    "ships": "default"
+  }
+}

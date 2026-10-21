@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-record-architecture-decisions-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-progress-check-recipe",
+    "sha256": "a42f4e6c503e19b231f3e50de5bf76676f8982b45d5bd4c8837b11b8d43d044f"
+  },
+  "subject": "skill:record-architecture-decisions",
+  "recipe": "5f5da640ed14622ab16f15cad5485e74c5b0c25eb336fe930f38131588426458",
+  "result": "43fcf67ce6ba9404567ff07d4232d3c5311d49fb3a6f9523b064c9a92951a2c0",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves record-architecture-decisions to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ericclemmons",
+        "segments": 61,
+        "taken": 57,
+        "exact": 55,
+        "retention": 0.9649122807017544,
+        "coverage": 0.9344262295081968,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 539
+  }
+}

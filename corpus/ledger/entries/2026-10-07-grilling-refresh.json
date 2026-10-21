@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-grilling-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-grill-with-docs-refresh",
+    "sha256": "e4e8cf2a26e2599c030296be4ac99cd82ab1a96132e633542c9804e3ea0635b4"
+  },
+  "subject": "skill:grilling",
+  "recipe": "6b7c6a96712293895a4e85ba9e33e341ef6f74349036970a1f112432ca97431c",
+  "result": "792720a55e49aa80c683dfbbc54b08c6428f80749863c8e9a6a674fc2dc09b96",
+  "pages": [],
+  "gist": "Upstream unchanged; the recipe re-anchors as it stands",
+  "reason": "Refreshes grilling to mattpocock-skills 6fd947921b93: no segment of its files changed, so the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 17,
+        "taken": 17,
+        "exact": 17,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 158
+  }
+}

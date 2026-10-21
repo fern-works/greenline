@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-groundwork-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-sweep-tests-gists",
+    "sha256": "9eb88d064100645104b7073c8238230d7c23456a37c65b57c8b5e0f93ca2c01c"
+  },
+  "subject": "skill:groundwork",
+  "recipe": "6dcfbde3f7919047018fc900977abf19c2a01da2b6fb204635baeb3a5f09da22",
+  "result": "10e30345f3d2e43f902e10eed55849bd9ebae27bcecf69c376a64a71297800fe",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-08-30",
+      "words": "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\", and the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (the row of 2026-09-26)"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, no harness named"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 693
+  }
+}

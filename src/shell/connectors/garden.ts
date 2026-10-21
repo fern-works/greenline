@@ -7,7 +7,7 @@ import {
   planConnectorInvocation,
   type ConnectorsConfiguration,
 } from "../../core/connectors/registry.ts";
-import { runConnectorProcess, type ProcessContext } from "./process.ts";
+import { runConnectorProcess, type ProcessContext } from "../process.ts";
 
 /**
  * The open-source garden adapter: one call to the separately installed

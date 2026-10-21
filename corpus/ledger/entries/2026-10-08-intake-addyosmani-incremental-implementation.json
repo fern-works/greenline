@@ -1,0 +1,84 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-incremental-implementation",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-doubt-driven-development",
+    "sha256": "a7330720ea273b1e77ca3e23a8f2f9ba97f1e2ad4c267da92d43c8ed525fa44b"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/incremental-implementation"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Becomes build's spine; flags, defaults and rollback go to garden",
+  "reason": "The spine of the re-cut build recipe, one verified slice at a time. Its feature flags, safe defaults and rollback go to garden, and its parallel slicing is dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (R20)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (R20)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its feature flags",
+        "locator": "skills/incremental-implementation/SKILL.md, \"Rule 3: Feature Flags for Incomplete Features\""
+      },
+      {
+        "part": "its safe defaults",
+        "locator": "skills/incremental-implementation/SKILL.md, \"Rule 4: Safe Defaults\""
+      },
+      {
+        "part": "its rollback",
+        "locator": "skills/incremental-implementation/SKILL.md, \"Rule 5: Rollback-Friendly\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "step",
+    "slot": "implement",
+    "catches": "A break buried in a large change, or a task called done without its evidence, found only after the batch",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 700
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 700
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 700
+      }
+    ],
+    "ships": "default"
+  }
+}

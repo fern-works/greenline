@@ -19,6 +19,6 @@ if (result._tag === "err") {
     process.exitCode = 1;
   } else
     process.stdout.write(
-      `Built installation ${result.value.revision} (${result.value.skills.length} skills, no guidance payload).\n`,
+      `Built installation ${result.value.revision} (${result.value.skills.length} skills, ${result.value.modes.modes.length} modes, no guidance payload).\n`,
     );
 }

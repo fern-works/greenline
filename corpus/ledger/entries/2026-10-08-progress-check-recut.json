@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-progress-check-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-show-me-recut",
+    "sha256": "ef3ee36ba7e271f7170f2c4b314a48c28bc6c83e4a6251674ce2451c773ddf19"
+  },
+  "subject": "skill:progress-check",
+  "recipe": "2bcf32d38fbe5ab73367640f0d8c5e963c494759b029028e4f9ea5d22cbca85a",
+  "result": "7be62506bbdb90731302c50376bf1a29260d10076191ac49f1571cd593ad6ce5",
+  "pages": [
+    {
+      "path": "METHODOLOGY.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut on the change record and its steps",
+  "reason": "progress-check is re-cut on the change record: milestones come from the change's acceptance and checks, and a step's end replaces a ticket's status transition.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "tjcages",
+        "segments": 157,
+        "taken": 126,
+        "exact": 123,
+        "retention": 0.9761904761904762,
+        "coverage": 0.802547770700637,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 589
+  }
+}

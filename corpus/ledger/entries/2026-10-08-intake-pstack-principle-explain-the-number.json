@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-explain-the-number",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-benchmark-checklist",
+    "sha256": "af25647d80e05851789f9a47db79590de77e97a92b4ccaf3a4c9893e8deb6c3a"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-explain-the-number"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Eval-result paragraph and skipped-this check join benchmark-checklist",
+  "reason": "Its eval-result paragraph and skipped-this check join the new habit benchmark-checklist.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "benchmark-checklist",
+    "catches": "A performance or eval number reported, or deciding a choice, when the run errored, skipped the work or compared untuned sides",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "verify",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "verify",
+        "depth": "written",
+        "cost": 150
+      },
+      {
+        "mode": "high",
+        "step": "verify",
+        "depth": "independent",
+        "cost": 150
+      },
+      {
+        "mode": "max",
+        "step": "verify",
+        "depth": "looped",
+        "cost": 150
+      }
+    ],
+    "ships": "trial"
+  }
+}

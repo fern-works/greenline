@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-to-spec-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-tdd-refresh",
+    "sha256": "cf697b656c0328c1bdf673e3ede41c6ba18418493cf35394e2c6fdbb8e5bad2e"
+  },
+  "subject": "skill:to-spec",
+  "recipe": "cb33992af70c91ddfe506fab283431a7d6cfd9301dfebfd4b46b950f4105c36c",
+  "result": "7498f37981baa9a8961b42030861874f3b86af35377b0f9ee9d22d65b8fb21af",
+  "pages": [],
+  "gist": "Upstream unchanged; the recipe re-anchors as it stands",
+  "reason": "Refreshes to-spec to mattpocock-skills 6fd947921b93: no segment of its files changed, so the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 52,
+        "taken": 47,
+        "exact": 47,
+        "retention": 1,
+        "coverage": 0.9038461538461539,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 362
+  }
+}

@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { isOk, match } from "../../src/commons/result.ts";
 import {
@@ -5,7 +7,11 @@ import {
   parseManifest,
   serializeManifest,
   type Manifest,
+  type ManifestRoster,
 } from "../../src/core/manifest.ts";
+import { parseModes, type ModesDefinition } from "../../src/core/modes.ts";
+
+const corpusModes = join(import.meta.dirname, "..", "..", "corpus", "runtime", "modes.json");
 
 const SOURCE: string = ".greenline/manifest.json";
 
@@ -155,5 +161,96 @@ describe("manifest include list (ADR 0029)", () => {
     expect(result._tag).toBe("err");
     if (result._tag !== "err") return;
     expect(JSON.stringify(result.error)).toContain("skills.include");
+  });
+});
+
+describe("S16b the proceed and trials settings", () => {
+  const base = { schemaVersion: 6, targets: ["codex"] };
+  const modes = (): ModesDefinition => {
+    const parsed = parseModes(readFileSync(corpusModes, "utf8"), corpusModes);
+    if (parsed._tag === "err") throw parsed.error;
+    return parsed.value;
+  };
+  const roster = (): ManifestRoster => ({
+    skills: ["idea-refine", "tdd"],
+    trials: ["idea-refine"],
+    modes: modes(),
+  });
+  /** The two settings as a test writes them, a value possibly of the wrong type. */
+  interface WrittenSettings {
+    readonly proceed?: string;
+    readonly trials?: readonly (string | number)[];
+  }
+  const issuesOf = (value: WrittenSettings, given?: ManifestRoster): readonly string[] => {
+    const parsed = parseManifest(JSON.stringify({ ...base, ...value }), "m", given);
+    return parsed._tag === "err"
+      ? parsed.error.issues.map((issue) => `${issue.path}: ${issue.message}`)
+      : [];
+  };
+
+  it("S16b defaults proceed to none and trials to empty, and the serializer writes both", () => {
+    const parsed = parseManifest(JSON.stringify(base), "m", roster());
+    expect(parsed._tag).toBe("ok");
+    if (parsed._tag !== "ok") return;
+    expect(parsed.value.proceed).toBe("none");
+    expect(parsed.value.trials).toEqual([]);
+    const text = serializeManifest(parsed.value);
+    expect(text).toContain('"proceed": "none"');
+    expect(text).toContain('"trials": []');
+  });
+
+  it("S16b takes proceed at a mode of the definition and an enabled trial skill, round-tripped", () => {
+    const parsed = parseManifest(
+      JSON.stringify({ ...base, proceed: "regular", trials: ["idea-refine"] }),
+      "m",
+      roster(),
+    );
+    expect(parsed._tag).toBe("ok");
+    if (parsed._tag !== "ok") return;
+    expect(parsed.value.proceed).toBe("regular");
+    expect(parsed.value.trials).toEqual(["idea-refine"]);
+    const again = parseManifest(serializeManifest(parsed.value), "m", roster());
+    expect(again._tag === "ok" ? again.value : again).toEqual(parsed.value);
+  });
+
+  it("S16b refuses a proceed that is neither none nor a mode of the definition, naming the values", () => {
+    expect(issuesOf({ proceed: "fastest" }, roster())).toEqual([
+      "proceed: proceed is none, quick, regular, careful, not 'fastest'",
+    ]);
+  });
+
+  it("S17 and J-93 S1 refuse a trial entry that is not a trial skill, a step of the line included, naming the trial skills", () => {
+    expect(issuesOf({ trials: ["anticipate", "sketch", "tdd"] }, roster())).toEqual([
+      "trials[0]: 'anticipate' is not a trial skill; the trial skills are idea-refine",
+      "trials[1]: 'sketch' is not a trial skill; the trial skills are idea-refine",
+      "trials[2]: 'tdd' is not a trial skill; the trial skills are idea-refine",
+    ]);
+  });
+
+  it("S17 takes a trial skill, round-tripped", () => {
+    const parsed = parseManifest(
+      JSON.stringify({ ...base, trials: ["idea-refine"] }),
+      "m",
+      roster(),
+    );
+    expect(parsed._tag === "ok" ? parsed.value.trials : parsed).toEqual(["idea-refine"]);
+  });
+
+  it("S17 says so when the installation holds no trial skill", () => {
+    expect(issuesOf({ trials: ["sketch"] }, { ...roster(), trials: [] })).toEqual([
+      "trials[0]: 'sketch' is not a trial skill; the installation holds no trial skill",
+    ]);
+  });
+
+  it("S16b refuses a trial named twice, and a setting that is not a name, without the modes", () => {
+    expect(issuesOf({ trials: ["idea-refine", "idea-refine"] })).toEqual([
+      "trials: Duplicate entry: idea-refine, idea-refine",
+    ]);
+    expect(issuesOf({ proceed: "Fast" })).toHaveLength(1);
+    expect(issuesOf({ trials: [3] })).toHaveLength(1);
+  });
+
+  it("S16b reads the settings as written when no installation is loaded", () => {
+    expect(issuesOf({ proceed: "fastest", trials: ["sketch"] })).toEqual([]);
   });
 });

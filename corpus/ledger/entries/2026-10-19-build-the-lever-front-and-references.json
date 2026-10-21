@@ -1,0 +1,60 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-build-the-lever-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-build-front-and-references",
+    "sha256": "c0bf14f05bb12f34eebe0a8ca7acd8ca013ca0209ad19002b78360128cad4d6c"
+  },
+  "subject": "skill:build-the-lever",
+  "recipe": "031410452a2e627e0c0ab9e08184f003f1e983ce9e6190b4f1696e15f9660a0a",
+  "result": "8c7d560233a9606a1e9f813d97c35df351a5e45d79fec89dc0e850940ca2b720",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "build-the-lever's paths and commands move to a references page",
+  "reason": "The front names greenline's homes and commands by their nouns and points at a references page, which holds their paths and commands (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 27,
+        "taken": 22,
+        "exact": 20,
+        "retention": 0.9090909090909091,
+        "coverage": 0.8148148148148148,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 257
+  }
+}

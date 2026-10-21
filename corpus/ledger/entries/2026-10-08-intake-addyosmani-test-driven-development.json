@@ -1,0 +1,80 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-test-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-test-driven-development",
+    "sha256": "190ee258b34d69fe2faf306606ba1a96d13224bea612f3196f71345de45f4ee8"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/test-driven-development"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Test discovery joins tdd; the pyramid goes to garden",
+  "reason": "Discovering the repository's own test commands and readable tests enter the re-cut tdd recipe. Its test pyramid and browser section go to garden, and its subagents for testing are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its test pyramid",
+        "locator": "skills/test-driven-development/SKILL.md, \"The Test Pyramid\""
+      },
+      {
+        "part": "its browser section",
+        "locator": "skills/test-driven-development/SKILL.md, \"Browser Testing with DevTools\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "tdd",
+    "catches": "A test that proves nothing, passing whatever the code does, or that costs more than it catches",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 220
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 220
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 220
+      }
+    ],
+    "ships": "default"
+  }
+}

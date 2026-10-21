@@ -1,0 +1,88 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-build-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-anticipate-recipe",
+    "sha256": "4199610c92c238ddf16740f959f989fddf216feba7d50f9fc66caffe0c4e7f91"
+  },
+  "subject": "skill:build",
+  "recipe": "acbc296228e832a5c8c38fcf36ea91c08b71475189bbe67d52bc3f854cf087a6",
+  "result": "ea26f194b7f1dc21932f88dffe43abe9ddbac0d1299877560f074f16f1fd9099",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Build is made on incremental-implementation, one slice at a time",
+  "reason": "build is made with incremental-implementation as its spine, one tested, verified and committed slice at a time, grafted with principle-sequence-verifiable-units and executing-plans. Parallel slicing, worktrees, scripts and the subagent alternative are dropped; flags, safe defaults and rollback go to garden.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5), so the drop of its rebase onto trunk follows from that ruling, the sequence-verifiable-units proposal having named the bracket and the delivery order as what enters"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 121,
+        "taken": 36,
+        "exact": 34,
+        "retention": 0.9444444444444444,
+        "coverage": 0.2975206611570248,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 17,
+        "taken": 8,
+        "exact": 8,
+        "retention": 1,
+        "coverage": 0.47058823529411764,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 146,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.04794520547945205,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 680
+  }
+}

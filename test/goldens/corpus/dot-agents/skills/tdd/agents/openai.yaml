@@ -1,3 +1,3 @@
 interface:
   display_name: "TDD"
-  short_description: "Test-driven development: load before writing code in any build stage, red before green at the seams the spec already pinned. Also fires on 'red-green-refactor' and integration tests."
+  short_description: "Test-first development at any step: discover the repository's own test commands, name the break a test catches, watch it fail for the intended reason, make it pass with the smallest change, and add a new test only where it catches a realistic failure the existing ones would miss. Use when writing or changing a test, building a feature or fixing a bug test-first, or deciding whether a change needs a new test; also on 'red-green-refactor' and integration tests."

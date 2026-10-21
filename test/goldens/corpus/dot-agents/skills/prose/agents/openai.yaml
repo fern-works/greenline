@@ -1,0 +1,3 @@
+interface:
+  display_name: "Prose"
+  short_description: "Plain answers and clean prose wherever prose lands: a yes, a no, a number or I do not know first, the measurement in place of the adjective, a re-pitch when a reply did not land, the catalog of AI tells cut from every surface, and a document written in its one mode, sentence by sentence. Use when answering a question or reporting a result, when the owner says a reply did not land, before any prose lands, and when writing a document, a README, a PR description or a commit message; and whenever you are about to write \"significantly\", \"much faster\", \"should work\", \"generally\" or \"nearly all\"."

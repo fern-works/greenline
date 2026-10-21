@@ -45,7 +45,12 @@ export function parseJson(input: string): JsonValue | undefined {
   }
 }
 
-function isPlainObject(value: JsonValue): value is { readonly [key: string]: JsonValue } {
+/**
+ * Whether a JSON value is an object, neither an array nor null.
+ * @param value the value
+ * @returns true for an object
+ */
+export function isJsonObject(value: JsonValue): value is { readonly [key: string]: JsonValue } {
   return (
     value !== null &&
     !Array.isArray(value) &&
@@ -59,7 +64,7 @@ export function checkContractVersion(
   kind: string,
   expected: number,
 ): InvalidField | undefined {
-  if (!isPlainObject(raw)) {
+  if (!isJsonObject(raw)) {
     return { path: "schemaVersion", message: `${kind} must be a JSON object with a schemaVersion` };
   }
   if (raw["schemaVersion"] !== expected) {

@@ -1,0 +1,59 @@
+{
+  "commit": "552acd5efd0aeae2583a12efe39373d2f076f25e",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab"
+    },
+    {
+      "path": "ponytail/SKILL.md",
+      "sha256": "571275b654460fbba63d685c69b3fde422a0a82d69b814561f878797ae9adae1"
+    },
+    {
+      "path": "ponytail-audit/SKILL.md",
+      "sha256": "38c209f3b56c8c8291bd00cf91da1ee9048ddafb1b5e7f838c1e1b81822e4023"
+    },
+    {
+      "path": "ponytail-debt/SKILL.md",
+      "sha256": "d3611761039bdb2955e31856834feeec6ed5483a3fc64576e9a166f949a131d1"
+    },
+    {
+      "path": "ponytail-gain/SKILL.md",
+      "sha256": "b85750bbceb37095c7bc59e77a05ffd428ac92f0e570e99bc789e295d8734640"
+    },
+    {
+      "path": "ponytail-help/SKILL.md",
+      "sha256": "dd07abd59ef4acdfc308c193e22b8c526fd99dc1c9a48d710f5ecd5c58b8580c"
+    },
+    {
+      "path": "ponytail-review/SKILL.md",
+      "sha256": "4b29656469baa5df3513a1557197ec8053162c6a54c166c871c57061e37a8ebb"
+    }
+  ],
+  "entries": [
+    {
+      "name": "ponytail",
+      "path": ".agents/rules/ponytail.md"
+    },
+    {
+      "name": "ponytail-review",
+      "path": "skills/ponytail-review"
+    },
+    {
+      "name": "ponytail-audit",
+      "path": "skills/ponytail-audit"
+    },
+    {
+      "name": "ponytail-debt",
+      "path": "skills/ponytail-debt"
+    },
+    {
+      "name": "ponytail-gain",
+      "path": "skills/ponytail-gain"
+    },
+    {
+      "name": "ponytail-help",
+      "path": "skills/ponytail-help"
+    }
+  ]
+}

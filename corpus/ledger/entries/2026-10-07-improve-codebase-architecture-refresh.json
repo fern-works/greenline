@@ -1,0 +1,42 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-improve-codebase-architecture-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-implement-refresh",
+    "sha256": "0c6feab2973491621c5c66f9ec89cf102e7fedfb52dea0151ba5ec9eaed12653"
+  },
+  "subject": "skill:improve-codebase-architecture",
+  "recipe": "e9f99f6fc35a2e9216de3972abb70dd8b8cd0ec4f73521e9b7ad3c8d226f7b26",
+  "result": "55904d726760fba3e38822ca2315c22a9093b9de9a37ff7f11aa672c589cfa9f",
+  "pages": [],
+  "gist": "Keeps CONTEXT.md through upstream's rename to GLOSSARY.md; text unchanged",
+  "reason": "Refreshes improve-codebase-architecture to mattpocock-skills 6fd947921b93: the CONTEXT.md rename is kept out by pointer edits on the five sentences it takes, and the two it drops stay dropped. The installed text is unchanged; retention stays under the minimum.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-15",
+      "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-fix-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 147,
+        "taken": 130,
+        "exact": 107,
+        "retention": 0.823076923076923,
+        "coverage": 0.8843537414965986,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 1149
+  }
+}

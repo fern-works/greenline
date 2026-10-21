@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-15-ingest-superpowers-using-git-worktrees",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-15-ingest-superpowers-subagent-driven-development",
+    "sha256": "0f117b45d20e25b5d371bdd78328d271b02b1b3747b17e2ac40473b9370f2a55"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/using-git-worktrees"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Its core makes a worktree, which the agent never does now",
+  "reason": "It catches work landing on the owner's main checkout, at a worktree and a question per change, which the block's where line already catches at every mode. Its core is the agent making a worktree, which the block forbids.",
+  "authorisedBy": {
+    "date": "2026-10-15",
+    "words": "Decline the three; no handoff"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-15",
+      "words": "Decline the three; no handoff"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Anticipate"
+  short_description: "Attack a change's plan before the build: state each claim the build would rest on, hand the artifact and its contract to a fresh reading that tries to disprove it, reconcile every finding against the text and stop where the depth ends, at the depth the change's mode gives the step anticipate, the careful mode's premise review. Use when the mode reaches anticipate, or when the owner asks to stress-test a plan for hidden failure modes."
+policy:
+  allow_implicit_invocation: false

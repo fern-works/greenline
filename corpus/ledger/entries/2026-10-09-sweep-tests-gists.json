@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-sweep-tests-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-architecture-survey-gists",
+    "sha256": "49839745d70b1b63f86882f754bad49802d037c182edaaa696a897ba93cb59f0"
+  },
+  "subject": "skill:sweep-tests",
+  "recipe": "83581db3835fa8ca9b8faf8b8eebd8bc002fde776b43f7a6e90d4f0b2db72c73",
+  "result": "a192ee106bc03423e56328d92544e31ed0c16f29605cec9cdf54fd504b630eb3",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 124,
+        "taken": 119,
+        "exact": 114,
+        "retention": 0.957983193277311,
+        "coverage": 0.9596774193548387,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 662
+  }
+}

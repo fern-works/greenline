@@ -1,0 +1,26 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-answer-plainly-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-technical-writing-retired",
+    "sha256": "af0086b1fc339ad12ff07c867a2d85f51970fcb3586e788c6c433e5e09fac004"
+  },
+  "skill": "answer-plainly",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "prose",
+  "recipe": "079c3ad3724d1d4814224ca9c17958e466be2801d11d8780bbbd67aee378ff22",
+  "gist": "Becomes the spine of prose",
+  "reason": "answer-plainly is the spine of prose now, with wait-what lifted.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the intake R3, \"everything is good\""
+    }
+  ]
+}

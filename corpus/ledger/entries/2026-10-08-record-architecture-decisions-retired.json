@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-record-architecture-decisions-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-implement-retired",
+    "sha256": "6a9038186c81093e453ecf603fd38ca1b77359335e178d06926d1163fea43da7"
+  },
+  "skill": "record-architecture-decisions",
+  "slice": "S14 of the plan modes-records-recipes",
+  "replacedBy": "close",
+  "recipe": "5f5da640ed14622ab16f15cad5485e74c5b0c25eb336fe930f38131588426458",
+  "gist": "Becomes close's spine, its ADR pages seeded at close",
+  "reason": "record-architecture-decisions is close's spine now: its evaluation, ADR steps and history rules run at close over the change's record and commits, and its README and template are the adr/ pages close seeds.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

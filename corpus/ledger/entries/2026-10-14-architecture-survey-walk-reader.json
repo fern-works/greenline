@@ -1,0 +1,69 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-architecture-survey-walk-reader",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-deep-modules-design-agent-brief",
+    "sha256": "b2f564be9ac195529b1e89765fee38d29781594e5d89b6158a9311d18309ef3e"
+  },
+  "subject": "skill:architecture-survey",
+  "recipe": "f7dd3d49e0fb535a600a202bcba4f818127bab583b3f7c45b6599fa2e5d42b55",
+  "result": "6751669d2956dba045359c0ad10e462f828a429aea3509f78b97b7144c0059e4",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The survey's walking agent is its own reader, cited by no record",
+  "reason": "The survey's walking agent is a reader of its own, not a fresh agent of a change's line, since the survey opens no record and none cites its report; the report scaffold goes to that reader, not another delegate.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the walk one delegated agent or the agent's own and the designs made one after another (R20: \"we are not doing worktrees and parralel susbs at all\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 147,
+        "taken": 126,
+        "exact": 109,
+        "retention": 0.8650793650793651,
+        "coverage": 0.8571428571428571,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 1330
+  }
+}

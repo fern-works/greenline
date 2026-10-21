@@ -24,14 +24,17 @@ function envelopeOf(command: string, outcome: CommandOutcome): Envelope {
     effects: outcome.effects,
     diagnostics: outcome.diagnostics,
   };
-  const viewed: Envelope = outcome.view === undefined ? base : { ...base, view: outcome.view };
   const ruled: Envelope =
-    outcome.houseRulings === undefined ? viewed : { ...viewed, houseRulings: outcome.houseRulings };
-  const ledgered: Envelope =
-    outcome.ledger === undefined ? ruled : { ...ruled, ledger: outcome.ledger };
-  return outcome.connectors === undefined
-    ? ledgered
-    : { ...ledgered, connectors: outcome.connectors };
+    outcome.houseRulings === undefined ? base : { ...base, houseRulings: outcome.houseRulings };
+  const changed: Envelope =
+    outcome.changes === undefined ? ruled : { ...ruled, changes: outcome.changes };
+  const connected: Envelope =
+    outcome.connectors === undefined ? changed : { ...changed, connectors: outcome.connectors };
+  const situated: Envelope =
+    outcome.situation === undefined ? connected : { ...connected, situation: outcome.situation };
+  const tidied: Envelope =
+    outcome.tidy === undefined ? situated : { ...situated, tidy: outcome.tidy };
+  return outcome.hooks === undefined ? tidied : { ...tidied, hooks: outcome.hooks };
 }
 
 /** Render one outcome as the request asked and return its exit code. */

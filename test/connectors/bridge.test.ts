@@ -1,25 +1,16 @@
 import { once } from "node:events";
-import { chmodSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { join, parse } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { z } from "zod";
-import type { JsonValue } from "../../src/core/contract.ts";
 import type { RootExclusion } from "../../src/core/root-statements.ts";
 import { runConnectorsCallCli } from "../../src/shell/cli/connectors-call.ts";
-import { readExecutionLedger } from "../../src/shell/execution-ledger.ts";
 import { GuidanceRequests } from "../../src/shell/guidance-requests.ts";
 import { createNodeFileIo, type FileIo } from "../../src/shell/fs/io.ts";
 import { AtomicWriteFailed } from "../../src/shell/fs/io.ts";
 import { err } from "../../src/commons/result.ts";
-import {
-  ACCOUNT,
-  call,
-  gardenWorkspace,
-  runs,
-  stored,
-  type GardenWorkspace,
-} from "./garden-fixture.ts";
+import { call, gardenWorkspace, runs, stored, type GardenWorkspace } from "./garden-fixture.ts";
 import { read, run, tree } from "./workspace.ts";
 
 const A = { id: "example-publication-a", publishedAt: "2026-01-01T00:00:00.000Z" };
@@ -87,16 +78,16 @@ describe("the call command's refusals", () => {
     expect(runs(garden)).toEqual([]);
   });
 
-  it("a call is refused while garden is disabled, and without exactly one of --record and --request", async () => {
+  it("a call is refused while garden is disabled, and with both --change and --request", async () => {
     const garden = workspace("disabled");
-    for (const args of [["snapshot"], ["snapshot", "--record", ACCOUNT, "--request", "x"]]) {
+    for (const args of [["snapshot", "--change", "2026-10-04-fix-login", "--request", "x"]]) {
       const refused = await call(garden, args);
       expect(refused.reply.error?.input).toBe(
-        "choose --record for a new request or --request to continue one",
+        "choose --change for a new request or --request to continue one",
       );
     }
     expect(run(garden.root, ["connectors", "disable", "garden"]).code).toBe(0);
-    const disabled = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const disabled = await call(garden, ["snapshot"]);
     expect(disabled.code).toBe(1);
     expect(disabled.reply.error?.input).toBe(
       "garden is not enabled for this repository; run 'greenline connectors enable garden --url URL'",
@@ -108,13 +99,13 @@ describe("the call command's refusals", () => {
   it("a call id holding an invisible character is a usage refusal before any receipt is written", async () => {
     const garden = workspace("call-id");
     for (const id of ["x\u202e", "x\u0085", "x\u200b"]) {
-      const refused = await call(garden, ["snapshot", "--record", ACCOUNT, "--call", id]);
+      const refused = await call(garden, ["snapshot", "--call", id]);
       expect(refused.code).toBe(2);
       expect(refused.reply.error?.input).toContain("call: a call id with no control");
     }
     expect(runs(garden)).toEqual([]);
     expect(collections(garden)).toEqual([]);
-    const plain = await call(garden, ["snapshot", "--record", ACCOUNT, "--call", "toolu_01"]);
+    const plain = await call(garden, ["snapshot", "--call", "toolu_01"]);
     expect(plain.code).toBe(0);
     expect(only(garden).receipts[0]?.nativeCall).toBe("toolu_01");
   });
@@ -122,37 +113,19 @@ describe("the call command's refusals", () => {
   it("a --root holding an invisible character is a usage refusal before anything is read", async () => {
     const garden = workspace("root-character");
     for (const root of ["src\u202e", "src\u007f", "src\u200b"]) {
-      const named = await call(garden, ["snapshot", "--record", ACCOUNT, "--root", root]);
+      const named = await call(garden, ["snapshot", "--root", root]);
       expect(named.code).toBe(2);
       expect(named.reply.error?.input).toContain("root.0: a root path with no control");
     }
     expect(runs(garden)).toEqual([]);
     expect(collections(garden)).toEqual([]);
   });
-
-  it("a default root from an account scope holding an invisible character fails at the store's write, before garden runs", async () => {
-    const garden = workspace("scope-character");
-    const path = join(garden.root, `.greenline/ledger/records/${ACCOUNT}.json`);
-    const account: { readonly [key: string]: JsonValue } = JSON.parse(readFileSync(path, "utf8"));
-    writeFileSync(path, `${JSON.stringify({ ...account, scopes: ["src\u200b"] })}\n`);
-    const scoped = await call(garden, ["snapshot", "--record", ACCOUNT]);
-    expect(scoped.code).toBe(1);
-    expect(scoped.reply.error).toEqual({
-      kind: "evidence",
-      input: "receipt update; the call is not recorded",
-    });
-    expect(runs(garden)).toEqual([]);
-    // The request opened before its first receipt was refused; it records no call and binds nothing.
-    const request = only(garden);
-    expect(request.receipts).toEqual([]);
-    expect(request.binding.state).toBe("unresolved");
-  });
 });
 
 describe("the six operations through the synthetic garden", () => {
   it("a first snapshot resolves current once and binds the request to what garden named", async () => {
     const garden = workspace("snapshot");
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const result = await call(garden, ["snapshot"]);
     expect(result.code).toBe(0);
     const request = only(garden);
     expect(result.reply.request).toBe(request.id);
@@ -168,7 +141,7 @@ describe("the six operations through the synthetic garden", () => {
 
   it("vocabulary, list, read and resolve continue under the bound publication, each sealed", async () => {
     const garden = workspace("continue");
-    const opened = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const opened = await call(garden, ["snapshot"]);
     const handle = opened.reply.request ?? "";
     for (const args of [
       ["vocabulary"],
@@ -201,7 +174,7 @@ describe("the six operations through the synthetic garden", () => {
 
   it("a first read in a new request resolves current and binds the publication it read", async () => {
     const garden = workspace("first-read");
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"]);
+    const result = await call(garden, ["read", "--id", "example-rule"]);
     expect(result.code).toBe(0);
     const request = only(garden);
     expect(request.binding).toEqual({ state: "publication", origin: ENDPOINT, snapshot: A });
@@ -211,7 +184,7 @@ describe("the six operations through the synthetic garden", () => {
 
   it("a read's bodies reach the caller after the seal and never reach the receipt file", async () => {
     const garden = workspace("bodies");
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"]);
+    const result = await call(garden, ["read", "--id", "example-rule"]);
     expect(result.out).toContain("Synthetic text: the unit a contract fixture reads.");
     const request = only(garden);
     const file = read(garden.root, `.greenline/ledger/receipts/${request.id}.json`);
@@ -224,15 +197,7 @@ describe("the six operations through the synthetic garden", () => {
 
   it("changes opens a comparison request of its own, bound to the pair it compared", async () => {
     const garden = workspace("changes");
-    const result = await call(garden, [
-      "changes",
-      "--record",
-      ACCOUNT,
-      "--from",
-      A.id,
-      "--to",
-      B.id,
-    ]);
+    const result = await call(garden, ["changes", "--from", A.id, "--to", B.id]);
     expect(result.code).toBe(0);
     const request = only(garden);
     expect(request.binding).toEqual({ state: "comparison", origin: ENDPOINT, from: A, to: B });
@@ -249,7 +214,7 @@ describe("the six operations through the synthetic garden", () => {
 describe("one publication per request", () => {
   it("a later call is refused when garden answers from another publication, and the binding holds", async () => {
     const garden = workspace("drift");
-    const opened = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const opened = await call(garden, ["snapshot"]);
     const handle = opened.reply.request ?? "";
     const drifted = await call(garden, ["read", "--request", handle, "--id", "example-rule"], {
       mode: "drift",
@@ -266,16 +231,8 @@ describe("one publication per request", () => {
 
   it("a comparison never continues a read request, and a read never continues a comparison", async () => {
     const garden = workspace("comparison");
-    const reading = await call(garden, ["snapshot", "--record", ACCOUNT]);
-    const comparing = await call(garden, [
-      "changes",
-      "--record",
-      ACCOUNT,
-      "--from",
-      A.id,
-      "--to",
-      B.id,
-    ]);
+    const reading = await call(garden, ["snapshot"]);
+    const comparing = await call(garden, ["changes", "--from", A.id, "--to", B.id]);
     const before = runs(garden).length;
     const attached = await call(garden, [
       "changes",
@@ -296,7 +253,7 @@ describe("one publication per request", () => {
 
   it("a call naming another publication than the bound one is refused before garden runs", async () => {
     const garden = workspace("rebind");
-    const opened = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const opened = await call(garden, ["snapshot"]);
     const refused = await call(garden, [
       "list",
       "--request",
@@ -313,7 +270,7 @@ describe("one publication per request", () => {
 
   it("a request is refused after garden's endpoint or the repository's policy changed", async () => {
     const garden = workspace("moved");
-    const opened = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const opened = await call(garden, ["snapshot"]);
     const handle = opened.reply.request ?? "";
     writeFileSync(join(garden.root, ".greenline/DECISIONS.md"), "# Decisions\n\nA new ruling.\n");
     const policy = await call(garden, ["vocabulary", "--request", handle]);
@@ -337,10 +294,10 @@ describe("one publication per request", () => {
 
   it("an unresolved request keeps what it opened for: current stays current, an exact publication is named again", async () => {
     const garden = workspace("opened-for");
-    const current = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const current = await call(garden, ["snapshot"], {
       mode: "refusal:unavailable",
     });
-    const exact = await call(garden, ["snapshot", "--record", ACCOUNT, "--id", A.id], {
+    const exact = await call(garden, ["snapshot", "--id", A.id], {
       mode: "refusal:unavailable",
     });
     const before = runs(garden).length;
@@ -370,7 +327,7 @@ describe("one publication per request", () => {
 
   it("a seal meeting a binding another call of the request fixed keeps that binding and is judged against it", async () => {
     const agreeing = workspace("concurrent-agree");
-    const opened = await call(agreeing, ["snapshot", "--record", ACCOUNT], {
+    const opened = await call(agreeing, ["snapshot"], {
       mode: "refusal:unavailable",
     });
     const handle = opened.reply.request ?? "";
@@ -387,7 +344,7 @@ describe("one publication per request", () => {
     ]);
 
     const drifting = workspace("concurrent-drift");
-    const reopened = await call(drifting, ["snapshot", "--record", ACCOUNT], {
+    const reopened = await call(drifting, ["snapshot"], {
       mode: "refusal:unavailable",
     });
     const second = reopened.reply.request ?? "";
@@ -408,7 +365,7 @@ describe("one publication per request", () => {
     const garden = workspace("lock-wait");
     const lock = join(garden.root, ".greenline/tmp/.write.lock");
     const waits: number[] = [];
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const result = await call(garden, ["snapshot"], {
       started: () => writeFileSync(lock, "another writer\n"),
       wait: async (ms) => {
         waits.push(ms);
@@ -436,7 +393,7 @@ describe("one publication per request", () => {
       },
     };
     try {
-      const result = await call(garden, ["snapshot", "--record", ACCOUNT], { io: releaseFails });
+      const result = await call(garden, ["snapshot"], { io: releaseFails });
       // The lock left behind shows the release really failed; a root user, whom permissions do
       // not stop, fails here rather than pass without reaching the confirmation.
       expect(existsSync(join(temporary, ".write.lock"))).toBe(true);
@@ -449,7 +406,7 @@ describe("one publication per request", () => {
 
   it("a policy that changes while garden runs fails the call and binds nothing", async () => {
     const garden = workspace("policy-during");
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const result = await call(garden, ["snapshot"], {
       started: () =>
         writeFileSync(join(garden.root, ".greenline/DECISIONS.md"), "# Decisions\n\nChanged.\n"),
     });
@@ -466,8 +423,6 @@ describe("one publication per request", () => {
     const garden = workspace("budget");
     const result = await call(garden, [
       "read",
-      "--record",
-      ACCOUNT,
       "--id",
       "example-rule",
       "--requires",
@@ -480,7 +435,7 @@ describe("one publication per request", () => {
 
   it("a failed first call leaves the request unresolved, and a later call still binds it", async () => {
     const garden = workspace("unresolved");
-    const failed = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const failed = await call(garden, ["snapshot"], {
       mode: "refusal:unavailable",
     });
     expect(failed.code).toBe(1);
@@ -542,7 +497,7 @@ describe("local policy", () => {
   it("a root's unit exclusion reaches garden as an exclusion and is recorded on the receipt", async () => {
     const garden = workspace("unit-exclusion");
     decide(garden, [{ kind: "unit", id: "example-other" }]);
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"]);
+    const result = await call(garden, ["read", "--id", "example-rule"]);
     expect(result.code).toBe(0);
     expect(flagsOf(runs(garden)[0]?.argv ?? [], "exclude")).toEqual(["example-other"]);
     expect(only(garden).receipts[0]?.excluded).toEqual(["example-other"]);
@@ -551,13 +506,7 @@ describe("local policy", () => {
   it("a responsibility-group exclusion is expanded through its own recorded listing before the read", async () => {
     const garden = workspace("group-exclusion");
     decide(garden, [{ kind: "option-group", responsibility: "example responsibility" }]);
-    const result = await call(garden, [
-      "read",
-      "--record",
-      ACCOUNT,
-      "--id",
-      "example-prerequisite",
-    ]);
+    const result = await call(garden, ["read", "--id", "example-prerequisite"]);
     expect(result.code).toBe(0);
     const [listing, reading] = runs(garden);
     expect(flagsOf(listing?.argv ?? [], "responsibility")).toEqual(["example responsibility"]);
@@ -575,7 +524,7 @@ describe("local policy", () => {
   it("a group with no members in the publication refuses the read rather than prohibit nothing", async () => {
     const garden = workspace("empty-group");
     decide(garden, [{ kind: "option-group", responsibility: "a misspelled responsibility" }]);
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"]);
+    const result = await call(garden, ["read", "--id", "example-rule"]);
     expect(result.code).toBe(1);
     expect(result.reply.error?.input).toBe(
       "excluded option group a misspelled responsibility has no members in this publication",
@@ -590,8 +539,6 @@ describe("what reaches garden", () => {
     const garden = workspace("arguments");
     const result = await call(garden, [
       "read",
-      "--record",
-      ACCOUNT,
       "--id",
       "example-rule",
       "--exclude",
@@ -617,7 +564,7 @@ describe("what reaches garden", () => {
 
   it("greenline's own variables stay behind while garden's key passes on", async () => {
     const garden = workspace("own-variables");
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const result = await call(garden, ["snapshot"], {
       key: "gdn_key_for_garden",
       extra: {
         GREENLINE_EXAMPLE_KEY: "greenline-own-secret",
@@ -633,7 +580,7 @@ describe("what reaches garden", () => {
   it("a read's own inputs are refused before its supporting listing runs", async () => {
     const garden = workspace("inputs-first");
     decide(garden, [{ kind: "option-group", responsibility: "example responsibility" }]);
-    const refused = await call(garden, ["read", "--record", ACCOUNT, "--id", "Not_A_Unit"]);
+    const refused = await call(garden, ["read", "--id", "Not_A_Unit"]);
     expect(refused.reply.error).toEqual({
       kind: "invalid-request",
       input: "--id must be one or more unit ids",
@@ -644,13 +591,7 @@ describe("what reaches garden", () => {
 
   it("a value that is not a neutral literal is refused before garden runs or any receipt exists", async () => {
     const garden = workspace("malicious-id");
-    const refused = await call(garden, [
-      "read",
-      "--record",
-      ACCOUNT,
-      "--id",
-      "--url=https://evil.example/",
-    ]);
+    const refused = await call(garden, ["read", "--id", "--url=https://evil.example/"]);
     expect(refused.code).toBe(1);
     expect(refused.reply.error).toEqual({
       kind: "invalid-request",
@@ -663,7 +604,7 @@ describe("what reaches garden", () => {
   it("shell text and a flag-shaped value reach garden as one literal argument each", async () => {
     const garden = workspace("literal");
     const anchor = "$(touch pwned); --url=https://evil.example/";
-    const result = await call(garden, ["resolve", "--record", ACCOUNT, "--anchor", anchor]);
+    const result = await call(garden, ["resolve", "--anchor", anchor]);
     expect(result.code).toBe(0);
     const [logged] = runs(garden);
     expect(logged?.argv).toContain(`--anchor=${anchor}`);
@@ -677,7 +618,7 @@ describe("what reaches garden", () => {
   it("the key reaches garden through the environment and nothing greenline writes or passes", async () => {
     const garden = workspace("key");
     const key = "gdn_live_4f9d2c7a0b1e_secret";
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"], {
+    const result = await call(garden, ["read", "--id", "example-rule"], {
       key,
     });
     expect(result.code).toBe(0);
@@ -699,7 +640,7 @@ describe("what reaches garden", () => {
     const { port } = z.object({ port: z.number() }).parse(server.address());
     try {
       const garden = workspace("offline", { endpoint: `http://127.0.0.1:${port}/` });
-      const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"]);
+      const result = await call(garden, ["read", "--id", "example-rule"]);
       expect(result.code).toBe(0);
       await fetch(`http://127.0.0.1:${port}/after-the-call`);
     } finally {
@@ -715,12 +656,12 @@ describe("what reaches garden", () => {
     writeFileSync(planted, `#!/bin/sh\ntouch "${join(garden.root, "planted-ran")}"\n`, {
       mode: 0o755,
     });
-    const found = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const found = await call(garden, ["snapshot"], {
       path: `.:${garden.bin}`,
     });
     expect(found.code).toBe(0);
     expect(runs(garden)).toHaveLength(1);
-    const missing = await call(garden, ["snapshot", "--record", ACCOUNT], { path: "." });
+    const missing = await call(garden, ["snapshot"], { path: "." });
     expect(missing.code).toBe(1);
     expect(missing.reply.error?.kind).toBe("missing-executable");
     expect(existsSync(join(garden.root, "planted-ran"))).toBe(false);
@@ -740,7 +681,7 @@ describe("what reaches garden", () => {
         absent,
       ]).code,
     ).toBe(0);
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const result = await call(garden, ["snapshot"]);
     expect(result.code).toBe(1);
     expect(result.reply.error).toEqual({
       kind: "missing-executable",
@@ -789,7 +730,7 @@ describe("garden's replies are validated before anything is believed", () => {
     "%s: the call %j fails as %s (%s), delivers nothing and binds nothing",
     async (mode, args, kind, detail) => {
       const garden = workspace(`reply-${mode}`);
-      const result = await call(garden, [...args, "--record", ACCOUNT], { mode });
+      const result = await call(garden, [...args], { mode });
       expect(result.code).toBe(1);
       expect(result.reply.error?.kind).toBe(kind);
       expect(result.reply.error?.input).toContain(detail);
@@ -814,7 +755,7 @@ describe("garden's replies are validated before anything is believed", () => {
     "invalid-request",
   ])("garden's %s refusal is recorded as its own kind with nothing delivered", async (kind) => {
     const garden = workspace(`refusal-${kind}`);
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"], {
+    const result = await call(garden, ["read", "--id", "example-rule"], {
       mode: `refusal:${kind}`,
     });
     expect(result.code).toBe(1);
@@ -828,7 +769,7 @@ describe("garden's replies are validated before anything is believed", () => {
 
   it("an older garden that refuses the command line is recorded as its refusal, not a success", async () => {
     const garden = workspace("old-client");
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT], { mode: "old-client" });
+    const result = await call(garden, ["snapshot"], { mode: "old-client" });
     expect(result.reply.error).toEqual({ kind: "invalid-request", input: "command" });
     expect(only(garden).receipts[0]?.outcome).toBe("failed");
   });
@@ -836,7 +777,7 @@ describe("garden's replies are validated before anything is believed", () => {
   it("a cancelled call is recorded as cancelled from the bridge's own observation", async () => {
     const garden = workspace("cancel");
     let pending: unknown;
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const result = await call(garden, ["snapshot"], {
       mode: "hang",
       started: () => {
         pending = only(garden).receipts[0]?.outcome;
@@ -856,7 +797,7 @@ describe("garden's replies are validated before anything is believed", () => {
 
   it("a call past its one deadline is recorded as a deadline", async () => {
     const garden = workspace("deadline");
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT, "--timeout-ms", "50"], {
+    const result = await call(garden, ["snapshot", "--timeout-ms", "50"], {
       mode: "hang",
     });
     expect(result.reply.error).toEqual({
@@ -874,7 +815,7 @@ describe("evidence first", () => {
   it("the pending intent is on disk while garden runs, before any answer", async () => {
     const garden = workspace("pending");
     let during: unknown;
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"], {
+    const result = await call(garden, ["read", "--id", "example-rule"], {
       started: () => {
         during = only(garden).receipts.map((entry) => entry.outcome);
       },
@@ -897,7 +838,7 @@ describe("evidence first", () => {
           : real.write(path, content);
       },
     };
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"], {
+    const result = await call(garden, ["read", "--id", "example-rule"], {
       io: failing,
     });
     expect(result.code).toBe(1);
@@ -911,53 +852,10 @@ describe("evidence first", () => {
   it("a held writer lock stops the call before garden runs and writes nothing", async () => {
     const garden = workspace("locked");
     writeFileSync(join(garden.root, ".greenline/tmp/.write.lock"), "another writer\n");
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const result = await call(garden, ["snapshot"]);
     expect(result.code).toBe(1);
     expect(result.reply.error?.kind).toBe("evidence");
     expect(runs(garden)).toEqual([]);
     expect(collections(garden)).toEqual([]);
-  });
-
-  it("a garden delivery joins its account as an optional consultation, and doctor owes nothing for it", async () => {
-    const garden = workspace("ledger");
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"]);
-    const request = only(garden);
-    const ledger = readExecutionLedger(garden.root, createNodeFileIo());
-    if (ledger._tag === "err") throw ledger.error;
-    const account = ledger.value.records.find((record) => record.id === ACCOUNT);
-    expect(account?.consultations).toEqual([
-      {
-        id: result.reply.consultations?.[0]?.consultation,
-        kind: "guidance",
-        source: {
-          kind: "garden",
-          origin: ENDPOINT,
-          snapshot: A.id,
-          unit: "example-rule",
-          revision: RULE.revision,
-          contentHash: RULE.contentHash,
-          request: request.id,
-          receipt: request.receipts[0]?.id,
-        },
-        stage: "unknown",
-        decision: "unassessed",
-        reason: "Garden delivery recorded; application has not been judged.",
-      },
-    ]);
-    const doctor = run(garden.root, ["doctor", "--json"]);
-    expect(doctor.code).toBe(0);
-    expect(JSON.parse(doctor.out).ledger.retrievals).toEqual([
-      {
-        request: request.id,
-        source: "garden",
-        record: ACCOUNT,
-        snapshot: A.id,
-        publicationUse: "current",
-        calls: 1,
-        received: 1,
-        incomplete: 0,
-        advisories: 0,
-      },
-    ]);
   });
 });

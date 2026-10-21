@@ -1,0 +1,111 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "groundwork",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "groundwork"
+    },
+    {
+      "field": "description",
+      "value": "Establish the missing engineering baseline for a repository's purpose and prove first green. Use for a request to set a repo up properly or bring it to a working baseline; preserve established components and avoid unnecessary infrastructure."
+    },
+    {
+      "field": "source",
+      "value": "greenline native setup workflow; the work guide and the ledger guide own its integration."
+    }
+  ],
+  "sources": [],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Groundwork\n\nGroundwork is the start for a setup request: set this repository up properly,\nor bring it to a working baseline. Read the existing repository and settled\ndecisions first, and establish the purpose and the choices before any edit.\nThen hand the work to a mode: propose it and wait, as AGENTS.md says, open the\nchange record with a `## start` section naming groundwork and the combination\nit recommends, and run the line from `frame`. Compare choices only where this\ncomponent lacks an established answer. The setup request authorizes ordinary\nreversible work in its scope; clarify only consequential choices the request\nand evidence leave open.\n\nOn an empty tree groundwork is also the orientation AGENTS.md names: its\nown change, proposed before the feature a first request asks for, or that\nrequest's own change when it asks to set the repository up.",
+          "kind": "method",
+          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup.",
+          "gist": "Opens groundwork: read the repository first, then run setup as a change",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "## Establish configuration\n\nIf initialization is part of the request, it is the change's first edit, at its build step: install the practice for the\nharnesses the owner works in, as groundwork's references page says. An existing initialized repository is not reset because a\nrequest fails.",
+          "kind": "method",
+          "reason": "Establish configuration: the harness trees greenline init establishes when initialization is part of the request; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Runs greenline init as the change's first edit when the request asks",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## Establish purpose and constraints\n\nIdentify the first real use, deployment constraints, component roots, existing\ntools, collaborators, and relevant environment boundaries. An established tree\nmay need a repaired check rather than a new stack. A disposable script may need\nonly its lightweight execution form. Recommend a coherent combination where\nchoices are open, with its meaningful trade-offs and compatibility evidence.\nAsk about an unresolved license or consequential platform choice before choosing\nit; leave an unanswered choice open. Do not infer publication or paid services\nfrom a request for local setup. On an empty repository the toolchain is this\nmethod's to choose from the brief and the runtime: decide it, record it as the\ntoolchain decision in the book with its rationale row, and name it in the reply\nin one line.",
+          "kind": "method",
+          "reason": "Establish purpose and constraints: the first real use, deployment constraints, component roots and boundaries the baseline serves.",
+          "gist": "Finds the first real use and constraints before recommending a combination",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector"
+        },
+        {
+          "passage": "written",
+          "text": "## Build the missing baseline\n\nThe change's build step builds the baseline. Its plan step splits the work\ninto tickets only where distinct outcomes or dependencies need them;\nThe work guide says where those files live, and no fixed ticket count\nor extra grant artifact is required.\n\nAssess which of these outcomes the purpose actually needs:\n\n- A coherent language and tool combination, with current compatible versions\n  and its scoped rationale recorded once in the decisions book.\n  Write its explicit root statement using the exact `greenline-roots` format\n  the work guide gives under Repository memory. The rationale field is\n  `decision`. Unknown purpose stays null; unknown choices stay empty. Keep siblings separate.\n- A reproducible check that exercises the actual code and relevant failure\n  paths. Use the repository's dependency resolution and execution conventions.\n- Appropriate ignores, editor settings, and environment boundaries where\n  those are needed. Secret values belong outside repository evidence.\n- A clear starting README and the owner's licensing choice.\n- Domain vocabulary or architectural decisions when there is something\n  durable to name or explain; empty documents do not improve the baseline.\n\nPreserve established choices outside the requested change. Resolve volatile\ncompatibility from primary sources when it matters. Choose only roles the component needs; an option is\nnot an obligation to install a dependency or invent a service.",
+          "kind": "method",
+          "reason": "Build the missing baseline: the work's size, one compact ticket or an initiative, and the baseline components it adds; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The build step adds only the baseline parts the purpose needs",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## Prove first green\n\nRun the actual pinned tools and frozen dependency resolution as the check\nwill use them, each recorded as a check, so the change's record keeps\nthe facts of every run. Preserve failed runs and fix their causes. Commit a\ncoherent result, each commit carrying the change's trailer, for the review\nstep at the depth its mode gives, then verify the change's acceptance against\nthat result at the verify step's depth. Shared measurements are cited, not\nrepresented as separate runs.\n\nReconcile relevant changes to repository choices in the same work. Report what is\nusable, the important choices and evidence, and any open owner decision.\nA remote-less repository can finish with a local check. Forge protection,\nsecrets, hosting, and publication require their own authority when needed;\nprepare a concrete next action without turning them into setup busywork.",
+          "kind": "method",
+          "reason": "Prove first green: run the pinned tools as the check will, fix failures at their cause, and commit a coherent verified baseline; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Runs the pinned tools through greenline check, fixing failures at their cause",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the repository as found and its settled decisions\nProduces: the recommended combination and the owner's open choices, in the reply and the change record's start section; through the change, the toolchain, check, ignore and README baseline, a rationale row and an explicit greenline-roots root statement in .greenline/DECISIONS.md\nNext: frame, under the mode the owner approves",
+          "kind": "method",
+          "reason": "The handoff: what the skill consumes, what it produces and what follows it; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named.",
+          "gist": "Hands over the recommended combination and open choices; next is frame",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Groundwork: the practice's mechanics\n\nThis page holds where groundwork's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe practice is installed with `greenline init --targets <harness>...`; `greenline init --help` lists the targets. The work guide is `.greenline/WORK.md`, which says where the files of the work live and gives the `greenline-roots` root statement under Repository memory; the decisions book is `.greenline/DECISIONS.md`. Each pinned tool's first run goes through `greenline check -- <command>`.",
+          "kind": "home",
+          "reason": "groundwork's mechanics: the install command and its targets, the work guide and the decisions book its rationale and root statement land in, and the recorder, held apart since J-93 S2.",
+          "gist": "The install command, the work guide and the decisions book"
+        },
+        {
+          "passage": "written",
+          "text": "## The setup change's commit\n\nThe setup change commits the installed practice with its own work, so a teammate's clone holds the practice its records are made under: every file `greenline init` wrote, the paths `.greenline/lock.json` lists, with the lock and `.greenline/manifest.json`. That is AGENTS.md and CLAUDE.md, the harness folders init wrote (`.agents/`, `.claude/`, `.codex/` and any other), `agents/openai.yaml`, and under `.greenline/` `WORK.md`, `ledger/README.md`, `hooks/`, `tmp/.gitignore` and `THIRD_PARTY_NOTICES.md`, beside the decisions book and the change's record. Stage them by name as any commit of the change; after the commit, `git status` shows none of them untracked. Open the setup change's record before that commit, never after it: the commit that records the practice carries the record, `.greenline/ledger/<id>.md`, and the change's trailer, and while no change is open the hooks refuse it.",
+          "kind": "method",
+          "reason": "The setup change commits the files init wrote; the comparison J-60 S3b saw the records committed and the practice left untracked through seven changes, so a clone held the records without AGENTS.md, the skills, the ledger guide, the lock or the hooks. J-102 S2: the setup record opens before the setup commit, so that commit carries the record and its trailer.",
+          "gist": "The setup change commits every file init wrote, named",
+          "ruling": "The operator's card of 2026-10-20 that opened J-98, \"All of it: a two-slice fast job before 0.1.0 (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-20): the cold review REV-lean-design and the comparison J-60 S3b found the installed practice never committed, so a clone held the records without it; the setup change commits it; The operator's cards of 2026-10-21, \"Fix first, then ship (Recommended)\" and the scope card naming 1 to 7 (docs/DECISIONS.md, the rows of 2026-10-21): 0.1.0 ships with its hooks whole, and frame, groundwork and build say what the owner's yes is, that the setup record precedes the setup commit, that a trailer-shaped line of another key after a refusal is no answer to it, and that scratch goes under the change's own id"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": []
+}

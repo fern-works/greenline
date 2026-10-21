@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-use-garden-three-modes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-plan-declared-checks",
+    "sha256": "d3042b18044e4ae94687e63b98dbb984eae13fe9a1eac0a39913ece62c51b911"
+  },
+  "subject": "skill:use-garden",
+  "recipe": "69894fb6e8dcadb73d3584b9b15792a8ad3f360ed042130b18274e1c88f58eac",
+  "result": "daf4665b8087845e74cc57152de6e0efec82d444c52b1eb0904d46a4da37a9ee",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "A settled fix with no open choice is named quick",
+  "reason": "The list of what triggers no read names a settled quick fix, the mode the old name fast became (J-93 S4, the reconcile of the three modes).",
+  "authorisedBy": {
+    "date": "2026-10-19",
+    "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-22",
+      "words": "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 2595
+  }
+}

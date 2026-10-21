@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-15-ingest-superpowers-subagent-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-15-ingest-superpowers-dispatching-parallel-agents",
+    "sha256": "56fe69a7c8a0584f72d81891f760e3e679fff948ce19ea4f97f44ac7e3be9940"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/subagent-driven-development"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "An agent per task, against the ruling that the builder builds",
+  "reason": "It catches a builder's context degrading across a long plan, at two or more agent runs per task no mode's budget holds, against the ruling that the builder runs every task itself. Its ledger and brief rules confirm the record.",
+  "authorisedBy": {
+    "date": "2026-10-15",
+    "words": "Decline the three; no handoff"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-15",
+      "words": "Decline the three; no handoff"
+    }
+  ]
+}

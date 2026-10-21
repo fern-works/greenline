@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-to-spec-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-prototype-retired",
+    "sha256": "ca1cbbfd9382fcac196ee0c91146ae896d961f4444f38ec8fffc4b88f06c3b5d"
+  },
+  "skill": "to-spec",
+  "slice": "S13 of the plan modes-records-recipes",
+  "replacedBy": "plan",
+  "recipe": "cb33992af70c91ddfe506fab283431a7d6cfd9301dfebfd4b46b950f4105c36c",
+  "gist": "To-spec becomes the spine of plan's spec part",
+  "reason": "to-spec is the spine of plan's spec part.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

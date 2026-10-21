@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-prove-it-works",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-verification-before-completion",
+    "sha256": "d2407fab4a746d211f237ab6c15ce09b74dd65b5c0b5e11cff888d4e08ef126d"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-prove-it-works"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Suspect the observation first, in verify",
+  "reason": "Its rule to suspect the observation before the system enters the re-cut verify recipe.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "verify-this",
+    "catches": "A change closed on should-pass, an agent's report of success or a stale run instead of evidence of the final code",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "verify",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "verify",
+        "depth": "written",
+        "cost": 60
+      },
+      {
+        "mode": "high",
+        "step": "verify",
+        "depth": "independent",
+        "cost": 60
+      },
+      {
+        "mode": "max",
+        "step": "verify",
+        "depth": "looped",
+        "cost": 60
+      }
+    ],
+    "ships": "default"
+  }
+}

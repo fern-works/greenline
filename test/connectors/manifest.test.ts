@@ -7,6 +7,11 @@ const choices = {
   schemaVersion: 6,
   targets: ["codex", "claude-code"],
   skills: { exclude: [], include: [] },
+  // The settings the serializer always writes, at their defaults (S16b; J-93 S3 the checks and the hooks).
+  proceed: "none",
+  trials: [],
+  checks: [],
+  hooks: { git: true, adapters: true },
 };
 const entry = { endpoint: "https://garden.example/", executable: "garden" };
 

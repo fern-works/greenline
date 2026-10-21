@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-git-workflow-and-versioning",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-documentation-and-adrs",
+    "sha256": "65832c2e4c742292b0069dc7b99e5cc4b3d50dceea8fdb56469da7f101309a13"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/git-workflow-and-versioning"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Git workflow knowledge goes to garden; worktrees are dropped",
+  "reason": "Branching, conventional commits, semver and hooks are knowledge for garden; its worktrees section is dropped, as greenline uses no worktrees.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\" (R20)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\" (R20)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "branching, conventional commits, semver and hooks",
+        "locator": "skills/git-workflow-and-versioning"
+      }
+    ]
+  }
+}

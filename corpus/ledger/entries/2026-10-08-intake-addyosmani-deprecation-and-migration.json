@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-deprecation-and-migration",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-ci-cd-and-automation",
+    "sha256": "8e31d8558cec12cb022513ae257c3d6d5d65164d6c888f0db5806aa285d48cf0"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/deprecation-and-migration"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Migration patterns, handed to garden",
+  "reason": "Strangler, adapter, flags and expand and contract are knowledge for garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "strangler, adapter, flags and expand and contract",
+        "locator": "skills/deprecation-and-migration/SKILL.md, \"Migration Patterns\""
+      }
+    ]
+  }
+}

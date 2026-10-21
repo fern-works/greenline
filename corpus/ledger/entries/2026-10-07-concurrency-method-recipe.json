@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-concurrency-method-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-show-me-recipe",
+    "sha256": "8d014eb59567e93b7e9388bf725694d098575f290fa2f9fdf7ab66ef0129356b"
+  },
+  "subject": "skill:concurrency-method",
+  "recipe": "1e2daf4aed44bc4120f6b28aa18faea5e468b2ffe07b034bb606a3dd5b533ab7",
+  "result": "6565a43b4a83d60315965a3ce0dcf5305409939bcfaa6394252871d78acd3354",
+  "pages": "unknown",
+  "gist": "A native skill moves to its recipe, its body unchanged",
+  "reason": "Moves concurrency-method, a native skill, to its recipe under Q1 of 2026-10-04: its body byte for byte, its front matter in canonical quoted form. The old chain held no entry for it.",
+  "authorisedBy": {
+    "date": "2026-10-04",
+    "words": "A native skill no docs/DECISIONS.md row and no old entry rules; its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A native skill no docs/DECISIONS.md row and no old entry rules; its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 966
+  }
+}

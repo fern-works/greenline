@@ -1,0 +1,37 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-unslop-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-type-system-discipline-refresh",
+    "sha256": "ea382f436357b0e993ecd39a0db11d38318b5c9a45b90bc27c908130711ae506"
+  },
+  "subject": "skill:unslop",
+  "recipe": "56c180f7e794f6c59ec00f74b42b2f8058ed2cbbbb4022997abc30796b797b11",
+  "result": "6e8b31892d65cd2320f34d0bcda74a721d05b487f25f74b7b787515cee9246c2",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Drops the self-audit step upstream removed",
+  "reason": "Refreshes unslop to pstack d0ef80d86795: step 3, the self-audit for obviously AI-generated text that upstream removed, is dropped, since the roster mirrors its sources (provisional ruling of 2026-10-07). The snapshot's LICENSE is the plugin directory's own.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 121,
+        "taken": 121,
+        "exact": 121,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 73
+  }
+}

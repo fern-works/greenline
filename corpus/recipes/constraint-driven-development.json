@@ -1,0 +1,1817 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "constraint-driven-development",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "constraint-driven-development"
+    },
+    {
+      "field": "description",
+      "value": "Writes the repository's quality bar down as a contract in its decision home, a command behind every number, and guards it against an agent quietly lowering it: a new suppression, a skipped or deleted test, a stripped assertion, an unimplemented stub, a threshold edited down. Use when no quality bar is written down, when the owner says \"set up constraints\" or \"define our standards\", or when an agent keeps silencing checks or skipping tests to reach green."
+    }
+  ],
+  "sources": ["addyosmani"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["ff63859ff147"]
+        },
+        {
+          "passage": "written",
+          "text": "constraint-driven-development is a trial start for a repository whose quality bar is not written down, or whose checks were loosened to reach green. Writing the bar is a change: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming constraint-driven-development, and run the line from `frame`; the interview below is the frame step's, its four questions asked at any depth since each has a default, and the bar is written at the build step. Install only what the owner picked: an option is not an obligation to install a dependency, as groundwork says, and a default the owner takes with \"I don't know\" is no pick: what it would install is proposed with its cost and installed only on the owner's yes.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the bar written as a change on the line, and groundwork's rule that only the owner's picks are installed (contradiction 29), a default taken on \"I don't know\" included, since Q1's default installs tools.",
+          "gist": "Opens the start: the bar is a change; defaults install nothing unpicked",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves and every check runs through greenline check; R16 of 2026-10-07, a start chosen from the situation a request begins in; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, a default taken on \"I don't know\" installing nothing the owner did not pick among it"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["7337f3d0aa29"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "9f742efd8465",
+            "b82b5f3a6fb7",
+            "16f5efacee83",
+            "957829e15a02",
+            "b1801c34b10f",
+            "cf2975888a23",
+            "54402feee28d",
+            "df8d5e747838"
+          ],
+          "edits": [
+            {
+              "segment": "9f742efd8465",
+              "find": "something different: a written record",
+              "replace": "a written record",
+              "kind": "pointer",
+              "reason": "The comparison with the upstream pack's other skills is dropped, so the record is not called different.",
+              "gist": "Without the pack comparison, the record is not called different"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["77a354fd895c", "1d518720b701", "f1b410fc1baf", "84d2713c39f2"],
+          "edits": [
+            {
+              "segment": "f1b410fc1baf",
+              "find": "(CI, `/loop`, autonomous runs)",
+              "replace": "(CI, autonomous runs)",
+              "kind": "harness",
+              "reason": "One harness's loop command leaves the list of non-interactive contexts (R21).",
+              "gist": "Drops one agent's loop command from the non-interactive contexts"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "In such a context the floor is applied only as a change the workspace's `proceed` setting lets you make without waiting; otherwise propose it, as AGENTS.md says.",
+          "kind": "method",
+          "reason": "Applying the floor unattended is an edit, so it waits for the mode unless the proceed setting allows it, as the block's proposal says.",
+          "gist": "Applying the floor unattended waits for the mode unless proceed allows it",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves and every check runs through greenline check; R16 of 2026-10-07, a start chosen from the situation a request begins in",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "0b0e38a27fda",
+            "81928bd049d1",
+            "7fd8a6bb343a",
+            "be146bacfe28",
+            "5d4c7f1181be",
+            "be33e4a2daef",
+            "daf1a60b6d51",
+            "8631c1ea9bfa",
+            "568cf2e1f8fd"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "| Coverage today | `coverage/` output, or the suite run once with its coverage provider; with none there is no number, until Q1's (a) adds one |",
+          "kind": "method",
+          "reason": "Running the suite gives no coverage number where the repository has no coverage provider, so the row says so, and that a measured coverage waits on Q1's (a); upstream's row assumed a provider.",
+          "gist": "Coverage needs a provider; with none there is no number yet",
+          "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, the coverage row saying a number needs a coverage provider among it",
+          "credits": ["addyosmani"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["0ed27d5c9331"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["4e01475f1aad", "bff53771add3"]
+        },
+        {
+          "passage": "written",
+          "text": "Follow the frame skill's interview, [../frame/references/interview.md](../frame/references/interview.md), with the differences this start keeps: the four questions below are fixed, each has a default, so \"I don't know\" is a complete answer that still produces a working config, and no round follows them. At every depth, the inline one included, ask all four in one round, each with its guess, and wait, and record the answers in the change record's frame section, never in a section of this start's own.",
+          "kind": "method",
+          "reason": "The intake follows the frame skill's interview, which asks a frontier in one round (contradiction 1), where upstream pointed at interview-me, which the roster lacks; it links the page beside frame, says what this start keeps apart, and where frame records the four answers.",
+          "gist": "Links frame's interview page, its differences, one round and the answers' home",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\": the pointer is the exact link to frame's interview page and the start says in one sentence how its four questions run at every depth; and the card of 2026-10-14, \"The record's frame section\": a start's four frame answers live in the change record's frame section",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "49173e72f25d",
+            "a4d20f2c5a93",
+            "61fa2b27583d",
+            "082a3b6cd7f1",
+            "07da66b0e1e6",
+            "0cbe29283d6c"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "### Step 3: Write the bar into the decision home\n\nOne section, `## Constraints`, in the repository's decision home: its own decisions document, or the decisions book where it keeps none. Every agent reads it, since AGENTS.md sends each one to the decision home, and a change to it shows up in review where it belongs.",
+          "kind": "home",
+          "reason": "The bar lives in the decision home, which the block already sends every agent to, where upstream wrote CONSTRAINTS.md at the repository root (R21). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Writes the bar into the decisions document every agent reads, not CONSTRAINTS.md",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["a075a8d30f6f"],
+          "edits": [
+            {
+              "segment": "a075a8d30f6f",
+              "find": "```markdown\n# Constraints\n",
+              "replace": "```markdown\n## Constraints\n",
+              "kind": "home",
+              "reason": "The bar is a section of the decision home, so its headings sit one level down.",
+              "gist": "The bar is a section now, so its headings drop one level"
+            },
+            {
+              "segment": "a075a8d30f6f",
+              "find": "\n## Floor (always",
+              "replace": "\n### Floor (always",
+              "kind": "home",
+              "reason": "The bar is a section of the decision home, so its headings sit one level down.",
+              "gist": "The bar is a section now, so its headings drop one level"
+            },
+            {
+              "segment": "a075a8d30f6f",
+              "find": "\n## Enforced with numbers",
+              "replace": "\n### Enforced with numbers",
+              "kind": "home",
+              "reason": "The bar is a section of the decision home, so its headings sit one level down.",
+              "gist": "The bar is a section now, so its headings drop one level"
+            },
+            {
+              "segment": "a075a8d30f6f",
+              "find": "\n## Measured, not yet enforced",
+              "replace": "\n### Measured, not yet enforced",
+              "kind": "home",
+              "reason": "The bar is a section of the decision home, so its headings sit one level down.",
+              "gist": "The bar is a section now, so its headings drop one level"
+            },
+            {
+              "segment": "a075a8d30f6f",
+              "find": "\n## Exceptions",
+              "replace": "\n### Exceptions",
+              "kind": "home",
+              "reason": "The bar is a section of the decision home, so its headings sit one level down.",
+              "gist": "The bar is a section now, so its headings drop one level"
+            },
+            {
+              "segment": "a075a8d30f6f",
+              "find": "- This file does not get weakened",
+              "replace": "- This section does not get weakened",
+              "kind": "home",
+              "reason": "The bar is a section of the decision home.",
+              "gist": "Says this section, since the bar is no longer its own file"
+            },
+            {
+              "segment": "a075a8d30f6f",
+              "find": "- No skipped or deleted tests without a reason in the commit message",
+              "replace": "- No skipped or deleted tests; the floor guard flags each one, and only the owner lets one through",
+              "kind": "method",
+              "reason": "The floor guard flags every added skip and deleted test and reads no commit message, so the bar states the one rule the guard enforces, with the owner's word the only way past it.",
+              "gist": "One skip rule, the guard's; only the owner lets a skip through",
+              "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, one rule for skipped and deleted tests, stated once, among it"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "No line goes into the agent instructions file: AGENTS.md already sends every agent to the decision home.",
+          "kind": "method",
+          "reason": "Upstream added a line to AGENTS.md and CLAUDE.md; the bar is in the decision home the block already reads, so no line goes into the instructions file (R21).",
+          "gist": "Adds no line to the instructions file; AGENTS.md already points at decisions",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the bar lives in the decision home, which the block already reads, with no line in the agent instructions file, and the floor guard runs as one of the repository's own checks through greenline check, never a harness hook"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["75506facf9f9", "573fe64bccff", "ac98c810208c"],
+          "edits": [
+            {
+              "segment": "75506facf9f9",
+              "find": "Step 5:",
+              "replace": "Step 4:",
+              "kind": "name",
+              "reason": "Step 4 is not taken, so the steps after it are numbered on.",
+              "gist": "Renumbers the steps after the untaken Step 4"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "91ff9bcf03dd",
+            "2212c6540acf",
+            "ab5f50a457ed",
+            "6b4942f1e1ee",
+            "71e547293db5",
+            "adb2be14647e"
+          ],
+          "edits": [
+            {
+              "segment": "91ff9bcf03dd",
+              "find": "| Phase | Command |",
+              "replace": "| Step | When |",
+              "kind": "harness",
+              "reason": "The lifecycle is the change's steps, where upstream named one harness's slash commands (R21).",
+              "gist": "The lifecycle table lists the change's steps, not slash commands"
+            },
+            {
+              "segment": "ab5f50a457ed",
+              "find": "| BUILD | `/build` |",
+              "replace": "| build | after each edit |",
+              "kind": "harness",
+              "reason": "The lifecycle is the change's steps, where upstream named one harness's slash commands (R21).",
+              "gist": "The lifecycle table lists the change's steps, not slash commands"
+            },
+            {
+              "segment": "6b4942f1e1ee",
+              "find": "| VERIFY | `/test` |",
+              "replace": "| verify | at task end |",
+              "kind": "harness",
+              "reason": "The lifecycle is the change's steps, where upstream named one harness's slash commands (R21).",
+              "gist": "The lifecycle table lists the change's steps, not slash commands"
+            },
+            {
+              "segment": "71e547293db5",
+              "find": "| REVIEW | `/review` |",
+              "replace": "| review | at the review step |",
+              "kind": "harness",
+              "reason": "The lifecycle is the change's steps, where upstream named one harness's slash commands (R21).",
+              "gist": "The lifecycle table lists the change's steps, not slash commands"
+            },
+            {
+              "segment": "adb2be14647e",
+              "find": "| SHIP | `/ship` |",
+              "replace": "| CI | before a merge |",
+              "kind": "harness",
+              "reason": "The lifecycle is the change's steps, where upstream named one harness's slash commands (R21).",
+              "gist": "The lifecycle table lists the change's steps, not slash commands"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "4ae0d1c709b2",
+            "c79b8804305e",
+            "82b8be440c67",
+            "73ef8637b46b",
+            "53d9cc77dc97",
+            "de01ecb34ebc",
+            "ae8101e24bb6"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "24f1b9531e92",
+            "fc8c8ba73ec4",
+            "a198c8e761ef",
+            "5424a3edf6c5",
+            "53a9c0ab9e52",
+            "5128c45f9125",
+            "4aaf584ea838",
+            "449d39b7b882",
+            "32515575c591",
+            "86e575ab3f84",
+            "d32066f1294c",
+            "31e20b94ed52",
+            "899fa5c4557b",
+            "56e2046f409f",
+            "d7f894e55ba9",
+            "b1580818a89b",
+            "c2ec25c4cee2",
+            "3833871c11e9",
+            "be8bb235f2e6",
+            "64490852e0a7",
+            "c1889751418a",
+            "e4cc0408ece3",
+            "93b5a0068d59"
+          ],
+          "edits": [
+            {
+              "segment": "24f1b9531e92",
+              "find": "Step 6:",
+              "replace": "Step 5:",
+              "kind": "name",
+              "reason": "Step 4 is not taken, so the steps after it are numbered on.",
+              "gist": "Renumbers the steps after the untaken Step 4"
+            },
+            {
+              "segment": "32515575c591",
+              "find": "`CONSTRAINTS.md`",
+              "replace": "the bar in the decision home",
+              "kind": "home",
+              "reason": "The bar lives in the decision home.",
+              "gist": "Each CONSTRAINTS.md mention becomes the bar in the decisions document"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Run the floor guard as one of the repository's own checks, recorded as a check, with `--bar` naming the file that holds the bar where the decision home is the repository's own, at the build and review steps; it never runs as a harness hook. In CI, where the repository has one, the job calls the guard directly on each change before it merges, not as a recorded check, whose facts a CI run does not keep: it checks out the whole history of the change and of the branch it merges into, and passes `--base` naming that branch as CI fetched it, such as `origin/main`, and `--bar` as above; a shallow checkout holds no merge base, so the guard bails with exit `2`, which fails the job as exit `1` does.",
+          "kind": "method",
+          "reason": "The floor guard is a repository check run through greenline check, where upstream wired checks into an agent's hooks (R21); in CI it runs directly, with its base and bar named, on a checkout holding the whole history, since a shallow checkout has no merge base. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The guard runs through greenline check, and directly in full-history CI",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the bar lives in the decision home, which the block already reads, with no line in the agent instructions file, and the floor guard runs as one of the repository's own checks through greenline check, never a harness hook; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start says how CI calls the guard, the base it diffs against on a shallow checkout and the merge-base bail; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "3929a7edcb33",
+            "749c7522119f",
+            "a36a152bf2f8",
+            "5c25ed53e09b",
+            "36b664924533",
+            "6e78e36dec08",
+            "be737f0dde1c",
+            "0ccbd060a7f3",
+            "cc9c36364def",
+            "292b7ed7fb69",
+            "618f7fd12fc5",
+            "2822e38691d3",
+            "bddbd75dae4c",
+            "e2ca31619417",
+            "63ded277a894",
+            "44acdac9a87c",
+            "2273ecedc461",
+            "4ddde158ce51",
+            "23c50ef80c4f",
+            "770f06f9c9d6"
+          ],
+          "edits": [
+            {
+              "segment": "618f7fd12fc5",
+              "find": "Step 7:",
+              "replace": "Step 6:",
+              "kind": "name",
+              "reason": "Step 4 is not taken, so the steps after it are numbered on.",
+              "gist": "Renumbers the steps after the untaken Step 4"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": ["fae386cf6dbf", "8f35ead29dee", "2e97e824f8de", "9f1a6f1bcf9d"]
+        },
+        {
+          "passage": "written",
+          "text": "The bar is written in the decision home, and agents read it.",
+          "kind": "home",
+          "reason": "The first level of teeth is the bar written in the decision home.",
+          "gist": "At the first level, the bar is written and agents read it",
+          "credits": ["addyosmani"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/SKILL.md",
+          "segments": [
+            "b7b4e8237cfb",
+            "7cef2b3499a5",
+            "2ea091ace3f8",
+            "9f2dfd6da3da",
+            "bc503772c3c1",
+            "eb04f3f9f914",
+            "8009a0da2142",
+            "7bdf60d843be",
+            "bec77c421e37",
+            "dbaf8fef63e2",
+            "b0e355584e69",
+            "c72821833852",
+            "e23033dc6486"
+          ],
+          "edits": [
+            {
+              "segment": "2ea091ace3f8",
+              "find": "wired into your agent's post-edit hook and your CI",
+              "replace": "recorded as a check and in your CI",
+              "kind": "harness",
+              "reason": "The scripted level runs through greenline check, never a harness hook (R21). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+              "gist": "Scripted checks run through greenline check and CI, not post-edit hooks"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the repository, its stack, its checks and its CI; the owner's answers to the four questions; the decision home\nProduces: through the change, the bar in the decision home's `## Constraints` section, a command behind every number, the measured values a ratchet holds, and the floor guard as one of the repository's checks\nNext: frame, under the mode the owner approves",
+          "kind": "pointer",
+          "reason": "A start's handoff: the bar and the guard produced through the change, and the step its hand reaches, frame under the approved mode.",
+          "gist": "Hands over the bar and the floor guard; next is frame"
+        }
+      ]
+    },
+    {
+      "path": "references/floor-guard.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/references/floor-guard.md",
+          "segments": ["bc37542d2c06"]
+        },
+        {
+          "passage": "written",
+          "text": "Every numbered dimension of the bar maps to a de facto tool.",
+          "kind": "pointer",
+          "reason": "Step 4, the tool table, is garden's, so the sentence keeps its claim and drops the pointer to it.",
+          "gist": "Keeps the claim but drops the reference to Step 4, now garden's",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/references/floor-guard.md",
+          "segments": [
+            "5da4fc91bdf0",
+            "6caf07c08289",
+            "d04c6dc9f7c7",
+            "edeb8a7b3d5c",
+            "a6a679b6345a",
+            "f56feadd5683",
+            "aff06fdb3135",
+            "4f5e6337399e",
+            "1800b6782037",
+            "922965b8699b",
+            "11e7662d42ce"
+          ],
+          "edits": [
+            {
+              "segment": "5da4fc91bdf0",
+              "find": "five moves in Step 6",
+              "replace": "five moves in Step 5",
+              "kind": "name",
+              "reason": "Step 4 is not taken, so the guard's step is numbered on.",
+              "gist": "Renumbers the guard's step to Step 5 after the untaken Step 4"
+            },
+            {
+              "segment": "4f5e6337399e",
+              "find": "five Step 6 moves",
+              "replace": "five Step 5 moves",
+              "kind": "name",
+              "reason": "Step 4 is not taken, so the guard's step is numbered on.",
+              "gist": "Renumbers the guard's step to Step 5 after the untaken Step 4"
+            },
+            {
+              "segment": "4f5e6337399e",
+              "find": "a weakened threshold in `CONSTRAINTS.md`",
+              "replace": "a weakened threshold in the bar",
+              "kind": "home",
+              "reason": "The bar lives in the decision home.",
+              "gist": "Each CONSTRAINTS.md mention becomes the bar in the decisions document"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Redaction is not optional.",
+          "kind": "pointer",
+          "reason": "The pointer to Step 4 leaves with the step, which is garden's.",
+          "gist": "References to Step 4 leave with the step, which is garden's",
+          "credits": ["addyosmani"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "- **Exempts its own bar and file:** the bar's `## Constraints` section and the guard's own file name the suppressions, stubs and skips they forbid, so neither is scanned for them, and the change that introduces the two passes; the same pattern added anywhere else is flagged.",
+          "kind": "method",
+          "reason": "The guard's patterns matched its own source and the bar's floor bullets, so the change that introduces them failed the guard; the two are exempt from the pattern scan, and nothing else is.",
+          "gist": "The guard exempts its own file and the bar's section from scanning",
+          "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the guard's suppression, stub and skip patterns exempt the bar's Constraints section and the guard's own file, so the change that introduces them passes",
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "constraint-driven-development/references/floor-guard.md",
+          "segments": [
+            "75195d0a547e",
+            "021e8998e06f",
+            "66fa2ba3424a",
+            "83f9ebe76f1e",
+            "93047dd3ddf3",
+            "ce40bd555724",
+            "abef6aac8146",
+            "5cb26b8c48c1",
+            "b238d3276052",
+            "2d5ca1bacb1d",
+            "652aed7cc9a3"
+          ],
+          "edits": [
+            {
+              "segment": "66fa2ba3424a",
+              "find": "// floor-guard.mjs — diff-scoped enforcement of the CONSTRAINTS.md floor.\n// Usage: node floor-guard.mjs [--base <ref>]   (default base: origin/main)",
+              "replace": "// floor-guard.mjs: diff-scoped enforcement of the bar's floor, in the decision home.\n// Usage: node floor-guard.mjs [--base <ref>] [--bar <path>]\n//   (defaults: origin/main, and the decisions book .greenline/DECISIONS.md)",
+              "kind": "home",
+              "reason": "The bar lives in the decision home, so the guard reads the file that holds it, the decisions book by default.",
+              "gist": "The guard reads the bar from the decisions book by default"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "})();\n\n// `git diff --no-index`",
+              "replace": "})();\nconst bar = (() => {\n  const i = process.argv.indexOf('--bar');\n  return i > -1 ? process.argv[i + 1] : '.greenline/DECISIONS.md';\n})();\n\n// `git diff --no-index`",
+              "kind": "home",
+              "reason": "The guard takes the path of the file that holds the bar, the decisions book by default.",
+              "gist": "The guard takes a --bar path, defaulting to the decisions book"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "const isConstraints = (f) => /CONSTRAINTS\\.md$/.test(f);",
+              "replace": "// The bar is the `## Constraints` section of that file: a line counts only inside the section, in the old\n// text for a removed line and in the new text for an added one, so an edit elsewhere in the decision\n// home is no move on the bar.\nconst sectionOf = (text) => {\n  if (text === null) return null;\n  const lines = text.split('\\n');\n  const start = lines.findIndex((l) => /^## Constraints\\s*$/.test(l));\n  if (start < 0) return null;\n  const end = lines.findIndex((l, i) => i > start && /^## /.test(l));\n  return [start + 2, end < 0 ? lines.length : end];\n};\nconst readBar = () => { try { return readFileSync(bar, 'utf8'); } catch { return null; } };\nconst oldBar = sectionOf(git(['show', mergeBase + ':' + bar]));\nconst newBar = sectionOf(readBar());\nconst within = (range, n) => range !== null && n >= range[0] && n <= range[1];\nconst isConstraints = (l, side) => l.file === bar && within(side === 'old' ? oldBar : newBar, l.line);\n// A section the old text had and the new one lacks is the bar removed or renamed, never a quiet\n// skip.\nif (oldBar !== null && newBar === null) flag('section-removed', bar, '## Constraints');",
+              "kind": "home",
+              "reason": "The bar is the `## Constraints` section of the file named, so only a line inside that section, in the old or the new text, is a move on the bar; an edit elsewhere in the decision home is not.",
+              "gist": "Only lines inside the Constraints section count as moves on the bar"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "// 1b/2c. A rule in CONSTRAINTS.md weakened",
+              "replace": "// 1b/2c. A rule of the bar weakened",
+              "kind": "home",
+              "reason": "The bar lives in the decision home.",
+              "gist": "Each CONSTRAINTS.md mention becomes the bar in the decisions document"
+            },
+            {
+              "segment": "ce40bd555724",
+              "find": "the CONSTRAINTS.md checks",
+              "replace": "the bar's checks",
+              "kind": "home",
+              "reason": "The bar lives in the decision home.",
+              "gist": "Each CONSTRAINTS.md mention becomes the bar in the decisions document"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "import { execFileSync } from 'node:child_process';",
+              "replace": "import { execFileSync } from 'node:child_process';\nimport { readFileSync } from 'node:fs';",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "let file = '', oldFile = '', inHeader = false;",
+              "replace": "let file = '', oldFile = '', inHeader = false, oldLine = 0, newLine = 0;",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "  else if (line.startsWith('@@')) inHeader = false;",
+              "replace": "  else if (line.startsWith('@@')) {\n    inHeader = false;\n    const m = /^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)/.exec(line);\n    oldLine = m ? Number(m[1]) : 0;\n    newLine = m ? Number(m[2]) : 0;\n  }",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "  else if (line.startsWith('+')) added.push({ file, text: line.slice(1) });\n  else if (line.startsWith('-')) removed.push({ file, text: line.slice(1) });",
+              "replace": "  else if (line.startsWith('+')) added.push({ file, text: line.slice(1), line: newLine++ });\n  else if (line.startsWith('-')) removed.push({ file, text: line.slice(1), line: oldLine++ });",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "for (const { file, text } of added) {",
+              "replace": "for (const entry of added) {\n  const { file, text } = entry;",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "  if (isConstraints(file) && ",
+              "replace": "  if (isConstraints(entry, 'new') && ",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "removed.filter((l) => isConstraints(l.file) &&",
+              "replace": "removed.filter((l) => isConstraints(l, 'old') &&",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "added.filter((l) => isConstraints(l.file) &&",
+              "replace": "added.filter((l) => isConstraints(l, 'new') &&",
+              "kind": "home",
+              "reason": "The guard reads the bar's section alone, so each diff line carries its line number in the old or the new text, and the file is read at both ends.",
+              "gist": "The guard tracks line numbers and reads the file at both ends"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "\n\nconst base = (() => {",
+              "replace": "\nimport { relative } from 'node:path';\nimport { fileURLToPath } from 'node:url';\n\nconst base = (() => {",
+              "kind": "method",
+              "reason": "The guard's patterns matched its own source and the bar's floor bullets, so the change that introduces them failed the guard; the two are exempt from the pattern scan, and nothing else is.",
+              "gist": "The guard exempts its own file and the bar's section from scanning",
+              "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the guard's suppression, stub and skip patterns exempt the bar's Constraints section and the guard's own file, so the change that introduces them passes"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "process.chdir(top);\n",
+              "replace": "process.chdir(top);\n// The guard's own file as the diff names it, which it never scans for the patterns it holds.\nconst self = relative(top, fileURLToPath(import.meta.url)).replace(/\\\\/g, '/');\n",
+              "kind": "method",
+              "reason": "The guard's patterns matched its own source and the bar's floor bullets, so the change that introduces them failed the guard; the two are exempt from the pattern scan, and nothing else is.",
+              "gist": "The guard exempts its own file and the bar's section from scanning",
+              "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the guard's suppression, stub and skip patterns exempt the bar's Constraints section and the guard's own file, so the change that introduces them passes"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "// Merge base; bail to exit 2 rather than pretending a shallow/rootless clone is clean.",
+              "replace": "// Merge base; bail to exit 2 rather than pretending a shallow/rootless clone is clean. In CI, check\n// out the whole history first, since a shallow clone's commits have no parents, and fail the job\n// on exit 2 as on exit 1.",
+              "kind": "method",
+              "reason": "The guard's comment says what CI does around it: a checkout holding the whole history, since a shallow clone's commits have no parents, and exit 2 failing the job as exit 1 does.",
+              "gist": "The comment tells CI to fetch full history and fail on 2",
+              "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start says how CI calls the guard, the base it diffs against on a shallow checkout and the merge-base bail"
+            },
+            {
+              "segment": "66fa2ba3424a",
+              "find": "  if (SUPPRESSIONS.test(text)) flag('silenced-checker', file, text);\n  if (STUBS.test(text)) flag('unfinished-work', file, text);\n  if (SKIPS.test(text)) flag(",
+              "replace": "  // The bar's section and the guard's own file name the patterns they forbid, so neither is\n  // scanned for them: the change that introduces the two passes, and the same pattern added\n  // anywhere else is flagged.\n  const scanned = file !== self && !isConstraints(entry, 'new');\n  if (scanned && SUPPRESSIONS.test(text)) flag('silenced-checker', file, text);\n  if (scanned && STUBS.test(text)) flag('unfinished-work', file, text);\n  if (scanned && SKIPS.test(text)) flag(",
+              "kind": "method",
+              "reason": "The guard's patterns matched its own source and the bar's floor bullets, so the change that introduces them failed the guard; the two are exempt from the pattern scan, and nothing else is.",
+              "gist": "The guard exempts its own file and the bar's section from scanning",
+              "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the guard's suppression, stub and skip patterns exempt the bar's Constraints section and the guard's own file, so the change that introduces them passes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Constraint-driven development: the practice's mechanics\n\nThis page holds where constraint-driven-development's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe decisions book is `.greenline/DECISIONS.md`, where the bar stands when the repository keeps no decision home of its own and which the floor guard reads by default. The guard runs as a check through `greenline check -- node <guard> --bar <path>`, its `--bar` naming the file that holds the bar where the decision home is the repository's own.",
+          "kind": "home",
+          "reason": "constraint-driven-development's mechanics: the decisions book that holds the bar by default and the floor guard recorded through greenline check, held apart since J-93 S2.",
+          "gist": "The bar's default book and the guard's recorded check"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f2c30eccb2b7",
+      "kind": "method",
+      "reason": "Running the suite gives no coverage number where the repository has no coverage provider, so the row says so, and that a measured coverage waits on Q1's (a); upstream's row assumed a provider.",
+      "gist": "Coverage needs a provider; with none there is no number yet",
+      "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, the coverage row saying a number needs a coverage provider among it",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "ee866a3ca44c",
+      "kind": "method",
+      "reason": "The intake follows the frame skill's interview, which asks a frontier in one round (contradiction 1), where upstream pointed at interview-me, which the roster lacks; it links the page beside frame, says what this start keeps apart, and where frame records the four answers.",
+      "gist": "Links frame's interview page, its differences, one round and the answers' home",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\": the pointer is the exact link to frame's interview page and the start says in one sentence how its four questions run at every depth; and the card of 2026-10-14, \"The record's frame section\": a start's four frame answers live in the change record's frame section",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "59ce46ec6b85",
+      "kind": "pointer",
+      "reason": "The overview's comparison names other skills of the upstream pack, which the roster does not carry.",
+      "gist": "The comparison names pack skills the roster lacks, so it goes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "03f5cc8848f3",
+      "kind": "pointer",
+      "reason": "The overview's comparison names other skills of the upstream pack, which the roster does not carry.",
+      "gist": "The comparison names pack skills the roster lacks, so it goes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "41c7661056a7",
+      "kind": "pointer",
+      "reason": "The overview's comparison names other skills of the upstream pack, which the roster does not carry.",
+      "gist": "The comparison names pack skills the roster lacks, so it goes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "d027ab73b080",
+      "kind": "pointer",
+      "reason": "The overview's comparison names other skills of the upstream pack, which the roster does not carry.",
+      "gist": "The comparison names pack skills the roster lacks, so it goes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "3d414d1431af",
+      "kind": "pointer",
+      "reason": "The overview's comparison names other skills of the upstream pack, which the roster does not carry.",
+      "gist": "The comparison names pack skills the roster lacks, so it goes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "c41203e1aa2f",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "92164ee88371",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f903f949d877",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "93bf81473326",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "dc592a0e0e16",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "0edf46fa9a25",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "dea1c29a8abc",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "4e9dc1e16d49",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "06c5dc8e6d7f",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "32093c353e3f",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f049794637ec",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "7c463758ceeb",
+      "kind": "scope",
+      "reason": "When to use is the description's and the block's situation row; its pointers name skills the roster does not carry.",
+      "gist": "When to use belongs to the description; its links cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "467e65546a34",
+      "kind": "harness",
+      "reason": "The row of agent harness paths is harness-bound (R21): the agent instructions file is read in any case.",
+      "gist": "The agent tool paths row goes; the instructions file is read anyway"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "d421bbc0dd8e",
+      "kind": "home",
+      "reason": "Step 3 writes the bar into the decision home, where upstream wrote CONSTRAINTS.md at the repository root (R21).",
+      "gist": "CONSTRAINTS.md at the root gives way to the bar in decisions",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "a203e674c9cd",
+      "kind": "home",
+      "reason": "Step 3 writes the bar into the decision home, where upstream wrote CONSTRAINTS.md at the repository root (R21).",
+      "gist": "CONSTRAINTS.md at the root gives way to the bar in decisions",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "2bc646739f9d",
+      "kind": "home",
+      "reason": "Step 3 writes the bar into the decision home, where upstream wrote CONSTRAINTS.md at the repository root (R21).",
+      "gist": "CONSTRAINTS.md at the root gives way to the bar in decisions",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "538d3b71833c",
+      "kind": "method",
+      "reason": "No line goes into AGENTS.md or CLAUDE.md: the bar is in the decision home the block reads (R21).",
+      "gist": "No line is added to AGENTS.md or CLAUDE.md; decisions already hold it",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the bar lives in the decision home, which the block already reads, with no line in the agent instructions file, and the floor guard runs as one of the repository's own checks through greenline check, never a harness hook",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "a21416d15d73",
+      "kind": "method",
+      "reason": "Step 4 is not taken: \"Picking a dimension means installing something\" loses to groundwork's rule that an option is no obligation to install (contradiction 29), and its tool table is garden's.",
+      "gist": "Step 4 goes: choosing a dimension no longer obliges an install",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "cff32dffedd8",
+      "kind": "method",
+      "reason": "Step 4 is not taken: \"Picking a dimension means installing something\" loses to groundwork's rule that an option is no obligation to install (contradiction 29), and its tool table is garden's.",
+      "gist": "Step 4 goes: choosing a dimension no longer obliges an install",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "c5352f0340c1",
+      "kind": "method",
+      "reason": "Step 4 is not taken: \"Picking a dimension means installing something\" loses to groundwork's rule that an option is no obligation to install (contradiction 29), and its tool table is garden's.",
+      "gist": "Step 4 goes: choosing a dimension no longer obliges an install",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "126e341aa46c",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "688071947191",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "17f07baf75c4",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "da630b1b622e",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "350a7e3e3fcf",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "bd05c147e11c",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "2e335f5a1ee9",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "e870ead48577",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "09fe4aa155d1",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "10fc056c071e",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "8dcf40dea32f",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "d0dfbc8e20b3",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "83212b890e3f",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "4a067d18da33",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "9d3e613c5ef8",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "8a833237a60e",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "efa6092ab585",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "767128d16fe9",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "a0a81fc2ecc3",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "5b9a45300c71",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "2e680c2dfecf",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "40e0f7b8400d",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "17c855643a91",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "6014fe1864c3",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f17cf05876c0",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "9e2a6e558375",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "4b014c908a5c",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "72a0991d17f0",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "88837300b230",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f59f324b41f1",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "b3b158c36b2c",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f89104190800",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "d1bea75721a6",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "4420df860485",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "710411b829de",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "1f11c8f8d2bc",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "9bfaa3a70252",
+      "kind": "method",
+      "reason": "Step 4's cautions, scripts and mapping go with the step, the tools and their flags being garden's.",
+      "gist": "Step 4's cautions and scripts leave with it; the tools are garden's",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "6e70f6d64b9d",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "7c084f3dd69d",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "b90ff2bac34a",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "0b12b17e9fb3",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "c5c1a056006f",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "d7470f316ebd",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "e28e2388f174",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "72f9c1764244",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "0927925333b9",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "6fa2bc8a2ce4",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "5d328c46c4f3",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "50819d63899f",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "c1d0c2ef2a09",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "ce8a8c5cc5d3",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "de1ecb8139e1",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "65e7c837008e",
+      "kind": "method",
+      "reason": "The tool, install and default-threshold tables are knowledge consulted for an engineering choice, handed to garden's maintainer.",
+      "gist": "Tool, install and threshold tables are engineering knowledge, handed to garden",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "b739c459d930",
+      "kind": "home",
+      "reason": "The written level is the bar in the decision home.",
+      "gist": "The written level is now the bar in the decisions document",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "6163cbb12410",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "e4b1386c9765",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "8d86e988d49c",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "cb7e647e97c1",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "2804eb16119f",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "929313e4bb28",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "3e0ab4e45720",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "7dfba083a20a",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "052cfba57d12",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "74024038409c",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "298114f10938",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "b47e51099b7c",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "00ff7aad05d4",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "ead52d401269",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "eb4c29db306c",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "3b9c91b5ed38",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "481f7aa61964",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "93dcd0a26168",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "94b16eba6519",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "27d79d226cae",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "80937328f4f7",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "768802acbc1a",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "38c865861c7d",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "aaad8f70c231",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f28b25896404",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "004c79a94b9a",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "05b715bf2587",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "66bee3a804a2",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "08692e19968f",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "3497abe8ff9f",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f89275a338ee",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "0f2b43836b7d",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "32bdbc537891",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "7d9db8b71476",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "043139696aea",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "f7603c5a712d",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "af922af15523",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/SKILL.md",
+      "segment": "3ee1fad2bbc6",
+      "kind": "scope",
+      "reason": "The rationalizations, the red flags, the verification and the see-also restate the steps or name skills the roster does not carry, outside the method core ruled in.",
+      "gist": "Rationalisations, red flags and see-also repeat the steps or cite absent skills"
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/references/floor-guard.md",
+      "segment": "0af1b5f2885b",
+      "kind": "pointer",
+      "reason": "The pointer to Step 4 leaves with the step, which is garden's.",
+      "gist": "References to Step 4 leave with the step, which is garden's",
+      "replacedBy": {
+        "path": "references/floor-guard.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "constraint-driven-development/references/floor-guard.md",
+      "segment": "1249d9623021",
+      "kind": "pointer",
+      "reason": "The pointer to Step 4 leaves with the step, which is garden's.",
+      "gist": "References to Step 4 leave with the step, which is garden's",
+      "replacedBy": {
+        "path": "references/floor-guard.md",
+        "passage": 3
+      }
+    }
+  ]
+}

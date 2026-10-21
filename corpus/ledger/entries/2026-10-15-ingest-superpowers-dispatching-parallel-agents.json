@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-15-ingest-superpowers-dispatching-parallel-agents",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-14-review-brief-on-its-own-page",
+    "sha256": "55ddbf0ae5511e4ea3afef3b36ec1a02475ebcef6690e84e88939b7194df09ad"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/dispatching-parallel-agents"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Concurrent dispatch, which the one-agent rule keeps out at every mode",
+  "reason": "It catches wall time lost to independent failures in turn, at an agent run each, which one agent at a time refuses at every mode until parallel subagents are ruled. Its brief and checks confirm the ledger guide and verify.",
+  "authorisedBy": {
+    "date": "2026-10-15",
+    "words": "Decline the three; no handoff"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-15",
+      "words": "Decline the three; no handoff"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-build-the-lever",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-ponytail-ponytail-help",
+    "sha256": "0a552334d8618fa0365b7d6568cf3987810fbcc40483e6b7e5421c97c3503006"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-build-the-lever"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Enters as the trial habit build-the-lever",
+  "reason": "A new trial habit build-the-lever: the script that does or proves bulk work, checked against one unit done by hand. Its fan-out bullet is dropped and its threshold kept.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"everything is good\" (R20; contradiction 26)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"everything is good\" (R20; contradiction 26)"
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "build-the-lever",
+    "catches": "Bulk work done by hand that can be verified again only by redoing it",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 270
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 270
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 270
+      }
+    ],
+    "ships": "trial"
+  }
+}

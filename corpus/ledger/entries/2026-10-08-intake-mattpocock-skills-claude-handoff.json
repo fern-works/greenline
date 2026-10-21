@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-mattpocock-skills-claude-handoff",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-mattpocock-skills-handoff",
+    "sha256": "3c63286f80871667bb3523ab07e8dd78357ccc20592bac4106b691455c5e5089"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "6fd947921b935b7e1e69293a200400f0fdd5c15f",
+    "path": "skills/in-progress/claude-handoff"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A background agent beside the live session, which greenline never runs",
+  "reason": "Its core launches a background agent beside the live session in the same checkout, while greenline runs its subagents one after another.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Decline, \"everything is good\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20: greenline runs its subagents one after another, never in parallel, and uses no worktrees"
+    }
+  ]
+}

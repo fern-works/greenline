@@ -1,0 +1,64 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-boundaries-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-domain-and-types-recipe",
+    "sha256": "833e0743cb1680984e8f26f7de524fa4e650c61651a77d46c3eb04e1d6537022"
+  },
+  "subject": "skill:boundaries",
+  "recipe": "148e3e2c6820c9a0a1c25314bf66aadfcd1fcb50f37c516c3d98b85a22ee8592",
+  "result": "60cf1161f5a30a84d49837b7e031349bc648362ca1343ed02775985899e7f469",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Boundary-discipline and fail-loud become one habit",
+  "reason": "boundaries joins boundary-discipline and fail-loud as one habit, boundary-discipline its spine and fail-loud its section on failures, with an opening that says which boundary it means.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: boundary-discipline and fail-loud are one habit, boundary-discipline its spine"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 35,
+        "taken": 34,
+        "exact": 34,
+        "retention": 1,
+        "coverage": 0.9714285714285714,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 30,
+        "taken": 29,
+        "exact": 29,
+        "retention": 1,
+        "coverage": 0.9666666666666667,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 115
+  }
+}

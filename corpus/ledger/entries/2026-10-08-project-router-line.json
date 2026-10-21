@@ -1,0 +1,45 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-project-router-line",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-control-ui-retired",
+    "sha256": "fcc81a688f57b6faaf331146d4fad6b26f1ad62d780cacb24ccf8f5e941b9183"
+  },
+  "subject": "skill:project-router",
+  "recipe": "7939040ca81c241d835635c38cac178aa4424b0049b6129d5cc96f40841772b8",
+  "result": "c4c7b3ff0122e064a19750aca16f6708cf57eb3c3ac248978166f16688a44c75",
+  "pages": [
+    {
+      "path": "ROUTING.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The router now routes to the line of seven steps",
+  "reason": "Routes to the line as the block cuts over to the modes: it resumes a change at its next step, chooses a start or sends new work to frame. ROUTING.md becomes the line's map; the old classes leave.",
+  "authorisedBy": {
+    "date": "2026-10-04",
+    "words": "The method items carry the cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on, in the operator's words \"agent doesn't runs any mode at default until users ask him to just implement without asking\", and R16 of 2026-10-07, the roster by kind, in the operator's words \"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-26",
+      "words": "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on, in the operator's words \"agent doesn't runs any mode at default until users ask him to just implement without asking\", and R16 of 2026-10-07, the roster by kind, in the operator's words \"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 944
+  }
+}

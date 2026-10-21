@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-mattpocock-skills-pr",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-tjcages-pr-writing",
+    "sha256": "376c5d15352ab7ea4125c2d9b6fb73eb0a3ef8ea91a6bdd66260d7f8ae23cece"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "6fd947921b935b7e1e69293a200400f0fdd5c15f",
+    "path": "skills/engineering/pr"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Evidence tier and merge danger join pr-writing",
+  "reason": "Its evidence tier and merge danger join the new habit pr-writing; its summary menu duplicates show-me.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "pr-writing",
+    "catches": "A PR or commit body that restates the diff and leaves out the why, the verification and the risk",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      }
+    ],
+    "ships": "trial"
+  }
+}

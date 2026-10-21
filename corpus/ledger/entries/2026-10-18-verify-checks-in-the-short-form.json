@@ -1,0 +1,119 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-18-verify-checks-in-the-short-form",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-18-build-checks-in-the-short-form",
+    "sha256": "a131e7a52fe72e88009182a2435a63a5d9d4648693a5797a49be5e60ab3e7791"
+  },
+  "subject": "skill:verify",
+  "recipe": "89c6a25c5c28f2f95922a683603eab30e402709d3d7528dfb59239476e3e202c",
+  "result": "fbb5338ec5bac31d15720e91055a8f0626e08fd3156d91116bcf378876194483",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The verifier's checks in the short form; a rerun to read counts",
+  "reason": "Verify gives the recorder's short form first beside the long form the block gives a fresh agent, and a test rerun to read why it failed goes through greenline check, the probe being the one plain run.",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13); its rationalization tables and its absolutes are dropped as rhetoric; browser-testing-with-devtools' security core enters control-ui as default guardrails; loop-on-ci and frontend-ui-engineering are garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-15",
+      "words": "The operator's finalise words of 2026-10-15 on the QA series' third fix job, \"Finalise J-81 S1 as drafted, fast\": every probe, scratch script and before-and-after copy of a change goes under .greenline/tmp/<id>/, never the host's temporary directory, and a check's facts cite paths inside the repository"
+    },
+    {
+      "date": "2026-10-16",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices, with the ruling of 2026-10-18 that the close is a skill step: a reviewer's or verifier's brief is written by greenline brief from the record into the change's folder, its first line the command's mark, and never by the builder, which starts the agent with its path and never opens, copies, diffs or derives a brief file; status reports a brief file the command did not write; and the close cites each brief the command wrote, from the status listing"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 137,
+        "taken": 134,
+        "exact": 127,
+        "retention": 0.9477611940298507,
+        "coverage": 0.9781021897810219,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 63,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.2222222222222222,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 15,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.6,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 137,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.15328467153284672,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 2009
+  }
+}

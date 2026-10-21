@@ -1,0 +1,3 @@
+interface:
+  display_name: "Router"
+  short_description: "Find where a request stands on the line when the next step is unclear: resume an open or stopped change at the step its \"next\" line names, choose the start the request's situation calls for, or send a new change to its proposal. Use for continuity (\"what were we doing?\"), for a request no start fits, and for doubt about the next step."

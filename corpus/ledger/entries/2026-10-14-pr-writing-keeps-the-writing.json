@@ -1,0 +1,87 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-pr-writing-keeps-the-writing",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-plan-tickets-share-a-branch",
+    "sha256": "f2da6b0c5814e25a94cd1591fe6055bbfde42401de3a4ddd52217568812c3dde"
+  },
+  "subject": "skill:pr-writing",
+  "recipe": "24e74822438b2c4a7083bc976083ed33498af77acf96b155944fec9226d63f2f",
+  "result": "d6022812a97534a9cdddbeb39726881f06ed57443c30a8433fc5af2a75a49a7d",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The push and PR become close's landing; the habit keeps writing",
+  "reason": "Pushing the branch and opening the PR become the close step's landing, offered only there on the owner's word; pr-writing keeps the writing method and offers only the forge edit.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 32,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.28125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "humanlayer",
+        "segments": 43,
+        "taken": 3,
+        "exact": 3,
+        "retention": 1,
+        "coverage": 0.06976744186046512,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 49,
+        "taken": 13,
+        "exact": 13,
+        "retention": 1,
+        "coverage": 0.2653061224489796,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "tjcages",
+        "segments": 58,
+        "taken": 28,
+        "exact": 28,
+        "retention": 1,
+        "coverage": 0.4827586206896552,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 553
+  }
+}

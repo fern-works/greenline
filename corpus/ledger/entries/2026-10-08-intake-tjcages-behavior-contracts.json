@@ -1,0 +1,37 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-tjcages-behavior-contracts",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-security-and-hardening",
+    "sha256": "1cc4c6bfb0812779c16b6707bd203f80da8e928b40c5856dc4b1ae241534a754"
+  },
+  "source": {
+    "repository": "https://github.com/tjcages/skills",
+    "commit": "170f1ca406f926f47433217f731ebf80a613719c",
+    "path": "behavior-contracts/skills/behavior-contracts"
+  },
+  "licence": "ideas-only",
+  "verdict": "hand-off",
+  "gist": "A UI parity procedure, ideas only, handed to garden",
+  "reason": "Ideas only, with no licence file covering it; a cross-platform UI parity procedure.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its cross-platform UI parity procedure, as ideas only",
+        "locator": "behavior-contracts/skills/behavior-contracts"
+      }
+    ]
+  }
+}

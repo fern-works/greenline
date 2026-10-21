@@ -1,0 +1,12 @@
+#!/bin/sh
+# greenline's reference-transaction hook, written by greenline init and refreshed by sync; an edit is
+# replaced at the next sync. It hands git's arguments and stdin to greenline, which
+# reads only git's facts and the change record's and refuses only on one of them.
+# git runs this hook three times for every reference update; only the prepared
+# state of an update to a branch can be refused, so every other run ends here
+# without starting greenline, its stdin read so git's writes into it never fail.
+if [ "$1" != prepared ]; then cat >/dev/null; exit 0; fi
+updates=$(cat)
+case "$updates" in *" refs/heads/"*) ;; *) exit 0 ;; esac
+command -v greenline >/dev/null 2>&1 || exit 0
+printf '%s\n' "$updates" | greenline hook reference-transaction "$@"

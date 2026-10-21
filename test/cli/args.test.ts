@@ -16,7 +16,7 @@ describe("parseArgs", () => {
     expect(invocation.text).toContain("Usage");
     expect(invocation.text).toContain("init");
     expect(invocation.text).toContain("sync");
-    expect(invocation.text).toContain("doctor");
+    expect(invocation.text).toContain("status");
   });
 
   it("rejects unknown commands as usage errors", () => {
@@ -63,11 +63,75 @@ describe("parseArgs", () => {
     expect(invocation.request.json).toBe(true);
   });
 
-  it("parses doctor", () => {
-    const invocation = parseArgs(["doctor"], "1.2.3");
-    expect(invocation.kind).toBe("run");
-    if (invocation.kind !== "run") return;
-    expect(invocation.request.command).toBe("doctor");
-    expect(invocation.request.json).toBe(false);
+  it.each(["doctor", "evidence"])(
+    "S20 the removed %s command is an unknown command whose refusal names status",
+    (name) => {
+      const invocation = parseArgs([name, "--json"], "1.2.3");
+      expect(invocation.kind).toBe("usage-error");
+      if (invocation.kind !== "usage-error") return;
+      expect(invocation.message).toContain(`unknown command '${name}'`);
+      expect(invocation.message).toContain("status");
+    },
+  );
+
+  it("S20 help for a removed command is the same unknown-command refusal naming status", () => {
+    const invocation = parseArgs(["help", "doctor"], "1.2.3");
+    expect(invocation.kind).toBe("usage-error");
+    if (invocation.kind !== "usage-error") return;
+    expect(invocation.message).toContain("unknown command 'doctor'");
+    expect(invocation.message).toContain("status");
+  });
+
+  it("S20 an unknown connectors operation is refused by its own name", () => {
+    const invocation = parseArgs(["connectors", "frob"], "1.2.3");
+    expect(invocation.kind).toBe("usage-error");
+    if (invocation.kind !== "usage-error") return;
+    expect(invocation.message).toContain("'frob'");
+    expect(invocation.message).not.toContain("unknown command 'connectors'");
+  });
+
+  it("J-73 S4, J-89 S1 and J-93 S3 the root help lists the ten command groups, tidy, brief, event and hook among them, and neither removed command", () => {
+    const invocation = parseArgs(["--help"], "1.2.3");
+    if (invocation.kind !== "help") throw new Error("help expected");
+    const commands = [...invocation.text.matchAll(/^  ([a-z]+)\b/gm)].map((match) => match[1]);
+    expect(commands).toEqual([
+      "init",
+      "sync",
+      "status",
+      "tidy",
+      "inspect",
+      "connectors",
+      "check",
+      "brief",
+      "event",
+      "hook",
+      "help",
+    ]);
+  });
+
+  it("J-89 S2 the root help gives check's short form for the open change", () => {
+    const invocation = parseArgs(["--help"], "1.2.3");
+    if (invocation.kind !== "help") throw new Error("help expected");
+    expect(invocation.text.replace(/\s+/g, " ")).toContain(
+      "check -- <command> for the open change at its step",
+    );
+  });
+
+  it("J-82 S1 init's --yes help runs git init only on the owner's yes", () => {
+    const invocation = parseArgs(["init", "--help"], "1.2.3");
+    if (invocation.kind !== "help") throw new Error("help expected");
+    const help = invocation.text.replace(/\s+/g, " ");
+    expect(help).toContain(
+      "--yes on the owner's yes, run 'git init' outside a repository and install both harness trees",
+    );
+    expect(help).not.toContain("accept defaults");
+  });
+
+  it("J-84 S2 tidy's help says it runs at every change's close, whatever its mode", () => {
+    const invocation = parseArgs(["tidy", "--help"], "1.2.3");
+    if (invocation.kind !== "help") throw new Error("help expected");
+    expect(invocation.text.replace(/\s+/g, " ")).toContain(
+      "Remove the working files of done and dropped changes from .greenline/tmp/; run it at every change's close, whatever its mode",
+    );
   });
 });

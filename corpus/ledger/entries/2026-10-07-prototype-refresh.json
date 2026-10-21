@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-prototype-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-improve-codebase-architecture-refresh",
+    "sha256": "3a1f1e507e94e7f65dd10cde56bb68853372b08aa9189c4a1c2805020fb444f1"
+  },
+  "subject": "skill:prototype",
+  "recipe": "b954ef13b66d49463b8f84d5ca53bb3ca2309ce1585b57d6dff97c1ba66fa785",
+  "result": "330881c0370e63cf08b8e524080816b88b573ca2a1dce15cc41fbc459e5c89d3",
+  "pages": [],
+  "gist": "Upstream unchanged; the recipe re-anchors as it stands",
+  "reason": "Refreshes prototype to mattpocock-skills 6fd947921b93: no segment of its files changed, so the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 198,
+        "taken": 194,
+        "exact": 194,
+        "retention": 1,
+        "coverage": 0.9797979797979798,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 450
+  }
+}

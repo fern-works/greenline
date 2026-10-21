@@ -1,0 +1,95 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-plan-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-frame-gists",
+    "sha256": "0bfdf6230ed529a28eb7c3753339a3a8a8f417180d50574d66811243dbfed172"
+  },
+  "subject": "skill:plan",
+  "recipe": "4a7208f6f665d0eed2c827afa76944328b8adf62bb9cb93557d7e4d12ccc99a3",
+  "result": "65030e73f1baece212067bfee8c3fdd923df4cf7ba0a3f4c5da8b9614e0106a9",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\": plan is made from to-spec and to-tickets"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the R3 rulings of 2026-10-08, \"yes go ahead\": spec-driven-development's reframing passage, planning-and-task-breakdown, writing-plans and architect combine into it, the spec and the tickets stay path-free while a single change's plan section may name files and signatures, questioning is frame's, the trunk's wait after ticketing stands over architect's \"No human checkpoint\", and spec-driven's capability map is not taken"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: the parallel sections and the worktree line are declined"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: architect's arena runners and their models are gone, the candidates designed in turn by one agent"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\", on the depths a mode gives a step and the two waits of planned work, each ticket with its own mode (R10)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "to-spec's seam check carried from series-s7-roster-2026-09-11"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 130,
+        "taken": 85,
+        "exact": 85,
+        "retention": 1,
+        "coverage": 0.6538461538461539,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 263,
+        "taken": 28,
+        "exact": 28,
+        "retention": 1,
+        "coverage": 0.10646387832699619,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 108,
+        "taken": 19,
+        "exact": 19,
+        "retention": 1,
+        "coverage": 0.17592592592592593,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 79,
+        "taken": 8,
+        "exact": 8,
+        "retention": 1,
+        "coverage": 0.10126582278481013,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1079
+  }
+}

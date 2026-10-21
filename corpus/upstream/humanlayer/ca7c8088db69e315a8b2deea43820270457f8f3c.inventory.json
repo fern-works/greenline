@@ -1,0 +1,51 @@
+{
+  "commit": "ca7c8088db69e315a8b2deea43820270457f8f3c",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "5f13c18ea00ea5c1384f41745feeca774079164f7f59a92e4ac0899ad217b26f"
+    },
+    {
+      "path": "improve-claude-md/SKILL.md",
+      "sha256": "dbc3019c52f2409c031c4261664381c338d206b53ed700120743e374a87a9b8c"
+    },
+    {
+      "path": "show-me/SKILL.md",
+      "sha256": "434a2346cc95e313b0d367d477dda2e23ba642dd2181757415a09500664af100"
+    },
+    {
+      "path": "show-me/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "visual-pr/SKILL.md",
+      "sha256": "89df56774d8ec522bd0d0f03cd553dae5d70bff9364749874b5a0c0ae390eec0"
+    },
+    {
+      "path": "visual-pr/references/describe_pr_final_answer.md",
+      "sha256": "dfc26d73c816e77010c87218ac0f03b41038938bc889ada5c90dc95e414c9d39"
+    },
+    {
+      "path": "visual-pr/references/pr_description_template.md",
+      "sha256": "42d449ef3dd4e170fc193d9ded447c281bf467e2bb7f6630bb1683220357c378"
+    },
+    {
+      "path": "visual-pr/references/show-me.md",
+      "sha256": "968f25af5bce778c06826f5bc4540631c3eab3e067be0fe48b48552cc1664a1f"
+    }
+  ],
+  "entries": [
+    {
+      "name": "show-me",
+      "path": "plugins/show-me/skills/show-me"
+    },
+    {
+      "name": "improve-claude-md",
+      "path": "plugins/improve-claude-md/skills/improve-claude-md"
+    },
+    {
+      "name": "visual-pr",
+      "path": "plugins/visual-pr/skills/visual-pr"
+    }
+  ]
+}

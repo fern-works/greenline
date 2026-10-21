@@ -1,0 +1,91 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-verify-rename",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-improve-instructions-recipe",
+    "sha256": "a442cee4a7249801927d275b794f0eaee0212d1ae3f8f01954dd1a9834628e1d"
+  },
+  "subject": "skill:verify",
+  "recipe": "ffcc74cacae9694ad5a1d8746ea843506e5501a096255ce02867d1528e4c3caf",
+  "result": "e1a9e9faeeec0a12e83bf1788d0fb16e8968b1fb0b4749f30d87aea2a465f426",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Names diagnose as the owner of a failure's cause",
+  "reason": "verify names diagnose, the start diagnosing-bugs became, as the owner of a failure's cause.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13); its rationalization tables and its absolutes are dropped as rhetoric; browser-testing-with-devtools' security core enters control-ui as default guardrails; loop-on-ci and frontend-ui-engineering are garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 137,
+        "taken": 134,
+        "exact": 127,
+        "retention": 0.9477611940298507,
+        "coverage": 0.9781021897810219,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 63,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.2222222222222222,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 15,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.6,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 137,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.15328467153284672,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1397
+  }
+}

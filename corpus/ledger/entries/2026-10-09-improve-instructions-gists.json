@@ -1,0 +1,75 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-improve-instructions-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-correct-gists",
+    "sha256": "9bbf4e3fe26399dae3afca394655bb74fd8a5393fddea2381e0148f3007a4a7d"
+  },
+  "subject": "skill:improve-instructions",
+  "recipe": "065a34dc3f12dc877b9bf021228f711109db0661d90339a963b459a9ccc56538",
+  "result": "852409a46dffef94dd62d586912cbe149074b1cf1bfd8623d3e04305af278c49",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the file tidied outside the managed markers, a situation heading in place of the wrapper tag and context-engineering's rules-file packing joining it"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the wrapper tag and the harness names edited throughout"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 172,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "humanlayer",
+        "segments": 71,
+        "taken": 56,
+        "exact": 44,
+        "retention": 0.7857142857142857,
+        "coverage": 0.7887323943661971,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 803
+  }
+}

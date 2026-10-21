@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-review-lens-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-project-router-recipe",
+    "sha256": "87f72cc882232adcf9f224b464bbe91783f5c8cdfb12677d749c5aed3b319b16"
+  },
+  "subject": "skill:review-lens",
+  "recipe": "47cfa25fcc1fe0181b29cacb556368631d5469620d12533a3fc0618360ae7695",
+  "result": "b51455fa70fcfeb8001b3b43f2809b09499512fd529372237701b59ffb9da185",
+  "pages": "unknown",
+  "gist": "A native skill moves to its recipe, its body unchanged",
+  "reason": "Moves review-lens, a native skill, to its recipe under Q1 of 2026-10-04: its body byte for byte, its front matter in canonical quoted form. The old chain pinned it at practice-without-guidance-2026-09-26.",
+  "authorisedBy": {
+    "date": "2026-09-26",
+    "words": "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-26",
+      "words": "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 2426
+  }
+}

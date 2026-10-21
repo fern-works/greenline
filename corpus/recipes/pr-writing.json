@@ -1,0 +1,1700 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "pr-writing",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "pr-writing"
+    },
+    {
+      "field": "description",
+      "value": "Write or review a commit message, a PR title or a PR body that says what changed and why: the diff read first, a subject under 50 characters in the imperative, a body of what and why, never how, and a PR body of what changed, why, how to verify, the risk and the notes, linking the change record. Use when a commit message, a PR title or a PR body is about to be written or reviewed."
+    }
+  ],
+  "sources": ["cursor-team-kit", "humanlayer", "mattpocock-skills", "tjcages"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": ["c9851aa6214a"]
+        },
+        {
+          "passage": "written",
+          "text": "pr-writing is a trial habit, installed only where the workspace's `trials` names it, for the moment a commit message, a PR title or a PR body is about to be written or reviewed, at whatever step the work is in, most often build and close. It writes no record of its own: the change record holds the why, and a PR body is a projection of that record that links it. Pushing the branch and opening the PR are the landing the close step offers, done only on the owner's word as AGENTS.md says, and editing a PR on the forge waits for that word too; this habit keeps the writing. The sentences themselves are the prose habit's to cut, and the visual a PR body carries is show-me's.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situation its block row keys it by, that it is a trial installed only where trials names it, that it writes no record and the PR body projects the change record, that the push and the PR are the close step's landing on the owner's word while this habit keeps the writing, and the habits beside it.",
+          "gist": "Opens the trial habit: it writes, and the landing is close's"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": ["5382e7302f76", "6af17c1b672c", "e868256e79ff", "321105d463cf"]
+        },
+        {
+          "passage": "written",
+          "text": "Read `git diff --staged --stat` for a commit, and for a PR the change's commits, which the change's status lists by their trailer; then the real hunks.",
+          "kind": "pointer",
+          "reason": "The diff read first is the staged one for a commit and the change's commits for a PR, which greenline finds by their trailer as a set, never a branch's range against main. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Reads the staged diff, or the change's commits found by their trailer",
+          "credits": ["tjcages"]
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": ["34969852e459"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "### 2. Write the subject",
+          "kind": "pointer",
+          "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+          "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+          "credits": ["tjcages"]
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": [
+            "c4c8f474c860",
+            "9f696bce1df0",
+            "cb5e666962f7",
+            "2a75beee5619",
+            "14b9190192ec",
+            "02639692e410",
+            "09b0172bcb8e",
+            "872d540c63a2",
+            "67440aaaad70"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Where the repository keeps a commit convention of its own, such as a type prefix or a tracker's key, it governs the subject's form, and these rules apply only where it is silent; where it keeps none, add none.",
+          "kind": "method",
+          "reason": "The repository's own commit convention decides, neither source's: pr-writing's conventional commits only within 50 characters and another source's prefixes alike (contradiction 28).",
+          "gist": "The repository's own commit convention governs the subject; none is added",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward"
+        },
+        {
+          "passage": "written",
+          "text": "### 3. Blank line, then body wrapped at 72",
+          "kind": "pointer",
+          "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+          "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+          "credits": ["tjcages"]
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": ["5d0cd126327b"]
+        },
+        {
+          "passage": "written",
+          "text": "### 4. Body says what and why, never how",
+          "kind": "pointer",
+          "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+          "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+          "credits": ["tjcages"]
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": ["321faba3dace", "8a3ba629aad5"]
+        },
+        {
+          "passage": "written",
+          "text": "The last line of every commit of a change is its trailer, as AGENTS.md says.",
+          "kind": "scope",
+          "reason": "The commit message carries the change's trailer, which the block requires of every commit and the build step writes on its last line. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Every commit of a change ends with the change's trailer"
+        },
+        {
+          "passage": "written",
+          "text": "### 5. Apply the prose habit\n\nEvery sentence, in commits and PR bodies both, is prose: the prose habit's catalog of tells and its measurement in place of the adjective apply, and a PR body is a briefing a reviewer reads in under a minute.",
+          "kind": "scope",
+          "reason": "The language contract duplicates the prose habit, which owns the sentences of a commit message and a PR description; the step keeps its number and names the habit.",
+          "gist": "Step 5 hands the sentences to the prose habit",
+          "credits": ["tjcages"]
+        },
+        {
+          "passage": "written",
+          "text": "### 6. Fill the PR body template",
+          "kind": "pointer",
+          "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+          "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+          "credits": ["tjcages"]
+        },
+        {
+          "passage": "written",
+          "text": "```markdown\n## What changed\n<1 to 3 sentences. Active voice, present tense.>\n\n## Why\n<The problem. The reason for this solution. What you rejected.>\n\n## How to verify\n1. <One action per step.>\n2. <Expected result, stated concretely.>\n\n## Risk\n<What breaks if this is wrong. How to roll it back.>\n\n## Special things to note\n- <A reviewer warning, a migration, a deliberate omission, or None.>\n\nChange record: `.greenline/ledger/<id>.md`\n```",
+          "kind": "method",
+          "reason": "The template keeps pr-writing's order and fields, adds visual-pr's notes field, and ends on the link to the change record in place of a tracker's closing line, since the PR body is a projection of the record.",
+          "gist": "The template gains a notes field and links the change record last",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+          "credits": ["tjcages", "humanlayer"]
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": ["7a7980ef3879"]
+        },
+        {
+          "passage": "written",
+          "text": "The body is a projection of the change record, never a second home for it: What changed and Why come from the record's sections, How to verify from its verify section and the checks the change recorded, and the last line links the record. Where the change alters a shape, a flow, a hierarchy or a file layout, What changed carries the smallest visual the show-me habit gives for it, after its sentences.",
+          "kind": "method",
+          "reason": "The PR body projects the change record and links it, in pr-writing's order, with a visual from the show-me habit where the change alters a shape, in place of the summary menu that leads mattpocock's body (contradiction 27). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The PR body projects and links the change record, with show-me's visual",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["tjcages", "mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "humanlayer",
+          "file": "visual-pr/SKILL.md",
+          "segments": ["d195e85f328a", "b10808253a92", "bd29083d323e"]
+        },
+        {
+          "passage": "written",
+          "text": "**How to verify** carries the evidence:",
+          "kind": "scope",
+          "reason": "A bridge: mattpocock's evidence tier fills the template's How to verify.",
+          "gist": "The evidence fills the template's How to verify"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "pr/SKILL.md",
+          "segments": [
+            "4e967f38c52a",
+            "420682baafd1",
+            "8364268e7cb1",
+            "72d89eb7999f",
+            "98e13031f6eb",
+            "16d75d1a77db"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "**Risk** names the merge danger:",
+          "kind": "scope",
+          "reason": "A bridge: mattpocock's merge danger fills the template's Risk.",
+          "gist": "The merge danger fills the template's Risk"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "pr/SKILL.md",
+          "segments": [
+            "b1ca4bdf119a",
+            "247c800de400",
+            "551acd8d481f",
+            "450a32fc1546",
+            "8d4f630dc127",
+            "766363dbe896",
+            "bbe2aa909f50"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "### 7. Make it easy to review",
+          "kind": "scope",
+          "reason": "The reviewer guidance of make-pr-easy-to-review joins the operating order as its seventh step, in place of the lint gate the habit does not carry.",
+          "gist": "Reviewer guidance joins as step 7 in place of the lint gate"
+        },
+        {
+          "passage": "taken",
+          "source": "cursor-team-kit",
+          "file": "make-pr-easy-to-review/SKILL.md",
+          "segments": [
+            "cb719aa86aab",
+            "e22a48ade3a9",
+            "1bee4119bfe6",
+            "ef5dc179a02e",
+            "79464ceffb38"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "A reviewability fix changes the PR body and the review notes, never a commit: rewriting a change's history is not this habit's. The tree the reviewer reads, `git rev-parse HEAD^{tree}`, stays the one the change's checks ran on; never offer a PR whose tree changed unintentionally.",
+          "kind": "method",
+          "reason": "The tree-identity line of make-pr-easy-to-review, in greenline's words for a fix that rewrites no history: the fix touches the body and the notes alone, and the tree stays the one the checks ran on.",
+          "gist": "A reviewability fix edits the body and notes, never a commit",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+          "credits": ["cursor-team-kit"]
+        },
+        {
+          "passage": "written",
+          "text": "### 8. Leave the push and the PR to the landing\n\nWriting the messages and the body is this habit's work. Pushing the branch and opening the PR are the close step's landing, offered there in one line and never here. Editing the PR's body on the forge is outward too: offer it, and do it on the owner's word.",
+          "kind": "method",
+          "reason": "A PR is opened only on the owner's word, since it is outward, in place of the lint gate that ran before gh pr create; the push and the PR are the close step's landing, offered only there as the block states, and this habit offers only the forge edit beside its writing.",
+          "gist": "The push and PR are close's landing; this habit offers the edit",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+        },
+        {
+          "passage": "taken",
+          "source": "tjcages",
+          "file": "pr-writing/SKILL.md",
+          "segments": [
+            "54ba27cdeb41",
+            "046d88137cf9",
+            "9e36be955c1b",
+            "caec2e96cc2d",
+            "ff32a450784e",
+            "d61ef21c3412",
+            "98b846ccf3bc",
+            "c0d6cf640ad5",
+            "4ea851cb38ae"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "cursor-team-kit",
+          "file": "make-pr-easy-to-review/SKILL.md",
+          "segments": ["912452e7a8d7", "8862700cb750", "608c76d7a245", "9198b14eaf35"]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# PR writing: the practice's mechanics\n\nThis page holds where pr-writing's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\n`greenline status --change <id>` lists a change's commits by their trailer, `Greenline-Change: <id>`, the last line of every commit of the change; the checks the change recorded are those `greenline check` wrote.",
+          "kind": "home",
+          "reason": "pr-writing's mechanics: the command that lists a change's commits, the trailer's form and the recorder, held apart since J-93 S2.",
+          "gist": "The commit listing, the trailer's form and the recorder"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "0e9b8cc9ef08",
+      "kind": "pointer",
+      "reason": "The pointers to METHODOLOGY.md, EXAMPLES.md and RESPONSE.md are dropped: the habit carries the operating order alone, its language contract duplicating the prose habit and its examples and chat shape left upstream.",
+      "gist": "Links to upstream's other pages go; the operating order stands alone"
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "85d0d6e99c2a",
+      "kind": "pointer",
+      "reason": "The pointers to METHODOLOGY.md, EXAMPLES.md and RESPONSE.md are dropped: the habit carries the operating order alone, its language contract duplicating the prose habit and its examples and chat shape left upstream.",
+      "gist": "Links to upstream's other pages go; the operating order stands alone"
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "ad9a3b8d70a9",
+      "kind": "pointer",
+      "reason": "The pointers to METHODOLOGY.md, EXAMPLES.md and RESPONSE.md are dropped: the habit carries the operating order alone, its language contract duplicating the prose habit and its examples and chat shape left upstream.",
+      "gist": "Links to upstream's other pages go; the operating order stands alone"
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "c62b208e79c1",
+      "kind": "pointer",
+      "reason": "The diff command reads a branch's range against main; greenline reads the staged diff for a commit and the change's commits, found by their trailer, for a PR.",
+      "gist": "Reads staged changes or the change's commits, not a range against main",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "22a2d14b2bbe",
+      "kind": "pointer",
+      "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+      "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "c2622a04bb39",
+      "kind": "pointer",
+      "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+      "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "b901c6462bd1",
+      "kind": "pointer",
+      "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+      "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "7273d51c27df",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "1ea1daf5e583",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "3bbe9b818dff",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "23cca02b74f3",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "dd9a13bdb745",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "2ab58c4dccbd",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "f36c131f76ff",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "1c929d270ee8",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "61e7f6bfa5c1",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "90dd57fcbb54",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "f4cadfe1c237",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "0cb7645f3830",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "c20ec6a8bfdb",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "f02a0729b098",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "c2aaa3c7768c",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "293011636b5a",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "5cbfc9ed2d4c",
+      "kind": "scope",
+      "reason": "The language contract duplicates the prose habit, which owns these sentences.",
+      "gist": "The language contract duplicates the prose habit, which owns these sentences",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "d898559a0163",
+      "kind": "pointer",
+      "reason": "A heading without upstream's section mark, which points into METHODOLOGY.md, a page the habit does not carry: the operating order is the whole method here.",
+      "gist": "Headings drop upstream's section marks into a METHODOLOGY.md not carried",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 15
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "a65ecfecadab",
+      "kind": "method",
+      "reason": "The template gains visual-pr's notes field and links the change record in place of the tracker's closing line.",
+      "gist": "The template gains visual-pr's notes field and links the change record",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "9c9d7196694a",
+      "kind": "method",
+      "reason": "The lint gate runs a script the snapshot does not hold and gates gh pr create; opening a PR is outward and waits for the owner's word.",
+      "gist": "The lint script is absent; opening a PR waits for the owner",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 27
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "034a41b59a55",
+      "kind": "method",
+      "reason": "The lint gate runs a script the snapshot does not hold and gates gh pr create; opening a PR is outward and waits for the owner's word.",
+      "gist": "The lint script is absent; opening a PR waits for the owner",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 27
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "5d29ed96c1a4",
+      "kind": "method",
+      "reason": "The lint gate runs a script the snapshot does not hold and gates gh pr create; opening a PR is outward and waits for the owner's word.",
+      "gist": "The lint script is absent; opening a PR waits for the owner",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 27
+      }
+    },
+    {
+      "source": "tjcages",
+      "file": "pr-writing/SKILL.md",
+      "segment": "1688a6cdbe5b",
+      "kind": "method",
+      "reason": "The lint gate runs a script the snapshot does not hold and gates gh pr create; opening a PR is outward and waits for the owner's word.",
+      "gist": "The lint script is absent; opening a PR waits for the owner",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 27
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "d491a574d7c5",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "f4148ca3d17b",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "7136000e4946",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "40820f96ce50",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "3e1a7f242163",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "1745bbb30f1f",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "0a84e399d9ef",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "374d6a6260eb",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "efd7b3828713",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "4c0b05ee9fc9",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "48f80fc060a6",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "2b4d86238be8",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "4f4c9a447c41",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "5be7f3a0fdd3",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "99185062c04c",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "1c8610f9b444",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "35715e673b46",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "8ee969d624ae",
+      "kind": "harness",
+      "reason": "The workflow reads a template through a harness's Read call, creates and pushes the PR through gh and reads a ticket; only its notes field is taken, and opening a PR waits for the owner's word.",
+      "gist": "Only visual-pr's notes field is taken; its gh workflow is not"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "4ec60292ad05",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "dc93533df2ff",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "8fbaf0b6d380",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "7d4c558dcfa6",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "df621059326d",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "9eac235ae67c",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "23c8a41b102a",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "c6295412ac1f",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "56a245b8767a",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "55df988f46c3",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "a94c856a0a33",
+      "kind": "scope",
+      "reason": "The change outline repeats the show-me habit, whose visual the PR body takes where the change alters a shape.",
+      "gist": "The change outline repeats show-me, whose visual the PR body takes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "62ef26e2c3e6",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "185be9636f07",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "fc86dfba60bd",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "99a3830b9e72",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "11d527337059",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "e293bca78554",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "6e7a2d3722df",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "7cfd79741415",
+      "kind": "home",
+      "reason": "The header links, the .humanlayer task directory, gh pr edit and the final-answer template are the vendor's homes and tools; the PR body links the change record.",
+      "gist": "Vendor paths and gh pr edit go; the body links the record"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "43c63b3001da",
+      "kind": "scope",
+      "reason": "The template and the plain-language rule are pr-writing's template and the prose habit's.",
+      "gist": "The template and plain-language rule are pr-writing's and the prose habit's"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "7ea9abda9362",
+      "kind": "scope",
+      "reason": "The template and the plain-language rule are pr-writing's template and the prose habit's.",
+      "gist": "The template and plain-language rule are pr-writing's and the prose habit's"
+    },
+    {
+      "source": "humanlayer",
+      "file": "visual-pr/SKILL.md",
+      "segment": "d85677b52a71",
+      "kind": "scope",
+      "reason": "The template and the plain-language rule are pr-writing's template and the prose habit's.",
+      "gist": "The template and plain-language rule are pr-writing's and the prose habit's"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "5c7172846393",
+      "kind": "method",
+      "reason": "The template that leads with a summary visual gives way to pr-writing's order, the visual from the show-me habit where the change alters a shape (contradiction 27).",
+      "gist": "pr-writing's order replaces a summary-first template; show-me supplies the visual",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "a0425bc491a3",
+      "kind": "method",
+      "reason": "The template that leads with a summary visual gives way to pr-writing's order, the visual from the show-me habit where the change alters a shape (contradiction 27).",
+      "gist": "pr-writing's order replaces a summary-first template; show-me supplies the visual",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "169e5f042a82",
+      "kind": "scope",
+      "reason": "Brief prose and the glossary's words are the prose habit's, which owns the sentences.",
+      "gist": "Brief prose and glossary words belong to the prose habit"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "45925c99b01c",
+      "kind": "scope",
+      "reason": "Brief prose and the glossary's words are the prose habit's, which owns the sentences.",
+      "gist": "Brief prose and glossary words belong to the prose habit"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "7142202ac691",
+      "kind": "scope",
+      "reason": "Brief prose and the glossary's words are the prose habit's, which owns the sentences.",
+      "gist": "Brief prose and glossary words belong to the prose habit"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "d5c8772ee38a",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "ec4661376caf",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "7afb81517faf",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "061619cab453",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "20494bcd029b",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "a7afbaa581a3",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "4e4f52d0ce4c",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "ca6050accb8f",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "0f9f07ba535d",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "a8c138402ed3",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "32d1a14e9585",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "97c3b975f3e6",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "28829459db32",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "f58baa2a7307",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "52378459ba16",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "2a8cf6a62c92",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "ed4084d2ba8b",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "780f0e1ff77f",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "4bf1d6e4776b",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "48a9d4b5cf49",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "10324c98140f",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "2f876d7507d1",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "4b28ec6b1e0b",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "312feecbee6e",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "60ad31f1ec63",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "96f78224f2aa",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "dea6a70df0f0",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "45dfbd50616f",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "64c1309efeec",
+      "kind": "scope",
+      "reason": "The summary menu repeats the show-me habit almost word for word, as its credits say; the PR body takes its visual from show-me.",
+      "gist": "The summary menu repeats show-me, which supplies the PR body's visual",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "a4fa8af158c3",
+      "kind": "scope",
+      "reason": "The heading gives way to the bridge into How to verify.",
+      "gist": "The Evidence heading gives way to the bridge into How to verify",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 20
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "pr/SKILL.md",
+      "segment": "ae39e1bfc5f3",
+      "kind": "scope",
+      "reason": "The heading gives way to the bridge into Risk.",
+      "gist": "The Merge Danger heading gives way to the bridge into Risk",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 22
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "685d787f2dc4",
+      "kind": "scope",
+      "reason": "The title and the goal of make-pr-easy-to-review give way to pr-writing's, which this habit grafts its guidance into.",
+      "gist": "Its title and goal give way to pr-writing's, which takes its guidance"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "bc1e1e7c8707",
+      "kind": "scope",
+      "reason": "The title and the goal of make-pr-easy-to-review give way to pr-writing's, which this habit grafts its guidance into.",
+      "gist": "Its title and goal give way to pr-writing's, which takes its guidance"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "38c2689786fe",
+      "kind": "scope",
+      "reason": "The title and the goal of make-pr-easy-to-review give way to pr-writing's, which this habit grafts its guidance into.",
+      "gist": "Its title and goal give way to pr-writing's, which takes its guidance"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "7136000e4946",
+      "kind": "method",
+      "reason": "The workflow resolves a PR on the forge and plans a history rewrite or a force-push, which is never taken: the habit writes the messages and the notes.",
+      "gist": "History rewrites and force-pushes are never taken; the habit writes messages",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "a25e35c73268",
+      "kind": "method",
+      "reason": "The workflow resolves a PR on the forge and plans a history rewrite or a force-push, which is never taken: the habit writes the messages and the notes.",
+      "gist": "History rewrites and force-pushes are never taken; the habit writes messages",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "77a82125edc4",
+      "kind": "method",
+      "reason": "The workflow resolves a PR on the forge and plans a history rewrite or a force-push, which is never taken: the habit writes the messages and the notes.",
+      "gist": "History rewrites and force-pushes are never taken; the habit writes messages",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "b35b072d72ef",
+      "kind": "method",
+      "reason": "The workflow resolves a PR on the forge and plans a history rewrite or a force-push, which is never taken: the habit writes the messages and the notes.",
+      "gist": "History rewrites and force-pushes are never taken; the habit writes messages",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "362468593faa",
+      "kind": "method",
+      "reason": "The workflow resolves a PR on the forge and plans a history rewrite or a force-push, which is never taken: the habit writes the messages and the notes.",
+      "gist": "History rewrites and force-pushes are never taken; the habit writes messages",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward"
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "f8a9cc9c3415",
+      "kind": "method",
+      "reason": "The tree-identity check of a safe improvement is written in greenline's words for a fix that rewrites no history.",
+      "gist": "The tree-identity check stays, for a fix that rewrites no history",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "879a47358215",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "605568104801",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "99085496182a",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "3261a4bd7b62",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "8b84a643c7d0",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "8e7353fa2756",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "68f71d75fd1e",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "4b60f46bae05",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "42acf8a8b864",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "189e499dd2c9",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "1141e81b6c11",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "ad160db63a03",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "60814c06eac2",
+      "kind": "method",
+      "reason": "History cleanup rewrites and force-pushes an open PR through gh, which is never taken; its tree identity check stands in the written line.",
+      "gist": "History cleanup and force-pushing go; the tree identity check stays",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: pr-writing is a new trial habit, a combine with tjcages' pr-writing as its spine and mattpocock's pr (its evidence tier and merge danger), make-pr-easy-to-review (its reviewer guidance and the tree-identity line, never its history rewrite) and visual-pr's notes field grafted; the PR body is a projection that links the change record, in pr-writing's order with a visual from the show-me habit where the change alters a shape (contradiction 27); the repository's own commit convention decides, neither source's (contradiction 28); and a PR is opened only on the owner's word, since it is outward",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "cursor-team-kit",
+      "file": "make-pr-easy-to-review/SKILL.md",
+      "segment": "1bff90caf2ea",
+      "kind": "scope",
+      "reason": "The heading gives way to the operating order's seventh step.",
+      "gist": "The heading gives way to the seventh step of the order",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 24
+      }
+    }
+  ]
+}

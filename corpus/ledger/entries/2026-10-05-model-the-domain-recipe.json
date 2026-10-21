@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-model-the-domain-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-boundary-discipline-recipe",
+    "sha256": "9f4d3f6b590fa70b1ebf1404d9f16fc8400a51614e017f9a1db285ef47f61b57"
+  },
+  "subject": "skill:model-the-domain",
+  "recipe": "e63e5ed973464e1a19599e9ba6ec20d1a34522c74128c1bccabe1abc1f778678",
+  "result": "00d315dcccaf78d179bb388f34c0bb1b50a1d853e357224b1ff496f303bb72de",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves model-the-domain to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at pull-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 23,
+        "taken": 23,
+        "exact": 23,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

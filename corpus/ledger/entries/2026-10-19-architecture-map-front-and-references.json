@@ -1,0 +1,53 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-architecture-map-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-anticipate-front-and-references",
+    "sha256": "901393033a0e1becb4e3765ec921a9a752c7302e35631079e6bb6adfc71b4190"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "c4d0108b0ea68c32e14bb0367891f132b70ef56ae07b6204a6ed19e55201ac74",
+  "result": "5705370d21a6d03890cc9b08bdf7b6bea0b2564c9c32dcc24fc972a99eda53ed",
+  "pages": "unknown",
+  "gist": "architecture-map's paths and commands move to a references page",
+  "reason": "The front names greenline's homes and commands by their nouns and points at a references page, which holds their paths and commands (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1034
+  }
+}

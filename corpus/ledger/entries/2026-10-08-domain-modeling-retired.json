@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-domain-modeling-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-record-architecture-decisions-retired",
+    "sha256": "b4dc1cc7a5fc89ad9710d704ea324677628117b0708a5651ed24668a2a08901f"
+  },
+  "skill": "domain-modeling",
+  "slice": "S14 of the plan modes-records-recipes",
+  "replacedBy": "close",
+  "recipe": "ce2ae9bdd5571b3dae75249b6ee3196818a6c693fbe5ee3de9a5e4a54b98bf11",
+  "gist": "Splits between frame's questions and close's glossary",
+  "reason": "domain-modeling's questioning half went to frame, and its glossary half, the terms, the glossary's home and format and the ADR of a term change, goes to close; its ADR format page leaves as a duplicate.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

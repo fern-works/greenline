@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-planning-and-task-breakdown",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-source-driven-development",
+    "sha256": "0bc06bb8895007d9a965a25b2a772a7c86a30f8119a1f7d774485dbf87047d27"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/planning-and-task-breakdown"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Sizing, risk first and checkpoints join plan; parallel work is dropped",
+  "reason": "Its sizing and split tests, risk first, checkpoints and no-overwrite rule enter the re-cut plan recipe on to-tickets' spine. Its slicing is a duplicate, and its parallelization section is dropped, as greenline runs no subagents in parallel.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (R20, R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (R20, R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "to-tickets",
+    "catches": "A plan whose tasks are too large, vague or ill-shaped to build and verify one at a time",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "plan",
+        "depth": "none",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "plan",
+        "depth": "written",
+        "cost": 350
+      },
+      {
+        "mode": "high",
+        "step": "plan",
+        "depth": "written",
+        "cost": 350
+      },
+      {
+        "mode": "max",
+        "step": "plan",
+        "depth": "written",
+        "cost": 350
+      }
+    ],
+    "ships": "default"
+  }
+}

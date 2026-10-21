@@ -1,0 +1,66 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-wayfinder-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-what-to-build-recut",
+    "sha256": "f7c8f3f6c2d5a58399f61d2101718e25227d8b2e8f56ea898d9773d324c03cdf"
+  },
+  "subject": "skill:wayfinder",
+  "recipe": "79c2b4d06ba81941e07ea019fc0adc724ac1edf9e33300900b8679a787f8fecb",
+  "result": "5c0d66235e05c330310fa980f079a2bd3c1b269ede57c12a0d8df70210381775",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut as a start: its map lives in one planning change",
+  "reason": "wayfinder is re-cut as a start: its map is a plan directory's map.md inside one planning change of mode high or max, worked as that change's frame step. Its research tickets are resolved one after another.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "Its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the research tickets resolved one after another and no session beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's ruling R12 of 2026-10-04, \"two wait is good\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 80,
+        "exact": 68,
+        "retention": 0.85,
+        "coverage": 0.7017543859649122,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 986
+  }
+}

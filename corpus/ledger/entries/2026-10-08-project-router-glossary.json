@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-project-router-glossary",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-improve-codebase-architecture-glossary",
+    "sha256": "0733cafd240b4d9716d1da6298bbbf5b59e492e3cc28bfca7fd2e0047a011e28"
+  },
+  "subject": "skill:project-router",
+  "recipe": "0728c0913b50966f08d383a55f080852d151347ef5d670eb2c4cc56dc4309858",
+  "result": "3242162dab6af3df1da6a8dddf2314d818070088b6d746f49bd4f60171659741",
+  "pages": [
+    {
+      "path": "ROUTING.md"
+    }
+  ],
+  "gist": "Its one glossary pointer now names GLOSSARY.md",
+  "reason": "Follows upstream's rename: the one greenline-written pointer in ROUTING.md, the home a term doing two jobs is written to when the repository has no glossary, names GLOSSARY.md.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-26",
+      "words": "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1945
+  }
+}

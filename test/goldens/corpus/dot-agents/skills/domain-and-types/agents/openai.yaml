@@ -1,0 +1,3 @@
+interface:
+  display_name: "Domain And Types"
+  short_description: "Encode the domain in a structure instead of scattered conditionals, redesign around a new requirement instead of bolting it on, and let the type checker rule out impossible states: state machines, discriminated unions, branded primitives, parsing at the boundary, exhaustive matching. Use when writing stateful logic or a branch that grows by one more case, when a new requirement meets an existing design, and when designing a type or a function signature in any typed language."

@@ -1,0 +1,47 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-what-to-build-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-architecture-survey-recipe",
+    "sha256": "1db0e655679d87180ec2786bf4bd6334f9aaaa4579df2d19b27cc67b3c5e8174"
+  },
+  "subject": "skill:what-to-build",
+  "recipe": "106e7d05e4c7ae13274600b16bb2b36569a3679452d0e7e520d94db2b76df4bb",
+  "result": "932f0a1fc4dd0565279ef9ed98206395d580bb9a6060adcb0b4ba30557e89aa9",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut as a start on the modes",
+  "reason": "what-to-build is re-cut as a start on the modes: an idea taken up is a change run from frame, work in flight is read from greenline status and the change records, and no retired skill or ticket lifecycle is named.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A native skill no docs/DECISIONS.md row and no old entry rules; its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the contradiction 33 of R3, ruled that day (\"yes go ahead\"), a list of ideas being no project state"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 985
+  }
+}

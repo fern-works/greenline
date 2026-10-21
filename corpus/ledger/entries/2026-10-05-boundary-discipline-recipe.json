@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-boundary-discipline-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-tdd-recipe",
+    "sha256": "442edbf591d41b2905f971744c9d989bf154f5c24aad00b70e4b2397e484fffb"
+  },
+  "subject": "skill:boundary-discipline",
+  "recipe": "613fcceecc59816d2055ce2ac2dfb30515aa9479359862272192dcfe4671877d",
+  "result": "c36158855d7bc995077c10c2b6d191ad254b5a3524bb92d187bc14b762363246",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves boundary-discipline to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at pull-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 30,
+        "taken": 30,
+        "exact": 30,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

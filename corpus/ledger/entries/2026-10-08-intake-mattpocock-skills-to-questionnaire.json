@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-mattpocock-skills-to-questionnaire",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-humanlayer-visual-pr",
+    "sha256": "049e9ce720169947c1cc99aacb1a7390a3df65e8b5e922960e63f22cfa5d6b21"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "6fd947921b935b7e1e69293a200400f0fdd5c15f",
+    "path": "skills/productivity/to-questionnaire"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Enters as the trial habit to-questionnaire",
+  "reason": "A new trial habit to-questionnaire, a questionnaire for the person who can answer a decision the owner cannot.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "to-questionnaire",
+    "catches": "A decision only a third person can answer, guessed or stalled",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 451
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 451
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 451
+      }
+    ],
+    "ships": "trial"
+  }
+}

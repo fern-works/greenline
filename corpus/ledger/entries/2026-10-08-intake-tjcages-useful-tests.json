@@ -1,0 +1,66 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-tjcages-useful-tests",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-test-behavior-not-implementation",
+    "sha256": "f79549b13fa6c51a0dc5a1361d75450352960ea11d26ae9d16a1a3a93e651dfe"
+  },
+  "source": {
+    "repository": "https://github.com/tjcages/skills",
+    "commit": "170f1ca406f926f47433217f731ebf80a613719c",
+    "path": "useful-tests/skills/useful-tests"
+  },
+  "licence": "ideas-only",
+  "verdict": "lift",
+  "gist": "Three test ideas enter tdd in greenline's words",
+  "reason": "Ideas only, with no licence file covering it: naming the failure a new test would catch, extending an existing test and accepting zero new tests enter the re-cut tdd recipe in greenline's words.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Lift with credit, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Lift with credit, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "tdd",
+    "catches": "A test that proves nothing, passing whatever the code does, or that costs more than it catches",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      }
+    ],
+    "ships": "default"
+  }
+}

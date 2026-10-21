@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-modes-derived-agents",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-close-knowledge-homes",
+    "sha256": "f9237b49b0ae481564976fd920a89bd0cde50bd96125cf19f6f5e7c76409a3f4"
+  },
+  "subject": "modes",
+  "recipe": "abe735738ef1c143a53e799b6f73873008033796a1c504a09c69d788d3a8a4d4",
+  "result": "c81fa7fe51bc8a4d7a22847644b721d78377abd4015e00b1462fa8f83fea961d",
+  "pages": "unknown",
+  "gist": "Agents derived from each mode's depths; fix rounds counted per step",
+  "reason": "The modes definition moves to schema 4: each mode's stated agents are dropped and derived from its depths, the builder counted, and each step says whether its findings take a fix pass, the fix rounds now counted per step.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

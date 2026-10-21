@@ -1,0 +1,834 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "wayfinder",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "wayfinder"
+    },
+    {
+      "field": "description",
+      "value": "Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets in a plan directory's map.md, and resolve them one at a time until the way to the destination is clear."
+    }
+  ],
+  "sources": ["mattpocock-skills"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "wayfinder is the start for a decision space too large for one session, spanning more than one context: it charts that space as the map of a plan directory, and works it down until the way is clear. The map belongs to one planning change: propose its mode, careful, and wait, as AGENTS.md says for work that will be split, open its record with a `## start` section naming wayfinder and its front matter's `plan:` naming the plan directory, and chart and work the map as its frame step, which spans the sessions the map needs; at every stop the record's \"next\" line names the frontier item that resumes it. A single design that needs stress-testing is one change's frame; a settled compact change needs no map. The map's decision tickets are checklist items in `map.md`, never the plan's tickets: they become delivery work only through the plan step's `tickets.md` once the way is clear. The methods a ticket needs, frame's interview and its research and prototype references, are loaded through the harness's skill mechanism; when it has none, read the installed SKILL.md and its reference files.",
+          "kind": "method",
+          "reason": "The opening paragraph in the skill's own voice: wayfinder fires for a decision space too large for one session and spanning contexts, defers a single design to grilling or grill-with-docs and a settled compact change to implement, keeps its decision tickets as map.md checklist items with no TKT id that reach delivery only through to-tickets, and names how its methods are loaded; the diff aligns it against upstream's first paragraph, which survives as the next hunk; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens wayfinder: it maps a decision space too large for one session",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\", and R12 of that day (\"two wait is good\"): work that will be split into tickets is one planning change, its mode high or max proposed and waited on, its plan directory holding the plan documents with a status of draft or complete, and the plan step writing the spec and the tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", grilling, research and prototype being frame and its reference files; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": [
+            "befba3a16d96",
+            "69a8a2ef623f",
+            "db2e1fff8a2e",
+            "94413a07a5c2",
+            "2d884e89086d",
+            "a37e0f0736d6",
+            "73bb72d02d54",
+            "ba468af31473",
+            "2fb8b02e68a2",
+            "193fd402158c"
+          ],
+          "edits": [
+            {
+              "segment": "db2e1fff8a2e",
+              "find": "on the repo's issue tracker",
+              "replace": "in the plan directory's `map.md`",
+              "kind": "home",
+              "reason": "The shared map is the plan directory's map.md, a plan document of the planning change, where upstream kept it on the repo's issue tracker.",
+              "gist": "The shared map is the plan directory's map.md, not an issue tracker"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "When the way is clear, mark the map complete and hand off to the planning change's plan step, which reads the resolved decisions into the plan directory's `spec.md` and `tickets.md`; a now-compact effort needs no tickets: its plan section carries it, the map, its decisions and its research move into the planning change's folder, the frame section's links follow them, `plan:` leaves the record's front matter, and the plan directory is removed, since a plan directory exists only when the plan step splits the work into tickets.",
+          "kind": "method",
+          "reason": "Where the body says the map is done and it is time to hand off, the copy says what done is in the artifact system: map.md at status complete, the initiative decided, to-spec reading the resolved decisions, and a now-compact effort taking one ticket through implement; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Done means map.md complete and the plan step reading its decisions",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\", and R12 of that day (\"two wait is good\"): work that will be split into tickets is one planning change, its mode high or max proposed and waited on, its plan directory holding the plan documents with a status of draft or complete, and the plan step writing the spec and the tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", grilling, research and prototype being frame and its reference files; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["307379732a72"]
+        },
+        {
+          "passage": "written",
+          "text": "Every ticket has a **name**: the bolded label on its checklist item.",
+          "kind": "name",
+          "reason": "checklist items carry a name and no id or URL, so the id-wrapping rule has nothing to wrap.",
+          "gist": "Items carry no id or URL, so the id-wrapping rule goes"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["7a983ff5aa57", "94860e6783d4"],
+          "edits": [
+            {
+              "segment": "7a983ff5aa57",
+              "find": "id, number,",
+              "replace": "number",
+              "kind": "name",
+              "reason": "checklist items carry a name and no id or URL, so the id-wrapping rule has nothing to wrap.",
+              "gist": "Items carry no id or URL, so the id-wrapping rule goes"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["39a474e51e9d"]
+        },
+        {
+          "passage": "written",
+          "text": "The map is one file, the plan directory's map, the canonical artifact. Its tickets are checklist items inside it.",
+          "kind": "home",
+          "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The map is one file, map.md, its tickets checklist items inside it"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["5ffb37ee9b2d"]
+        },
+        {
+          "passage": "written",
+          "text": "It lists the decisions made and points at the artifacts that hold their detail; a decision lives in exactly one place, its entry in the plan directory's `decisions.md` or a note under its `research/`, so the map never restates it, only gists it and links.",
+          "kind": "home",
+          "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "The map is one file, map.md, its tickets checklist items inside it",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["bf38004ea543"]
+        },
+        {
+          "passage": "written",
+          "text": "The whole map at low resolution, loaded once per session, tickets included: the open ones are the unchecked items under **Tickets**.",
+          "kind": "pointer",
+          "reason": "with no tracker to query, the open tickets have to be visible in the map body; the template gains the section that holds them.",
+          "gist": "With no tracker to query, the map lists its open tickets itself",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["f777a97a2133", "7776cce0ac99"],
+          "edits": [
+            {
+              "segment": "f777a97a2133",
+              "find": "## Dec",
+              "replace": "## Tickets\n\n<!-- see \"Tickets\": one checklist item per ticket, unchecked while open -->\n\n- [ ] **<name>** (`grilling`): <the question> after: <name>\n\n## Dec",
+              "kind": "pointer",
+              "reason": "with no tracker to query, the open tickets have to be visible in the map body; the template gains the section that holds them.",
+              "gist": "With no tracker to query, the map lists its open tickets itself"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Each ticket is a **checklist item** under the map's **Tickets** section; its bolded name is its identity.",
+          "kind": "pointer",
+          "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+          "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["9206ba4b76d2"],
+          "edits": [
+            {
+              "segment": "9206ba4b76d2",
+              "find": "Its body i",
+              "replace": "The item state",
+              "kind": "pointer",
+              "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+              "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "```markdown\n- [ ] **<name>** (`<type>`): <the decision or investigation this ticket resolves> after: <name>, <name> [claimed: <session>]\n```",
+          "kind": "pointer",
+          "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+          "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["dbf9e33319c9"],
+          "edits": [
+            {
+              "segment": "dbf9e33319c9",
+              "find": "Each ticket carries a `wayfinder:<type>` label,",
+              "replace": "The `<type>` is",
+              "kind": "pointer",
+              "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+              "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "A session **claims** a ticket by writing its name beside the item, **first**, before any work, so a later session sees it taken.",
+          "kind": "method",
+          "reason": "The claim is a name written beside the item, where upstream assigned the issue, and it tells a later session the ticket is taken, since no session works the map beside another (R20).",
+          "gist": "A session claims a ticket by writing its name beside the item",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: wayfinder resolves its research tickets one after another, by its own reading or through one delegated agent at a time, and no session works the map beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "written",
+          "text": "That name _is_ the claim: an open item with no name beside it is unclaimed.\n\nBlocking is item prose: `after: <name>, <name>`, naming the tickets this one waits on. A ticket is **unblocked** when every ticket it names is checked; the **frontier** is the first open, unblocked, unclaimed item, the edge of the known.",
+          "kind": "pointer",
+          "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+          "gist": "Checklist items, names and after: lines replace child issues, assignees and links",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": [
+            "349379479d16",
+            "82fc9fe6e5ef",
+            "dd5a89811776",
+            "11d235c19cdc",
+            "b9ecf3dcef36",
+            "e0ae57f1bc9c"
+          ],
+          "edits": [
+            {
+              "segment": "349379479d16",
+              "find": "body",
+              "replace": "item",
+              "kind": "pointer",
+              "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+              "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+            },
+            {
+              "segment": "82fc9fe6e5ef",
+              "find": "ssue",
+              "replace": "tem",
+              "kind": "pointer",
+              "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+              "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Resolved by reading the sources as frame's research reference says, yourself or through one agent the harness's delegation starts, one research ticket after another.",
+          "kind": "method",
+          "reason": "Every 'call the Skill tool' sentence (the research, prototype and grilling ticket types, chart step 1, and the load of Notes-named skills) now loads the roster method through the harness's native skill mechanism, whose fallback to the installed SKILL.md the opening paragraph states once; no consumer install carries a tool by that name; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "Loads frame and its research reference instead of calling a Skill tool",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: wayfinder resolves its research tickets one after another, by its own reading or through one delegated agent at a time, and no session works the map beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": [
+            "f0eece8434c3",
+            "4138f77164e0",
+            "d9576ab947a8",
+            "4c7304015679",
+            "bfc7f1dd39a9",
+            "70f9831982b2"
+          ],
+          "edits": [
+            {
+              "segment": "4138f77164e0",
+              "find": "calling the Skill tool with \"prototype\"",
+              "replace": "loading frame's prototype reference",
+              "kind": "harness",
+              "reason": "Upstream's prototype skill is frame's prototype reference file (R22).",
+              "gist": "Prototyping loads frame's prototype reference, which replaced the prototype skill"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Always load frame, whose interview settles the domain's terms as it goes.",
+          "kind": "method",
+          "reason": "Every 'call the Skill tool' sentence (the research, prototype and grilling ticket types, chart step 1, and the load of Notes-named skills) now loads the roster method through the harness's native skill mechanism, whose fallback to the installed SKILL.md the opening paragraph states once; no consumer install carries a tool by that name; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "Loads frame and its research reference instead of calling a Skill tool",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\", and R12 of that day (\"two wait is good\"): work that will be split into tickets is one planning change, its mode high or max proposed and waited on, its plan directory holding the plan documents with a status of draft or complete, and the plan step writing the spec and the tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", grilling, research and prototype being frame and its reference files",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": [
+            "ff6b0c848cdc",
+            "1635be0431c0",
+            "ec36bae379d0",
+            "f48e0d3f32b8",
+            "4d7d063d0855",
+            "7144e7f91967",
+            "69e6444235fc",
+            "7ee14189a2f9",
+            "d5c43b009053",
+            "63da8f252511",
+            "68bf1d670c2d",
+            "513a1f94128e",
+            "18d82c072089",
+            "e25b784f798f",
+            "dd76d34aa4f9",
+            "cb4725b6a9f8",
+            "a040b8124e0b",
+            "e0b9bb2dc70d",
+            "bebd7495df22",
+            "40b85fb35f92",
+            "69fce86b68cd",
+            "9c7f6a28cbcd",
+            "3d76cad8a955",
+            "56128916d28c",
+            "cc257257f43e"
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "When a ticket that already exists turns out to sit past the destination (mis-scoped in while charting, or exposed by a resolution), **delete its item from Tickets** (an item off the list is unambiguously off the frontier) and leave one line in the **Out of scope** section: the gist plus why it's out of scope.",
+          "kind": "pointer",
+          "reason": "there is no issue to close; a mis-scoped ticket leaves the checklist and lives on as one Out-of-scope line.",
+          "gist": "A mis-scoped ticket leaves the list and keeps one out-of-scope line",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": [
+            "a4fef346e518",
+            "a1c60d9aa1a1",
+            "32dff7add264",
+            "1bc8f4091ab1",
+            "fc5f45eee346",
+            "7927b713d00e",
+            "7d4ffff06ebd",
+            "218812c2dc6f",
+            "a0c38daa1b0d",
+            "22d51e22b42d",
+            "cc9aa957003c",
+            "dcdf00014641",
+            "880c80035b2c"
+          ],
+          "edits": [
+            {
+              "segment": "218812c2dc6f",
+              "find": "Call the Skill tool twice, for \"grilling\" and \"domain-modeling\",",
+              "replace": "Load frame",
+              "kind": "harness",
+              "reason": "Upstream's grilling and domain-modeling questioning are frame's interview (R22).",
+              "gist": "Loads frame, whose interview now holds grilling and domain-modeling's questioning"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "3. **Write the map** to the plan directory's `map.md` (its front matter marking it a draft and nothing else): Destination and Notes filled in, Tickets and Decisions-so-far empty, the fog sketched into **Not yet specified**.\n4. **Add the tickets you can specify now** as checklist items under **Tickets**, then write their `after:` edges once every item has a name.",
+          "kind": "home",
+          "reason": "Charting writes one file, so the map is created with its frontmatter and the tickets are added as items rather than created and then wired by id; step 5's research subagent captures its findings in the initiative's research/RSRCH-NNN.md, the one research home WORK.md defines, instead of a throwaway branch, and loads research natively, each delegated reader named in the frame section and counted in no cost; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Charting writes map.md and its items; research notes go under research/",
+          "credits": ["mattpocock-skills"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["19a6d845c4da"],
+          "edits": [
+            {
+              "segment": "19a6d845c4da",
+              "find": "Wiring sorts",
+              "replace": "The edges sort",
+              "kind": "home",
+              "reason": "Charting writes one file, so the map is created with its frontmatter and the tickets are added as items rather than created and then wired by id; step 5's research subagent captures its findings in the initiative's research/RSRCH-NNN.md, the one research home WORK.md defines, instead of a throwaway branch, and loads research natively.",
+              "gist": "Writes the map with its items rather than wiring issues by id"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "5. **Resolve the research tickets in turn.** For each `research` ticket you just created, one after another, resolve it by reading the sources as frame's research reference says, yourself or through one fresh agent the harness's delegation starts, briefed and named as that reference says, whose report you wait for; capture the findings in a note under the plan directory's `research/`, named for the ticket, linking the agent's report where one read, which the planning change's frame section cites as that reference says, with a context pointer from the ticket. Each delegated agent is named in the planning change's frame section and counted in no cost.",
+          "kind": "method",
+          "reason": "Charting writes one file, so the map is created with its frontmatter and the tickets are added as items rather than created and then wired by id; step 5's research subagent captures its findings in the initiative's research/RSRCH-NNN.md, the one research home WORK.md defines, instead of a throwaway branch, and loads research natively, each delegated reader named in the frame section and counted in no cost; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "Charting writes map.md and its items; research notes go under research/",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: wayfinder resolves its research tickets one after another, by its own reading or through one delegated agent at a time, and no session works the map beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\"); The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request",
+          "credits": ["mattpocock-skills"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["0eca9591049a", "2835cb9bfe44"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "User invokes with a map (the plan directory, or a ticket's name).",
+          "kind": "pointer",
+          "reason": "claiming, resolving, and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "Invoked with the plan directory or a ticket's name, not a URL"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["21777e2112f9"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "1. Load the **map**: `map.md` whole, which is already the low-res view.",
+          "kind": "pointer",
+          "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+          "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["16c274725147", "068af172be9f", "48ffbf261e34"],
+          "edits": [
+            {
+              "segment": "48ffbf261e34",
+              "find": "ticket",
+              "replace": "item",
+              "kind": "pointer",
+              "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+              "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+            }
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "**Claim it**: write your session's name beside the item and save, before any work.",
+          "kind": "pointer",
+          "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+          "gist": "Loading, claiming and resolving all happen in map.md, item by item",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["4d22cb92bab8"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "**Zoom as needed**: read the landed decision behind any related or checked ticket on demand; load whichever skills the `## Notes` block names. If in doubt, load frame.\n4. Record the resolution: write the answer where it lives, an entry in the plan directory's `decisions.md` (a research ticket's answer is its note under `research/`), then **check the item**, replacing its question with a one-line gist of the answer, and **append a context pointer** to the map's Decisions-so-far.\n5. Add newly-surfaced tickets (item first, `after:` edges once they all have names); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new item.",
+          "kind": "pointer",
+          "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "Records the answer in decisions.md, then checks the item with a gist",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "wayfinder/SKILL.md",
+          "segments": ["bbd6c4b22476", "569baee7d766"],
+          "edits": [
+            {
+              "segment": "569baee7d766",
+              "find": "ticket",
+              "replace": "item",
+              "kind": "pointer",
+              "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+              "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: a loose idea too big for one session; the planning change's record and its plan directory's existing decisions.md when one exists\nProduces: the plan directory's map.md, status draft while charting and complete when the way is clear; each resolved ticket's answer in the plan directory's decisions.md or a note under its research/; the frame section of the planning change's record citing the map\nNext: plan, the planning change's step once the way is clear, which reads the resolved decisions into the plan directory's spec.md and tickets.md",
+          "kind": "pointer",
+          "reason": "the handoff section: map.md as the product, the initiative directory and initiative.md created at shaping when none exists, resolved answers in decisions.md or research records, to-spec and to-tickets as the readers; re-cut at S17: the map lives in the planning change's plan directory, its decisions in that directory's decisions.md and research notes, frame and its references carrying the methods a ticket loads.",
+          "gist": "The handoff gives map.md and its decisions, with plan as next step"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Wayfinder: the practice's mechanics\n\nThis page holds where wayfinder's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe map is `.greenline/plans/<NNN-name>/map.md`, its front matter `status: draft` while it is written and `status: complete` once the way is clear.",
+          "kind": "home",
+          "reason": "wayfinder's mechanics: the map's path in its plan directory and its marks, held apart since J-93 S2.",
+          "gist": "The map's path and its marks"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "96e3f4dd532e",
+      "kind": "name",
+      "reason": "checklist items carry a name and no id or URL, so the id-wrapping rule has nothing to wrap.",
+      "gist": "Items carry no id or URL, so the id-wrapping rule goes"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "eeafe1945945",
+      "kind": "name",
+      "reason": "checklist items carry a name and no id or URL, so the id-wrapping rule has nothing to wrap.",
+      "gist": "Items carry no id or URL, so the id-wrapping rule goes"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "698aa6ffbe54",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "d77bc55b2b2a",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "726dd6ae863a",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "0a81cd4b4a88",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "59b56d6d280e",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "66c2861fc33b",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "0f1e9bacdd77",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "32aad8683004",
+      "kind": "home",
+      "reason": "names map.md and its checklist items directly, and retires the tracker-doc lookup that sends the map to a location the artifact contract does not recognise.",
+      "gist": "The map is map.md, so the tracker issue and its lookup go"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "a81a3886fcd7",
+      "kind": "pointer",
+      "reason": "with no tracker to query, the open tickets have to be visible in the map body; the template gains the section that holds them.",
+      "gist": "With no tracker to query, the map lists its open tickets itself",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 12
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "1485425f767d",
+      "kind": "pointer",
+      "reason": "with no tracker to query, the open tickets have to be visible in the map body; the template gains the section that holds them.",
+      "gist": "With no tracker to query, the map lists its open tickets itself"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "f970a0604c60",
+      "kind": "pointer",
+      "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+      "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "8ba951a7eb6f",
+      "kind": "pointer",
+      "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+      "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "8d8197e88bed",
+      "kind": "pointer",
+      "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+      "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "ebfd6a06101e",
+      "kind": "pointer",
+      "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+      "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "3435ea40c57b",
+      "kind": "pointer",
+      "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+      "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "2f8038df89c8",
+      "kind": "pointer",
+      "reason": "child issues, assignees, and native dependency links have no home in a single file; the item, the name beside it, and the after: prose carry the same three jobs.",
+      "gist": "Checklist items, names and after: lines replace child issues, assignees and links"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "a2c6b0dd470c",
+      "kind": "harness",
+      "reason": "Every 'call the Skill tool' sentence (the research, prototype and grilling ticket types, chart step 1, and the load of Notes-named skills) now loads the roster method through the harness's native skill mechanism, whose fallback to the installed SKILL.md the opening paragraph states once; no consumer install carries a tool by that name.",
+      "gist": "Drops the Skill tool calls; no consumer install has that tool"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "9961fd3f9d74",
+      "kind": "harness",
+      "reason": "Every 'call the Skill tool' sentence (the research, prototype and grilling ticket types, chart step 1, and the load of Notes-named skills) now loads the roster method through the harness's native skill mechanism, whose fallback to the installed SKILL.md the opening paragraph states once; no consumer install carries a tool by that name.",
+      "gist": "Drops the Skill tool calls; no consumer install has that tool"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "9a411f5d695d",
+      "kind": "pointer",
+      "reason": "there is no issue to close; a mis-scoped ticket leaves the checklist and lives on as one Out-of-scope line.",
+      "gist": "A mis-scoped ticket leaves the list and keeps one out-of-scope line",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "ce00d70dbadb",
+      "kind": "home",
+      "reason": "Charting writes one file, so the map is created with its frontmatter and the tickets are added as items rather than created and then wired by id; step 5's research subagent captures its findings in the initiative's research/RSRCH-NNN.md, the one research home WORK.md defines, instead of a throwaway branch, and loads research natively.",
+      "gist": "Writes the map with its items rather than wiring issues by id",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 27
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "56b57a993049",
+      "kind": "home",
+      "reason": "Charting writes one file, so the map is created with its frontmatter and the tickets are added as items rather than created and then wired by id; step 5's research subagent captures its findings in the initiative's research/RSRCH-NNN.md, the one research home WORK.md defines, instead of a throwaway branch, and loads research natively.",
+      "gist": "Writes the map with its items rather than wiring issues by id"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "85ca09844499",
+      "kind": "home",
+      "reason": "Charting writes one file, so the map is created with its frontmatter and the tickets are added as items rather than created and then wired by id; step 5's research subagent captures its findings in the initiative's research/RSRCH-NNN.md, the one research home WORK.md defines, instead of a throwaway branch, and loads research natively.",
+      "gist": "Writes the map with its items rather than wiring issues by id",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 29
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "82f9020a4e66",
+      "kind": "pointer",
+      "reason": "claiming, resolving, and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing.",
+      "gist": "A map has no URL or number now; it is one file"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "5dc1756644aa",
+      "kind": "pointer",
+      "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+      "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "9987eb63307a",
+      "kind": "pointer",
+      "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+      "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "af4c99622c7f",
+      "kind": "pointer",
+      "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+      "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "fbe47bc88c98",
+      "kind": "pointer",
+      "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+      "gist": "Loading, claiming and resolving all happen in map.md, item by item"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "fe237b5f77cb",
+      "kind": "pointer",
+      "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+      "gist": "Loading, claiming and resolving all happen in map.md, item by item",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 37
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "9e38cfa1cbb6",
+      "kind": "pointer",
+      "reason": "Claiming, resolving and concurrency all happen in map.md: a name beside the item, a checked box with its gist, one file two sessions may be editing; step 4 restores upstream's resolution comment as the answer's greenline home, an entry in the initiative's decisions.md or, for a research ticket, its research/RSRCH-NNN.md, and step 3 loads Notes-named skills natively.",
+      "gist": "Loading, claiming and resolving all happen in map.md, item by item",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 37
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "dbcc16c54c4f",
+      "kind": "method",
+      "reason": "The claim is a name beside the item that tells a later session the ticket is taken; concurrent sessions skipping it are gone with parallel work (R20).",
+      "gist": "Claiming by assignee for concurrent sessions goes; one session works the map",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: wayfinder resolves its research tickets one after another, by its own reading or through one delegated agent at a time, and no session works the map beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "1700d875cf7f",
+      "kind": "method",
+      "reason": "Running unblocked tickets in parallel is declined: one agent works the map at a time (R20).",
+      "gist": "Parallel tickets are declined: one agent works the map at a time",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: wayfinder resolves its research tickets one after another, by its own reading or through one delegated agent at a time, and no session works the map beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "wayfinder/SKILL.md",
+      "segment": "c754f4c64929",
+      "kind": "method",
+      "reason": "Firing research subagents in parallel gives way to the research tickets resolved one after another (R20, R21).",
+      "gist": "Research tickets resolve one after another, not by parallel subagents",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: wayfinder resolves its research tickets one after another, by its own reading or through one delegated agent at a time, and no session works the map beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 29
+      }
+    }
+  ]
+}

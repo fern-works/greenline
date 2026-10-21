@@ -1,0 +1,53 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-router-stop-and-resume",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-11-constraint-driven-development-interview-page",
+    "sha256": "583093e114c6a2d5f8fd8eac04fd7e2a8a8482964b8473616cbee7fb77a2189d"
+  },
+  "subject": "skill:router",
+  "recipe": "9dd321baaa865f46ba209705d402d94902c15629cbb4bd7ba9712375834db127",
+  "result": "b4ad9acce8dc649520b351da42f2ba21e377d5965b0ae288e8a4fb3a54b4d7aa",
+  "pages": [
+    {
+      "path": "ROUTING.md"
+    },
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "A resumed change is set open; an unrelated request stops it first",
+  "reason": "The router sets a resumed change open as its first write and stops the change a session holds before routing an unrelated request. The routing map exempts from the record a close that writes only into the knowledge homes.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1108
+  }
+}

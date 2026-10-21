@@ -1,0 +1,56 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-product-description-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-benchmark-checklist-recipe",
+    "sha256": "ddaf70e8318335110fc39b860007ce8ae405f1976302fa2a15032af865b46f83"
+  },
+  "subject": "skill:product-description",
+  "recipe": "bd2d42740baca485ee217bca2ccbb788243545af8a838a32973fb6aeaf1d4661",
+  "result": "807e31cc2db1e6635ac4827bc3f5a1c93515393c3527b3b1e90330df7d9e4c88",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/README-template.md"
+    },
+    {
+      "path": "references/goal-template.md"
+    }
+  ],
+  "gist": "Re-cut as an extra start, drafting one document at a time",
+  "reason": "product-description is re-cut as an extra start: its documents drafted one after another, never by subagents in parallel, its entry file written for any harness, and the change record and verify step in place of initiatives, tickets and retired names.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "product-description",
+        "segments": 618,
+        "taken": 612,
+        "exact": 605,
+        "retention": 0.988562091503268,
+        "coverage": 0.9902912621359223,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 563
+  }
+}

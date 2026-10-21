@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-ponytail-ponytail-help",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-ponytail-ponytail-gain",
+    "sha256": "2cc3b7b0005f012cd099e58c840672069a8de288a0e034bc01bccc9ace10bf89"
+  },
+  "source": {
+    "repository": "https://github.com/dietrichgebert/ponytail",
+    "commit": "552acd5efd0aeae2583a12efe39373d2f076f25e",
+    "path": "skills/ponytail-help"
+  },
+  "pin": "ponytail",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "The plugin's help card; no situation to serve",
+  "reason": "No situation; it is the plugin's help card.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Decline, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Decline, \"everything is good\""
+    }
+  ]
+}

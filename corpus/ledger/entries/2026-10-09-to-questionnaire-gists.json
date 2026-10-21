@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-to-questionnaire-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-pr-writing-gists",
+    "sha256": "e33f6f5e7599e34b540abf24acfb347b53765161ad9a6ca9ba184a34626dae7c"
+  },
+  "subject": "skill:to-questionnaire",
+  "recipe": "e8408f2163bead66f768e6ebe54496a720bdf909ec23a705bfcf9961d01ccd71",
+  "result": "74e1e40d6505568704cd9be49935374d945b3a26f7662a23ff1efc5be54da698",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; to-questionnaire a copy, a new trial habit for a decision only someone other than the owner can answer"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 41,
+        "taken": 41,
+        "exact": 39,
+        "retention": 0.9512195121951219,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 126
+  }
+}

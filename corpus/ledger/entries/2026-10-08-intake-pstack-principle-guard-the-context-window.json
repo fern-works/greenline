@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-guard-the-context-window",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-explain-the-number",
+    "sha256": "fa43eeef9749dc89f5787f90ae8e699a01aa68d97c911d9fddf9012e330aabe8"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-guard-the-context-window"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Enters as a trial habit; its inline-content line goes to a craft",
+  "reason": "Not a stub: a new trial habit principle-guard-the-context-window in its portable form, raw payloads kept out of the thread by excerpt and summary, with no agent of its own. Its inline-content line goes to craft-writing-for-agents.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "craft-writing-for-agents",
+    "parts": [
+      {
+        "part": "its inline-content line",
+        "locator": "pstack/skills/principle-guard-the-context-window/SKILL.md"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "principle-guard-the-context-window",
+    "catches": "A thread filled with raw output until the agent's reasoning degrades",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 100
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 100
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 100
+      }
+    ],
+    "ships": "trial"
+  }
+}

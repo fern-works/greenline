@@ -1,0 +1,26 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-diagnosing-bugs-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-project-router-retired",
+    "sha256": "15396e5701c73be68b2bac6ba5045ebd65f10327e55bc8de72a0aa414b9867ac"
+  },
+  "skill": "diagnosing-bugs",
+  "slice": "S17 of the plan modes-records-recipes",
+  "replacedBy": "diagnose",
+  "recipe": "214c9ecf792921818edeffc4400f550c0fa44e738c9f4136abc42cd108f3ced8",
+  "gist": "Becomes diagnose's spine with five sources grafted",
+  "reason": "diagnosing-bugs is diagnose's spine now, with five sources grafted.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the intake R3, \"yes go ahead\""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-domain-and-types-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-boundaries-gists",
+    "sha256": "5e5977e9ac5dc54433eb18d4d43bf066db58efb39399a3e622aabdee2939c630"
+  },
+  "subject": "skill:domain-and-types",
+  "recipe": "b4fe90c9300c9322dfa4b9832290d8c19ca96de966f6e47358e4ece1eb4602e2",
+  "result": "f122c10443807b08df035962ef44cee4b6305255589e01f9bb09ae662a0d5f3b",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 92,
+        "taken": 86,
+        "exact": 85,
+        "retention": 0.9883720930232558,
+        "coverage": 0.9347826086956522,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 100
+  }
+}

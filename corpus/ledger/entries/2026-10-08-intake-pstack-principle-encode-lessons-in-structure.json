@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-encode-lessons-in-structure",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-correct",
+    "sha256": "ee0ab9174038ec630b705d89ba1bb9e09a2edc0c6d06ad18399b671473f1c41e"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-encode-lessons-in-structure"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its ladder of mechanism strength joins correct",
+  "reason": "Its ladder of mechanism strength joins the new start correct; always-loaded text is encoded and deleted.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 30)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 30)"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "correct",
+    "catches": "An owner correcting the same agent mistake a second time because the fix lived only in text",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "trial"
+  }
+}

@@ -13,7 +13,7 @@ import { renderProjection } from "../../core/render.ts";
 import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { withWorkspaceWrite } from "../fs/workspace-write.ts";
 import { findGitRoot } from "../git.ts";
-import { readRepositoryManifest } from "../repository-state.ts";
+import { readRepositoryManifest, rosterOf } from "../repository-state.ts";
 import type { ConnectorsRequest } from "./args.ts";
 import { envRead, type CliEnvironment, type RepositoryEnvironment } from "./command-environment.ts";
 import {
@@ -23,7 +23,7 @@ import {
   succeed,
   type CommandOutcome,
 } from "./command-outcome.ts";
-import { GL, diagnostic, effectSummary } from "./output.ts";
+import { GL, diagnostic, effectSummary, noRepositoryMessage } from "./output.ts";
 import { reconcileWorkspace } from "./sync.ts";
 
 /**
@@ -45,13 +45,7 @@ function workspaceRoot(cwd: string, io: FileIo): { root: string } | { refused: C
   const root = findGitRoot(cwd);
   if (root === undefined)
     return {
-      refused: fail([
-        diagnostic(
-          GL.notGitRepository,
-          "error",
-          "connectors requires a Git repository root; run 'git init' first",
-        ),
-      ]),
+      refused: fail([diagnostic(GL.notGitRepository, "error", noRepositoryMessage("connectors"))]),
     };
   if (envRead(io, join(root, MANIFEST)) === undefined)
     return {
@@ -75,11 +69,7 @@ export function runConnectorsReport(
   const io = createNodeFileIo();
   const workspace = workspaceRoot(env.cwd, io);
   if ("refused" in workspace) return workspace.refused;
-  const manifest = readRepositoryManifest(
-    workspace.root,
-    io,
-    env.installation?.skills.map((skill) => skill.name),
-  );
+  const manifest = readRepositoryManifest(workspace.root, io, rosterOf(env.installation));
   if (manifest._tag === "err")
     return repositoryOutcome(
       workspace.root,
@@ -118,11 +108,7 @@ export function runConnectorsChange(request: ChangeRequest, env: CliEnvironment)
   if (configuration?._tag === "err")
     return fail([diagnostic(GL.connectorConfiguration, "error", configuration.error.message)]);
   const change = (): CommandOutcome => {
-    const current = readRepositoryManifest(
-      root,
-      io,
-      env.installation.skills.map((skill) => skill.name),
-    );
+    const current = readRepositoryManifest(root, io, rosterOf(env.installation));
     const bytes = io.read(join(root, MANIFEST));
     if (current._tag === "err")
       return fail(

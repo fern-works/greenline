@@ -1,4 +1,8 @@
 import { defineConfig, type ViteUserConfig } from "vitest/config";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
+
+const privateSetup = resolve("test/scripts/qa-storage-setup.ts");
 
 const config: ViteUserConfig = defineConfig({
   test: {
@@ -7,6 +11,7 @@ const config: ViteUserConfig = defineConfig({
     // passWithNoTests.
     include: ["test/**/*.test.ts", "tools/oxlint/anti-slop/rules/*.test.ts"],
     exclude: ["**/node_modules/**"],
+    globalSetup: existsSync(privateSetup) ? [privateSetup] : [],
     testTimeout: 30_000,
     passWithNoTests: true,
     // Coverage thresholds are a ratchet: floors get set from measured values

@@ -1,0 +1,47 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-groundwork-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-wayfinder-recut",
+    "sha256": "6f0dde261f8ecbc652d6405c4d713579b94a3964bf0cd18ef4b1bbf85c96443f"
+  },
+  "subject": "skill:groundwork",
+  "recipe": "8d1bfd21c4ebeae080b6762b41fcb9c5d0f840a0d5d9dc3a2d6dda2ab9d941a7",
+  "result": "10e30345f3d2e43f902e10eed55849bd9ebae27bcecf69c376a64a71297800fe",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut as a start whose setup runs as a change",
+  "reason": "groundwork is re-cut as a start: it settles the purpose and the choices, then the setup runs as a change from frame, first green proved through greenline check at verify, with no harness named.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-08-30",
+      "words": "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\", and the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (the row of 2026-09-26)"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, no harness named"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 693
+  }
+}

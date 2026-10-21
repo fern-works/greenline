@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-correct",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-deprecation-and-migration",
+    "sha256": "10b9d10ffb42adb57cf7e9a53bb3e58d1ed67e51095151e61825cd283cc8470e"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/correct"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "The spine of the new trial start correct",
+  "reason": "The spine of a new trial start correct: each recurring mistake made impossible at the strongest level that works and proved against a real past mistake. Test deletion follows the roster.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 23)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 23)"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "correct",
+    "catches": "An owner correcting the same agent mistake a second time because the fix lived only in text",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "trial"
+  }
+}

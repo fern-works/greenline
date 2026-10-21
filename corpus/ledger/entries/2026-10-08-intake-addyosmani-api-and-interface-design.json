@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-api-and-interface-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-make-operations-idempotent",
+    "sha256": "e50bd0525b07385e09464dbcecb930eed47614709680a3cb6135761e65ba51bd"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/api-and-interface-design"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Idempotency keys join concurrency; API rules go to garden",
+  "reason": "Its idempotency-key section enters the re-cut concurrency recipe; its API design, versioning and HTTP rules go to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its API design, versioning and HTTP rules",
+        "locator": "skills/api-and-interface-design"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "concurrency-method",
+    "catches": "A retry after a partial run leaving another end state or a duplicated effect",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 180
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 180
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 180
+      }
+    ],
+    "ships": "default"
+  }
+}

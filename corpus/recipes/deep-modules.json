@@ -1,0 +1,684 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "deep-modules",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "deep-modules"
+    },
+    {
+      "field": "description",
+      "value": "Design deep modules at any step: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface, with the layers a reader must trace and the state a reader must hold kept small. Use when designing or improving one module's interface, placing a seam, making code testable, finding code hard to trace, or exploring alternative interfaces; a repository-wide survey belongs to architecture-survey."
+    }
+  ],
+  "sources": ["mattpocock-skills", "pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Deep modules",
+          "kind": "name",
+          "reason": "The habit's title is its roster name, deep-modules, which R22 gives the habit codebase-design became.",
+          "gist": "The title is deep-modules, which codebase-design became under R22"
+        },
+        {
+          "passage": "written",
+          "text": "deep-modules is the habit for the moment one module's interface is designed or improved, a seam placed, code made testable, or code found hard to trace, at whatever step the work is in, most often build. It writes no record of its own, and it is a reference to consult, not a session to run: tdd consults it for the vocabulary of the seam it tests at, and a repository-wide survey is architecture-survey's. Existing tests are kept through a deepening: removing one, with any seam only it uses, is sweep-tests' work, as a change of its own with its green baseline and before/after mutation proof, and this habit never deletes a test.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, that it writes no record and is a reference, tdd and architecture-survey beside it, and that tests are kept through a deepening and removed only by sweep-tests.",
+          "gist": "Opens the habit: when it applies; only sweep-tests ever removes a test"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/SKILL.md",
+          "segments": [
+            "1fa7a480ad14",
+            "cfb3213ff8ff",
+            "5d7a0244279f",
+            "5fefbc585347",
+            "f6b0ee640deb",
+            "7e9ab5a1e55d",
+            "7b99a25f2184",
+            "8cccf1ec85de",
+            "b639041eb29b",
+            "85c5a802f763",
+            "adfc296a7bf1",
+            "18604606920f",
+            "e609a66fde78",
+            "5e2cd1a8d6ee",
+            "8383c0f22280",
+            "b3eb66099a50",
+            "81d39f002b59",
+            "99442b435692",
+            "e54d627d0766",
+            "a3a961a14146",
+            "afd0215cea49",
+            "b2f05663767f",
+            "b2b313a625dd",
+            "fd6161ca8ac8",
+            "fb5539ffa6de",
+            "c34c8764f8df",
+            "dac035a8531f",
+            "f98137d089f1",
+            "c9af0854e834",
+            "7177bcebaa26",
+            "eae39e7ab858",
+            "645506f872b9",
+            "9c73da36d6b4",
+            "a375ceef5335",
+            "f4085c9d0b70",
+            "a356fe39f5fb",
+            "ee146c5955bc",
+            "da17d1fec18d",
+            "a2ea9b04cbc1",
+            "56187358b640",
+            "bf370c59ccfe",
+            "0d643734bd26",
+            "7293e2bdb44c",
+            "13a4baa587a6",
+            "40c6749f779d",
+            "cd0413dc6859",
+            "92d5528de58e",
+            "23a6cff17e5b",
+            "1d64f9416d4d",
+            "4207d3cf51da",
+            "75a924db133d"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Reader load",
+          "kind": "method",
+          "reason": "principle-minimize-reader-load joins after the principles: its state axis, its scope ladder and its thirty-second test are what the spine lacks, its layer rules being the spine's deletion test and one-adapter rule.",
+          "gist": "Adds reader load: the state axis, scope ladder and thirty-second test",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-minimize-reader-load/SKILL.md",
+          "segments": [
+            "a30a1f5a5609",
+            "3127ffa6121f",
+            "b8cd6165131b",
+            "ae511aa1624b",
+            "bfea5291f05f",
+            "f787f205d28b"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-minimize-reader-load/SKILL.md",
+          "segments": ["9f8cf29aa518", "d51b4b3e4f96", "b75f7b504d26"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-minimize-reader-load/SKILL.md",
+          "segments": ["f62a241ed2b1"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-minimize-reader-load/SKILL.md",
+          "segments": [
+            "e9fb93d39f95",
+            "9087f8613e74",
+            "b8dcb57e698e",
+            "c4ac1255f885",
+            "a89a8eb9aea6",
+            "c6034132c2ce",
+            "4064352f3295",
+            "90a4ce444c2a"
+          ],
+          "edits": [
+            {
+              "segment": "b8dcb57e698e",
+              "find": "at the boundary,** not",
+              "replace": "at the seam,** not",
+              "kind": "name",
+              "reason": "The spine's word for where an interface lives is seam, and its glossary avoids boundary, so the grafted rule takes it (C13).",
+              "gist": "Says seam, not boundary, for where an interface lives"
+            }
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/SKILL.md",
+          "segments": [
+            "7821cf3e73a1",
+            "17746e2ea4d7",
+            "52395fe66628",
+            "a85df0b2eeea",
+            "6a4dc7123cdd",
+            "f369ee53532a",
+            "9c135ba0387e",
+            "93a75cf5ef4b",
+            "bb923b89ce0c",
+            "dcb5c109c257",
+            "f9b3baa1bde1",
+            "91b762ef692c",
+            "9b0e6a4cae98",
+            "4bf0542c3884",
+            "b764c7a4068d",
+            "d7a348e70db8",
+            "313ec9cc5720",
+            "945c0b661518",
+            "c196dfac81eb",
+            "bb2d3e20edde",
+            "4365a8e0778f",
+            "d4383da3e5e1",
+            "c122bcda73de"
+          ],
+          "edits": [
+            {
+              "segment": "c122bcda73de",
+              "find": "g.",
+              "replace": "g, with the old tests retained until sweep-tests proves their deletion.",
+              "kind": "pointer",
+              "reason": "The pointer to DEEPENING.md says the old tests stay until sweep-tests proves their deletion, which that page now carries.",
+              "gist": "Old tests stay until sweep-tests proves their deletion, as DEEPENING.md says"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "- **Exploring alternative interfaces**, see [DESIGN-IT-TWICE.md](DESIGN-IT-TWICE.md): design the interface several radically different ways, one design after another, then compare on depth, locality, and seam placement.",
+          "kind": "method",
+          "reason": "The designs are made one after another, by the one agent in turn or by delegated agents one after another, never by parallel sub-agents (R21 with R20).",
+          "gist": "Alternative interfaces are designed one after another, never by parallel sub-agents",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+          "credits": ["mattpocock-skills"],
+          "join": "\n"
+        }
+      ]
+    },
+    {
+      "path": "DEEPENING.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/DEEPENING.md",
+          "segments": [
+            "a07f0d8182d8",
+            "ab91fd18a4e8",
+            "7cb7ae40cf48",
+            "3997f6268486",
+            "7db2bfe45f85",
+            "230ffc40369d",
+            "10d7cb8c30e6",
+            "3dca01d70fa3",
+            "85c473354faf",
+            "7127944043f8",
+            "0483480cdc3c",
+            "10256037ad8f",
+            "c35e64dd9eb5",
+            "f88e9e388570",
+            "104d3dc3e7c6",
+            "06432abbbe35",
+            "85fd86c14cb5",
+            "efbce179fd0d",
+            "d48b156ede5a",
+            "ec66123de979",
+            "628489cb4b20",
+            "cdb1bc77290e",
+            "f6b1e7a35776",
+            "5d6137ceca1f",
+            "d4598668bdb6",
+            "1b8c8c89cb25",
+            "1d64f9416d4d",
+            "4207d3cf51da",
+            "78ea671b58cf",
+            "ea3bcc017a8d",
+            "ca785600e8c2",
+            "0485122b1e0a",
+            "a682bbe054d4",
+            "b1c95ebc7d3a"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "- Old unit tests on shallow modules become candidates for examination once tests at the deepened module's interface exist, not proven waste: retain them through the deepening, and route their deletion, with the removal of any seam only they use, to sweep-tests, as a change of its own with its green baseline and before/after mutation proof. A deepening that cannot retain the existing protection reports that constraint before removing it; no unproven test deletion is part of this method. Carry this rule into any delegated deepening brief.",
+          "kind": "method",
+          "reason": "upstream tells the deepener to delete old shallow-module tests once interface tests exist; greenline retains them through the deepening and routes deletion to sweep-tests with mutation proof, which changes the criterion (the D3 consumer finding of 2026-09-10, carried as a bookend override until this fold); the operator is asked to confirm this method edit in the S3 report Confirmed by the operator on 2026-09-11 (method-rulings.md).",
+          "gist": "Keeps old shallow-module tests through a deepening; sweep-tests decides deletion",
+          "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits; and the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own; and R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+          "credits": ["mattpocock-skills"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/DEEPENING.md",
+          "segments": [
+            "ab7348b9aae8",
+            "643f18d44182",
+            "e53e3d2d332c",
+            "acadfb90515c",
+            "15b797aa19a1"
+          ],
+          "join": "\n"
+        }
+      ]
+    },
+    {
+      "path": "DESIGN-IT-TWICE.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/DESIGN-IT-TWICE.md",
+          "segments": ["14bf01f47d35"]
+        },
+        {
+          "passage": "written",
+          "text": "When the user wants to explore alternative interfaces for a chosen deepening candidate, design the interface several times, one design after another.",
+          "kind": "method",
+          "reason": "upstream runs a parallel sub-agent pattern; greenline makes the designs one after another (R21 with R20).",
+          "gist": "Designs alternative interfaces one after another, not by parallel sub-agents",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/DESIGN-IT-TWICE.md",
+          "segments": [
+            "bf3aea05aed5",
+            "032df2952b59",
+            "0a6ae6aec660",
+            "f970e70ed9df",
+            "9b954c84fc57",
+            "e497e3e5c325",
+            "7cf8942ef8ec",
+            "58821c3d2d25",
+            "f08ec67eeb00"
+          ],
+          "edits": [
+            {
+              "segment": "9b954c84fc57",
+              "find": "spawning sub-agents",
+              "replace": "the first design",
+              "kind": "method",
+              "reason": "No sub-agent is spawned beside the conversation: the problem space is written before the first design (R21).",
+              "gist": "The problem space is written before the first design, not before sub-agents",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "### 2. Make the designs, one after another\n\nMake three or more designs in turn: yourself, one after another, or one fresh agent per design through the harness's delegation, each named in the section of the step it serves and counted in no cost, each started only once the one before it has returned its design. Never run them in parallel. Each agent gets the one brief every fresh agent gets, with this page as the skill it works by and its design's technical brief and constraint, below, as its extras; it starts no agent of its own and writes its design as its report, named for the step the design serves, which that step's section cites.",
+          "kind": "method",
+          "reason": "Spawn 3+ sub-agents in parallel becomes three or more designs made in turn, by the one agent or by delegated agents one after another, named in the section they serve and counted in no cost (R21 with R20), each agent briefed and its design named as the ledger guide gives every fresh agent, delegating nothing. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Designs made in turn, never in parallel, each agent briefed once",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel; The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/DESIGN-IT-TWICE.md",
+          "segments": [
+            "207479afa01d",
+            "7cf9adfc915b",
+            "a5da99e4edc6",
+            "815df30fb719",
+            "3a0cc160f5e9",
+            "52dc9a977e95",
+            "378c909022c7",
+            "14fcf28e9e09",
+            "49d9f70e58fa",
+            "3d791a7d50cd"
+          ],
+          "edits": [
+            {
+              "segment": "7cf9adfc915b",
+              "find": "Prompt each sub-agent with",
+              "replace": "Give each design",
+              "kind": "method",
+              "reason": "Each design, not a parallel sub-agent, takes its own technical brief (R21).",
+              "gist": "Each design, not a parallel sub-agent, takes its own technical brief",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            },
+            {
+              "segment": "815df30fb719",
+              "find": "agent",
+              "replace": "design",
+              "kind": "method",
+              "reason": "Each design takes its own constraint (R21).",
+              "gist": "Each design takes its own constraint",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            },
+            {
+              "segment": "3a0cc160f5e9",
+              "find": "Agent 1",
+              "replace": "Design 1",
+              "kind": "method",
+              "reason": "The constraints are named per design (R21).",
+              "gist": "The constraints are numbered per design, not per agent",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            },
+            {
+              "segment": "378c909022c7",
+              "find": "Agent 2",
+              "replace": "Design 2",
+              "kind": "method",
+              "reason": "The constraints are named per design (R21).",
+              "gist": "The constraints are numbered per design, not per agent",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            },
+            {
+              "segment": "14fcf28e9e09",
+              "find": "Agent 3",
+              "replace": "Design 3",
+              "kind": "method",
+              "reason": "The constraints are named per design (R21).",
+              "gist": "The constraints are numbered per design, not per agent",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            },
+            {
+              "segment": "49d9f70e58fa",
+              "find": "Agent 4",
+              "replace": "Design 4",
+              "kind": "method",
+              "reason": "The constraints are named per design (R21).",
+              "gist": "The constraints are numbered per design, not per agent",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            },
+            {
+              "segment": "3d791a7d50cd",
+              "find": "each sub-agent names",
+              "replace": "each design names",
+              "kind": "method",
+              "reason": "The vocabulary keeps each design's names consistent (R21).",
+              "gist": "The vocabulary keeps each design's names consistent",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Each design gives:",
+          "kind": "method",
+          "reason": "Each design, not a sub-agent, gives the five parts (R21).",
+          "gist": "Each design, not a sub-agent, gives the five parts",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "codebase-design/DESIGN-IT-TWICE.md",
+          "segments": [
+            "ab43190a4cc2",
+            "8ce0d6accdc6",
+            "96c0d3b68099",
+            "071d2d98b171",
+            "a4da6a5e28c5",
+            "0f742b954a2c",
+            "5b57ffa8cfca",
+            "14defafbae4a",
+            "108e49e9c501",
+            "98ad773fd39e",
+            "edb10605e536"
+          ],
+          "join": "\n"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Deep modules: the practice's mechanics\n\nThis page holds where deep-modules's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nA design agent of DESIGN-IT-TWICE.md gets the one brief every fresh agent gets, which the ledger guide states (`.greenline/ledger/README.md`, \"The brief and the relay note\"), and writes its design as its report, `.greenline/ledger/<id>/<step>-<n>.md`, named for the step the design serves.",
+          "kind": "home",
+          "reason": "deep-modules' mechanics: the design agent's brief and its report's path, held apart since J-93 S2.",
+          "gist": "The design agent's brief and its report's path"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/SKILL.md",
+      "segment": "c589b8bb4190",
+      "kind": "name",
+      "reason": "The title becomes the roster name, deep-modules (R22).",
+      "gist": "The title becomes deep-modules, the roster's word for it",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/SKILL.md",
+      "segment": "5ec5816567d2",
+      "kind": "method",
+      "reason": "Parallel sub-agents give way to designs made one after another (R21 with R20).",
+      "gist": "Alternative interfaces come one design after another, not from parallel sub-agents",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "9c7a9cc27cc2",
+      "kind": "scope",
+      "reason": "The title becomes the section's heading.",
+      "gist": "The title becomes the section's heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "b00ea02b795d",
+      "kind": "scope",
+      "reason": "The why restates the section's opening sentence.",
+      "gist": "The why repeats the section's opening sentence"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "bfabd58a1914",
+      "kind": "scope",
+      "reason": "The why restates the section's opening sentence.",
+      "gist": "The why repeats the section's opening sentence"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "d78d0b47d296",
+      "kind": "scope",
+      "reason": "The why restates the section's opening sentence.",
+      "gist": "The why repeats the section's opening sentence"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "b8ba0087a525",
+      "kind": "pointer",
+      "reason": "Guard the Context Window is no roster skill, and the analogy has no reader here.",
+      "gist": "The context-window analogy and its upstream link are left out"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "f61bcbf46a1e",
+      "kind": "pointer",
+      "reason": "Guard the Context Window is no roster skill, and the analogy has no reader here.",
+      "gist": "The context-window analogy and its upstream link are left out"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "86be52b869c6",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "69a2a6faa6fd",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "59042c1cc82a",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "02e34dd815ce",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "055f5e87bafb",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "80b4152c4ead",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "693d9a55ee76",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "e0125a5ea296",
+      "kind": "scope",
+      "reason": "Collapsing layers, adjacent layers that change the abstraction and interface compression restate the spine's deletion test, its one-adapter rule and deep against shallow.",
+      "gist": "Layer collapsing and compression repeat the deletion test and one-adapter rule"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/DEEPENING.md",
+      "segment": "710bb7bac404",
+      "kind": "method",
+      "reason": "upstream tells the deepener to delete old shallow-module tests once interface tests exist; greenline retains them through the deepening and routes deletion to sweep-tests with mutation proof, which changes the criterion (the D3 consumer finding of 2026-09-10, carried as a bookend override until this fold); the operator is asked to confirm this method edit in the S3 report Confirmed by the operator on 2026-09-11 (method-rulings.md).",
+      "gist": "Keeps old shallow-module tests through a deepening; sweep-tests decides deletion",
+      "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits; and the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own; and R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "replacedBy": {
+        "path": "DEEPENING.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/DESIGN-IT-TWICE.md",
+      "segment": "3ac3f45a7cf4",
+      "kind": "method",
+      "reason": "The parallel sub-agent pattern gives way to designs made one after another (R21 with R20).",
+      "gist": "Designs are made one after another instead of by parallel sub-agents",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "replacedBy": {
+        "path": "DESIGN-IT-TWICE.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/DESIGN-IT-TWICE.md",
+      "segment": "42590388bd75",
+      "kind": "method",
+      "reason": "No sub-agent works in parallel while the user reads (R21 with R20).",
+      "gist": "No sub-agents work in parallel while the user reads",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/DESIGN-IT-TWICE.md",
+      "segment": "23cc3b2b7445",
+      "kind": "method",
+      "reason": "Spawning three or more sub-agents in parallel gives way to designs made in turn (R21 with R20).",
+      "gist": "Three or more parallel sub-agents give way to designs made in turn",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "replacedBy": {
+        "path": "DESIGN-IT-TWICE.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/DESIGN-IT-TWICE.md",
+      "segment": "2b0e07a73aa1",
+      "kind": "method",
+      "reason": "Spawning three or more sub-agents in parallel gives way to designs made in turn (R21 with R20).",
+      "gist": "Three or more parallel sub-agents give way to designs made in turn",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "replacedBy": {
+        "path": "DESIGN-IT-TWICE.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "codebase-design/DESIGN-IT-TWICE.md",
+      "segment": "2d8d3d97dd74",
+      "kind": "method",
+      "reason": "Each design, not a sub-agent, gives the five parts (R21 with R20).",
+      "gist": "Each design gives the five parts, where upstream said each sub-agent",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "replacedBy": {
+        "path": "DESIGN-IT-TWICE.md",
+        "passage": 5
+      }
+    }
+  ]
+}

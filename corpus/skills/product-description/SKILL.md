@@ -5,7 +5,9 @@ description: "Build a \"product description\" repo for a software product — a 
 
 # Product description repo
 
-This skill runs a standing program, not an initiative stage. The description repo it builds is a deliverable in its own repository, never `.greenline/work/` state; an initiative that commissions one tracks it through its ticket. It runs on a shipped surface, either as reconnaissance before shaping, whose findings feed proposed initiatives, or after verifying, to describe what actually shipped. Harness work in the verification pass belongs to control-cli and control-ui, the proof of a single claim to verify-this, and a state chart that outgrows a Mermaid block to `diagram-design` (opt-in).
+product-description is an extra start, installed on request, for an owner who wants how the product behaves for its user described feature by feature. It runs a standing program in a repository of its own, outside this one, so it opens no change record here. Before it starts, say what it will build, where, and whether it would spend fresh agents, and wait for the owner's yes. A repair its triage finds, once the owner takes it up, becomes a change proposed and run on the line from `frame`, its record's `## start` section naming product-description and the triage entry it handed on. It runs on a shipped surface, as reconnaissance before a change is framed or after one is verified, to describe what shipped. Driving the product in the verification pass follows the verify step's pages for a CLI and a UI, the proof of a single claim is the verify step's, and a state chart that outgrows a Mermaid block is `diagram-design`'s (extra).
+
+Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.
 
 A product description treats the product as a large state chart the user moves through with input. The repo describes that state chart feature by feature, in plain language, from the user's point of view, with the same skeleton for every document so that gaps and inconsistencies show up by comparison. Documents are drafted from the source code and its tests, then verified by hand against the running product, and everything that looks like a defect is collected into one triage file.
 
@@ -23,14 +25,15 @@ The files under `references/`:
 
 ```
 README.md            purpose, conventions, document template, method, structure, coverage table
-goal.md              the standing instructions for whoever drafts (you, subagents, a future session)
+goal.md              the standing instructions for whoever drafts (you, a delegated agent, a future session)
 glossary.md          the vocabulary; the source of truth for every term of art
 AGENTS.md            "Read README.md, then goal.md. The coverage table in README.md is the work list."
-CLAUDE.md            "Read @AGENTS.md."
 {area}/{feature}.md  one document per feature, all on the same skeleton
 verification/        README.md (protocol) + one checklist file per cluster of documents
 bug-triage.md        every suspected defect, deduplicated, with repro, cause, severity, decision needed
 ```
+
+AGENTS.md is the entry file. Where the harness that drafts reads another instructions file, such as CLAUDE.md, write that file with the same line, not one harness's include syntax.
 
 ## Phase 0: scope
 
@@ -40,7 +43,7 @@ Settle these before writing a file. Ask only for what you cannot infer from the 
 2. **Source of truth.** The path to the source repo (read-only reference) and the commit. Every document footer cites `git rev-parse --short HEAD` of that repo.
 3. **Where to run it.** The command and URL, binary, or account that brings up the surface for verification.
 4. **Out of scope.** Name what is excluded and why, so later readers do not think it was forgotten.
-5. **Where the repo goes.** A new directory of its own, outside the greenline workspace and never under `.greenline/work/`; `git init`, first commit `Initial commit`. An initiative that commissioned the program links to it from its ticket.
+5. **Where the repo goes.** A new directory of its own, outside this repository and never under the workspace's own folder; `git init`, first commit `Initial commit`. Where a change of this repository commissioned the program, its record links to it.
 6. **The product's shape.** Read `references/product-kinds.md` and decide, once: the unit of interaction and the names of its five phases; the variant axis (modifiers, flags, roles); the fixed interrupt list; the cross-cutting concerns and their order. These go into the README's "Document template" section and the glossary before the pilot is written, and they do not change afterwards without revisiting every document.
 
 Then do a reconnaissance pass over the source repo to find: where interaction state lives (state machines, reducers, controllers, route handlers, command definitions), where behavior tests are (the ones that read as executable specs of edge cases), where the UI is, and where defaults and thresholds are defined (options, constants, config schemas). These go into the README's "Reference" section and goal.md's reading order.
@@ -52,7 +55,7 @@ Write, in this order, adapting the templates in `references/`:
 1. **README.md** from `README-template.md`. The structure section is the plan: list every document you expect to write with a one-line gloss, grouped by how the user meets the feature (foundations, then the areas of the product, then cross-cutting concerns), never by package or module. The coverage table lists every document as `not started`. Getting the structure right up front is most of the planning; expect to revise it as you learn, and update the table whenever you do.
 2. **glossary.md** from `glossary-guide.md`. Start with the terms the foundations will need and the interrupt words from Phase 0; grow it as documents demand new words. A term used in a document that is not in the glossary is a consistency bug.
 3. **goal.md** from `goal-template.md`. This is the prompt that drives all drafting. Its "Things already established" section is empty at first and fills in as the foundations are written.
-4. **AGENTS.md** and **CLAUDE.md** with the one-line contents shown under Outputs. Do not leave AGENTS.md empty; it is what a fresh session reads first.
+4. **AGENTS.md** with the one-line contents shown under Outputs. Do not leave AGENTS.md empty; it is what a fresh session reads first.
 
 Commit: `docs: add README, glossary, goal`.
 
@@ -66,9 +69,9 @@ Do these yourself, in sequence, not in parallel. They fix the template, tone, de
 
 Commit after each document or coherent group: `docs: add {path}`.
 
-## Phase 3: draft the rest in parallel
+## Phase 3: draft the rest, one after another
 
-Once the exemplars exist, the remaining documents are independent. Fan out with subagents, one document or small cluster per agent. Each agent's prompt is:
+Once the exemplars exist, the remaining documents are independent. Draft them one after another, one document or small cluster at a time. Hold each draft to this brief, whether you write it or, on the owner's yes, a fresh agent does through the harness's delegation, one agent at a time, as the program's drafter rather than a fresh agent of a change, since the program opens no record in this repository and no record cites what it drafts:
 
 > Read `goal.md`, `README.md`, `glossary.md`, `{pilot}`, and `{the foundation document this feature depends on}`. Write `{area}/{feature}.md` on the same skeleton, at the same depth. Use the glossary's words; if you need a term it lacks, add it to `glossary.md` in the right section with a full definition rather than coining a synonym. Do not edit any other existing document. Do not modify the source repo. End with "## Open questions and verification" and the footer. Report what you could not determine from code and tests.
 
@@ -96,13 +99,13 @@ Drafting reads the code; verification watches the product. From `verification-te
 - `verification/README.md`: how to bring up the surface, confirm the commit, run a pass, record results, file failures, and when a document moves from `drafted` to `verified`.
 - One checklist file per cluster of documents, one table per document, one row per observable claim: stable ID (`AREA-NN`), priority (P1 established fact or suspected bug, P2 ordinary claim, P3 a number, color, or timing), what it needs (device, role, network condition), the claim with a link to the section, setup, numbered steps, expected result, Result column (`—` until run). Claims that cannot be checked by hand go under "Not checkable by hand".
 
-If you can drive the product (browser tools, a console handle on the app, a shell for a CLI, a test harness; control-ui carries the browser method and control-cli the shell method), run a first pass yourself on what can be observed that way, record the results in the Result columns, and say plainly in `verification/README.md` what that pass did and did not cover (for example: a scripted pass checks output, exit codes, and stored state but not what was shown on screen or how long it took to appear). Do not mark a document `verified` on the strength of an automated pass alone. A failed item is not automatically a product bug; sometimes the document is wrong, and the Status line says which. A single claim that needs proof of its own proves out through verify-this.
+If you can drive the product (browser tools, a console handle on the app, a shell for a CLI, a test harness; the verify step's pages carry the methods for a browser and a shell), run a first pass yourself on what can be observed that way, record the results in the Result columns, and say plainly in `verification/README.md` what that pass did and did not cover (for example: a scripted pass checks output, exit codes, and stored state but not what was shown on screen or how long it took to appear). Do not mark a document `verified` on the strength of an automated pass alone. A failed item is not automatically a product bug; sometimes the document is wrong, and the Status line says which. A single claim that needs proof of its own is the verify step's to prove.
 
 ## Phase 6: bug triage
 
 From `bug-triage-template.md`: collect every suspected defect from every document's body and open questions, merge duplicates (the same root cause raised by many documents is one entry with many "Raised by" links), and write each up with where the user meets it, what happens vs. what was expected, reproduction steps, the cause in the code with file and line, a severity, and the decision the product team needs (`fix` or `product call`). Summary table at the top sorted by severity. Entries confirmed by a verification pass carry a **Status** line.
 
-The triage is evidence, with its limits stated, and it returns to the owner; the work that commissioned the program links to it. Offer next actions without creating an initiative per cluster: an accepted repair can use a compact ticket, substantial uncertain work can earn an initiative and shaping, and a triage symptom still needs diagnosis or clarification before it is a build contract.
+The triage is evidence, with its limits stated, and it returns to the owner; a change that commissioned the program links to it from its record. Offer next actions without opening a change per entry: an accepted repair becomes a change proposed under its own mode, a large or uncertain one is planned as a change of its own, and a symptom whose cause is unknown goes to diagnose before it is a repair.
 
 **Filing upstream is a separate, outward-facing step.** Offer it; do not do it unasked, and file only on the owner's authorization. If the user wants the entries filed as issues, confirm the repo and the format first, file them, then add an Issue line to each entry and a link column to the summary table (`docs: revise bug-triage.md with links to the filed issues`).
 
@@ -124,7 +127,7 @@ A later session, or a request to add a feature that was out of scope, starts her
 - Surprising behavior is stated plainly, with the reason if the code or a comment gives one. If it looks like a bug, say so in "Open questions".
 - Variants and interrupts go in tables, split by phase ("at the start" / "during"). Every cell filled, even with "no effect".
 - Cross-reference with relative links instead of repeating. The foundation documents own thresholds and definitions.
-- One Mermaid `stateDiagram-v2` per interaction, limited to the states the user passes through. When a chart outgrows a readable Mermaid block, draw it with `diagram-design` (opt-in) into the description repo and link it from the document.
+- One Mermaid `stateDiagram-v2` per interaction, limited to the states the user passes through. When a chart outgrows a readable Mermaid block, draw it with `diagram-design` (extra) into the description repo and link it from the document.
 - Footer: `## Open questions and verification`, a bullet list, then `Verified against {repo} commit \`{sha}\``.
 - Commits: `docs: add {path}` / `docs: revise {path}`. Follow whatever the user's repo does about AI attribution in commit messages.
 - Never modify the source repo. It is read-only reference material.
@@ -137,5 +140,5 @@ The outside-in stance; one skeleton for every document; the interrupt list asked
 ## Handoff
 
 Consumes: the shipped surface at a pinned commit
-Produces: a separate description repository (README, goal, glossary, one document per feature, verification protocol and checklists, one triage file); no automatic initiative per cluster; filing external issues needs the owner
-Next: none; a standing program whose triage returns to the owner
+Produces: a separate description repository (README, goal, glossary, one document per feature, verification protocol and checklists, one triage file); no change opened per triage entry; filing external issues needs the owner
+Next: none; a standing program whose triage returns to the owner, a repair the owner takes up becoming a change run from frame

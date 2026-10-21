@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-subtract-before-you-add",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-laziness-protocol",
+    "sha256": "f281c541b90a8fbf8c359a4b3c417d0338bce63a730401675cd3f740f026d352"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-subtract-before-you-add"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Subtract-first rules join ponytail; the prompt line goes to a craft",
+  "reason": "Subtract first, cut before polish and design for observed use enter the re-cut ponytail recipe; its prompt line goes to craft-writing-for-agents.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "craft-writing-for-agents",
+    "parts": [
+      {
+        "part": "its prompt line",
+        "locator": "pstack/skills/principle-subtract-before-you-add/SKILL.md"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "ponytail",
+    "catches": "Code that did not need to exist, added because nobody asked whether it did",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 45
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 45
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 45
+      }
+    ],
+    "ships": "default"
+  }
+}

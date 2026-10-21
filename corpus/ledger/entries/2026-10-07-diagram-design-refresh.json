@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-diagram-design-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-wayfinder-refresh",
+    "sha256": "4d5dc40fc842acc3fd21044a899a90fd1e1f50593ca5793c1b72947884715070"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "bf69b11c6514509c59753b319ca7d6d3cfb7aad996f825db91e1d4f9870b3208",
+  "result": "25f8816ee277bbcf0ad3ebec5b79f32a25450008d86b69c438949259558bf8a8",
+  "pages": "unknown",
+  "gist": "Re-taken whole at the new upstream, old edits re-applied",
+  "reason": "Re-takes diagram-design whole at cathrynlavery d1376371965f under the provisional ruling of 2026-10-07, every new segment taken but the setup steps greenline's style guide replaces. Old edits are re-applied; each removed segment is a recorded drop.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7155,
+        "taken": 7126,
+        "exact": 7119,
+        "retention": 0.9990176817288802,
+        "coverage": 0.995946890286513,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 591
+  }
+}

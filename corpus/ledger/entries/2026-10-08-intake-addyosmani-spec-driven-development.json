@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-spec-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-architect",
+    "sha256": "4fb80b47cc6f40181a48fc4ae037b0bd2a5f327e1b8bde88b0688280ef2da145"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/spec-driven-development"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Reframing a requirement as a failing criterion strengthens to-spec",
+  "reason": "Its reframing of a vague requirement into a criterion that can fail strengthens to-spec, as a confirmation of its acceptance. Its phase gates and questioning are declined.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 3, R18)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 3, R18)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "to-spec",
+    "catches": "An acceptance criterion that cannot fail",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "plan",
+        "depth": "none",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "plan",
+        "depth": "written",
+        "cost": 100
+      },
+      {
+        "mode": "high",
+        "step": "plan",
+        "depth": "written",
+        "cost": 100
+      },
+      {
+        "mode": "max",
+        "step": "plan",
+        "depth": "written",
+        "cost": 100
+      }
+    ],
+    "ships": "default"
+  }
+}

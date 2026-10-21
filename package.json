@@ -34,13 +34,10 @@
   "scripts": {
     "build": "tsdown && node scripts/build-installation.mjs && node scripts/build-package.mjs",
     "prepack": "node scripts/build-package.mjs --refuse-root-pack",
-    "check": "node scripts/check.mjs",
-    "check:full": "node scripts/check.mjs --full",
+    "check": "node scripts/check.mjs --public",
     "fmt": "oxfmt",
     "lint": "oxlint .",
-    "test": "vitest run --passWithNoTests",
-    "skills:sync": "node scripts/skills-sync.mjs",
-    "release": "node scripts/release.mjs"
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "commander": "15.0.0",

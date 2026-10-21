@@ -1,0 +1,53 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-codebase-design-rename",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-verify-rename",
+    "sha256": "ede91adfabe9b25109cd1890805c9201b343d76437fcc4aceaef2d0fd950cedf"
+  },
+  "subject": "skill:codebase-design",
+  "recipe": "57da905bbd26604bb455015a652d46c0638a6b98464b750111cc879f5b9b8ace",
+  "result": "fe385e9668a0ec11ee0ea6c184f172866c1dcd829953ebca7d71159f5b5dde35",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Names architecture-survey as the owner of a repository survey",
+  "reason": "codebase-design names architecture-survey, the start improve-codebase-architecture became, as the owner of a repository-wide survey.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 152,
+        "taken": 151,
+        "exact": 150,
+        "retention": 0.9933774834437086,
+        "coverage": 0.993421052631579,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 186
+  }
+}

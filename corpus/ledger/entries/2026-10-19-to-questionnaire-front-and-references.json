@@ -1,0 +1,60 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-to-questionnaire-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-tdd-front-and-references",
+    "sha256": "4f06decfde9e855d5e3d2dbe1df347d7a93481dbbbb62135a13cd25aad6a0b69"
+  },
+  "subject": "skill:to-questionnaire",
+  "recipe": "8c069cec8ee383fed1e39e53e750553d8536a2621f27bf1397889990834705f5",
+  "result": "5dc80626075a961b416b9c8736c7814e956a7aec0155f99fb8f845dbae20df62",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "to-questionnaire's paths and commands move to a references page",
+  "reason": "The front names greenline's homes and commands by their nouns and points at a references page, which holds their paths and commands (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; to-questionnaire a copy, a new trial habit for a decision only someone other than the owner can answer"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 41,
+        "taken": 41,
+        "exact": 39,
+        "retention": 0.9512195121951219,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 210
+  }
+}

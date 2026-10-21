@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-use-garden-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-review-lens-recipe",
+    "sha256": "6ce6f7ea4de08ed4dcee001c449d9ec98c5b22d7e2d9eb54d7f64fb7c3fb08e8"
+  },
+  "subject": "skill:use-garden",
+  "recipe": "040ea7cb63fde3b5464694ee4bc93086ffe00939c45e8f109bc6c6422df13c70",
+  "result": "7f2dc39a4453ca92131b36f3683fb5e8a6cef2320652676419a415a1b9177c0c",
+  "pages": "unknown",
+  "gist": "A native skill moves to its recipe, its body unchanged",
+  "reason": "Moves use-garden, a native skill, to its recipe under Q1 of 2026-10-04: its body byte for byte, its front matter in canonical quoted form. The old chain pinned it at use-garden-answers-2026-09-28.",
+  "authorisedBy": {
+    "date": "2026-09-22",
+    "words": "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-22",
+      "words": "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 2560
+  }
+}

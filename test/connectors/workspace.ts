@@ -17,13 +17,13 @@ import { RecordingWriter } from "../helpers/writer.ts";
 
 /**
  * The stand-in for the skill garden's connector mounts: its name is the
- * registry's and its class the corpus skill's; `skill.test.ts` drives the
+ * registry's and its kind the corpus skill's; `skill.test.ts` drives the
  * corpus skill itself.
  */
 export const useGarden: SkillSource = {
   name: "use-garden",
   description: "Consult garden when an applicable knowledge question arises.",
-  class: "discipline",
+  kind: "habit",
   activation: "implicit",
   body: "# Use Garden\n\nA fixture stand-in for the connector's skill.\n",
 };
@@ -73,7 +73,7 @@ export function run(
     readonly installation?: Installation;
     readonly installationError?: ContractParseFailed;
     readonly prompt?: PromptPort;
-    /** The process environment status and doctor read a connector's PATH and key variable from; none by default. */
+    /** The process environment status reads a connector's PATH and key variable from; none by default. */
     readonly environment?: NodeJS.ProcessEnv;
   } = {},
 ): Run {

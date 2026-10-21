@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-sweep-tests-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-fail-loud-recipe",
+    "sha256": "3f197976bcae6a5ee79bcd8d1ab0ad83c94d9e0c77e1fcf6c794c74c8f2a3079"
+  },
+  "subject": "skill:sweep-tests",
+  "recipe": "ab2032b59e522eb80e9437a03719a7ffe19c7dba78a0052366c71c0fff15f1b2",
+  "result": "7701cd9e950fc2a174ae97c1fcd4cbe23dd9a3864bad066d2e61d07354bae40d",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves sweep-tests to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at series-s7-roster-2026-09-11.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 124,
+        "taken": 119,
+        "exact": 114,
+        "retention": 0.957983193277311,
+        "coverage": 0.9596774193548387,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 571
+  }
+}

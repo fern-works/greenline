@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-architecture-map-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-sweep-tests-recipe",
+    "sha256": "dd4720f691f753ad29e7627e6f8baa30d374da41a4b947b0f516f24ec97f07f5"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "4f8f31def0068d3de4541a5889b59ccdb57ca274cfa7e094a348c6c87ad709d0",
+  "result": "910d437cc45de814d235e34dc04283fbebac593bd2b8845595b0ae19f74877de",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves architecture-map to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at fold-walk-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 864
+  }
+}

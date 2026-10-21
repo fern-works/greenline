@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-constraint-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-experience-first",
+    "sha256": "548141d7e5e7d2212c01bd9817c9dc4ed1935816a33d42d0f4498eb2fe2d486a"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/constraint-driven-development"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "Enters as a trial start; its tool tables go to garden",
+  "reason": "A new trial start constraint-driven-development: the bar in the decisions home, its guard a repository check, never a line in the instructions file or a harness hook. Its tool and threshold tables go to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Copy, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Copy, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its tool and threshold tables",
+        "locator": "skills/constraint-driven-development"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "start",
+    "slot": "constraint-driven-development",
+    "catches": "An agent lowering the repository's quality bar to reach green",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "trial"
+  }
+}

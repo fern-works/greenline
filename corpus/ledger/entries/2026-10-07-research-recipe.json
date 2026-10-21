@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-research-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-to-tickets-recipe",
+    "sha256": "47c4f057b59ed39a5fcb3b86e505b037feb51eb6f85f9f3e7745353fd7736bf4"
+  },
+  "subject": "skill:research",
+  "recipe": "2e4261f2ac446dbef1d4e14f768ba9b8dd9b3b11a6a0c16c1704691ddbf05131",
+  "result": "3a886e8fcf1fc951325d9051f1b27f158a01161899f272d6b5573b02bbfac43a",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves research to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at cold-review-wording-2026-09-12.",
+  "authorisedBy": {
+    "date": "2026-10-07",
+    "words": "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-07",
+      "words": "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 6,
+        "taken": 4,
+        "exact": 4,
+        "retention": 1,
+        "coverage": 0.6666666666666666,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 245
+  }
+}

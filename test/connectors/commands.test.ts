@@ -105,15 +105,15 @@ describe("connectors enable and disable through the write planner", () => {
     expect(JSON.parse(read(root, ".greenline/manifest.json")).connectors).toEqual({
       garden: { endpoint: URL, executable: "garden" },
     });
-    expect(block(root)).toContain(`| ${GARDEN_POINTER} | use-garden |`);
+    expect(block(root)).toContain(`| ${GARDEN_POINTER} | \`use-garden\` |`);
     expect(read(root, "agents/openai.yaml")).toContain(".agents/skills/use-garden");
     for (const path of GARDEN_SKILL_FILES) {
       expect(existsSync(join(root, path))).toBe(true);
       expect(owned(root)).toContain(path);
     }
-    // The installed state converges: a sync and a doctor after enabling find nothing to do.
+    // The installed state converges: a sync and a status after enabling find nothing to do.
     expect(JSON.parse(run(root, ["sync", "--json"]).out).effects).toEqual([]);
-    expect(run(root, ["doctor", "--json"]).code).toBe(0);
+    expect(run(root, ["status", "--json"]).code).toBe(0);
   });
 
   it("disable garden removes the entry, the skill and the pointer, and keeps receipts and user text", () => {
@@ -379,7 +379,7 @@ describe("connectors list and status, offline", () => {
     expect(tree(root)).toEqual(before);
   });
 
-  it("no connectors operation, and neither status nor doctor, contacts garden's endpoint", async () => {
+  it("no connectors operation, and no status, contacts garden's endpoint", async () => {
     const requests: string[] = [];
     const server = createServer((request, response) => {
       requests.push(`${request.method ?? ""} ${request.url ?? ""}`);
@@ -399,7 +399,7 @@ describe("connectors list and status, offline", () => {
         ["connectors", "enable", "garden", "--url", endpoint],
         ["connectors", "status", "garden", "--json"],
         ["status"],
-        ["doctor", "--json"],
+        ["status", "--json"],
         ["connectors", "disable", "garden"],
       ])
         expect(run(root, args, { environment: { PATH: process.env["PATH"] } }).code).toBe(0);
@@ -433,8 +433,8 @@ describe("connectors list and status, offline", () => {
   });
 });
 
-describe("status and doctor report the connectors offline", () => {
-  /** The GL0125 findings of a doctor or status envelope. */
+describe("status reports the connectors offline", () => {
+  /** The GL0125 findings of a status envelope. */
   const findings = (out: string): readonly { severity: string; message: string }[] =>
     z
       .object({
@@ -447,10 +447,10 @@ describe("status and doctor report the connectors offline", () => {
 
   it("a disabled connector is reported as disabled, raises nothing and explains how it is enabled", () => {
     const root = workspace("readiness-disabled");
-    const doctor = run(root, ["doctor", "--json"], { environment: {} });
-    expect(doctor.code).toBe(0);
-    expect(JSON.parse(doctor.out).connectors).toEqual([DISABLED]);
-    expect(findings(doctor.out)).toEqual([]);
+    const json = run(root, ["status", "--json"], { environment: {} });
+    expect(json.code).toBe(0);
+    expect(JSON.parse(json.out).connectors).toEqual([DISABLED]);
+    expect(findings(json.out)).toEqual([]);
     const status = run(root, ["status"], { environment: {} });
     expect(status.code).toBe(0);
     expect(status.out).toContain(
@@ -466,16 +466,14 @@ describe("status and doctor report the connectors offline", () => {
       run(root, ["connectors", "enable", "garden", "--url", URL, "--executable", garden.path]).code,
     ).toBe(0);
     const environment = { GARDEN_API_KEY: "a-key-value-that-is-never-printed" };
-    for (const command of ["doctor", "status"]) {
-      const json = run(root, [command, "--json"], { environment });
-      expect(json.code).toBe(0);
-      expect(JSON.parse(json.out).connectors).toEqual([enabled(URL, garden.path)]);
-      expect(findings(json.out)).toEqual([]);
-      const human = run(root, [command], { environment });
-      expect(human.out).toContain(`    executable: ${garden.path} (runs ${garden.path})\n`);
-      expect(human.out).toContain("    key: GARDEN_API_KEY set\n");
-      expect(human.out + human.err + json.out).not.toContain("a-key-value-that-is-never-printed");
-    }
+    const json = run(root, ["status", "--json"], { environment });
+    expect(json.code).toBe(0);
+    expect(JSON.parse(json.out).connectors).toEqual([enabled(URL, garden.path)]);
+    expect(findings(json.out)).toEqual([]);
+    const human = run(root, ["status"], { environment });
+    expect(human.out).toContain(`    executable: ${garden.path} (runs ${garden.path})\n`);
+    expect(human.out).toContain("    key: GARDEN_API_KEY set\n");
+    expect(human.out + human.err + json.out).not.toContain("a-key-value-that-is-never-printed");
     expect(existsSync(garden.marker)).toBe(false);
   });
 
@@ -484,10 +482,10 @@ describe("status and doctor report the connectors offline", () => {
     expect(run(root, ["connectors", "enable", "garden", "--url", URL]).code).toBe(0);
     const empty = mkdtempSync(join(tmpdir(), "gl-empty-path-"));
     roots.push(empty);
-    const doctor = run(root, ["doctor", "--json"], { environment: { PATH: empty } });
+    const json = run(root, ["status", "--json"], { environment: { PATH: empty } });
     // Warnings: the workspace stays valid, and the verdict is not an error.
-    expect(doctor.code).toBe(0);
-    expect(findings(doctor.out)).toEqual([
+    expect(json.code).toBe(0);
+    expect(findings(json.out)).toEqual([
       expect.objectContaining({
         severity: "warning",
         message: expect.stringContaining("its executable 'garden' is not on the PATH"),
@@ -497,22 +495,39 @@ describe("status and doctor report the connectors offline", () => {
         message: expect.stringContaining("GARDEN_API_KEY is not set in this environment"),
       }),
     ]);
-    const human = run(root, ["doctor"], { environment: { PATH: empty } });
+    const human = run(root, ["status"], { environment: { PATH: empty } });
     expect(human.out).toContain("    executable: garden (not found)\n");
     expect(human.out).toContain("    key: GARDEN_API_KEY not set\n");
     expect(human.err).toContain("WARNING GL0125");
   });
 
-  it("a refused execution ledger does not hide the connectors from doctor or status", () => {
-    const root = workspace("readiness-ledger");
+  it("S20 a receipts folder that cannot be read is one GL0401 finding at the folder", () => {
+    const root = workspace("readiness-receipts-folder");
+    writeFileSync(join(root, ".greenline/ledger/receipts"), "not a folder\n");
+    const json = run(root, ["status", "--json"], { environment: {} });
+    expect(json.code).toBe(1);
+    expect(JSON.parse(json.out).diagnostics).toEqual([
+      expect.objectContaining({ code: "GL0401", path: ".greenline/ledger/receipts" }),
+    ]);
+  });
+
+  it("S20 a receipt collection that cannot be read is a GL0401 finding of its own, and hides neither the connectors nor the changes", () => {
+    const root = workspace("readiness-receipts");
     mkdirSync(join(root, ".greenline/ledger/receipts"), { recursive: true });
     writeFileSync(join(root, ".greenline/ledger/receipts/not-a-request.json"), "{ not json\n");
-    for (const command of ["doctor", "status"]) {
-      const json = run(root, [command, "--json"], { environment: {} });
-      expect(json.code).toBe(1);
-      expect(JSON.parse(json.out).connectors).toEqual([DISABLED]);
-      expect(run(root, [command], { environment: {} }).out).toContain("  garden: disabled;");
-    }
+    const json = run(root, ["status", "--json"], { environment: {} });
+    expect(json.code).toBe(1);
+    const envelope = JSON.parse(json.out);
+    expect(envelope.connectors).toEqual([DISABLED]);
+    expect(envelope.changes.view).toBe("list");
+    expect(envelope.diagnostics).toEqual([
+      expect.objectContaining({
+        code: "GL0401",
+        severity: "error",
+        path: ".greenline/ledger/receipts/not-a-request.json",
+      }),
+    ]);
+    expect(run(root, ["status"], { environment: {} }).out).toContain("  garden: disabled;");
   });
 
   it("the bare command resolves on an absolute PATH entry, as a call would run it", () => {
@@ -522,9 +537,9 @@ describe("status and doctor report the connectors offline", () => {
     const environment = { PATH: join(root, ".tools"), GARDEN_API_KEY: "set" };
     const human = run(root, ["status"], { environment });
     expect(human.out).toContain(`    executable: garden (runs ${garden.path})\n`);
-    expect(findings(run(root, ["doctor", "--json"], { environment }).out)).toEqual([]);
+    expect(findings(run(root, ["status", "--json"], { environment }).out)).toEqual([]);
     // A relative PATH entry is never searched, so a repository cannot plant the command.
-    const relative = run(root, ["doctor", "--json"], {
+    const relative = run(root, ["status", "--json"], {
       environment: { PATH: ".tools", GARDEN_API_KEY: "set" },
     });
     expect(findings(relative.out)).toEqual([
@@ -541,9 +556,9 @@ describe("status and doctor report the connectors offline", () => {
         run(root, ["connectors", "enable", "garden", "--url", URL, "--executable", "D:/garden"])
           .code,
       ).toBe(0);
-      const doctor = run(root, ["doctor", "--json"], { environment: { GARDEN_API_KEY: "set" } });
-      expect(doctor.code).toBe(0);
-      expect(findings(doctor.out)).toEqual([
+      const json = run(root, ["status", "--json"], { environment: { GARDEN_API_KEY: "set" } });
+      expect(json.code).toBe(0);
+      expect(findings(json.out)).toEqual([
         expect.objectContaining({
           severity: "warning",
           message: expect.stringContaining("not an absolute path on this platform"),

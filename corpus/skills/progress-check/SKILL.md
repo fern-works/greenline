@@ -1,21 +1,24 @@
 ---
 name: "progress-check"
-description: "Give sparse, evidence-based progress updates during long-running work: observable milestones weighted by work and risk, an update only when something material changed, one rounded-down bar. Fires in the worker moment, a claimed ticket or a multi-milestone build, never for short answers or work with no intermediate state. Also fires the moment the user asks to change how or how often you report progress, whether more updates, total silence or estimated clocks, BEFORE any such preference is saved anywhere."
+description: "Give sparse, evidence-based progress updates during long-running work: observable milestones weighted by work and risk, an update only when something material changed, one rounded-down bar. Use while long work with several milestones runs between replies, never for a short answer or work with no intermediate state; and the moment the owner asks to change how or how often you report progress, whether more updates, total silence or an estimated clock, BEFORE any such preference is saved anywhere."
 ---
 
 # Progress Check
 
-This skill governs speaking unasked during long owned work: a ticket you hold
-at implementing, a multi-milestone build, delegated agents running. It never
-fires on a short answer or on work whose only honest states are started and
-finished, and its cadence is judgment, never spam. It also fires the moment the
-user asks to change how or how often you report, whether more updates, silence
-or an estimated clock: follow the preference within the current task, keep
-reporting actionable blockers, and save nothing anywhere unless the owner
-asks for a lasting rule (Persist a preference, below). Progress stays in the
-conversation; the evidence behind it belongs to the owning ticket and its
-execution account, and an estimated clock is an unmeasured claim this skill
-never makes.
+progress-check is the habit for the moment long work runs between replies: a
+change with several milestones, a build of many slices, delegated agents
+running one after another. It never fires on a short answer or on work whose
+only honest states are started and finished, and its cadence is judgment,
+never spam. It also fires the moment the owner asks to change how or how often
+you report, whether more updates, silence or an estimated clock: follow the
+preference within the current task, keep reporting actionable blockers, and
+save nothing anywhere unless the owner asks for a lasting rule (Persist a
+preference, below). It writes no record of its own: progress stays in the
+conversation, the evidence behind it belongs to the change record's sections
+and the checks the change recorded, and an estimated clock is an
+unmeasured claim this habit never makes.
+
+Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.
 
 Full method: [METHODOLOGY.md](./METHODOLOGY.md). Chat shape:
 [RESPONSE.md](./RESPONSE.md). Examples: [EXAMPLES.md](./EXAMPLES.md).
@@ -29,11 +32,11 @@ Full method: [METHODOLOGY.md](./METHODOLOGY.md). Chat shape:
 ## Report progress
 
 1. Define a small set of observable milestones before estimating a percentage.
-   Weight by work and risk, not elapsed time. Where a ticket owns the work, the
+   Weight by work and risk, not elapsed time. Where a change owns the work, the
    milestones are its acceptance items and every update quotes their evidence.
 2. Send one baseline update after scope is understood.
 3. Send a routine update only when turns of work have passed since the previous
-   routine update or the owning ticket changed status, **and** one of these is
+   routine update or a step of the change has ended, **and** one of these is
    true: a milestone completed, verified progress rose by at least 10 percentage
    points, or the next action materially changed. Never estimate elapsed time to
    open the gate; an estimated clock is an unmeasured claim.
@@ -42,8 +45,8 @@ Full method: [METHODOLOGY.md](./METHODOLOGY.md). Chat shape:
 5. Never repeat an unchanged bar or send a routine “still working” message.
 
 The update is conversation and nothing else: milestone evidence belongs to the
-owning ticket and its execution account, and no parallel progress file or
-tracker is created. Keep each update to at most three short items: completed
+change record and its checks, and no parallel progress file or tracker is
+created. Keep each update to at most three short items: completed
 evidence, current work, and next step or blocker. End with exactly one overall
 bar styled as inline code on its own line:
 
@@ -68,7 +71,7 @@ here and no machine-global instruction write. A request to change how or how
 often you report is followed within the current task and saved nowhere.
 Persist a preference only when the owner asks for a lasting repository
 rule, as a house ruling in the repository's user-owned instruction home, in the
-format `.greenline/WORK.md` defines. The next context reads that rule without
+format the work guide defines. The next context reads that rule without
 demanding a second confirmation.
 
-Durable output: none. Applied on its own cadence in the worker moment, and the moment the user asks to change how or how often you report, before any preference is saved anywhere.
+Durable output: none. Applied on its own cadence while long work runs, and the moment the owner asks to change how or how often you report, before any preference is saved anywhere.

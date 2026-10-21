@@ -1,0 +1,58 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-anticipate-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-to-tickets-retired",
+    "sha256": "4ba4f199e15764037ca2f531b4fc67f72e654554d140aea5311380703b7dbb32"
+  },
+  "subject": "skill:anticipate",
+  "recipe": "866d1d7bcc6a0209992456d0121521c05af7445fd6142b3dab089a240e1c4462",
+  "result": "fb0d9957f4980cde8c677a505904f67085b14284340b744d4dbb36f371a9d735",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Anticipate copies doubt-driven-development for the trial step",
+  "reason": "anticipate, the first skill of the trial step anticipate, copies doubt-driven-development in the step's order: claim, contract, a fresh reading that tries to disprove it, reconciliation and the stop. Cross-model escalation, persona and harness notes are dropped.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 185,
+        "taken": 61,
+        "exact": 57,
+        "retention": 0.9344262295081968,
+        "coverage": 0.32972972972972975,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 635
+  }
+}

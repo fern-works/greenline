@@ -7,10 +7,11 @@ import type { FileIo } from "./io.ts";
  * write; a mid-plan failure rolls every already-applied write back.
  */
 
-/** One planned destination. */
+/** One planned destination; an executable one is written with the mode a git hook's script needs. */
 export interface FileWrite {
   readonly path: string;
   readonly content: string;
+  readonly executable?: boolean | undefined;
 }
 
 export type FileMutation = FileWrite | { readonly path: string; readonly remove: true };
@@ -43,7 +44,10 @@ export function applyFilePlan(
   const applied: FileMutation[] = [];
   for (const entry of entries) {
     if ("remove" in entry && preimages.get(entry.path) === undefined) continue;
-    const write = "remove" in entry ? io.remove(entry.path) : io.write(entry.path, entry.content);
+    const write =
+      "remove" in entry
+        ? io.remove(entry.path)
+        : io.write(entry.path, entry.content, entry.executable === true);
     if (write._tag === "err") {
       const recoveryFailures: string[] = [];
       for (const done of [...applied].reverse()) {

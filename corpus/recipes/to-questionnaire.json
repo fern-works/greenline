@@ -1,0 +1,139 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "to-questionnaire",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "to-questionnaire"
+    },
+    {
+      "field": "description",
+      "value": "Turn a decision the owner can't fully answer into a questionnaire for the person who can, to fill in async or together over a meeting: ask the owner only who it goes to and what they need back, then write the questions most-important-first, one idea each, with \"I don't know\" welcome. Use when a decision the work needs can be answered only by someone other than the owner."
+    }
+  ],
+  "sources": ["mattpocock-skills"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# To questionnaire",
+          "kind": "name",
+          "reason": "The habit's title is its roster name, which upstream's body, opening without a heading, does not give.",
+          "gist": "The title is to-questionnaire, a heading upstream's body lacked"
+        },
+        {
+          "passage": "written",
+          "text": "to-questionnaire is a trial habit, installed only where the workspace's `trials` names it, for the moment a decision the work needs can be answered only by someone other than the owner, at whatever step the work is in, most often frame. It writes no record of its own: the questionnaire is a working file, never committed, that the owner hands on, and the answers that come back settle the decision in the section of the step that asked. The file lives in the open change's working files; with no change open, give the questionnaire in the reply instead of a file. A question the owner can answer is frame's to ask; this habit asks the owner only about the send.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situation its block row keys it by, that it is a trial installed only where trials names it, that it writes no record and where its file and its answers go, and the step beside it that questions the owner. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the trial habit: for decisions only someone else can answer"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "to-questionnaire/SKILL.md",
+          "segments": [
+            "f754e39f7376",
+            "8aa3b5a286d7",
+            "345db391998a",
+            "74cdfc6bdefc",
+            "f83a8a0ca803",
+            "b75e0b1beb85",
+            "045a8b9b1bbe",
+            "6fd893225c4d",
+            "41148c054e24",
+            "651483fedde3",
+            "c9ac49d0f93a",
+            "55f2c2909410",
+            "58ad93e0e38b",
+            "dceaeb058fb7",
+            "dad189a759ea",
+            "172c07cb89c8",
+            "9ee35a2c1379",
+            "f1ccfaffe7e9",
+            "df6486c8b420",
+            "709f90acc0ef",
+            "a1ae94fba759",
+            "e7ff28f058a3",
+            "f49207cc0ce1",
+            "1ab7f1da7601",
+            "37861e2e1401",
+            "f3cca343d5c9",
+            "d5931c608732",
+            "efa7663456fd",
+            "24a400427e01",
+            "a16bf6d7def0",
+            "df28c2c023db",
+            "df8e89a5b3c8",
+            "fbab42d93f3d",
+            "c951e04917e8",
+            "3a38b6788431",
+            "d537d97f7138",
+            "6cd9c1033cb3",
+            "677a8e56a0f6",
+            "fd30bfa6207d",
+            "eaa45cb3b572",
+            "e6d2ddc69aff"
+          ],
+          "edits": [
+            {
+              "segment": "dad189a759ea",
+              "find": "`to-questionnaire",
+              "replace": "the working files as `to-questionnaire",
+              "kind": "home",
+              "reason": "The questionnaire is a working file of the open change rather than a file in the current directory. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+              "gist": "The questionnaire is a working file, not the current folder"
+            },
+            {
+              "segment": "dad189a759ea",
+              "find": " in the current directory",
+              "replace": "",
+              "kind": "home",
+              "reason": "The questionnaire is a working file of the open change rather than a file in the current directory. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+              "gist": "The questionnaire is a working file, not the current folder"
+            },
+            {
+              "segment": "172c07cb89c8",
+              "find": "the file exists",
+              "replace": "the file or the reply holds it",
+              "kind": "home",
+              "reason": "With no change open the questionnaire is given in the reply, so the step is done when the reply carries it.",
+              "gist": "With no change open, the questionnaire in the reply completes the step"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# To questionnaire: the practice's mechanics\n\nThis page holds where to-questionnaire's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe questionnaire is `.greenline/tmp/<id>/to-questionnaire-<slug>.md`, in the open change's working files.",
+          "kind": "home",
+          "reason": "to-questionnaire's mechanics: the working file the questionnaire is written to, held apart since J-93 S2.",
+          "gist": "The questionnaire's working file"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": []
+}

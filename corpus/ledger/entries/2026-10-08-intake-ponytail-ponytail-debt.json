@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-ponytail-ponytail-debt",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-migrate-callers-then-delete-legacy-apis",
+    "sha256": "5310dd140ed6b5cc11b62ff16ed7c859f9d762103b26b0aacee2e0c0a640f5cd"
+  },
+  "source": {
+    "repository": "https://github.com/dietrichgebert/ponytail",
+    "commit": "552acd5efd0aeae2583a12efe39373d2f076f25e",
+    "path": "skills/ponytail-debt"
+  },
+  "pin": "ponytail",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Deferral-marker harvest joins ponytail",
+  "reason": "Harvesting deferral markers and flagging one with no trigger enter the re-cut ponytail recipe, its ledger written to the reply or the change record.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "ponytail",
+    "catches": "Code that did not need to exist, added because nobody asked whether it did",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 90
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 90
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 90
+      }
+    ],
+    "ships": "default"
+  }
+}

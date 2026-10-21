@@ -1,0 +1,1114 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "architecture-map",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "architecture-map"
+    },
+    {
+      "field": "description",
+      "value": "Build or update an interactive isometric map of the repository's architecture, versioned in the workspace's map folder with a measured snapshot and staleness tiers. Use when someone wants to see, onboard into, or refresh how the codebase fits together."
+    }
+  ],
+  "sources": ["almendili"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["22e4325073a5"]
+        },
+        {
+          "passage": "written",
+          "text": "architecture-map is an extra habit, installed on request and loaded only when asked, for the owner who wants to see, onboard into or refresh how the code fits together. It builds and refreshes the repository's map as durable, versioned state in the map's folder: `map.md` holds the authored half (groups, node prose, edges, flows and coverage globs, as Markdown with frontmatter, edited only by the agent), `snapshot.json` holds the measured half with the snapshot commit and per-node prose provenance, and `architecture.html` is the generated viewer. Offer it in one line when someone wants to see how the code fits together, and refresh it after architecture-survey lands a deepening. Building or refreshing the map edits those files, so it is a change like any other: propose its mode and wait, as AGENTS.md says. It writes no record of its own: the map is the repository's state, and the build section of the change that writes it names the map.",
+          "kind": "scope",
+          "reason": "The opening paragraph in the habit's own voice: the situation its block row keys it by, that it is an extra loaded only when asked, the map as durable, versioned state under .greenline/map/ (map.md authored, snapshot.json measured with the snapshot commit and prose provenance, architecture.html generated), offered in one line and refreshed after architecture-survey lands a deepening; that writing it is a change proposed like any other; and that it writes no record of its own, the change's build section naming the map. Re-cut at S18b onto the change record, in place of an initiative and its ticket. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the habit: an extra that keeps the code's map under .greenline/map"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": [
+            "c4c5209c3529",
+            "f935a303edc8",
+            "de22e28e342e",
+            "28449ecd7b1f",
+            "c1906c639a21",
+            "f1ad93ee2782",
+            "72150574c571",
+            "d5ea95232da4",
+            "034aa5c77f41",
+            "f0994b5bc6ea",
+            "a06419f73967",
+            "6057e9d56a85",
+            "448e4fcc801a",
+            "36416e4a042b",
+            "3619edceb46a",
+            "f15152cfd48a",
+            "c3dffee86840",
+            "4199ba454d6d",
+            "69b678fb977c",
+            "560c91e85a17",
+            "80a13e63c285",
+            "a37e534cc238",
+            "648494810850",
+            "bb9d4755a915",
+            "58ecaed2a982",
+            "e9373b1428dc",
+            "5cc8b98f4ee4",
+            "7a31ddec115b",
+            "d8db320932e5",
+            "eea2b397d937",
+            "75795c162f98",
+            "738eb93dfb63",
+            "b9659afab83d"
+          ],
+          "edits": [
+            {
+              "segment": "58ecaed2a982",
+              "find": "a previous `architecture.config.json` —",
+              "replace": "the map folder's `snapshot.json`;",
+              "kind": "home",
+              "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+              "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Step 2: settle the four questions, asking one\n\nThree of the four answers an installed map would need are settled here; the\nsecond is a real choice, asked in one line when the request did not already\nsay, and the work is uninterrupted otherwise:\n\n1. **Where it lives:** the map's folder. There is no route.\n2. **What it covers:** what the request named; when it named nothing, ask\n   whether the map covers the whole repository, the source only, or one\n   package, and say the answer in the reply.\n3. **Design system:** nothing to choose; the viewer ships prebuilt with its\n   own palette.\n4. **Extras:** none. No freshness check in CI, no sync on `predev`/`prebuild`,\n   no version-history dropdown; the snapshot commit is the version.",
+          "kind": "scope",
+          "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Asks only the coverage question; the other three answers are fixed here"
+        },
+        {
+          "passage": "written",
+          "text": "## Step 3: nothing to install\n\nThe viewer is this skill's prebuilt, self-contained shell,\n`$SKILL_DIR/assets/gl-shell.html`. Nothing is copied into the repository: no\n`architecture.config.json`, no sync script, no `package.json` script, no theme\nfile. The map's three files live in the map's folder and nowhere else.",
+          "kind": "pointer",
+          "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["6f00319471ef", "e83248164aca"]
+        },
+        {
+          "passage": "written",
+          "text": "Write the map folder's `map.md`: frontmatter, then the\ngroups, the nodes, the edges, the flows, the intro and the coverage globs, each\nas a section, in the shapes `$SKILL_DIR/assets/core/types.ts` defines for\n`Group`, `ArchNode`, `ArchEdge` and `ArchFlow`.",
+          "kind": "home",
+          "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": [
+            "3a2ced7f986b",
+            "ddfdd00e634e",
+            "43736cccfb36",
+            "7df9b5a996c6",
+            "bcbe45ad65d1",
+            "b0bbf5e6af29",
+            "4efad09497fa",
+            "5464d71b03ac"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Derive `archetype`, `params`, `height` and `footprint` with\n`$SKILL_DIR/assets/core/layout.ts`; the derived geometry lands in\n`snapshot.json` beside the measures it comes from:",
+          "kind": "home",
+          "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit.",
+          "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": [
+            "3eb990019464",
+            "c2da6654888b",
+            "cdc4e1f1029b",
+            "3fb51fa627b1",
+            "6ee60cd815bc",
+            "957d1de23c6e",
+            "31941a78c7d6",
+            "bab7cb821922"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "**Coverage**: write the coverage globs in `map.md` so every source file is\nclaimed exactly once.",
+          "kind": "pointer",
+          "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+          "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps",
+          "credits": ["almendili"]
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["cbfe81fc8596"],
+          "edits": [
+            {
+              "segment": "cbfe81fc8596",
+              "find": "\nwin over its ",
+              "replace": " win over its\n",
+              "kind": "pointer",
+              "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+              "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Then measure each node's file count and line total from its globs, and\nthe list of files no glob claims, with a scanner rather than by hand. Write\nthe numbers into the map folder's `snapshot.json` as each node's `count` and\n`loc`, with the unclaimed list, the snapshot commit (`git rev-parse HEAD`) and\neach node's prose provenance (the commit whose files its prose describes)\nbeside them. No sync script runs and nothing is written into the repository's\nsource tree.\n\nIterate until the unclaimed list is empty, or until what remains genuinely is\nnot part of the system.\n\n## Step 5: render the viewer\n\nAssemble the map's data JSON (groups, nodes, edges, flows and intro in the\nshapes `$SKILL_DIR/assets/core/types.ts` defines: the authored half from\n`map.md` merged with the measures and geometry from `snapshot.json`), take\n`$SKILL_DIR/assets/gl-shell.html`, replace its single `__GL_MAP_DATA__`\nplaceholder with that JSON, and save the result as\nthe map folder's `architecture.html`. The shell is prebuilt and self-contained:\nno build tooling, no framework mounting, no server, no route, and no\n`keyframes.css` import; opening the file is the viewer. Regenerate it whenever\n`map.md` or `snapshot.json` changes.",
+          "kind": "pointer",
+          "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps",
+          "credits": ["almendili"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["3647a9882061"]
+        },
+        {
+          "passage": "written",
+          "text": "1. Check `snapshot.json` against the tree: every file the coverage globs\n   claim is counted once, the unclaimed list is what remains, and the snapshot\n   commit is `HEAD`.\n2. Every edge id a flow routes exists, and every edge's `from` and `to` name a\n   node.\n3. Open the map folder's `architecture.html` in a browser and **look at it**.",
+          "kind": "pointer",
+          "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["cad4d847957e"],
+          "join": "\n   "
+        },
+        {
+          "passage": "written",
+          "text": "Check: no overlapping buildings, no edge cutting through a\n   facade, every flow plays start to finish, the rail and the map agree on\n   what is lit.",
+          "kind": "pointer",
+          "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+          "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps",
+          "credits": ["almendili"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["ce2581abc962", "972dfd82368d", "29744f07f2f5", "9cba900c68d0"]
+        },
+        {
+          "passage": "written",
+          "text": "Edit the map folder's `map.md` and regenerate the viewer; nothing else needs to\n> change.",
+          "kind": "home",
+          "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["fd19619cbda8", "288141433b0d", "20cb1682349c", "5e98aef53baa"],
+          "edits": [
+            {
+              "segment": "20cb1682349c",
+              "find": "architecture.config",
+              "replace": "snapshot",
+              "kind": "home",
+              "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+              "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "1. Read `snapshot.json`, fold `git diff --name-status <snapshot-commit>..HEAD`\n   through the coverage globs, and report the staleness tier before touching\n   anything: fresh (nothing landed), current (commits landed, no mapped node\n   touched), drifting (named nodes dirty), or stale (unclaimed files exist).\n   Staleness arithmetic uses commit dates, never the wall clock.\n2. Re-measure.",
+          "kind": "pointer",
+          "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+          "gist": "Updates report the staleness tier first and re-read only dirty nodes"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["98a32cdf2cc1"],
+          "edits": [
+            {
+              "segment": "98a32cdf2cc1",
+              "find": "the generated file",
+              "replace": "`snapshot.json`",
+              "kind": "pointer",
+              "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+              "gist": "Updates report the staleness tier first and re-read only dirty nodes"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "3. Read the unclaimed list.",
+          "kind": "pointer",
+          "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+          "gist": "Updates report the staleness tier first and re-read only dirty nodes",
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["eb16d0f10a4e"],
+          "edits": [
+            {
+              "segment": "eb16d0f10a4e",
+              "find": " been told\n  ",
+              "replace": "\n   been told",
+              "kind": "pointer",
+              "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+              "gist": "Updates report the staleness tier first and re-read only dirty nodes"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "4. Re-read only the dirty nodes' files and revise their prose; an unchanged\n   node's prose is reused byte-identical. For genuinely new subsystems:\n   *append* a node with derived geometry and drafted prose, and extend the\n   coverage globs. A node whose files all vanished keeps a ghost foundation\n   for one snapshot so the deletion is seen.",
+          "kind": "pointer",
+          "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+          "gist": "Updates report the staleness tier first and re-read only dirty nodes",
+          "credits": ["almendili"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": ["3d455a517cc2"],
+          "edits": [
+            {
+              "segment": "3d455a517cc2",
+              "find": "existing node's\n   prose,",
+              "replace": "other node's prose,\n  ",
+              "kind": "pointer",
+              "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+              "gist": "Updates report the staleness tier first and re-read only dirty nodes"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "5. Rewrite `snapshot.json` (snapshot commit, per-node measure, per-node prose\n   provenance) and `map.md` in the same pass, regenerate `architecture.html`\n   from the shell, and report what you added and what you left alone: the\n   staleness tier found, the nodes re-read versus reused, new and ghosted\n   nodes, and the unclaimed list.",
+          "kind": "pointer",
+          "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+          "gist": "Updates report the staleness tier first and re-read only dirty nodes",
+          "credits": ["almendili"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/SKILL.md",
+          "segments": [
+            "0c4bd6875673",
+            "53420e44caa6",
+            "cecd7d5e6b12",
+            "ab8be1c0dec5",
+            "f11239a83855",
+            "b9bc1586dc78",
+            "f849f440c12d",
+            "3a689d5b6f7f",
+            "64de0f1f3bfe",
+            "8440e41e2bbc",
+            "a6fd7bc449b4",
+            "df4163c2f89c",
+            "ef7971442705"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Durable output: .greenline/map/ (map.md, snapshot.json, architecture.html); offered in one line when someone wants to see how the code fits together, refreshed after architecture-survey lands a deepening.",
+          "kind": "pointer",
+          "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class; S17 renamed the starts improve-codebase-architecture to architecture-survey (R22 of 2026-10-08, \"yes amend, with one change\"), so the pointer names the new name.",
+          "gist": "Durable output is .greenline/map, refreshed after architecture-survey lands a deepening"
+        }
+      ]
+    },
+    {
+      "path": "assets/core/README.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/assets/core/README.md",
+          "segments": [
+            "715456c15ce0",
+            "f010ba2e2d3c",
+            "5b20443d46d1",
+            "554ac78ddc81",
+            "4199ba454d6d",
+            "c34354519abb",
+            "0dea1236bed0",
+            "4ef372d7d1c2",
+            "1a55a8cc6c38",
+            "31612372ba89",
+            "2fddd9dfd8e4",
+            "5437441028e2",
+            "e67f00777f46",
+            "db55d440b2c3"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/authoring.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/references/authoring.md",
+          "segments": [
+            "7e0286a61132",
+            "ff6bb669532b",
+            "70c88d87c3cd",
+            "78861c5bf1cc",
+            "f2be22766671",
+            "96a7f11029e6",
+            "bc5e673ec94b",
+            "a2422cdf5c6d",
+            "c962b7dd2081",
+            "af943f284351",
+            "560a194fd93d",
+            "767d088f5ef8",
+            "68279f6c730f",
+            "2fde57a39fbd",
+            "61567bad44df",
+            "e7576e77b9f2",
+            "50fc4ce945c6",
+            "27c55531b8b6",
+            "82f4f508614a",
+            "6122ad5aabd0",
+            "b12c34f89226",
+            "23cca02b74f3",
+            "4dbf8d46e8c8",
+            "fca6f86108be",
+            "7d765cbe27b5",
+            "03e4c5b51ea1",
+            "3f4c29eaf928",
+            "2648d21db499",
+            "59d0c864ea26",
+            "dfb2e65f4996",
+            "60f0bef492d5",
+            "f593571d959b",
+            "a006eb7944c9",
+            "2e325231410a",
+            "80671a237e98",
+            "002b385b46d6",
+            "02899483def2",
+            "4cb065bcecfb",
+            "2b65d643444b",
+            "ad250c2126ab",
+            "cfc1c932b2a7",
+            "fa449b81a5db",
+            "d63572f90f8f",
+            "62597f8d5da9",
+            "2d5538d0a470",
+            "0473f1f7fb78",
+            "cd1d32134644",
+            "a8a2b72f617f",
+            "6f5a4c9a1f22",
+            "9c23d0934e0f",
+            "87c39a088aa3",
+            "982f30674c0e",
+            "924dd8725a48",
+            "e2b176101294",
+            "672beb63c583",
+            "5591a2253315",
+            "d840c863870e",
+            "2ae46446e652",
+            "d6adcfce73b8",
+            "5d330df98d47",
+            "c84add74c228",
+            "c97cc86f0998",
+            "0e8be7709bff",
+            "aab3ad8f22da",
+            "7bdd839b3e97",
+            "9ceb6a03426c",
+            "44d2cec3d5bd",
+            "b88c9ae1b070",
+            "96de8580c6fe",
+            "0ea52addcad1",
+            "cf69cda8a5d1",
+            "76bbaec8c214",
+            "4f6cabe754a3",
+            "57d54b62e47e",
+            "6bfb18bcb442",
+            "40bb647793c6",
+            "58006e67d791",
+            "e4b84b4a2c7b"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/frameworks.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/references/frameworks.md",
+          "segments": [
+            "95aa62df9b64",
+            "80c07e91afe3",
+            "384260504dbe",
+            "b8e6d2bc7745",
+            "bb1202b51223",
+            "c7db8ab3b423",
+            "151b14ec00d4",
+            "c05cd8a525aa",
+            "affe4a922612",
+            "de5feb8afb34",
+            "3a94d01893ee",
+            "ad2e2bdcdf48",
+            "1885cde10aee",
+            "00eb2979b7ea",
+            "a273f1edc7e4",
+            "ddf68717e981",
+            "b7605c559b43",
+            "f68ce672229d",
+            "23f6cb615256",
+            "6bfeb1d40578",
+            "03b4c9acc5c8",
+            "c55681f93f19",
+            "67690b8ae4fa",
+            "d122e37f332a",
+            "d95c3825945e",
+            "cdad8eac2bce",
+            "721a8fe17bd4",
+            "35c0db146b57",
+            "c773fbd201f5",
+            "31908f0afe90",
+            "61502cfbd609"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/geometry.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "almendili",
+          "file": "architecture-map/references/geometry.md",
+          "segments": [
+            "ab0863bd2367",
+            "1788a816085b",
+            "2a1770db9cfb",
+            "958eee58cc69",
+            "63dbb05c6ed1",
+            "3af49b7dfdaf",
+            "8f55915652d2",
+            "0e954c072b56",
+            "aa03165c48b4",
+            "1cb48bb8c987",
+            "694471c5fdc3",
+            "05d23d829b44",
+            "1922bceb25db",
+            "010cf41fa9cf",
+            "20bc4cd3935e",
+            "e0bb5c414ecb",
+            "7d1808aeef5c",
+            "80c17bdcad88",
+            "e3d904e52fd0",
+            "216cf940e511",
+            "eca73a77606c",
+            "c5bfa1a9ebf3",
+            "edf5d435e32a",
+            "08eba922ffd6",
+            "f7ffb16ddea2",
+            "9a1f3c4930d2",
+            "bcfc5137a14c",
+            "644429401c7c",
+            "892efe66eb77",
+            "17ea706d1d04",
+            "4e4600272ad4",
+            "7caba7000363",
+            "9c1e466a8079",
+            "900ca0391758"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Architecture map: the practice's mechanics\n\nThis page holds where architecture-map's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe map's folder is `.greenline/map/`: `map.md`, the authored half; `snapshot.json`, the measured half with the snapshot commit; and `architecture.html`, the generated viewer. Nothing of the map lives anywhere else.",
+          "kind": "home",
+          "reason": "architecture-map's mechanics: the map's folder, its three files, held apart from the upstream prose since J-93 S2.",
+          "gist": "The map's folder and its three files"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [
+    {
+      "path": "assets/components/ArchitectureMap.tsx",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/ArchitectureMap.tsx"
+    },
+    {
+      "path": "assets/components/BuildingGlyph.tsx",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/BuildingGlyph.tsx"
+    },
+    {
+      "path": "assets/components/DistrictLayer.tsx",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/DistrictLayer.tsx"
+    },
+    {
+      "path": "assets/components/EdgeLayer.tsx",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/EdgeLayer.tsx"
+    },
+    {
+      "path": "assets/components/IsoCanvas.tsx",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/IsoCanvas.tsx"
+    },
+    {
+      "path": "assets/components/SidePanels.tsx",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/SidePanels.tsx"
+    },
+    {
+      "path": "assets/components/keyframes.css",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/keyframes.css"
+    },
+    {
+      "path": "assets/components/theme.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/components/theme.ts"
+    },
+    {
+      "path": "assets/core/archetypes.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/archetypes.ts"
+    },
+    {
+      "path": "assets/core/districts.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/districts.ts"
+    },
+    {
+      "path": "assets/core/iso.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/iso.ts"
+    },
+    {
+      "path": "assets/core/layout.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/layout.ts"
+    },
+    {
+      "path": "assets/core/program.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/program.ts"
+    },
+    {
+      "path": "assets/core/routes.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/routes.ts"
+    },
+    {
+      "path": "assets/core/scene.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/scene.ts"
+    },
+    {
+      "path": "assets/core/types.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/core/types.ts"
+    },
+    {
+      "path": "assets/gl-shell.html",
+      "sha256": "97a48549a86bc05e2ae7b7569f6fe99acc057078ca2cd10ff8613fdafd4c1637",
+      "kind": "pointer",
+      "reason": "the map viewer shell replaces the upstream bundler and CI steps",
+      "gist": "The map viewer shell replaces the upstream bundler and CI steps"
+    },
+    {
+      "path": "assets/stores/useFlowClock.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/stores/useFlowClock.ts"
+    },
+    {
+      "path": "assets/stores/useMapCamera.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/stores/useMapCamera.ts"
+    },
+    {
+      "path": "assets/stores/useMapView.ts",
+      "source": "almendili",
+      "file": "architecture-map/assets/stores/useMapView.ts"
+    },
+    {
+      "path": "scripts/architecture-sync.mjs",
+      "source": "almendili",
+      "file": "architecture-map/scripts/architecture-sync.mjs"
+    },
+    {
+      "path": "scripts/propose-coverage.mjs",
+      "source": "almendili",
+      "file": "architecture-map/scripts/propose-coverage.mjs"
+    }
+  ],
+  "drops": [
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "07746d99fade",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "fd03fe336003",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "52ef2568c607",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "ed1326bccb95",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "21b9a5d33418",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "5392fec43d1b",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "7a4d6549f485",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "98e40e631d67",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "68a6fdcb3554",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "a2ed6d79bafe",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "677b0a46f35b",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "e91734583937",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "456eee43dc88",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "b7f46024fa1e",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "2c7922dfdc71",
+      "kind": "scope",
+      "reason": "three of upstream's four questions have no options under greenline (the home, the design system, the extras are fixed); the coverage question is a real choice and is asked in one line when the request did not say",
+      "gist": "Asks only the coverage question; the other three answers are fixed here"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "ce7aaa0e02c1",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "f1e97f308eff",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "d6cb2e761d9a",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "4d9511856ed1",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "16c8fe389327",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "e92f1b6e4978",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "ff9c2a5b684b",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "ef595286823e",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "942221ec646c",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "e46008a07445",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "6f02ce201f04",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "334c7cf01609",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "e3b4e3286396",
+      "kind": "home",
+      "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit.",
+      "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "a926ea9cdd20",
+      "kind": "home",
+      "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit.",
+      "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "cbf1609e17a1",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "435a98c93e81",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "fa36c4e4f0f6",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "e964a06474da",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "f582649a3986",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "1a26e28548b0",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "ac927a667817",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "af8fd2ae476e",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "1e1124dbaa72",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "11db678d0946",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "7579e30c91d1",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "0686f30d90ec",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "cec6c32d7827",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "5f9503052b92",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 17
+      }
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "84ae87894fb8",
+      "kind": "pointer",
+      "reason": "The prebuilt self-contained viewer shell (assets/gl-shell.html, its __GL_MAP_DATA__ placeholder replaced with the map's data JSON and saved as .greenline/map/architecture.html) replaces upstream's install, bundler, sync-script and CI machinery in place: step 2 asks none of its four questions because the route, the CI wiring, the predev hook and the version dropdown do not exist here; step 3 installs nothing into the repository; step 4 writes coverage globs into map.md and measures counts, lines and the unclaimed list into snapshot.json with a scanner and no sync script; step 5 renders the shell instead of mounting a route (references/frameworks.md no longer applies); step 6 checks the snapshot and edge ids and opens architecture.html instead of typechecking, running --check and the app.",
+      "gist": "A prebuilt viewer shell replaces upstream's install, bundler, sync and CI steps"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "3480f91d1f48",
+      "kind": "home",
+      "reason": "Every place upstream names the in-repo files (architecture.config.json as the existing-map detector in step 1 and in the update section, graph.ts as the authored file in step 4 and in the closing quote, core/layout.ts as a copied module) names greenline's home instead: .greenline/map/snapshot.json, .greenline/map/map.md, the skill's own assets/core/layout.ts with the derived geometry landing in snapshot.json, and the viewer regenerated after a prose edit.",
+      "gist": "Upstream's in-repo files give way to .greenline/map and the skill's assets"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "447ef7dad48c",
+      "kind": "pointer",
+      "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+      "gist": "Updates report the staleness tier first and re-read only dirty nodes"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "c72b2d104dd3",
+      "kind": "pointer",
+      "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+      "gist": "Updates report the staleness tier first and re-read only dirty nodes"
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "acf910a1f885",
+      "kind": "pointer",
+      "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+      "gist": "Updates report the staleness tier first and re-read only dirty nodes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "almendili",
+      "file": "architecture-map/SKILL.md",
+      "segment": "d7829dc31de2",
+      "kind": "pointer",
+      "reason": "The update procedure reads snapshot.json, folds git diff --name-status <snapshot-commit>..HEAD through the coverage globs and reports the staleness tier (fresh, current, drifting, stale) from commit dates before touching anything, re-reads only dirty nodes and reuses unchanged prose byte-identical, keeps a ghost foundation for a vanished node for one snapshot, rewrites snapshot.json and map.md in the same pass, regenerates the viewer and reports tier, re-read versus reused nodes, ghosts and the unclaimed list; the Durable output line names .greenline/map/ and the offer rule for the situational class.",
+      "gist": "Updates report the staleness tier first and re-read only dirty nodes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 27
+      }
+    }
+  ]
+}

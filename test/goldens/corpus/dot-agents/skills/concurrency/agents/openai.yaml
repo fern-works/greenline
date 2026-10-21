@@ -1,0 +1,3 @@
+interface:
+  display_name: "Concurrency"
+  short_description: "Decide whether code should be concurrent, reason about a concurrent design by its timelines, separate shared state before serializing it, and make an operation converge when a crash, a restart or a retry runs it twice, an idempotency key derived from the intent and claimed atomically. Use when adding threading, async, goroutines, workers or parallelism; when a race or an ordering bug appears; when two actors may write the same file, key or branch; and when a command, a step or a loop must survive crashes, restarts and retries."

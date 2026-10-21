@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-technical-writing-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-unslop-retired",
+    "sha256": "1f61fdefe29d0e75131909ce35a949067a0caf5021e0b65417bf01e863b3cdf9"
+  },
+  "skill": "technical-writing",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "prose",
+  "recipe": "0ae5e240aca71390b3efc30130d3ed04131740c61eb8b0e017869f635f0e589f",
+  "gist": "Becomes prose's page for documents",
+  "reason": "technical-writing is the prose habit's page for documents now.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

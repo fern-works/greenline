@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-product-description-program-drafter",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-wayfinder-research-agent-brief",
+    "sha256": "750a6e7e0fe84e0ba1e084196055efe8995ff4babab05819fcde8106400e7ab6"
+  },
+  "subject": "skill:product-description",
+  "recipe": "ccaafed4dfd15b6236b09d55780271c86d45e0f150e91336068f8af5bcb05e48",
+  "result": "8d255c37ec9e082cbc7aef133b307440f6e89fd1ef67edc8eb77984fb8e431dd",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The program's drafting agent is no fresh agent of a change",
+  "reason": "Product description says its drafting agent is the program's drafter rather than a fresh agent of a change, since the program opens no record in this repository and no record cites what it drafts.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "product-description",
+        "segments": 618,
+        "taken": 612,
+        "exact": 605,
+        "retention": 0.988562091503268,
+        "coverage": 0.9902912621359223,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 591
+  }
+}

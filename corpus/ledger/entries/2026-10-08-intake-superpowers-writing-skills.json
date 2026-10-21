@@ -1,0 +1,42 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-writing-skills",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-tjcages-lossless-migration",
+    "sha256": "5e89b19a170ece12932892487945694ad2ef9439398d3f4258910daefd780b6f"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/writing-skills"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "A skill-writing method, the workshop's, handed to its craft",
+  "reason": "A method for writing and testing skills and wording, which is the workshop's; its anthropic-best-practices.md is taken as ideas only.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to craft-writing-for-agents, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to craft-writing-for-agents, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "craft-writing-for-agents",
+    "parts": [
+      {
+        "part": "its method for writing and testing skills and wording",
+        "locator": "skills/writing-skills"
+      },
+      {
+        "part": "its anthropic-best-practices.md, as ideas only",
+        "locator": "skills/writing-skills/anthropic-best-practices.md"
+      }
+    ]
+  }
+}

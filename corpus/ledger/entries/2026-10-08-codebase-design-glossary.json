@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-codebase-design-glossary",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-using-git-worktrees",
+    "sha256": "63147d71e79eb98964f2525b9217b59d52cc93d8367fa67bdf6e86f79ad4f066"
+  },
+  "subject": "skill:codebase-design",
+  "recipe": "fb28243f5833273635700e573db58f2d4254e43849bbc0d5eea2afc3a78cb498",
+  "result": "556d7c3c6da6b3d9f2f925c68ced9a3ad460fc95cdee73a33ac48a899e1330f0",
+  "pages": [
+    {
+      "path": "DESIGN-IT-TWICE.md"
+    }
+  ],
+  "gist": "Follows upstream's rename to GLOSSARY.md, dropping one pointer edit",
+  "reason": "Follows upstream's rename: the glossary home is GLOSSARY.md, as the installed work guide now names it. The pointer edit that kept CONTEXT in one sentence of DESIGN-IT-TWICE.md is removed; other edits stay.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 152,
+        "taken": 151,
+        "exact": 150,
+        "retention": 0.9933774834437086,
+        "coverage": 0.993421052631579,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 187
+  }
+}

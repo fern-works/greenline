@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-boundary-discipline-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-type-system-discipline-retired",
+    "sha256": "ed848d016edd2dca275af6567a2d261f72a2c2ed0cb0a6d47af636a7039345c3"
+  },
+  "skill": "boundary-discipline",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "boundaries",
+  "recipe": "613fcceecc59816d2055ce2ac2dfb30515aa9479359862272192dcfe4671877d",
+  "gist": "Becomes the spine of boundaries",
+  "reason": "boundary-discipline is the spine of boundaries now.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

@@ -1,0 +1,1066 @@
+{
+  "commit": "846fbc93",
+  "entries": {
+    "2026-10-05-grill-with-docs-recipe": [
+      "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+    ],
+    "2026-10-05-implement-recipe": [
+      "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\"",
+      "its method items carry the operator's ruling of 2026-09-11 (review-contracts-2026-09-26), in the operator's words \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-05-to-spec-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-05-codebase-design-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-05-tdd-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-sweep-tests-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-diagram-design-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-concurrency-method-recipe": [
+      "A native skill no docs/DECISIONS.md row and no old entry rules",
+      "its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+    ],
+    "2026-10-07-groundwork-recipe": [
+      "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\", and the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (the row of 2026-09-26)"
+    ],
+    "2026-10-07-project-router-recipe": [
+      "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+    ],
+    "2026-10-07-review-lens-recipe": [
+      "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+    ],
+    "2026-10-07-use-garden-recipe": [
+      "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+    ],
+    "2026-10-07-what-to-build-recipe": [
+      "A native skill no docs/DECISIONS.md row and no old entry rules",
+      "its method items move it as it stands under the row of 2026-10-04 (modes-records-recipes, Q1), in the operator's words \"okay then lock in what you recommend\""
+    ],
+    "2026-10-07-improve-codebase-architecture-recipe": [
+      "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-fix-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line",
+      "its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    ],
+    "2026-10-07-wayfinder-recipe": [
+      "Its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    ],
+    "2026-10-07-prototype-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-diagnosing-bugs-recipe": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-domain-modeling-recipe": [
+      "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    ],
+    "2026-10-07-research-recipe": [
+      "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured",
+      "the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    ],
+    "2026-10-07-codebase-design-refresh": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-diagnosing-bugs-refresh": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-domain-modeling-refresh": [
+      "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line",
+      "its retention under the minimum is the copy as it stands, its installed text unchanged by the refresh the operator asked for on 2026-10-07 in the words \"lets pull the fresh upstream for all the sources\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    ],
+    "2026-10-07-grill-with-docs-refresh": [
+      "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+    ],
+    "2026-10-07-implement-refresh": [
+      "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\"",
+      "its method items carry the operator's ruling of 2026-09-11 (review-contracts-2026-09-26), in the operator's words \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-improve-codebase-architecture-refresh": [
+      "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-fix-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line",
+      "its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    ],
+    "2026-10-07-prototype-refresh": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-research-refresh": [
+      "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured",
+      "the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    ],
+    "2026-10-07-tdd-refresh": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-to-spec-refresh": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-wayfinder-refresh": [
+      "Its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    ],
+    "2026-10-07-diagram-design-refresh": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-07-diagram-design-verifier-pointers": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    ],
+    "2026-10-08-intake-addyosmani-interview-me": ["everything is good", "contradiction 1"],
+    "2026-10-08-intake-superpowers-brainstorming": ["everything is good", "R21"],
+    "2026-10-08-intake-pstack-principle-exhaust-the-design-space": ["everything is good"],
+    "2026-10-08-intake-mattpocock-skills-grill-me": ["everything is good"],
+    "2026-10-08-intake-addyosmani-source-driven-development": ["everything is good"],
+    "2026-10-08-intake-addyosmani-planning-and-task-breakdown": [
+      "everything is good",
+      "R20",
+      "R21"
+    ],
+    "2026-10-08-intake-superpowers-writing-plans": ["everything is good", "R20", "R21"],
+    "2026-10-08-intake-pstack-architect": ["yes go ahead", "R21"],
+    "2026-10-08-intake-addyosmani-spec-driven-development": [
+      "everything is good",
+      "R18",
+      "contradiction 3"
+    ],
+    "2026-10-08-intake-pstack-principle-outcome-oriented-execution": ["everything is good", "R18"],
+    "2026-10-08-intake-addyosmani-doubt-driven-development": ["yes go ahead", "R21", "R17"],
+    "2026-10-08-intake-addyosmani-incremental-implementation": ["everything is good", "R20"],
+    "2026-10-08-intake-superpowers-executing-plans": ["yes go ahead", "R21"],
+    "2026-10-08-intake-pstack-principle-sequence-verifiable-units": ["everything is good"],
+    "2026-10-08-intake-mattpocock-skills-implement-spec": [
+      "everything is good",
+      "R20",
+      "greenline runs its subagents one after another, never in parallel, and uses no worktrees"
+    ],
+    "2026-10-08-intake-pstack-interrogate": ["yes go ahead", "R21"],
+    "2026-10-08-intake-cursor-team-kit-thermo-nuclear-review": ["yes go ahead", "R21"],
+    "2026-10-08-intake-superpowers-requesting-code-review": ["yes go ahead", "R21"],
+    "2026-10-08-intake-superpowers-receiving-code-review": ["everything is good"],
+    "2026-10-08-intake-ponytail-ponytail-audit": ["everything is good"],
+    "2026-10-08-intake-pstack-no-comments": ["yes go ahead", "R21"],
+    "2026-10-08-intake-cursor-team-kit-thermo-nuclear-code-quality-review": ["everything is good"],
+    "2026-10-08-intake-cursor-team-kit-review-and-ship": ["everything is good"],
+    "2026-10-08-intake-cursor-team-kit-deslop": ["everything is good"],
+    "2026-10-08-intake-addyosmani-code-review-and-quality": ["everything is good"],
+    "2026-10-08-intake-superpowers-verification-before-completion": [
+      "everything is good",
+      "contradiction 11"
+    ],
+    "2026-10-08-intake-pstack-principle-prove-it-works": ["everything is good"],
+    "2026-10-08-intake-addyosmani-browser-testing-with-devtools": ["yes go ahead", "R21"],
+    "2026-10-08-intake-cursor-team-kit-loop-on-ci": ["everything is good"],
+    "2026-10-08-intake-addyosmani-frontend-ui-engineering": ["everything is good"],
+    "2026-10-08-intake-pstack-show-me-your-work": ["yes go ahead", "R21"],
+    "2026-10-08-intake-mattpocock-skills-handoff": ["everything is good"],
+    "2026-10-08-intake-mattpocock-skills-claude-handoff": [
+      "everything is good",
+      "R20",
+      "greenline runs its subagents one after another, never in parallel, and uses no worktrees"
+    ],
+    "2026-10-08-intake-superpowers-finishing-a-development-branch": [
+      "everything is good",
+      "R20",
+      "greenline runs its subagents one after another, never in parallel, and uses no worktrees"
+    ],
+    "2026-10-08-intake-addyosmani-documentation-and-adrs": ["everything is good"],
+    "2026-10-08-intake-addyosmani-git-workflow-and-versioning": ["everything is good", "R20"],
+    "2026-10-08-intake-addyosmani-shipping-and-launch": ["everything is good"],
+    "2026-10-08-intake-superpowers-systematic-debugging": [
+      "everything is good",
+      "contradiction 14"
+    ],
+    "2026-10-08-intake-addyosmani-debugging-and-error-recovery": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-fix-root-causes": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-attack-the-premise": [
+      "everything is good",
+      "contradiction 15"
+    ],
+    "2026-10-08-intake-addyosmani-performance-optimization": ["everything is good"],
+    "2026-10-08-intake-cursor-team-kit-fix-ci": ["everything is good"],
+    "2026-10-08-intake-addyosmani-idea-refine": ["yes go ahead", "R21", "contradiction 33"],
+    "2026-10-08-intake-pstack-principle-experience-first": ["everything is good"],
+    "2026-10-08-intake-addyosmani-constraint-driven-development": ["yes go ahead", "R21"],
+    "2026-10-08-intake-addyosmani-ci-cd-and-automation": ["everything is good"],
+    "2026-10-08-intake-addyosmani-deprecation-and-migration": ["everything is good"],
+    "2026-10-08-intake-pstack-correct": ["everything is good", "contradiction 23"],
+    "2026-10-08-intake-pstack-principle-encode-lessons-in-structure": [
+      "everything is good",
+      "contradiction 30"
+    ],
+    "2026-10-08-intake-humanlayer-improve-claude-md": ["yes go ahead", "R21"],
+    "2026-10-08-intake-pstack-recall": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-never-block-on-the-human": ["everything is good", "R11"],
+    "2026-10-08-intake-addyosmani-using-agent-skills": ["yes go ahead", "R21", "R16"],
+    "2026-10-08-intake-superpowers-using-superpowers": ["yes go ahead", "R21", "R16"],
+    "2026-10-08-intake-addyosmani-context-engineering": ["yes go ahead", "R21"],
+    "2026-10-08-intake-mattpocock-skills-teach": ["everything is good"],
+    "2026-10-08-intake-superpowers-test-driven-development": [
+      "everything is good",
+      "contradictions 17 to 22"
+    ],
+    "2026-10-08-intake-addyosmani-test-driven-development": ["everything is good", "R21"],
+    "2026-10-08-intake-pstack-tdd": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-test-behavior-not-implementation": [
+      "everything is good",
+      "contradiction 23"
+    ],
+    "2026-10-08-intake-tjcages-useful-tests": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-laziness-protocol": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-subtract-before-you-add": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-migrate-callers-then-delete-legacy-apis": [
+      "everything is good",
+      "contradiction 23"
+    ],
+    "2026-10-08-intake-ponytail-ponytail-debt": ["everything is good"],
+    "2026-10-08-intake-addyosmani-code-simplification": [
+      "yes go ahead",
+      "R21",
+      "contradictions 24 to 26"
+    ],
+    "2026-10-08-intake-ponytail-ponytail-gain": ["everything is good"],
+    "2026-10-08-intake-ponytail-ponytail-help": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-build-the-lever": [
+      "everything is good",
+      "R20",
+      "contradiction 26"
+    ],
+    "2026-10-08-intake-pstack-principle-make-operations-idempotent": [
+      "everything is good",
+      "contradiction 31"
+    ],
+    "2026-10-08-intake-addyosmani-api-and-interface-design": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-separate-before-serializing-shared-state": [
+      "everything is good"
+    ],
+    "2026-10-08-intake-pstack-principle-minimize-reader-load": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-redesign-from-first-principles": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-foundational-thinking": ["everything is good"],
+    "2026-10-08-intake-mattpocock-skills-wait-what": ["everything is good"],
+    "2026-10-08-intake-tjcages-pr-writing": ["everything is good", "contradictions 27 and 28"],
+    "2026-10-08-intake-mattpocock-skills-pr": ["everything is good"],
+    "2026-10-08-intake-cursor-team-kit-make-pr-easy-to-review": ["everything is good"],
+    "2026-10-08-intake-humanlayer-visual-pr": ["everything is good"],
+    "2026-10-08-intake-mattpocock-skills-to-questionnaire": ["everything is good"],
+    "2026-10-08-intake-pstack-benchmark-checklist": ["everything is good", "contradiction 12"],
+    "2026-10-08-intake-pstack-principle-explain-the-number": ["everything is good"],
+    "2026-10-08-intake-pstack-principle-guard-the-context-window": ["yes go ahead", "R21"],
+    "2026-10-08-intake-addyosmani-observability-and-instrumentation": ["everything is good"],
+    "2026-10-08-intake-addyosmani-security-and-hardening": ["everything is good"],
+    "2026-10-08-intake-tjcages-behavior-contracts": ["everything is good"],
+    "2026-10-08-intake-tjcages-constitution-first": ["everything is good"],
+    "2026-10-08-intake-tjcages-lossless-migration": ["everything is good"],
+    "2026-10-08-intake-superpowers-writing-skills": ["everything is good"],
+    "2026-10-08-intake-superpowers-diagnosing-superpowers": ["everything is good"],
+    "2026-10-08-intake-mattpocock-skills-retro": ["everything is good"],
+    "2026-10-08-intake-pstack-reflect": ["everything is good"],
+    "2026-10-08-intake-superpowers-dispatching-parallel-agents": [
+      "R20",
+      "greenline runs its subagents one after another, never in parallel, and uses no worktrees",
+      "ruled before the reading"
+    ],
+    "2026-10-08-intake-superpowers-subagent-driven-development": [
+      "R20",
+      "greenline runs its subagents one after another, never in parallel, and uses no worktrees",
+      "ruled before the reading"
+    ],
+    "2026-10-08-intake-superpowers-using-git-worktrees": [
+      "R20",
+      "greenline runs its subagents one after another, never in parallel, and uses no worktrees",
+      "ruled before the reading"
+    ],
+    "2026-10-08-codebase-design-glossary": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    ],
+    "2026-10-08-diagnosing-bugs-glossary": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    ],
+    "2026-10-08-domain-modeling-glossary": [
+      "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line",
+      "its retention now meets the minimum, so the inventory ruling of its refresh entry on the docs/DECISIONS.md row of 2026-10-01 on existing divergence is retired",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    ],
+    "2026-10-08-improve-codebase-architecture-glossary": [
+      "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-fix-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line",
+      "its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    ],
+    "2026-10-08-project-router-glossary": [
+      "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    ],
+    "2026-10-08-tdd-glossary": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    ],
+    "2026-10-08-frame-recipe": [
+      "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files",
+      "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message",
+      "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for",
+      "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout",
+      "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)",
+      "research is not a stub (the decisions row of 2026-10-07)",
+      "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone."
+    ],
+    "2026-10-08-plan-recipe": [
+      "R22 of 2026-10-08, \"yes amend, with one change\": plan is made from to-spec and to-tickets",
+      "the R3 rulings of 2026-10-08, \"yes go ahead\": spec-driven-development's reframing passage, planning-and-task-breakdown, writing-plans and architect combine into it, the spec and the tickets stay path-free while a single change's plan section may name files and signatures, questioning is frame's, the trunk's wait after ticketing stands over architect's \"No human checkpoint\", and spec-driven's capability map is not taken",
+      "R20 of 2026-10-07: the parallel sections and the worktree line are declined",
+      "R21 of 2026-10-08: architect's arena runners and their models are gone, the candidates designed in turn by one agent",
+      "the rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\", on the depths a mode gives a step and the two waits of planned work, each ticket with its own mode (R10)",
+      "to-spec's seam check carried from series-s7-roster-2026-09-11."
+    ],
+    "2026-10-08-grilling-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-grill-with-docs-retired": ["yes amend, with one change", "C15", "R22"],
+    "2026-10-08-research-retired": ["R22", "R21"],
+    "2026-10-08-prototype-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-to-spec-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-to-tickets-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-anticipate-recipe": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32)",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself",
+      "doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation",
+      "its cross-model escalation to outside tools is dropped",
+      "show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    ],
+    "2026-10-08-build-recipe": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5), so the drop of its rebase onto trunk follows from that ruling, the sequence-verifiable-units proposal having named the bracket and the delivery order as what enters",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself",
+      "doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation",
+      "its cross-model escalation to outside tools is dropped",
+      "show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    ],
+    "2026-10-08-close-recipe": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined",
+      "documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'",
+      "handoff, claude-handoff and finishing-a-development-branch stay declined",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself",
+      "doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation",
+      "its cross-model escalation to outside tools is dropped",
+      "show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    ],
+    "2026-10-08-implement-retired": ["yes amend, with one change", "C15", "R22"],
+    "2026-10-08-record-architecture-decisions-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-domain-modeling-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-review-recipe": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10)",
+      "within pstack, premature abstraction being worse than duplication wins over its helper-extraction line",
+      "ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller",
+      "thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode",
+      "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector"
+    ],
+    "2026-10-08-verify-recipe": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13)",
+      "its rationalization tables and its absolutes are dropped as rhetoric",
+      "browser-testing-with-devtools' security core enters control-ui as default guardrails",
+      "loop-on-ci and frontend-ui-engineering are garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    ],
+    "2026-10-08-delivery-review-retired": ["yes amend, with one change", "R20", "R21", "R22"],
+    "2026-10-08-review-lens-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-ponytail-review-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-verify-this-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-control-cli-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-control-ui-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-project-router-line": [
+      "The method items carry the cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on, in the operator's words \"agent doesn't runs any mode at default until users ask him to just implement without asking\", and R16 of 2026-10-07, the roster by kind, in the operator's words \"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\""
+    ],
+    "2026-10-08-modes-recipe": [
+      "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    ],
+    "2026-10-08-router-recipe": [
+      "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    ],
+    "2026-10-08-diagnose-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-architecture-survey-recipe": [
+      "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the walk one delegated agent or the agent's own and the designs made one after another (R20: \"we are not doing worktrees and parralel susbs at all\")",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    ],
+    "2026-10-08-what-to-build-recut": [
+      "The method items carry the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the contradiction 33 of R3, ruled that day (\"yes go ahead\"), a list of ideas being no project state"
+    ],
+    "2026-10-08-wayfinder-recut": [
+      "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the research tickets resolved one after another and no session beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")",
+      "the operator's ruling R12 of 2026-10-04, \"two wait is good\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    ],
+    "2026-10-08-groundwork-recut": [
+      "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, no harness named",
+      "the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side"
+    ],
+    "2026-10-08-sweep-tests-recut": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    ],
+    "2026-10-08-idea-refine-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the one-pager in the reply and the change record, never a docs/ideas file (contradiction 33)",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the questions in the reply and the script dropped",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-constraint-driven-development-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the method core taken, the tables garden's and groundwork's side of contradiction 29 standing",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the bar in the decision home with no line in the instructions file and the floor guard a repository check, never a harness hook",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the harness names, the home of the bar and the steps renumbered once step 4 left"
+    ],
+    "2026-10-08-correct-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, a test deleted only through sweep-tests and its mutation proof (contradiction 23) and an encodable instruction encoded while the rule table lives in the decision home (30)",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, its slash-command trigger dropped",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-improve-instructions-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the file tidied outside the managed markers, a situation heading in place of the wrapper tag and context-engineering's rules-file packing joining it",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the wrapper tag and the harness names edited throughout"
+    ],
+    "2026-10-08-verify-rename": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13)",
+      "its rationalization tables and its absolutes are dropped as rhetoric",
+      "browser-testing-with-devtools' security core enters control-ui as default guardrails",
+      "loop-on-ci and frontend-ui-engineering are garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode",
+      "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    ],
+    "2026-10-08-codebase-design-rename": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\"",
+      "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    ],
+    "2026-10-08-project-router-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-diagnosing-bugs-retired": [
+      "yes amend, with one change",
+      "yes go ahead",
+      "R22",
+      "R3"
+    ],
+    "2026-10-08-improve-codebase-architecture-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-tdd-recut": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23)",
+      "the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
+      "useful-tests of tjcages, at commit 170f1ca406f926f47433217f731ebf80a613719c, lifted with credit, ideas only, in greenline's words (the operator's ruling of 2026-10-08, \"everything is good\"): name the failure a new test would catch, extend an existing test first, and accept zero new tests only where existing coverage is the check the floor asks for (contradictions 17 and 21, ruled as recommended)",
+      "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-ponytail-recut": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23)",
+      "the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-deep-modules-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design",
+      "R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\"), with R20 of 2026-10-07 (\"we are not doing worktrees and parralel susbs at all\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), the old tests retained through a deepening"
+    ],
+    "2026-10-08-domain-and-types-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-boundaries-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: boundary-discipline and fail-loud are one habit, boundary-discipline its spine",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-concurrency-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31)",
+      "the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's",
+      "principle-separate-before-serializing-shared-state strengthens the ladder's third rung",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the sections taken from concurrency-method change no method, under the row of 2026-10-04 (Q1), in the operator's words \"okay then lock in what you recommend\""
+    ],
+    "2026-10-08-prose-recipe": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub",
+      "the operator's ruling R23 of 2026-10-08, \"change context md to glossary md\", the glossary home being GLOSSARY.md",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-architecture-survey-rename": [
+      "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the walk one delegated agent or the agent's own and the designs made one after another (R20: \"we are not doing worktrees and parralel susbs at all\")",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    ],
+    "2026-10-08-diagnose-rename": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    ],
+    "2026-10-08-codebase-design-retired": [
+      "yes amend, with one change",
+      "everything is good",
+      "R22",
+      "R3"
+    ],
+    "2026-10-08-model-the-domain-retired": [
+      "yes amend, with one change",
+      "everything is good",
+      "R22",
+      "R3"
+    ],
+    "2026-10-08-type-system-discipline-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-boundary-discipline-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-fail-loud-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-concurrency-method-retired": [
+      "yes amend, with one change",
+      "everything is good",
+      "R22",
+      "R3"
+    ],
+    "2026-10-08-airgap-secrets-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-unslop-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-technical-writing-retired": ["yes amend, with one change", "R22"],
+    "2026-10-08-answer-plainly-retired": [
+      "yes amend, with one change",
+      "everything is good",
+      "R22",
+      "R3"
+    ],
+    "2026-10-08-show-me-recut": [
+      "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    ],
+    "2026-10-08-progress-check-recut": [
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    ],
+    "2026-10-08-use-garden-recut": [
+      "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change"
+    ],
+    "2026-10-08-build-the-lever-recipe": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended",
+      "principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    ],
+    "2026-10-08-guard-the-context-window-recipe": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended",
+      "principle-guard-the-context-window, no longer held, a copy in its portable form and not a stub, and context-engineering a combine whose context budget joins it, under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    ],
+    "2026-10-08-pr-writing-recipe": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    ],
+    "2026-10-08-to-questionnaire-recipe": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended",
+      "to-questionnaire a copy, a new trial habit for a decision only someone other than the owner can answer",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    ],
+    "2026-10-08-benchmark-checklist-recipe": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradiction 12 as recommended, benchmark-checklist's alternating sides for a measured number and verify's method for every other claim",
+      "its PR and hill-climb playbooks dropped",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    ],
+    "2026-10-08-product-description-recut": [
+      "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut",
+      "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    ],
+    "2026-10-08-diagram-design-recut": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    ],
+    "2026-10-08-architecture-map-recut": [
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    ],
+    "2026-10-08-guard-the-context-window-placed": ["yes go ahead", "R21", "R22"],
+    "2026-10-08-context-engineering-placed": ["yes go ahead", "R21", "R22"],
+    "2026-10-09-modes-words-budget": [
+      "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"",
+      "the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    ],
+    "2026-10-09-frame-branch-context": [
+      "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files",
+      "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message",
+      "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for",
+      "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout",
+      "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)",
+      "research is not a stub (the decisions row of 2026-10-07)",
+      "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone."
+    ],
+    "2026-10-09-review-session-writer": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10)",
+      "within pstack, premature abstraction being worse than duplication wins over its helper-extraction line",
+      "ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller",
+      "thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode",
+      "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector"
+    ],
+    "2026-10-09-frame-gists": [
+      "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files",
+      "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message",
+      "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for",
+      "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout",
+      "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)",
+      "research is not a stub (the decisions row of 2026-10-07)",
+      "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-plan-gists": [
+      "R22 of 2026-10-08, \"yes amend, with one change\": plan is made from to-spec and to-tickets",
+      "the R3 rulings of 2026-10-08, \"yes go ahead\": spec-driven-development's reframing passage, planning-and-task-breakdown, writing-plans and architect combine into it, the spec and the tickets stay path-free while a single change's plan section may name files and signatures, questioning is frame's, the trunk's wait after ticketing stands over architect's \"No human checkpoint\", and spec-driven's capability map is not taken",
+      "R20 of 2026-10-07: the parallel sections and the worktree line are declined",
+      "R21 of 2026-10-08: architect's arena runners and their models are gone, the candidates designed in turn by one agent",
+      "the rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\", on the depths a mode gives a step and the two waits of planned work, each ticket with its own mode (R10)",
+      "to-spec's seam check carried from series-s7-roster-2026-09-11",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-anticipate-gists": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32)",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself",
+      "doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation",
+      "its cross-model escalation to outside tools is dropped",
+      "show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-build-gists": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5), so the drop of its rebase onto trunk follows from that ruling, the sequence-verifiable-units proposal having named the bracket and the delivery order as what enters",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself",
+      "doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation",
+      "its cross-model escalation to outside tools is dropped",
+      "show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-review-gists": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10)",
+      "within pstack, premature abstraction being worse than duplication wins over its helper-extraction line",
+      "ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller",
+      "thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode",
+      "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-verify-gists": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13)",
+      "its rationalization tables and its absolutes are dropped as rhetoric",
+      "browser-testing-with-devtools' security core enters control-ui as default guardrails",
+      "loop-on-ci and frontend-ui-engineering are garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode",
+      "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-close-gists": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined",
+      "documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'",
+      "handoff, claude-handoff and finishing-a-development-branch stay declined",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself",
+      "doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation",
+      "its cross-model escalation to outside tools is dropped",
+      "show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-router-gists": [
+      "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-what-to-build-gists": [
+      "The method items carry the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the contradiction 33 of R3, ruled that day (\"yes go ahead\"), a list of ideas being no project state",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-wayfinder-gists": [
+      "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the research tickets resolved one after another and no session beside another (R20: \"greenline should not support parralel subs right now at all .. only linear sub flow\")",
+      "the operator's ruling R12 of 2026-10-04, \"two wait is good\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-diagnose-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-architecture-survey-gists": [
+      "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the walk one delegated agent or the agent's own and the designs made one after another (R20: \"we are not doing worktrees and parralel susbs at all\")",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-sweep-tests-gists": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-groundwork-gists": [
+      "The method items carry docs/DECISIONS.md's row of 2026-08-30, \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, no harness named",
+      "the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-product-description-gists": [
+      "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut",
+      "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-idea-refine-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the one-pager in the reply and the change record, never a docs/ideas file (contradiction 33)",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the questions in the reply and the script dropped",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-constraint-driven-development-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the method core taken, the tables garden's and groundwork's side of contradiction 29 standing",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the bar in the decision home with no line in the instructions file and the floor guard a repository check, never a harness hook",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the harness names, the home of the bar and the steps renumbered once step 4 left",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-correct-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, a test deleted only through sweep-tests and its mutation proof (contradiction 23) and an encodable instruction encoded while the rule table lives in the decision home (30)",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, its slash-command trigger dropped",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-improve-instructions-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the file tidied outside the managed markers, a situation heading in place of the wrapper tag and context-engineering's rules-file packing joining it",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the wrapper tag and the harness names edited throughout",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-tdd-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23)",
+      "the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
+      "useful-tests of tjcages, at commit 170f1ca406f926f47433217f731ebf80a613719c, lifted with credit, ideas only, in greenline's words (the operator's ruling of 2026-10-08, \"everything is good\"): name the failure a new test would catch, extend an existing test first, and accept zero new tests only where existing coverage is the check the floor asks for (contradictions 17 and 21, ruled as recommended)",
+      "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-ponytail-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23)",
+      "the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-deep-modules-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design",
+      "R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\"), with R20 of 2026-10-07 (\"we are not doing worktrees and parralel susbs at all\")",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), the old tests retained through a deepening",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-boundaries-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: boundary-discipline and fail-loud are one habit, boundary-discipline its spine",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-domain-and-types-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-concurrency-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31)",
+      "the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's",
+      "principle-separate-before-serializing-shared-state strengthens the ladder's third rung",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "the sections taken from concurrency-method change no method, under the row of 2026-10-04 (Q1), in the operator's words \"okay then lock in what you recommend\"",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-secrets-gists": [
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-prose-gists": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub",
+      "the operator's ruling R23 of 2026-10-08, \"change context md to glossary md\", the glossary home being GLOSSARY.md",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own",
+      "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-show-me-gists": [
+      "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-progress-check-gists": [
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-use-garden-gists": [
+      "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-diagram-design-gists": [
+      "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\"",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-architecture-map-gists": [
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own",
+      "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-build-the-lever-gists": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended",
+      "principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-guard-the-context-window-gists": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended",
+      "principle-guard-the-context-window, no longer held, a copy in its portable form and not a stub, and context-engineering a combine whose context budget joins it, under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written",
+      "its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-pr-writing-gists": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-to-questionnaire-gists": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended",
+      "to-questionnaire a copy, a new trial habit for a decision only someone other than the owner can answer",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-09-benchmark-checklist-gists": [
+      "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradiction 12 as recommended, benchmark-checklist's alternating sides for a measured number and verify's method for every other claim",
+      "its PR and hill-climb playbooks dropped",
+      "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes."
+    ],
+    "2026-10-11-frame-interview": [
+      "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files",
+      "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message",
+      "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for",
+      "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout",
+      "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)",
+      "research is not a stub (the decisions row of 2026-10-07)",
+      "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes",
+      "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): frame's interview moves to references/interview.md, which its written depth reads."
+    ],
+    "2026-10-11-review-reviewers": [
+      "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify",
+      "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10)",
+      "within pstack, premature abstraction being worse than duplication wins over its helper-extraction line",
+      "ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller",
+      "thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's",
+      "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns",
+      "interrogate's single-message dispatch, model table and model diversity are dropped",
+      "thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass",
+      "requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped",
+      "no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped",
+      "browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's",
+      "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined",
+      "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode",
+      "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes",
+      "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): review's \"Start the reviewers\" moves to references/reviewers.md, its \"Judge the findings\" staying because \"Act on them\" names its buckets at any depth with a fix round."
+    ],
+    "2026-10-11-constraint-driven-development-interview-page": [
+      "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the method core taken, the tables garden's and groundwork's side of contradiction 29 standing",
+      "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the bar in the decision home with no line in the instructions file and the floor guard a repository check, never a harness hook",
+      "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions",
+      "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record",
+      "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")",
+      "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the harness names, the home of the bar and the steps renumbered once step 4 left",
+      "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated",
+      "no text, measure or method changes",
+      "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): constraint-driven-development asks its four questions at any frame depth, so its pointer names the page frame's interview now lives on."
+    ]
+  }
+}

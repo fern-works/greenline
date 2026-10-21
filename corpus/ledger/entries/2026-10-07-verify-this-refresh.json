@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-verify-this-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-control-ui-refresh",
+    "sha256": "a4eb24628e839c702b80ea795380023f72fc7e76071e4ac6e7da14bb4b2ab786"
+  },
+  "subject": "skill:verify-this",
+  "recipe": "d7a204d6302860eceacf7fc9d16bb12404a2fe44ed99199d5f3123a272ab02e1",
+  "result": "d2e0f329b0b7a9c79da2c21ee9ce3a03e27cc2ae0bdda4bd8d2f607556e449d2",
+  "pages": [],
+  "gist": "Upstream unchanged; the licence now comes from the plugin directory",
+  "reason": "Refreshes verify-this to cursor-team-kit d0ef80d86795: no segment changed, so the recipe re-anchors as it stands. The repository root has no licence file, so the snapshot's LICENSE is the plugin directory's own, byte-identical to before.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 37,
+        "taken": 35,
+        "exact": 33,
+        "retention": 0.9428571428571428,
+        "coverage": 0.9459459459459459,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 412
+  }
+}

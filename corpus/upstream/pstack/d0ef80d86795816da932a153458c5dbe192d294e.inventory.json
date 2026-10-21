@@ -1,0 +1,351 @@
+{
+  "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "architect/SKILL.md",
+      "sha256": "922238947195f2fb825e90688bb6cfa520b81a35a7bee12223c73a6cf96ae64b"
+    },
+    {
+      "path": "architect/references/design-red-flags.md",
+      "sha256": "d0e639e4cc588ec865f930d3a4111faad60987ae36925917e319d7ceca7c69ce"
+    },
+    {
+      "path": "architect/references/rationale-template.md",
+      "sha256": "0cedfccdc7b47fc881febd5a8293eecbc542c20f8df825639904a8102d2eb5d3"
+    },
+    {
+      "path": "architect/references/runner-prompt.md",
+      "sha256": "21dd5314aab778c5007228027a4591d97693fbec6ab86524037772b63f40948e"
+    },
+    {
+      "path": "benchmark-checklist/SKILL.md",
+      "sha256": "6a767e788a60428fa14e645ee10fe2e49896e514ff654f668b1d824deb9038e8"
+    },
+    {
+      "path": "comment-sicko/SKILL.md",
+      "sha256": "c0fd0383008da45fc78cfac17b9007d62c42f87ad1c8d5c2fb658b1fd01f7c82"
+    },
+    {
+      "path": "correct/SKILL.md",
+      "sha256": "bf482bacc972b3f124a4af8bf9364b4b3e280cb5845e44c326ea4f4565e5c904"
+    },
+    {
+      "path": "interrogate/SKILL.md",
+      "sha256": "2f7e570ec23791ed2e485a09c98ed0597c46035e2050b351b84d3dc760ddd71f"
+    },
+    {
+      "path": "interrogate/references/code-quality-review.md",
+      "sha256": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8"
+    },
+    {
+      "path": "interrogate/references/lead-judgment.md",
+      "sha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361"
+    },
+    {
+      "path": "interrogate/references/reviewer-prompt.md",
+      "sha256": "e0598e254792b56de39bb16b1e6db559b03a522fdc54b98f942d254090920ae6"
+    },
+    {
+      "path": "interrogate/references/rubric.md",
+      "sha256": "a85aa801abbaf14434f00579440abc0d8e2723227ba8bf57de7cca8d6e7d2f25"
+    },
+    {
+      "path": "no-comments/SKILL.md",
+      "sha256": "5c5b0882297d704c3a9720c52b7a793c68b013eaf717989f0945624efdfe2b05"
+    },
+    {
+      "path": "principle-attack-the-premise/SKILL.md",
+      "sha256": "c87bd7536f772f8a403ad8155535ee17a1bbec9a353156693eb3bb1520c87ae3"
+    },
+    {
+      "path": "principle-boundary-discipline/SKILL.md",
+      "sha256": "62ac2862c2caa22dd14531f51c9c6bb445ceb198ca98a687e25b4d47c1f10a28"
+    },
+    {
+      "path": "principle-build-the-lever/SKILL.md",
+      "sha256": "458b269eab8e95a1573276955312f7d2a13ae8599879a9efc748248f6bc34b56"
+    },
+    {
+      "path": "principle-encode-lessons-in-structure/SKILL.md",
+      "sha256": "77044c83a9ac6df78fc643887ea5f1f11f082adaf14b717c060cdaed03cce863"
+    },
+    {
+      "path": "principle-exhaust-the-design-space/SKILL.md",
+      "sha256": "8583310d7297b7823d75494faa57b003564d436807febecdecbd8321abe5cf6e"
+    },
+    {
+      "path": "principle-experience-first/SKILL.md",
+      "sha256": "58903529d733b1c1a7c9ccf127d45ef3c7d0d9f0b81164a4dc6b80efe6f2912b"
+    },
+    {
+      "path": "principle-explain-the-number/SKILL.md",
+      "sha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c"
+    },
+    {
+      "path": "principle-fix-root-causes/SKILL.md",
+      "sha256": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707"
+    },
+    {
+      "path": "principle-foundational-thinking/SKILL.md",
+      "sha256": "864b827e8199d946ce58beca0f89c4ed4099ed6e426fb698a3aaa45de2a9eea2"
+    },
+    {
+      "path": "principle-guard-the-context-window/SKILL.md",
+      "sha256": "d2cef147862576e3d709b7afc149d85196245e8338b9c7eef337c95fba412b3e"
+    },
+    {
+      "path": "principle-laziness-protocol/SKILL.md",
+      "sha256": "9006579e9e3f33955d17569733db688ae65f22577dc3b21803d219a5a8445aff"
+    },
+    {
+      "path": "principle-make-operations-idempotent/SKILL.md",
+      "sha256": "540738217c3da7bf513b9886924ad6a2bc77e58be867f5bd2e1831c74bf2ce70"
+    },
+    {
+      "path": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "sha256": "09978915a4a11990cf0a9a02d9c08cc59e0b7a04c5c24b83aa560fbe4146f75b"
+    },
+    {
+      "path": "principle-minimize-reader-load/SKILL.md",
+      "sha256": "42551c5dc74cd578163c148da552db3ff67d29b78600ef216bfd311fb828fe69"
+    },
+    {
+      "path": "principle-model-the-domain/SKILL.md",
+      "sha256": "bbadbb9a723fac3f76e782ae45665eb94058ec10993e4bae36d4dc6b0e4eac07"
+    },
+    {
+      "path": "principle-never-block-on-the-human/SKILL.md",
+      "sha256": "f2764bb9338cbfc788c903cf4b9cd0a5f4042d3a04dd6d59cbd525d9beaadd0a"
+    },
+    {
+      "path": "principle-outcome-oriented-execution/SKILL.md",
+      "sha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d"
+    },
+    {
+      "path": "principle-prove-it-works/SKILL.md",
+      "sha256": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2"
+    },
+    {
+      "path": "principle-redesign-from-first-principles/SKILL.md",
+      "sha256": "a1c7fd0a96b40e12a74bceb0e6bb20a9666dd844dcabfb624acb27da23b929fe"
+    },
+    {
+      "path": "principle-separate-before-serializing-shared-state/SKILL.md",
+      "sha256": "05294b40448e927c5da1c7b6f5c6b9fed3744637e3833d2d948b9154a9dd00bb"
+    },
+    {
+      "path": "principle-sequence-verifiable-units/SKILL.md",
+      "sha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187"
+    },
+    {
+      "path": "principle-subtract-before-you-add/SKILL.md",
+      "sha256": "a983a50e732c1ed315eba7aaf47a61329e31c4794eb1ab9d25d9945265b31e03"
+    },
+    {
+      "path": "principle-test-behavior-not-implementation/SKILL.md",
+      "sha256": "87e40efe4e486f7ea639d2ed1fc0abe6c93b8fd0e89a81218086909d2470a52e"
+    },
+    {
+      "path": "principle-type-system-discipline/SKILL.md",
+      "sha256": "c83da8031ffb4c86410030d3e261f659598fca2b7d8158fd9dc269d70a3a025e"
+    },
+    {
+      "path": "recall/SKILL.md",
+      "sha256": "d265b0e5b6dc5b89c0407f3387d24462c988e1990a37d5359735137908128c5a"
+    },
+    {
+      "path": "reflect/SKILL.md",
+      "sha256": "31b8fb866ebe084e7fb7f16dc0ea46ab84ffdc838d54f948edc78556f301a497"
+    },
+    {
+      "path": "reflect/references/divergent-reviewer.md",
+      "sha256": "221dfc0abf7cbcd25e1da3cd87323f5d1050fc3bf652e096d093584e183c98fb"
+    },
+    {
+      "path": "reflect/references/judgment-reviewer.md",
+      "sha256": "a40ecb9b28bd2a3491e11a541157fe58efe158e0eda7b61a5006c14590aabe61"
+    },
+    {
+      "path": "reflect/references/synthesizer.md",
+      "sha256": "2f76c847eb45b182dc6fbcbf7d96c8ee7e2986ecfd9e0d640fec44e3cc5a617c"
+    },
+    {
+      "path": "reflect/references/tooling-reviewer.md",
+      "sha256": "bc49ced90fa81eaba3083b88aeb430d900a6d8f14ff40c1d6b52263bacfc77b6"
+    },
+    {
+      "path": "show-me-your-work/SKILL.md",
+      "sha256": "bcff5f7f9fd23f92c12b251f9cd6b947e9485e1055cfacb6fdd9cae0789d7550"
+    },
+    {
+      "path": "show-me-your-work/references/decision-log-template.tsv",
+      "sha256": "6779378006a2f5225e8c06deb84f1d913fb532041ebbb6e50d94600bfe3f4b76"
+    },
+    {
+      "path": "show-me-your-work/scripts/log.sh",
+      "sha256": "a65a4bc5fb7cdeadbdb7b7ff1ca4682f4d9c42420942b2977cd17b46c4ac338e"
+    },
+    {
+      "path": "tdd/SKILL.md",
+      "sha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f"
+    },
+    {
+      "path": "technical-writing/SKILL.md",
+      "sha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb"
+    },
+    {
+      "path": "unslop/SKILL.md",
+      "sha256": "195411d320b5b328f9f642baf59757ed19aaf0931c0838740e0aca273d538dc1"
+    }
+  ],
+  "entries": [
+    {
+      "name": "architect",
+      "path": "pstack/skills/architect"
+    },
+    {
+      "name": "benchmark-checklist",
+      "path": "pstack/skills/benchmark-checklist"
+    },
+    {
+      "name": "correct",
+      "path": "pstack/skills/correct"
+    },
+    {
+      "name": "interrogate",
+      "path": "pstack/skills/interrogate"
+    },
+    {
+      "name": "no-comments",
+      "path": "pstack/skills/no-comments"
+    },
+    {
+      "name": "principle-attack-the-premise",
+      "path": "pstack/skills/principle-attack-the-premise"
+    },
+    {
+      "name": "principle-boundary-discipline",
+      "path": "pstack/skills/principle-boundary-discipline"
+    },
+    {
+      "name": "principle-build-the-lever",
+      "path": "pstack/skills/principle-build-the-lever"
+    },
+    {
+      "name": "principle-encode-lessons-in-structure",
+      "path": "pstack/skills/principle-encode-lessons-in-structure"
+    },
+    {
+      "name": "principle-exhaust-the-design-space",
+      "path": "pstack/skills/principle-exhaust-the-design-space"
+    },
+    {
+      "name": "principle-experience-first",
+      "path": "pstack/skills/principle-experience-first"
+    },
+    {
+      "name": "principle-explain-the-number",
+      "path": "pstack/skills/principle-explain-the-number"
+    },
+    {
+      "name": "principle-fix-root-causes",
+      "path": "pstack/skills/principle-fix-root-causes"
+    },
+    {
+      "name": "principle-foundational-thinking",
+      "path": "pstack/skills/principle-foundational-thinking"
+    },
+    {
+      "name": "principle-guard-the-context-window",
+      "path": "pstack/skills/principle-guard-the-context-window"
+    },
+    {
+      "name": "principle-laziness-protocol",
+      "path": "pstack/skills/principle-laziness-protocol"
+    },
+    {
+      "name": "principle-make-operations-idempotent",
+      "path": "pstack/skills/principle-make-operations-idempotent"
+    },
+    {
+      "name": "principle-migrate-callers-then-delete-legacy-apis",
+      "path": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis"
+    },
+    {
+      "name": "principle-minimize-reader-load",
+      "path": "pstack/skills/principle-minimize-reader-load"
+    },
+    {
+      "name": "principle-model-the-domain",
+      "path": "pstack/skills/principle-model-the-domain"
+    },
+    {
+      "name": "principle-never-block-on-the-human",
+      "path": "pstack/skills/principle-never-block-on-the-human"
+    },
+    {
+      "name": "principle-outcome-oriented-execution",
+      "path": "pstack/skills/principle-outcome-oriented-execution"
+    },
+    {
+      "name": "principle-prove-it-works",
+      "path": "pstack/skills/principle-prove-it-works"
+    },
+    {
+      "name": "principle-redesign-from-first-principles",
+      "path": "pstack/skills/principle-redesign-from-first-principles"
+    },
+    {
+      "name": "principle-separate-before-serializing-shared-state",
+      "path": "pstack/skills/principle-separate-before-serializing-shared-state"
+    },
+    {
+      "name": "principle-sequence-verifiable-units",
+      "path": "pstack/skills/principle-sequence-verifiable-units"
+    },
+    {
+      "name": "principle-subtract-before-you-add",
+      "path": "pstack/skills/principle-subtract-before-you-add"
+    },
+    {
+      "name": "principle-test-behavior-not-implementation",
+      "path": "pstack/skills/principle-test-behavior-not-implementation"
+    },
+    {
+      "name": "principle-type-system-discipline",
+      "path": "pstack/skills/principle-type-system-discipline"
+    },
+    {
+      "name": "recall",
+      "path": "pstack/skills/recall"
+    },
+    {
+      "name": "reflect",
+      "path": "pstack/skills/reflect"
+    },
+    {
+      "name": "show-me-your-work",
+      "path": "pstack/skills/show-me-your-work"
+    },
+    {
+      "name": "tdd",
+      "path": "pstack/skills/tdd"
+    },
+    {
+      "name": "technical-writing",
+      "path": "pstack/skills/technical-writing"
+    },
+    {
+      "name": "unslop",
+      "path": "pstack/skills/unslop"
+    },
+    {
+      "name": "comment-sicko",
+      "path": "pstack/agents/comment-sicko.md"
+    }
+  ]
+}

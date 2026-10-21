@@ -1,0 +1,37 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-fail-loud-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-answer-plainly-recipe",
+    "sha256": "ad92ceb4752f5deaa8af34178cdbef83c5fa396c68dc22ad615f5e925dc20734"
+  },
+  "subject": "skill:fail-loud",
+  "recipe": "bcf4f53d9996d74e05e67a68fe7bc2df60c6aa4d51b8c40bf6eb692b2deb9c6c",
+  "result": "1282958411ee49ed7f8fb7af5896069845b47c50bffe539588f154aad6358a13",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves fail-loud to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at baseline-copies-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 35,
+        "taken": 35,
+        "exact": 35,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

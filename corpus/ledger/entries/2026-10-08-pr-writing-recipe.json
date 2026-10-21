@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-pr-writing-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-guard-the-context-window-recipe",
+    "sha256": "ebbbe7c86e116457e97c86f04e3a28567904d3c9293cbf8f81f4f7d7f4f4d0ba"
+  },
+  "subject": "skill:pr-writing",
+  "recipe": "6f82b03e0e91faddaad6a42f3c50cc528160cb97de78f893bdec1cf496c64f82",
+  "result": "7513eb127b7082195d1ba8b7c4d2c331691b89a8dd791f95e3460dac70841d38",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Enters as a trial habit for PRs the owner approves",
+  "reason": "pr-writing enters as a trial habit on tjcages' pr-writing with three sources grafted: the diff read first, a PR body that links the change record, evidence and merge danger, and a PR opened only on the owner's word.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 32,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.28125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "humanlayer",
+        "segments": 43,
+        "taken": 3,
+        "exact": 3,
+        "retention": 1,
+        "coverage": 0.06976744186046512,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 49,
+        "taken": 13,
+        "exact": 13,
+        "retention": 1,
+        "coverage": 0.2653061224489796,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "tjcages",
+        "segments": 58,
+        "taken": 28,
+        "exact": 28,
+        "retention": 1,
+        "coverage": 0.4827586206896552,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 517
+  }
+}

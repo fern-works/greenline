@@ -1,0 +1,88 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-constraint-driven-development-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-close-front-and-references",
+    "sha256": "d6bbebfb4ebb5f454709987adc6288f33d5da3d16980db9e97b100631661963a"
+  },
+  "subject": "skill:constraint-driven-development",
+  "recipe": "57ab4733b839c8557f4cc61b052492fa75ff287b86d44a12d7ec07ef1d464c8d",
+  "result": "25b9490f999d673d944e0413d9d947e88f4bc149da9960041107b3358a3ffe56",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "constraint-driven-development's paths and commands move to a references page",
+  "reason": "The front names greenline's homes and commands by their nouns and points at a references page, which holds their paths and commands (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the method core taken, the tables garden's and groundwork's side of contradiction 29 standing"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the bar in the decision home with no line in the instructions file and the floor guard a repository check, never a harness hook"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the harness names, the home of the bar and the steps renumbered once step 4 left"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): constraint-driven-development asks its four questions at any frame depth, so its pointer names the page frame's interview now lives on"
+    },
+    {
+      "date": "2026-10-12",
+      "words": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the floor guard's suppression, stub and skip patterns exempt the bar's Constraints section and the guard's own file, so the change that introduces them passes; the start says how CI calls the guard, on a checkout holding the whole history, with its base and bar named, and the merge-base bail; one rule holds skipped and deleted tests; a default taken on \"I don't know\" installs nothing the owner did not pick; a coverage number needs a coverage provider; the start's pointer is the exact link to frame's interview page; and the start says in one sentence that its four questions are asked in one round, each with its guess, and wait"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's card of 2026-10-14, \"The record's frame section\": a start's four frame answers live in the change record's frame section, and the start writes no section of its own for them"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 255,
+        "taken": 132,
+        "exact": 115,
+        "retention": 0.8712121212121212,
+        "coverage": 0.5176470588235295,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 743
+  }
+}

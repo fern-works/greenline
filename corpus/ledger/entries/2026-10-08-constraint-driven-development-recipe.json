@@ -1,0 +1,65 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-constraint-driven-development-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-idea-refine-recipe",
+    "sha256": "f23f9201374909d82d82a6c2056a9ecb7ca0b3e0fe72e18a690fd4c622c7c06d"
+  },
+  "subject": "skill:constraint-driven-development",
+  "recipe": "b8e0aa665755234c6e40e43965c854d67c733afca3a9aba48da737dc05eb7af5",
+  "result": "1490a97d952d78829db8d70af3248a224aa82356448218f2da210b7fc4785ccf",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/floor-guard.md"
+    }
+  ],
+  "gist": "Enters as a trial start; its tables stay garden's",
+  "reason": "constraint-driven-development enters as a trial start, copying addyosmani's method core: the interview, the bar in the decision home, the lifecycle by cost, the bar's guard run through greenline check, ratchets and escalation. Its tool and threshold tables are garden's.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the method core taken, the tables garden's and groundwork's side of contradiction 29 standing"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the bar in the decision home with no line in the instructions file and the floor guard a repository check, never a harness hook"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the harness names, the home of the bar and the steps renumbered once step 4 left"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 255,
+        "taken": 134,
+        "exact": 116,
+        "retention": 0.8656716417910447,
+        "coverage": 0.5254901960784314,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 350
+  }
+}

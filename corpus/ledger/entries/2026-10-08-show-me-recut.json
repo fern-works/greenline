@@ -1,0 +1,46 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-show-me-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-answer-plainly-retired",
+    "sha256": "103c4882bae74c33e26535b672b81045014d6fb53ef35c8a267bbe2753152766"
+  },
+  "subject": "skill:show-me",
+  "recipe": "648d791a41c24bc0c46398e23502a2a917b4735da89a403452dca5b71ddf301c",
+  "result": "c64903fb53b1a4d3b141bda6160aeb94d45dedab804bd5c81d02823523725c1a",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut on the block, with prose in place of two skills",
+  "reason": "show-me is re-cut on the block and the guides: an opening in the habit's own voice, the prose habit in place of answer-plainly and unslop, and its HTML view in the working files. It stays implicit.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "humanlayer",
+        "segments": 34,
+        "taken": 30,
+        "exact": 29,
+        "retention": 0.9666666666666667,
+        "coverage": 0.8823529411764706,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 228
+  }
+}

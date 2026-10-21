@@ -1,0 +1,69 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-sweep-tests-three-modes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-close-references",
+    "sha256": "02d68b6485453bf79a7c0985c0526cdaafa8707569962e1e18609406216a76f8"
+  },
+  "subject": "skill:sweep-tests",
+  "recipe": "15c8e8d64310676388408ca1685c97423ff5ace12dea09c391bf84d5a1d15838",
+  "result": "f08f37217f8edd30f14c518b978a1e4c7657e8b8bebd9701249db6f8006e5e36",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Sweep tests names the three modes",
+  "reason": "Sweep tests proposes regular or above, and at quick no review runs, its limit named in the close section.",
+  "authorisedBy": {
+    "date": "2026-10-19",
+    "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 124,
+        "taken": 119,
+        "exact": 114,
+        "retention": 0.957983193277311,
+        "coverage": 0.9596774193548387,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 655
+  }
+}

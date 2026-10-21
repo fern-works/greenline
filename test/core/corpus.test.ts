@@ -1,9 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { activationOf, isVendored, parseCorpusManifest } from "../../src/core/corpus.ts";
+import { readFileSync } from "node:fs";
+import {
+  activationOf,
+  isVendored,
+  kindActivation,
+  parseCorpusManifest,
+} from "../../src/core/corpus.ts";
+import { kindNamed, parseModes, type Kind } from "../../src/core/modes.ts";
+import { FIXTURE_MODES } from "../fixtures/chain.ts";
 
 const fixture = {
-  schemaVersion: 8,
-  upstreams: [
+  schemaVersion: 11,
+  sources: [
     {
       name: "example-skills",
       repo: "https://github.com/example/skills",
@@ -15,12 +23,22 @@ const fixture = {
   skills: [
     {
       name: "grilling",
-      class: "situational",
+      kind: "step",
+      slot: "frame",
       upstream: { family: "example-skills", name: "grilling", path: "skills/grilling" },
     },
   ],
   intents: [{ intent: "Shape a change", skills: ["grilling"] }],
 } as const;
+
+/** A fourth kind no code knows, beside the line; its mechanism is the test's. */
+const GATE_KIND = {
+  name: "gate",
+  record: "line",
+  place: "beside",
+  budget: "free",
+  when: "A fixture gate holds the change until its check passes.",
+};
 
 function validManifest(): string {
   return JSON.stringify(fixture);
@@ -30,20 +48,20 @@ describe("the holder and the credits", () => {
   it("accepts a copyright line as holder on a family and refuses a holder that is not one", () => {
     const held = {
       ...fixture,
-      upstreams: [{ ...fixture.upstreams[0], holder: "Copyright (c) 2026 An Author" }],
+      sources: [{ ...fixture.sources[0], holder: "Copyright (c) 2026 An Author" }],
     };
     const parsed = parseCorpusManifest(JSON.stringify(held), "c");
-    expect(parsed._tag === "ok" && parsed.value.upstreams[0]?.holder).toBe(
+    expect(parsed._tag === "ok" && parsed.value.sources[0]?.holder).toBe(
       "Copyright (c) 2026 An Author",
     );
-    const bare = { ...fixture, upstreams: [{ ...fixture.upstreams[0], holder: "An Author" }] };
+    const bare = { ...fixture, sources: [{ ...fixture.sources[0], holder: "An Author" }] };
     expect(parseCorpusManifest(JSON.stringify(bare), "c")._tag).toBe("err");
   });
-  it("parses a credits note on an opt-in skill and refuses one on a skill that is not opt-in", () => {
+  it("S16a parses a credits note on an extra skill and refuses one on a skill that is not extra", () => {
     const credited = {
       ...fixture,
       skills: [
-        { ...fixture.skills[0], optIn: true, credits: "icon catalog credits Tabler Icons (MIT)." },
+        { ...fixture.skills[0], extra: true, credits: "icon catalog credits Tabler Icons (MIT)." },
       ],
     };
     const parsed = parseCorpusManifest(JSON.stringify(credited), "c");
@@ -58,68 +76,130 @@ describe("the holder and the credits", () => {
   });
 });
 
+describe("R4: the kind, the slot and the flags of a roster skill", () => {
+  /** The refusals of the fixture with its one skill changed by `change`. */
+  function refusals(change: {
+    readonly [field: string]: string | boolean | undefined;
+  }): readonly string[] {
+    const result = parseCorpusManifest(
+      JSON.stringify({ ...fixture, skills: [{ ...fixture.skills[0], ...change }] }),
+      "c",
+    );
+    return result._tag === "err"
+      ? result.error.issues.map((issue) => `${issue.path}: ${issue.message}`)
+      : [];
+  }
+
+  it("parses a step skill's kind and slot, a habit and a start without a slot, and the flags stated only when true", () => {
+    const raw = JSON.stringify({
+      ...fixture,
+      skills: [
+        fixture.skills[0],
+        { name: "secrets", kind: "habit", trial: true },
+        { name: "map", kind: "start", extra: true },
+      ],
+      intents: [{ intent: "Shape a change", skills: ["grilling"] }],
+    });
+    const result = parseCorpusManifest(raw, "c");
+    expect(result._tag).toBe("ok");
+    if (result._tag !== "ok") return;
+    expect(
+      result.value.skills.map((skill) => [skill.kind, skill.slot, skill.extra, skill.trial]),
+    ).toEqual([
+      ["step", "frame", undefined, undefined],
+      ["habit", undefined, undefined, true],
+      ["start", undefined, true, undefined],
+    ]);
+  });
+
+  it("R5 takes a kind's name as it stands, since the kinds and their slots are the modes definition's, which verify reads", () => {
+    expect(refusals({ kind: "gate" })).toEqual([]);
+    expect(refusals({ kind: "habit" })).toEqual([]);
+  });
+
+  it("refuses a skill without a kind", () => {
+    expect(refusals({ kind: undefined, slot: undefined })).toEqual([
+      "skills[0].kind: a roster skill states its kind, a kind of the modes definition",
+    ]);
+  });
+
+  it("R5 refuses a kind that is not a kebab-case name", () => {
+    expect(refusals({ kind: "Step" })).toEqual(["skills[0].kind: a kind is a kebab-case name"]);
+  });
+
+  it.each(["extra", "trial"])("refuses the %s flag stated as false", (flag) => {
+    expect(refusals({ [flag]: false }).join("; ")).toContain(`skills[0].${flag}`);
+  });
+});
+
 describe("parseCorpusManifest", () => {
   it("parses a valid manifest", () => {
     const result = parseCorpusManifest(validManifest(), "corpus/manifest.json");
     expect(result._tag).toBe("ok");
     if (result._tag !== "ok") return;
-    expect(result.value.upstreams[0]?.commit).toBe("a".repeat(40));
-    expect(result.value.skills[0]?.class).toBe("situational");
+    expect(result.value.sources[0]?.commit).toBe("a".repeat(40));
+    expect(result.value.skills[0]?.kind).toBe("step");
     expect(result.value.skills.map(isVendored)).toEqual([true]);
   });
 
-  it("derives activation from the class and states it only as an exception (ADR 0039)", () => {
-    const result = parseCorpusManifest(validManifest(), "c");
-    expect(result._tag).toBe("ok");
-    if (result._tag !== "ok") return;
-    const entry = result.value.skills[0];
-    expect(entry !== undefined && activationOf(entry)).toBe("implicit");
-    const exception = JSON.stringify({
-      ...fixture,
-      skills: [{ ...fixture.skills[0], activation: "explicit" }],
-    });
-    const parsedException = parseCorpusManifest(exception, "c");
-    expect(parsedException._tag).toBe("ok");
-    if (parsedException._tag !== "ok") return;
-    const stated = parsedException.value.skills[0];
-    expect(stated !== undefined && activationOf(stated)).toBe("explicit");
-    const redundant = JSON.stringify({
-      ...fixture,
-      skills: [{ ...fixture.skills[0], activation: "implicit" }],
-    });
-    expect(parseCorpusManifest(redundant, "c")._tag).toBe("err");
-    const workflow = JSON.stringify({
-      ...fixture,
-      skills: [{ ...fixture.skills[0], class: "stage" }],
-    });
-    const parsedWorkflow = parseCorpusManifest(workflow, "c");
-    expect(parsedWorkflow._tag).toBe("ok");
-    if (parsedWorkflow._tag !== "ok") return;
-    const stage = parsedWorkflow.value.skills[0];
-    expect(stage !== undefined && activationOf(stage)).toBe("explicit");
-    expect(
-      parseCorpusManifest(
-        JSON.stringify({ ...fixture, skills: [{ ...fixture.skills[0], class: "lens" }] }),
-        "c",
-      )._tag,
-    ).toBe("err");
+  it("S16a takes the activation from the kind's mechanism, a step and a start explicit and a habit implicit, and a stated one over it", () => {
+    const corpus = parseModes(readFileSync("corpus/runtime/modes.json", "utf8"), "modes.json");
+    if (corpus._tag === "err") throw corpus.error;
+    const kind = (name: string): Kind => {
+      const found = kindNamed(corpus.value, name);
+      if (found === undefined) throw new Error(`the corpus declares ${name}`);
+      return found;
+    };
+    expect(["step", "start", "habit"].map((name) => kindActivation(kind(name)))).toEqual([
+      "explicit",
+      "explicit",
+      "implicit",
+    ]);
+    expect(activationOf({}, kind("step"))).toBe("explicit");
+    expect(activationOf({ activation: "implicit" }, kind("step"))).toBe("implicit");
+    expect(activationOf({ activation: "explicit" }, kind("habit"))).toBe("explicit");
   });
 
-  it("accepts the opt-in tag on vendored and native entries and refuses any other value (ADR 0029)", () => {
-    const tagged = JSON.stringify({
+  it("S16a takes a gained kind's activation from its mechanism, with no code of its own", () => {
+    // SAFETY: FIXTURE_MODES is the fixture's own definition, which declares its kinds as an array.
+    const raw = JSON.parse(FIXTURE_MODES) as { kinds: readonly object[] };
+    const gained = (mechanism: string): Kind => {
+      const gate = { ...GATE_KIND, mechanism };
+      const parsed = parseModes(JSON.stringify({ ...raw, kinds: [...raw.kinds, gate] }), "m");
+      if (parsed._tag === "err") throw parsed.error;
+      const found = kindNamed(parsed.value, "gate");
+      if (found === undefined) throw new Error("the fixture declares the gate");
+      return found;
+    };
+    expect(kindActivation(gained("arise"))).toBe("implicit");
+    expect(kindActivation(gained("open"))).toBe("explicit");
+    expect(kindActivation(gained("reach"))).toBe("explicit");
+  });
+
+  it("S16a refuses the retired class and optIn fields and the extra flag stated false", () => {
+    for (const retired of [{ class: "stage" }, { optIn: true }, { extra: false }])
+      expect(
+        parseCorpusManifest(
+          JSON.stringify({ ...fixture, skills: [{ ...fixture.skills[0], ...retired }] }),
+          "c",
+        )._tag,
+        JSON.stringify(retired),
+      ).toBe("err");
+  });
+
+  it("S16a refuses a schema 10 manifest by its version, before reading any field", () => {
+    const schema10 = JSON.stringify({
       ...fixture,
-      skills: [
-        { ...fixture.skills[0], optIn: true },
-        { name: "native-map", class: "situational", optIn: true },
-      ],
-      intents: [{ intent: "Shape a change", skills: ["grilling", "native-map"] }],
+      schemaVersion: 10,
+      skills: [{ ...fixture.skills[0], class: "stage" }],
     });
-    const result = parseCorpusManifest(tagged, "c");
-    expect(result._tag).toBe("ok");
-    if (result._tag !== "ok") return;
-    expect(result.value.skills.map((skill) => skill.optIn)).toEqual([true, true]);
-    const falsy = JSON.stringify({ ...fixture, skills: [{ ...fixture.skills[0], optIn: false }] });
-    expect(parseCorpusManifest(falsy, "c")._tag).toBe("err");
+    const result = parseCorpusManifest(schema10, "c");
+    expect(result._tag === "err" && result.error.issues).toEqual([
+      {
+        path: "schemaVersion",
+        message: "unsupported corpus manifest schema version '10' (expected 11)",
+      },
+    ]);
   });
 
   it("rejects invalid JSON", () => {
@@ -131,10 +211,24 @@ describe("parseCorpusManifest", () => {
     expect(parseCorpusManifest(raw, "c")._tag).toBe("err");
   });
 
+  it("R4: refuses a schema 9 manifest with its version named, before reading any field", () => {
+    const { kind: _kind, slot: _slot, ...classOnly } = fixture.skills[0];
+    const schema9 = JSON.stringify({ ...fixture, schemaVersion: 9, skills: [classOnly] });
+    const result = parseCorpusManifest(schema9, "c");
+    expect(result._tag).toBe("err");
+    if (result._tag !== "err") return;
+    expect(result.error.issues).toEqual([
+      {
+        path: "schemaVersion",
+        message: "unsupported corpus manifest schema version '9' (expected 11)",
+      },
+    ]);
+  });
+
   it("rejects an unknown license value", () => {
     const raw = JSON.stringify({
       ...fixture,
-      upstreams: [{ ...fixture.upstreams[0], license: "WTFPL" }],
+      sources: [{ ...fixture.sources[0], license: "WTFPL" }],
     });
     expect(parseCorpusManifest(raw, "c")._tag).toBe("err");
   });
@@ -142,29 +236,32 @@ describe("parseCorpusManifest", () => {
   it("rejects a short commit hash", () => {
     const raw = JSON.stringify({
       ...fixture,
-      upstreams: [{ ...fixture.upstreams[0], commit: "abc123" }],
+      sources: [{ ...fixture.sources[0], commit: "abc123" }],
     });
     expect(parseCorpusManifest(raw, "c")._tag).toBe("err");
   });
 
-  it("rejects duplicate upstream family names", () => {
+  it("rejects duplicate source names", () => {
     const raw = JSON.stringify({
       ...fixture,
-      upstreams: [fixture.upstreams[0], { ...fixture.upstreams[0], snapshot: "upstream/other/bb" }],
+      sources: [fixture.sources[0], { ...fixture.sources[0], snapshot: "upstream/other/bb" }],
     });
     const result = parseCorpusManifest(raw, "c");
     expect(result._tag).toBe("err");
     if (result._tag !== "err") return;
-    expect(result.error.issues.some((issue) => issue.message.includes("duplicate"))).toBe(true);
+    expect(result.error.issues).toContainEqual({
+      path: "sources[1].name",
+      message: "duplicate source 'example-skills'",
+    });
   });
 
-  it("rejects a vendored skill naming an unknown family", () => {
+  it("rejects a vendored skill naming an unpinned source", () => {
     const raw = JSON.stringify({
       ...fixture,
       skills: [
         {
           name: "grilling",
-          class: "situational",
+          kind: "habit",
           upstream: { family: "nope", name: "grilling", path: "skills/grilling" },
         },
       ],
@@ -172,7 +269,10 @@ describe("parseCorpusManifest", () => {
     const result = parseCorpusManifest(raw, "c");
     expect(result._tag).toBe("err");
     if (result._tag !== "err") return;
-    expect(result.error.issues.some((issue) => issue.message.includes("family"))).toBe(true);
+    expect(result.error.issues).toContainEqual({
+      path: "skills[0].upstream.family",
+      message: "unknown source 'nope'",
+    });
   });
 
   it("accepts a dot-leading upstream provenance path", () => {
@@ -181,7 +281,7 @@ describe("parseCorpusManifest", () => {
       skills: [
         {
           name: "grilling",
-          class: "situational",
+          kind: "habit",
           upstream: {
             family: "example-skills",
             name: "grilling",
@@ -199,7 +299,7 @@ describe("parseCorpusManifest", () => {
       skills: [
         {
           name: "evil",
-          class: "discipline",
+          kind: "habit",
           upstream: { family: "example-skills", name: "evil", path: "skills/../../evil" },
         },
       ],
@@ -216,12 +316,12 @@ describe("parseCorpusManifest", () => {
       skills: [
         {
           name: "a",
-          class: "discipline",
+          kind: "habit",
           upstream: { family: "example-skills", name: "x", path: "skills/x" },
         },
         {
           name: "a",
-          class: "discipline",
+          kind: "habit",
           upstream: { family: "example-skills", name: "y", path: "skills/y" },
         },
       ],
@@ -248,24 +348,24 @@ describe("parseCorpusManifest", () => {
     ).toBe("err");
   });
 
-  it("parses a native entry as one without an upstream, and accepts a ledger pin on it", () => {
-    const native = { name: "project-router", class: "entry" };
+  it("parses a native entry as one without an upstream, and refuses the old chain's ledger pin", () => {
+    const native = { name: "router", kind: "start" };
     const raw = JSON.stringify({
       ...fixture,
       skills: [...fixture.skills, native],
-      intents: [{ intent: "Shape a change", skills: ["grilling", "project-router"] }],
+      intents: [{ intent: "Shape a change", skills: ["grilling", "router"] }],
     });
     const result = parseCorpusManifest(raw, "c");
     expect(result._tag).toBe("ok");
     if (result._tag !== "ok") return;
-    const router = result.value.skills.find((skill) => skill.name === "project-router");
+    const router = result.value.skills.find((skill) => skill.name === "router");
     expect(router).toEqual(native);
     expect(router !== undefined && isVendored(router)).toBe(false);
     const pinned = JSON.stringify({
       ...fixture,
       skills: [{ ...native, ledger: { id: "baseline", revision: "a".repeat(64) } }],
-      intents: [{ intent: "Shape a change", skills: ["project-router"] }],
+      intents: [{ intent: "Shape a change", skills: ["router"] }],
     });
-    expect(parseCorpusManifest(pinned, "c")._tag).toBe("ok");
+    expect(parseCorpusManifest(pinned, "c")._tag).toBe("err");
   });
 });

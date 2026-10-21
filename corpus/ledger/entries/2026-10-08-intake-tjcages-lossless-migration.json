@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-tjcages-lossless-migration",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-tjcages-constitution-first",
+    "sha256": "aa1ebe83164e7791e22fabcd9ae04a2ad33fb3e50caa23cec0cb4a014ede23f0"
+  },
+  "source": {
+    "repository": "https://github.com/tjcages/skills",
+    "commit": "170f1ca406f926f47433217f731ebf80a613719c",
+    "path": "lossless-migration/skills/lossless-migration"
+  },
+  "licence": "ideas-only",
+  "verdict": "hold",
+  "gist": "Held until upstream publishes a licence",
+  "reason": "Ideas only on rights, with no licence file covering it until its first publish. It reopens when upstream publishes a licence, or on a ruling to lift it as ideas.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hold, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hold, \"everything is good\""
+    }
+  ]
+}

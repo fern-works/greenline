@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-research-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-prototype-refresh",
+    "sha256": "a7ce36a817210098f9673b6532f614143f4b9d0a3369347083ce88e42c8f0755"
+  },
+  "subject": "skill:research",
+  "recipe": "2e4261f2ac446dbef1d4e14f768ba9b8dd9b3b11a6a0c16c1704691ddbf05131",
+  "result": "3a886e8fcf1fc951325d9051f1b27f158a01161899f272d6b5573b02bbfac43a",
+  "pages": [],
+  "gist": "Body ruled not a stub unchanged; the recipe re-anchors",
+  "reason": "Refreshes research to mattpocock-skills 6fd947921b93: the body ruled not a stub did not change, so the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-10-07",
+      "words": "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 6,
+        "taken": 4,
+        "exact": 4,
+        "retention": 1,
+        "coverage": 0.6666666666666666,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 245
+  }
+}

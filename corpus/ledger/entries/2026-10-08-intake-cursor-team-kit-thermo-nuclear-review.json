@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-cursor-team-kit-thermo-nuclear-review",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-interrogate",
+    "sha256": "b9b35c710802a12e969e2bdd9e3d7cfa133cde48593df8bc5b49a03474f94150"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "thermos/skills/thermo-nuclear-review"
+  },
+  "pin": "cursor-team-kit",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Breakage criteria join the review brief; vendor steps are dropped",
+  "reason": "Its breakage outside the diff, feature-gate leaks, intended breakage and own-pass-first criteria enter the re-cut review recipe's brief; its BugBot and gh/glab step is dropped. Read from the sibling thermos plugin, as ruled.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "delivery-review",
+    "catches": "A review whose noise is acted on, whose real defects are dismissed, or that misses breakage outside the diff",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "review",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "review",
+        "depth": "independent",
+        "cost": 350
+      },
+      {
+        "mode": "high",
+        "step": "review",
+        "depth": "independent",
+        "cost": 350
+      },
+      {
+        "mode": "max",
+        "step": "review",
+        "depth": "looped",
+        "cost": 350
+      }
+    ],
+    "ships": "default"
+  }
+}

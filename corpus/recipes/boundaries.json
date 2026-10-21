@@ -1,0 +1,148 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "boundaries",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "boundaries"
+    },
+    {
+      "field": "description",
+      "value": "Concentrate validation, parsing and error handling at system boundaries (CLI, config, network, external APIs), trust internal types and keep business logic in pure functions; and let no failure become success-shaped output: no catch block returning a default, no fabricated data, a test that forces each changed integration to fail. Use when validating input or handling an error at a boundary, when writing a catch block, a default value, a retry or a fallback, when a dependency fails during the work, and when a deadline or a demonstration makes a working-looking result tempting."
+    }
+  ],
+  "sources": ["freddie-northam", "pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Boundaries",
+          "kind": "name",
+          "reason": "The habit's title is its roster name, boundaries, which R22 gives the habit boundary-discipline and fail-loud became.",
+          "gist": "The title is boundaries, which boundary-discipline and fail-loud became"
+        },
+        {
+          "passage": "written",
+          "text": "boundaries is the habit for the moment input is validated or an error handled where data enters the system, a catch block, a default, a retry or a fallback is written, a dependency fails during the work, or a deadline or a demonstration makes a working-looking result tempting, at whatever step the work is in, most often build. It writes no record of its own: the negative-path tests it asks for are named in the step's section and the reply. A system boundary here is where outside data enters, a CLI, a config file, the network, an external API; between two modules of one program, deep-modules' word is seam.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, that it writes no record of its own and where its tests are named, and which boundary it means, since deep-modules says seam for the place between modules.",
+          "gist": "Opens the habit: when it applies; boundaries are where outside data enters"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-boundary-discipline/SKILL.md",
+          "segments": [
+            "3ce46e413466",
+            "0340ba321063",
+            "8f3d9e123fae",
+            "89b98da2a74c",
+            "5585c0baaa41",
+            "c2bc814993d8",
+            "f62a241ed2b1",
+            "53f99f2420e3",
+            "b647d2c14b8b",
+            "894fd3744ad5",
+            "819c4aa5628b",
+            "587275f8e0bb",
+            "ddd64389f774",
+            "3d338840beea",
+            "f6ea19074eed",
+            "bbf0b1a59166",
+            "d8888c2ad294",
+            "863372c73a3e",
+            "a6d2a88fe8d6",
+            "176cdbabb074",
+            "b29baf3805a4",
+            "6c40dbe56464",
+            "cbc29cb34680",
+            "ade9ad4abc69",
+            "20df89023a58",
+            "9ea720e371bc",
+            "add2e5b595b1",
+            "41a9cdf0d4ad",
+            "ea18e89f4a33"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Fail loud",
+          "kind": "method",
+          "reason": "fail-loud joins boundary-discipline as one habit: what a boundary does with a failure, its title becoming the section's heading.",
+          "gist": "fail-loud joins as the section on what a boundary does with failure",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: boundary-discipline and fail-loud are one habit, boundary-discipline its spine"
+        },
+        {
+          "passage": "taken",
+          "source": "freddie-northam",
+          "file": "fail-loud/SKILL.md",
+          "segments": [
+            "e982e186b331",
+            "0925d3bff455",
+            "98273b99b087",
+            "333a9b6fe097",
+            "46171b59eaba",
+            "9788675b5655",
+            "e4819bc12ffe",
+            "1e99c962672a",
+            "ba8a526dea4d",
+            "0477d4306c6c",
+            "7309a1d7672b",
+            "29c7c9a82f03",
+            "d600a7c00b38",
+            "d9a0d592c597",
+            "b0b7b96e038c",
+            "29399d2d7b36",
+            "74ffa4b75879",
+            "148e9185f3a0",
+            "12d8975deb1d",
+            "93d4c2b544c7",
+            "e158c737f26d",
+            "f39c2874f84e",
+            "4d9c4aefce40",
+            "fad819d17c40",
+            "a60f4835bba5",
+            "7b203b09a8bb",
+            "e02af4c9b710",
+            "36ec2d1e0549",
+            "e4af3ff8f805",
+            "273151be1fcb",
+            "3004b80bba6b",
+            "07985d347547",
+            "0b92b1edf643",
+            "e39e6c4bd420"
+          ]
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "principle-boundary-discipline/SKILL.md",
+      "segment": "59e44a6e4a56",
+      "kind": "name",
+      "reason": "The title gives way to the habit's roster name (R22).",
+      "gist": "The habit's roster title replaces the upstream title",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "fail-loud/SKILL.md",
+      "segment": "59f238717e4b",
+      "kind": "scope",
+      "reason": "The title becomes the section's heading.",
+      "gist": "The title becomes the section's heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 3
+      }
+    }
+  ]
+}

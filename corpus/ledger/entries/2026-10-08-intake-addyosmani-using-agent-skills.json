@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-using-agent-skills",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-never-block-on-the-human",
+    "sha256": "9100b672f6720d9a889b867739866fb5d6dece8ba7de45d1bcafe7e6b777f67d"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/using-agent-skills"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Its routing conflicts with steps the mode runs",
+  "reason": "Its routing core conflicts with the trunk, where the mode runs a step and the agent never chooses it; it has no portable form beyond the block's own loading of skills.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Decline, \"yes go ahead\" (R21; R16)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Decline, \"yes go ahead\" (R21; R16)"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-close-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-verify-gists",
+    "sha256": "fedf9fc1e468466ae421aaf287fe8c9c9825de785b5e4370beabe29984bce1a2"
+  },
+  "subject": "skill:close",
+  "recipe": "8fcdbff5f79968c3af722a625f998e03fd83ede7288a90bf0f36ada606052f71",
+  "result": "433d7cf80d04d3ee74496b3ec08bc6404924c77fe5d42ce1dfa86ce033220583",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined; documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'; handoff, claude-handoff and finishing-a-development-branch stay declined"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-09-15",
+      "words": "roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ericclemmons",
+        "segments": 61,
+        "taken": 56,
+        "exact": 54,
+        "retention": 0.9642857142857143,
+        "coverage": 0.9180327868852459,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 35,
+        "exact": 34,
+        "retention": 0.9714285714285714,
+        "coverage": 0.30701754385964913,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "addyosmani",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 1243
+  }
+}

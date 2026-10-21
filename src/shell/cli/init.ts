@@ -2,16 +2,27 @@ import { join } from "node:path";
 import { planManagedFiles } from "../../core/managed-file.ts";
 import { serializeLock } from "../../core/lock.ts";
 import {
+  HOOKS_ON,
   MANIFEST_SCHEMA_VERSION,
+  NO_PROCEED,
   serializeManifest,
   type Manifest,
   type TargetName,
 } from "../../core/manifest.ts";
 import { renderProjection } from "../../core/render.ts";
-import { findGitRoot } from "../git.ts";
+import { findGitRoot, initRepository } from "../git.ts";
 import { applyFilePlan } from "../fs/apply.ts";
 import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { snapshotWorkspace } from "../workspace.ts";
+import { optInLines, renderHooksText } from "../../core/adapters.ts";
+import { proposedChecks } from "../../core/checks.ts";
+import {
+  gitHooksState,
+  hooksReport,
+  presentHarnesses,
+  projectFiles,
+  registerGitHooks,
+} from "../hooks.ts";
 import type { RunRequest } from "./args.ts";
 import type { PromptChoice } from "./prompt.ts";
 import { GL, diagnostic } from "./output.ts";
@@ -60,6 +71,62 @@ function resolveTargets(request: RunRequest, env: CliEnvironment): TargetsResolu
   return { kind: "unchosen" };
 }
 
+/** The answers init's git question accepts. */
+const GIT_CHOICES: readonly PromptChoice[] = [
+  { key: "yes", label: "yes, run 'git init' here" },
+  { key: "no", label: "no" },
+];
+
+/**
+ * GL0105's remedy outside a repository. Whether to create one is the owner's
+ * decision, so the words an agent reads say it offers `git init` and waits,
+ * and never read as an instruction to run it (J-82).
+ */
+const OWNER_DECIDES =
+  "running 'git init' is the owner's decision: an agent offers it and waits, and 'greenline init --yes' runs it only as the owner's answer";
+
+/** GL0105's message outside a repository, when init does not run `git init`. */
+const NO_REPOSITORY = `init requires a Git repository root, and none stands here; ${OWNER_DECIDES}`;
+
+/** The offer's outcome: a repository now stands at the directory, or init stops with GL0105. */
+export type GitOffer =
+  | { readonly kind: "initialized"; readonly root: string }
+  | { readonly kind: "refused"; readonly outcome: CommandOutcome };
+
+/**
+ * Init on a directory that is no repository offers `git init` there, one
+ * question in its flow, asked before the harness trees: `--yes` answers it, a
+ * terminal is asked, and a no, no answer or no terminal keeps GL0105, whose
+ * remedy leaves the decision to the owner. A dry run writes nothing, so it
+ * runs no `git init` either.
+ * @param request the init request
+ * @param env where init runs and the terminal it may ask
+ * @returns the new repository's root, or the refusal
+ */
+export function offerGitInit(request: RunRequest, env: CliEnvironment): GitOffer {
+  const refused = (message: string): GitOffer => ({
+    kind: "refused",
+    outcome: fail([diagnostic(GL.notGitRepository, "error", message)]),
+  });
+  if (request.dryRun)
+    return refused(
+      `init requires a Git repository root, and none stands here; a dry run runs no 'git init', and ${OWNER_DECIDES}`,
+    );
+  const answer = request.yes
+    ? "yes"
+    : env.prompt?.choose(
+        "This directory is not a Git repository. Run 'git init' here?",
+        GIT_CHOICES,
+      );
+  if (answer !== "yes") return refused(NO_REPOSITORY);
+  const created = initRepository(env.cwd);
+  if (created._tag === "err")
+    return refused(
+      `init requires a Git repository root, and 'git init' failed: ${created.error.message}`,
+    );
+  return { kind: "initialized", root: env.cwd };
+}
+
 /** Init's harness trees: chosen by flag, answer, or acceptance; else unchosen. */
 type TargetsResolution =
   | { readonly kind: "chosen"; readonly targets: readonly TargetName[] }
@@ -70,13 +137,7 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
   const io: FileIo = createNodeFileIo();
   const root = findGitRoot(env.cwd);
   if (root === undefined) {
-    return fail([
-      diagnostic(
-        GL.notGitRepository,
-        "error",
-        "init requires a Git repository root; run 'git init' first",
-      ),
-    ]);
+    return fail([diagnostic(GL.notGitRepository, "error", NO_REPOSITORY)]);
   }
   const resolved = resolveTargets(request, env);
   if (resolved.kind === "unchosen") {
@@ -90,13 +151,19 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
   }
   const targets = resolved.targets;
   // Init asks nothing about a connector and enables none: each stays disabled until enabled explicitly.
+  // It writes the two settings' defaults: the agent waits under every mode, and no trial skill installs.
+  // It proposes the checks from the project's own files and turns the git hooks and the adapters on.
   const manifest: Manifest = {
     schemaVersion: MANIFEST_SCHEMA_VERSION,
     targets,
     skills: { exclude: [], include: [] },
     connectors: {},
+    proceed: NO_PROCEED,
+    trials: [],
+    checks: proposedChecks(projectFiles(root)),
+    hooks: HOOKS_ON,
   };
-  const desired = renderProjection(manifest, env.installation);
+  const desired = renderProjection(manifest, env.installation, presentHarnesses(root));
   const snapshot = snapshotWorkspace(root, desired, io, new Set<string>());
 
   if (snapshot.overridePresent) {
@@ -122,7 +189,7 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
     desired,
     snapshot.targets,
     env.version,
-    env.installation.upstreams,
+    env.installation.sources,
     env.installation.revision,
   );
   const plan = withBrokenBlockConflicts(
@@ -158,11 +225,18 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
   const writes = [
     { path: manifestWrite.path, content: manifestWrite.content },
     { path: lockWrite.path, content: lockWrite.content },
-    ...execution.writes.map((entry) => ({ path: join(root, entry.path), content: entry.content })),
+    ...execution.writes.map((entry) => ({
+      path: join(root, entry.path),
+      content: entry.content,
+      executable: entry.executable,
+    })),
   ];
   const effects = [manifestWrite.effect, lockWrite.effect, ...execution.effects];
   if (request.dryRun) {
-    return succeed(effects, unknownForce);
+    return {
+      ...succeed(effects, unknownForce),
+      hooks: hooksReport(manifest, desired, gitHooksState(root, manifest.hooks)),
+    };
   }
   const applied = applyFilePlan(writes, io);
   if (applied._tag === "err") {
@@ -171,13 +245,28 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
       effects,
     );
   }
-  return { ...succeed(effects, unknownForce), text: INIT_EPILOGUE };
+  // The scripts stand now, so git can be told to run them.
+  const hooks = hooksReport(manifest, desired, registerGitHooks(root, manifest.hooks));
+  return { ...succeed(effects, unknownForce), hooks, text: initText(hooks) };
+}
+
+/**
+ * Init's closing text: the getting-started lines, then the hooks, the
+ * checks it proposed, which the agent confirms or corrects in the first
+ * change, and the lines for the harnesses whose hooks the owner adds.
+ */
+function initText(hooks: Parameters<typeof renderHooksText>[0]): string {
+  const proposal =
+    hooks.checks.length === 0
+      ? ""
+      : "These checks were read from the project's files, a proposal your agent confirms or corrects in its first change.\n";
+  return `${INIT_EPILOGUE}\n${renderHooksText(hooks)}${proposal}${optInLines().join("\n")}\n`;
 }
 
 // Static usage text printed after a fresh init (never in --json mode);
 // facts and usage only, the passivity law's help-text class.
 const INIT_EPILOGUE: string =
   `Workspace initialized. Getting started:\n` +
-  `  ask your agent: "what were we doing?"        (continuity from the artifacts)\n` +
+  `  ask your agent: "what were we doing?"        (continuity from the change records)\n` +
   `  ask your agent: "set this repo up properly"  (the stack and the furniture)\n` +
   `The installed roster and working laws are in the AGENTS.md managed block.`;

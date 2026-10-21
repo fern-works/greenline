@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-verify-this-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-ponytail-review-retired",
+    "sha256": "bb0d2fe7ba835894234a370b595495286faf576c9f091172cbcf687867349fc8"
+  },
+  "skill": "verify-this",
+  "slice": "S15 of the plan modes-records-recipes",
+  "replacedBy": "verify",
+  "recipe": "d7a204d6302860eceacf7fc9d16bb12404a2fe44ed99199d5f3123a272ab02e1",
+  "gist": "Becomes verify's spine",
+  "reason": "verify-this is verify's spine now: its falsifiable claim, baseline and treatment, raw artifacts and three verdicts run over each item of the change's acceptance.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

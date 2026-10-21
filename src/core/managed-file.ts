@@ -29,6 +29,8 @@ export interface FileTarget {
   readonly text: string;
   /** The bytes whose sha256 the lock records as ours. */
   readonly owned: string;
+  /** Written executable, as a git hook's script is. */
+  readonly executable?: boolean | undefined;
 }
 
 /** The hash map the lock carries: managed path -> sha256 of its owned region. */

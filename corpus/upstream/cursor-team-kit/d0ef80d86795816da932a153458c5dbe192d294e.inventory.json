@@ -1,0 +1,91 @@
+{
+  "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "702f5f331b56aff0e33d8c7826df5202559f894145eb70355c6477b55b5bb8a0"
+    },
+    {
+      "path": "control-cli/SKILL.md",
+      "sha256": "13ac93e595bbda2000849bdb815d5f2ca03f7c2ca63788c8335f9212b9b422a2"
+    },
+    {
+      "path": "control-ui/SKILL.md",
+      "sha256": "410cae25bdb1e5d2323b126abc5047b0213be7fdb0195710213fa8de8a751871"
+    },
+    {
+      "path": "deslop/SKILL.md",
+      "sha256": "2f7b7def74af7ed11f5b44b4d32f0f91fca8c5d1f92bf2171e8d12fd33a0f810"
+    },
+    {
+      "path": "fix-ci/SKILL.md",
+      "sha256": "925f8c3e11de8bcc0cd015ec907f4d00b12cde6714246554ed3a52e096536522"
+    },
+    {
+      "path": "loop-on-ci/SKILL.md",
+      "sha256": "66b85dbd2bc3700386283539292a55438652bbe227271fd90b73b74525b9b9de"
+    },
+    {
+      "path": "make-pr-easy-to-review/SKILL.md",
+      "sha256": "e8da0d4a85b7c04823698f539251617389f827fd9137100ef7eaea5dcc992fe7"
+    },
+    {
+      "path": "review-and-ship/SKILL.md",
+      "sha256": "5c8e88c91e726e024c824d2b02be6bfc7ad81ac5e67c104ef2b66840715373c1"
+    },
+    {
+      "path": "thermo-nuclear-code-quality-review/SKILL.md",
+      "sha256": "7faca08b51b643b2ddd0836f92af15574444024685dcc1e677dbbb39ae8c9e8f"
+    },
+    {
+      "path": "thermo-nuclear-review/SKILL.md",
+      "sha256": "5091011c4490932d40658ae958fb55b9aaca8e2bba5196860295ab945180e434"
+    },
+    {
+      "path": "verify-this/SKILL.md",
+      "sha256": "c1c7b27c1133085bd3409c601ea12b6e6f61b4b23debcd52bc248fc01907e7de"
+    }
+  ],
+  "entries": [
+    {
+      "name": "control-cli",
+      "path": "cursor-team-kit/skills/control-cli"
+    },
+    {
+      "name": "control-ui",
+      "path": "cursor-team-kit/skills/control-ui"
+    },
+    {
+      "name": "verify-this",
+      "path": "cursor-team-kit/skills/verify-this"
+    },
+    {
+      "name": "review-and-ship",
+      "path": "cursor-team-kit/skills/review-and-ship"
+    },
+    {
+      "name": "make-pr-easy-to-review",
+      "path": "cursor-team-kit/skills/make-pr-easy-to-review"
+    },
+    {
+      "name": "deslop",
+      "path": "cursor-team-kit/skills/deslop"
+    },
+    {
+      "name": "fix-ci",
+      "path": "cursor-team-kit/skills/fix-ci"
+    },
+    {
+      "name": "loop-on-ci",
+      "path": "cursor-team-kit/skills/loop-on-ci"
+    },
+    {
+      "name": "thermo-nuclear-code-quality-review",
+      "path": "cursor-team-kit/skills/thermo-nuclear-code-quality-review"
+    },
+    {
+      "name": "thermo-nuclear-review",
+      "path": "thermos/skills/thermo-nuclear-review"
+    }
+  ]
+}

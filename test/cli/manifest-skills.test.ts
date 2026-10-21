@@ -143,9 +143,9 @@ it("D11 sync accepts an available optional skill before it is installed and pres
         {
           name: "architecture-map",
           description: "Map the architecture.",
-          class: "stage",
+          kind: "habit",
           activation: "explicit",
-          optIn: true,
+          extra: true,
           body: "# Architecture Map\n",
         },
       ],

@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-delivery-review-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-codebase-design-refresh",
+    "sha256": "d8a7c6763363ca2f077d0cb5ca733c1c05d62bf6d1dc55c3abb9688bf5d6f25a"
+  },
+  "subject": "skill:delivery-review",
+  "recipe": "3e2c191024252d4aa6fd451bdaf85db8a70daa1fc315579d3fa292163ca13a13",
+  "result": "e728f9ddc9a78b18f2643e58142a232d80dacf0a6feba15f852d0694e2f6d050",
+  "pages": [],
+  "gist": "Upstream unchanged; the recipe re-anchors as it stands",
+  "reason": "Refreshes delivery-review to mattpocock-skills 6fd947921b93: no segment of its files changed, so the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 80,
+        "taken": 60,
+        "exact": 56,
+        "retention": 0.9333333333333333,
+        "coverage": 0.75,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1211
+  }
+}

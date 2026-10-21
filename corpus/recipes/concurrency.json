@@ -1,0 +1,1384 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "concurrency",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "concurrency"
+    },
+    {
+      "field": "description",
+      "value": "Decide whether code should be concurrent, reason about a concurrent design by its timelines, separate shared state before serializing it, and make an operation converge when a crash, a restart or a retry runs it twice, an idempotency key derived from the intent and claimed atomically. Use when adding threading, async, goroutines, workers or parallelism; when a race or an ordering bug appears; when two actors may write the same file, key or branch; and when a command, a step or a loop must survive crashes, restarts and retries."
+    }
+  ],
+  "sources": ["addyosmani", "pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Concurrency",
+          "kind": "name",
+          "reason": "The habit's title is its roster name, concurrency, which R22 gives the habit concurrency-method became.",
+          "gist": "The title is concurrency, which concurrency-method became"
+        },
+        {
+          "passage": "written",
+          "text": "concurrency is the habit for the moment code is made concurrent or a race or an ordering bug appears, two actors may write the same state, or an operation must survive a crash, a restart or a retry, at whatever step the work is in, most often build. It writes no record of its own. Concurrency is a floor in AGENTS.md: found before the mode is proposed, it raises the proposal to the mode that floor names, and found later it is reported. Sections 1 to 5 reason about concurrent code; section 6 makes an operation that may run twice converge.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, that it writes no record of its own, the floor concurrency raises a proposal to, and the new section 6 the opening's three questions do not name.",
+          "gist": "Opens the habit: when it applies; found early, concurrency raises the mode"
+        },
+        {
+          "passage": "written",
+          "text": "Three questions in order: whether concurrency is warranted, how to\nreason about the design, and which laws hold whatever the runtime is\ncalled. The last two are wasted on a program that failed the first.",
+          "kind": "method",
+          "reason": "The title and opening: the three questions in their order, whether concurrency is warranted, how to reason about the design, and which laws hold on any runtime.",
+          "gist": "Asks three questions in order: warranted, how to reason, which laws hold",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "## 1. Decide, and the default is no\n\nThe burden of proof rests on the concurrency, never on the serial\nversion: three languages agree that \"this shiny feature\" is where the\ndanger sits (Latour), that many tasks do not need it (Matthews), and\nthat short work loses to the cost of moving values (Bodner).\n\n**Three properties qualify a workload, all of them:** parts doing I/O\nwithout interacting, a place where results combine, and a deadline\nthat is a number. For I/O, interleaving pays only where waiting\nexceeds processing, and splitting a saturated resource degrades.\nReason in orders of magnitude, and benchmark only where the order is\ngenuinely unknown. **Decide up front,** since the choice is\narchitectural and dearest after the second consumer. **Write it\nserially first, then benchmark both ways,** with the serial version as\nthe control: one author's own benchmark refuted his own parallel tool,\ncheap arithmetic running longer in parallel (Matthews).",
+          "kind": "method",
+          "reason": "Section 1: the decision whether to make code concurrent at all, with no as the default and the burden of proof on the concurrency.",
+          "gist": "Decides whether to go concurrent at all; the default is no",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "## 2. The instrument: draw the timelines\n\nOne author's method (Normand): section 1 has three witnesses, while\nsections 2, 3 and 5 have one, and rung three of section 3 a second,\nprinciple-separate-before-serializing-shared-state.\n\nA timeline is a sequence of actions over time, and a diagram draws\nseveral side by side, which makes interference visible. Actions in\norder share a timeline; actions that can run at once or out of order\ngo on separate ones. Calculations are left off, since their results\ndo not depend on when they run, which keeps the diagram usably small.\nThree steps, and their order defends against drawing the diagram you\nalready believe: identify the actions, draw each on a new timeline\nonly where it can run in parallel, then simplify by platform\nguarantees. Draw before the code, redraw from zero after a change.\n\n**Count the orderings and prune them; do not trace them all.** Two\nsingle-action timelines admit three orderings, two three-box timelines\nwith one constrained start admit ten, and real systems generate\nthousands or millions. Tracing them all is impossible at realistic\nsizes, and that is the pivot: correctness comes from a structural\nguarantee that deletes orderings, never from green runs that may never\nsee the interleaving a production week will.\n\n**Only pairs touching the same resource need analysis.** Annotate\nevery step with the resource it touches, then for each pair that\nshares one check all three relative orders: simultaneous, left first,\nright first. Decompose before you draw: an increment on a shared value\nis a read, a calculation, and a write, and one box hides the race the\npair analysis exists to find. Explicit temporaries make it visible.\n\n**Duration is never synchronisation:** the rare interleaving becomes\ncommon under load.",
+          "kind": "method",
+          "reason": "Section 2: the timeline diagram as the instrument for reasoning about a concurrent design. (S18a: rung three of section 3 gains a second witness, the grafted principle.)",
+          "gist": "Draws timelines side by side so interference becomes visible",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "## 3. The ladder\n\nRanked: earlier rungs remove the problem, later rungs manage it.\n\n1. **Fewer timelines,** often outside your control.\n2. **Shorter timelines,** by converting actions to calculations and\n   reading shared values once into explicit parameters.\n3. **Fewer shared resources,** preferring a single worker, which cuts\n   the orderings you must think about rather than the orderings.\n4. **Coordinate the sharing that remains** with a primitive.\n5. **Manipulate time as a first-class concept,** since a platform's\n   implicit model of ordering and repetition rarely fits.",
+          "kind": "method",
+          "reason": "Section 3: the ladder of remedies, ranked from removing the shared-resource problem to managing it.",
+          "gist": "Ranks remedies from removing the shared resource to managing it",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "### Rung three: separate before you serialize",
+          "kind": "method",
+          "reason": "principle-separate-before-serializing-shared-state strengthens the ladder's third rung, fewer shared resources, with its test of one canonical object against independent facts.",
+          "gist": "Rung three gains a test: one canonical object or independent facts",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-separate-before-serializing-shared-state/SKILL.md",
+          "segments": ["63b43dcc9acd", "7ca24546cf4f", "47f51cd2f07c", "3a1fe0f686de"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-separate-before-serializing-shared-state/SKILL.md",
+          "segments": [
+            "8261c007be0b",
+            "88a19bfba8bc",
+            "c67fe91392c1",
+            "6bd4cf91780c",
+            "bef89a56a694",
+            "ee7c2dbce059",
+            "c847f963bdda",
+            "6c6f669c7771",
+            "f575f94616a9"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## 4. The laws that survive translation\n\n**Never block the scheduler, whatever it is called.** Blocking is\nholding the scheduler from switching tasks for a long period; I/O\ncounts, and so does long-running compute. Two remedies and no third:\nrun it off the scheduler's own workers, or break it up with yield\npoints. Scheduler throughput is the shared resource nobody names.\n\n**Share by communicating where the language offers it.** \"Share\nmemory by communicating; do not communicate by sharing memory\" (the\nGo community, via Bodner). Legibility is the argument before safety:\na guarded value never says which worker owns it, while a passed value\nshows its flow. Convert passing to guarding only once it has caused a\nreal performance problem.\n\n**Bound everything unbounded.** Every queue, fan-out, and wait\ncarries a ceiling that is a number a person chose for a reason they\ncan say. Where only the latest result matters it may discard stale\nentries, correct only where discarded work has no independent\neffect.\n\n**Whoever starts a unit of concurrency decides at the launch site how\nit stops.** Above leak-hygiene sits the method claim: an unterminated\ntimeline never closes, so no cut across it, the line splitting\ntimelines into halves that cannot interleave, holds, and its orderings\nnever leave the set.",
+          "kind": "method",
+          "reason": "Section 4: the laws that hold whatever the runtime calls its scheduler and tasks.",
+          "gist": "States the laws that hold whatever the runtime calls its scheduler",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "## 5. Primitives, a vocabulary of shapes\n\nA primitive lets timelines share a resource safely, and the mechanism\nis always the same one: it removes undesirable orderings from the\nset. **Linearize** lets one instance of a timeline run at a time, and\nis the name to teach: the queue is the implementation, the guarantee\nis the point. **The cut** runs across the ends of several timelines,\nsplitting each into halves that cannot interleave.\n\nA primitive is an action, deliberately. It holds mutable state,\ndefended rather than hidden: any timeline may call it and get\npredictable behaviour from state closed where nothing outside\nreaches it. What is built from calculations is what it coordinates,\nrung two. **Use the primitive your language or platform ships,**\nsince hand-built shapes teach the reasoning, not the library, and are\nsafe only on the single-threaded platform they were written for.",
+          "kind": "method",
+          "reason": "Section 5: the primitives as a vocabulary of shapes that remove undesirable orderings.",
+          "gist": "Treats primitives as shapes that remove undesirable orderings",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "## 6. Operations that run twice",
+          "kind": "method",
+          "reason": "principle-make-operations-idempotent is the spine of a section of its own, with the idempotency core of api-and-interface-design grafted into it.",
+          "gist": "Makes an operation that may run twice converge",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-make-operations-idempotent/SKILL.md",
+          "segments": ["6bfc13e6fd5e", "bc64f5b348fd", "13e45d6f5334"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-make-operations-idempotent/SKILL.md",
+          "segments": ["f62a241ed2b1", "eea8d720495d", "d13993ff0875"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-make-operations-idempotent/SKILL.md",
+          "segments": [
+            "26a76b4b4f28",
+            "d7c72670d0ad",
+            "550f65275a25",
+            "48818a3b9c82",
+            "621ef5479d02",
+            "5cfbb987176b"
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "Where a caller retries a request against your service, the request carries an idempotency key, and [idempotency-key.md](idempotency-key.md) says how to honour it: derived from the intent, claimed atomically, its payload guarded, the intent recorded before the effect, and kept as long as the longest retry chain.",
+          "kind": "pointer",
+          "reason": "api-and-interface-design's idempotency core lives on idempotency-key.md, read only where a caller retries a request, so the section names the page and what it holds.",
+          "gist": "A retried request carries an idempotency key; idempotency-key.md says how"
+        },
+        {
+          "passage": "written",
+          "text": "## Sources\n\nNormand, _Grokking Simplicity_, is the sole witness behind sections 2 and 5 and\nthe ladder of section 3, whose third rung also takes pstack's\nprinciple-separate-before-serializing-shared-state; section 6 is pstack's\nprinciple-make-operations-idempotent and addyosmani's api-and-interface-design.\nOther sources: Bodner, _Learning Go_ (3e early release, revisit April 2027);\nLatour, _Go Pocket Projects_; Matthews, _Code Like a Pro in Rust_.\nThe maintainer's graded research records are provenance, not required installed\nsupport files. The complete method above is available here.",
+          "kind": "method",
+          "reason": "The sources: which author witnesses which section, and the other sources consulted. (S18a: the grafted rung and section 6 name their sources.)",
+          "gist": "Names which author witnesses which section, and the other sources consulted",
+          "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\"",
+          "credits": ["pstack", "addyosmani"]
+        }
+      ]
+    },
+    {
+      "path": "idempotency-key.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Honouring an idempotency key",
+          "kind": "method",
+          "reason": "api-and-interface-design's idempotency section joins the concurrency habit's section 6 as its page: the key is how a retried request converges. Its own heading carried that page's number.",
+          "gist": "Opens the page on honouring an idempotency key for retried requests",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "api-and-interface-design/SKILL.md",
+          "segments": [
+            "60b2ef4ae312",
+            "93ee45e97173",
+            "0a7862ad1481",
+            "5b2ffb1eedfa",
+            "dc57b045b74f",
+            "e5f0ce4788aa",
+            "fa7e583b3a2c",
+            "ebd020074373",
+            "12322e844de1",
+            "c3b457d8e0bb",
+            "51e9759708b5",
+            "77db2b1a1abe",
+            "2b0d0fe2b083",
+            "0c1ce53c5175",
+            "26a2b9ee3186",
+            "a82758113fc4",
+            "dc2c87c397f9",
+            "23cca02b74f3",
+            "b0c13fc3c7c3",
+            "4e5dc2c9cd06",
+            "cd9bfa33377f",
+            "b261aae5cae7",
+            "e6f939adb802",
+            "ca286220c713",
+            "32a9b915ba11",
+            "81839c3049e6",
+            "5586162c8eeb",
+            "ea4b5101e7cf",
+            "a0b8058d6c0a"
+          ]
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "principle-separate-before-serializing-shared-state/SKILL.md",
+      "segment": "ef03bdc3d4eb",
+      "kind": "scope",
+      "reason": "The title becomes the rung's heading.",
+      "gist": "The title becomes the rung's heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-separate-before-serializing-shared-state/SKILL.md",
+      "segment": "27099b688536",
+      "kind": "scope",
+      "reason": "The why restates the ladder's reason for removing the shared resource first.",
+      "gist": "The why repeats the ladder's reason to remove shared state first"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "8cff7d22ea67",
+      "kind": "scope",
+      "reason": "The title becomes the section's heading.",
+      "gist": "The title becomes the section's heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "d19f1e9277f2",
+      "kind": "scope",
+      "reason": "The why restates the question the opening asks.",
+      "gist": "The why repeats the question the opening asks"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "8589c2f0ba30",
+      "kind": "scope",
+      "reason": "The why restates the question the opening asks.",
+      "gist": "The why repeats the question the opening asks"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "5368a7eb1ffb",
+      "kind": "method",
+      "reason": "PID-based stale lock detection gives way to the primitive the platform ships, section 5 (contradiction 31).",
+      "gist": "PID-based stale locks give way to the platform's own primitive",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "bd01256777a8",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "7337f3d0aa29",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "e812ba1e1a71",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "15e0b13b5e64",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "a4d82c43b1bb",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "44963897d9c0",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "74830405304b",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "f5c898ed7af6",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "ae9bf43a0e7a",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "db93c071b4f3",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c149fbc5280b",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "01f06a54b5ff",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c5625f006735",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "1450c4cb0dc2",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "4c8451545b97",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "46a328de5506",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "18f69e013f53",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "db3d0a11603d",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "1c8a5bd2bcad",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "d1b3187a8e98",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "b7bfc858f1af",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "0c5a5b458e4a",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "48d1eb855500",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "e44426a368b3",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "3ac8f3644f5b",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "8ee23ace0c93",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "4f678592e875",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "0d0f55191e2d",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "dd0700f3206b",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "fb44e903e00a",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "76f8eb346b37",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "e0d666fbdcdf",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "5f8d5a605996",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "db8e6dbdbf46",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "a2b1663bf9de",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "9a823a13f6ad",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "ba9a45a90ea7",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "032cb5273428",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "f9f5bee55cec",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "2a495b31968e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "b1df507c6f3c",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "3e59d0266b70",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "bb3a80b62350",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c4350712dfa9",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "a86a3e07099d",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "0059b70b8be2",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "2003c4e441ec",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "8540d5185c68",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "d3830d9f3d89",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "eb0e066d2b7f",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "ae5a44104370",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "0a58ac1f6cbf",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "061b14c529d1",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "bb7ad6b2a086",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "e4528780a329",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "4feed352067e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c5ce3b234a0e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "b4ddd79e929e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "63c9de17815c",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "fb212dd98365",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "f4e053afb694",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "929de5540994",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "1ad335bc3996",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "9103bc902abd",
+      "kind": "method",
+      "reason": "The section's heading carried that page's number.",
+      "gist": "The heading loses the section number it had upstream",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung",
+      "replacedBy": {
+        "path": "idempotency-key.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "1d5599554faa",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "736951c4e574",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "11af0757c96f",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c48745e263cd",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "966d4377d4cf",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "1b15a8771570",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "d789a093be70",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "34281bca90ce",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "15cd91d5b292",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "f5971cf67638",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "3a70410b55a1",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "8ee80733c653",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "902e235b613c",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "17b5afcdd319",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c0e4f8483465",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "00fc470d0ce5",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "dd3afaf29886",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "cbf8dd1977e3",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "223500d60591",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "3025f172a1d3",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "4199ba454d6d",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "a07a7bf7acf2",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "51c70e1993d5",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c1aec6f9956e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "cbd7a127150e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "98947451efca",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "9dfafd8bcbc4",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "984b0d06725e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "f98300e4a456",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "97c1926e582b",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "84b8760318f7",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "052cfba57d12",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "2304723b8823",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "22b9d3d51a48",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "67f38e986ffe",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "f2f9fc4743e7",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "167fbe695683",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "c748dbce0be8",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "3476835ee184",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "edf7d5ef379e",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "6a296d6c7dbc",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "2f2207036da3",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "88b7f642addd",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "80937328f4f7",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "ec9f7c787c4c",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "24fd93c546ec",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "75e5139d0325",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "36beb265ae6c",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "448ed736cbf4",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "6dbf217d0460",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "cc6a426a8204",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "2b188da83e81",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "1cb0e36a1d54",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "968a4a9dc918",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "ff9e96059011",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "0df5f2af7572",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "addyosmani",
+      "file": "api-and-interface-design/SKILL.md",
+      "segment": "048fb0b2f210",
+      "kind": "method",
+      "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
+      "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    }
+  ]
+}

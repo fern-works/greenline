@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-code-review-and-quality",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-cursor-team-kit-deslop",
+    "sha256": "478d0276a6a5e954e7a12d584eca1a01fe2bd6aef154a9d0344df02f82ae0dfc"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/code-review-and-quality"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Review axes are garden's knowledge; the method half is a duplicate",
+  "reason": "Its security, performance, dependency and sizing axes are knowledge for garden; its method half is declined as a duplicate of delivery-review and review-lens.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its security axis",
+        "locator": "skills/code-review-and-quality/SKILL.md, \"4. Security\""
+      },
+      {
+        "part": "its performance axis",
+        "locator": "skills/code-review-and-quality/SKILL.md, \"5. Performance\""
+      },
+      {
+        "part": "its dependency axis",
+        "locator": "skills/code-review-and-quality/SKILL.md, \"Dependency Discipline\""
+      },
+      {
+        "part": "its sizing axis",
+        "locator": "skills/code-review-and-quality/SKILL.md, \"Change Sizing\""
+      }
+    ]
+  }
+}

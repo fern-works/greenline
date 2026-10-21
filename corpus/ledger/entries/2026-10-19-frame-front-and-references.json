@@ -1,0 +1,147 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-frame-front-and-references",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-diagram-design-front-and-references",
+    "sha256": "60edb2f857a54778c5db8fa620f5a9eff1cf9723e93b4fa7383c1e142f2b8cd5"
+  },
+  "subject": "skill:frame",
+  "recipe": "c1e82e3115554a5f3d67a5794bbef2d9ab26ed90d05eaf347282926c02fef13e",
+  "result": "33d60a21905d897b2ec244db7428532ebde23bcd2e34be929b55ee833f40cee9",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    },
+    {
+      "path": "references/interview.md"
+    },
+    {
+      "path": "references/prototype.md"
+    },
+    {
+      "path": "references/research.md"
+    }
+  ],
+  "gist": "Frame's depths and mechanics move from its front to its references",
+  "reason": "The front keeps the upstream prose; its depth bullets, now naming the three modes, and its paths, commands and record forms move to references/greenline.md (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "research is not a stub (the decisions row of 2026-10-07)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): frame's interview moves to references/interview.md, which its written depth reads"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-12",
+      "words": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\": frame's interview page names the repository's glossary, its rule that facts are the agent's to find and decisions the owner's stands on frame's opening for both depths, and frame loaded by a start with no change open runs at the written depth"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's card of 2026-10-14, \"The record's frame section\": a start's four frame answers live in the change record's frame section, and the start writes no section of its own for them"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", and the card of that day, \"Words at the list edit the entry; at a ticket's open they override\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a request that names a mode is taken as chosen and goes on with no yes awaited, a question asked only for a choice it leaves open; the record names every floor found and, where the owner names a mode below one, says so with choice owner and the floor's reason; a mode named at the ticket list edits the entry and one named at a ticket's open overrides it; the builder reads the reviewer's brief at the inline depth only; and at the written frame depth every open behaviour goes to the owner through the interview, an inline frame line crediting the owner only with the owner's answers"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, item 3), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", with the design N-56 states: quick a one-line frame and acceptance, regular a written frame and plan with no interview, careful the interview; and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\": at regular this section stands over the written depth's interview, which the ruling of 2026-10-17 gave every written frame, until the step's page is re-cut"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 266,
+        "taken": 225,
+        "exact": 216,
+        "retention": 0.96,
+        "coverage": 0.8458646616541353,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 171,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.12280701754385964,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 184,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.03804347826086957,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 17,
+        "taken": 16,
+        "exact": 16,
+        "retention": 1,
+        "coverage": 0.9411764705882353,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 2612
+  }
+}

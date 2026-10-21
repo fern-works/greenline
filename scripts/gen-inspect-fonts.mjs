@@ -7,7 +7,7 @@
 // renders this module's output in memory and refuses drift between the two.
 import { readFileSync, writeFileSync, mkdirSync, realpathSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 /** The licensed copy's directory, relative to the checkout. */
 export const INSPECT_FONTS = "assets/inspect-fonts";
@@ -42,7 +42,8 @@ if (
   existsSync(process.argv[1]) &&
   import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href
 ) {
-  const root = new URL("..", import.meta.url).pathname;
+  // A URL's pathname keeps a space in the checkout's path as %20 (N-45); the file path decodes it.
+  const root = fileURLToPath(new URL("..", import.meta.url));
   mkdirSync(join(root, "src/shell/inspect"), { recursive: true });
   const text = renderInspectFonts(root);
   writeFileSync(join(root, "src/shell/inspect/fonts.ts"), text);

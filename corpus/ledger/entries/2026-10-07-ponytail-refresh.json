@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-ponytail-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-show-me-refresh",
+    "sha256": "36b6249df98f3ac82d2e892caf4492f1dd6902c6bc9bc537850c8da768792899"
+  },
+  "subject": "skill:ponytail",
+  "recipe": "38f96c47d1867ca5b6773bf5388a1195a0a2b748f6c2fd88d958a1eb15112b96",
+  "result": "7d26648b0adfd1d6eb293430699b6e6dcdfb7c82077c7219a0488059e536f10f",
+  "pages": [],
+  "gist": "Upstream unchanged; the recipe re-anchors as it stands",
+  "reason": "Refreshes ponytail to ponytail 552acd5efd0a: the SKILL.md held from .agents/rules/ponytail.md did not change, so the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ponytail",
+        "segments": 36,
+        "taken": 36,
+        "exact": 35,
+        "retention": 0.9722222222222222,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 107
+  }
+}

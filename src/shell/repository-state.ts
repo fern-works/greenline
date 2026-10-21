@@ -3,8 +3,13 @@ import { lstatSync, realpathSync } from "node:fs";
 import { join, sep } from "node:path";
 import type { Result } from "../commons/result.ts";
 import { contractFailure, type ContractParseFailed } from "../core/contract.ts";
-import { parseLedgerRecord, type LedgerRecord } from "../core/execution-ledger.ts";
-import { parseManifest, type Manifest } from "../core/manifest.ts";
+import type { Installation } from "../core/installation.ts";
+import {
+  parseManifest,
+  trialSkillNames,
+  type Manifest,
+  type ManifestRoster,
+} from "../core/manifest.ts";
 import { parseDecisionDocument, type DecisionDocument } from "../core/root-statements.ts";
 import type { FileIo } from "./fs/io.ts";
 
@@ -32,32 +37,30 @@ function read(
     ? contractFailure(path, [{ path: "", message: content.error.message }])
     : content;
 }
-/** Installed choices, without derived engineering decisions. */
+/**
+ * What a manifest is checked against when the installation is loaded.
+ * @param installation the installation, or undefined when it is unavailable
+ * @returns its skills' names, its trial skills and its modes, or undefined
+ */
+export function rosterOf(installation: Installation | undefined): ManifestRoster | undefined {
+  return installation === undefined
+    ? undefined
+    : {
+        skills: installation.skills.map((skill) => skill.name),
+        trials: trialSkillNames(installation.modes, installation.skills),
+        modes: installation.modes,
+      };
+}
+/** Installed choices, without derived engineering decisions; checked against the installation when one is given. */
 export function readRepositoryManifest(
   root: string,
   io: FileIo,
-  skillNames?: readonly string[],
+  roster?: ManifestRoster,
 ): Result<Manifest, ContractParseFailed> {
   const result = read(root, ".greenline/manifest.json", io, undefined);
   return result._tag === "err"
     ? result
-    : parseManifest(result.value, ".greenline/manifest.json", skillNames);
-}
-/** One execution account by id; a record that fails its schema or names another id is not that account. */
-export function readRepositoryAccount(
-  root: string,
-  io: FileIo,
-  id: string,
-): Result<LedgerRecord, ContractParseFailed> {
-  const path = `.greenline/ledger/records/${id}.json`;
-  if (!/^[a-z][a-z0-9-]*$/.test(id))
-    return contractFailure(path, [{ path: "", message: "An account id is kebab-case." }]);
-  const result = read(root, path, io, undefined);
-  if (result._tag === "err") return result;
-  const parsed = parseLedgerRecord(result.value, path);
-  return parsed._tag === "ok" && parsed.value.id !== id
-    ? contractFailure(path, [{ path: "id", message: "The account names another id." }])
-    : parsed;
+    : parseManifest(result.value, ".greenline/manifest.json", roster);
 }
 /** Read ordinary decisions; an absent decision book makes no engineering choice. */
 export function readRepositoryDecisions(

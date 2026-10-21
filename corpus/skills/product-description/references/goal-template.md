@@ -1,6 +1,6 @@
 # goal.md template
 
-`goal.md` is the standing prompt that drives drafting. It is given verbatim to every subagent and re-read at the start of every session. It is the one place the project's established facts, reading order, and working rules live. Product-specific parts are marked `{...}`; the "Things already established" section is empty at the start and fills in as foundations are written.
+`goal.md` is the standing prompt that drives drafting. It is given verbatim to whoever drafts and re-read at the start of every session. It is the one place the project's established facts, reading order, and working rules live. Product-specific parts are marked `{...}`; the "Things already established" section is empty at the start and fills in as foundations are written.
 
 ---
 
@@ -49,7 +49,7 @@ Do not describe code. Describe what the user sees and does. Technical detail goe
 
 1. `foundations/` first, in this order: {list}. Everything else links to them.
 2. `{hardest area}/` next, all {n} documents. This is the hardest part and the bulk of the experience. Read every {state file} before starting any of them, because the states hand off to each other and the documents must agree on where one ends and the next begins. {Say which document owns which states.}
-3. The remaining `{area}/` documents, then `{area}/`, `{area}/`, `cross-cutting/`. These are independent of each other and can be drafted in parallel with subagents once the foundations and {hardest area} documents exist to link to. If you parallelize, give each subagent this prompt, the four exemplars, and the specific document to write; then review every result yourself for consistency with the glossary and the established facts above before accepting it.
+3. The remaining `{area}/` documents, then `{area}/`, `{area}/`, `cross-cutting/`. These are independent of each other and can be drafted one after another once the foundations and {hardest area} documents exist to link to. If a fresh agent drafts one, give it this prompt, the four exemplars, and the specific document to write; then review every result yourself for consistency with the glossary and the established facts above before accepting it.
 4. Consistency pass over the whole set: same term for the same thing everywhere, no two documents describing the same behavior differently, every relative link resolves, every document has a verification footer, every glossary term used is defined.
 5. Update the coverage table in `README.md` as you go: `drafted` when written, never `verified` (verification by hand is a separate pass you are not doing).
 

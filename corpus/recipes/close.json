@@ -1,0 +1,2130 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "close",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "close"
+    },
+    {
+      "field": "description",
+      "value": "Close a change: record the durable decisions it surfaced as ADRs in the repository's decision home, write down the terms it settled, audit the record's claims against the change's commits and checks, set the record's state, \"next\" line and cost, and offer the landing of the change's branch, at the depth the change's mode gives the close step. Use when the mode reaches close or the work stops, when the owner asks to record a decision or to write a term down, and when a change chooses among meaningful alternatives, abandons an approach over a discovered constraint or supersedes an earlier decision."
+    }
+  ],
+  "sources": ["ericclemmons", "mattpocock-skills", "pstack", "addyosmani", "superpowers"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Close\n\nClose ends a change: it records the durable decisions the work surfaced, writes down the terms it settled, audits the record against what happened, sets the record's state, its \"next\" line and its cost, and offers the landing of the change's branch. It runs where the change's mode reaches the close step, at the depth the mode gives it, and when the work stops before it is done. Loaded mid-work by one of the situations its description names, or asked for by name to record a decision or to write a term down, it does that part alone; with no change open, a write into the knowledge homes (the decisions book, the ADR home, the glossary) opens a quick record first. It reads the whole change record first, with the change's commits and checks. It never reopens the decision it records, and it changes no code: the audit corrects the record, and a gap it finds in the work itself goes to the owner.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the step skill's own voice: what close does (the decisions, the terms, the audit, the record's state, \"next\" line and cost, and the landing it offers), where it runs (the step of the change's mode, at that mode's depth, and at a stop), the direct asks it keeps from record-architecture-decisions and domain-modeling, which open a quick record first, as every write does, even one only into the knowledge homes (J-102 S2), what it reads, and what it never does; it replaces both skills' scope paragraphs and upstream's titles.",
+          "gist": "Opens close: decisions, terms, the audit, the record's state and landing"
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": ["5345ff244dce", "fb82b337d602"]
+        },
+        {
+          "passage": "written",
+          "text": "## Closing the record\n\nClose the change in this order:\n\n1. Distil what the change's working files hold worth keeping into the record's sections.\n2. Evaluate the change for durable decisions, and write each ADR it calls for (\"Evaluate the change\" and \"Write the ADR\", below).\n3. Write down the terms the change settled (\"The terms\", below).\n4. Once the decisions and the terms are written, record again each check whose code they moved: an ADR or a glossary entry outside the workspace's own folder moves the code a check last ran on, and the change's status names each such check. No write outside that folder follows that run but the landing's merge, whose checks run on the merged result.\n5. Audit the record against what happened (\"The audit\", below).\n6. Offer the landing in one line, by the setup: push the branch and open a pull request where the remote is a forge, merge it into its base branch locally where no remote is a forge, or leave the branch. Each push, pull request and merge is done only on the owner's word.",
+          "kind": "method",
+          "reason": "The change record's close method in greenline's words: the working notes distilled, lasting choices moved into the decision home and the glossary, the record audited, the landing offered by the repository's setup, a pull request only where the remote is a forge, and done only on the owner's word, nothing to land where the commits already sit on the base branch and no remote is a forge, the planning change's close landing a plan's tickets, its state, \"next\" line and cost set, the working files removed with greenline tidy, which refuses while a record cites one of them, and at a stop the \"next\" line naming the step reached and the action that resumes it, the record and its folder committed with the change's trailer and nothing else, a commit of the working edits the owner asks for made apart, a wait within the session no stop, and a stopped record set open before it is edited; done set only on green checks, a probe apart; the skeleton is the ledger guide's, pointed to rather than restated. The checks run again after the close's own writes outside .greenline/, so a done change carries no GL0451 (J-60, the second family's late writes). Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "Closing order: distil, decisions, terms, checks again, audit, landing, state, tidy",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end; The operator's card of 2026-10-16 on the stop's commit, \"The record and its folder are the record\": at a stop the record and its folder, a check's facts among them, are committed together and code and docs never are; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "A repository rule against that offer, such as a contribution guide's rule against merging one's own branch, is named beside the offer, never in its place, and the owner's answer decides.",
+          "kind": "method",
+          "reason": "In behavioural runs a repository's own rule against merging one's own branch took the place of the landing the setup gives; the offer still follows the setup, the rule is named beside it and the owner's answer decides.",
+          "gist": "Names a repository rule against the offer beside it, owner deciding",
+          "ruling": "The operator's card of 2026-10-15 on the QA series' first family, \"The setup decides; the rule is named beside it\": the where line and the landing offer follow the setup as the block states, and a repository rule pulling the other way, such as a contribution guide's rule against merging one's own branch, is named in the proposal and beside the offer, the owner deciding",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Before a local merge, name the base branch: the default branch where the change's branch was made from it at its proposal, and otherwise the one the owner names when asked.",
+          "kind": "method",
+          "reason": "Before a local merge the landing names its base branch by the rule the proposal's where line already gives: the default branch where the change's branch was made from it, and otherwise the owner's answer, where finishing-a-development-branch asks for the fork point; the sentence taken after it says why.",
+          "gist": "Names the base before a local merge, from the proposal or owner",
+          "ruling": "The operator's cards of 2026-10-15 on the batch brief of the test ingestion, \"Combine as a default on my ruling\": superpowers' finishing-a-development-branch combines into the close step's landing as a strengthen of 88 words at every mode, shipping as a default on the operator's ruling in place of a run's or a walk's finding; its claimed evidence is ruled in; its words are accepted at fast; a merge from the owner's worktree is not taken; the bound parts of the three other sources decline, and finishing-a-development-branch's portable form, the landing by the setup with no harness tool and no command spelt out, is taken",
+          "credits": ["superpowers"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "superpowers",
+          "file": "finishing-a-development-branch/SKILL.md",
+          "segments": ["4161ad19acff"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Make the merge with its commit, its message carrying the change's trailer, never staged alone with `--no-commit`, then record the change's checks on the merged result, so their facts name the merge they checked; on a red result, stop the landing and tell the owner, leaving the merge, local and recoverable, for the owner to keep or undo. A rejected push is reported, never forced.",
+          "kind": "method",
+          "reason": "A check on the change's branch never saw the merged tree, so after a local merge the change's checks run on the merged result through greenline check; a red result stops the landing and goes to the owner with the merge left local, and a rejected push is reported, never forced, as finishing-a-development-branch's Step 5 and its table say. The merge is committed before that check, so its facts name the merge it checked and not the commit the tree held before it. Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "Checks the merged result, stops on red, never forces a push",
+          "ruling": "The operator's cards of 2026-10-15 on the batch brief of the test ingestion, \"Combine as a default on my ruling\": superpowers' finishing-a-development-branch combines into the close step's landing as a strengthen of 88 words at every mode, shipping as a default on the operator's ruling in place of a run's or a walk's finding; its claimed evidence is ruled in; its words are accepted at fast; a merge from the owner's worktree is not taken; the bound parts of the three other sources decline, and finishing-a-development-branch's portable form, the landing by the setup with no harness tool and no command spelt out, is taken; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["superpowers"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Where the commits already sit on the base branch and no remote is a forge, there is nothing to land: offer nothing, and the close section says \"nothing to land: the commits are on <branch>\". A ticket's close offers none: the planning change's close offers the landing for the whole plan, its tickets' commits included.\n7. Write the close section, with what the landing did and a link to each brief the change's status lists, taken from that listing and never by opening one, and set the record's state, its \"next\" line and its cost, as close's references page says. The state is done only when the latest run of every check of the change is green: run a red check again on the final code once its cause is fixed, and while one stays red, the merged result's included, the change stays open, the \"next\" line names that check, and the owner hears why. A probe never enters the checks: verify's \"Checks and probes\" tells the two apart.\n8. Remove the working files at every close, as close's references page says, once the state is done or dropped; the removal refuses while a record links to a file in them.\n\nWhen the work stops before it is done, close stops the change as close's references page says, keeps the working files, and leaves the rest to the close that finishes the change. A wait for the owner within the session is no stop.",
+          "kind": "method",
+          "reason": "The change record's close method in greenline's words: the working notes distilled, lasting choices moved into the decision home and the glossary, the record audited, the landing offered by the repository's setup, a pull request only where the remote is a forge, and done only on the owner's word, nothing to land where the commits already sit on the base branch and no remote is a forge, the planning change's close landing a plan's tickets, its state, \"next\" line and cost set, the working files removed with greenline tidy, which refuses while a record cites one of them, and at a stop the \"next\" line naming the step reached and the action that resumes it, the record and its folder committed with the change's trailer and nothing else, a commit of the working edits the owner asks for made apart, a wait within the session no stop, and a stopped record set open before it is edited; done set only on green checks, a probe apart; the skeleton is the ledger guide's, pointed to rather than restated. Tidy ends every close, the fast mode's included. The close section links each brief greenline brief wrote, read from the status listing so the builder never opens one, which the uncited-file notice then holds to. The cost counts every agent started, each named in starts, a restart one more, since eight records of the Linear clone counted a restarted agent as the same one (J-60 S3a, F5); status reports a lower count, which the close clears before done. Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "Closing order: distil, decisions, terms, checks again, audit, landing, state, tidy",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end; The operator's card of 2026-10-16 on the stop's commit, \"The record and its folder are the record\": at a stop the record and its folder, a check's facts among them, are committed together and code and docs never are; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices, with the ruling of 2026-10-18 that the close is a skill step: a reviewer's or verifier's brief is written by greenline brief from the record into the change's folder, its first line the command's mark, and never by the builder, which starts the agent with its path and never opens, copies, diffs or derives a brief file; status reports a brief file the command did not write; and the close cites each brief the command wrote, from the status listing; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: a fresh agent's brief names the agent's own scratch folder by its absolute path and says the host's temporary directory is never used, a working file there a finding, and greenline check run with the brief's --step and --round sets TMPDIR to that folder for the command it records; the record names each fresh agent started with its step and number, a restart one more line and one more count, and greenline status reports a cost below the starts the record names as a finding the close clears before done; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": ["536384753c37"]
+        },
+        {
+          "passage": "written",
+          "text": "1. At close, review the conversation, the change record (its build section's deviations and the approaches it tried and dropped), the change's checks, and the diff of the change's commits, found by the change's trailer, for durable decisions.",
+          "kind": "pointer",
+          "reason": "The evaluation happens at close over the change record, its checks and the diff of the change's commits found by their trailer, where record-architecture-decisions read a ticket's base_commit..result_commit; upstream's criteria for writing or skipping an ADR are unchanged. Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "Evaluates the record, checks and trailer-found commits for durable decisions",
+          "credits": ["ericclemmons"]
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": [
+            "1e40447c8cc9",
+            "327c5398a623",
+            "aa15999e015e",
+            "451b61ccf212",
+            "6d84c498173b",
+            "d72d79a03f21",
+            "ab00e33e501f"
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "A deferral is not a decision: a choice put off is a line inside the decision it defers from, never an ADR or a decisions-book entry of its own. A shaping ruling that scoped the work belongs in the change record's frame section, or the plan directory's decisions file when the work splits, not in an ADR; an ADR holds the durable technical reasoning the work itself surfaced, such as a constraint discovered or an approach abandoned.",
+          "kind": "scope",
+          "reason": "Carried from record-architecture-decisions: a choice put off is a line inside the decision it defers from, and a shaping ruling belongs where the change keeps its shaping, its frame section or the plan directory's decisions.md, which replace the initiative's decisions.md. Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "A deferral is no decision; shaping rulings stay in frame or plan",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": ["b4bc17e04074", "ed26f0a421f5"],
+          "edits": [
+            {
+              "segment": "b4bc17e04074",
+              "find": "final handoff",
+              "replace": "close section",
+              "kind": "home",
+              "reason": "The statement that no ADR was needed is written in the change record's close section.",
+              "gist": "The no-ADR statement goes in the record's close section"
+            }
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "1. Find the repository's existing decision home: a decisions document, or an ADR directory of its own. When one exists, write there in that home's format. Only when the repository keeps no decisions anywhere, seed `docs/adr/` on first use from this skill's `adr/README.md` and `adr/template.md`, then read `docs/adr/README.md` and `docs/adr/template.md` completely.",
+          "kind": "home",
+          "reason": "Carried from record-architecture-decisions: step 1 looks for the repository's existing decision home and writes there in that home's format, seeding docs/adr/ from this skill's adr/ pages only when the repository has none.",
+          "gist": "Writes where the repository already keeps decisions; seeds docs/adr/ only if none",
+          "credits": ["ericclemmons"]
+        },
+        {
+          "passage": "written",
+          "text": "If what the repository shows of its decision home conflicts, two homes or two naming schemes, surface the conflict to the owner rather than silently introducing another scheme.",
+          "kind": "method",
+          "reason": "documentation-and-adrs' one sentence on a convention whose evidence conflicts, lifted: the conflict goes to the owner rather than a new scheme beside the old.",
+          "gist": "A conflicting decision convention goes to the owner, not a new scheme",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined; documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'; handoff, claude-handoff and finishing-a-development-branch stay declined",
+          "credits": ["addyosmani"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "2. In `docs/adr/`, create `docs/adr/YYYY-MM-DD-short-title.md`; in another home, add the entry in that home's own form.",
+          "kind": "home",
+          "reason": "Carried from record-architecture-decisions: the dated file in docs/adr/, or the entry in another home's own form.",
+          "gist": "Creates the dated ADR file, or another place's own entry form",
+          "credits": ["ericclemmons"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": ["3f4642d39d04"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": [
+            "88233b486aff",
+            "c36580efbf37",
+            "447213aaf7c0",
+            "15dad2f5826f",
+            "f10b52288157",
+            "6943f0c36784",
+            "4133049648bc",
+            "a679003df786",
+            "a9bef73a6198",
+            "0845bb8e7bf4",
+            "5bcde1ddbdfb",
+            "99387077b99a"
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "5. Include the ADR in the change's commits whenever possible, and link a lasting choice from the decisions book rather than copying it there.",
+          "kind": "pointer",
+          "reason": "Upstream's merge request is the change: the ADR lands in its commits, and a lasting choice is linked from the decisions book rather than copied there, as record-architecture-decisions had it for a ticket's change. Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "The ADR lands in the change's commits; the decisions book links it",
+          "credits": ["ericclemmons"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "A decision that spans modules is recorded where a developer must stand to extend it: the ADR lives at, or is pointed at from, the extension point, and it carries an explicit checklist of the other places that must change in step, because that is the moment the reader is already committed to the change (Ousterhout, 2021). The ADR is still a dated file in the decision home; what stands at the extension point is the record's pointer and the in-step checklist the extending reader must act on. Duplicating the explanation into every dependent site drifts apart, and parking it in one dependent site hides it; where no obvious central location exists, the decision home is the fallback and the extension point gains the pointer.",
+          "kind": "home",
+          "reason": "greenline's paragraph on a decision that spans modules (Ousterhout, 2021), carried from record-architecture-decisions unchanged: the record stays a dated file in the decision home and the extension point carries the pointer and the in-step checklist.",
+          "gist": "The extension point carries a cross-module ADR's pointer and in-step checklist"
+        },
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/SKILL.md",
+          "segments": [
+            "0d04e50f5961",
+            "f6cc572d13c4",
+            "d0d62dfaa446",
+            "a1d3afb23981",
+            "f81f442a055a"
+          ],
+          "edits": [
+            {
+              "segment": "f81f442a055a",
+              "find": "through merge request review",
+              "replace": "with the reviewed change",
+              "kind": "pointer",
+              "reason": "Upstream's merge request is the change: the ADR's acceptance is the reviewed change landing.",
+              "gist": "The ADR is accepted with the reviewed change, not a merge request"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## The terms\n\nWrite down each term the change settled, the frame section's terms and any the work sharpened since, in `GLOSSARY.md` or the repository's existing glossary in its own format, when the change's scope covers that file; otherwise offer the entry in one line and write it on the owner's word. Asked for by name mid-work, write the term down right there, by the same rule.",
+          "kind": "method",
+          "reason": "domain-modeling's glossary half moves to close (R22): the terms a change settled are written down at close, or right there when asked for by name, where domain-modeling wrote each the moment it was resolved; the write waits on the change's scope or an offer in one line, as the ruling of 2026-09-15 has it.",
+          "gist": "Writes settled terms at close when in scope; otherwise offers one line",
+          "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "domain-modeling/SKILL.md",
+          "segments": ["c27cdafcca25"]
+        },
+        {
+          "passage": "written",
+          "text": "An existing glossary or vocabulary document is the home for terms, whatever its name; if the repository has none, create `GLOSSARY.md` when the first term is resolved, in the form [references/GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md) gives, which also says where each glossary lives in a repository of several contexts.",
+          "kind": "home",
+          "reason": "Carried from domain-modeling: an existing glossary or vocabulary document is the home for terms whatever its name, and GLOSSARY.md is created only when the repository has none, in the form of the format page, now this skill's reference file, which also holds the layout of several contexts.",
+          "gist": "An existing glossary keeps the terms; GLOSSARY.md is created only if none",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "domain-modeling/SKILL.md",
+          "segments": ["ba98ddce6b2a", "daf97671b6f6", "7779283d151c"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "domain-modeling/SKILL.md",
+          "segments": [
+            "d3120809d810",
+            "4c1e0d7cc91d",
+            "16a867a79fbc",
+            "65659fd0ef8e",
+            "fe79027e0d87",
+            "f5c0da071974"
+          ],
+          "edits": [
+            {
+              "segment": "4c1e0d7cc91d",
+              "find": "to create an ADR",
+              "replace": "an ADR for a term change",
+              "kind": "method",
+              "reason": "Inside close the three-part bar governs an ADR for a term change, domain-modeling's half; record-architecture-decisions' criteria above govern the decisions of the work.",
+              "gist": "The three-part bar governs only an ADR for a term change",
+              "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "When all three hold, record it as an ADR by the steps above.",
+          "kind": "pointer",
+          "reason": "Upstream's pointer to its ADR format page becomes the steps above, the ADR format being record-architecture-decisions' template and README, which close carries.",
+          "gist": "A term-change ADR follows the steps above, not a separate format page",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "## The audit\n\nBefore the change is called done, check that its record tells the truth. Read the change's commits, found by their trailer, its recorded checks and the files it changed, which the change's status lists, and walk every claim the record makes of what was done or checked against them:\n\n- Every claim maps to an action that happened: a commit of the change, or a check that ran.\n- Each claim's evidence resolves and shows what the claim says.\n- A pivot, a deviation or an abandoned approach that shaped the work and is not in the record is a gap: add it to the build section.\n- Count the commits and checks as they stand at the close's end: a number the close section states is read from the change's status when the section is written, after the landing, with the commit that carries the section counted; a statement of what holds of every commit, such as each carrying the trailer, needs no number.\n- The change's status counts the commits since the last recorded check: above zero, they may hold code no recorded check saw, so record the change's checks again on the final code before it is done, and a result the record cites from a plain run is named in the close section as not recorded.\n- Every code commit of the change is among those its status lists. One made before the record entered the repository, in a repository's first change, is counted for no change: name it in the close section by its short hash, and leave it as it is.\n\nCorrect the record, not the story: a claim nothing backs is rewritten to say what happened, and a check the record claims that no run backs is named in the close section as not run. The audit reads the change's commits, checks and files, never a harness transcript, and no other agent runs for it.",
+          "kind": "method",
+          "reason": "show-me-your-work's end-of-run audit, lifted in greenline's words: every claim of the record against the change's commits found by their trailer and its checks, its evidence resolving, an unrecorded pivot a gap; its decision log is declined against the one record and its one writer, and its transcript reading and cross-model reviewer are dropped. A count of the change's commits is read at the close's end, the landing and the close's own commit counted, so no later commit leaves it stale. A code commit made before the record entered, which status's history cannot count, is named in the close section and left as it is (J-60, the third family). The commits since the last recorded check, which status counts, may hold code no recorded check saw: their checks run again before done, and a result the record took from a plain run is named as not recorded (J-60, the Linear clone). Since J-93 S2 the front names the commands, the paths and the record's marks by their nouns, on close's references page.",
+          "gist": "Audits every record claim against the change's commits and checks",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined; documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'; handoff, claude-handoff and finishing-a-development-branch stay declined; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["pstack"]
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the change record .greenline/ledger/<id>.md with its sections, the change's commits found by their trailer, its checks under .greenline/ledger/<id>/checks/, its working files under .greenline/tmp/<id>/, and the repository's decision home and glossary\nProduces: the close section of .greenline/ledger/<id>.md and its front matter's state, \"next\" line and cost; each ADR in the decision home, linked from the decisions book .greenline/DECISIONS.md, docs/adr/YYYY-MM-DD-short-title.md only when the repository keeps no decisions elsewhere and docs/adr/ is seeded from this skill's adr/ pages; each term in GLOSSARY.md or the repository's glossary; the landing offered, and done only on the owner's word; the working files removed by greenline tidy\nNext: none when the change is done; when the work stops, the record's \"next\" line, naming the step reached and the action that resumes it",
+          "kind": "method",
+          "reason": "close's handoff is none when the change is done and the \"next\" line when it stops (the plan's rule for the close step), naming what it reads and writes: the record's close section and front matter, the ADRs, the terms, the landing offered and the working files removed by greenline tidy; the dated ADR file is record-architecture-decisions'.",
+          "gist": "The handoff is none when done, and the \"next\" line when stopped",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs",
+          "credits": ["ericclemmons"]
+        }
+      ]
+    },
+    {
+      "path": "adr/README.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/README.md",
+          "segments": [
+            "f88dd19d03c4",
+            "871cae17b9d9",
+            "e50e9602e082",
+            "2351b54d81b0",
+            "2a89167d9154",
+            "4d02247440b0",
+            "e3990423be3b",
+            "1c018aeb54db",
+            "813c9022c9b6"
+          ]
+        }
+      ],
+      "ending": ""
+    },
+    {
+      "path": "adr/template.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "ericclemmons",
+          "file": "record-architecture-decisions/template.md",
+          "segments": [
+            "d0cc0f13a703",
+            "a76481ffe352",
+            "64815ffa41c7",
+            "fbe2f3f1c407",
+            "37861e2e1401",
+            "0cf681918986",
+            "015f202cfa21",
+            "2ac033921514",
+            "c4d21aa2f8de",
+            "a15c7c13f167",
+            "99ff0e4e2a01",
+            "6119e2aff3b6",
+            "d75721ed3041",
+            "89452c3c3f04",
+            "26d11d83d0b7",
+            "c6ae39fac451",
+            "e5888dc5290e"
+          ]
+        }
+      ],
+      "ending": ""
+    },
+    {
+      "path": "references/GLOSSARY-FORMAT.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "domain-modeling/GLOSSARY-FORMAT.md",
+          "segments": [
+            "6ff3f7910610",
+            "71a991828a7d",
+            "e6192b2fe1ce",
+            "b66542635d2a",
+            "1d2f268c768e",
+            "9342c508ed55",
+            "7f1b2c7781c7",
+            "6af74a96d881",
+            "2f8e4f4692ff",
+            "aa8aa614388b",
+            "e29296726cb1",
+            "6cb5a40c05c3",
+            "eec53fae70db",
+            "1056df848cba",
+            "aa4bb2b1b3b8",
+            "6728f3c10299",
+            "f3dd8fe9e5a0",
+            "31e1c8247e44",
+            "6a310bee2292",
+            "94c54e3c3968",
+            "bfbda1e86f4a",
+            "7cfe97a19858",
+            "6e5114a98bad",
+            "23f2e5325003",
+            "1f609a8de062"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Close: the practice's mechanics\n\nThis page holds close at each mode's depth and where its work lands: the section, the record's state and cost, the commands the close and its audit run, the stops, the landing and the decisions. Read it with `SKILL.md` when the mode reaches close, and when AGENTS.md's index sends you here.",
+          "kind": "method",
+          "reason": "Close's references page opens: close at each mode's depth and where its work lands, which the block's sentences and, since J-93 S2, the front's depth bullets, its record marks and its commands moved here.",
+          "gist": "Opens close's mechanics page: depths, state, commands, stops and landing",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        },
+        {
+          "passage": "written",
+          "text": "## The depths\n\n- **Inline, at quick.** Close the record by `SKILL.md`'s steps, every one of them, the checks' last run and `greenline tidy` included. The change record's close section, in `.greenline/ledger/<id>.md`, is one line: each ADR written, by its path, and each term written down, or none, the landing done, and the audit's result.\n- **Written, at regular and careful.** Close the record by `SKILL.md`'s steps. The close section holds the decisions recorded, each ADR by its path or the statement that none was needed, the terms written down, the landing offered and what was done, and the audit's result: each gap it found and how the record was corrected.",
+          "kind": "method",
+          "reason": "Close's depths at each mode and what its section holds: quick's one line after every step, tidy included, the written section's decisions, terms, landing and audit; moved from the front's depth bullets by J-93 S2.",
+          "gist": "Quick closes with one line; written lists decisions, terms, landing, audit",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## The record's marks and the commands\n\nClose reads the change's working files under `.greenline/tmp/<id>/`. The checks it records again, after the decisions and the terms, run through `greenline check`: a write outside `.greenline/` moves the code a check last ran on, and `greenline status --change <id>` names each such check (GL0451). After a local merge, the change's checks run on the merged result through `greenline check`. `greenline status --change <id>` lists the change's commits, found by their trailer `Greenline-Change: <id>`, its checks under `.greenline/ledger/<id>/checks/`, the files it changed and each brief as `greenline brief` wrote it, and counts the commits since the last recorded check; the audit and the close section read their numbers there.\n\nThe close sets the front matter: the state `done`, or `dropped` for a change the owner dropped; the \"next\" line `none`; and the cost, the agents and the rounds the change used, with `starts` naming each fresh agent started, such as `review 1`, a restart one more line, `review 1 restarted`, and one more agent. Set `done` only once `greenline status --change <id>` reports no cost below the starts the record names (GL0409). Set `done` only when the latest run of every check under `.greenline/ledger/<id>/checks/` is green, as `greenline status --change <id>` shows; `SKILL.md`'s step 7 says what a red one asks. Remove the working files with `greenline tidy --change <id>` at every close, the quick mode's inline close included: it removes `.greenline/tmp/<id>/` once the state is `done` or `dropped`, and refuses while a record links to a file in it. A lasting choice is linked from the decisions book, `.greenline/DECISIONS.md`.\n\nThe skeleton of the record for each mode, its front matter and its sections, is in the workspace's ledger guide, `.greenline/ledger/README.md`; close fills it and does not restate it.",
+          "kind": "method",
+          "reason": "Close's marks and commands: the checks recorded again and on the merged result, status's listing and counts the audit reads, the state, the next line and the cost with starts, done only on green checks, tidy, the decisions book's path and the ledger guide's skeleton; moved from the front by J-93 S2.",
+          "gist": "The state, cost, status's counts, tidy and the stop's commit",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: done is recorded only when every check of the change is green, a probe running outside greenline check and never recorded as a check; the trailer is written in the commit message's last paragraph beside the harness's line from the moment the commit is made, and no commit is rewritten to move it; a wait within a session is no stop; a stopped record is set open before it is edited; the merged-result check runs after the merge's commit; and the close counts the commits as they stand at its end; The operator's card of 2026-10-16 on the stop's commit, \"The record and its folder are the record\": at a stop the record and its folder, a check's facts among them, are committed together and code and docs never are; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices, with the ruling of 2026-10-18 that the close is a skill step: a reviewer's or verifier's brief is written by greenline brief from the record into the change's folder, its first line the command's mark, and never by the builder, which starts the agent with its path and never opens, copies, diffs or derives a brief file; status reports a brief file the command did not write; and the close cites each brief the command wrote, from the status listing; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: a fresh agent's brief names the agent's own scratch folder by its absolute path and says the host's temporary directory is never used, a working file there a finding, and greenline check run with the brief's --step and --round sets TMPDIR to that folder for the command it records; the record names each fresh agent started with its step and number, a restart one more line and one more count, and greenline status reports a cost below the starts the record names as a finding the close clears before done; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined; documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'; handoff, claude-handoff and finishing-a-development-branch stay declined; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code"
+        },
+        {
+          "passage": "written",
+          "text": "## Stops\n\nA wait for the owner within the session, at a proposal, a question or a review, is no stop: the record stays `open`. A stop is the session leaving the change unfinished, as it ends or as another change's request stops it: set the state `stopped`, rewrite the \"next\" line and commit the record and its folder, the check facts under it, and nothing else; working edits the owner asks to commit are a commit of their own, apart from the stop's. A request for another change stops the change this session holds first, its state `stopped` with its \"next\" line, and then gets its own proposal. A stopped change is set `open` before any edit of its record or its code: a session that resumes one, which `router` finds, does so as its first write and writes on in its record. The stop's commit carries the change's trailer, and the working files stay for the close that finishes the change, which `SKILL.md`'s closing order states.",
+          "kind": "method",
+          "reason": "Close's references page: a stop commits the record and its folder alone. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation. Since J-93 S2 the stop's trailer and kept working files, moved from the front, stand here once.",
+          "gist": "A stop commits the record and its folder alone",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7): a skill's mechanics stand once on its references page (J-93 S2)"
+        },
+        {
+          "passage": "written",
+          "text": "## The landing\n\nThe landing is offered as `SKILL.md`'s closing order says, and the close section records what was done. Every close, the quick mode's included, writes its terms and decisions before the checks' last run, so no check is older than the code, and ends with `greenline tidy --change <id>`. The reply carries the outcomes, the meaningful choices and the real limits: a limit names what was not run, never an environment fact not checked, and a method is named only to offer it.",
+          "kind": "method",
+          "reason": "Close's references page: done on green checks; the landing only on the owner's word. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation. Since J-93 S2 the landing's offer, the owner's word, the repository rule, a ticket's close and nothing to land are stated once, in the front's closing order.",
+          "gist": "The close section records the landing; every close ends with tidy",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        },
+        {
+          "passage": "written",
+          "text": "## Decisions\n\nA repository's existing home for a kind of memory is that home; a default home AGENTS.md or `.greenline/WORK.md` names is created only where the repository has none. The repository's law file changes, and an existing decision is superseded, only on the owner's request; a new reversible entry in the decision home is yours to add. A product behavior the request left open (what a user would notice) and the frame does not ask is decided, recorded as reversible in the repository's decision home (the book only where the repository has none) and named in the reply in one line; a product's name, what ships first, a paid service or a consequential exception is asked.",
+          "kind": "method",
+          "reason": "Close's references page: decisions land in the repository's existing home. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation.",
+          "gist": "Decisions land in the repository's existing home",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "ericclemmons",
+      "file": "record-architecture-decisions/SKILL.md",
+      "segment": "74111994b1d3",
+      "kind": "scope",
+      "reason": "The title gives way to the step's own.",
+      "gist": "The source's title gives way to the step's own",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "ericclemmons",
+      "file": "record-architecture-decisions/SKILL.md",
+      "segment": "f96f0b624ff1",
+      "kind": "pointer",
+      "reason": "The evaluation reviews the change record, its checks and the diff of the change's commits found by their trailer.",
+      "gist": "The evaluation reads the record, checks and trailer-found commits",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "ericclemmons",
+      "file": "record-architecture-decisions/SKILL.md",
+      "segment": "9a814d937ced",
+      "kind": "home",
+      "reason": "Step 1 looks for the repository's existing decision home first, seeding docs/adr/ from this skill's adr/ pages only when there is none; step 2 names the dated file.",
+      "gist": "Looks for existing decisions first; step 2 names the dated file",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "ericclemmons",
+      "file": "record-architecture-decisions/SKILL.md",
+      "segment": "25067a0e8d6a",
+      "kind": "home",
+      "reason": "Step 1 looks for the repository's existing decision home first, seeding docs/adr/ from this skill's adr/ pages only when there is none; step 2 names the dated file.",
+      "gist": "Looks for existing decisions first; step 2 names the dated file",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "ericclemmons",
+      "file": "record-architecture-decisions/SKILL.md",
+      "segment": "b307b88238d3",
+      "kind": "pointer",
+      "reason": "Upstream's merge request is the change: the ADR lands in its commits and a lasting choice is linked from the decisions book.",
+      "gist": "The ADR joins the change's commits; the decisions book links it",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 18
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "d2dff86a9d73",
+      "kind": "scope",
+      "reason": "The title gives way to the step's own.",
+      "gist": "The source's title gives way to the step's own",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "f0c0afa9ed30",
+      "kind": "scope",
+      "reason": "The active discipline of challenging terms while designing is frame's interview (R22); writing the settled terms down is this step's.",
+      "gist": "Challenging terms is frame's interview; writing them down is close's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "bd5b7687437a",
+      "kind": "scope",
+      "reason": "The active discipline of challenging terms while designing is frame's interview (R22); writing the settled terms down is this step's.",
+      "gist": "Challenging terms is frame's interview; writing them down is close's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "b9682c5ddf21",
+      "kind": "scope",
+      "reason": "The active discipline of challenging terms while designing is frame's interview (R22); writing the settled terms down is this step's.",
+      "gist": "Challenging terms is frame's interview; writing them down is close's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "bd99288ad31a",
+      "kind": "scope",
+      "reason": "The active discipline of challenging terms while designing is frame's interview (R22); writing the settled terms down is this step's.",
+      "gist": "Challenging terms is frame's interview; writing them down is close's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "055983767556",
+      "kind": "scope",
+      "reason": "The file structure of one context or several is the format page's section on single and multi-context repositories, which this skill carries as its reference file.",
+      "gist": "The context layout is the format page's, carried as a reference file",
+      "replacedBy": {
+        "path": "references/GLOSSARY-FORMAT.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "6b651aa4d232",
+      "kind": "scope",
+      "reason": "The file structure of one context or several is the format page's section on single and multi-context repositories, which this skill carries as its reference file.",
+      "gist": "The context layout is the format page's, carried as a reference file",
+      "replacedBy": {
+        "path": "references/GLOSSARY-FORMAT.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "d3dd7aed882d",
+      "kind": "scope",
+      "reason": "The file structure of one context or several is the format page's section on single and multi-context repositories, which this skill carries as its reference file.",
+      "gist": "The context layout is the format page's, carried as a reference file",
+      "replacedBy": {
+        "path": "references/GLOSSARY-FORMAT.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "2f306220b0b9",
+      "kind": "scope",
+      "reason": "The file structure of one context or several is the format page's section on single and multi-context repositories, which this skill carries as its reference file.",
+      "gist": "The context layout is the format page's, carried as a reference file",
+      "replacedBy": {
+        "path": "references/GLOSSARY-FORMAT.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "786c83c52dd0",
+      "kind": "scope",
+      "reason": "The file structure of one context or several is the format page's section on single and multi-context repositories, which this skill carries as its reference file.",
+      "gist": "The context layout is the format page's, carried as a reference file",
+      "replacedBy": {
+        "path": "references/GLOSSARY-FORMAT.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "a377c30dd5a0",
+      "kind": "scope",
+      "reason": "The file structure of one context or several is the format page's section on single and multi-context repositories, which this skill carries as its reference file.",
+      "gist": "The context layout is the format page's, carried as a reference file",
+      "replacedBy": {
+        "path": "references/GLOSSARY-FORMAT.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "e93b4d784836",
+      "kind": "home",
+      "reason": "An existing glossary or decision home is the home, and a new one is created only when there is none, as the passages on the homes say.",
+      "gist": "Existing glossaries and decision places come first; new ones only when none",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 23
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "424ea51b5f0b",
+      "kind": "home",
+      "reason": "An existing glossary or decision home is the home, and a new one is created only when there is none, as the passages on the homes say.",
+      "gist": "Existing glossaries and decision places come first; new ones only when none",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 23
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "70eb1c669227",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "0c5541234a2b",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "750c8e0ae928",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "f90527802cb8",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "66e27e590697",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "adb0ddb5567e",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "c465a7d060e7",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "7af44ddb494a",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "6bc24c82c387",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "c1f60198aa10",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "e1b5efa95142",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "ffc74312f099",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "6be11ed58c9b",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "725882827f0b",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "6f32abdbfc3f",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "f00e2d435790",
+      "kind": "scope",
+      "reason": "The questioning half of domain-modeling, challenging, sharpening, scenarios and the cross-reference with code, is frame's interview, which took it (R22).",
+      "gist": "Domain-modeling's questioning half belongs to frame's interview, which took it"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "ed9b2b55eb84",
+      "kind": "scope",
+      "reason": "The heading of the inline update gives way to the heading of the terms, written down at close.",
+      "gist": "The inline-update heading gives way to the terms heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "5df57877aa92",
+      "kind": "method",
+      "reason": "A term is written down at close, or right there when asked for by name, and the write waits on the change's scope or an offer in one line, where upstream wrote it the moment it was resolved.",
+      "gist": "Terms are written at close or on request, not the moment resolved",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "1e12d671c8fe",
+      "kind": "method",
+      "reason": "A term is written down at close, or right there when asked for by name, and the write waits on the change's scope or an offer in one line, where upstream wrote it the moment it was resolved.",
+      "gist": "Terms are written at close or on request, not the moment resolved",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "7ba11ecf2866",
+      "kind": "pointer",
+      "reason": "The format page is this skill's reference file, which the passage on the glossary's home names.",
+      "gist": "The format page is close's reference file, named where the glossary is",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 23
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/SKILL.md",
+      "segment": "87316d7ad4b0",
+      "kind": "pointer",
+      "reason": "The ADR format is record-architecture-decisions' template and README, which close carries; the ADR follows the steps above.",
+      "gist": "The ADR format is the spine's template and README, which close carries",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 26
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "2e2e60a710f6",
+      "kind": "scope",
+      "reason": "Where ADRs live and how they are named is the spine's README, whose dated names stand over the sequential numbering.",
+      "gist": "The spine's README says where ADRs live; dated names beat numbering",
+      "replacedBy": {
+        "path": "adr/README.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "8e4d299da4ea",
+      "kind": "scope",
+      "reason": "Where ADRs live and how they are named is the spine's README, whose dated names stand over the sequential numbering.",
+      "gist": "The spine's README says where ADRs live; dated names beat numbering",
+      "replacedBy": {
+        "path": "adr/README.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "84a64f7c3ccf",
+      "kind": "scope",
+      "reason": "Creating the directory lazily duplicates the rule that files are created only when there is something to write.",
+      "gist": "Lazy directory creation repeats the rule to create files only when needed",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 22
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "f359fcd23cff",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "e3d34c5babc6",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "16fcce77b7d1",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "46634da9b971",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "a64600ea82dc",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "2e16fb480d70",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "decc8594f0bb",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "883113d8b521",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "2561f6bc8546",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "cf82f6d58eef",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "841bfc6feb5c",
+      "kind": "scope",
+      "reason": "The short template and its optional sections duplicate the spine's template and its rule to keep an ADR terse; the status option loses to the spine's rule of no status metadata.",
+      "gist": "The short template repeats the spine's, which keeps no status field",
+      "replacedBy": {
+        "path": "adr/template.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "eda4906931b3",
+      "kind": "scope",
+      "reason": "The numbering scan loses to the spine's dated names.",
+      "gist": "The numbering scan loses to the spine's dated names",
+      "replacedBy": {
+        "path": "adr/README.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "0971240fe82d",
+      "kind": "scope",
+      "reason": "The numbering scan loses to the spine's dated names.",
+      "gist": "The numbering scan loses to the spine's dated names",
+      "replacedBy": {
+        "path": "adr/README.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "2219c9b83989",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "ceff9ad0b37a",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "16a867a79fbc",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "08f03e1a94ac",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "fe79027e0d87",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "4eb003f289c4",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "bdac73cfb89b",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "9a78a02508d0",
+      "kind": "scope",
+      "reason": "When to offer an ADR duplicates the three-part bar of the skill's own page, taken for a term change.",
+      "gist": "When to offer an ADR repeats the three-part bar for term changes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 25
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "b44ff9dcbb9f",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "3bce41f2fead",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "d123c5051279",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "9779f7000c35",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "a27f5189fc3b",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "337f885cf96b",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "7f8d9565c905",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "a3e1d4062336",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "53a019c71b9b",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "30ae986cbe9f",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "e0c181ab1636",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "2c2c4d8e6f8c",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "aef1bb98abd8",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "bb545a4b377d",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "992d326b5829",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "9d5db19de11b",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "3887119eb958",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "ba93039cd1fb",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "34f78f2ae52a",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "32e607137422",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "domain-modeling/ADR-FORMAT.md",
+      "segment": "f6ad33b91862",
+      "kind": "scope",
+      "reason": "What qualifies duplicates the spine's criteria for writing an ADR: alternatives chosen, a design abandoned over a constraint, a convention, dependency, interface or data model established, a trade-off accepted.",
+      "gist": "What qualifies repeats the spine's criteria for writing an ADR",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "d946fa42d8e1",
+      "kind": "scope",
+      "reason": "The title, the overview and the core principle give way to the close step's own opening and its landing in step 5.",
+      "gist": "The title and core principle give way to close's own opening"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "7337f3d0aa29",
+      "kind": "scope",
+      "reason": "The title, the overview and the core principle give way to the close step's own opening and its landing in step 5.",
+      "gist": "The title and core principle give way to close's own opening"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "a8ac6257ae54",
+      "kind": "scope",
+      "reason": "The title, the overview and the core principle give way to the close step's own opening and its landing in step 5.",
+      "gist": "The title and core principle give way to close's own opening"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "d726ce50bff0",
+      "kind": "scope",
+      "reason": "The announcement line announces a skill, which the roster's pointers do not.",
+      "gist": "The roster's pointers announce no skill"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "a75df2595679",
+      "kind": "scope",
+      "reason": "The full suite before the menu is verify's, which judges the change's final code before close runs.",
+      "gist": "The suite before the menu is verify's, on the final code"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "4329cadd8cd8",
+      "kind": "scope",
+      "reason": "The full suite before the menu is verify's, which judges the change's final code before close runs.",
+      "gist": "The suite before the menu is verify's, on the final code"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6c9871a85ffc",
+      "kind": "scope",
+      "reason": "The full suite before the menu is verify's, which judges the change's final code before close runs.",
+      "gist": "The suite before the menu is verify's, on the final code"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "b9f69f47f25e",
+      "kind": "scope",
+      "reason": "The full suite before the menu is verify's, which judges the change's final code before close runs.",
+      "gist": "The suite before the menu is verify's, on the final code"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "7e4ab63b90b4",
+      "kind": "scope",
+      "reason": "The full suite before the menu is verify's, which judges the change's final code before close runs.",
+      "gist": "The suite before the menu is verify's, on the final code"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "f98a096f3284",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "c1b8f9a09c38",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6037c0d5a687",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "386006e3e4a2",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "114506fe49c7",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "3ab59b852973",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "5533575409d1",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "921a33e41263",
+      "kind": "scope",
+      "reason": "Environment detection and the reduced menu on a detached HEAD are not taken: the close step's offer follows the setup, and the agent makes no worktree.",
+      "gist": "The offer follows the setup, and the agent makes no worktree"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "bd8ea5ee8944",
+      "kind": "scope",
+      "reason": "The base comes from the where line's branch rule, named before a local merge and asked of the owner when unknown, in place of the plan, the conversation or a best guess.",
+      "gist": "The base comes from the where line's rule, asked when unknown",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "81b7d48e4e7f",
+      "kind": "scope",
+      "reason": "The base comes from the where line's branch rule, named before a local merge and asked of the owner when unknown, in place of the plan, the conversation or a best guess.",
+      "gist": "The base comes from the where line's rule, asked when unknown",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "f649fd080f33",
+      "kind": "scope",
+      "reason": "The base comes from the where line's branch rule, named before a local merge and asked of the owner when unknown, in place of the plan, the conversation or a best guess.",
+      "gist": "The base comes from the where line's rule, asked when unknown",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "42de685a9e15",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "7c0251ddcac7",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "81f397c4534f",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6a62bc3ae685",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "723aa43c8984",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "64618f4ba65e",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "d460e744529c",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "c79c12c9780a",
+      "kind": "scope",
+      "reason": "The fixed menu is the close step's one-line offer by the setup, and the wait for the owner's word is already close's; discard is no option, since a dropped change is close's state.",
+      "gist": "The menu is close's one-line offer, waiting on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "c5c3878615c3",
+      "kind": "scope",
+      "reason": "The option headings give way to the landing in close's step 5.",
+      "gist": "The option headings give way to close's step 5"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "5410be1f357c",
+      "kind": "scope",
+      "reason": "The option headings give way to the landing in close's step 5.",
+      "gist": "The option headings give way to close's step 5"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "8a65e7251583",
+      "kind": "harness",
+      "reason": "The merge spelt out as shell commands is a bound part: its pull is a network command the landing does not need, its test run is the written passage after the merge, and a merge from the owner's worktree is not taken.",
+      "gist": "Shell merge not taken; its check is the written passage",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "2ecc7152102f",
+      "kind": "scope",
+      "reason": "The paragraph on a failing merged result is the written passage after the merge, the merge left local; the agent owns no worktree to leave in place.",
+      "gist": "The written passage stops on red, and no worktree is kept",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "a706099bfb4c",
+      "kind": "scope",
+      "reason": "The branch deletion after the merge is not taken: deleting a branch is the owner's act.",
+      "gist": "No branch deletion: deleting a branch is the owner's act"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "e4f084478671",
+      "kind": "scope",
+      "reason": "The branch deletion after the merge is not taken: deleting a branch is the owner's act.",
+      "gist": "No branch deletion: deleting a branch is the owner's act"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "8e1d873e3756",
+      "kind": "scope",
+      "reason": "The option headings give way to the landing in close's step 5.",
+      "gist": "The option headings give way to close's step 5"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "c16fa810e4e6",
+      "kind": "scope",
+      "reason": "The push commands are not spelt out: close pushes by the setup, on the owner's word.",
+      "gist": "No push command spelt out; close pushes on the owner's word"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "a301b19bfe7e",
+      "kind": "harness",
+      "reason": "The pull request opened with the forge's own command-line tool is a bound part; close opens it by the setup with no tool named.",
+      "gist": "No forge tool named; close opens the pull request by the setup"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "209f64857761",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "74a16a3c16c0",
+      "kind": "scope",
+      "reason": "The option headings give way to the landing in close's step 5.",
+      "gist": "The option headings give way to close's step 5"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "b5c4487ab4e3",
+      "kind": "scope",
+      "reason": "Keeping the branch is close's offer to leave it, which the close section records.",
+      "gist": "Keeping the branch is close's offer to leave it"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "fc1ddb92a09a",
+      "kind": "scope",
+      "reason": "Keeping the branch is close's offer to leave it, which the close section records.",
+      "gist": "Keeping the branch is close's offer to leave it"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "9a60383de769",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "9cee32cac9c4",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "8d601c897ee6",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "062bf550aa11",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "f48d9bbba91b",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "ee122b6d53a6",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "224c16a3aa8f",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "49a5a1ed8c8a",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "758e2071add3",
+      "kind": "scope",
+      "reason": "The discard path is not taken: a dropped change is close's state, and deleting a branch or its commits is the owner's act.",
+      "gist": "No discard path: a dropped change is close's state"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "4a49355dc11d",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "d7c1c60a5346",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "cae1a53ebaaa",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "ad04516b352c",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "1a6ff9d51e33",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "ed251864987c",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "c5674dba5734",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "baacf1aaa531",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "7655429d8682",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "e61a067b94dd",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "11daef17572d",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "69dd80b7a337",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "c5054c610f4a",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "1ba18cdeef15",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6b94abd5934c",
+      "kind": "scope",
+      "reason": "The worktree cleanup is not taken: the agent owns no worktree, and one the harness made is the owner's.",
+      "gist": "The agent owns no worktree, so no cleanup is taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "ffda3a978c0f",
+      "kind": "harness",
+      "reason": "The platform's workspace-exit tool is a bound part, and the agent leaves no workspace of its own.",
+      "gist": "No workspace-exit tool: the agent leaves no workspace of its own"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6f593da4f790",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "453d4b137d6b",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "101171650a14",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "e4b979d03176",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "685564c2ef27",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "94384b32d869",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "9d9add797da4",
+      "kind": "scope",
+      "reason": "The quick reference restates the menu and the cleanup, which are not taken.",
+      "gist": "The quick reference restates the menu and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6163cbb12410",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "e4b1386c9765",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "5cc0452d6637",
+      "kind": "scope",
+      "reason": "The rows on the earlier green run, the merged result and the rejected push restate what the written passage after the merge carries.",
+      "gist": "The written passage after the merge restates these rows",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "f93d4d3a5077",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "7f55c6c59f86",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "04b23eb3761b",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "791f4d3969d5",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "f54d2822201e",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "fbf5f0ad8159",
+      "kind": "scope",
+      "reason": "The rationalisations restate the menu, the discard path and the worktree cleanup, which are not taken.",
+      "gist": "The rationalisations restate the menu, discard and cleanup, not taken"
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "81b8a4b71b5a",
+      "kind": "scope",
+      "reason": "The rows on the earlier green run, the merged result and the rejected push restate what the written passage after the merge carries.",
+      "gist": "The written passage after the merge restates these rows",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "9d02f5ce8954",
+      "kind": "scope",
+      "reason": "The base comes from the where line's branch rule, named before a local merge and asked of the owner when unknown, in place of the plan, the conversation or a best guess.",
+      "gist": "The base comes from the where line's rule, asked when unknown",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "superpowers",
+      "file": "finishing-a-development-branch/SKILL.md",
+      "segment": "6b1d218dee7d",
+      "kind": "scope",
+      "reason": "The rows on the earlier green run, the merged result and the rejected push restate what the written passage after the merge carries.",
+      "gist": "The written passage after the merge restates these rows",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    }
+  ]
+}

@@ -3,17 +3,19 @@ import { join } from "node:path";
 import { ok, type Result } from "../../commons/result.ts";
 import { planManagedFiles } from "../../core/managed-file.ts";
 import { splitManagedBlock } from "../../core/managed-block.ts";
-import { parseLock, serializeLock, type LockFile } from "../../core/lock.ts";
+import { LOCK_SCHEMA_VERSION, parseLock, serializeLock, type LockFile } from "../../core/lock.ts";
 import type { ContractParseFailed } from "../../core/contract.ts";
 import type { Manifest } from "../../core/manifest.ts";
 import { renderProjection, POLICY_BLOCK_KEY } from "../../core/render.ts";
-import { readRepositoryManifest } from "../repository-state.ts";
+import { readRepositoryManifest, rosterOf } from "../repository-state.ts";
 import { findGitRoot } from "../git.ts";
 import { applyFilePlan, type FileMutation } from "../fs/apply.ts";
 import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { snapshotWorkspace } from "../workspace.ts";
+import { jsonAdapterAt, withoutGreenline } from "../../core/adapters.ts";
+import { gitHooksState, hooksReport, presentHarnesses, registerGitHooks } from "../hooks.ts";
 import type { RunRequest } from "./args.ts";
-import { GL, diagnostic, type EffectJson } from "./output.ts";
+import { GL, diagnostic, noRepositoryMessage, type EffectJson } from "./output.ts";
 import { type CliEnvironment, envRead } from "./command-environment.ts";
 import { type CommandOutcome, fail, contractDiagnostics, succeed } from "./command-outcome.ts";
 import {
@@ -32,13 +34,7 @@ export function runSync(request: RunRequest, env: CliEnvironment): CommandOutcom
   const io: FileIo = createNodeFileIo();
   const root = findGitRoot(env.cwd);
   if (root === undefined) {
-    return fail([
-      diagnostic(
-        GL.notGitRepository,
-        "error",
-        "sync requires a Git repository root; run 'git init' first",
-      ),
-    ]);
+    return fail([diagnostic(GL.notGitRepository, "error", noRepositoryMessage("sync"))]);
   }
   const manifestText = envRead(io, join(root, ".greenline", "manifest.json"));
   if (manifestText === undefined) {
@@ -51,11 +47,7 @@ export function runSync(request: RunRequest, env: CliEnvironment): CommandOutcom
       ),
     ]);
   }
-  const manifestResult = readRepositoryManifest(
-    root,
-    io,
-    env.installation.skills.map((skill) => skill.name),
-  );
+  const manifestResult = readRepositoryManifest(root, io, rosterOf(env.installation));
   if (manifestResult._tag === "err") {
     return fail(
       contractDiagnostics(
@@ -100,8 +92,8 @@ export function reconcileWorkspace(
   // unknown, so classification runs with an empty locked map and
   // disk-conflict detection keeps guarding user files, then a fresh
   // lock is written. Any lock that exists but does not parse — an old
-  // schemaVersion included — fails closed (pre-v1 carries no upgrade
-  // paths, ADR 0018): delete the lock and sync.
+  // schemaVersion included, refused with the remedy — fails closed (pre-v1
+  // carries no upgrade paths, ADR 0018): delete the lock and sync.
   const recoveryWarning =
     lockText === undefined
       ? [
@@ -114,10 +106,10 @@ export function reconcileWorkspace(
         ]
       : [];
   const emptyLock: LockFile = {
-    schemaVersion: 4,
+    schemaVersion: LOCK_SCHEMA_VERSION,
     cliVersion: env.version,
     installationRevision: env.installation.revision,
-    upstreams: env.installation.upstreams,
+    sources: env.installation.sources,
     files: new Map<string, string>(),
   };
   const lockResult: Result<LockFile, ContractParseFailed> =
@@ -127,7 +119,7 @@ export function reconcileWorkspace(
       contractDiagnostics(GL.lockInvalid, lockResult.error.issues, lockResult.error.source),
     );
   }
-  const desired = renderProjection(change.manifest, env.installation);
+  const desired = renderProjection(change.manifest, env.installation, presentHarnesses(root));
   const snapshot = snapshotWorkspace(
     root,
     desired,
@@ -196,7 +188,7 @@ export function reconcileWorkspace(
     desired,
     snapshot.targets,
     env.version,
-    env.installation.upstreams,
+    env.installation.sources,
     env.installation.revision,
     retainedOrphans,
   );
@@ -222,6 +214,16 @@ export function reconcileWorkspace(
       if (read.error.step === "absent") continue;
       return fail([diagnostic(GL.ioFailure, "error", read.error.message, path)]);
     }
+    // A harness configuration loses greenline's entries alone; the owner's stay.
+    const adapter = jsonAdapterAt(path);
+    if (adapter !== undefined) {
+      const kept = withoutGreenline(adapter, read.value);
+      if (kept === undefined) removedFiles.push(path);
+      removals.push(
+        kept === undefined ? { path: fullPath, remove: true } : { path: fullPath, content: kept },
+      );
+      continue;
+    }
     const split = splitManagedBlock(read.value, POLICY_BLOCK_KEY);
     const userBytes = `${split.head}${split.tail}`;
     const removed = split.block === undefined || userBytes.trim() === "";
@@ -234,7 +236,11 @@ export function reconcileWorkspace(
     ...(manifestWrite === undefined
       ? []
       : [{ path: manifestWrite.path, content: manifestWrite.content }]),
-    ...execution.writes.map((entry) => ({ path: join(root, entry.path), content: entry.content })),
+    ...execution.writes.map((entry) => ({
+      path: join(root, entry.path),
+      content: entry.content,
+      executable: entry.executable,
+    })),
     ...removals,
     { path: lockWrite.path, content: lockWrite.content },
   ];
@@ -255,14 +261,19 @@ export function reconcileWorkspace(
   const diagnostics = recoveryWarning;
 
   if (request.dryRun) {
-    return succeed(effects, diagnostics);
+    return {
+      ...succeed(effects, diagnostics),
+      hooks: hooksReport(change.manifest, desired, gitHooksState(root, change.manifest.hooks)),
+    };
   }
   const applied = applyFilePlan(writes, io);
   if (applied._tag === "err") {
     return fail([diagnostic(GL.ioFailure, "error", applied.error.message, applied.error.path)]);
   }
   removeEmptiedSkillDirectories(root, removedFiles);
-  return succeed(effects, diagnostics);
+  // The scripts stand now, so git can be told to run them; a clone carries no registration.
+  const git = registerGitHooks(root, change.manifest.hooks);
+  return { ...succeed(effects, diagnostics), hooks: hooksReport(change.manifest, desired, git) };
 }
 
 /** The harness directories whose per-skill directories greenline creates. */

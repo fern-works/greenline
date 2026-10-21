@@ -1,6 +1,10 @@
 #!/usr/bin/env node
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { runEvidenceCli } from "./evidence.ts";
+import { runBriefCli } from "./brief.ts";
+import { runCheckCli } from "./check.ts";
+import { runEventCli } from "./event.ts";
+import { runHookCli } from "./hook.ts";
 import { runConnectorsCallCli } from "./connectors-call.ts";
 import { runCli } from "./runner.ts";
 import { parseArgs } from "./args.ts";
@@ -31,13 +35,60 @@ async function main(): Promise<number> {
   const input = process.argv.slice(2);
   // These verbs own their parser; dispatch the advertised top-level help form to it.
   const argv =
-    input[0] === "help" && input[1] === "evidence"
-      ? [input[1], ...input.slice(2), "--help"]
+    input[0] === "help" && (input[1] === "check" || input[1] === "brief")
+      ? [input[1], "--help"]
       : input[0] === "help" && input[1] === "connectors" && input[2] === "call"
         ? ["connectors", "call", ...input.slice(3), "--help"]
         : input;
   const cwd = process.cwd();
-  if (argv[0] === "evidence") return runEvidenceCli(argv.slice(1), writer, cwd);
+  // The hooks run on every commit and every tool call, so they load the installation
+  // only for the modes' order, which a standing choice under another mode than the
+  // one proceed names needs; stdin is read only by the hooks and events that take one.
+  const stdin = (): string => {
+    try {
+      return readFileSync(0, "utf8");
+    } catch {
+      return "";
+    }
+  };
+  const modes = (): readonly string[] | undefined => {
+    const installation = loadInstallation(bundleDirectory);
+    return installation._tag === "ok"
+      ? installation.value.modes.modes.map((mode) => mode.name)
+      : undefined;
+  };
+  if (argv[0] === "hook") return runHookCli(argv.slice(1), writer, { cwd, stdin, modes });
+  if (argv[0] === "event") return runEventCli(argv.slice(1), writer, { cwd, stdin, modes });
+  if (argv[0] === "brief")
+    return runBriefCli(argv.slice(1), writer, {
+      cwd,
+      installation: () => loadInstallation(bundleDirectory),
+    });
+  if (argv[0] === "check") {
+    // The command shares the terminal, so a Ctrl-C reaches it directly; greenline
+    // stays alive to complete the facts, and a Ctrl-C before the command starts
+    // stops the run. A SIGTERM sent to greenline alone, as a supervisor sends
+    // it, is passed on to the command.
+    const interruption = new AbortController();
+    const interrupted = new AbortController();
+    const onInterrupt = (): void => interrupted.abort();
+    const onTerminate = (): void => interruption.abort();
+    process.on("SIGINT", onInterrupt);
+    process.on("SIGTERM", onTerminate);
+    try {
+      return await runCheckCli(argv.slice(1), writer, {
+        cwd,
+        installation: () => loadInstallation(bundleDirectory),
+        environment: process.env,
+        stdio: "inherit",
+        terminate: interruption.signal,
+        interrupted: interrupted.signal,
+      });
+    } finally {
+      process.off("SIGINT", onInterrupt);
+      process.off("SIGTERM", onTerminate);
+    }
+  }
   if (argv[0] === "connectors" && argv[1] === "call") {
     // An interrupt cancels the running call, which is recorded as cancelled from this observation.
     const cancellation = new AbortController();
@@ -51,7 +102,13 @@ async function main(): Promise<number> {
           stdout: { write: (text) => writeStream(process.stdout, text) },
           stderr: { write: (text) => writeStream(process.stderr, text) },
         },
-        { cwd, environment: process.env, signal: cancellation.signal },
+        {
+          cwd,
+          environment: process.env,
+          signal: cancellation.signal,
+          // Read only for --change, whose record is parsed against the modes.
+          installation: () => loadInstallation(bundleDirectory),
+        },
       );
     } finally {
       process.off("SIGINT", cancel);

@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-systematic-debugging",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-shipping-and-launch",
+    "sha256": "89aab5c0fa1f55dc21a0415c5770029902838d61d602b3f9205ba72c6b2d864d"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/systematic-debugging"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Five debugging methods join diagnosing-bugs",
+  "reason": "Its pattern analysis, boundary instrumentation, backward tracing, polluter search and three-fix stop enter the re-cut diagnosing-bugs recipe, hypotheses staying ranked. Its creation log and test-pressure files are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 14)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 14)"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "diagnosing-bugs",
+    "catches": "A fix applied where a failure surfaces, before its cause is found, or stacked on a premise earlier fixes disproved",
+    "evidence": "witnessed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

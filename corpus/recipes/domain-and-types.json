@@ -1,0 +1,262 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "domain-and-types",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "domain-and-types"
+    },
+    {
+      "field": "description",
+      "value": "Encode the domain in a structure instead of scattered conditionals, redesign around a new requirement instead of bolting it on, and let the type checker rule out impossible states: state machines, discriminated unions, branded primitives, parsing at the boundary, exhaustive matching. Use when writing stateful logic or a branch that grows by one more case, when a new requirement meets an existing design, and when designing a type or a function signature in any typed language."
+    }
+  ],
+  "sources": ["pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Domain and types",
+          "kind": "name",
+          "reason": "The habit's title is its roster name, domain-and-types, which R22 gives the habit model-the-domain and type-system-discipline became.",
+          "gist": "The title is domain-and-types, which two upstream principles became"
+        },
+        {
+          "passage": "written",
+          "text": "domain-and-types is the habit for the moment stateful logic is written, a branch grows by one more case, a new requirement meets an existing design, or a type or a function signature is designed, at whatever step the work is in, most often build. It writes no record of its own. Where data enters from outside, boundaries says where it is parsed and validated.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, that it writes no record of its own, and the boundaries habit beside it for where outside data is parsed.",
+          "gist": "Opens the habit: when it applies; boundaries handles parsing outside data"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-model-the-domain/SKILL.md",
+          "segments": [
+            "dbf92448f219",
+            "e59f57dcea36",
+            "16bf3a304559",
+            "f6ddf2b92ca0",
+            "98c41ee66470",
+            "d9bb7e70e6e9",
+            "68d63b6cf717",
+            "b644d74b2a6a",
+            "b439c6fbf143",
+            "2b6da2d87712",
+            "d110798d7c43",
+            "66e55a764f40",
+            "469a86dc658b",
+            "238892673336",
+            "a8465e22cfc0",
+            "459f8c110252",
+            "03d5638e49b1",
+            "f9bc1552c823",
+            "6dd68f9ba2e2",
+            "9c4fe927b728",
+            "8343eddf17ae",
+            "6a45c565a4cf"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Redesign from first principles",
+          "kind": "method",
+          "reason": "principle-redesign-from-first-principles joins as the procedure for the sign the spine names last, a requirement that would grow an existing design by one more special case.",
+          "gist": "Redesigns from first principles when a requirement adds one more case",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-redesign-from-first-principles/SKILL.md",
+          "segments": [
+            "6d51e4f58f2f",
+            "c0c6bef569ba",
+            "7605659f9b92",
+            "0bdd5bfb1348",
+            "cdc0cebfec8e",
+            "9f8a5edc2560",
+            "bfdd21091526"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "The redesign applies where the requirement changes the shape. Where the current shape is already clear, local and unlikely to grow, the boring code above stands.",
+          "kind": "method",
+          "reason": "model-the-domain's \"Prefer boring code if the current shape is already clear\" is read as the redesign's condition, not a contradiction, as the operator ruled.",
+          "gist": "Redesign applies when the shape changes; clear boring code stands",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition",
+          "credits": ["pstack"]
+        },
+        {
+          "passage": "written",
+          "text": "## Types",
+          "kind": "scope",
+          "reason": "type-system-discipline's title becomes the section's heading, since the habit takes its name from both halves.",
+          "gist": "type-system-discipline's title becomes the Types section heading"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-type-system-discipline/SKILL.md",
+          "segments": [
+            "f751d9012a3d",
+            "5eaf87d4172f",
+            "72fb7069b1ea",
+            "b4863e926d93",
+            "401156c2d746"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-type-system-discipline/SKILL.md",
+          "segments": [
+            "9ca81ea69117",
+            "7d56b6278563",
+            "cf6e99d6129e",
+            "c74a0aeaa70f",
+            "3878f8f96a42",
+            "67eef4bbdf6d",
+            "f8bb668cac36",
+            "ffcfa21d4ada",
+            "e3758bab328d",
+            "3be5b0149c21",
+            "8dd23e95585f",
+            "cabb1eb1622d",
+            "b2aabffde598",
+            "776505402ac8",
+            "5c156107919c",
+            "1a1171149c84",
+            "d9fd6e49fdac",
+            "c6e0013a509a",
+            "6d087bf60368",
+            "4ceea8e54a71",
+            "307cfebd1849",
+            "609a2a3af2ed",
+            "c4139d35fe07",
+            "999cb845918b",
+            "29c0a0845a50",
+            "00e19060e845",
+            "7c7212887f96",
+            "1c5638fa9764",
+            "449039e717b5",
+            "244304b7b118"
+          ],
+          "edits": [
+            {
+              "segment": "609a2a3af2ed",
+              "find": "**boundary-discipline** principle skill",
+              "replace": "**boundaries** habit",
+              "kind": "name",
+              "reason": "boundary-discipline is the habit boundaries now (R22).",
+              "gist": "boundary-discipline is now the boundaries habit"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-type-system-discipline/SKILL.md",
+          "segments": [
+            "e0e61160b070",
+            "f8973b504be2",
+            "bfbb7035c58a",
+            "061cf6b7e510",
+            "66d1e333531d",
+            "c516e924c99b",
+            "57694c6a4187",
+            "76faefcea701",
+            "20df89023a58",
+            "dee0458683c7",
+            "54441b20796b",
+            "e953c6670748",
+            "6e75bf6067f7",
+            "40dc7b93b135",
+            "415bcb194210",
+            "6bdd9d13d1d9",
+            "f5c4bf4149ed",
+            "01daef87afe1",
+            "d9451092e470",
+            "260af12722ec",
+            "16426248f7f9",
+            "cdb7055458ff"
+          ],
+          "join": "\n"
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "principle-model-the-domain/SKILL.md",
+      "segment": "6839e0b8370c",
+      "kind": "name",
+      "reason": "The title gives way to the habit's roster name (R22).",
+      "gist": "The habit's roster title replaces the upstream title",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-redesign-from-first-principles/SKILL.md",
+      "segment": "fa277a1555fc",
+      "kind": "scope",
+      "reason": "The title becomes the section's heading.",
+      "gist": "The title becomes the section's heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "930d7b3a7901",
+      "kind": "scope",
+      "reason": "The title becomes the section's heading.",
+      "gist": "The title becomes the section's heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "5a6d6d3f39bc",
+      "kind": "pointer",
+      "reason": "The typescript-best-practices skill is not vendored, so the body pointed the agent at a skill the install does not carry.",
+      "gist": "The typescript-best-practices skill it cites is not installed here"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "2afd2e45f178",
+      "kind": "pointer",
+      "reason": "The typescript-best-practices skill is not vendored, so the body pointed the agent at a skill the install does not carry.",
+      "gist": "The typescript-best-practices skill it cites is not installed here"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "d071eaa90771",
+      "kind": "pointer",
+      "reason": "the encode-lessons-in-structure principle skill is not vendored; the pointer stays out of the derive-types bullet",
+      "gist": "encode-lessons-in-structure is not installed, so its mention goes"
+    }
+  ],
+  "notStub": [
+    {
+      "source": "pstack",
+      "file": "principle-redesign-from-first-principles/SKILL.md",
+      "ruling": "Not a stub: its upstream body, under the stub trigger, states a method of its own, four ordered moves with a criterion (read every affected file, ask what would be built from scratch with the requirement, carry the change through every reference, then deliver the whole redesign incrementally), so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-08 on the intake R3, \"everything is good\", on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-08 on the merged habits)"
+    }
+  ]
+}

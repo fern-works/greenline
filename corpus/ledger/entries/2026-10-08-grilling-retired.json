@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-grilling-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-plan-recipe",
+    "sha256": "6be27c96869eb0ba4b6dd98ecc04b8780e1f207764d73a57116ca724f186d33c"
+  },
+  "skill": "grilling",
+  "slice": "S13 of the plan modes-records-recipes",
+  "replacedBy": "frame",
+  "recipe": "6b7c6a96712293895a4e85ba9e33e341ef6f74349036970a1f112432ca97431c",
+  "gist": "Grilling becomes frame's spine",
+  "reason": "grilling is frame's spine now: its interview is frame's written depth, and its trigger, \"grill me\", is frame's.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

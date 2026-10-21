@@ -1,0 +1,46 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-build-the-lever-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-use-garden-recut",
+    "sha256": "d71f90306a1922bf2b74d35e693c278684a9068493dc400b73c599c5c62eb750"
+  },
+  "subject": "skill:build-the-lever",
+  "recipe": "2f197a8de505eaf8b9ba1a4e80cef3e56ba351e268ba8a2d609a9f5744c7e776",
+  "result": "99cab0f6d0389389817872d02e0cb23f2306c724ee755da68a6d667ae3e9f11a",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Enters as a trial habit copied from pstack",
+  "reason": "build-the-lever enters as a trial habit copied from pstack's principle-build-the-lever, with an opening in its own voice, its fan-out bullet dropped and its missing pointers given to the habits and steps beside it.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 27,
+        "taken": 22,
+        "exact": 20,
+        "retention": 0.9090909090909091,
+        "coverage": 0.8148148148148148,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 158
+  }
+}

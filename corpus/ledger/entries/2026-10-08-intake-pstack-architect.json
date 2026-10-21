@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-architect",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-writing-plans",
+    "sha256": "0bd4cd977c2d79d1ba474c5e3b300315dbcc846972d5fa8f6f7b10cb7c52e2b1"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/architect"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Usage-first sketch joins plan; red flags go to garden",
+  "reason": "Usage first and the type sketch enter the re-cut plan recipe, designed twice by one agent in turn. Its arena runners, worktrees and per-runner models are dropped, and its design red flags go to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its design red flags",
+        "locator": "pstack/skills/architect/references/design-red-flags.md"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "step",
+    "slot": "to-tickets",
+    "catches": "A plan whose tasks are too large, vague or ill-shaped to build and verify one at a time",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "plan",
+        "depth": "none",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "plan",
+        "depth": "written",
+        "cost": 250
+      },
+      {
+        "mode": "high",
+        "step": "plan",
+        "depth": "written",
+        "cost": 250
+      },
+      {
+        "mode": "max",
+        "step": "plan",
+        "depth": "written",
+        "cost": 250
+      }
+    ],
+    "ships": "default"
+  }
+}

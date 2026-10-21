@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-tjcages-pr-writing",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-mattpocock-skills-wait-what",
+    "sha256": "140cf41eb028b1d7befa76e7ffb1f9d5e0c5730eb3c9c4ea0ce0478dc2513892"
+  },
+  "source": {
+    "repository": "https://github.com/tjcages/skills",
+    "commit": "170f1ca406f926f47433217f731ebf80a613719c",
+    "path": "pr-writing/skills/pr-writing"
+  },
+  "pin": "tjcages",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "The spine of the new trial habit pr-writing",
+  "reason": "The spine of a new trial habit pr-writing: the diff read first, then what changed, why, how to verify and the risk.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradictions 27 and 28)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradictions 27 and 28)"
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "pr-writing",
+    "catches": "A PR or commit body that restates the diff and leaves out the why, the verification and the risk",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 450
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 450
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 450
+      }
+    ],
+    "ships": "trial"
+  }
+}

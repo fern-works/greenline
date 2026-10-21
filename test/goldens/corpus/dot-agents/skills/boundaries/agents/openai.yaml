@@ -1,0 +1,3 @@
+interface:
+  display_name: "Boundaries"
+  short_description: "Concentrate validation, parsing and error handling at system boundaries (CLI, config, network, external APIs), trust internal types and keep business logic in pure functions; and let no failure become success-shaped output: no catch block returning a default, no fabricated data, a test that forces each changed integration to fail. Use when validating input or handling an error at a boundary, when writing a catch block, a default value, a retry or a fallback, when a dependency fails during the work, and when a deadline or a demonstration makes a working-looking result tempting."

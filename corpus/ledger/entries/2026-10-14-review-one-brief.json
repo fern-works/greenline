@@ -1,0 +1,120 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-review-one-brief",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-anticipate-brief-and-report",
+    "sha256": "63d2f67e56714190305edef4da0a4191bf3f2ccbe4976faf1ae70cfb57185900"
+  },
+  "subject": "skill:review",
+  "recipe": "4886dca4e796873e548c7abdf63a143a478c5c9af30532d26430d5de3306e40d",
+  "result": "1662ae35b0868bcdcb26490c1c900df97e075f02b2ecce1c185962a7ae48a246",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/reviewers.md"
+    }
+  ],
+  "gist": "Each reviewer gets the one brief and its numbered report",
+  "reason": "Each reviewer gets the one brief every fresh agent gets with review's extras, writes review-<n>.md and delegates nothing. Review takes its own fix pass, and without delegation its independent and looped depths run inline.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): interrogate, thermo-nuclear-review, requesting-code-review, receiving-code-review, ponytail-audit and no-comments combine into review, and the contradictions stand as recommended: the reports keep each finding as written and the builder's judgment filters and decides (contradiction 6), severity is review-lens's rungs (7), the pass stays bounded (8), an issue with the plan itself is a finding at the advisory rung (9) and the reviewer does not praise the code (10); within pstack, premature abstraction being worse than duplication wins over its helper-extraction line; ponytail-audit's whole-tree grep enters the excess lens as a default correction of grep every caller; thermo-nuclear-code-quality-review, review-and-ship and deslop stay declined, and code-review-and-quality is garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-09-26",
+      "words": "practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): review's \"Start the reviewers\" moves to references/reviewers.md, its \"Judge the findings\" staying because \"Act on them\" names its buckets at any depth with a fix round"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 80,
+        "taken": 54,
+        "exact": 52,
+        "retention": 0.9629629629629629,
+        "coverage": 0.675,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 254,
+        "taken": 38,
+        "exact": 38,
+        "retention": 1,
+        "coverage": 0.14960629921259844,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "cursor-team-kit",
+        "segments": 53,
+        "taken": 17,
+        "exact": 17,
+        "retention": 1,
+        "coverage": 0.32075471698113206,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 255,
+        "taken": 16,
+        "exact": 16,
+        "retention": 1,
+        "coverage": 0.06274509803921569,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "ponytail",
+        "segments": 66,
+        "taken": 38,
+        "exact": 38,
+        "retention": 1,
+        "coverage": 0.5757575757575758,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 4975
+  }
+}

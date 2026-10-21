@@ -4,6 +4,7 @@
  * the summary says exactly what was and was not proven. */
 import { execFileSync, execSync, spawnSync } from "node:child_process";
 import {
+  cpSync,
   existsSync,
   mkdirSync,
   mkdtempSync,
@@ -11,14 +12,30 @@ import {
   readdirSync,
   rmSync,
   statSync,
+  symlinkSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { GREEN_LINE, outcome, skip } from "./lib/gate-outcome.mjs";
 import { checkCommit, parseCommits, walkPlan } from "./lib/commit-subject.mjs";
 import { nameLeaks, scannedFile } from "./lib/name-boundary.mjs";
-import { join, relative, resolve, sep } from "node:path";
+import { join, resolve, sep } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ASSET_TREE_MIN = 2;
+// This script is part of the public tree, while the workshop allocator is
+// private. The public gate inherits the controller check's owned environment.
+const privateStoragePath = fileURLToPath(new URL("./lib/qa-storage.mjs", import.meta.url));
+const privateStorage = existsSync(privateStoragePath) ? await import(privateStoragePath) : null;
+const checkTask = privateStorage
+  ? privateStorage.beginWorkshopTask("check", { repository: resolve("."), env: process.env })
+  : null;
+if (checkTask)
+  Object.assign(process.env, privateStorage.workshopEnvironment(checkTask, process.env));
+// Ctrl-C or a supervisor's SIGTERM records the interruption, so the next check
+// recovers this allocation once its process group has drained; the handler is
+// in place before the children are protected.
+if (checkTask) privateStorage.recordWorkshopInterrupt(checkTask);
+if (checkTask) privateStorage.protectWorkshopChildren(checkTask);
+
 const full = process.argv.includes("--full");
 // The public tree (workshop/components/public-export.md): under --public,
 // the rows named here run and every other row is left out, since the tree
@@ -34,6 +51,9 @@ const PUBLIC_ROWS = new Set([
   "goldens-tracked",
   "managed-block-budget",
   "corpus-coherence",
+  "corpus",
+  "corpus-budget",
+  "corpus-fronts",
   "skills-handoff",
   "corpus-optin-assets",
   "corpus-optin-closure",
@@ -73,6 +93,9 @@ const narrowed = process.env.CHECK_ROWS
   : null;
 if (narrowed) process.stdout.write(`narrowed by CHECK_ROWS to: ${[...narrowed].join(", ")}\n`);
 const row = async (name, fn) => {
+  // The rows' children run synchronously; a turn of the event loop between rows
+  // lets a pending interrupt handler run before the next row starts.
+  await new Promise((resolveTurn) => setImmediate(resolveTurn));
   if (publicOnly && !PUBLIC_ROWS.has(name)) return;
   if (narrowed && !narrowed.has(name)) {
     rows.push([name, "SKIP", "narrowed by CHECK_ROWS (focused proof)"]);
@@ -87,7 +110,12 @@ const row = async (name, fn) => {
     rows.push([name, o.status, o.reason]);
     process.stdout.write(`  ✓ ${name} ${o.status === "SKIP" ? "SKIP" : "ok"} (${dt()})\n`);
   } catch (e) {
-    rows.push([name, "FAIL", String(e.message ?? e)]);
+    const message = String(e.message ?? e);
+    rows.push([
+      name,
+      "FAIL",
+      privateStorage ? privateStorage.boundedTail(message) : message.slice(-4096),
+    ]);
     process.stdout.write(`  ✗ ${name} failed (${dt()})\n`);
   }
 };
@@ -96,9 +124,6 @@ const files = (dir) => {
   const walk = (d) => {
     for (const e of readdirSync(d)) {
       if (e === ".git" || e === "node_modules" || e === "dist" || e === "coverage") continue;
-      // The frozen authority witnesses are the bytes the ledger entries
-      // hash, never house source (workshop/components/ledger.md).
-      if (d === "corpus/ledger" && e === "witnesses") continue;
       // The acquisition library of external bytes (books, sweep clones) lives
       // beside this checkout, outside it, since the composition plan's D16; a
       // checkout that still carries one under library/ is skipped here as
@@ -207,8 +232,10 @@ await row("name-boundary", () => {
   }
 });
 // ROW: the settled Fernworks promises — this repository's private local copy
-// is present at the operator-approved digest recorded in docs/SPEC.md. The row
-// reads no sibling checkout, network or provider and is absent from --public.
+// is present at the operator-approved digest pinned in
+// scripts/lib/fernworks-promises.mjs (docs/SPEC.md records the same value, and
+// a test holds the two equal). The row reads no sibling checkout, network or
+// provider and is absent from --public.
 await row("fernworks-promises", async () => {
   const { fernworksPromiseProblems } = await import("./lib/fernworks-promises.mjs");
   const problems = fernworksPromiseProblems(".");
@@ -260,7 +287,7 @@ await row("guards-drill", async () => {
   const { z } = await import("zod");
   const { queueWorkerGrant } = await import("./lib/roles.mjs");
   const { writeWorkRecord } = await import("./lib/work-record.mjs");
-  const scratch = mkdtempSync(join(resolve("test"), ".guards-drill-"));
+  const scratch = mkdtempSync(join(tmpdir(), "greenline-guards-drill-"));
   const home = mkdtempSync(join(tmpdir(), "guards-drill-"));
   const roles = join(home, "roles");
   const bad = [];
@@ -270,6 +297,16 @@ await row("guards-drill", async () => {
   ];
   try {
     for (const { config, harness } of installed) {
+      const project = join(scratch, harness);
+      mkdirSync(project, { recursive: true });
+      if (checkTask)
+        privateStorage.assertWorkshopCopyFits(checkTask, join(process.cwd(), "scripts"));
+      cpSync(join(process.cwd(), "scripts"), join(project, "scripts"), { recursive: true });
+      symlinkSync(
+        join(process.cwd(), "node_modules"),
+        join(project, "node_modules"),
+        process.platform === "win32" ? "junction" : "dir",
+      );
       const hooks = JSON.parse(readFileSync(config, "utf8")).hooks;
       const commandFor = (event) => {
         const command = z.string().safeParse(hooks?.[event]?.[0]?.hooks?.[0]?.command).data;
@@ -281,24 +318,24 @@ await row("guards-drill", async () => {
       const fire = (eventName, event) =>
         spawnSync(commandFor(eventName), {
           shell: true,
-          cwd: process.cwd(),
-          input: JSON.stringify({ ...event, cwd: process.cwd(), hook_event_name: eventName }),
+          cwd: project,
+          input: JSON.stringify({ ...event, cwd: project, hook_event_name: eventName }),
           encoding: "utf8",
           env: {
             ...process.env,
-            CLAUDE_PROJECT_DIR: process.cwd(),
+            CLAUDE_PROJECT_DIR: project,
             GREENLINE_GRANT: undefined,
             GREENLINE_PILOT_HOME: home,
             GREENLINE_ROLE: undefined,
             GREENLINE_ROLE_HOME: roles,
           },
         });
-      const base = relative(process.cwd(), join(scratch, harness)).replaceAll("\\", "/");
+      const base = `docs/work/guard-${harness}`;
       const parent = `${base}/PLAN.md`;
       const record = `${base}/slices/S1.md`;
-      mkdirSync(join(process.cwd(), base, "slices"), { recursive: true });
+      mkdirSync(join(project, base, "slices"), { recursive: true });
       writeWorkRecord(
-        parent,
+        join(project, parent),
         {
           schema: "greenline.work/v1",
           id: `guard-${harness}`,
@@ -312,7 +349,7 @@ await row("guards-drill", async () => {
         "# Guard drill\n",
       );
       writeWorkRecord(
-        record,
+        join(project, record),
         {
           schema: "greenline.work/v1",
           id: "S1",
@@ -339,10 +376,7 @@ await row("guards-drill", async () => {
       );
       const parentSession = `drill-parent-${harness}`;
       const childSession = `drill-worker-${harness}`;
-      queueWorkerGrant(
-        { root: process.cwd(), harness, session: parentSession, home: roles },
-        { record },
-      );
+      queueWorkerGrant({ root: project, harness, session: parentSession, home: roles }, { record });
       const worker = {
         session_id: parentSession,
         agent_id: childSession,
@@ -471,24 +505,41 @@ await row("inspect-fonts", async () => {
       "src/shell/inspect/fonts.ts differs from the generator's output; run node scripts/gen-inspect-fonts.mjs",
     );
 });
+// ROW: the guide's roster region (J-77 S4, the ruling P6): guide/skills.md's
+// step list and its starts and habits tables are rendered from
+// corpus/manifest.json's skills by the site-inputs exporter's generator; the
+// row renders them in memory and refuses a region that differs, a start or
+// habit with no situation phrase, a phrase naming no skill and a marker
+// missing or out of order, so a hand edit or a stale region fails here
+// before the export carries it to the site. Absent from --public, since the
+// generator is the private exporter's.
+await row("guide-roster", async () => {
+  const { guideRosterProblems, readGuideRoster } = await import("./lib/guide-roster.mjs");
+  const { page, skills } = readGuideRoster(".");
+  const problems = guideRosterProblems(page, skills);
+  if (problems.length) throw new Error(`the guide's roster: ${problems.slice(0, 8).join("; ")}`);
+});
 await row("agents-md-budget", () => {
   const words = readFileSync("AGENTS.md", "utf8").split(/\s+/).filter(Boolean).length;
   process.stdout.write(`  AGENTS.md: ${words} words (extreme cap 5000)\n`);
   if (words > 5000) throw new Error(`AGENTS.md is ${words} words, past the extreme cap of 5000`);
 });
-// ROW: the shipped managed-block size — the block loads on every turn of
-// every consumer session, so its size is a cost the overseer reads here;
-// the cap is extreme and catches runaway growth only (docs/SPEC.md §8; the
-// operator's ruling of 2026-09-12: no word budget on semantic prose).
+// ROW: the shipped managed-block size: the block loads on every turn of
+// every consumer session, so its size is a cost the overseer reads here.
+// J-93 S1 cut the block to under 1,500 words as the corpus counts
+// them (docs/SPEC.md §8; docs/work/notes/N-56.md, item 2); this row counts
+// by white space, which reads higher, so its cap is the lean goldens' count
+// near 1,700 plus a small margin, holding the cut rather than catching
+// only runaway growth as the old cap of 8000 did.
 await row("managed-block-budget", () => {
   const caps = [
-    ["test/goldens/corpus/AGENTS.md", 8000],
-    ["test/goldens/garden-enabled/AGENTS.md", 8000],
+    ["test/goldens/corpus/AGENTS.md", 1800],
+    ["test/goldens/garden-enabled/AGENTS.md", 1800],
   ];
   for (const [golden, cap] of caps) {
     const words = readFileSync(golden, "utf8").split(/\s+/).filter(Boolean).length;
-    process.stdout.write(`  ${golden}: ${words} words (extreme cap ${cap})\n`);
-    if (words > cap) throw new Error(`${golden} is ${words} words, past the extreme cap of ${cap}`);
+    process.stdout.write(`  ${golden}: ${words} words (cap ${cap})\n`);
+    if (words > cap) throw new Error(`${golden} is ${words} words, past the cap of ${cap}`);
   }
 });
 // ROW: the package's inputs and the retired identifiers at cutover.
@@ -567,6 +618,16 @@ await row("gate-row-names", async () => {
 // working tree: the rows read the working bytes, so a removal needs no staging.
 const trackedMarkdown = () =>
   execFileSync("git", ["ls-files"], { encoding: "utf8" })
+    .split("\n")
+    .filter((f) => f.endsWith(".md") && existsSync(f));
+// The Markdown files main will hold once this candidate lands: the tracked ones
+// and the untracked ones git does not ignore. git's own exclusion rules decide,
+// so a scratch page an ignore names stays out exactly as it stays off main,
+// which a directory walk would have to reimplement.
+const candidateMarkdown = () =>
+  execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard", "--deduplicate"], {
+    encoding: "utf8",
+  })
     .split("\n")
     .filter((f) => f.endsWith(".md") && existsSync(f));
 // ROW: the ruled words (the context-loading plan's stage C, ruling D4 of
@@ -654,8 +715,11 @@ await row("docs-pointers", async () => {
   // The canon: the registry's canon rows, a directory row expanded to the pages
   // under it, except the authored skills, which the walk reads through their
   // mounts below; then the working documents. A sealed file is a record.
+  // A directory row expands over the candidate's pages, not only the tracked
+  // ones: a new page is untracked until it lands, and a gate that skipped it
+  // passed a candidate whose page main then refused (J-95).
   const LIVING_DOCS = [
-    ...registeredPages(parseRegistry(readFileSync("docs/README.md", "utf8")), trackedMarkdown(), [
+    ...registeredPages(parseRegistry(readFileSync("docs/README.md", "utf8")), candidateMarkdown(), [
       "canon",
     ]).filter((f) => !f.startsWith("workshop/skills/")),
     "docs/work/README.md",
@@ -665,7 +729,7 @@ await row("docs-pointers", async () => {
     "docs/work/LESSONS.md",
     "docs/work/archive/README.md",
     ...discoverWorkRecords(".")
-      .filter(({ record }) => ["job", "plan"].includes(record.kind) && record.status !== "closed")
+      .filter(({ record }) => record.kind === "job" && record.status !== "closed")
       .map(({ path }) => path),
   ].filter((f) => existsSync(f));
   const surfaces = [
@@ -730,7 +794,7 @@ await row("docs-pointers", async () => {
 // ROW: corpus coherence: greenline-authored prose (the runtime guides, the
 // natives, the lines added to vendored copies) references resolve against
 // the schema and the roster: skill invocations name roster skills,
-// `type:`/`status:` tokens name real artifact types and lifecycle states,
+// `status:` tokens name a plan document's marks,
 // `greenline <cmd>` names a real command, and `.greenline/...` tokens name
 // real workspace paths.
 await row("corpus-coherence", () => {
@@ -739,18 +803,123 @@ await row("corpus-coherence", () => {
     encoding: "utf8",
   });
 });
-// ROW: the handoff contract (ADR 0039): a stage or support skill ends with a
-// Handoff section, a situational skill with a Durable output line, and the
-// chain closes: every Next names installed skills whose Consumes covers what
-// was produced.
+// ROW: the corpus verifies (workshop/components/recipes.md and
+// workshop/components/ledger.md, "The fresh chain"): every recipe's skill
+// directory renders byte for byte, the fresh chain is whole, every recipe on
+// disk is recorded by its skill's latest change entry, a retention under the
+// minimum or a method item carries the operator's ruling, and each committed
+// view (the index, the sources register and both notices) is its rendering.
+// It runs in the public tree too; with no recipe and no entry on disk it
+// passes and says so.
+await row("corpus", () => {
+  const run = spawnSync(process.execPath, ["scripts/corpus.mjs", "verify"], { encoding: "utf8" });
+  let report;
+  try {
+    report = JSON.parse(run.stdout);
+  } catch {
+    throw new Error(`scripts/corpus.mjs verify printed no report: ${run.stderr.slice(-400)}`);
+  }
+  if (run.status !== 0) {
+    const findings = [
+      ...report.refused.flatMap((r) => r.issues.map((i) => `${r.skill}: ${i.message}`)),
+      ...report.differences.map((d) => `${d.skill}: ${d.path} ${d.difference}`),
+      ...report.chain.map((c) => `${c.entry}: ${c.message}`),
+      ...report.ledger.map((l) => `${l.skill}: ${l.message}`),
+      ...report.views.map((v) => `${v.path}: ${v.message}`),
+    ];
+    throw new Error(`corpus refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
+  }
+  if (report.recipes === 0 && report.entries === 0)
+    process.stdout.write("  corpus: no recipe and no entry on disk; nothing to verify\n");
+});
+// ROW: the words budget (workshop/components/modes.md, "The words budget"):
+// `scripts/corpus.mjs budget` over every mode of the definition, failing on
+// a mode whose words read pass its budget without the operator's ruling in
+// the modes recipe. With corpus-ceilings, which compares each ceiling with
+// HEAD's, the gate's reading of the words budget; the block's own cap is
+// managed-block-budget's. It runs in the public tree too.
+await row("corpus-budget", () => {
+  const run = spawnSync(process.execPath, ["scripts/corpus.mjs", "budget"], { encoding: "utf8" });
+  let report;
+  try {
+    report = JSON.parse(run.stdout);
+  } catch {
+    throw new Error(`scripts/corpus.mjs budget printed no report: ${run.stderr.slice(-400)}`);
+  }
+  for (const mode of report.modes)
+    process.stdout.write(
+      `  ${mode.mode}: ${Math.max(mode.total.default, mode.total.garden)} words read (budget ${mode.budget})\n`,
+    );
+  if (run.status !== 0) {
+    const findings = report.refused.map((r) => `${r.mode}: ${r.message}`);
+    throw new Error(`corpus-budget refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
+  }
+});
+// ROW: the fronts hold the upstream prose alone (J-93 S2, N-56 item 2;
+// workshop/components/recipes.md, "The front and the references"):
+// `scripts/corpus.mjs fronts` over every recipe, failing on a greenline
+// command, a workspace path or a record form in a skill's front outside
+// SKILL.md's Handoff section, and on a skill on the line whose recipe names
+// no references page, so a later ingestion cannot put a mechanic back in a
+// front. It runs in the public tree too.
+await row("corpus-fronts", () => {
+  const run = spawnSync(process.execPath, ["scripts/corpus.mjs", "fronts"], { encoding: "utf8" });
+  let report;
+  try {
+    report = JSON.parse(run.stdout);
+  } catch {
+    throw new Error(`scripts/corpus.mjs fronts printed no report: ${run.stderr.slice(-400)}`);
+  }
+  process.stdout.write(`  ${report.recipes} fronts read\n`);
+  if (run.status !== 0) {
+    const findings = [
+      ...report.findings.map((f) => `${f.skill} ${f.path}:${f.line}: ${f.what}, ${f.text}`),
+      ...report.unreferenced.map(
+        (skill) => `${skill}: a skill on the line names no references page`,
+      ),
+      ...report.refused.flatMap((r) => r.issues.map((i) => `${r.skill}: ${i.message}`)),
+    ];
+    throw new Error(`corpus-fronts refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
+  }
+});
+// ROW: the ceilings hold. Each mode's words budget is a ceiling a slice
+// lowers and never raises without the operator's ruling (N-56 item 2, J-93
+// S1): corpus-budget refuses a mode read past its ceiling, and this row
+// refuses the ceiling itself moving up against HEAD's definition, unless the
+// modes recipe's account for the mode carries the operator's `excess` ruling
+// naming at least the raise. A mode HEAD does not hold passes, its first
+// ceiling being its measure rounded up; with no definition at HEAD, or no
+// repository, there is nothing to compare and the row says so.
+await row("corpus-ceilings", async () => {
+  if (!inRepository()) return skip("no git repository here (a built public tree)");
+  let headText;
+  try {
+    headText = execFileSync("git", ["show", "HEAD:corpus/runtime/modes.json"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+  } catch {
+    return skip("HEAD holds no corpus/runtime/modes.json to compare the ceilings with");
+  }
+  const { raisedCeilings } = await import("./lib/corpus-ceilings.mjs");
+  const work = JSON.parse(readFileSync("corpus/runtime/modes.json", "utf8"));
+  const recipe = existsSync("corpus/recipes/modes.json")
+    ? JSON.parse(readFileSync("corpus/recipes/modes.json", "utf8"))
+    : undefined;
+  const refused = raisedCeilings(JSON.parse(headText), work, recipe);
+  for (const mode of work.modes)
+    process.stdout.write(`  ${mode.name}: ceiling ${mode.budget.words}\n`);
+  if (refused.length)
+    throw new Error(`corpus-ceilings refused ${refused.length}: ${refused.join("; ")}`);
+});
+// ROW: the handoff contract, read by each skill's kind: a step's Next names
+// the next step of the change's mode, a start's the step its handoff
+// reaches, a habit carries no Handoff section; and the chain closes: every
+// Next names installed skills whose Consumes covers what was produced.
 await row("skills-handoff", () => {
   execFileSync(process.execPath, ["scripts/check-skills-handoff.mjs"], { encoding: "utf8" });
 });
-// ROW: the ledger verifies (workshop/components/ledger.md): one chain, every copy's pin and hunks, every witness, every generated page.
-await row("ledger", () => {
-  execFileSync(process.execPath, ["scripts/ledger.mjs", "verify"], { encoding: "utf8" });
-});
-await row("corpus-optin-assets", () => {
+await row("corpus-optin-assets", async () => {
   if (!existsSync("corpus/manifest.json")) return skip("no corpus yet (M2 not started)");
   const manifest = JSON.parse(readFileSync("corpus/manifest.json", "utf8"));
   const nonMarkdown = (dir) => {
@@ -766,25 +935,30 @@ await row("corpus-optin-assets", () => {
     visit(dir);
     return out;
   };
-  const bad = [];
-  for (const skill of manifest.skills) {
-    const assets = nonMarkdown(join("corpus", "skills", skill.name));
-    const tagged = skill.optIn === true;
-    if (assets.length >= ASSET_TREE_MIN && !tagged)
-      bad.push(`${skill.name} ships an asset tree (${assets.length} files) without optIn`);
-    if (assets.length < ASSET_TREE_MIN && tagged)
-      bad.push(`${skill.name} is optIn but carries no asset tree (${assets.length} files)`);
-  }
+  // A skill with an asset tree is extra and installs on request; an extra
+  // carries files beside its SKILL.md, since its tree is why it waits for
+  // the request (the plan modes-records-recipes, "The roster";
+  // scripts/lib/asset-tree.mjs holds the rule and its threshold).
+  const { assetTreeIssues } = await import("./lib/asset-tree.mjs");
+  const bad = assetTreeIssues(manifest.skills, (name) => {
+    const dir = join("corpus", "skills", name);
+    return {
+      assets: nonMarkdown(dir),
+      onlySkill: existsSync(dir) && readdirSync(dir).every((entry) => entry === "SKILL.md"),
+    };
+  });
   if (bad.length > 0) throw new Error(bad.join("; "));
 });
-// ROW: opt-in closure — the default roster's rendered files may name an
-// opt-in skill only beside an `(opt-in` marker, the reference rule for skills absent by default.
-await row("corpus-optin-closure", () => {
+// ROW: the closure of the extras: the default roster's rendered files may
+// name an extra skill only beside an `(extra` marker, the reference rule for
+// skills absent by default. S18b re-cut the last pages that carried the
+// `(opt-in` marker, so the allowance of both vocabularies ends here.
+await row("corpus-optin-closure", async () => {
   if (!existsSync("corpus/manifest.json")) return skip("no corpus yet (M2 not started)");
   const root = "test/goldens/corpus/dot-claude/skills";
   if (!existsSync(root)) return skip("default roster goldens missing");
   const manifest = JSON.parse(readFileSync("corpus/manifest.json", "utf8"));
-  const optIn = manifest.skills.filter((skill) => skill.optIn === true).map((skill) => skill.name);
+  const extras = manifest.skills.filter((skill) => skill.extra === true).map((skill) => skill.name);
   const rendered = [];
   const visit = (dir) => {
     for (const entry of readdirSync(dir).sort()) {
@@ -798,18 +972,18 @@ await row("corpus-optin-closure", () => {
   const bad = [];
   for (const file of rendered) {
     const content = readFileSync(file, "utf8");
-    for (const name of optIn) {
+    for (const name of extras) {
       const referenced =
         content.includes(`/${name}`) ||
         content.includes(`\`${name}\``) ||
         content.includes(`"${name}"`);
       if (!referenced) continue;
-      const marked = new RegExp(`[/\`"]${name}[\`"*]*\\s*\\(([^)]*,\\s*)?opt-in`).test(content);
-      if (!marked) bad.push(`${file} names opt-in '${name}' without an (opt-in) marker`);
+      const marked = new RegExp(`[/\`"]${name}[\`"*]*\\s*\\(([^)]*,\\s*)?extra`).test(content);
+      if (!marked) bad.push(`${file} names extra '${name}' without an (extra) marker`);
     }
   }
   if (bad.length > 0)
-    throw new Error(`opt-in not closed: ${[...new Set(bad)].slice(0, 8).join("; ")}`);
+    throw new Error(`extras not closed: ${[...new Set(bad)].slice(0, 8).join("; ")}`);
 });
 // TOOLCHAIN ROWS — SKIP with a named reason when not runnable yet
 
@@ -835,7 +1009,21 @@ for (const [name, cmd, needsSrc] of TOOLCHAIN_ROWS) {
     if (!existsSync("node_modules"))
       return skip("toolchain not installed (run pnpm install --frozen-lockfile)");
     if (needsSrc && !existsSync("src")) return skip("no sources yet (M1 not started)");
-    execSync(`npx --no-install ${cmd}`, { stdio: "pipe" });
+    try {
+      execSync(`npx --no-install ${cmd}`, { stdio: "pipe" });
+    } catch (error) {
+      // A tool prints its finding on stderr or stdout: the row names the first
+      // lines of the one and the last of the other, not only the exit.
+      const lines = (bytes) =>
+        String(bytes ?? "")
+          .split("\n")
+          .map((line) => line.trim())
+          .filter(Boolean);
+      const finding = [...lines(error.stderr).slice(0, 3), ...lines(error.stdout).slice(-4)];
+      throw new Error(`${cmd} failed: ${finding.join(" / ") || error.message}`, {
+        cause: error,
+      });
+    }
   });
 }
 await row("consumer-package", () => {
@@ -875,7 +1063,7 @@ if (full) {
         envelope.diagnostics[0]?.code !== "GL0105"
       )
         throw new Error("init outside a repository must fail closed with GL0105");
-      // Fresh repo: init, re-init, sync, doctor round-trip green.
+      // Fresh repo: init, re-init, sync, status round-trip green.
       const repoDir = join(smokeDir, "repo");
       mkdirSync(join(repoDir, ".git"), { recursive: true });
       const context = { cwd: repoDir, encoding: "utf8" };
@@ -894,10 +1082,10 @@ if (full) {
         throw new Error(`re-init must refuse and name greenline sync: ${reinitRun.stdout}`);
       const syncRun = spawnSync(process.execPath, [cliAbsolute, "sync"], context);
       if (syncRun.status !== 0) throw new Error(`sync failed: ${syncRun.stderr}`);
-      const doctorRun = spawnSync(process.execPath, [cliAbsolute, "doctor", "--json"], context);
-      const doctorEnvelope = JSON.parse(doctorRun.stdout);
-      if (doctorRun.status !== 0 || doctorEnvelope.ok !== true)
-        throw new Error("doctor must pass a fresh workspace");
+      const statusRun = spawnSync(process.execPath, [cliAbsolute, "status", "--json"], context);
+      const statusEnvelope = JSON.parse(statusRun.stdout);
+      if (statusRun.status !== 0 || statusEnvelope.ok !== true)
+        throw new Error("status must pass a fresh workspace");
     } finally {
       rmSync(smokeDir, { recursive: true, force: true });
     }
@@ -944,14 +1132,13 @@ await row("public-tree", async () => {
     for (const [destination, source] of Object.entries(set.templates))
       if (!readFileSync(join(dir, destination)).equals(readFileSync(source)))
         throw new Error(`${destination} in the public tree is not its template's bytes`);
-    // The unit-id leak proof the package check runs, over the whole tree: the ids come from the ledger's publication records, which only this checkout holds.
-    // In the repository of record the records stand, so the proof must have ids to look for.
+    // The unit-id leak proof the package check runs, over the whole tree: the
+    // ids are the frozen list the old ledger's publication records held, and
+    // the proof must have ids to look for.
     const { publicationUnitIds } = await import("./lib/private-names.mjs");
-    if (existsSync("corpus/ledger/records") && publicationUnitIds(".").length === 0)
-      throw new Error(
-        "the ledger's publication records name no unit; the unit-id leak proof has no ids",
-      );
-    const named = privateNameIssues(dir, ".");
+    if (publicationUnitIds().length === 0)
+      throw new Error("the frozen list names no guidance unit; the unit-id leak proof has no ids");
+    const named = privateNameIssues(dir);
     if (named.length > 0)
       throw new Error(
         `the public tree carries private names or guidance unit identities: ${named.slice(0, 6).join("; ")}`,
@@ -967,17 +1154,24 @@ await row("public-tree", async () => {
 });
 // ROW: the public gate (the full tier): the tree built as the export builds
 // it and its own public row set run inside it, so a public break is caught
-// here before an export.
+// here before an export. The tree holds the working tree's kept files, the
+// untracked ones included, since the private vitest row runs those too; and
+// the whole public row set runs, since a narrowing meant for this gate would
+// skip every inner row and pass with nothing proven.
 if (full) {
   await row("public-gate", async () => {
-    const { buildPublicTree } = await import("./lib/public-tree.mjs");
+    const { buildPublicTree, partition, publicGateEnvironment, readKeptSet, workingFiles } =
+      await import("./lib/public-tree.mjs");
     if (!existsSync("node_modules")) return skip("no node_modules; the public rows cannot run");
     const dir = mkdtempSync(join(tmpdir(), "greenline-kept-gate-"));
     try {
-      buildPublicTree(".", dir, { linkNodeModules: true });
+      const set = readKeptSet(".");
+      const files = partition(workingFiles("."), set).kept;
+      buildPublicTree(".", dir, { set, files, linkNodeModules: true });
       const run = spawnSync(process.execPath, ["scripts/check.mjs", "--public"], {
         cwd: dir,
         encoding: "utf8",
+        env: publicGateEnvironment(process.env),
         maxBuffer: 64 * 1024 * 1024,
       });
       if (run.status !== 0)
@@ -989,11 +1183,44 @@ if (full) {
     }
   });
 }
-const width = Math.max(...rows.map(([n]) => n.length));
-let fail = 0;
-for (const [n, s, m] of rows) {
-  if (s === "FAIL") fail++;
-  console.log(`${n.padEnd(width)}  ${s}${m ? "  — " + m : ""}`);
+await row("workshop-storage", () => {
+  if (!checkTask) return skip("private workshop allocator is absent from the public tree");
+  privateStorage.assertWorkshopBudget(checkTask);
+});
+const failuresBeforeStorageFinalization = rows.filter(([, status]) => status === "FAIL").length;
+let checkStorage;
+if (checkTask) {
+  privateStorage.confirmWorkshopChildrenDrained(checkTask);
+  checkStorage = privateStorage.finishWorkshopTask(checkTask, {
+    failed: failuresBeforeStorageFinalization > 0,
+    label: "check",
+    details: { rows },
+  });
+  if (checkStorage.budgetError) {
+    const storageRow = rows.find((entry) => entry[0] === "workshop-storage");
+    if (storageRow) storageRow.splice(1, 2, "FAIL", checkStorage.budgetError);
+    else rows.push(["workshop-storage", "FAIL", checkStorage.budgetError]);
+  }
 }
-console.log(fail ? `\nCHECK: ${fail} row(s) FAILED` : `\n${GREEN_LINE}`);
-process.exit(fail ? 1 : 0);
+// The expiring diagnostic's location comes before the table, so the lines a
+// proof receipt keeps (the last ones) never carry it.
+if (checkStorage?.diagnostic) console.log(`bounded check diagnostic: ${checkStorage.diagnostic}`);
+const width = Math.max(...rows.map(([n]) => n.length));
+for (const [n, s, m] of rows) console.log(`${n.padEnd(width)}  ${s}${m ? "  — " + m : ""}`);
+// The last line names each failing row and the first lines of its error, so a
+// proof receipt that keeps only the tail still says why the gate failed.
+const failed = rows.filter(([, s]) => s === "FAIL");
+const firstLines = (message) =>
+  String(message ?? "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .slice(0, 2)
+    .join(" / ")
+    .slice(0, 400);
+console.log(
+  failed.length
+    ? `\nCHECK: ${failed.length} row(s) FAILED: ${failed.map(([n, , m]) => `${n} — ${firstLines(m)}`).join("; ")}`
+    : `\n${GREEN_LINE}`,
+);
+process.exitCode = failed.length ? 1 : 0;

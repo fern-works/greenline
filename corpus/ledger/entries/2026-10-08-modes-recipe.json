@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-modes-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-project-router-line",
+    "sha256": "6615579f81d2ce174387f73fff9c4c6fbf2e02a672e089d437a99eb9274c124e"
+  },
+  "subject": "modes",
+  "recipe": "e35eadd3b49344fd40a0ae26e139919265011bfa972d312509b7966a5d44a7c4",
+  "result": "413c07c787a01ee70284f428593b32a1a219497fcffe81b4cf07254fcfa3059c",
+  "pages": "unknown",
+  "gist": "The modes definition gets its recipe; the definition is unchanged",
+  "reason": "The modes definition gets its recipe as the modes go live, so a placement that adds a step or reshapes a mode is built and ledgered through it. The definition itself is unchanged.",
+  "authorisedBy": {
+    "date": "2026-10-04",
+    "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

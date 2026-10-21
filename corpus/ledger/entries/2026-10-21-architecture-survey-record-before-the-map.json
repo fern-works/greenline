@@ -1,0 +1,81 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-21-architecture-survey-record-before-the-map",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-21-close-a-record-for-every-write",
+    "sha256": "266d42aaf697328d19383a2332975f87c6bf556e12cf40ee8424f884a4b220c9"
+  },
+  "subject": "skill:architecture-survey",
+  "recipe": "863560df1c0562d08d4a42e7fa5aaa969a0d27bedd2ceef4f98d30187127c7da",
+  "result": "3a666e3e5bcf697b0597ba8a587adc0ae559be5cebf350a3393bdec6d8e0aa4b",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "At an orientation a quick record opens before the result is written",
+  "reason": "At an orientation the survey opens a quick record before it writes its result into the knowledge homes, as every write does, so the hooks' hold has no exempt path (J-102 S2).",
+  "authorisedBy": {
+    "date": "2026-10-21",
+    "words": "The operator's card of 2026-10-21, \"A record for every write (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): a close asked for by name that writes only to the decisions book, the ADR home or the glossary, and the orientation's survey writing its result into the knowledge homes, each open a quick record first, so the hooks' hold on a workspace while no change is open is one rule with no list of exempt paths"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the walk one delegated agent or the agent's own and the designs made one after another (R20: \"we are not doing worktrees and parralel susbs at all\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stood, moved under the operator's ruling of 2026-10-04 on Q1, \"okay then lock in what you recommend\", and inventoried under the docs/DECISIONS.md row of 2026-10-01 on existing divergence, and the portable edits of R21 are its re-cut's"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-21",
+      "words": "The operator's card of 2026-10-21, \"A record for every write (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): a close asked for by name that writes only to the decisions book, the ADR home or the glossary, and the orientation's survey writing its result into the knowledge homes, each open a quick record first, so the hooks' hold on a workspace while no change is open is one rule with no list of exempt paths"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 147,
+        "taken": 125,
+        "exact": 108,
+        "retention": 0.864,
+        "coverage": 0.8503401360544217,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 1611
+  }
+}

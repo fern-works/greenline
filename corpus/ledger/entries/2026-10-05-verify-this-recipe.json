@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-verify-this-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-control-ui-recipe",
+    "sha256": "e90c5dec60b9a01be3e89f57187db8e7116c3ec688f9065d5e2856d19de2c6aa"
+  },
+  "subject": "skill:verify-this",
+  "recipe": "d7a204d6302860eceacf7fc9d16bb12404a2fe44ed99199d5f3123a272ab02e1",
+  "result": "d2e0f329b0b7a9c79da2c21ee9ce3a03e27cc2ae0bdda4bd8d2f607556e449d2",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves verify-this to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 37,
+        "taken": 35,
+        "exact": 33,
+        "retention": 0.9428571428571428,
+        "coverage": 0.9459459459459459,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 412
+  }
+}

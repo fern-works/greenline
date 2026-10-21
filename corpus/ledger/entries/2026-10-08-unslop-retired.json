@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-unslop-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-airgap-secrets-retired",
+    "sha256": "e8fbecc7f61e46a208c27bd7c9cc97a5c059f5c4d7f05d24df6e90c8786abd5a"
+  },
+  "skill": "unslop",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "prose",
+  "recipe": "56c180f7e794f6c59ec00f74b42b2f8058ed2cbbbb4022997abc30796b797b11",
+  "gist": "Its catalog becomes prose's page of tells",
+  "reason": "unslop's catalog is the prose habit's page of tells now.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

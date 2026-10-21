@@ -1,0 +1,81 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-anticipate-premise-review",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-plan-references",
+    "sha256": "6ebe2b5ca3c6fab5f340cc59e00618bbed864f4ffd4c0af5079a3a2a8e498dc0"
+  },
+  "subject": "skill:anticipate",
+  "recipe": "79aa7161df460cb96b60b71f4c9704e7cdabebb381c59821398a85d77a19e50f",
+  "result": "e5a4be453feae78ce5c8f3017c58787511001ea7b0be2b22d51307d27aeb68f8",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Anticipate becomes careful's premise review, no longer a trial",
+  "reason": "Anticipate is the careful mode's premise review, run where the mode reaches it, no longer a trial a workspace enables; its references page gives the independent depth's one fresh reader and its report.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's card of 2026-10-14 on part 1 of the-whole-change, \"Rule as proposed\": anticipate's report has a shape, parallel to review's and verify's: the claims tried, the ones that held, the ones that broke, the limits"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 185,
+        "taken": 61,
+        "exact": 57,
+        "retention": 0.9344262295081968,
+        "coverage": 0.32972972972972975,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 950
+  }
+}

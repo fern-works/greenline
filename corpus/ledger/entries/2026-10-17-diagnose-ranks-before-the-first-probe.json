@@ -1,0 +1,95 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-17-diagnose-ranks-before-the-first-probe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-17-ponytail-measured-need-and-simplify-first",
+    "sha256": "9d20838eb69d483f2c134757518580db2f406a30f759f9521e5ce1bdb653a691"
+  },
+  "subject": "skill:diagnose",
+  "recipe": "9670dbc75f56abd79f34a13718492ccc68c99ac24262cff5f7a97c556074e0b1",
+  "result": "686a35eedf211215dc8bbb57dd6391fd6ff3dd797201af0bd9b71a4095c5a790",
+  "pages": "unknown",
+  "gist": "The ranked hypotheses come before the first probe and stay ranked",
+  "reason": "The ranked hypotheses come before the first probe and stay ranked once a probe confirms one, since a QA run probed one theory with no ranked list.",
+  "authorisedBy": {
+    "date": "2026-10-17",
+    "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 302,
+        "taken": 46,
+        "exact": 45,
+        "retention": 0.9782608695652174,
+        "coverage": 0.152317880794702,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 122,
+        "exact": 119,
+        "retention": 0.9754098360655737,
+        "coverage": 0.9606299212598425,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 40,
+        "taken": 18,
+        "exact": 17,
+        "retention": 0.9444444444444444,
+        "coverage": 0.45,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 363,
+        "taken": 237,
+        "exact": 229,
+        "retention": 0.9662447257383966,
+        "coverage": 0.6528925619834711,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 863
+  }
+}

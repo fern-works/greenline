@@ -1,0 +1,27 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-grill-with-docs-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-domain-modeling-refresh",
+    "sha256": "d4763f1e28550be885499b6e3c80194877a9d7bfe6cf5c495e35e226584f80bc"
+  },
+  "subject": "skill:grill-with-docs",
+  "recipe": "4db236da4edabf2b17b213c01e0eb3377838bcdc84a3cb709c7df12a56f42c43",
+  "result": "01d6d4a414f77bd16775175199893b368117d8c971a8e8890c4f4e79d9a866b5",
+  "pages": [],
+  "gist": "Credited body unchanged, so the stub stands and re-anchors",
+  "reason": "Refreshes grill-with-docs to mattpocock-skills 6fd947921b93: the credited body did not change, so the stub ruling stands and the recipe re-anchors as it stands, its text and measure unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+    }
+  ],
+  "measure": {
+    "stub": true,
+    "sources": [],
+    "growth": 289
+  }
+}

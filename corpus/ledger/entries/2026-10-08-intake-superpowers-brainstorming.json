@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-brainstorming",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-interview-me",
+    "sha256": "fa246599b8cbefbf017d52a1aa1efdb3a2b8da8a717cc5a8472014f16cca6666"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/brainstorming"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Two passages enter frame and prototype; the rest is not taken",
+  "reason": "Its passage separating what was said from assumptions enters the re-cut frame recipe, and its approaches passage prototype. Its gate and path classification are declined, its spec parts are to-spec's, and its visual companion and spec reviewer are not taken.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "grilling",
+    "catches": "A frame decision built on an intent or requirement the agent assumed rather than heard from the owner",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 250
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 250
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 250
+      }
+    ],
+    "ships": "default"
+  }
+}

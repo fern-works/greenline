@@ -1,0 +1,81 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-prose-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-secrets-gists",
+    "sha256": "972b0d3dc111e11d4d44455a6f32775d4d2cab89041579ae663ba92eebcafb7d"
+  },
+  "subject": "skill:prose",
+  "recipe": "682f856612b7043856a1e7bbdbe305e5fcb88efc03750db27751b806ef65fa34",
+  "result": "9553d769d59590c9f14454058b08db011a8d8a5a484af8db95ffae96704e4168",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R23 of 2026-10-08, \"change context md to glossary md\", the glossary home being GLOSSARY.md"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 26,
+        "taken": 24,
+        "exact": 24,
+        "retention": 1,
+        "coverage": 0.9230769230769231,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 2,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "pstack",
+        "segments": 296,
+        "taken": 293,
+        "exact": 289,
+        "retention": 0.9863481228668942,
+        "coverage": 0.9898648648648649,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 476
+  }
+}

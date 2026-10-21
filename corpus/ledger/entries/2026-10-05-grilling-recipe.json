@@ -1,0 +1,36 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-grilling-recipe",
+  "kind": "change",
+  "previous": {
+    "oldChain": {
+      "id": "use-garden-answers-2026-09-28",
+      "revision": "1781745ed091dde2c37961b37a9f1bb7cf058a8339692f7a9855ea069b0eb475",
+      "commit": "74fd46de5dda713eb81f47373a0a4fe8e8c117be"
+    }
+  },
+  "subject": "skill:grilling",
+  "recipe": "6b7c6a96712293895a4e85ba9e33e341ef6f74349036970a1f112432ca97431c",
+  "result": "792720a55e49aa80c683dfbbc54b08c6428f80749863c8e9a6a674fc2dc09b96",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves grilling to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 17,
+        "taken": 17,
+        "exact": 17,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 158
+  }
+}

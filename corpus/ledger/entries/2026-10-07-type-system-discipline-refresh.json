@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-type-system-discipline-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-technical-writing-refresh",
+    "sha256": "67f8d6ac8f1e61514316174cc37412383d705fb5584d93c729af2f3f2ba832eb"
+  },
+  "subject": "skill:type-system-discipline",
+  "recipe": "c01938bbb556c1c25869b308002b473da89dcca536306f9e3637643f53494850",
+  "result": "23a01451ca118a1fa3491f1cf905ccd87514ae32cec15fe670146f183e8d6e37",
+  "pages": [],
+  "gist": "Upstream unchanged; the licence now comes from the plugin directory",
+  "reason": "Refreshes type-system-discipline to pstack d0ef80d86795: no segment changed, so the recipe re-anchors as it stands. The repository root has no licence file, so the snapshot's LICENSE is the plugin directory's own, byte-identical to before.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 61,
+        "taken": 58,
+        "exact": 58,
+        "retention": 1,
+        "coverage": 0.9508196721311475,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

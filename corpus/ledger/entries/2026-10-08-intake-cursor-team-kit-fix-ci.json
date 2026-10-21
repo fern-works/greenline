@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-cursor-team-kit-fix-ci",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-performance-optimization",
+    "sha256": "ee52c20c2c590c09744f849a8e1ab56a28db4edaf7b2d123e4cc97b2b7af71fe"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "cursor-team-kit/skills/fix-ci"
+  },
+  "pin": "cursor-team-kit",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "A gh-bound CI procedure whose method duplicates diagnosing-bugs",
+  "reason": "A procedure over gh pr checks whose method duplicates diagnosing-bugs.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its CI procedure over gh pr checks",
+        "locator": "cursor-team-kit/skills/fix-ci"
+      }
+    ]
+  }
+}

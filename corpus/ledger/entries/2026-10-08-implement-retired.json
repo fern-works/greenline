@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-implement-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-close-recipe",
+    "sha256": "007304acf1f9c65e93d1bd7c0e11cb3214a6d2d3fa8c64d46197d7cfae3c6c49"
+  },
+  "skill": "implement",
+  "slice": "S14 of the plan modes-records-recipes",
+  "replacedBy": "build",
+  "recipe": "eec871518482b5bdf0216b15a1d2a7b8c87be3bbb10ac8634de7f0642ab558b5",
+  "gist": "Its pointer and handoff lines go to build",
+  "reason": "implement, a stub, gives build its tdd pointer and its handoff lines; build's method is incremental-implementation's.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\" (C15)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\" (C15)"
+    }
+  ]
+}

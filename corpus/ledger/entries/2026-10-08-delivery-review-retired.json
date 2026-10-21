@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-delivery-review-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-verify-recipe",
+    "sha256": "40a08bacb6bda0c2850d4fdc75479e57303fe14636e32224f417ddde23d056ec"
+  },
+  "skill": "delivery-review",
+  "slice": "S15 of the plan modes-records-recipes",
+  "replacedBy": "review",
+  "recipe": "3e2c191024252d4aa6fd451bdaf85db8a70daa1fc315579d3fa292163ca13a13",
+  "gist": "Becomes review's spine, its reviewers run one after another",
+  "reason": "delivery-review is review's spine now: its two axes, pinned commits, standards and spec sources, smell baseline and two briefs are the reviewer's brief, its parallel sub-agents giving way to reviewers one after another.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\" (R20, R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\" (R20, R21)"
+    }
+  ]
+}

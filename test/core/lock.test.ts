@@ -11,7 +11,7 @@ function lockJson(body: string): string {
   return `{ "schemaVersion": ${LOCK_SCHEMA_VERSION}, "cliVersion": "0.0.0", "installationRevision": "${REVISION}", ${body} }`;
 }
 
-const BASE_BODY: string = `"upstreams": [{ "name": "mattpocock-skills", "repo": "mattpocock/skills", "commit": null }], "files": {}`;
+const BASE_BODY: string = `"sources": [{ "name": "mattpocock-skills", "repo": "mattpocock/skills", "commit": null }], "files": {}`;
 
 describe("parseLock", () => {
   it.each([
@@ -23,28 +23,49 @@ describe("parseLock", () => {
     "a/./file.md",
   ])("rejects nonportable or escaping managed path %s", (path) => {
     const text = JSON.stringify({
-      schemaVersion: 4,
+      schemaVersion: 5,
       cliVersion: "0.0.0",
       installationRevision: REVISION,
-      upstreams: [],
+      sources: [],
       files: { [path]: HASH },
     });
     expect(parseLock(text, SOURCE)._tag).toBe("err");
   });
 
   it("carries the installation identity independently of guidance publications", () => {
-    const body = `"upstreams": [{ "name": "mattpocock-skills", "repo": "mattpocock/skills", "commit": null }], "files": {}`;
+    const body = `"sources": [{ "name": "mattpocock-skills", "repo": "mattpocock/skills", "commit": null }], "files": {}`;
     const text = `{ "schemaVersion": ${LOCK_SCHEMA_VERSION}, "cliVersion": "0.0.0", "installationRevision": "${REVISION}", ${body} }`;
     const result = parseLock(text, SOURCE);
     expect(isOk(result)).toBe(true);
     if (!isOk(result)) return;
-    expect(result.value.schemaVersion).toBe(4);
+    expect(result.value.schemaVersion).toBe(5);
     expect(result.value.installationRevision).toBe(REVISION);
     expect(
       parseLock(text.replace(`"installationRevision": "${REVISION}", `, ""), SOURCE)._tag,
     ).toBe("err");
-    expect(parseLock(text.replace('"schemaVersion": 4', '"schemaVersion": 2'), SOURCE)._tag).toBe(
+    expect(parseLock(text.replace('"schemaVersion": 5', '"schemaVersion": 2'), SOURCE)._tag).toBe(
       "err",
+    );
+  });
+
+  it("refuses a schema 4 lock, naming its version and the remedy, with no converter", () => {
+    const schema4 = JSON.stringify({
+      schemaVersion: 4,
+      cliVersion: "0.0.0",
+      installationRevision: REVISION,
+      sources: [{ name: "mattpocock-skills", repo: "mattpocock/skills", commit: null }],
+      files: {},
+    });
+    const result = parseLock(schema4, SOURCE);
+    expect(isOk(result)).toBe(false);
+    if (isOk(result)) return;
+    expect(result.error.issues).toHaveLength(1);
+    expect(result.error.issues[0]?.path).toBe("schemaVersion");
+    expect(result.error.issues[0]?.message).toContain(
+      "unsupported lock schema version '4' (expected 5)",
+    );
+    expect(result.error.issues[0]?.message).toContain(
+      "delete .greenline/lock.json and run 'greenline sync'",
     );
   });
 
@@ -53,12 +74,12 @@ describe("parseLock", () => {
     expect(isOk(result)).toBe(true);
     if (!isOk(result)) return;
     expect(result.value.cliVersion).toBe("0.0.0");
-    expect(result.value.upstreams[0]?.commit).toBe(null);
+    expect(result.value.sources[0]?.commit).toBe(null);
     expect(result.value.files.size).toBe(0);
   });
 
   it("records managed files as a map of path to sha256", () => {
-    const body = `"upstreams": [{ "name": "mattpocock-skills", "repo": "mattpocock/skills", "commit": "abc123" }], "files": { ".agents/skills/x/SKILL.md": "${HASH}" }`;
+    const body = `"sources": [{ "name": "mattpocock-skills", "repo": "mattpocock/skills", "commit": "abc123" }], "files": { ".agents/skills/x/SKILL.md": "${HASH}" }`;
     const result = parseLock(lockJson(body), SOURCE);
     expect(isOk(result)).toBe(true);
     if (!isOk(result)) return;
@@ -79,7 +100,7 @@ describe("parseLock", () => {
   });
 
   it("rejects a malformed content hash", () => {
-    const body = `"upstreams": [{ "name": "f", "repo": "r", "commit": null }], "files": { "a": "not-a-hash" }`;
+    const body = `"sources": [{ "name": "f", "repo": "r", "commit": null }], "files": { "a": "not-a-hash" }`;
     const result = parseLock(lockJson(body), SOURCE);
     expect(isOk(result)).toBe(false);
     if (isOk(result)) return;

@@ -1,155 +1,204 @@
-# Work artifacts
+# Work in this workspace
 
-Use a ticket for a bounded code change. Its identity is independent of any
-initiative. An initiative groups a larger intent arc and lists its tickets;
-it does not own their location. The agent authors project state. The CLI
-parses it, reports facts, and refuses stale or inconsistent references.
+AGENTS.md owns the request loop, the modes and the roster. This guide owns
+where the work's files live and how long each one lives: the change record
+and its folder, the plan directory, the working files, the decision home and
+the glossary, and the two settings that shape the loop. The record's format
+and the skeleton of each mode are in `.greenline/ledger/README.md`.
 
-## A compact ticket
+## Who a file serves
 
-Inspect the filenames in `.greenline/work/tickets/` (an absent directory is empty)
-and choose an unused TKT-NNN; recheck before writing to avoid a concurrent collision.
-Use `greenline status --json` to inspect the existing tickets, then write
-`.greenline/work/tickets/TKT-001.md`. Keep the intent, affected scope, agreed
-authority, acceptance, and relevant constraints self-contained. This is the
-same ticket shape used in larger work:
+The files the work leaves serve four objectives: the repository's
+maintenance, the memory of what a session did, the owner's audit, and the
+next step's input. Every file the work leaves names its reader and its
+lifetime. A file with no reader is not written, and a new kind of file,
+whoever proposes it, names its reader, its lifetime and its shape, or is
+not written.
 
-```markdown
+- **The next agent**, which may be a fresh session: to resume the change, as
+  the brief handed to a fresh agent, for the constraints already decided,
+  for precedent in the same area, and for the proof a claim rests on.
+- **The owner**, for bookkeeping: the trust a change earns at a glance (its
+  mode, who reviewed it, whether its checks ran on the final code, its
+  limits), the history of why each change happened, and what it cost.
+
+Every handoff between agents is a file with a shape, written by the sender,
+or by `greenline brief` in its place, and read by the receiver, and it lives as long as its reader needs it. A
+report the record cites is permanent, in the change's folder, and so is a
+reviewer's or a verifier's brief, which `greenline brief` writes there and
+the close cites. Anticipate's brief, a relay note or a probe is a working
+file: `greenline tidy` removes them when
+the change is done; it never removes a cited file. No file is deleted
+because it was read, and none is committed to keep it.
+
+You write at four moments: at open, the front matter the ledger guide's
+skeleton gives, before the first edit; at each step's end, that step's
+section; at every stop, the state `stopped` and the "next" line, and the
+record and its folder committed with the change's trailer; at close,
+when the close step distils the working files into the record, moves
+lasting choices into the decision home and the glossary, and runs
+`greenline tidy --change <id>`, which removes the working files. A stop
+commits the record and its folder, the check facts under it, and nothing
+else: the change's uncommitted edits stay in its checkout for its resume,
+and while they are there a proposal for another change says so and waits
+for the owner; edits the owner asks to commit are a commit of their own,
+apart from the stop's. A record
+holds the facts once: no diary, no pasted log, nothing git already records,
+and no fact in two homes.
+
+## Three lifetimes
+
+| Kind      | What it is                                                                                       | Where                                                     | Lifetime                                            |
+| --------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------------------------------------------------- |
+| Working   | anticipate's brief, relay notes, round detail, probes, raw output                                | `.greenline/tmp/<id>/`                                    | removed by `greenline tidy` when the change is done |
+| Record    | the change record, its check facts, the briefs `greenline brief` writes and the reports it cites | `.greenline/ledger/<id>.md` and `.greenline/ledger/<id>/` | permanent                                           |
+| Knowledge | the decision home, decision records, the glossary, the plan documents                            | the homes below                                           | permanent and kept current                          |
+
+The record alone is enough to resume. The working files live under the
+git-ignored `.greenline/tmp/<id>/`, named by the change's id; they are never
+committed and never cited, since a link into them does not resolve. The id is
+chosen when the change's proposal is written, or earlier for a start's
+working file, such as a diagnosis's reproducer, as AGENTS.md says, so the folder, the branch and the record
+share it from the start. Two working files have a name and a shape, which `.greenline/ledger/README.md` gives: anticipate's brief,
+`.greenline/tmp/<id>/brief-anticipate-<n>.md`, and the relay note between
+two rounds, `.greenline/tmp/<id>/relay-<step>-<n>.md`. A reviewer's and a
+verifier's brief is no working file: `greenline brief` writes it into the
+change's folder, as that guide says. `greenline status`
+reports a folder left after the change is done. What a record relies on is
+copied into the change's folder first, and the record cites that copy. A
+change's files live in its one checkout, on the branch its proposal named,
+and that checkout is a worktree only when the owner asked for one and the
+harness runs the session in it. A
+branch is context, never evidence.
+
+## The change record
+
+Every change, in every mode, has one record, `.greenline/ledger/<id>.md`, and
+a folder beside it, `.greenline/ledger/<id>/`, whenever something is
+attached. A question, a step asked for by name that changes no file and a
+start that edits no file have no record; a decision or a term written only
+into the knowledge homes (the decisions book, the ADR home, the glossary)
+opens a quick record first, as every write does. A follow-up inside an open change
+joins that change. `.greenline/ledger/README.md` gives the front matter, the
+two states a change stops and resumes in, the "next" line, the sections and
+the skeleton of each mode, and says what the folder holds.
+
+## Plans and tickets
+
+A mode says how sure; a plan says how big. A change of any mode may stand
+alone, with its frame, plan and anticipate sections in its own record. A plan directory exists only when the plan step splits the work
+into tickets:
+`.greenline/plans/<NNN-name>/`, such as `.greenline/plans/003-login/`. It
+holds the plan documents the work needs: `spec.md`, `decisions.md`,
+`map.md`, `tickets.md`, and research and prototype notes. Each opens with
+front matter holding `status: draft` or `status: complete` and nothing else.
+
+`tickets.md` is one file with one short entry per ticket: a `## <id>` heading
+and its fields, the intent, the scope, the acceptance, the entries it comes
+after, and its own mode.
+
+```text
 ---
-id: TKT-001
-type: ticket
-status: ready
-revision: 1
-intent: "Preserve the caller deadline across retries."
-scope:
-  - src/http
-depends_on: []
-consumes: []
-acceptance:
-  - [ ] Every retry uses the original caller deadline.
----
-
-## Scope and authority
-
-The owner requested this bounded repair. Existing retry policy stays in
-force. Record a new consequential choice before implementing it.
-
-## Evidence
-
-Link the execution account and verification witnesses here when available.
-```
-
-`scope` names repository-relative roots or paths. `depends_on` contains global
-ticket IDs, including prerequisites in another initiative. `consumes` pins
-actual upstream artifacts as `{ id: INIT-001/SPEC, revision: 2 }`; omit it or
-use an empty list when no upstream artifact is needed. A prose edit that
-changes intent, acceptance, or another consumed contract increments the
-revision. Pure annotations do not invent a new contract revision.
-
-Claim only ready work whose dependencies are complete. Record `claimed_by`
-(the worktree or execution context) and `base_commit`, then move through
-`claimed`, `implementing`, and `implemented` as those states become true.
-One implementer per worktree; a matching existing claim is continuation.
-`blocked: true` is independent of lifecycle state and keeps the ticket off
-the ready frontier. Set `result_commit` to the committed implementation result
-before the ticket becomes `implemented`. Set its implementation account’s
-`resultCommit` to the same commit. Evidence committed later can pin that result
-without a self-referential commit hash. Pin bytes that are not committed yet
-with `greenline evidence <paths> --pending` once the result is final: doctor
-resolves the witnessing commit when it reads the account, so the pin does not
-have to be taken a second time and carried by a second accounting commit.
-Commit that finalized account and the
-updated ticket before requesting review; the accounting commit is a separate
-review input and does not extend the implementation range.
-
-Keep raw witnesses and their instruments, with each captured command and
-outcome, under `.greenline/work/evidence/TKT-001/` for work with a ticket (a
-reviewer uses its own REV id) and under `.greenline/ledger/evidence/<contribution>/`
-for standalone upkeep with no ticket; there is no third evidence root. Scratch
-work can use `.greenline/tmp/<skill>/`; it is never committed and never cited,
-since a reference into it does not resolve and the ledger audit says so.
-Promote evidence before a result relies on it: a prototype or a probe that a
-decision relies on is copied into the owning evidence home first, and the
-citation names that copy. Its source may be kept on a throwaway branch out of
-main only when it was built in an isolated checkout, and a branch pointer on
-a ticket is context, never evidence.
-
-## Review and verification
-
-Use a fresh independent review context and an explicit committed range.
-Write `.greenline/work/reviews/REV-001.md` with this frontmatter:
-
-```yaml
----
-id: REV-001
-type: review
 status: draft
-revision: 1
-range: <base-commit>..<result-commit>
-ticket: TKT-001
-implementation_account: implementation-account-id
 ---
+
+# Tickets
+
+## T1
+
+intent: "Keep the caller's deadline across retries."
+scope:
+  - src/http/retry.ts
+acceptance:
+  - "Every retry uses the original deadline."
+mode: regular
+
+## T2
+
+intent: "Report the deadline in the retry log."
+scope:
+  - src/http/log.ts
+acceptance:
+  - "The log line names the deadline."
+after: [T1]
+mode: quick
 ```
 
-`implementation_account` identifies the implementer's account for the reviewed
-ticket and result. The reviewer owns a separate review-role account whose
-`work` identifies this REV artifact and whose `reviews` pins the implementation
-account's bytes. Before completing the review, set the review account’s
-`resultCommit` to the implementation commit at the end of `range`; the reviewer
-does not need to create a new implementation commit. The finalized implementation
-account may live in a later accounting commit outside that range. Read and pin
-that commit's account bytes separately; reviewing the implementation diff does
-not replace examining its account.
+Work that splits waits twice, as AGENTS.md says. Marking `tickets.md`
+complete records the owner's approval of the list and the mode beside each,
+a mode the owner names there editing its entry; until then no ticket is
+ready. A floor applies per ticket. A ticket opens its own record, naming its
+plan and ticket, under its entry's mode or one the owner names as it opens,
+an override `greenline status` marks. A ticket nobody started has no
+record. Progress is never written: `greenline status` derives each
+ticket as not started, in progress or done, and lists those ready to start.
+The planning change has one record, under careful unless the owner names
+another, since its plan writes the tickets with the floor named, and
+`greenline status` reports one below careful. It opens
+first, stays open while its tickets run, closes last, and checks the whole
+result against the spec.
 
-Replace placeholders with the actual commits and account. Record findings,
-their evidence, and the verdict in the body; complete the review only when
-that examination is finished. Its execution account pins the exact
-implementation account examined. Matching commit hashes alone do not prove
-ownership: another ticket may share the same commit.
+## The settings
 
-The reviewer holds `reviewing`. Findings return the ticket to `implementing`;
-a supported clean review advances it to `verifying`. Verification checks the
-ticket's acceptance against its exact result; the implementer's checks stay in
-the implementation account, while a separate verifier records its own contribution.
-Complete within the owner's implementation grant when acceptance, required
-checks, independent review, and verification are supported. Respect an explicit
-stop boundary. A missing proof remains a limit, not a completed criterion.
-Changed implementation invalidates affected review and verification.
+Two fields of `.greenline/manifest.json` shape the loop. They are the
+owner's: change them only when the owner asks. `greenline inspect` edits them
+as it edits the other settings, and `greenline init` writes their defaults.
 
-## Larger intent arcs
+```json
+{
+  "proceed": "none",
+  "trials": []
+}
+```
 
-An initiative directory uses `NNN-name`, for example
-`.greenline/work/001-network/initiative.md`, with
-`id: INIT-001`, `type: initiative`, `revision: 1`, an appropriate `status`,
-and a `tickets` list of global ticket IDs. Joining, leaving, or moving between
-initiatives edits membership; ticket identity and evidence locations stay put.
-A ticket belongs to at most one initiative at a time.
+- `proceed` is `none` or a mode. At a mode, you proceed without waiting for
+  that mode and every faster one, and wait for the slower. At `none`, the
+  default, you wait for every mode. A record of a change you proceeded with
+  under this setting states `choice: standing`, and a standing choice
+  applies only where `proceed` admits the record's mode: elsewhere the hooks
+  refuse it, and the request's own words, such as "implement without
+  asking" or "go ahead", are no yes. `greenline status` shows a standing
+  record whose mode `proceed` does not allow beside its row: the hooks were
+  off or bypassed, or a mistake.
+- `trials` lists the trial skills this workspace enabled, a trial start or
+  a trial habit, none by default. A trial skill not listed is not
+  installed, and AGENTS.md lists it nowhere. Run `greenline sync` after a
+  change, so the installed skills follow.
 
-Create the supporting artifacts that the work needs, at that initiative's
-root: `decisions.md` (`INIT-001/DEC`), `spec.md` (`INIT-001/SPEC`), or `map.md`
-(`INIT-001/MAP`). Research and prototype notes use
-`research/RSRCH-001.md` and `prototypes/PROTO-001.md` with the corresponding
-initiative-qualified IDs; a compact ticket's research note lives under that
-ticket's evidence directory, and there is no third home. All have `type`,
-`status` (`draft` or `complete`), `revision`, and any actual `consumes` pins.
-Supporting artifacts are not required for a settled compact ticket. A
-decision item in `map.md` becomes delivery work only through to-tickets,
-which writes the ticket; map items are never promoted by hand.
+Two more fields hold the project's checks and its hooks.
 
-The intent arc can pass through proposed, shaping, decided, specified, planned,
-executing, reviewing, verifying, and complete. Record a state only when its
-evidence exists. Planning methods own the needed decisions, spec, and ticket
-graph; execution methods consume them. A scope correction is an explicit
-revision whose affected downstream work must be rechecked.
+```json
+{
+  "checks": [{ "name": "test", "command": "npm run test", "dir": "." }],
+  "hooks": { "git": true, "adapters": true }
+}
+```
+
+- `checks` declares the project's checks, each a name, the command as one
+  line and the directory it runs in. `greenline init` proposes them from the
+  project's own files; confirm or correct them in the first change's plan,
+  and declare one the change adds with
+  `greenline check --declare -- <command>`, a line the owner's yes covers.
+  A command a harness hook sees whose text is a declared check's, or begins
+  with it and a space, in the same directory, is recorded as that check's
+  run; only a run through `greenline check` counts for the close.
+- `hooks` turns greenline's git hooks and its harness adapters on or off;
+  both are on by default. The git hooks, under `.greenline/hooks/`, write
+  the change's trailer and refuse a commit before the owner's yes or while
+  no change is open, a done
+  over a check that is not green, a rewrite of the change's branch without
+  its `rebase` words and a push without its `landing` words. A clone has
+  the scripts and runs none until `greenline sync` registers them;
+  `greenline status` says when they are absent.
 
 ## Installing and removing methods
 
-diagram-design and architecture-map are optional: they install only when
-authorized, by adding the name to the manifest's `skills.include` and running
-`greenline sync`; an explicit `skills.exclude` stays binding until the owner
-authorizes changing it. Removing availability leaves owned files as orphans
-until they are explicitly removed: inspect sync's JSON effects and pass the
-chosen exact paths to `--force-managed`, preserving edited files.
+A skill AGENTS.md marks as installing on request installs only when the
+owner authorizes it: add its name to the manifest's `skills.include` and run
+`greenline sync`. An explicit `skills.exclude` stays binding until the owner
+authorizes changing it. Removing a skill leaves its owned files as orphans
+until they are removed explicitly: read sync's JSON effects and pass the
+chosen exact paths to `--force-managed`, keeping edited files.
 
 The garden connector's method is installed only while the owner has enabled
 garden with `greenline connectors enable garden --url URL`, never through
@@ -170,13 +219,13 @@ into that document, never a second copy of its choices.
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Decisions book: `.greenline/DECISIONS.md`       | Settled product and engineering choices, per-root statements, and references to their rationale. Create it when the first lasting choice is settled; missing means no recorded choices. A deferral is a line inside the decision it defers from, never an entry of its own. |
 | House rulings: user-owned region of `AGENTS.md` | Optional `## House rulings` dash-list outside the managed markers; write only actual owner instructions. Format below.                                                                                                                                                      |
-| `CONTEXT.md`                                    | Domain vocabulary. domain-modeling creates it when the first term is resolved.                                                                                                                                                                                              |
-| `CONTEXT-MAP.md`                                | Optional index of multiple domain contexts and their own vocabulary homes; create only when needed.                                                                                                                                                                         |
-| `docs/adr/`                                     | Consequential technical reasoning, alternatives and costs. record-architecture-decisions supplies the template on first use; link lasting choices from the decisions book.                                                                                                  |
-| Initiative `decisions.md`                       | Choices shaping that initiative; promote those that outlive it into the decisions book with source references.                                                                                                                                                              |
+| `docs/adr/`                                     | Consequential technical reasoning, alternatives and costs. The close step seeds it on first use only where the repository keeps no decisions; link lasting choices from the decisions book.                                                                                 |
+| `GLOSSARY.md`                                   | The domain's terms. The close step creates it when the first term is settled.                                                                                                                                                                                               |
+| `GLOSSARY-MAP.md`                               | Optional index of several domain contexts and the glossary of each; create it only when a second context needs its own.                                                                                                                                                     |
+| A plan's `decisions.md`                         | Choices that shape one plan; the planning change's close moves those that outlive it into the decisions book with references to their sources.                                                                                                                              |
 | `.greenline/policy-changes.json`                | The latest manual saves made through `greenline inspect`; read the relevant ones when the file exists.                                                                                                                                                                      |
-| `.greenline/diagrams/<work-id>/`                | Durable diagrams linked from the owning artifact, with the effective style guide beside them; present only when the optional diagram-design method is installed.                                                                                                            |
-| `.greenline/map/`                               | The measured architecture map (map.md, snapshot.json, architecture.html); present only when the optional architecture-map method is installed.                                                                                                                              |
+| `.greenline/diagrams/<work-id>/`                | Durable diagrams, in a folder named by the change id or the plan name they serve and linked from its record or document, with the effective style guide beside them; present only when the diagram skill is installed.                                                      |
+| `.greenline/map/`                               | The measured architecture map (map.md, snapshot.json, architecture.html); present only when the architecture map skill is installed.                                                                                                                                        |
 
 ### House rulings
 
@@ -232,8 +281,8 @@ a group with no members refuses the read. The agent must select the actual
 governed root rather than substituting a child path. Empty exclusions forbid no
 units.
 
-Before closing meaningful work, retain lasting choices in the decisions book and
-link their rationale rather than copying it into multiple homes. Existing evidence
-is not shared guidance policy. The execution ledger records delivery, use and proof;
-it does not replace intent or decisions. None of these optional authored documents
-is created merely to fill a template.
+Before a change closes, its lasting choices go into the decisions book, with
+links to their rationale rather than copies of it in several homes. A
+change record holds the why, the what and the how of one change; it does not
+replace the decision home. None of these documents is created merely to fill
+a template.

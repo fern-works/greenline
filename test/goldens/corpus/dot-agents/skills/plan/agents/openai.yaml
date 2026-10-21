@@ -1,0 +1,5 @@
+interface:
+  display_name: "Plan"
+  short_description: "Turn a change's framed intent into what the build follows: acceptance that can fail, the work cut into ordered tasks or tickets, and the shape of the code, at the depth the change's mode gives the plan step; work that splits writes a spec and a tickets file with a mode per ticket. Use when the mode reaches plan, or when the owner asks for a spec or tickets."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-boundary-discipline-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-verify-this-refresh",
+    "sha256": "17be437bed8f7e9b42d7b3559091b2a48eefb2925edaea519d6710a7c166bbdc"
+  },
+  "subject": "skill:boundary-discipline",
+  "recipe": "613fcceecc59816d2055ce2ac2dfb30515aa9479359862272192dcfe4671877d",
+  "result": "c36158855d7bc995077c10c2b6d191ad254b5a3524bb92d187bc14b762363246",
+  "pages": [],
+  "gist": "Upstream unchanged; the licence now comes from the plugin directory",
+  "reason": "Refreshes boundary-discipline to pstack d0ef80d86795: no segment changed, so the recipe re-anchors as it stands. The repository root has no licence file, so the snapshot's LICENSE is the plugin directory's own, byte-identical to before.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 30,
+        "taken": 30,
+        "exact": 30,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

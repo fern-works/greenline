@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-diagram-design-verifier-pointers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-progress-check-refresh",
+    "sha256": "495eb29e2204ec60e5f52b22bb83cf07fe3f26f63cb9ea07bc71baacdb44b7e5"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "314447945da5113beb16c474eb8b6462a80d5bf8b76d70cf2e31ee66cbdb5095",
+  "result": "705fdd9f6ab692929405d598718c87c5439a3d43a75de06e9285478b47ffb6b9",
+  "pages": "unknown",
+  "gist": "Verifier sentences on the moved page become pointers; it does not ship",
+  "reason": "Re-applies diagram-design's verifier account on references/primitives-core.md, where upstream moved rule 6: three sentences that send the reader to the repository's geometry verifier become pointers saying it does not ship. The em-dash edit is carried too.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7155,
+        "taken": 7123,
+        "exact": 7115,
+        "retention": 0.9988768777200617,
+        "coverage": 0.9955276030747728,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 648
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-test-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-mattpocock-skills-teach",
+    "sha256": "afb4dfe54a7e962cfc27e4c016dfb5eebf76e6f151571d3ebd4d10d4981ad777"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/test-driven-development"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Verify red, verify green and good tests join tdd",
+  "reason": "Verify-red, verify-green and its good-tests criteria enter the re-cut tdd recipe on the roster's spine; its delete rule and always scope are not taken.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradictions 17 to 22)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradictions 17 to 22)"
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "tdd",
+    "catches": "A test that proves nothing, passing whatever the code does, or that costs more than it catches",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 170
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 170
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 170
+      }
+    ],
+    "ships": "default"
+  }
+}

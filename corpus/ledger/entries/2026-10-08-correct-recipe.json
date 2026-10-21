@@ -1,0 +1,58 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-correct-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-constraint-driven-development-recipe",
+    "sha256": "c21b15f08006c64faa2ec7a3d20b50064fa7180e08604f6e042c0a10ad910aa6"
+  },
+  "subject": "skill:correct",
+  "recipe": "baf89679da0e45f07389160767364d6f180b104d5fef0e825f996af604b9f298",
+  "result": "b83da2c7b219bdde2a194fed5be816971421501d7d3474b46a839c57787901fe",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Enters as a trial start that makes repeated mistakes impossible",
+  "reason": "correct enters as a trial start on pstack's correct with principle-encode-lessons-in-structure grafted: repeated mistakes found by class and fixed at the highest level that works, each proved on a real past mistake, the rule table in the decision home.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, a test deleted only through sweep-tests and its mutation proof (contradiction 23) and an encodable instruction encoded while the rule table lives in the decision home (30)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, its slash-command trigger dropped"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 63,
+        "taken": 44,
+        "exact": 40,
+        "retention": 0.9090909090909091,
+        "coverage": 0.6984126984126984,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 197
+  }
+}

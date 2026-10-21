@@ -1,0 +1,91 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-diagnose-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-wayfinder-gists",
+    "sha256": "1c7ef18b300c03b8a2616ae85c6289adb257bfa9fa8902a86d2a4d44a6edd0e3"
+  },
+  "subject": "skill:diagnose",
+  "recipe": "ae979b6b64872ba5774d70e5f3e203fb49ad8835e567acd1063034cb1f5ac247",
+  "result": "40638271b3de203abbb0904dc1ef32e8baed104729fe21f43d45ced0bd3bb15d",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 302,
+        "taken": 46,
+        "exact": 45,
+        "retention": 0.9782608695652174,
+        "coverage": 0.152317880794702,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 122,
+        "exact": 119,
+        "retention": 0.9754098360655737,
+        "coverage": 0.9606299212598425,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 40,
+        "taken": 18,
+        "exact": 17,
+        "retention": 0.9444444444444444,
+        "coverage": 0.45,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 363,
+        "taken": 237,
+        "exact": 229,
+        "retention": 0.9662447257383966,
+        "coverage": 0.6528925619834711,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 802
+  }
+}

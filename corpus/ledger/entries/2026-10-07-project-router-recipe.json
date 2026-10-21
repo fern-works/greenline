@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-project-router-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-groundwork-recipe",
+    "sha256": "5ecadec61623049d22ca294b63abc228a86a57402d167981b0487cece330747b"
+  },
+  "subject": "skill:project-router",
+  "recipe": "c7750f8d0b9935b09ebf37182ed97ca1c66d837a08b32c80392c8a7f725bb151",
+  "result": "360e42adeb1d5d18c4241214adee947e1674c81a4bb19c0a5774cdba76ae88a8",
+  "pages": "unknown",
+  "gist": "A native skill moves to its recipe, its body unchanged",
+  "reason": "Moves project-router, a native skill, to its recipe under Q1 of 2026-10-04: its body byte for byte, its front matter in canonical quoted form. The old chain pinned it at practice-without-guidance-2026-09-26.",
+  "authorisedBy": {
+    "date": "2026-09-26",
+    "words": "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-26",
+      "words": "The method items carry the old chain's native entry practice-without-guidance-2026-09-26, written for the split of 2026-09-26 under the operator's word of the decoupling (docs/DECISIONS.md, the row of 2026-09-26)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1945
+  }
+}

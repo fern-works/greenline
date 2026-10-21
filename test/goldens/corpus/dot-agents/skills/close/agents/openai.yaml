@@ -1,0 +1,3 @@
+interface:
+  display_name: "Close"
+  short_description: "Close a change: record the durable decisions it surfaced as ADRs in the repository's decision home, write down the terms it settled, audit the record's claims against the change's commits and checks, set the record's state, \"next\" line and cost, and offer the landing of the change's branch, at the depth the change's mode gives the close step. Use when the mode reaches close or the work stops, when the owner asks to record a decision or to write a term down, and when a change chooses among meaningful alternatives, abandons an approach over a discovered constraint or supersedes an earlier decision."

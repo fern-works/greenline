@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-product-description-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-diagram-design-recipe",
+    "sha256": "5d3163363c3803338ecb2a81dbd4e7050d1d532fca1d1d9a779f86b224d5e37a"
+  },
+  "subject": "skill:product-description",
+  "recipe": "ac3ffe1bff087d1c69b7d138677afa0ba3a4694f3aed5bcdec7b17ee7ebcf6e7",
+  "result": "809b95de7572b7aadfbc51f5715479155e67e22de2a7e36d90f9192e3dd263c6",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves product-description to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "product-description",
+        "segments": 618,
+        "taken": 616,
+        "exact": 615,
+        "retention": 0.9983766233766234,
+        "coverage": 0.9967637540453075,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 296
+  }
+}

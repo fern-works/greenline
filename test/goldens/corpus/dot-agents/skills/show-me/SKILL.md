@@ -1,9 +1,13 @@
 ---
 name: "show-me"
-description: "Explain the current topic visually in the reply: pseudocode, call trees, component trees, shallow file trees, shape diffs, and diagrams or a one-file HTML view where a renderer exists. Use whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison, or a change to an existing shape, and whenever the user asks to be shown."
+description: "Explain the current topic visually in the reply: pseudocode, call trees, component trees, shallow file trees, shape diffs, and diagrams or a one-file HTML view where a renderer exists. Use whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison, or a change to an existing shape, and whenever the owner asks to be shown."
 ---
 
-Answer first, then show. The visual sits beside the answer, in a form the current client renders in the reply; answer-plainly governs the claim, unslop the surrounding prose, and the visual earns its place only when it makes the explanation clearer. Apply this on your own whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison or a change to an existing shape, and whenever the user asks to be shown. A read-only explanation creates no repository artifact: it lives in the response or in a capture outside the repository. A durable diagram the user did not ask for is offered in one line. On the user's ask or yes, `diagram-design` (opt-in) draws it when it is installed; when it is not, draw the diagram as text into the repository's existing docs home and name `diagram-design` as the optional method for a rendered one.
+# Show me
+
+show-me is the habit for the moment a reply would walk through a flow, a hierarchy, a state machine, a comparison or a change to an existing shape, and for the owner asking to be shown, at whatever step the work is in or in a plain answer. It applies on your own judgment, unasked, and it writes no record of its own: the visual sits in the reply, beside the answer, in a form the current client renders, and earns its place only when it makes the explanation clearer. Answer first, then show: the prose habit governs the claim and the prose around the visual. A durable diagram the owner did not ask for is offered in one line. On the ask or the yes, `diagram-design` (extra, installs on request) draws it where it is installed; where it is not, offer it as AGENTS.md says, or draw the diagram as text into the repository's existing docs home.
+
+Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.
 
 Help the user understand the current topic of conversation visually. Skip the preamble and keep prose brief. Pick the smallest view that makes the key point clear.
 
@@ -104,10 +108,10 @@ function expandSkill(command: string): string {
 }
 ```
 
-- For a visual UI, layout, state comparison, or concept too dense for a text view, write one focused HTML file, a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile. During authorized artifact work the file is scratch under `.greenline/tmp/show-me/`; a read-only explanation writes it outside the repository. Then open it for the user with the harness's shell tool:
+- For a visual UI, layout, state comparison, or concept too dense for a text view, write one focused HTML file, a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile. During a change the file is one of the change's working files; a plain answer writes it outside the repository. Then open it for the user with the harness's shell tool:
 
 ```
-open .greenline/tmp/show-me/{description}.html
+open .greenline/tmp/<id>/{description}.html
 ```
 
 ### guidance
@@ -116,4 +120,4 @@ Place each visual next to the short text it supports. Keep only the calls, files
 
 You may use one of these, you may use several, it is unlikely you will use all of them. Use your judgement and don't overwhelm the user.
 
-Durable output: none unless the user asks (a visual in the reply; scratch under `.greenline/tmp/show-me/` during authorized artifact work). A durable diagram the user did not ask for is offered in one line; on the ask or the yes, `diagram-design` (opt-in) draws it when installed, otherwise a text diagram goes into the repository's existing docs home and the optional method is named. answer-plainly governs the claim, unslop the prose.
+Durable output: none. The visual lives in the reply, and an HTML view in the change's working files under `.greenline/tmp/<id>/`, deleted when the change closes.

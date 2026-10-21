@@ -1,0 +1,37 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-technical-writing-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-model-the-domain-refresh",
+    "sha256": "30bab77f4aba53a52eb9436714be31573752eb163cd1bae4d6082fb9d99f62d5"
+  },
+  "subject": "skill:technical-writing",
+  "recipe": "0ae5e240aca71390b3efc30130d3ed04131740c61eb8b0e017869f635f0e589f",
+  "result": "a7c6a600cf58f5fcf2f53b700f52ab9d2cf096cf2974c6c4431e3c5c752e0706",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Drops the Source lines and checklist upstream removed",
+  "reason": "Refreshes technical-writing to pstack d0ef80d86795: the four Source lines and the Review checklist upstream removed are dropped, since the roster mirrors its sources (provisional ruling of 2026-10-07). The snapshot's LICENSE is the plugin directory's own.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 175,
+        "taken": 175,
+        "exact": 175,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 35
+  }
+}

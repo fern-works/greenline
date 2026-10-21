@@ -6,14 +6,14 @@ import {
   type ConnectorsConfiguration,
   type HostPlatform,
 } from "../../core/connectors/registry.ts";
-import { resolveConnectorExecutable } from "./process.ts";
+import { resolveConnectorExecutable } from "../process.ts";
 
 /**
  * Whether each registered connector could run here, read offline: the
  * manifest's entry, the filesystem and the environment's `PATH`, and the
  * presence of the key variable the connector's own command reads. Nothing is
  * started, contacted or consulted, and the key's value is never read, so
- * status and doctor can explain a missing executable, key or configuration
+ * status can explain a missing executable, key or configuration
  * before any call is made.
  */
 

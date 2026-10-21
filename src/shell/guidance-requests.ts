@@ -142,24 +142,10 @@ export class GuidanceRequests {
     }
   }
 
-  /** Discover every collection; the account never chooses an inventory subset. */
-  all(): Result<readonly GuidanceRequest[], Failure> {
-    const names = this.#names();
-    if (names._tag === "err") return names;
-    const records: GuidanceRequest[] = [];
-    for (const name of names.value) {
-      const value = this.read(name.slice(0, -5));
-      if (value._tag === "err") return value;
-      records.push(value.value);
-    }
-    return ok(records);
-  }
-
   /**
    * Every collection file with what reading it gave: the request, or the
-   * refusal. A reader that shows evidence (the inspector) shows the valid
-   * collections beside the ones it cannot read, where the account's audit
-   * refuses the whole set.
+   * refusal, so a reader shows the valid collections beside the ones it
+   * cannot read.
    */
   survey(): Result<
     readonly (
@@ -195,8 +181,6 @@ export class GuidanceRequests {
 
   /** Allocate only a new durable collection, never replace a known handle. */
   create(request: GuidanceRequest): Result<GuidanceRequest, Failure> {
-    if (request.owner.record === null)
-      return err(new ReceiptStoreFailed("configuration", "read-only persistence"));
     const path = this.#path(request.id);
     if (path._tag === "err") return path;
     const locked = withWorkspaceWrite(this.#root, () => {

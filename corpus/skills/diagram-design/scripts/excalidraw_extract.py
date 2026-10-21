@@ -202,6 +202,13 @@ def parse_scene(path: Path, document: dict[str, Any]) -> Scene:
         if isinstance(element, dict) and isinstance(element.get("id"), str)
     ]
 
+    seen_ids: set[str] = set()
+    for element in elements:
+        element_id = element["id"]
+        if element_id in seen_ids:
+            _fail("duplicate element id")
+        seen_ids.add(element_id)
+
     live: list[dict[str, Any]] = []
     for element in elements:
         if not isinstance(element.get("type"), str):
@@ -377,6 +384,8 @@ def _has_cycle(nodes: list[Node], edges: list[Edge]) -> bool:
     for edge in edges:
         if edge.source and edge.target and edge.source in adjacency:
             adjacency[edge.source].append(edge.target)
+            if edge.bidirectional and edge.target in adjacency:
+                adjacency[edge.target].append(edge.source)
     WHITE, GREY, BLACK = 0, 1, 2
     color = {node.id: WHITE for node in nodes}
 

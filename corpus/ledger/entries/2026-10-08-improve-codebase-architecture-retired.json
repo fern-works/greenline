@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-improve-codebase-architecture-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-diagnosing-bugs-retired",
+    "sha256": "ff2dabebde5ac90b48d0f9dd11c56a2cb942e99d4e1873b0acdaa511a5b027d5"
+  },
+  "skill": "improve-codebase-architecture",
+  "slice": "S17 of the plan modes-records-recipes",
+  "replacedBy": "architecture-survey",
+  "recipe": "297ccf911134fbf08abf5f5b8f665801c880c830de5db7c0ddaec1fa7f791bc2",
+  "gist": "Renamed architecture-survey and re-cut as a start",
+  "reason": "improve-codebase-architecture is architecture-survey now, re-cut as a start.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

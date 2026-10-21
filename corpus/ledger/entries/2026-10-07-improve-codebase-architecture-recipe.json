@@ -1,0 +1,42 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-improve-codebase-architecture-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-what-to-build-recipe",
+    "sha256": "fbf9ef60013cbbd2845c83f0d201ef28ef47debc2af4dfab7e0ebefac4b547c6"
+  },
+  "subject": "skill:improve-codebase-architecture",
+  "recipe": "eab5ba095be1aefb63e3efcb12183d61b47554c3bbadbca3b4d3e48047155b11",
+  "result": "55904d726760fba3e38822ca2315c22a9093b9de9a37ff7f11aa672c589cfa9f",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves improve-codebase-architecture to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at roster-keepers-fix-2026-09-15.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-09-15",
+      "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-fix-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 147,
+        "taken": 130,
+        "exact": 111,
+        "retention": 0.8538461538461538,
+        "coverage": 0.8843537414965986,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 1149
+  }
+}

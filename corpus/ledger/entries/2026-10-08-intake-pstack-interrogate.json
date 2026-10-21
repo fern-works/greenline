@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-interrogate",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-mattpocock-skills-implement-spec",
+    "sha256": "397f85b36729d16f1f059b1a62c2aa2308f643357af2936669ba95b92a6daa91"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/interrogate"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Intent, template and lead judgment join review; security rubric to garden",
+  "reason": "Its intent paragraph, reviewer template and lead judgment enter the re-cut review recipe, the reviewers being the step's own agents one after another. Its single-message dispatch, model table and model diversity are dropped; its security rubric goes to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its security rubric",
+        "locator": "pstack/skills/interrogate/references/rubric.md, \"Security\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "step",
+    "slot": "delivery-review",
+    "catches": "A review whose noise is acted on, whose real defects are dismissed, or that misses breakage outside the diff",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "review",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "review",
+        "depth": "independent",
+        "cost": 2500
+      },
+      {
+        "mode": "high",
+        "step": "review",
+        "depth": "independent",
+        "cost": 2500
+      },
+      {
+        "mode": "max",
+        "step": "review",
+        "depth": "looped",
+        "cost": 2500
+      }
+    ],
+    "ships": "default"
+  }
+}

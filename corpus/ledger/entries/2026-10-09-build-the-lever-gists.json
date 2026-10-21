@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-build-the-lever-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-architecture-map-gists",
+    "sha256": "ad9ad8fcb36f4d55e01798a99621e0c574698266e55dabecc51706090e33d2f8"
+  },
+  "subject": "skill:build-the-lever",
+  "recipe": "c9dfcf7d4a2d4391a32a8c3e7b5c682b503f73e75eaf7d491085735cc2d798a8",
+  "result": "99cab0f6d0389389817872d02e0cb23f2306c724ee755da68a6d667ae3e9f11a",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 27,
+        "taken": 22,
+        "exact": 20,
+        "retention": 0.9090909090909091,
+        "coverage": 0.8148148148148148,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 158
+  }
+}

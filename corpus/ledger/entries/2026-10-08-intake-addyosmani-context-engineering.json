@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-context-engineering",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-using-superpowers",
+    "sha256": "f0c5263c6653b357b0ad1c0d202b3e1e47143492986763037f65ed27cf7490a0"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/context-engineering"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Context budget and rules-file packing join two new skills",
+  "reason": "Its context-budget section joins the new habit principle-guard-the-context-window and its rules-file packing the new start improve-instructions; its MCP table goes to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its MCP table",
+        "locator": "skills/context-engineering/SKILL.md, \"MCP Integrations\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "principle-guard-the-context-window",
+    "catches": "A thread filled with raw output until the agent's reasoning degrades",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 300
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 300
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 300
+      }
+    ],
+    "ships": "trial"
+  }
+}

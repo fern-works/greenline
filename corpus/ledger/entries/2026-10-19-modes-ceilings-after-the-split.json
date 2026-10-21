@@ -1,0 +1,46 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-modes-ceilings-after-the-split",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-what-to-build-front-and-references",
+    "sha256": "45fbd6d60472f8dcb4e481c0773bb0a7f6654c41c6096126fc8e43c1c2b8ca42"
+  },
+  "subject": "modes",
+  "recipe": "1d63f6e7a5ff66e73c10d0856afccc1c9d5d78cd83eed49680f58e46c8c33bda",
+  "result": "0b2bf8e8907b7c232ed1ce52b4d97c008f251445241987a7d321cfd8fc61a9b7",
+  "pages": "unknown",
+  "gist": "The three ceilings fall to the words read after the split",
+  "reason": "Each mode's words budget falls to the words it reads once the steps' fronts shed their mechanics, rounded up to the next hundred: 9500, 10400 and 11700 (J-93 S2).",
+  "authorisedBy": {
+    "date": "2026-10-18",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\" and \"The builder's written verify, no fresh verifier (Recommended)\": three modes each keeping the whole record, max folded into careful, the anticipate trial careful's premise review, and each words budget a ceiling"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

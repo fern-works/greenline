@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { JsonValue } from "../../src/core/contract.ts";
 import { parseGuidanceRequest } from "../../src/core/guidance-receipts.ts";
 import { languageOfPath, lineDiff, receiptView, withStanza } from "../../src/core/inspect.ts";
 import { RECEIPTS_FIXTURE } from "../fixtures/receipts.ts";
@@ -49,7 +50,7 @@ describe("withStanza", () => {
 });
 
 describe("receiptView", () => {
-  it("shows a schema-4 request's source, binding, owner and every call in order, with no body", () => {
+  it("shows a request's source, binding, owner and every call in order, with no body", () => {
     const parsed = parseGuidanceRequest(RECEIPTS_FIXTURE, "collection");
     if (parsed._tag === "err") throw parsed.error;
     const failed = {
@@ -57,7 +58,7 @@ describe("receiptView", () => {
       id: "33333333-3333-4333-8333-333333333333",
       createdAt: "2026-09-27T00:00:00.000Z",
       binding: { state: "unresolved" as const, origin: "https://garden.example/" },
-      owner: { record: null, context: null, role: null },
+      owner: { kind: "none" as const },
       receipts: [
         {
           ...parsed.value.receipts[0]!,
@@ -76,7 +77,7 @@ describe("receiptView", () => {
         source: "garden",
         binding:
           "publication example-publication-a (published 2026-01-01T00:00:00.000Z), at https://garden.example/",
-        owner: "work-one, ctx, maintenance",
+        owner: "change 2026-09-26-fix-login",
         createdAt: "2026-09-26T00:00:00.000Z",
         calls: [
           expect.objectContaining({ sequence: 1, operation: "snapshot", full: [], metadata: [] }),
@@ -99,7 +100,7 @@ describe("receiptView", () => {
         id: "33333333-3333-4333-8333-333333333333",
         source: "garden",
         binding: "unresolved, at https://garden.example/",
-        owner: "no record named",
+        owner: "no owner: a question's consultation",
         createdAt: "2026-09-27T00:00:00.000Z",
         calls: [
           expect.objectContaining({ outcome: "failed", error: "missing-executable", full: [] }),
@@ -111,5 +112,22 @@ describe("receiptView", () => {
     expect(JSON.stringify(receiptView([failed, parsed.value]))).not.toMatch(
       /garden was not found|c{64}/,
     );
+  });
+
+  it("S7 shows a request a change owns and a question's with the same calls", () => {
+    const parsed = parseGuidanceRequest(RECEIPTS_FIXTURE, "collection");
+    if (parsed._tag === "err") throw parsed.error;
+    const owned = (owner: JsonValue) => {
+      const text = JSON.stringify({ ...parsed.value, schemaVersion: 5, owner });
+      const value = parseGuidanceRequest(text, "collection");
+      if (value._tag === "err") throw value.error;
+      return receiptView([value.value])[0];
+    };
+    const change = owned({ kind: "change", change: "2026-10-04-fix-login" });
+    expect(change).toMatchObject({ owner: "change 2026-10-04-fix-login", advisories: 0 });
+    expect(change?.calls).toEqual(receiptView([parsed.value])[0]?.calls);
+    const question = owned({ kind: "none" });
+    expect(question?.owner).toBe("no owner: a question's consultation");
+    expect(question?.calls).toEqual(change?.calls);
   });
 });

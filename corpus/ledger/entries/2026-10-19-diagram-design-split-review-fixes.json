@@ -1,0 +1,54 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-diagram-design-split-review-fixes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-close-split-review-fixes",
+    "sha256": "d3695ac2c39567dbb774324fdbab1160b418ca4f4277ac055349f75eeaf2df9d"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "6c1ae4eb5c7cc701c7181c69c7e5293197fa31bc92015da0380a11f80e9f6edd",
+  "result": "89fd99a42e58267fcb0da5a0bd327c3171a65c6a9cf36a409fb92eb5be83fb6b",
+  "pages": "unknown",
+  "gist": "The description names the diagrams folder by its noun",
+  "reason": "The description names the diagrams folder by its noun, its path on the references page, since the front rule reads the description too (J-93 S2, the review's fix cycle).",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7155,
+        "taken": 7123,
+        "exact": 7115,
+        "retention": 0.9988768777200617,
+        "coverage": 0.9955276030747728,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 815
+  }
+}

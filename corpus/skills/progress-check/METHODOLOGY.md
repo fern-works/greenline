@@ -34,8 +34,8 @@ Send one baseline update after the scope and denominator are understood.
 
 Routine updates require both:
 
-1. Turns of work since the previous routine update, or a status transition of
-   the owning ticket; never an estimate of elapsed time.
+1. Turns of work since the previous routine update, or the end of a step of the
+   change; never an estimate of elapsed time.
 2. A completed milestone, at least 10 percentage points of verified progress,
    or a materially different next action.
 
@@ -76,7 +76,7 @@ here and no machine-global instruction write. A reporting preference the user
 states is followed within the current task and saved nowhere. When the
 owner asks for a lasting repository rule, record it as a house ruling in
 the repository's user-owned instruction home, in the format
-`.greenline/WORK.md` defines; the next context reads it without a second
+the work guide defines; the next context reads it without a second
 confirmation.
 
 ## 6. Anti-patterns
@@ -94,11 +94,11 @@ confirmation.
 ## 7. Readiness rubric
 
 No readiness score is kept here. Report observable milestone evidence and its
-limits under the execution contract: the owning ticket's acceptance items and
-the witnesses recorded in its account. Global persistence is not a criterion,
-since the greenline CLI installs this skill.
+limits: the change's acceptance items and the checks the change
+recorded for it. Global persistence is not a criterion, since the greenline
+CLI installs this skill.
 
 ## 8. Open gaps
 
-- Revisit the turn-and-status cadence and the 10-point default only after real
+- Revisit the turn-and-step cadence and the 10-point default only after real
   usage shows that they are too sparse or still noisy.

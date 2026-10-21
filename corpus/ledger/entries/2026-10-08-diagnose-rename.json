@@ -1,0 +1,84 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-diagnose-rename",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-architecture-survey-rename",
+    "sha256": "47688d602cf7574453c4857ff14b9031d4dece7397c49587a33bde57c51f9dd8"
+  },
+  "subject": "skill:diagnose",
+  "recipe": "b37a363a06ea33657379ca33e6f0dbcd4cbcc32a6075bb084e33919713795d9c",
+  "result": "40638271b3de203abbb0904dc1ef32e8baed104729fe21f43d45ced0bd3bb15d",
+  "pages": "unknown",
+  "gist": "Names secrets as the owner of a captured credential",
+  "reason": "diagnose names the secrets habit, which airgap-secrets became, as the owner of a credential found in a captured artifact.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended: three to five ranked hypotheses (contradiction 14), the premise questioned after two fixes that share it (15), no silencing guard and no hypothesis without a loop (16), a regression test only at a correct seam (18), the triage trees and the rest of performance-optimization garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the pollution script taking the repository's own test command"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 302,
+        "taken": 46,
+        "exact": 45,
+        "retention": 0.9782608695652174,
+        "coverage": 0.152317880794702,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 122,
+        "exact": 119,
+        "retention": 0.9754098360655737,
+        "coverage": 0.9606299212598425,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 40,
+        "taken": 18,
+        "exact": 17,
+        "retention": 0.9444444444444444,
+        "coverage": 0.45,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 363,
+        "taken": 237,
+        "exact": 229,
+        "retention": 0.9662447257383966,
+        "coverage": 0.6528925619834711,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 802
+  }
+}

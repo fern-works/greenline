@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-requesting-code-review",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-cursor-team-kit-thermo-nuclear-review",
+    "sha256": "46d593350451e44ddb290d73d5ee283b93aa75a28fb7d6548e26e79bf7e614dd"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/requesting-code-review"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its reviewer template becomes the review step's brief",
+  "reason": "Its reviewer template becomes the brief the review step's agent reads, with its declined-to-judge list and spec-silence rule; its dispatch syntax and worktree option are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "delivery-review",
+    "catches": "A review whose noise is acted on, whose real defects are dismissed, or that misses breakage outside the diff",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "review",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "review",
+        "depth": "independent",
+        "cost": 130
+      },
+      {
+        "mode": "high",
+        "step": "review",
+        "depth": "independent",
+        "cost": 130
+      },
+      {
+        "mode": "max",
+        "step": "review",
+        "depth": "looped",
+        "cost": 130
+      }
+    ],
+    "ships": "default"
+  }
+}

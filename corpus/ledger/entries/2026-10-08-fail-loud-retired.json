@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-fail-loud-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-boundary-discipline-retired",
+    "sha256": "76c0cbc3b47aeaa21767a00260d42a936e0c68e66fcf8820dc034eb21913415a"
+  },
+  "skill": "fail-loud",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "boundaries",
+  "recipe": "bcf4f53d9996d74e05e67a68fe7bc2df60c6aa4d51b8c40bf6eb692b2deb9c6c",
+  "gist": "Becomes the failures section of boundaries",
+  "reason": "fail-loud is boundaries' section on failures now.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

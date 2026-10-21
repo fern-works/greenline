@@ -16,7 +16,9 @@ import {
   projectConnectorReceipt,
   type ConnectorsConfiguration,
 } from "../../core/connectors/registry.ts";
-import type { LedgerRecord } from "../../core/execution-ledger.ts";
+import type { ContractParseFailed } from "../../core/contract.ts";
+import type { Installation } from "../../core/installation.ts";
+import type { ChangeEntry } from "../../core/status.ts";
 import {
   receiptConsultationId,
   requestLimitsSchema,
@@ -25,17 +27,15 @@ import {
   type ReceiptUnit,
   type RequestBinding,
   type RequestLimits,
+  type RequestOwner,
 } from "../../core/guidance-receipts.ts";
 import { rootExclusionSubjects, type RootStatement } from "../../core/root-statements.ts";
 import { callGarden, type GardenCallOutcome } from "../connectors/garden.ts";
 import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { findGitRoot } from "../git.ts";
 import { GuidanceRequests } from "../guidance-requests.ts";
-import {
-  readRepositoryAccount,
-  readRepositoryDecisions,
-  readRepositoryManifest,
-} from "../repository-state.ts";
+import { listChangeRecords } from "../changes.ts";
+import { readRepositoryDecisions, readRepositoryManifest } from "../repository-state.ts";
 import {
   parseGardenCallArgs,
   type GardenCallCommand,
@@ -67,6 +67,8 @@ export interface ConnectorsCallEnvironment {
   readonly signal?: AbortSignal;
   /** How the seal waits for another writer's lock; real time unless a test supplies its own. */
   readonly wait?: (ms: number) => Promise<void>;
+  /** The installation, read only for `--change`, whose record is parsed against its modes. */
+  readonly installation?: () => Result<Installation, ContractParseFailed>;
 }
 
 /** How many times a seal meets another writer's lock or a moved binding before it gives up. */
@@ -397,14 +399,15 @@ function prepare(
   const policyRevision = sha256Hex(decisions.value.body);
   const store = new GuidanceRequests(root, io);
   const now = env.now ?? ((): string => new Date().toISOString());
-  if ((command.record === undefined) === (command.request === undefined))
-    return refuse("choose --record for a new request or --request to continue one");
+  if (command.change !== undefined && command.request !== undefined)
+    return refuse("choose --change for a new request or --request to continue one");
+  const changes = (): Result<readonly ChangeEntry[], CallRefused> => changeRecords(root, env);
   const opened =
-    command.record !== undefined
-      ? open(command, command.record, root, io, garden, now)
-      : resume(command, command.request ?? "", root, io, store, garden, policyRevision);
+    command.request !== undefined
+      ? resume(command, command.request, store, garden, policyRevision, changes)
+      : open(command, ownerOf(command, changes), garden, now);
   if (opened._tag === "err") return opened;
-  const { request, account } = opened.value;
+  const request = opened.value;
   return ok({
     root,
     io,
@@ -413,28 +416,79 @@ function prepare(
     store,
     now,
     policyRevision,
-    roots: command.roots.length > 0 ? command.roots : account.scopes,
+    // A change's record states no scope, and no one's request has one: the repository root.
+    roots: command.roots.length > 0 ? command.roots : ["."],
     statements: decisions.value.roots,
     request,
     persisted: command.request !== undefined,
   });
 }
 
+/** The change records on disk, parsed against the installation's modes, or why they cannot be. */
+function changeRecords(
+  root: string,
+  env: ConnectorsCallEnvironment,
+): Result<readonly ChangeEntry[], CallRefused> {
+  const installation = env.installation?.();
+  if (installation === undefined || installation._tag === "err")
+    return err(
+      new CallRefused(
+        "configuration",
+        "the installation is unavailable, so a change's record cannot be read (GL0140)",
+      ),
+    );
+  const listed = listChangeRecords(root, installation.value.modes);
+  return listed._tag === "err"
+    ? err(new CallRefused("configuration", `the ledger: ${issues(listed.error)}`))
+    : ok(listed.value);
+}
+
+/** The change a request may belong to: its record exists, parses and is open or stopped. */
+function owningChange(
+  id: string,
+  changes: () => Result<readonly ChangeEntry[], CallRefused>,
+): Result<string, CallRefused> {
+  const listed = changes();
+  if (listed._tag === "err") return listed;
+  const entry = listed.value.find((candidate) => candidate.id === id);
+  if (entry === undefined)
+    return err(new CallRefused("configuration", `no change record '${id}' in .greenline/ledger/`));
+  if (entry.record._tag === "err")
+    return err(
+      new CallRefused(
+        "configuration",
+        `the change record '${id}' does not parse: ${issues(entry.record.error)}`,
+      ),
+    );
+  const state = entry.record.value.position.state;
+  return state === "open" || state === "stopped"
+    ? ok(id)
+    : err(
+        new CallRefused(
+          "configuration",
+          `the change '${id}' is ${state}, and a finished change opens no consultation`,
+        ),
+      );
+}
+
+/** Who a new request belongs to: the named change, or no one. */
+function ownerOf(
+  command: GardenCallCommand,
+  changes: () => Result<readonly ChangeEntry[], CallRefused>,
+): Result<RequestOwner, CallRefused> {
+  if (command.change === undefined) return ok({ kind: "none" });
+  const change = owningChange(command.change, changes);
+  return change._tag === "err" ? change : ok({ kind: "change", change: change.value });
+}
+
 /** A new request, unresolved until its first successful call; nothing is written yet. */
 function open(
   command: GardenCallCommand,
-  record: string,
-  root: string,
-  io: FileIo,
+  owned: Result<RequestOwner, CallRefused>,
   garden: GardenConfiguration,
   now: () => string,
-): Result<{ request: GuidanceRequest; account: LedgerRecord }, CallRefused> {
-  const owner = readRepositoryAccount(root, io, record);
-  if (owner._tag === "err")
-    return err(new CallRefused("configuration", `the execution account: ${issues(owner.error)}`));
-  const account = owner.value;
-  if (command.context !== undefined && command.context !== account.context)
-    return err(new CallRefused("configuration", "--context differs from the account"));
+): Result<GuidanceRequest, CallRefused> {
+  if (owned._tag === "err") return owned;
   const limits = requestLimitsSchema.safeParse({
     maxUnits: command.maxUnits ?? DEFAULT_LIMITS.maxUnits,
     maxBytes: command.maxBytes ?? DEFAULT_LIMITS.maxBytes,
@@ -457,26 +511,18 @@ function open(
         ? read.id
         : read.snapshot;
   return ok({
-    account,
-    request: {
-      schemaVersion: 4,
-      id: randomUUID(),
-      source: "garden",
-      owner: {
-        record: account.id,
-        context: account.context,
-        role: account.role,
-        work: account.work,
-      },
-      parent: null,
-      createdAt: now(),
-      binding: { state: "unresolved", origin: garden.endpoint },
-      // Naming an exact publication, or a pair, opens historical reading.
-      publicationUse: asked === undefined || asked === "current" ? "current" : "historical",
-      limits: limits.data,
-      receipts: [],
-      advisories: [],
-    },
+    schemaVersion: 5,
+    id: randomUUID(),
+    source: "garden",
+    owner: owned.value,
+    parent: null,
+    createdAt: now(),
+    binding: { state: "unresolved", origin: garden.endpoint },
+    // Naming an exact publication, or a pair, opens historical reading.
+    publicationUse: asked === undefined || asked === "current" ? "current" : "historical",
+    limits: limits.data,
+    receipts: [],
+    advisories: [],
   });
 }
 
@@ -484,38 +530,28 @@ function open(
 function resume(
   command: GardenCallCommand,
   handle: string,
-  root: string,
-  io: FileIo,
   store: GuidanceRequests,
   garden: GardenConfiguration,
   policyRevision: string,
-): Result<{ request: GuidanceRequest; account: LedgerRecord }, CallRefused> {
+  changes: () => Result<readonly ChangeEntry[], CallRefused>,
+): Result<GuidanceRequest, CallRefused> {
   const stored = store.read(handle);
   if (stored._tag === "err")
     return err(new CallRefused("configuration", `the request: ${stored.error.input}`));
   const request = stored.value;
   if (request.source !== "garden")
     return err(new CallRefused("configuration", "the request is not a garden request"));
-  const owner = readRepositoryAccount(root, io, request.owner.record ?? "");
-  if (
-    owner._tag === "err" ||
-    owner.value.context !== request.owner.context ||
-    owner.value.role !== request.owner.role ||
-    JSON.stringify(owner.value.work ?? null) !== JSON.stringify(request.owner.work ?? null) ||
-    (command.record !== undefined && command.record !== request.owner.record) ||
-    (command.context !== undefined && command.context !== request.owner.context)
-  )
-    return err(
-      new CallRefused(
-        "configuration",
-        "the request's contributor changed; open a new request with --record",
-      ),
-    );
+  // A request continues under its first owner: a change still open or stopped, or no one.
+  const owner = request.owner;
+  if (owner.kind === "change") {
+    const still = owningChange(owner.change, changes);
+    if (still._tag === "err") return still;
+  }
   if (request.binding.origin !== garden.endpoint)
     return err(
       new CallRefused(
         "configuration",
-        "garden's endpoint changed since this request began; open a new request with --record",
+        `garden's endpoint changed since this request began; open a new request ${reopen(owner)}`,
       ),
     );
   const last = request.receipts.at(-1);
@@ -523,7 +559,7 @@ function resume(
     return err(
       new CallRefused(
         "configuration",
-        "the repository's policy changed since this request began; open a new request with --record",
+        `the repository's policy changed since this request began; open a new request ${reopen(owner)}`,
       ),
     );
   if (
@@ -532,19 +568,31 @@ function resume(
     (command.timeoutMs !== undefined && command.timeoutMs !== request.limits.timeoutMs)
   )
     return err(new CallRefused("configuration", "a request's limits are frozen when it opens"));
-  const refused = incompatibility(request, command.read);
-  return refused === undefined
-    ? ok({ request, account: owner.value })
-    : err(new CallRefused("configuration", refused));
+  const refused = incompatibility(request, command.read, reopen(owner));
+  return refused === undefined ? ok(request) : err(new CallRefused("configuration", refused));
+}
+
+/** How a new request under the same owner is opened, for a refusal's advice. */
+function reopen(owner: RequestOwner): string {
+  switch (owner.kind) {
+    case "change":
+      return `with --change ${owner.change}`;
+    case "none":
+      return "without --change";
+  }
 }
 
 /** Why a continued request cannot take this read; undefined when it can. */
-function incompatibility(request: GuidanceRequest, read: GardenCallRead): string | undefined {
+function incompatibility(
+  request: GuidanceRequest,
+  read: GardenCallRead,
+  advice: string,
+): string | undefined {
   const compares = request.receipts.some((entry) => entry.operation === "changes");
   const reads = request.receipts.some((entry) => entry.operation !== "changes");
   if (read.operation === "changes") {
     if (request.binding.state === "publication" || reads)
-      return "a comparison never continues a read request; open one of its own with --record";
+      return `a comparison never continues a read request; open one of its own ${advice}`;
     if (
       request.binding.state === "comparison" &&
       (request.binding.from.id !== read.from || request.binding.to.id !== read.to)
@@ -553,7 +601,7 @@ function incompatibility(request: GuidanceRequest, read: GardenCallRead): string
     // An unresolved comparison retries the pair its first call named.
     const first = request.receipts[0]?.requested;
     if (first !== undefined && (first[0] !== read.from || first[1] !== read.to))
-      return `the request compares ${first.join(" with ")}; open a new request with --record`;
+      return `the request compares ${first.join(" with ")}; open a new request ${advice}`;
     return undefined;
   }
   if (request.binding.state === "comparison" || compares)
@@ -561,12 +609,12 @@ function incompatibility(request: GuidanceRequest, read: GardenCallRead): string
   const asked = read.operation === "snapshot" ? read.id : read.snapshot;
   if (request.binding.state === "publication")
     return asked !== undefined && asked !== request.binding.snapshot.id
-      ? `the request is bound to publication ${request.binding.snapshot.id}; open a new request with --record`
+      ? `the request is bound to publication ${request.binding.snapshot.id}; open a new request ${advice}`
       : undefined;
   // An unresolved request keeps what it opened for: current, or an exact publication named again.
   const exactly = asked !== undefined && asked !== "current";
   if (request.publicationUse === "current" && exactly)
-    return "the request reads the current publication; open a new request with --record to read an exact one";
+    return `the request reads the current publication; open a new request ${advice} to read an exact one`;
   if (request.publicationUse === "historical" && !exactly)
     return "the request reads an exact publication; name it with --snapshot, or --id for snapshot";
   return undefined;

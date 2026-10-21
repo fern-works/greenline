@@ -16,14 +16,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { z } from "zod";
 import { err } from "../../src/commons/result.ts";
 import { AtomicWriteFailed, createNodeFileIo, type FileIo } from "../../src/shell/fs/io.ts";
-import {
-  ACCOUNT,
-  call,
-  gardenWorkspace,
-  runs,
-  stored,
-  type GardenWorkspace,
-} from "./garden-fixture.ts";
+import { call, gardenWorkspace, runs, stored, type GardenWorkspace } from "./garden-fixture.ts";
 import type { PromptPort } from "../../src/shell/cli/prompt.ts";
 import { GARDEN_POINTER, makeRepository, read, removeRepository, run } from "./workspace.ts";
 
@@ -116,7 +109,7 @@ async function failsAs(
   mode: string,
   kind: string,
 ): Promise<string> {
-  const result = await call(garden, [...args, "--record", ACCOUNT], { mode });
+  const result = await call(garden, [...args], { mode });
   expect(result.code).toBe(1);
   expect(result.out).toBe("");
   expect(result.reply.error?.kind).toBe(kind);
@@ -134,7 +127,7 @@ async function failsAs(
 }
 
 describe("P5: the greenline bridge against the synthetic garden executable", () => {
-  it("disabled: a fresh install asks nothing about garden at a terminal and installs nothing for it, and status and doctor report it disabled", () => {
+  it("disabled: a fresh install asks nothing about garden at a terminal and installs nothing for it, and status reports it disabled", () => {
     const root = makeRepository("p5-disabled");
     roots.push(root);
     const asked: string[] = [];
@@ -156,18 +149,16 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(read(root, "AGENTS.md")).not.toMatch(/garden/i);
     const manifest = JSON.parse(read(root, ".greenline/manifest.json"));
     expect(manifest.connectors).toBeUndefined();
-    for (const command of ["status", "doctor"]) {
-      const reply = JSON.parse(run(root, [command, "--json"], { environment: {} }).out);
-      expect(reply.connectors.map((c: { state: string }) => c.state)).toEqual(["disabled"]);
-      expect(reply.diagnostics.filter((d: { code: string }) => d.code === "GL0125")).toEqual([]);
-    }
+    const reply = JSON.parse(run(root, ["status", "--json"], { environment: {} }).out);
+    expect(reply.connectors.map((c: { state: string }) => c.state)).toEqual(["disabled"]);
+    expect(reply.diagnostics.filter((d: { code: string }) => d.code === "GL0125")).toEqual([]);
     expect(receiptFiles(root)).toEqual([]);
   });
 
   it("disabled: a call while garden is disabled is refused before any process starts", async () => {
     const garden = enabled("disabled-call");
     expect(run(garden.root, ["connectors", "disable", "garden"]).code).toBe(0);
-    const refused = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const refused = await call(garden, ["snapshot"]);
     expect(refused.code).not.toBe(0);
     expect(refused.reply.error?.input ?? refused.err).toMatch(/not enabled|enable garden/);
     expect(runs(garden)).toEqual([]);
@@ -180,7 +171,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(existsSync(join(garden.root, ".agents/skills/use-garden/SKILL.md"))).toBe(true);
     expect(existsSync(join(garden.root, ".claude/skills/use-garden/SKILL.md"))).toBe(true);
     expect(read(garden.root, "AGENTS.md")).toContain(GARDEN_POINTER);
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"], {
+    const result = await call(garden, ["read", "--id", "example-rule"], {
       key: "synthetic-key",
     });
     expect(result.code).toBe(0);
@@ -212,7 +203,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(status.diagnostics.filter((d: { code: string }) => d.code === "GL0125")).toEqual([]);
   });
 
-  it("a missing client: an absent executable is recorded as missing-executable, nothing is installed, and doctor warns without starting anything", async () => {
+  it("a missing client: an absent executable is recorded as missing-executable, nothing is installed, and status warns without starting anything", async () => {
     const garden = enabled("missing");
     const absent = join(garden.bin, "no-such-garden");
     expect(
@@ -230,9 +221,9 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
       "greenline does not install garden",
     );
     expect(existsSync(absent)).toBe(false);
-    const doctor = JSON.parse(run(garden.root, ["doctor", "--json"], { environment: {} }).out);
+    const status = JSON.parse(run(garden.root, ["status", "--json"], { environment: {} }).out);
     expect(
-      doctor.diagnostics
+      status.diagnostics
         .filter((d: { code: string }) => d.code === "GL0125")
         .map((d: { message: string }) => d.message),
     ).toEqual([
@@ -242,24 +233,10 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(runs(garden)).toEqual([]);
   });
 
-  it("J-39 S1 an answer's planning account with no work owns a request: a read and, with the client gone, its missing-executable failure are recorded under it, and doctor refuses nothing", async () => {
+  it("S20 a question's consultation has no owner: a read and, with the client gone, its missing-executable failure are recorded under none, and status refuses nothing", async () => {
     const garden = enabled("answer");
-    const answer = "sanitizer-advice";
-    // The minimal recorded request an answer consults under: planning, no work artifact.
-    writeFileSync(
-      join(garden.root, `.greenline/ledger/records/${answer}.json`),
-      `${JSON.stringify({
-        schemaVersion: 3,
-        id: answer,
-        context: `local:${answer}`,
-        actor: "agent",
-        role: "planning",
-        work: null,
-        scopes: ["."],
-      })}\n`,
-    );
-    const owner = { record: answer, context: `local:${answer}`, role: "planning", work: null };
-    const delivered = await call(garden, ["read", "--record", answer, "--id", "example-rule"], {
+    const owner = { kind: "none" };
+    const delivered = await call(garden, ["read", "--id", "example-rule"], {
       key: "synthetic-key",
     });
     expect(delivered.code).toBe(0);
@@ -268,7 +245,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(bound.owner).toEqual(owner);
     expect(bound.binding).toEqual({ state: "publication", origin: ENDPOINT, snapshot: A });
     expect(bound.receipts[0]).toMatchObject({ operation: "read", outcome: "received" });
-    // The client gone: the attempt still records its typed failure under the same account.
+    // The client gone: the attempt still records its typed failure, owned by no one.
     const absent = join(garden.bin, "no-such-garden");
     expect(
       run(garden.root, [
@@ -281,7 +258,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
         absent,
       ]).code,
     ).toBe(0);
-    const missing = await call(garden, ["snapshot", "--record", answer]);
+    const missing = await call(garden, ["snapshot"]);
     expect(missing.code).toBe(1);
     expect(missing.reply.error?.kind).toBe("missing-executable");
     const failed = stored(garden, missing.reply.request ?? "");
@@ -292,12 +269,9 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
       error: { kind: "missing-executable" },
     });
     evidenceKept(garden);
-    const doctor = JSON.parse(run(garden.root, ["doctor", "--json"], { environment: {} }).out);
-    expect(doctor.diagnostics.filter((d: { severity: string }) => d.severity === "error")).toEqual(
+    const status = JSON.parse(run(garden.root, ["status", "--json"], { environment: {} }).out);
+    expect(status.diagnostics.filter((d: { severity: string }) => d.severity === "error")).toEqual(
       [],
-    );
-    expect(doctor.ledger.records).toEqual(
-      expect.arrayContaining([{ id: answer, role: "planning", work: null, resultCommit: null }]),
     );
   });
 
@@ -309,7 +283,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
   it("denied access: garden's unauthorized refusal is recorded as such with nothing delivered, and local work still stands", async () => {
     const garden = enabled("denied");
     await failsAs(garden, ["read", "--id", "example-rule"], "refusal:unauthorized", "unauthorized");
-    expect(run(garden.root, ["doctor", "--json"], { environment: {} }).code).toBe(0);
+    expect(run(garden.root, ["status", "--json"], { environment: {} }).code).toBe(0);
   });
 
   it("an unavailable service: garden's unavailable refusal, and a call past its one deadline, are recorded as such", async () => {
@@ -323,7 +297,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
 
   it("policy drift: a request is refused after the repository's policy changed, and a change during a call fails that call", async () => {
     const garden = enabled("policy");
-    const opened = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const opened = await call(garden, ["snapshot"]);
     const handle = opened.reply.request ?? "";
     writeFileSync(join(garden.root, ".greenline/DECISIONS.md"), "# Decisions\n\nA new ruling.\n");
     const refused = await call(garden, ["vocabulary", "--request", handle]);
@@ -331,7 +305,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     expect(refused.reply.error?.input).toContain("policy changed since this request began");
     expect(runs(garden)).toHaveLength(1);
     const during = enabled("policy-during");
-    const changed = await call(during, ["snapshot", "--record", ACCOUNT], {
+    const changed = await call(during, ["snapshot"], {
       started: () =>
         writeFileSync(join(during.root, ".greenline/DECISIONS.md"), "# Decisions\n\nChanged.\n"),
     });
@@ -346,7 +320,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
 
   it("snapshot drift: garden answering a later call from another publication fails it, and the request's binding holds", async () => {
     const garden = enabled("drift");
-    const opened = await call(garden, ["snapshot", "--record", ACCOUNT]);
+    const opened = await call(garden, ["snapshot"]);
     const handle = opened.reply.request ?? "";
     const drifted = await call(garden, ["read", "--request", handle, "--id", "example-rule"], {
       mode: "drift",
@@ -373,7 +347,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     const args = ["read", "--id", "example-rule", "--id", "example-prerequisite"];
     // The same two-unit read succeeds in full, so the refusal is the missing unit's alone.
     const whole = enabled("whole-delivery");
-    expect((await call(whole, [...args, "--record", ACCOUNT])).code).toBe(0);
+    expect((await call(whole, [...args])).code).toBe(0);
     evidenceKept(whole);
     expect(await failsAs(garden, args, "partial-delivery", "protocol")).toBe(
       "call: the read did not deliver a unit it was asked for",
@@ -383,7 +357,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
   it("a cancelled process: a call cancelled while garden runs is recorded as cancelled from the bridge's own observation", async () => {
     const garden = enabled("cancelled");
     let during: unknown;
-    const result = await call(garden, ["snapshot", "--record", ACCOUNT], {
+    const result = await call(garden, ["snapshot"], {
       mode: "hang",
       started: () => {
         during = only(garden).receipts[0]?.outcome;
@@ -411,7 +385,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     const version = 'data:text/javascript,globalThis.__GREEN_LINE_VERSION__="0.0.0-test"';
     const child = spawn(
       process.execPath,
-      ["--import", version, entry, "connectors", "call", "garden", "snapshot", "--record", ACCOUNT],
+      ["--import", version, entry, "connectors", "call", "garden", "snapshot"],
       {
         cwd: garden.root,
         env: { PATH: process.env["PATH"] ?? "", GARDEN_FAKE_MODE: "hang" },
@@ -460,7 +434,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
       },
     };
     const before = read(garden.root, "AGENTS.md");
-    const result = await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"], {
+    const result = await call(garden, ["read", "--id", "example-rule"], {
       io: failing,
     });
     expect(result.code).toBe(1);
@@ -477,7 +451,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
     // garden runs from the filesystem root, so a shell would write the marker by its absolute path.
     const marker = join(garden.root, "pwned");
     const anchor = `$(touch ${marker}); --url=https://evil.example/`;
-    const result = await call(garden, ["resolve", "--record", ACCOUNT, "--anchor", anchor]);
+    const result = await call(garden, ["resolve", "--anchor", anchor]);
     expect(result.code).toBe(0);
     const [logged] = runs(garden);
     expect(logged?.argv).toContain(`--anchor=${anchor}`);
@@ -506,9 +480,7 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
 
   it("disabling keeps every receipt and the owner's text, and removes only use-garden and its pointer", async () => {
     const garden = enabled("disable");
-    expect((await call(garden, ["read", "--record", ACCOUNT, "--id", "example-rule"])).code).toBe(
-      0,
-    );
+    expect((await call(garden, ["read", "--id", "example-rule"])).code).toBe(0);
     const receipts = receiptFiles(garden.root);
     expect(receipts).toHaveLength(1);
     expect(run(garden.root, ["connectors", "disable", "garden"]).code).toBe(0);
@@ -521,20 +493,36 @@ describe("P5: the greenline bridge against the synthetic garden executable", () 
   });
 });
 
-/** Every source file of the product, with its text. */
+/**
+ * Every source file of the product, with its text. `src/corpus/` is left
+ * out: it is the workshop's recipe code, which never runs in a workspace,
+ * since the dependency rule `product-never-imports-corpus` keeps the
+ * product from importing it; its fetch, `refresh`'s one read that leaves
+ * the machine, is the corpus's alone.
+ */
 function sources(): readonly (readonly [string, string])[] {
   const root = join(import.meta.dirname, "../../src");
   const found: [string, string][] = [];
   const walk = (directory: string): void => {
     for (const entry of readdirSync(join(root, directory), { withFileTypes: true })) {
       const path = directory === "" ? entry.name : `${directory}/${entry.name}`;
+      if (entry.isDirectory() && path === "corpus") continue;
       if (entry.isDirectory()) walk(path);
       else if (/\.(ts|mts|mjs|js)$/.test(entry.name))
-        found.push([`src/${path}`, readFileSync(join(root, path), "utf8")]);
+        found.push([`src/${path}`, withoutPluginModules(readFileSync(join(root, path), "utf8"))]);
     }
   };
   walk("");
   return found;
+}
+
+/**
+ * A source with the harness adapters' plugin modules left out: text the
+ * product writes into a workspace for OpenCode, Amp and Pi to load, which
+ * greenline itself never imports or runs (`src/core/adapters.ts`).
+ */
+function withoutPluginModules(text: string): string {
+  return text.replace(/const (?:OPENCODE_PLUGIN|AMP_PLUGIN|PI_EXTENSION) = `[^`]*`;/g, "");
 }
 
 /** The module specifiers a source imports, statically or dynamically. */
@@ -595,7 +583,7 @@ describe("the search of the tree", () => {
     expect(page.match(/https?:\/\/[^\s"'`]+/g) ?? []).toEqual([]);
   });
 
-  it("no hidden installation path: the only processes the product starts are git, ps and the connector's own planned invocation", () => {
+  it("no hidden installation path: the only processes the product starts are git, ps, the connector's own planned invocation and the command a check is given", () => {
     const all = sources();
     // The module reached by any specifier, and imported only by name, never whole or by default.
     expect(
@@ -624,12 +612,11 @@ describe("the search of the tree", () => {
       ),
     );
     expect(imported).toEqual([
-      "src/shell/cli/evidence.ts: execFileSync",
-      "src/shell/connectors/process.ts: spawn",
-      "src/shell/digests.ts: execFileSync",
-      "src/shell/execution-ledger.ts: execFileSync",
+      "src/shell/code-tree.ts: execFileSync",
+      // init's offer: `git init`, on the owner's yes, the one git write (J-73 S4).
+      "src/shell/git.ts: execFileSync",
       "src/shell/inspect/server.ts: execFileSync, type ExecFileSyncOptionsWithStringEncoding",
-      "src/shell/ledger-lock.ts: execFileSync",
+      "src/shell/process.ts: spawn, type StdioOptions",
     ]);
     const commands = spawning.flatMap(([path, text]) =>
       [
@@ -638,13 +625,24 @@ describe("the search of the tree", () => {
         ),
       ].map((match) => `${path}: ${match[1]}(${(match[2] ?? "").trim()}`),
     );
-    // Every call names its program literally: git and ps, or the connector's resolved file.
+    // Every call names its program literally, git and ps, or starts a file the one process module resolved.
     for (const line of commands)
-      expect(line).toMatch(
-        /: execFileSync\("(?:git|ps)"$|^src\/shell\/connectors\/process\.ts: spawn\(file$/,
-      );
+      expect(line).toMatch(/: execFileSync\("(?:git|ps)"$|^src\/shell\/process\.ts: spawn\(file$/);
+    // Two runners, two starts: the connector's planned invocation and a check's command.
     expect(commands.filter((line) => line.includes("process.ts"))).toEqual([
-      "src/shell/connectors/process.ts: spawn(file",
+      "src/shell/process.ts: spawn(file",
+      "src/shell/process.ts: spawn(file",
+    ]);
+    // git started through code-tree's read-only runner rather than child_process directly: the history reader, the situation status prints (J-73 S4), and the hooks' reads and the hook command (J-93 S3).
+    expect(
+      all
+        .filter(([path, text]) => path !== "src/shell/code-tree.ts" && /\breadGit\b/.test(text))
+        .map(([path]) => path),
+    ).toEqual([
+      "src/shell/cli/hook.ts",
+      "src/shell/git-history.ts",
+      "src/shell/hooks.ts",
+      "src/shell/situation.ts",
     ]);
     // The connector runs only the file the manifest names, found on the absolute PATH entries; nothing is fetched, written to a PATH directory or installed.
     for (const [path, text] of all)

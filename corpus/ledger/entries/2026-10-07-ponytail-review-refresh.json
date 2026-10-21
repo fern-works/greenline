@@ -1,0 +1,37 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-ponytail-review-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-research-recipe",
+    "sha256": "e29f73a811d69013406c478f1a1692ffb48341eed62e696748a3274bd79e26a7"
+  },
+  "subject": "skill:ponytail-review",
+  "recipe": "83a153cadde348a27f8a77e5592b5a40f66e507243efd67083edd19711abddc8",
+  "result": "2c8e973b7f9febda677b644630492d8f7b78c857f086173252be128f5a6f0599",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Takes upstream's numbered findings; drops the old format line",
+  "reason": "Refreshes ponytail-review to ponytail 552acd5efd0a: upstream's numbered findings and its reuse: tag are taken as written, under the provisional ruling of 2026-10-07. The old unnumbered format line goes, as upstream removed it.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ponytail",
+        "segments": 37,
+        "taken": 35,
+        "exact": 34,
+        "retention": 0.9714285714285714,
+        "coverage": 0.9459459459459459,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 245
+  }
+}

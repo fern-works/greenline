@@ -1,0 +1,174 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "build-the-lever",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "build-the-lever"
+    },
+    {
+      "field": "description",
+      "value": "Build the tool that does or proves non-trivial work instead of doing it by hand: a codemod, a script, a generator, a query or a rerunnable check, proved against one unit done by hand and safe to rerun. Use when the work is more than a couple of obvious edits: many similar edits, a migration, an analysis over many files or rows, or a check you would otherwise make by eye."
+    }
+  ],
+  "sources": ["pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-build-the-lever/SKILL.md",
+          "segments": ["b059427f53d9"]
+        },
+        {
+          "passage": "written",
+          "text": "build-the-lever is a trial habit, installed only where the workspace's `trials` names it, for the moment the work in front of you is more than a couple of obvious edits: many similar edits, a migration, an analysis over many files or rows, or a check you would otherwise make by eye, at whatever step the work is in, most often build. It writes no record of its own: the section of the step that runs names the lever and the check that proved it, recorded as a check, and since the record relies on the lever, it is committed with the change or, where it should not stay in the code, copied into the change's folder. You build and run the lever yourself, one agent in the one checkout. Making a recurring instruction a durable guardrail is `correct`'s, a trial start, and proving that an output is real is the verify step's.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations its block row keys it by, that it is a trial installed only where trials names it, that it writes no record of its own and where the lever and its proof are named, that one agent builds and runs it, and the habits and steps beside it that own the neighbouring concerns its upstream pointers named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the trial habit: a lever for work beyond obvious edits"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-build-the-lever/SKILL.md",
+          "segments": [
+            "33fbc6d300da",
+            "c75043058758",
+            "65c36904df68",
+            "d54e5f1dd135",
+            "d3e2c6ff1d6d",
+            "77f40ce4eb27",
+            "f417052f02df",
+            "251581460bf9",
+            "407c3bdde488",
+            "8b88741949a1",
+            "34a01247ed95",
+            "98935547e794",
+            "7bd0e41b5964",
+            "9d8b8738744d",
+            "0cd02fae6894"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-build-the-lever/SKILL.md",
+          "segments": [
+            "06929fba5356",
+            "a8968a1a28e2",
+            "7f993fdfb022",
+            "df6ac8308f56",
+            "a0ee46b6a52f",
+            "7d37c3de1517"
+          ],
+          "edits": [
+            {
+              "segment": "a8968a1a28e2",
+              "find": "generator, or delegate skill",
+              "replace": "or generator",
+              "kind": "method",
+              "reason": "The delegate skill belongs to the fan-out bullet dropped under R20, so the file the principle produces is a codemod, a script or a generator.",
+              "gist": "The lever is a codemod, script or generator, not a delegate skill",
+              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+            },
+            {
+              "segment": "7d37c3de1517",
+              "find": "the [Laziness Protocol](../principle-laziness-protocol/SKILL.md)",
+              "replace": "the ponytail habit",
+              "kind": "pointer",
+              "reason": "The laziness protocol is grafted into the ponytail habit (S18a); the link to pstack's page, which the installation does not carry, points at ponytail.",
+              "gist": "The laziness protocol lives in ponytail now, so the link moves there"
+            }
+          ],
+          "join": "\n"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Build the lever: the practice's mechanics\n\nThis page holds where build-the-lever's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe check that proves the lever runs through `greenline check -- <command>`. A lever that should not stay in the code is copied into the change's folder, `.greenline/ledger/<id>/`.",
+          "kind": "home",
+          "reason": "build-the-lever's mechanics: the lever's check recorded through greenline check and its copy in the change's folder, held apart since J-93 S2.",
+          "gist": "The lever's recorded check and its copy"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "principle-build-the-lever/SKILL.md",
+      "segment": "1f176a132b59",
+      "kind": "method",
+      "reason": "The bullet for fanning work out to subagents is dropped: greenline runs one agent at a time, and its line that a deterministic lever beats fan-out stands (R20).",
+      "gist": "Fan-out to subagents goes; greenline runs one agent at a time",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-build-the-lever/SKILL.md",
+      "segment": "52ab15c6b93e",
+      "kind": "method",
+      "reason": "The bullet for fanning work out to subagents is dropped: greenline runs one agent at a time, and its line that a deterministic lever beats fan-out stands (R20).",
+      "gist": "Fan-out to subagents goes; greenline runs one agent at a time",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-build-the-lever/SKILL.md",
+      "segment": "58d7a2463139",
+      "kind": "pointer",
+      "reason": "The pointers to pstack's encode-lessons and prove-it-works pages, which the installation does not carry, become the opening paragraph's neighbours: correct and the verify step.",
+      "gist": "Absent pstack links give way to the correct start and verify step",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-build-the-lever/SKILL.md",
+      "segment": "9e8421057db2",
+      "kind": "pointer",
+      "reason": "The pointers to pstack's encode-lessons and prove-it-works pages, which the installation does not carry, become the opening paragraph's neighbours: correct and the verify step.",
+      "gist": "Absent pstack links give way to the correct start and verify step",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-build-the-lever/SKILL.md",
+      "segment": "c28431c6c9c6",
+      "kind": "pointer",
+      "reason": "The pointers to pstack's encode-lessons and prove-it-works pages, which the installation does not carry, become the opening paragraph's neighbours: correct and the verify step.",
+      "gist": "Absent pstack links give way to the correct start and verify step",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    }
+  ]
+}

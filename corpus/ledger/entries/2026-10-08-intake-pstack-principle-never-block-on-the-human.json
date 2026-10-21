@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-principle-never-block-on-the-human",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-recall",
+    "sha256": "98c277f9021d1321daa313c7910be529fd8098b66b07f5ef33155163595692e9"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/principle-never-block-on-the-human"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Conflicts with waiting for the owner",
+  "reason": "It conflicts with the trunk's proposal, which waits for the owner.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Decline, \"everything is good\" (R11)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Decline, \"everything is good\" (R11)"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-close-knowledge-homes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-router-stop-and-resume",
+    "sha256": "a9f4ee89731b649b2251df9b249300724023418040e9f644bda5af8143fc00f3"
+  },
+  "subject": "skill:close",
+  "recipe": "747ffc3769facb17653395d8b442402c818e7ed265550b88699fab08ad06856a",
+  "result": "a106ab7c48b1a3b3c1af034c7fe7b06fe1270531e95c9c5af67073415f84de6c",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "A decision or term written only to knowledge homes needs no record",
+  "reason": "Asked for by name with no change open, close writes a decision or a term into the knowledge homes without opening a change record, as the routing map now says too.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined; documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'; handoff, claude-handoff and finishing-a-development-branch stay declined"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-09-15",
+      "words": "roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ericclemmons",
+        "segments": 61,
+        "taken": 56,
+        "exact": 54,
+        "retention": 0.9642857142857143,
+        "coverage": 0.9180327868852459,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 35,
+        "exact": 34,
+        "retention": 0.9714285714285714,
+        "coverage": 0.30701754385964913,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "addyosmani",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 1259
+  }
+}

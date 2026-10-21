@@ -7,8 +7,10 @@
  * bundle keeps a single stdout/stderr surface.
  */
 import type { ConnectorStatus } from "../../core/connectors/registry.ts";
-import type { LedgerSummary } from "../../core/ledger-audit.ts";
-import type { ProjectView } from "../../core/status.ts";
+import type { ChangesReport } from "../../core/status.ts";
+import type { Situation } from "../../core/situation.ts";
+import type { TidyReason } from "../../core/tidy.ts";
+import { renderHooksText, type HooksReport } from "../../core/adapters.ts";
 
 export const EXIT_OK: number = 0;
 export const EXIT_FAILURE: number = 1;
@@ -41,30 +43,47 @@ export const GL = {
   brokenBlock: "GL0108",
   lockStale: "GL0110",
   managedConflict: "GL0111",
-  doctorOrphan: "GL0112",
+  managedOrphan: "GL0112",
   unknownForceTarget: "GL0113",
-  doctorReference: "GL0114",
+  skillReference: "GL0114",
   initTargetsUnchosen: "GL0116",
-  doctorWorkflowWithoutRemote: "GL0121",
   repositoryStateInvalid: "GL0123",
   workspaceInitialized: "GL0124",
   connectorConfiguration: "GL0125",
-  artifactFrontmatter: "GL0201",
-  artifactIdDuplicate: "GL0202",
-  artifactReferenceUnresolved: "GL0203",
-  artifactConsumptionStale: "GL0204",
-  artifactConsumptionAhead: "GL0205",
-  artifactClaimConflict: "GL0206",
-  artifactDependencyCycle: "GL0207",
-  artifactEvidenceMissing: "GL0208",
-  artifactCompleteUnproven: "GL0209",
-  artifactHarvestUnrecorded: "GL0210",
-  ledgerMissing: "GL0301",
-  ledgerReference: "GL0302",
-  ledgerIncomplete: "GL0303",
-  ledgerContradicted: "GL0304",
-  ledgerUnverified: "GL0306",
+  installationUnavailable: "GL0140",
+  // The changes view's findings, which fail status, and its notices, which never do.
+  // Each reads a record's field or a durable fact of the repository and is paired
+  // with its sentence in workshop/components/cli-contracts.md, "The checks charter";
+  // GL0453, GL0454, GL0457 and GL0458 became status nudges in J-93 S3 and are never reused.
+  changeUnparsed: "GL0401",
+  changeMismatch: "GL0402",
+  changeBelowFloor: "GL0403",
+  changeChecksFailed: "GL0404",
+  changeCitedMissing: "GL0405",
+  changeTicketMode: "GL0406",
+  changePlanningBelowCareful: "GL0407",
+  changeBriefUnwritten: "GL0408",
+  changeCostBelowStarts: "GL0409",
+  changeCodeMoved: "GL0451",
+  changeUncited: "GL0452",
+  changeDeleted: "GL0455",
+  changeUnchecked: "GL0456",
+  changeFactMissing: "GL0459",
+  // tidy's refusal to remove a change's working files.
+  tidyKept: "GL0470",
 } as const;
+
+/**
+ * GL0105's message for a command that needs a repository and finds none.
+ * Whether to create one is the owner's decision, so the words an agent
+ * reads say it offers `git init` and waits, in init's words (J-82), and
+ * never read as an instruction to run it.
+ * @param command the command refused, such as `sync`
+ * @returns the message
+ */
+export function noRepositoryMessage(command: string): string {
+  return `${command} requires a Git repository root, and none stands here; running 'git init' is the owner's decision: an agent offers it and waits, and 'greenline init --yes' runs it only as the owner's answer`;
+}
 
 /** A stable diagnostic builder. */
 export function diagnostic(
@@ -93,13 +112,29 @@ export interface Envelope {
   readonly ok: boolean;
   readonly effects: readonly EffectJson[];
   readonly diagnostics: readonly Diagnostic[];
-  /** The status view, present only on the status command. */
-  readonly view?: ProjectView;
   /** The House rulings stanza's dash lines, present only on status. */
   readonly houseRulings?: readonly string[];
-  readonly ledger?: LedgerSummary;
-  /** The connectors' registered and installed state, present on the `connectors` group, status and doctor. */
+  /** The changes view, present only on status. */
+  readonly changes?: ChangesReport;
+  /** The connectors' registered and installed state, present on the `connectors` group and status. */
   readonly connectors?: readonly ConnectorStatus[];
+  /** The situation the repository is in, present only on status's default view. */
+  readonly situation?: Situation;
+  /** What tidy removed and kept, present only on tidy. */
+  readonly tidy?: TidyJson;
+  /** The git hooks, the declared checks and the adapters, present on init, sync and status. */
+  readonly hooks?: HooksReport;
+}
+
+/** What tidy removed and kept: each folder's path from the root, and for a kept one why, whether keeping it refused the request, and the sentence. */
+export interface TidyJson {
+  readonly removed: readonly string[];
+  readonly kept: readonly {
+    readonly path: string;
+    readonly reason: TidyReason;
+    readonly refused: boolean;
+    readonly message: string;
+  }[];
 }
 
 /** The streams a command may write to. */
@@ -131,12 +166,13 @@ export function effectSummary(effects: readonly EffectJson[]): string {
 /** Emit a compact human summary of the same facts the envelope carries. */
 export function writeHumanResult(writer: CliWriter, envelope: Envelope, text?: string): void {
   writer.stdout.write(`greenline ${envelope.command}\n`);
-  if (text !== undefined) {
-    // A command with a rendered view prints it; effect counts don't apply.
-    writer.stdout.write(text);
-  } else if (envelope.command !== "doctor") {
-    writer.stdout.write(effectSummary(envelope.effects));
-  }
+  // A command with a rendered view prints it; effect counts don't apply, and
+  // status, which writes nothing, prints none even when it refuses early.
+  if (text !== undefined) writer.stdout.write(text);
+  else if (envelope.command !== "status") writer.stdout.write(effectSummary(envelope.effects));
+  // A command with a view of its own places the hooks' lines in it.
+  if (text === undefined && envelope.hooks !== undefined)
+    writer.stdout.write(renderHooksText(envelope.hooks));
   for (const item of envelope.diagnostics) {
     const path = item.path === undefined ? "" : ` (${item.path})`;
     writer.stderr.write(`  ${item.severity.toUpperCase()} ${item.code}: ${item.message}${path}\n`);

@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-debugging-and-error-recovery",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-systematic-debugging",
+    "sha256": "0bd98d38f3628d904f1a4c03cf1da6763457af527fc213589a7f36b2739e10f3"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/debugging-and-error-recovery"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Stop-the-line joins diagnosing-bugs; triage trees go to garden",
+  "reason": "Its stop-the-line rule and error output as untrusted data enter the re-cut diagnosing-bugs recipe; its triage trees go to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its triage trees",
+        "locator": "skills/debugging-and-error-recovery"
+      }
+    ]
+  },
+  "placement": {
+    "kind": "start",
+    "slot": "diagnosing-bugs",
+    "catches": "A fix applied where a failure surfaces, before its cause is found, or stacked on a premise earlier fixes disproved",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "high",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "max",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

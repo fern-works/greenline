@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-ponytail-ponytail-audit",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-receiving-code-review",
+    "sha256": "8a4548d482107292bc25d2d69b6126c4fcdd41a5503d8c70dc1c1051ab5a062c"
+  },
+  "source": {
+    "repository": "https://github.com/dietrichgebert/ponytail",
+    "commit": "552acd5efd0aeae2583a12efe39373d2f076f25e",
+    "path": "skills/ponytail-audit"
+  },
+  "pin": "ponytail",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Whole-tree grep and biggest cut first strengthen the excess lens",
+  "reason": "Its whole-tree grep before a delete finding and its biggest-cut-first ranking strengthen ponytail-review, the review step's excess lens; its tags duplicate ponytail-review.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "ponytail-review",
+    "catches": "A delete finding on a symbol that a test or a dynamic reference still uses",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "review",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "review",
+        "depth": "independent",
+        "cost": 60
+      },
+      {
+        "mode": "high",
+        "step": "review",
+        "depth": "independent",
+        "cost": 60
+      },
+      {
+        "mode": "max",
+        "step": "review",
+        "depth": "looped",
+        "cost": 60
+      }
+    ],
+    "ships": "default"
+  }
+}

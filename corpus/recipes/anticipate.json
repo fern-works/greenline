@@ -1,0 +1,1425 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "anticipate",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "anticipate"
+    },
+    {
+      "field": "description",
+      "value": "Attack a change's plan before the build: state each claim the build would rest on, hand the artifact and its contract to a fresh reading that tries to disprove it, reconcile every finding against the text and stop where the depth ends, at the depth the change's mode gives the step anticipate, the careful mode's premise review. Use when the mode reaches anticipate, or when the owner asks to stress-test a plan for hidden failure modes."
+    }
+  ],
+  "sources": ["addyosmani"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Anticipate\n\nAnticipate attacks a change's plan before the build: it states the claims the build would rest on and has a fresh reading try to disprove each one, so a hidden failure mode is found while changing course is still cheap. It runs where the change's mode reaches the anticipate step, at the depth the mode gives it, and alone when the owner asks to stress-test a plan. Asked for by name with no change open, it runs at the written depth, its result stays in the reply, and it writes no file. It reads the change record's frame and plan sections first. It changes the plan only where a finding requires it and records each change in its section; a finding that would reopen a choice the owner made goes back to the owner. It never builds: the build step takes the plan as anticipate leaves it.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the step skill's own voice: what anticipate attacks and when (run where the mode reaches it, or asked for by name), what it reads, that a finding reopening the owner's choice goes back to the owner, and that it never builds; it replaces upstream's title, overview and its contrast with a review command, the review being the review step's. Which mode runs it stands on its references page since J-93 S2.",
+          "gist": "Opens anticipate: attacking the plan before the build"
+        },
+        {
+          "passage": "written",
+          "text": "## The reach of the cycle\n\nRun the cycle below on each non-trivial claim the plan makes, or, where one claim alone can be attacked, on the claim that would cost most if it were wrong. Where Step 4 says to re-classify or to re-loop and no fresh reading can be had, run one more self-questioning pass on that claim; a finding still open after it is recorded as open.",
+          "kind": "method",
+          "reason": "Which claims the doubt cycle attacks, every non-trivial one or the costliest alone, and Step 4's re-loop as one more self-questioning pass where no fresh reading can be had, a finding then recorded open; the depths that run it stand on the references page since J-93 S2.",
+          "gist": "The cycle attacks each non-trivial claim; an unresolved re-loop is recorded open",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "written",
+          "text": "## The claims worth attacking",
+          "kind": "scope",
+          "reason": "The heading over upstream's definition of a non-trivial decision, which here says which of the plan's claims the step attacks; upstream's heading named when to use the skill, which the mode and the scope paragraph now say.",
+          "gist": "Heads the definition of which plan claims the step attacks"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": ["99663333b1cb", "fed7da76090e"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": [
+            "b235656a3232",
+            "df31a8476f37",
+            "2140c18365d7",
+            "d9458abb3405",
+            "1be55091bd59",
+            "749ec2c90698"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": ["8f0b7dceb25d", "3bfc03635ccf"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": ["0b0e38a27fda"]
+        },
+        {
+          "passage": "written",
+          "text": "In the steps below the user is the owner of the request, and the orchestrator is the agent running the step.",
+          "kind": "name",
+          "reason": "Upstream says the user and the orchestrator, as its author wrote it, for the owner of the request and the agent that runs the step; this line ties each use once rather than editing every sentence (the bound on a name edit).",
+          "gist": "Here \"user\" is the owner and \"orchestrator\" the agent running the step"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": [
+            "433a94f64695",
+            "7382f03042fc",
+            "0845089d28d4",
+            "c80e8e334d4f",
+            "140dac107891",
+            "ea2b0208442e",
+            "219ef0f25e2e",
+            "32c096bdb76a",
+            "7b86a63d0490",
+            "f2a812cc432b",
+            "8125cd83a762",
+            "1ae7e505051b",
+            "562d20a7046b",
+            "7c8acbb2feb6",
+            "31bb26eb2211",
+            "47902da02ce6",
+            "e243520428f0",
+            "44bba43f10c0",
+            "28544ff71064",
+            "bd0b4961eacd",
+            "bb138e3b9b4c"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Where the step's depth spends a fresh agent, that agent is the fresh reading: it gets ARTIFACT and CONTRACT and never the CLAIM, starts no agent of its own, and returns a report of the claims it tried, those that held, those that broke and its limits; the step waits for the report, and no other agent runs beside it. Step 4 reconciles what broke.\n\nWhere no fresh agent can be started, the fresh reading is the self-questioning form: rewrite ARTIFACT + CONTRACT as a fresh self-prompt with a hard mental separator from your prior reasoning, and run the adversarial prompt against it yourself. This is not a fresh-context review, since you carry your own context with you, so its result is recorded as degraded.",
+          "kind": "method",
+          "reason": "Upstream's reviewer is a Claude Code persona or a subagent from the main session, with a self-questioning fallback for a nested context only; under the portability ruling the fresh reading is one agent given ARTIFACT and CONTRACT, never delegating, its report the claims tried, held, broken and its limits, the self-questioning form, recorded as degraded, where no agent can be started; its brief and report's paths and form stand on the references page since J-93 S2.",
+          "gist": "One fresh agent reads ARTIFACT and CONTRACT; else the self-questioning form",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped; The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined; The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; The operator's card of 2026-10-14 on part 1 of the-whole-change, \"Rule as proposed\": anticipate's report has a shape, parallel to review's and verify's: the claims tried, the ones that held, the ones that broke, the limits; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": [
+            "d30f4773263c",
+            "cbe3bd232d94",
+            "f6b30604c08e",
+            "5bad3bf2ad89",
+            "6cb4ad12027a",
+            "949bc868216a",
+            "d944a051c861",
+            "46c02b88e4a3",
+            "52f9092114b3",
+            "402bbf0f2828",
+            "5b02f90af22d",
+            "3e4a5fb9fae1",
+            "e468b3d22ae9",
+            "ba527f10f981",
+            "5472a6b5efde",
+            "dce29f420737",
+            "492c6dfc8631",
+            "dd96f6257c7e",
+            "636b579e5c78",
+            "abcb52a92ae3",
+            "b44180947460",
+            "de804927ddf5",
+            "c0abc3f0ff73",
+            "e8470314a7b7"
+          ],
+          "edits": [
+            {
+              "segment": "636b579e5c78",
+              "find": "3 cycles completed",
+              "replace": "The mode's rounds are spent",
+              "kind": "method",
+              "reason": "The mode's rounds stand over upstream's three cycles (contradiction 32).",
+              "gist": "The mode's rounds replace upstream's three cycles",
+              "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+            },
+            {
+              "segment": "636b579e5c78",
+              "find": "a fourth",
+              "replace": "another",
+              "kind": "method",
+              "reason": "The mode's rounds stand over upstream's three cycles (contradiction 32), so the round after the last is another, not a fourth.",
+              "gist": "Another round, not a fourth: the mode's rounds replace the three cycles",
+              "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+            },
+            {
+              "segment": "b44180947460",
+              "find": "after 3 cycles",
+              "replace": "after the last round",
+              "kind": "method",
+              "reason": "The mode's rounds stand over upstream's three cycles (contradiction 32).",
+              "gist": "The mode's rounds replace upstream's three cycles",
+              "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+            },
+            {
+              "segment": "de804927ddf5",
+              "find": "three unresolved cycles is",
+              "replace": "unresolved rounds are",
+              "kind": "method",
+              "reason": "The mode's rounds stand over upstream's three cycles (contradiction 32).",
+              "gist": "The mode's rounds replace upstream's three cycles",
+              "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+            },
+            {
+              "segment": "c0abc3f0ff73",
+              "find": "3 cycles is",
+              "replace": "the mode's rounds are",
+              "kind": "method",
+              "reason": "The mode's rounds stand over upstream's three cycles (contradiction 32).",
+              "gist": "The mode's rounds replace upstream's three cycles",
+              "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": ["052cfba57d12"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "doubt-driven-development/SKILL.md",
+          "segments": ["cc6107c39152", "d9b34144df31", "4c1cd039b9cf", "1e0dd2eb6aac"]
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the change record's frame and plan sections in .greenline/ledger/<id>.md, and when the work splits the plan directory's spec.md and tickets.md\nProduces: the anticipate section of .greenline/ledger/<id>.md, the one line none at the modes that skip it, and otherwise the claims attacked and the findings reconciled, citing the agent's report .greenline/ledger/<id>/anticipate-1.md at the independent depth; any change the findings made to the plan, recorded in that section; the reply alone when asked for by name with no change open\nNext: the next step of the change's mode",
+          "kind": "method",
+          "reason": "A step skill's handoff names the next step of the change's mode, never a fixed skill (the plan's rule for step skills); what anticipate reads and writes at each of its depths since J-93 S2, upstream having no handoff.",
+          "gist": "The handoff names the next step and what anticipate reads and writes",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Anticipate: the practice's mechanics\n\nThis page holds anticipate at each mode's depth, the careful mode's premise review, and where its work lands. Read it with `SKILL.md` when the mode reaches anticipate, and when AGENTS.md's index sends you here.",
+          "kind": "method",
+          "reason": "Anticipate's references page opens: anticipate at each mode's depth, careful's premise review, and where its work lands, which the block's sentences and, since J-93 S2, the front's depth bullets moved here.",
+          "gist": "Opens anticipate's mechanics page: careful's premise review and its depths",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        },
+        {
+          "passage": "written",
+          "text": "## The depths\n\n- **None, at quick and regular.** The mode skips the anticipate step, and its section holds the one line `none at <mode>`.\n- **Independent, at careful: the premise review.** One fresh agent attacks the claims the build rests on before any code, `SKILL.md`'s cycle running once on each non-trivial claim with that agent as its fresh reading. At the independent depth the fresh reading is one agent, started through the harness's delegation with the one brief every fresh agent gets (`.greenline/ledger/README.md`, \"The brief and the relay note\"), written to `.greenline/tmp/<id>/brief-anticipate-1.md` as well: the change record's front matter, its acceptance, the change's id, the path of its report, `.greenline/ledger/<id>/anticipate-1.md`, and this skill to work by, whose adversarial prompt it runs; then anticipate's extras, ARTIFACT and CONTRACT, and never the CLAIM. Nothing else. It starts no agent of its own. It writes its report there, and the anticipate section cites it. The step waits for the report, and no other agent runs beside it. The report has four parts, each under its own heading: `## Claims tried`, each property of the contract the agent tested the artifact against; `## Held`, each claim that survived, with what it checked; `## Broke`, each claim that failed, with the place in the artifact, the contract line it breaks and the input or state that breaks it; and `## Limits`, what it could not test and why. A round that breaks nothing says so under its Broke heading and still states its limits. Step 4 reconciles what broke. The anticipate section holds the claims attacked, each finding with its class and what was done about it, citing the report.\n- **Written, where the harness has no delegation, and when anticipate is asked for by name.** Run the cycle once on each non-trivial claim in the self-questioning form. The anticipate section, in `.greenline/ledger/<id>.md`, holds the claims attacked, each finding with its class and what was done about it, and the note that the reading was degraded.",
+          "kind": "method",
+          "reason": "Anticipate's depths at each mode: none at quick and regular; careful's premise review, one fresh agent on its brief, its report in four parts cited by the section; the written self-questioning pass where no agent can be started; moved from the front by J-93 S2.",
+          "gist": "None at quick and regular; careful briefs one agent; else written",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): doubt-driven-development is copied as the recipe of the trial step anticipate, and its contradiction with the modes definition stands as recommended, the mode's rounds over its three cycles (contradiction 32); The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution; The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined; The operator's card of 2026-10-14 on part 1 of the-whole-change, \"Rule as proposed\": anticipate's report has a shape, parallel to review's and verify's: the claims tried, the ones that held, the ones that broke, the limits; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "735b9254d996",
+      "kind": "scope",
+      "reason": "The title gives way to the step's own.",
+      "gist": "The source's title gives way to the step's own",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "7337f3d0aa29",
+      "kind": "scope",
+      "reason": "The overview heading gives way to the heading over the claims worth attacking.",
+      "gist": "The overview heading gives way to the claims-worth-attacking heading",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "7e73a9ea5e8e",
+      "kind": "scope",
+      "reason": "Naming the discipline before any output stands is the scope paragraph's, which says what the step attacks and when.",
+      "gist": "Naming the discipline is the opening's job, which says what is attacked",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4e927f888b31",
+      "kind": "pointer",
+      "reason": "The contrast with a review command points at a command no install carries; the finished-artifact verdict is the review step's, as the scope paragraph says.",
+      "gist": "No /review command is installed; the review step gives finished verdicts",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "15e16fd0d425",
+      "kind": "pointer",
+      "reason": "The contrast with a review command points at a command no install carries; the finished-artifact verdict is the review step's, as the scope paragraph says.",
+      "gist": "No /review command is installed; the review step gives finished verdicts",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "220130947d40",
+      "kind": "pointer",
+      "reason": "The contrast with a review command points at a command no install carries; the finished-artifact verdict is the review step's, as the scope paragraph says.",
+      "gist": "No /review command is installed; the review step gives finished verdicts",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "scope",
+      "reason": "The when-to-use heading gives way to the heading over the claims worth attacking: the mode decides when the step runs.",
+      "gist": "The mode decides when the step runs, so the when-to-use heading goes",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "a9a48ac839ef",
+      "kind": "method",
+      "reason": "The in-flight triggers (about to commit, about to claim a fact, in unfamiliar code) make the method a habit at any step, which would spend an agent outside the step; the step runs on the plan before the build, and the any-step use is held with its gap, a habit that would spend an agent (R17).",
+      "gist": "Any-step triggers would spend an agent; the step attacks the plan only",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "5ee6916ed309",
+      "kind": "method",
+      "reason": "The in-flight triggers (about to commit, about to claim a fact, in unfamiliar code) make the method a habit at any step, which would spend an agent outside the step; the step runs on the plan before the build, and the any-step use is held with its gap, a habit that would spend an agent (R17).",
+      "gist": "Any-step triggers would spend an agent; the step attacks the plan only",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "392be00ae660",
+      "kind": "method",
+      "reason": "The in-flight triggers (about to commit, about to claim a fact, in unfamiliar code) make the method a habit at any step, which would spend an agent outside the step; the step runs on the plan before the build, and the any-step use is held with its gap, a habit that would spend an agent (R17).",
+      "gist": "Any-step triggers would spend an agent; the step attacks the plan only",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "474a20c45260",
+      "kind": "method",
+      "reason": "The in-flight triggers (about to commit, about to claim a fact, in unfamiliar code) make the method a habit at any step, which would spend an agent outside the step; the step runs on the plan before the build, and the any-step use is held with its gap, a habit that would spend an agent (R17).",
+      "gist": "Any-step triggers would spend an agent; the step attacks the plan only",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "b43231d98324",
+      "kind": "method",
+      "reason": "The in-flight triggers (about to commit, about to claim a fact, in unfamiliar code) make the method a habit at any step, which would spend an agent outside the step; the step runs on the plan before the build, and the any-step use is held with its gap, a habit that would spend an agent (R17).",
+      "gist": "Any-step triggers would spend an agent; the step attacks the plan only",
+      "ruling": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4e9dc1e16d49",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "cba8dbbe0457",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "bef864b60b65",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "15a770ce8068",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "214266b719cd",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "95ade4cd1919",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "780d0ed75948",
+      "kind": "scope",
+      "reason": "Whether the step runs at all is the mode's: fast skips it and the owner's choice of mode is final, so the when-not list leaves; the bound below keeps the skip of a trivial claim.",
+      "gist": "The mode decides whether the step runs; trivial claims stay skipped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "77a354fd895c",
+      "kind": "harness",
+      "reason": "The loading constraints concern one harness's personas and its nested subagents; the portable form is stated where the fresh reading is.",
+      "gist": "Loading constraints concern one tool's personas; the portable reading is stated instead",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "e1d03aa12ab2",
+      "kind": "harness",
+      "reason": "A main-session orchestrator that spawns the reviewer is one harness's shape; the step's one agent per looped round goes through the harness's delegation.",
+      "gist": "A main-session orchestrator is one tool's shape; delegation starts each round's agent",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "cb5e02e8e40b",
+      "kind": "harness",
+      "reason": "The persona front matter and the repository's orchestration rules file are one harness's and one repository's; no install carries them.",
+      "gist": "No install carries the persona front matter or the repository's rules file"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "aaa6df9cd5ce",
+      "kind": "harness",
+      "reason": "The persona front matter and the repository's orchestration rules file are one harness's and one repository's; no install carries them.",
+      "gist": "No install carries the persona front matter or the repository's rules file"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4409b120cc08",
+      "kind": "harness",
+      "reason": "A nested subagent context where Claude Code prevents a spawn is one harness's limit; where the harness has no delegation the round runs in the self-questioning form.",
+      "gist": "A nested-subagent limit is one tool's; without delegation, rounds self-question",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "dd80d3f8731e",
+      "kind": "method",
+      "reason": "Upstream's degraded self-questioning fallback is a last resort with a preference for escalation; under the portability ruling it is the form at the inline and written depths and where the harness has no delegation, recorded as degraded.",
+      "gist": "Self-questioning, marked degraded, is the inline and written form, not a fallback",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "02c7b547c2e7",
+      "kind": "method",
+      "reason": "Upstream's degraded self-questioning fallback is a last resort with a preference for escalation; under the portability ruling it is the form at the inline and written depths and where the harness has no delegation, recorded as degraded.",
+      "gist": "Self-questioning, marked degraded, is the inline and written form, not a fallback",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4973c65baed4",
+      "kind": "scope",
+      "reason": "The checklist repeats the five step headings that follow, and its stop line names three cycles, which the mode's rounds replace.",
+      "gist": "The checklist repeats the step headings, and its three cycles are replaced",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "968e50f412c3",
+      "kind": "scope",
+      "reason": "The checklist repeats the five step headings that follow, and its stop line names three cycles, which the mode's rounds replace.",
+      "gist": "The checklist repeats the step headings, and its three cycles are replaced",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "a6df03bee3ca",
+      "kind": "harness",
+      "reason": "Claude Code's role-based reviewers in an agents directory are one harness's roster; the portable reading is one delegated agent given the prompt verbatim.",
+      "gist": "One tool's role-based reviewers give way to one delegated agent, prompt verbatim",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "b29405e3c8f6",
+      "kind": "harness",
+      "reason": "Overriding a persona's response shape is one harness's concern; the delegated agent is given the adversarial prompt verbatim and nothing else.",
+      "gist": "Persona overrides are one tool's concern; the agent gets the prompt verbatim",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "ffac7ac283cc",
+      "kind": "harness",
+      "reason": "Overriding a persona's response shape is one harness's concern; the delegated agent is given the adversarial prompt verbatim and nothing else.",
+      "gist": "Persona overrides are one tool's concern; the agent gets the prompt verbatim",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "39d0b757e401",
+      "kind": "harness",
+      "reason": "Overriding a persona's response shape is one harness's concern; the delegated agent is given the adversarial prompt verbatim and nothing else.",
+      "gist": "Persona overrides are one tool's concern; the agent gets the prompt verbatim",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "72b343330033",
+      "kind": "harness",
+      "reason": "Overriding a persona's response shape is one harness's concern; the delegated agent is given the adversarial prompt verbatim and nothing else.",
+      "gist": "Persona overrides are one tool's concern; the agent gets the prompt verbatim",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4f3bea82c0be",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "103e3d352715",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "f96570da138d",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "512104476bce",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "8c41dce55384",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "40df9e93afdd",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "fb32d1b948d3",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "085f99a04c73",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4795326f9f06",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "784c70ae02f0",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "fdccc7af2522",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "cbb223daf730",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "1e5da493080a",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "3071ef8cab37",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "129bce8ef62d",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "5bdb3caab2a2",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "e2b895369214",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "45d2fa16359f",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "e797471c98df",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "0989192d0a9d",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "2aae192823ce",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4ab5ffab474f",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "3c7e5d430d91",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "838c5d700fde",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "6f58122db534",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "52a3ad5c32fe",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "702fb0552761",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "a9a3f2ceb872",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "2b34d93117cc",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "a776dc541a65",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "8ca7672fbab3",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "ce7514f6277e",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "f11720d3979d",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "fbcb4e81d61c",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "d25f1698fed0",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "aef7344c7477",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "ac65370cc2df",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "a1148a8c0693",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "d4a10c8902a9",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "7c80952d2096",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "3aa26f1b86c4",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "95fcd22a2a4d",
+      "kind": "method",
+      "reason": "The cross-model escalation runs an outside CLI chosen by model family, an outward act through tools no install carries; under the portability ruling it is dropped, the fresh reading being the harness's own delegated agent.",
+      "gist": "Cross-model escalation to outside tools is dropped; the reading is delegated",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "3025f172a1d3",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4199ba454d6d",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "643ba11d32df",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "064f10d0a0c5",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "785981eb258c",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "de3533d56aec",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "9aab9e9e72d0",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "f23f45986914",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "aefcb5c67143",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "74ea5b29c784",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "f92bf9bbe941",
+      "kind": "scope",
+      "reason": "The rationalizations argue for the method, a form this skill does not carry, and two rows argue for the cross-model offer, which is dropped.",
+      "gist": "The rationalisations argue for the practice and for the dropped cross-model offer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "4ce18080802d",
+      "kind": "scope",
+      "reason": "These red flags repeat the bound on trivial claims, Step 4's re-reading, the mode's rounds, Step 3's adversarial framing and the mode's choice of depth.",
+      "gist": "These red flags repeat rules the steps, rounds and depths already state",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "dfc481cd1e11",
+      "kind": "scope",
+      "reason": "These red flags repeat the bound on trivial claims, Step 4's re-reading, the mode's rounds, Step 3's adversarial framing and the mode's choice of depth.",
+      "gist": "These red flags repeat rules the steps, rounds and depths already state",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "b8fcbfa164a0",
+      "kind": "scope",
+      "reason": "These red flags repeat the bound on trivial claims, Step 4's re-reading, the mode's rounds, Step 3's adversarial framing and the mode's choice of depth.",
+      "gist": "These red flags repeat rules the steps, rounds and depths already state",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "b9aa42726446",
+      "kind": "scope",
+      "reason": "These red flags repeat the bound on trivial claims, Step 4's re-reading, the mode's rounds, Step 3's adversarial framing and the mode's choice of depth.",
+      "gist": "These red flags repeat rules the steps, rounds and depths already state",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "b3790a09343a",
+      "kind": "scope",
+      "reason": "These red flags repeat the bound on trivial claims, Step 4's re-reading, the mode's rounds, Step 3's adversarial framing and the mode's choice of depth.",
+      "gist": "These red flags repeat rules the steps, rounds and depths already state",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "ca97a3d5c819",
+      "kind": "scope",
+      "reason": "These red flags repeat the bound on trivial claims, Step 4's re-reading, the mode's rounds, Step 3's adversarial framing and the mode's choice of depth.",
+      "gist": "These red flags repeat rules the steps, rounds and depths already state",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "89256c607144",
+      "kind": "pointer",
+      "reason": "Doubting after the commit names a review command; the review step is the review.",
+      "gist": "Doubting after the commit is the review step's, not a /review command"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "112950e7b8a7",
+      "kind": "method",
+      "reason": "These flags concern the cross-model escalation to an outside CLI, which is dropped.",
+      "gist": "These flags concern the outside cross-model tools, which are dropped",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "8f01e7e798ba",
+      "kind": "method",
+      "reason": "These flags concern the cross-model escalation to an outside CLI, which is dropped.",
+      "gist": "These flags concern the outside cross-model tools, which are dropped",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "fe2da5b3d84e",
+      "kind": "method",
+      "reason": "These flags concern the cross-model escalation to an outside CLI, which is dropped.",
+      "gist": "These flags concern the outside cross-model tools, which are dropped",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "ac65370cc2df#2",
+      "kind": "method",
+      "reason": "These flags concern the cross-model escalation to an outside CLI, which is dropped.",
+      "gist": "These flags concern the outside cross-model tools, which are dropped",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "7d049f184416",
+      "kind": "method",
+      "reason": "These flags concern the cross-model escalation to an outside CLI, which is dropped.",
+      "gist": "These flags concern the outside cross-model tools, which are dropped",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "7cd3bfb6155c",
+      "kind": "scope",
+      "reason": "Stripping the contract and passing the claim repeat Step 3's rule on what the reading is given.",
+      "gist": "These repeat Step 3's rule on what the reading is given",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "d38be8528a2b",
+      "kind": "scope",
+      "reason": "Stripping the contract and passing the claim repeat Step 3's rule on what the reading is given.",
+      "gist": "These repeat Step 3's rule on what the reading is given",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "f1f5de4ec222",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "e90c22a973de",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "44729ae55c74",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "fefbb619018f",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "60b68c6396f2",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "de34df01d375",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "320cc347f040",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "52a04f998d53",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "5dbbd2cce2d3",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "7efa0bac0cb3",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "8066ef09879e",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "9f363870eb13",
+      "kind": "pointer",
+      "reason": "The interactions name skills, a review command and a repository rules file no install carries; the build's failing tests are the tdd habit's, after this step.",
+      "gist": "Its named skills and commands are absent; failing tests are tdd's, later"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "80937328f4f7",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "9fb329e627b0",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "2ef3a5c10876",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "b15c6f125ced",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "ba8f3ce20352",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "325ac83b3e26",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "74295e18780a",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "085451d63c57",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "c472b0256a36",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "f3762b9d84e3",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    },
+    {
+      "source": "addyosmani",
+      "file": "doubt-driven-development/SKILL.md",
+      "segment": "0fd83f342467",
+      "kind": "scope",
+      "reason": "The verification checklist lists the five steps as boxes, a form this skill does not carry, with the cross-model checks that are dropped; the section the depth writes is the step's record.",
+      "gist": "Checklist boxes and cross-model checks go; the written section is the record"
+    }
+  ]
+}

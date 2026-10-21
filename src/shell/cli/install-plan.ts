@@ -4,7 +4,7 @@ import {
   type LockFileMap,
   type ManagedPlanEntry,
 } from "../../core/managed-file.ts";
-import { type LockFile } from "../../core/lock.ts";
+import { LOCK_SCHEMA_VERSION, type LockFile } from "../../core/lock.ts";
 import { type DesiredFile } from "../../core/render.ts";
 import { type WorkspaceSnapshot } from "../workspace.ts";
 import { GL, diagnostic, type Diagnostic, type EffectJson } from "./output.ts";
@@ -14,9 +14,7 @@ export function buildLock(
   desired: readonly DesiredFile[],
   targets: ReadonlyMap<string, FileTarget>,
   version: string,
-  upstreams:
-    | readonly { readonly name: string; readonly repo: string; readonly commit: string }[]
-    | undefined,
+  sources: readonly { readonly name: string; readonly repo: string; readonly commit: string }[],
   installationRevision: string,
   retained: LockFileMap = new Map<string, string>(),
 ): LockFile {
@@ -29,10 +27,10 @@ export function buildLock(
     files.set(file.path, sha256Hex(target.owned));
   }
   return {
-    schemaVersion: 4 as const,
+    schemaVersion: LOCK_SCHEMA_VERSION,
     cliVersion: version,
     installationRevision,
-    upstreams: upstreams ?? [],
+    sources,
     files,
   };
 }
@@ -89,7 +87,7 @@ export function blockedSummary(
 }
 
 interface PlanExecution {
-  readonly writes: readonly { path: string; content: string }[];
+  readonly writes: readonly { path: string; content: string; executable: boolean }[];
   readonly effects: readonly EffectJson[];
   readonly removals: readonly string[];
 }
@@ -104,7 +102,7 @@ export function planExecution(
   targets: ReadonlyMap<string, FileTarget>,
   forceManaged: readonly string[],
 ): PlanExecution {
-  const writes: { path: string; content: string }[] = [];
+  const writes: { path: string; content: string; executable: boolean }[] = [];
   const effects: EffectJson[] = [];
   const removals: string[] = [];
   const forced = new Set(forceManaged);
@@ -114,7 +112,11 @@ export function planExecution(
       case "update": {
         const target = targets.get(entry.path);
         if (target === undefined) break; // unreachable; keep defensive
-        writes.push({ path: entry.path, content: target.text });
+        writes.push({
+          path: entry.path,
+          content: target.text,
+          executable: target.executable === true,
+        });
         effects.push({ kind: entry.kind, path: entry.path });
         break;
       }
@@ -126,7 +128,11 @@ export function planExecution(
         if (forced.has(entry.path)) {
           const target = targets.get(entry.path);
           if (target !== undefined) {
-            writes.push({ path: entry.path, content: target.text });
+            writes.push({
+              path: entry.path,
+              content: target.text,
+              executable: target.executable === true,
+            });
           }
         }
         break;

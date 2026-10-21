@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-answer-plainly-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-airgap-secrets-recipe",
+    "sha256": "eac0156924f581019bb1bca9afd0f00a32ad45675a761bae2e5d8674c2fbbe59"
+  },
+  "subject": "skill:answer-plainly",
+  "recipe": "079c3ad3724d1d4814224ca9c17958e466be2801d11d8780bbbd67aee378ff22",
+  "result": "287ce4f452789d141d538276f5638c64c375e5c2f07e46b56c9b3cda010fc14f",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves answer-plainly to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at fold-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 26,
+        "taken": 25,
+        "exact": 25,
+        "retention": 1,
+        "coverage": 0.9615384615384616,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 199
+  }
+}

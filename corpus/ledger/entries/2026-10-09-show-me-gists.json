@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-show-me-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-prose-gists",
+    "sha256": "4f011db19a63d052640451975508fdf2946ad7097877db2579026b2cae6be93c"
+  },
+  "subject": "skill:show-me",
+  "recipe": "98b2023cf8ffb3b7c2d2c99e86b17aec243016cbfef6f61231d3d4443f66d0e6",
+  "result": "c64903fb53b1a4d3b141bda6160aeb94d45dedab804bd5c81d02823523725c1a",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "humanlayer",
+        "segments": 34,
+        "taken": 30,
+        "exact": 29,
+        "retention": 0.9666666666666667,
+        "coverage": 0.8823529411764706,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 228
+  }
+}

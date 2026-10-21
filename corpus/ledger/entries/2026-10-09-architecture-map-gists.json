@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-architecture-map-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-diagram-design-gists",
+    "sha256": "63b6e39602adb770a0f15e5dce6683c2aa4723080f7c8f1d2e15d245e0364f4a"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "30b3ac46bde4e8fd0cb36ee9abcbfa5ce1204f773ccbd91ca558dfb679c42673",
+  "result": "a3a74a53edfc2938b811a9f5f3f5df92730b99e497506aed03991e0dcce0a723",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 922
+  }
+}

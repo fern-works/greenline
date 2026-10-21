@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-tdd-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-codebase-design-recipe",
+    "sha256": "947f8a9c5f6e033781031a5ab40ea7271d394a85904401c0c7859f70891b4948"
+  },
+  "subject": "skill:tdd",
+  "recipe": "6a7698600ba082df173147c1228bf8815f2f5701664f7d0b6e26329d229f5b99",
+  "result": "940f8ce2ded30a41f68c0692241a290c4425dffc15e7e18db89d4ae8bbd0ca1d",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves tdd to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at retrieval-pointers-2026-09-26.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 84,
+        "taken": 79,
+        "exact": 79,
+        "retention": 1,
+        "coverage": 0.9404761904761905,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 394
+  }
+}

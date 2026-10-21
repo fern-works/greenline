@@ -13,16 +13,14 @@ import type { JsonValue } from "../../src/core/contract.ts";
 import { parseGuidanceRequest, type GuidanceRequest } from "../../src/core/guidance-receipts.ts";
 import type { FileIo } from "../../src/shell/fs/io.ts";
 import { runConnectorsCallCli } from "../../src/shell/cli/connectors-call.ts";
-import { makeRepository, read, removeRepository, run } from "./workspace.ts";
+import { ok } from "../../src/commons/result.ts";
+import { connectorInstallation, makeRepository, read, removeRepository, run } from "./workspace.ts";
 
 /**
  * A workspace with garden enabled against the synthetic garden command the
  * tests own (`fake-garden.mjs`), started through a launcher outside the
- * repository, and one execution account to own requests.
+ * repository.
  */
-
-/** The account garden requests belong to in these tests. */
-export const ACCOUNT = "work-one";
 
 /** The synthetic command's source. */
 const FAKE = join(import.meta.dirname, "fake-garden.mjs");
@@ -96,21 +94,6 @@ export function gardenWorkspace(
   ];
   for (const args of steps)
     if (run(root, args).code !== 0) throw new Error(`setup failed: ${args.join(" ")}`);
-  mkdirSync(join(root, ".greenline/ledger/records"), { recursive: true });
-  writeFileSync(
-    join(root, `.greenline/ledger/records/${ACCOUNT}.json`),
-    `${JSON.stringify({
-      schemaVersion: 3,
-      id: ACCOUNT,
-      context: "ctx-one",
-      actor: "agent",
-      // Upkeep has no owning artifact, so the account stands without a work tree.
-      role: "maintenance",
-      work: null,
-      scopes: ["."],
-      selections: [],
-    })}\n`,
-  );
   return {
     root,
     bin,
@@ -151,7 +134,12 @@ export async function call(
   };
   if (options.key !== undefined) environment["GARDEN_API_KEY"] = options.key;
   Object.assign(environment, options.extra ?? {});
-  const base = { cwd: workspace.root, environment };
+  // The installation is read only for --change, whose record is parsed against its modes.
+  const base = {
+    cwd: workspace.root,
+    environment,
+    installation: () => ok(connectorInstallation()),
+  };
   const cancellable =
     options.cancel === undefined ? base : { ...base, signal: options.cancel.signal };
   const withIo = options.io === undefined ? cancellable : { ...cancellable, io: options.io };

@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-observability-and-instrumentation",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-guard-the-context-window",
+    "sha256": "cb07199815ed9dab97570568a80e03333ce5c479ec6bee081cdb2f3574a10164"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/observability-and-instrumentation"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Observability knowledge, handed to garden",
+  "reason": "Signals, RED and USE, cardinality and alerting are knowledge for garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "signals, RED and USE, cardinality and alerting",
+        "locator": "skills/observability-and-instrumentation"
+      }
+    ]
+  }
+}

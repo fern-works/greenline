@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { withWorkspaceWrite } from "../fs/workspace-write.ts";
 import { createNodeFileIo } from "../fs/io.ts";
-import { readRepositoryManifest } from "../repository-state.ts";
+import { readRepositoryManifest, rosterOf } from "../repository-state.ts";
 import type { ContractParseFailed } from "../../core/contract.ts";
 import { findGitRoot } from "../git.ts";
 import type { RunRequest, WorkspaceRequest } from "./args.ts";
@@ -14,10 +14,10 @@ import {
   contractDiagnostics,
   repositoryOutcome,
 } from "./command-outcome.ts";
-import { runDoctor } from "./doctor.ts";
 import { runStatus } from "./status.ts";
-import { runInit } from "./init.ts";
+import { offerGitInit, runInit } from "./init.ts";
 import { runSync } from "./sync.ts";
+import { runTidy, tidyBeforeLock } from "./tidy.ts";
 import { initializedWorkspace } from "./init-existing.ts";
 
 /** Missing installation blocks dependent work, while repository facts remain inspectable without writes. */
@@ -27,11 +27,9 @@ export function runUnavailableInstallation(
   error: ContractParseFailed,
 ): CommandOutcome {
   const outcome =
-    request.command === "doctor"
-      ? runDoctor(env)
-      : request.command === "status"
-        ? runStatus(env)
-        : fail([]);
+    request.command === "status"
+      ? runStatus(env, request.status ?? { view: "list", all: false })
+      : fail([]);
   const root = findGitRoot(env.cwd);
   const observed = root === undefined ? outcome : repositoryOutcome(root, outcome);
   return {
@@ -44,7 +42,7 @@ export function runUnavailableInstallation(
 /** GL0140: the CLI's installation payload is missing or invalid, so nothing that needs it runs. */
 export function installationUnavailable(error: ContractParseFailed): Diagnostic {
   return diagnostic(
-    "GL0140",
+    GL.installationUnavailable,
     "error",
     `${error.issues.map((issue) => `${issue.path || "installation"}: ${issue.message}`).join("; ")} Installation-dependent checks and mutations are unavailable; repository facts remain readable.`,
     error.source,
@@ -53,14 +51,19 @@ export function installationUnavailable(error: ContractParseFailed): Diagnostic 
 
 /** Execute a parsed request and return its outcome. */
 export function runCommand(request: WorkspaceRequest, env: CliEnvironment): CommandOutcome {
-  const root = findGitRoot(env.cwd);
-  const skillNames = env.installation.skills.map((skill) => skill.name);
+  let root = findGitRoot(env.cwd);
+  // Init on a directory that is no repository offers `git init` there first.
+  if (root === undefined && request.command === "init") {
+    const offer = offerGitInit(request, env);
+    if (offer.kind === "refused") return offer.outcome;
+    root = offer.root;
+  }
   if (
     root !== undefined &&
     (request.command === "init" || request.command === "sync") &&
     existsSync(join(root, ".greenline/manifest.json"))
   ) {
-    const manifest = readRepositoryManifest(root, createNodeFileIo(), skillNames);
+    const manifest = readRepositoryManifest(root, createNodeFileIo(), rosterOf(env.installation));
     if (manifest._tag === "err")
       return fail(
         contractDiagnostics(GL.manifestInvalid, manifest.error.issues, manifest.error.source),
@@ -68,12 +71,12 @@ export function runCommand(request: WorkspaceRequest, env: CliEnvironment): Comm
   }
   const configured = initializedWorkspace(request, env.cwd);
   if (configured !== undefined) return configured;
-  if (
-    root === undefined ||
-    request.command === "status" ||
-    request.command === "doctor" ||
-    request.dryRun
-  ) {
+  // tidy refuses a redirected .greenline/ or tmp folder before the lock could be written through it.
+  if (request.command === "tidy" && root !== undefined) {
+    const early = tidyBeforeLock(root);
+    if (early !== undefined) return repositoryOutcome(root, early);
+  }
+  if (root === undefined || request.command === "status" || request.dryRun) {
     const outcome = executeCommand(request, env);
     return root === undefined ? outcome : repositoryOutcome(root, outcome);
   }
@@ -92,9 +95,9 @@ function executeCommand(request: WorkspaceRequest, env: CliEnvironment): Command
       return runInit(request, env);
     case "sync":
       return runSync(request, env);
-    case "doctor":
-      return runDoctor(env);
     case "status":
-      return runStatus(env);
+      return runStatus(env, request.status ?? { view: "list", all: false });
+    case "tidy":
+      return runTidy(env, request.tidy?.change);
   }
 }

@@ -1,0 +1,99 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-frame-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-review-session-writer",
+    "sha256": "4c7e59ade1d5cf4f0877fdf26dad947976278b1a068f4f7ebeb9c74f08002356"
+  },
+  "subject": "skill:frame",
+  "recipe": "7c385f17254dd437f65496ab70faa2357c3a731c033078ca632a908ebf516a24",
+  "result": "cb6dfa0904794f0f0a422687ab1e70f8288b30381d16df19f7b00a542ccd5e5f",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "research is not a stub (the decisions row of 2026-10-07)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 266,
+        "taken": 228,
+        "exact": 220,
+        "retention": 0.9649122807017544,
+        "coverage": 0.8571428571428571,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 171,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.12280701754385964,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 184,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.03804347826086957,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 17,
+        "taken": 16,
+        "exact": 16,
+        "retention": 1,
+        "coverage": 0.9411764705882353,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1059
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-domain-modeling-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-diagnosing-bugs-refresh",
+    "sha256": "1008ced0ea53d359e89bbc771772da4c0936368f16f479dd052b69c6d6eeb782"
+  },
+  "subject": "skill:domain-modeling",
+  "recipe": "e53439a1ffea83a26504e8fc05d8777c2d30b8a1f9aeae929858a77ae6cf2d8b",
+  "result": "b9953185f117e433fec0446feb380213d7ca10ca73d9ed855355dcecbbade3f3",
+  "pages": [],
+  "gist": "Takes upstream's moved pages, keeps CONTEXT.md; installed text unchanged",
+  "reason": "Refreshes domain-modeling to mattpocock-skills 6fd947921b93: the rename to GLOSSARY.md is kept out by pointer edits, the moved tree and format page are taken anew, and the old paths are dropped. The installed text is unchanged; retention is under the minimum.",
+  "authorisedBy": {
+    "date": "2026-10-07",
+    "words": "its retention under the minimum is the copy as it stands, its installed text unchanged by the refresh the operator asked for on 2026-10-07 in the words \"lets pull the fresh upstream for all the sources\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-15",
+      "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "its retention under the minimum is the copy as it stands, its installed text unchanged by the refresh the operator asked for on 2026-10-07 in the words \"lets pull the fresh upstream for all the sources\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 106,
+        "exact": 90,
+        "retention": 0.8490566037735849,
+        "coverage": 0.9298245614035088,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 402
+  }
+}

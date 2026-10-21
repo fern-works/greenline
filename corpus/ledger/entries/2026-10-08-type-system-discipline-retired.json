@@ -1,0 +1,25 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-type-system-discipline-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-model-the-domain-retired",
+    "sha256": "30917b948317f17d6950aa33759ec402ad29feb7fa3ec0c83527b746ec81b563"
+  },
+  "skill": "type-system-discipline",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "domain-and-types",
+  "recipe": "c01938bbb556c1c25869b308002b473da89dcca536306f9e3637643f53494850",
+  "gist": "Becomes the types section of domain-and-types",
+  "reason": "type-system-discipline is domain-and-types' types section now.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    }
+  ]
+}

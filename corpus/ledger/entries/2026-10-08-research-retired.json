@@ -1,0 +1,26 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-research-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-grill-with-docs-retired",
+    "sha256": "fafe674270714813dc17217a12fe68abc1ab4150e2beb19367fbcf50977fcde3"
+  },
+  "skill": "research",
+  "slice": "S13 of the plan modes-records-recipes",
+  "replacedBy": "frame",
+  "recipe": "2e4261f2ac446dbef1d4e14f768ba9b8dd9b3b11a6a0c16c1704691ddbf05131",
+  "gist": "Research becomes a reference file of frame",
+  "reason": "research becomes frame's reference file references/research.md, reading by itself or through one delegated agent the step waits for.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08"
+    }
+  ]
+}

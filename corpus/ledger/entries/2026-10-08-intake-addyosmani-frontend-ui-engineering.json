@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-frontend-ui-engineering",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-cursor-team-kit-loop-on-ci",
+    "sha256": "c5bf7830cbae3542ea2d2def8a12187e6c6ed2043793ea336d05eb2a1013116d"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/frontend-ui-engineering"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Frontend design and accessibility knowledge, handed to garden",
+  "reason": "Frontend design and accessibility knowledge consulted at build.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its frontend design and accessibility knowledge",
+        "locator": "skills/frontend-ui-engineering"
+      }
+    ]
+  }
+}

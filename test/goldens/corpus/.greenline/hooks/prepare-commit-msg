@@ -1,0 +1,6 @@
+#!/bin/sh
+# greenline's prepare-commit-msg hook, written by greenline init and refreshed by sync; an edit is
+# replaced at the next sync. It hands git's arguments and stdin to greenline, which
+# reads only git's facts and the change record's and refuses only on one of them.
+command -v greenline >/dev/null 2>&1 || exit 0
+exec greenline hook prepare-commit-msg "$@"

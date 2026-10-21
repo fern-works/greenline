@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-architecture-map-rename",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-codebase-design-rename",
+    "sha256": "161ba97771af495ef987971a0791a2b9e5d4395c5022a3ddb0c7ce283655502d"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "eb57bdc0360bbeca2acfc97e97bbad162f9fd49f21da4ad3741efff326ae3ac9",
+  "result": "51009c9d2aa02e3f8c2bc515e76e11a5fc499803d29740e08b88e1aab381b13a",
+  "pages": "unknown",
+  "gist": "Names architecture-survey, whose deepening the map folds back in",
+  "reason": "architecture-map names architecture-survey, the start improve-codebase-architecture became, as the survey whose deepening the map's refresh folds back in.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 862
+  }
+}

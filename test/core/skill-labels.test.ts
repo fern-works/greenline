@@ -9,7 +9,7 @@ it.each([
   const metadata = renderCodexSkillMetadata({
     name,
     description: "Method fixture",
-    class: "discipline",
+    kind: "habit",
     activation: "implicit",
     body: "Use the method.",
   });

@@ -1,0 +1,42 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-modes-three",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-18-tdd-checks-in-the-short-form",
+    "sha256": "d0fadc0c3fd5c376eb7f7fc88ac3ca79d05a7af6793240820875c0f0665da148"
+  },
+  "subject": "modes",
+  "recipe": "bdddfbe49e180fb6ebad32a7731be5499af41f3276023a5dba5d78b7dce494e9",
+  "result": "275e7eecdeaef7df616f5f7927909e3fde5a34305fa2fb9dc041aff7f9ec107c",
+  "pages": "unknown",
+  "gist": "Three modes, quick, regular and careful, each keeping the whole record",
+  "reason": "Three modes replace four: quick, regular and careful, max folded into careful and the anticipate trial its premise review, each keeping every section of the record. Each words budget is now a ceiling.",
+  "authorisedBy": {
+    "date": "2026-10-19",
+    "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\" and \"The builder's written verify, no fresh verifier (Recommended)\": three modes each keeping the whole record, max folded into careful, the anticipate trial careful's premise review, and each words budget a ceiling"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\" and \"The builder's written verify, no fresh verifier (Recommended)\": three modes each keeping the whole record, max folded into careful, the anticipate trial careful's premise review, and each words budget a ceiling"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

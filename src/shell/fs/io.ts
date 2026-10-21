@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import {
+  chmodSync,
   closeSync,
   fsyncSync,
   mkdirSync,
@@ -32,8 +33,12 @@ export class AtomicWriteFailed extends Error {
   }
 }
 
-/** Atomically replace (or create) a file's content. */
-export function atomicWriteFile(path: string, content: string): Result<void, AtomicWriteFailed> {
+/** Atomically replace (or create) a file's content, executable when asked, as a git hook's script is. */
+export function atomicWriteFile(
+  path: string,
+  content: string,
+  executable = false,
+): Result<void, AtomicWriteFailed> {
   const tempPath = join(dirname(path), `.${basename(path)}.${randomUUID()}.tmp`);
   try {
     mkdirSync(dirname(path), { recursive: true });
@@ -44,6 +49,8 @@ export function atomicWriteFile(path: string, content: string): Result<void, Ato
     } finally {
       closeSync(fd);
     }
+    // The mode is set on the temporary file, so the target is never seen without it.
+    if (executable) chmodSync(tempPath, 0o755);
     renameSync(tempPath, path);
   } catch (error) {
     try {
@@ -58,7 +65,11 @@ export function atomicWriteFile(path: string, content: string): Result<void, Ato
 
 /** The filesystem capabilities a file plan needs, injectable for tests. */
 export interface FileIo {
-  readonly write: (path: string, content: string) => Result<void, AtomicWriteFailed>;
+  readonly write: (
+    path: string,
+    content: string,
+    executable?: boolean,
+  ) => Result<void, AtomicWriteFailed>;
   readonly read: (path: string) => Result<string, AtomicWriteFailed>;
   readonly remove: (path: string) => Result<void, AtomicWriteFailed>;
 }
@@ -70,8 +81,8 @@ export interface FileIo {
  */
 export function createNodeFileIo(): FileIo {
   return {
-    write: (path: string, content: string): Result<void, AtomicWriteFailed> =>
-      atomicWriteFile(path, content),
+    write: (path: string, content: string, executable?: boolean): Result<void, AtomicWriteFailed> =>
+      atomicWriteFile(path, content, executable),
     read: (path: string): Result<string, AtomicWriteFailed> => {
       try {
         return ok(readFileSync(path, "utf8"));

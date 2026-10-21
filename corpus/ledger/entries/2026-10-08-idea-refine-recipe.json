@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-idea-refine-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-sweep-tests-recut",
+    "sha256": "28a9814de58fa7f774cd04697194d4ea63acc014c68db2ec4ff1a73eeda0035e"
+  },
+  "subject": "skill:idea-refine",
+  "recipe": "1d66147fa07e3399be7263c5286044c45e8824806664d38a60f12b1503823576",
+  "result": "664d57cde7881cc8dfab0b0f0eb6c70b582885659309d5c5bd73b629e70bd163",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "examples.md"
+    },
+    {
+      "path": "frameworks.md"
+    },
+    {
+      "path": "refinement-criteria.md"
+    }
+  ],
+  "gist": "Enters as a trial start that refines an idea in the reply",
+  "reason": "idea-refine enters as a trial start copied from addyosmani: an idea is varied, stress-tested and given a one-pager in the reply, its product-strategy taxonomy and script dropped. A direction taken up is a change from frame.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the one-pager in the reply and the change record, never a docs/ideas file (contradiction 33)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the questions in the reply and the script dropped"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 660,
+        "taken": 573,
+        "exact": 569,
+        "retention": 0.9930191972076788,
+        "coverage": 0.8681818181818182,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 296
+  }
+}

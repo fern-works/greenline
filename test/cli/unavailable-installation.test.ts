@@ -7,7 +7,7 @@ import { contractFailure } from "../../src/core/contract.ts";
 import { fixtureInstallation } from "../fixtures/corpus.ts";
 import { RecordingWriter } from "../helpers/writer.ts";
 
-it("P3 keeps repository diagnosis and work status available when the installation payload cannot load", () => {
+it("P3 keeps the repository diagnosis available when the installation payload cannot load", () => {
   const root = mkdtempSync(join(tmpdir(), "greenline-unavailable-"));
   try {
     mkdirSync(join(root, ".git"));
@@ -19,11 +19,6 @@ it("P3 keeps repository diagnosis and work status available when the installatio
         installation: release,
       }),
     ).toBe(0);
-    mkdirSync(join(root, ".greenline/work/tickets"), { recursive: true });
-    writeFileSync(
-      join(root, ".greenline/work/tickets/TKT-001.md"),
-      "---\nid: TKT-001\ntype: ticket\nintent: repair-count\nscope: [src]\nrevision: 1\nstatus: ready\nacceptance:\n  - [ ] Empty input returns zero\n---\n",
-    );
     writeFileSync(join(root, ".greenline/tmp/.write.lock"), "another writer\n");
     const before = readFileSync(join(root, ".greenline/manifest.json"), "utf8");
     const failure = contractFailure("missing bundle", [
@@ -34,13 +29,13 @@ it("P3 keeps repository diagnosis and work status available when the installatio
     const status = new RecordingWriter();
     expect(runCli(["status", "--json"], status.writer, "test", env)).toBe(1);
     expect(JSON.parse(status.out)).toMatchObject({
-      view: { tickets: [expect.objectContaining({ id: "TKT-001" })] },
+      changes: { view: "unavailable" },
       diagnostics: expect.arrayContaining([expect.objectContaining({ code: "GL0140" })]),
     });
     writeFileSync(join(root, ".greenline/lock.json"), "invalid");
-    const doctor = new RecordingWriter();
-    expect(runCli(["doctor", "--json"], doctor.writer, "test", env)).toBe(1);
-    expect(JSON.parse(doctor.out).diagnostics).toEqual(
+    const broken = new RecordingWriter();
+    expect(runCli(["status", "--json"], broken.writer, "test", env)).toBe(1);
+    expect(JSON.parse(broken.out).diagnostics).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ code: "GL0104" }),
         expect.objectContaining({ code: "GL0140" }),

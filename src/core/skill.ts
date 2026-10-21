@@ -1,44 +1,14 @@
 /**
  * The skill corpus model (`docs/SPEC.md` §6). A skill is harness-neutral
  * prose plus one-line metadata; renderers project it into each harness's
- * conventions. The real corpus arrives in M2; until then fixtures feed
- * the renderers through the same shape.
+ * conventions. The corpus feeds them through this shape, and so do the
+ * test fixtures.
  */
 
 export type HarnessName = "codex" | "claude-code";
 
 /** How a skill is activated in a harness. */
 export type ActivationMode = "implicit" | "explicit";
-
-/**
- * What kind of method a skill is (ADR 0039): the class decides conduct.
- * An entry resolves the work and the next method; a stage of the delivery
- * arc consumes an artifact and produces the next; a support skill gathers
- * evidence for the stage that dispatched it; a discipline is applied on
- * the agent's own judgment; a situational skill fires on a situation in
- * the conversation and is offered when its output is a durable file.
- */
-export type SkillClass = "entry" | "stage" | "support" | "discipline" | "situational";
-
-export const SKILL_CLASSES = ["entry", "stage", "support", "discipline", "situational"] as const;
-
-/** The activation each class implies. */
-export interface ClassActivation {
-  readonly entry: ActivationMode;
-  readonly stage: ActivationMode;
-  readonly support: ActivationMode;
-  readonly discipline: ActivationMode;
-  readonly situational: ActivationMode;
-}
-
-/** The activation a class implies; a manifest entry states activation only to differ. */
-export const CLASS_ACTIVATION: ClassActivation = {
-  entry: "implicit",
-  stage: "explicit",
-  support: "implicit",
-  discipline: "implicit",
-  situational: "implicit",
-};
 
 /** A support file inside a skill directory (path relative to the skill root). */
 export interface SkillFile {
@@ -51,20 +21,32 @@ export interface SkillSource {
   readonly name: string;
   /** One-line, harness-neutral description used for discovery. */
   readonly description: string;
-  readonly class: SkillClass;
+  /**
+   * A kind of the modes definition (`corpus/runtime/modes.json`): the
+   * trigger the loop runs the skill by and its contract with the loop.
+   */
+  readonly kind: string;
+  /** For a skill whose kind the definition places on the line: the step it serves. */
+  readonly slot?: string;
   readonly activation: ActivationMode;
   /**
-   * Opt-in membership (ADR 0029): a skill carrying a non-markdown
-   * asset tree installs only when the workspace manifest's
-   * `skills.include` names it. Data from the
-   * corpus manifest, gate-asserted against the skill's real files.
+   * A skill with a large asset tree that installs only when the workspace
+   * manifest's `skills.include` names it. Data from the corpus manifest,
+   * gate-asserted against the skill's real files.
    */
-  readonly optIn?: true;
+  readonly extra?: true;
+  /** A new concept that is not yet a default; it runs only where the workspace enabled it. */
+  readonly trial?: true;
   /** Harness-neutral markdown body (no frontmatter). */
   readonly body: string;
   /** Additional files projected alongside SKILL.md (guides, templates). */
   readonly supportFiles?: readonly SkillFile[];
 }
+
+/** A skill's optional facts as a reader collects them, each set only when stated, so an absent one has no key. */
+export type SkillFacts = {
+  -readonly [Fact in "slot" | "extra" | "trial" | "supportFiles"]?: NonNullable<SkillSource[Fact]>;
+};
 
 /** Installation availability is separate from selection for the current task. */
 export function isSkillIncluded(
@@ -73,7 +55,7 @@ export function isSkillIncluded(
 ): boolean {
   return (
     !choices.exclude.includes(skill.name) &&
-    (skill.optIn !== true || choices.include.includes(skill.name))
+    (skill.extra !== true || choices.include.includes(skill.name))
   );
 }
 

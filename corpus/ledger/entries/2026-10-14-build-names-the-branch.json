@@ -1,0 +1,99 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-14-build-names-the-branch",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-14-close-offers-the-landing",
+    "sha256": "372e9c9daf03eaf6c9ffcbb78dbb8ac01cff04f4245c2f52e1491388559ebea7"
+  },
+  "subject": "skill:build",
+  "recipe": "a2ae2e64a291239dce78a9b4ada31cb8afdd3c88e3c82a55fe3d2508a59030c9",
+  "result": "d324d3b0fbbf7eab15fa22640285aca5385f0c0e8ee22e1700c6fb87f411db84",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Build commits on the change's branch, a ticket on its plan's",
+  "reason": "Build commits each slice on the branch the change's proposal named, a ticket on its planning change's branch, each with its trailer, and stacks commits only, the pull request being the close step's landing.",
+  "authorisedBy": {
+    "date": "2026-10-14",
+    "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5), so the drop of its rebase onto trunk follows from that ruling, the sequence-verifiable-units proposal having named the bracket and the delivery order as what enters"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The operator's ruling R20 of 2026-10-07, \"greenline should not support parralel subs right now at all .. only linear sub flow ..and not worktrees also\": a method about parallel dispatch or worktree isolation is declined"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 121,
+        "taken": 36,
+        "exact": 34,
+        "retention": 0.9444444444444444,
+        "coverage": 0.2975206611570248,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 17,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.4117647058823529,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 146,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.04794520547945205,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 709
+  }
+}

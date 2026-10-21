@@ -1,14 +1,14 @@
 # The garden connector
 
 greenline works on its own. [A greenline install needs no account, no key and no service, and it works offline.]{claim: A greenline install needs no account, key or service and works offline}
-Init, sync, status, doctor and the inspector contact nothing, and a question
+Init, sync, status and the inspector contact nothing, and a question
 about your repository consults nothing. The skills, the managed block and the
 records are the whole product, and every part of it is free and open source.
 
 ## greenline and garden
 
 A greenline install now needs no account, no key and no service; it works
-entirely offline and keeps every method, artifact and receipt it had. The
+entirely offline and keeps every method it had. The
 built-in guidance was the premium part; it moves to garden, which the owner
 can enable when they want it. A fresh install has no maintained knowledge
 until its owner enables garden.
@@ -35,10 +35,10 @@ Enabling contacts nothing and needs no key. garden reads its key from
 `GARDEN_API_KEY` in your environment; greenline never stores or reads it.
 The endpoint and the key come from garden, not from greenline.
 
-`greenline status` and `greenline doctor` show whether the connector is
-enabled and, when it is, whether the garden command would run here and
-whether its key variable is set. They check without starting garden, and a
-missing executable or key is a warning, [GL0125](./doctor.md).
+`greenline status` shows whether the connector is enabled and, when it is,
+whether the garden command would run here and whether its key variable is
+set. It checks without starting garden, and a missing executable or key is a
+warning, [GL0125](./status.md).
 
 ## What a consultation is
 
@@ -47,7 +47,9 @@ consultation is relevant: an open engineering choice your repository has not
 settled. It is never a duty before an edit. The agent consults through
 `greenline connectors call garden`, which starts the garden command with
 literal arguments and no shell and checks its reply. garden receives facet
-queries and unit identifiers, never your code or repository policy.
+queries and unit identifiers, never your code or repository policy. A
+consultation that serves a change names it, `--change <id>`, and its
+receipt belongs to that change; a question's consultation names none.
 
 A consultation is one request. [Its first call fixes the publication it
 reads, and every later call in the request reads that same publication.]{claim: A garden consultation reads one publication for its whole request}

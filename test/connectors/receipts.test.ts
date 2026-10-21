@@ -7,7 +7,7 @@ import { parseGuidanceRequest, type GuidanceRequest } from "../../src/core/guida
 import { GuidanceRequests } from "../../src/shell/guidance-requests.ts";
 
 /**
- * Request and receipt collections, schema 4: the binding union, the
+ * Request and receipt collections, schema 5: the binding union, the
  * comparison's own collection, the publication a full delivery names, and
  * the store's one move of a binding.
  */
@@ -16,10 +16,10 @@ const A = { id: "example-publication-a", publishedAt: "2026-01-01T00:00:00.000Z"
 const B = { id: "example-publication-b", publishedAt: "2026-01-02T00:00:00.000Z" };
 const ORIGIN = "https://garden.example/";
 const collection = {
-  schemaVersion: 4,
+  schemaVersion: 5,
   id: "11111111-1111-4111-8111-111111111111",
   source: "garden",
-  owner: { record: "work-one", context: "ctx", role: "maintenance" },
+  owner: { kind: "change", change: "2026-09-26-fix-login" },
   parent: null,
   createdAt: "2026-09-26T00:00:00.000Z",
   binding: { state: "unresolved", origin: ORIGIN },
@@ -65,7 +65,7 @@ function verdict(value: { readonly [key: string]: JsonValue }): string {
   return parsed._tag === "ok" ? "accepted" : (parsed.error.issues[0]?.message ?? "refused");
 }
 
-describe("schema 4 collections", () => {
+describe("schema 5 collections", () => {
   it("an unresolved request is valid before any call and after a failed first call", () => {
     expect(verdict(collection)).toBe("accepted");
     expect(verdict({ ...collection, receipts: [receipt(1, "snapshot", "failed")] })).toBe(
@@ -142,11 +142,6 @@ describe("schema 4 collections", () => {
           ...collection,
           receipts: [{ ...failed, error: { kind: "unavailable", input: hidden } }],
         },
-      ],
-      ["owner.context", { ...collection, owner: { ...collection.owner, context: hidden } }],
-      [
-        "owner.work.id",
-        { ...collection, owner: { ...collection.owner, work: { id: hidden, revision: 1 } } },
       ],
       [
         "error.kind",

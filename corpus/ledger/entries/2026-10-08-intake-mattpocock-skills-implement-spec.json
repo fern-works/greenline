@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-mattpocock-skills-implement-spec",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-pstack-principle-sequence-verifiable-units",
+    "sha256": "c2c0143523d383a991dda736d4d94962b6d55f8a92dee8b14b81d65c5dd6371b"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "6fd947921b935b7e1e69293a200400f0fdd5c15f",
+    "path": "skills/engineering/implement-spec"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Parallel subagents in worktrees are its core; greenline runs neither",
+  "reason": "Its core dispatches implementer subagents, each in its own worktree, for maximum concurrency, while greenline runs its subagents one after another and uses no worktrees.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Decline, \"everything is good\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20: greenline runs its subagents one after another, never in parallel, and uses no worktrees"
+    }
+  ]
+}

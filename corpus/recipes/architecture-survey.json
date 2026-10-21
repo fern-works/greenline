@@ -1,0 +1,845 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "architecture-survey",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "architecture-survey"
+    },
+    {
+      "field": "description",
+      "value": "Scan a codebase for deepening opportunities and present them as a visual report, then grill through the one you pick. Use for 'refactor what next', 'tech debt', 'this repo is a mess, where do I start', or a scoped architecture review."
+    }
+  ],
+  "sources": ["mattpocock-skills"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Architecture survey",
+          "kind": "name",
+          "reason": "The skill's title is its roster name, architecture-survey, which R22 gives the start improve-codebase-architecture became.",
+          "gist": "Titled architecture-survey, as R22 renamed improve-codebase-architecture"
+        },
+        {
+          "passage": "written",
+          "text": "Architecture survey is the start for a question about the code's structure as a whole: \"refactor what next\", \"tech debt\", \"this repo is a mess, where do I start\", or a scoped architecture review. Outside an orientation the survey is a report and edits no file of the repository, so it needs no mode and no record: its report lives in the working files, the id a date and a slug as a change's is, deleted when the survey ends without a finding taken up, and a change that takes one up holds the report under its own id. When `architecture-map` (extra, installs on request) has written the map's snapshot, read it before walking the codebase; once a deepening lands, the map's refresh folds it back in. The owner decides what is taken up, and a finding taken up becomes a change under the mode the owner approves. At an orientation, a repository with documents and no change record on any branch, local or remote-tracking, the survey runs before the first change, as AGENTS.md says, and opens a quick record before it writes its result into the knowledge homes the workspace's work guide names; the report itself stays in the working files. Where a change record exists on any branch, the survey is no orientation: it runs only when the request asks for a survey or the owner names it.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, that the survey edits no file and keeps its report in the working files, the map read first where the extra has written it, and a finding taken up becoming a change under an approved mode. At an orientation the result goes into the knowledge homes and the report stays in the working files; where a change record exists the survey runs only when asked, since QA runs surveyed as an orientation where a record existed (J-60, the fourth family). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page. J-102 S2: at an orientation the survey opens a quick record before it writes its result into the knowledge homes, as every write does.",
+          "gist": "Opens the survey: working-file report, orientation only where no record exists",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a finding taken up is a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in, a durable output the request did not ask for offered in one line; and R22 of 2026-10-08, \"yes amend, with one change\", the name architecture-survey and the glossary written at the close step; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); The operator's card of 2026-10-21, \"A record for every write (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): a close asked for by name that writes only to the decisions book, the ADR home or the glossary, and the orientation's survey writing its result into the knowledge homes, each open a quick record first, so the hooks' hold on a workspace while no change is open is one rule with no list of exempt paths"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": ["9490ed6bda6a", "8f1c125e40ef", "c8a2b30e88c7"]
+        },
+        {
+          "passage": "written",
+          "text": "- Load deep-modules through the harness's native skill mechanism, or read its installed SKILL.md and required support when the harness has none, for the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, \"the interface is the test surface\", \"one adapter = hypothetical seam, two = real\").",
+          "kind": "harness",
+          "reason": "Where upstream says 'call the Skill tool with' codebase-design, grilling or domain-modeling, the copy loads the method through the harness's native skill mechanism or reads its installed SKILL.md and required support, and carries the vocabulary into every delegated brief; greenline runs on Codex and Claude Code, neither of which is promised a tool by that name. The design vocabulary is the habit deep-modules since S18a (R22).",
+          "gist": "Loads deep-modules for the design vocabulary, by skill mechanism or SKILL.md",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": [
+            "b138f9f8e817",
+            "5f2303237852",
+            "0a6ae6aec660",
+            "338d3dda0d2b",
+            "894d332c83e7",
+            "a495775b5f20",
+            "24052b5185f8",
+            "d8fd9fb3eff4",
+            "8d65a45ad304",
+            "8cdb20ee091e"
+          ],
+          "edits": [
+            {
+              "segment": "b138f9f8e817",
+              "find": "n,",
+              "replace": "n and in every delegated brief,",
+              "kind": "harness",
+              "reason": "Where upstream says 'call the Skill tool with' codebase-design, grilling or domain-modeling, the copy loads the method through the harness's native skill mechanism or reads its installed SKILL.md and required support, and carries the vocabulary into every delegated brief; greenline runs on Codex and Claude Code, neither of which is promised a tool by that name.",
+              "gist": "Loads skills natively and carries the vocabulary into every delegated brief"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "When the map's snapshot exists, start from it: its drifting nodes and churn tint are these hot spots, already measured, and its unclaimed-files list is ground the map has not described, so inspect that ground before making a finding.",
+          "kind": "pointer",
+          "reason": "Step 1's hot-spot search starts from .greenline/map/snapshot.json when it exists: its drifting nodes and churn tint are the hot spots already measured and its unclaimed-files list is ground to inspect before a finding; an optional consume of the opt-in map's home, so the survey does not re-walk what the map measured. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Starts from the map snapshot when present, not re-walking measured hot spots",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": ["bfae7abe1aa3"]
+        },
+        {
+          "passage": "written",
+          "text": "Then walk the codebase: through one agent the harness's delegation starts, whose report you wait for, or by your own reading where the harness has no delegation; the delegated walk is the survey's one extra agent, so say so before starting it. That agent is the survey's own reader, not a fresh agent of a change's line, and no record cites what it hands back.",
+          "kind": "method",
+          "reason": "Upstream spawned a sub-agent to walk the codebase; the walk is one delegated agent the survey waits for, or its own reading, one agent at a time (R21), a reader of the survey's own that no change record cites. J-102 S2: no record cites the reader's report, whether or not an orientation's quick record is open.",
+          "gist": "Walks itself or through one reader of its own it waits for",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: architecture-survey walks the codebase with one delegated agent it waits for, or by its own reading where the harness has no delegation, and the designs of an alternative interface are made one after another, never by parallel agents (R20: \"we are not doing worktrees and parralel susbs at all\"); The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written; The operator's card of 2026-10-21, \"A record for every write (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): a close asked for by name that writes only to the decisions book, the ADR home or the glossary, and the orientation's survey writing its result into the knowledge homes, each open a quick record first, so the hooks' hold on a workspace while no change is open is one rule with no list of exempt paths",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": [
+            "18259d9981e2",
+            "51e98b500f18",
+            "807c83302a8b",
+            "eb06041110bf",
+            "7ca10043c011",
+            "f38e5f4ab0b2",
+            "22bf5d5e1cfa",
+            "3c7fc445eb35",
+            "feceeacb345a"
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Write a self-contained HTML file to the working files as `architecture-review-<timestamp>.html` so each run gets a fresh file and nothing lands in the repo: a survey need not create implementation work, and git never sees the working files.",
+          "kind": "home",
+          "reason": "Step 2 writes the report into the working files, `.greenline/tmp/<id>/`, git-ignored, so each run gets a fresh file and nothing lands in the repository, where upstream wrote to the OS temp directory. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The report goes in .greenline/tmp/, not the OS temp directory",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "written",
+          "text": "Never open it: no `open`, `xdg-open` or `start`, no browser, nothing that reaches the owner's desktop. Tell the owner its absolute path; opening it is the owner's.",
+          "kind": "method",
+          "reason": "The survey never opens its report, by a command or a browser, and tells the owner its path, since a QA run's survey opened the report on the host's desktop (J-60, the fourth family).",
+          "gist": "The report is never opened; the owner is told its path",
+          "ruling": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "When the owner takes a finding up, copy the report into that change's folder once its record cites it.",
+          "kind": "home",
+          "reason": "A finding taken up is a change, and what its record relies on is copied into its folder, as the installed work guide puts what a record cites. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "A finding taken up copies the report into its change's folder",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "The report is offline-complete: **embedded CSS** for layout and styling, and **static inline SVG** for diagrams where a graph/flow/sequence reliably communicates the structure, with no network-loaded script, style, font, or image needed to view it. Mix graph-shaped SVG with hand-crafted CSS/HTML visuals: draw relationships directly in SVG when they are graph-shaped (call graphs, dependencies, sequences), and use hand-built divs/SVG when you want something more editorial (mass diagrams, cross-sections, collapse animations).",
+          "kind": "pointer",
+          "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+          "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": [
+            "11fdf94ea977",
+            "ffd3280604c4",
+            "7421d70b2894",
+            "150ce9f9aa5e",
+            "d129ce0c8f55",
+            "960940692c4f",
+            "cc5be66387c2",
+            "c772b5f146e3",
+            "fd3ca39e7158",
+            "21f96a9c3e2e",
+            "e167820a6e6e",
+            "b904f68c4a59",
+            "069b0fc53d97",
+            "fe6fe9ed769a",
+            "8579a69c3305",
+            "06ddc324f0de"
+          ],
+          "edits": [
+            {
+              "segment": "e167820a6e6e",
+              "find": "/codebase-design",
+              "replace": "deep-modules",
+              "kind": "name",
+              "reason": "renamed skill references and bare roster names in prose (the notation pass); codebase-design is the habit deep-modules since S18a of the plan modes-records-recipes (R22)",
+              "gist": "References to codebase-design now say deep-modules, its roster successor"
+            },
+            {
+              "segment": "06ddc324f0de",
+              "find": "e.",
+              "replace": "e, and pass it to the walk's reader.",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Before handing the report over, read the file for any network-loaded reference, a `src` or a `<link>`'s `href` naming a host, an `@import`, or a `url()` that leaves the file, and remove each; the check is that read, never a browser, and where it could not run, say so and call the report unverified offline.",
+          "kind": "method",
+          "reason": "The offline check before handoff is a read of the file for a network-loaded reference and never a browser, since a QA run's survey rendered and opened its report on the host's desktop (J-60, the fourth family).",
+          "gist": "The offline check reads the file and never opens a browser",
+          "ruling": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": ["0a94b4e844eb", "7d62c19cf718", "681ac19450f9", "096eb2af7d8f"],
+          "edits": [
+            {
+              "segment": "096eb2af7d8f",
+              "find": "call the Skill tool with \"grilling\"",
+              "replace": "load frame (through the harness's skill mechanism, or its installed SKILL.md)",
+              "kind": "name",
+              "reason": "Upstream's grilling is the roster's frame step, asked for by name, which walks the decision tree (R22).",
+              "gist": "Grilling is now frame, loaded through the skill mechanism"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Side effects arise as decisions crystallize; the survey edits no file, so each is offered in one line, and the close step of the change that takes the finding up writes what the owner accepted:",
+          "kind": "method",
+          "reason": "The domain model is kept current by the close step of the change that takes a finding up, where upstream called domain-modeling during the survey; the survey edits no file, so each side effect is offered.",
+          "gist": "Offers side effects; whichever change takes the finding up writes them",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a finding taken up is a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in, a durable output the request did not ask for offered in one line; and R22 of 2026-10-08, \"yes amend, with one change\", the name architecture-survey and the glossary written at the close step",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": ["ba84cf3852b9"],
+          "join": "\n\n"
+        },
+        {
+          "passage": "written",
+          "text": "Offer the term for `GLOSSARY.md` in one line.",
+          "kind": "method",
+          "reason": "The survey edits no file: a new term is offered, and the close step writes it into the glossary.",
+          "gist": "Offers a new term for the glossary instead of writing it",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a finding taken up is a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in, a durable output the request did not ask for offered in one line; and R22 of 2026-10-08, \"yes amend, with one change\", the name architecture-survey and the glossary written at the close step",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": ["134069981b98"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "Offer the sharper entry in one line.",
+          "kind": "method",
+          "reason": "The survey edits no file: a sharper term is offered, and the close step writes it.",
+          "gist": "Offers a sharper glossary entry instead of writing it",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a finding taken up is a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in, a durable output the request did not ask for offered in one line; and R22 of 2026-10-08, \"yes amend, with one change\", the name architecture-survey and the glossary written at the close step",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/SKILL.md",
+          "segments": ["fb0e4c5bfa7f", "24f5793d4fd3", "933e4c4dc55e", "c9126b6004df"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "Load deep-modules, the design habit, and design the interface twice by its DESIGN-IT-TWICE.md, one design after another.",
+          "kind": "method",
+          "reason": "Exploring alternative interfaces loads the design habit deep-modules, renamed from codebase-design at S18a, whose design-it-twice page makes the designs one after another, where upstream named codebase-design and parallel sub-agents (R20, R21).",
+          "gist": "Designs the interface twice through deep-modules, one design after another",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: architecture-survey walks the codebase with one delegated agent it waits for, or by its own reading where the harness has no delegation, and the designs of an alternative interface are made one after another, never by parallel agents (R20: \"we are not doing worktrees and parralel susbs at all\")",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "The survey, its evidence and the grilled candidate return to the owner; a recommendation alone does not authorize implementation. A finding the owner takes up is a change like any other: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming architecture-survey and the finding, and run the line from `frame`; its plan step splits the work into tickets only where it needs them. Do not manufacture a planning program for each observation.",
+          "kind": "pointer",
+          "reason": "A finding taken up is a change proposed and run on the line, its record's start section naming the survey, where upstream ended with its own next stages; tickets come only from the plan step.",
+          "gist": "A finding taken up becomes a change run from frame"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the repository; .greenline/map/snapshot.json when architecture-map (extra) has written it (optional); GLOSSARY.md and the decision records\nProduces: the offline HTML report under .greenline/tmp/<id>/, never opened, its path told to the owner, copied into the change's folder under .greenline/ledger/<id>/ only when a finding taken up cites it; at an orientation, its result in the knowledge homes; the survey returns to the owner, and a recommendation is not authorization\nNext: frame, under the mode the owner approves, for a finding the owner takes up; otherwise none, the survey staying in the reply",
+          "kind": "pointer",
+          "reason": "A start's handoff: the report produced in the working files, and the step its hand reaches, frame under the approved mode for a finding taken up, or none. The report is never opened and its path is told to the owner; at an orientation the result goes into the knowledge homes.",
+          "gist": "Produces the unopened offline report; frame follows a finding taken up"
+        }
+      ]
+    },
+    {
+      "path": "HTML-REPORT.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/HTML-REPORT.md",
+          "segments": ["5e6c66b893bb"]
+        },
+        {
+          "passage": "written",
+          "text": "The architectural review is rendered as a single self-contained HTML file in the working files. It is offline-complete: the CSS is embedded and every diagram is static inline SVG or HTML, so no script, style, font, or image loads from a network.",
+          "kind": "pointer",
+          "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in; the report lives in the working files, `.greenline/tmp/<id>/`, as the survey's SKILL.md says, since S17. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "The report page says the file is offline-complete, under .greenline/tmp/",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/HTML-REPORT.md",
+          "segments": ["386bbdad30b5", "dce194d6e26c", "ef273b3fe188"],
+          "edits": [
+            {
+              "segment": "386bbdad30b5",
+              "find": "Mermaid handles graph-shaped diagrams reliably",
+              "replace": "Inline SVG draws the graph-shaped diagrams",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            },
+            {
+              "segment": "dce194d6e26c",
+              "find": "Mermaid",
+              "replace": "one pattern",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "```html\n<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <title>Architecture review for {{repo name}}</title>\n    <style>\n      /* the whole stylesheet is embedded: nothing loads from a network */\n      body { margin: 0; background: #fafaf9; color: #0f172a; font-family: system-ui, sans-serif; }\n      main { max-width: 64rem; margin: 0 auto; padding: 3rem 1.5rem; }\n      main > * + * { margin-top: 3rem; }\n      article { border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #fff; padding: 1.5rem; }\n      article + article { margin-top: 2.5rem; }\n      .badge { display: inline-block; border-radius: 9999px; padding: 0.125rem 0.625rem; font-size: 0.75rem; font-weight: 600; }\n      .strong { background: #d1fae5; color: #065f46; }\n      .explore { background: #fef3c7; color: #92400e; }\n      .speculative { background: #e2e8f0; color: #334155; }\n      .files { font-family: ui-monospace, monospace; font-size: 0.875rem; }\n      .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }\n      .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }\n      .diagram { border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #fff; padding: 1rem; }\n      .callout { border: 1px solid #fcd34d; background: #fffbeb; border-radius: 0.375rem; padding: 0.5rem 0.75rem; }\n      /* small custom layer for the diagrams:\n         dashed seam lines, hand-drawn-feeling arrow heads, etc. */\n      .seam { stroke-dasharray: 4 4; }\n      .leak { stroke: #dc2626; }\n      .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }\n    </style>\n  </head>\n  <body>\n    <main>\n      <header>...</header>\n      <section id=\"candidates\">...</section>\n      <section id=\"top-recommendation\">...</section>\n    </main>\n  </body>\n</html>\n```",
+          "kind": "pointer",
+          "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+          "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/HTML-REPORT.md",
+          "segments": [
+            "25df99868387",
+            "4bcbfbc69f18",
+            "fbd4383c1c2b",
+            "d2036e6ee11b",
+            "c636fb13a03b",
+            "47b37765eec3",
+            "9890f2f21771",
+            "f64eae9b4963",
+            "ba45f294ec6b",
+            "95111f0907b9",
+            "6fe570fed04b",
+            "a5f2a9fb2115",
+            "01448183e1d9",
+            "36419fd0907f",
+            "9a4727944d0b",
+            "18def1ab5dc0",
+            "5dc05ad2f6dd",
+            "8904fc669b65",
+            "fefcf825ec03",
+            "954c38df9396",
+            "4fca362aef1f",
+            "1e909b4fa316",
+            "749d936449c6",
+            "bbc37e49b025",
+            "c268bd9b48ca",
+            "eaad74852e67",
+            "0fe2baad0f40",
+            "705bfecb59b1",
+            "4979002b9643"
+          ],
+          "edits": [
+            {
+              "segment": "9890f2f21771",
+              "find": "/codebase-design",
+              "replace": "deep-modules",
+              "kind": "name",
+              "reason": "renamed skill references and bare roster names in prose (the notation pass); codebase-design is the habit deep-modules since S18a of the plan modes-records-recipes (R22)",
+              "gist": "References to codebase-design now say deep-modules, its roster successor"
+            },
+            {
+              "segment": "6fe570fed04b",
+              "find": ", `font-mono text-sm`",
+              "replace": " (the `.files` class)",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            },
+            {
+              "segment": "4979002b9643",
+              "find": "Mermaid",
+              "replace": "Inline SVG",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Draw the graph directly in SVG when the point is \"X calls Y calls Z, and look at the mess\": modules as `<rect>` elements with a `<text>` label, calls as `<path>` elements ending in an arrowhead `<marker>`, laid out by hand left to right.",
+          "kind": "pointer",
+          "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+          "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+          "credits": ["mattpocock-skills"]
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/HTML-REPORT.md",
+          "segments": ["c379c9759683"],
+          "edits": [
+            {
+              "segment": "c379c9759683",
+              "find": "Tailwind-styled",
+              "replace": "`.diagram`",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Put the `leak` class on leakage edges to colour them red and the `deep` treatment on the deep module. Prefix marker ids per diagram so two SVGs on the page never share one. A hand-drawn sequence (lifelines as vertical lines, messages as horizontal arrows) works well for \"before: 6 round-trips; after: 1.\"\n\n```html\n<div class=\"diagram\">\n  <svg viewBox=\"0 0 560 120\" role=\"img\" aria-label=\"OrderHandler calls OrderValidator, which calls OrderRepo, which leaks into PricingClient\">\n    <defs>\n      <marker id=\"c1-arrow\" markerWidth=\"8\" markerHeight=\"6\" refX=\"7\" refY=\"3\" orient=\"auto\">\n        <polygon points=\"0 0, 8 3, 0 6\" fill=\"#475569\" />\n      </marker>\n    </defs>\n    <rect x=\"8\" y=\"40\" width=\"112\" height=\"40\" rx=\"4\" fill=\"#fff\" stroke=\"#0f172a\" />\n    <text x=\"64\" y=\"64\" text-anchor=\"middle\" font-size=\"12\">OrderHandler</text>\n    <rect x=\"168\" y=\"40\" width=\"112\" height=\"40\" rx=\"4\" fill=\"#fff\" stroke=\"#0f172a\" />\n    <text x=\"224\" y=\"64\" text-anchor=\"middle\" font-size=\"12\">OrderValidator</text>\n    <rect x=\"328\" y=\"40\" width=\"88\" height=\"40\" rx=\"4\" fill=\"#fff\" stroke=\"#dc2626\" />\n    <text x=\"372\" y=\"64\" text-anchor=\"middle\" font-size=\"12\">OrderRepo</text>\n    <rect x=\"456\" y=\"40\" width=\"96\" height=\"40\" rx=\"4\" fill=\"#fff\" stroke=\"#dc2626\" />\n    <text x=\"504\" y=\"64\" text-anchor=\"middle\" font-size=\"12\">PricingClient</text>\n    <path d=\"M120 60 H168\" stroke=\"#475569\" fill=\"none\" marker-end=\"url(#c1-arrow)\" />\n    <path d=\"M280 60 H328\" stroke=\"#475569\" fill=\"none\" marker-end=\"url(#c1-arrow)\" />\n    <path class=\"leak seam\" d=\"M416 60 H456\" stroke-width=\"2\" fill=\"none\" marker-end=\"url(#c1-arrow)\" />\n  </svg>\n</div>\n```",
+          "kind": "pointer",
+          "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+          "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+          "credits": ["mattpocock-skills"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/HTML-REPORT.md",
+          "segments": [
+            "5c46a6f34910",
+            "58e6119938f5",
+            "7510c0c3509e",
+            "70a8235f5202",
+            "386ecd2a5a91",
+            "1ae35347cdde",
+            "b3e95c6b6750",
+            "744d86763934",
+            "7146e8cbb75a",
+            "4bba6625eb33",
+            "c5db5ea2b674",
+            "1b1ce1e1d12b",
+            "068852069d13",
+            "b0826fbf8bdb",
+            "be9bcf37461d",
+            "22a6047b1262",
+            "e1ef50297767",
+            "3fd39f97326e",
+            "8a9e4e3ca821",
+            "fe71fc6278df",
+            "a972a66c9c23",
+            "b8a1edb4bdd3"
+          ],
+          "edits": [
+            {
+              "segment": "5c46a6f34910",
+              "find": "Mermaid's layout fights you",
+              "replace": "the graph needs weight",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            },
+            {
+              "segment": "70a8235f5202",
+              "find": "Mermaid won't render that with the righ",
+              "replace": "a plain node graph won't carry tha",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            },
+            {
+              "segment": "1ae35347cdde",
+              "find": "`h-12 border-l-4`",
+              "replace": "3rem tall, with a thick left border",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            },
+            {
+              "segment": "8a9e4e3ca821",
+              "find": "`font-serif`",
+              "replace": "a serif stack",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            },
+            {
+              "segment": "b8a1edb4bdd3",
+              "find": "`text-xs uppercase tracking-wider`",
+              "replace": "the `.label` treatment (small, uppercase, tracked)",
+              "kind": "pointer",
+              "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+              "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "- No scripts at all. The report is static: no app code, no interactivity, and nothing fetched from a network, so it reads the same with the network off.",
+          "kind": "pointer",
+          "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+          "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "improve-codebase-architecture/HTML-REPORT.md",
+          "segments": [
+            "2f214f2e6dd2",
+            "2059c7fd1d91",
+            "69a578da5366",
+            "16fcce77b7d1",
+            "bb8776128915",
+            "857f6c1124e4",
+            "5def12c4fa5d",
+            "04f957fa97e7",
+            "add0e5df29c8",
+            "63577f89b425",
+            "83f3db803e85",
+            "596399f98f81",
+            "178c5eae2206",
+            "42e9f895346c",
+            "4fcdc349d2ab",
+            "8a2fbf5a198d",
+            "59b55a8c6274",
+            "2c958f636938",
+            "6d3ec746c067",
+            "4ac64cde86de"
+          ],
+          "edits": [
+            {
+              "segment": "857f6c1124e4",
+              "find": "/codebase-design",
+              "replace": "deep-modules",
+              "kind": "name",
+              "reason": "renamed skill references and bare roster names in prose (the notation pass); codebase-design is the habit deep-modules since S18a of the plan modes-records-recipes (R22)",
+              "gist": "References to codebase-design now say deep-modules, its roster successor"
+            },
+            {
+              "segment": "4ac64cde86de",
+              "find": "/codebase-design",
+              "replace": "deep-modules",
+              "kind": "name",
+              "reason": "renamed skill references and bare roster names in prose (the notation pass); codebase-design is the habit deep-modules since S18a of the plan modes-records-recipes (R22)",
+              "gist": "References to codebase-design now say deep-modules, its roster successor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Architecture survey: the practice's mechanics\n\nThis page holds where architecture-survey's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe survey's report is `.greenline/tmp/<id>/architecture-review-<timestamp>.html`, in the working files, the id a date and a slug as a change's is; a change that takes a finding up copies it into its folder, `.greenline/ledger/<id>/`. The map's snapshot, which architecture-map writes, is `.greenline/map/snapshot.json`, and the work guide that names the knowledge homes is `.greenline/WORK.md`.",
+          "kind": "home",
+          "reason": "architecture-survey's mechanics: the working files and the change's folder its report lands in, the map's snapshot and the work guide, held apart since J-93 S2.",
+          "gist": "The report's working files, the change's folder and the map's snapshot"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "c3415cb50c6c",
+      "kind": "harness",
+      "reason": "Where upstream says 'call the Skill tool with' codebase-design, grilling or domain-modeling, the copy loads the method through the harness's native skill mechanism or reads its installed SKILL.md and required support, and carries the vocabulary into every delegated brief; greenline runs on Codex and Claude Code, neither of which is promised a tool by that name.",
+      "gist": "Loads skills natively and carries the vocabulary into every delegated brief",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "a57ebc40e6da",
+      "kind": "home",
+      "reason": "Step 2 writes the report into the working files, `.greenline/tmp/<id>/`, where upstream wrote to the OS temp directory.",
+      "gist": "The OS temp directory gives way to the working files",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "97d163b36f20",
+      "kind": "home",
+      "reason": "Step 2 writes the report into the working files, `.greenline/tmp/<id>/`, where upstream wrote to the OS temp directory.",
+      "gist": "The OS temp directory gives way to the working files",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 10
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "882b72f5f053",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "283a41f5a9b6",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "db5be64d95f4",
+      "kind": "method",
+      "reason": "both side-effect bullets write GLOSSARY.md only when the request's grant covers it and otherwise offer the entry in one line, matching the block's situational-skill rule; carried from roster-keepers-2026-09-15; the method edit is on the operator's word of 2026-09-15 at the card J-8, with J-2 folded in",
+      "gist": "Writing the glossary gives way to offering the entry in one line",
+      "ruling": "roster-keepers-fix-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, the register's row of that date, frozen as the witness",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 19
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "f5fa2b5b2a06",
+      "kind": "method",
+      "reason": "both side-effect bullets write GLOSSARY.md only when the request's grant covers it and otherwise offer the entry in one line, matching the block's situational-skill rule; carried from roster-keepers-2026-09-15; the method edit is on the operator's word of 2026-09-15 at the card J-8, with J-2 folded in",
+      "gist": "Writing the glossary gives way to offering the entry in one line",
+      "ruling": "roster-keepers-fix-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, the register's row of that date, frozen as the witness",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 19
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "f00f7b8a1cf0",
+      "kind": "method",
+      "reason": "both side-effect bullets write GLOSSARY.md only when the request's grant covers it and otherwise offer the entry in one line, matching the block's situational-skill rule; carried from roster-keepers-2026-09-15; the method edit is on the operator's word of 2026-09-15 at the card J-8, with J-2 folded in",
+      "gist": "Writing the glossary gives way to offering the entry in one line",
+      "ruling": "roster-keepers-fix-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, the register's row of that date, frozen as the witness",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 21
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "daa9c2437ede",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+      "replacedBy": {
+        "path": "HTML-REPORT.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "15f4f83a75da",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "41bec0d5fdcb",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+      "replacedBy": {
+        "path": "HTML-REPORT.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "3c33c552fb4e",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+      "replacedBy": {
+        "path": "HTML-REPORT.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "11be8838ba9d",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "b86c63579aef",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts",
+      "replacedBy": {
+        "path": "HTML-REPORT.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "ef3aa47f284f",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "8787ae1dc16b",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/HTML-REPORT.md",
+      "segment": "91ce918df2fe",
+      "kind": "pointer",
+      "reason": "The report is offline-complete: embedded CSS and static inline SVG replace the Tailwind and Mermaid CDN scripts in step 2 and throughout HTML-REPORT.md (the scaffold's stylesheet, the SVG graph pattern in place of the Mermaid workhorse, the utility-class mentions, the no-scripts rule), with a network-off check before handoff and the HTML-REPORT.md passed to any delegate; greenline's consumer must open the report with no network, and HTML-REPORT.md's intro line also names the tmp home the report lives in.",
+      "gist": "The report works offline: embedded CSS and inline SVG, no CDN scripts"
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "2b4b44fd0edf",
+      "kind": "name",
+      "reason": "The title becomes the roster name, architecture-survey (R22).",
+      "gist": "The title becomes architecture-survey, the roster's word since R22",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "573f9ca01e8d",
+      "kind": "method",
+      "reason": "Spawning a sub-agent to walk the codebase gives way to one delegated walk or the agent's own (R21).",
+      "gist": "One delegated walk or the agent's own replaces a spawned sub-agent",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: architecture-survey walks the codebase with one delegated agent it waits for, or by its own reading where the harness has no delegation, and the designs of an alternative interface are made one after another, never by parallel agents (R20: \"we are not doing worktrees and parralel susbs at all\")",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "7689af235f93",
+      "kind": "method",
+      "reason": "Calling domain-modeling during the survey gives way to side effects offered and written at the close step.",
+      "gist": "Domain-modeling calls during the survey give way to offers written at close",
+      "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a finding taken up is a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in, a durable output the request did not ask for offered in one line; and R22 of 2026-10-08, \"yes amend, with one change\", the name architecture-survey and the glossary written at the close step",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 17
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "ed599d3608ba",
+      "kind": "method",
+      "reason": "The design-it-twice parallel sub-agent pattern gives way to designs made one after another by the design habit (R20, R21).",
+      "gist": "Parallel design sub-agents give way to designs made one after another",
+      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: architecture-survey walks the codebase with one delegated agent it waits for, or by its own reading where the harness has no delegation, and the designs of an alternative interface are made one after another, never by parallel agents (R20: \"we are not doing worktrees and parralel susbs at all\")",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 23
+      }
+    },
+    {
+      "source": "mattpocock-skills",
+      "file": "improve-codebase-architecture/SKILL.md",
+      "segment": "daecedfa55da",
+      "kind": "method",
+      "reason": "The survey never opens its report, by a command or a browser, and tells the owner its path, since a QA run's survey opened the report on the host's desktop (J-60, the fourth family).",
+      "gist": "The report is never opened; the owner is told its path",
+      "ruling": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 11
+      }
+    }
+  ]
+}

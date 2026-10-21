@@ -1,0 +1,110 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-11-frame-interview",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-benchmark-checklist-gists",
+    "sha256": "cf25273a6060f5d9c7848a9b881e65c0b41a8a471de7f0475460bf2a3d9b7f47"
+  },
+  "subject": "skill:frame",
+  "recipe": "8ee2d5143e0e45d2cd017fb9b64da6547955ad4b29cce7847328a1932ee70f36",
+  "result": "c4ab3a1d2e00b35a4c50fb8b6dbd0e21d86edab5ea62290dda85de46461d159e",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/interview.md"
+    }
+  ],
+  "gist": "The interview moves to a page only the written depth reads",
+  "reason": "The interview moves from SKILL.md into references/interview.md, which the written depth links, so frame at the inline depth no longer reads it. No sentence of the method changes.",
+  "authorisedBy": {
+    "date": "2026-10-11",
+    "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): frame's interview moves to references/interview.md, which its written depth reads"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "research is not a stub (the decisions row of 2026-10-07)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): frame's interview moves to references/interview.md, which its written depth reads"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 266,
+        "taken": 228,
+        "exact": 220,
+        "retention": 0.9649122807017544,
+        "coverage": 0.8571428571428571,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 171,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.12280701754385964,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 184,
+        "taken": 7,
+        "exact": 7,
+        "retention": 1,
+        "coverage": 0.03804347826086957,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 17,
+        "taken": 16,
+        "exact": 16,
+        "retention": 1,
+        "coverage": 0.9411764705882353,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1084
+  }
+}

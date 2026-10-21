@@ -1,22 +1,32 @@
 ---
-name: groundwork
+name: "groundwork"
 description: "Establish the missing engineering baseline for a repository's purpose and prove first green. Use for a request to set a repo up properly or bring it to a working baseline; preserve established components and avoid unnecessary infrastructure."
-source: "greenline native setup workflow; shared work and accounting contracts own its integration."
+source: "greenline native setup workflow; the work guide and the ledger guide own its integration."
 ---
 
 # Groundwork
 
-Carry a setup request through a usable, verified baseline. Read the existing
-repository and settled decisions first. Follow the request loop in AGENTS.md;
-compare choices only where this component lacks an established answer.
-The setup request authorizes ordinary reversible work in its scope; clarify
-only consequential choices the request and evidence leave open.
+Groundwork is the start for a setup request: set this repository up properly,
+or bring it to a working baseline. Read the existing repository and settled
+decisions first, and establish the purpose and the choices before any edit.
+Then hand the work to a mode: propose it and wait, as AGENTS.md says, open the
+change record with a `## start` section naming groundwork and the combination
+it recommends, and run the line from `frame`. Compare choices only where this
+component lacks an established answer. The setup request authorizes ordinary
+reversible work in its scope; clarify only consequential choices the request
+and evidence leave open.
+
+On an empty tree groundwork is also the orientation AGENTS.md names: its
+own change, proposed before the feature a first request asks for, or that
+request's own change when it asks to set the repository up.
+
+Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.
 
 ## Establish configuration
 
-If initialization is part of the request, establish the intended harness
-trees. For both harnesses, use `greenline init --targets codex,claude-code`.
-An existing initialized repository is not reset because a request fails.
+If initialization is part of the request, it is the change's first edit, at its build step: install the practice for the
+harnesses the owner works in, as groundwork's references page says. An existing initialized repository is not reset because a
+request fails.
 
 ## Establish purpose and constraints
 
@@ -34,18 +44,17 @@ in one line.
 
 ## Build the missing baseline
 
-Use one compact ticket when the baseline is a bounded change. An initiative
-and multiple tickets earn their place when distinct outcomes or dependencies
-need them. `.greenline/WORK.md` owns those records; no fixed ticket count or
-extra grant artifact is required. The current execution account includes
-preparatory work and the resulting setup.
+The change's build step builds the baseline. Its plan step splits the work
+into tickets only where distinct outcomes or dependencies need them;
+The work guide says where those files live, and no fixed ticket count
+or extra grant artifact is required.
 
 Assess which of these outcomes the purpose actually needs:
 
 - A coherent language and tool combination, with current compatible versions
-  and its scoped rationale recorded once in `.greenline/DECISIONS.md`.
+  and its scoped rationale recorded once in the decisions book.
   Write its explicit root statement using the exact `greenline-roots` format
-  in `.greenline/WORK.md` under Repository memory. The rationale field is
+  the work guide gives under Repository memory. The rationale field is
   `decision`. Unknown purpose stays null; unknown choices stay empty. Keep siblings separate.
 - A reproducible check that exercises the actual code and relevant failure
   paths. Use the repository's dependency resolution and execution conventions.
@@ -62,11 +71,12 @@ not an obligation to install a dependency or invent a service.
 ## Prove first green
 
 Run the actual pinned tools and frozen dependency resolution as the check
-will use them. Preserve failed runs and fix their causes. Commit a coherent
-result for independent review, then verify the ticket's acceptance against
-that result. Several tickets may share an execution result, but each keeps
-its own intent, implementation account, and exact review linkage. Shared
-measurements are cited, not represented as separate runs.
+will use them, each recorded as a check, so the change's record keeps
+the facts of every run. Preserve failed runs and fix their causes. Commit a
+coherent result, each commit carrying the change's trailer, for the review
+step at the depth its mode gives, then verify the change's acceptance against
+that result at the verify step's depth. Shared measurements are cited, not
+represented as separate runs.
 
 Reconcile relevant changes to repository choices in the same work. Report what is
 usable, the important choices and evidence, and any open owner decision.
@@ -77,5 +87,5 @@ prepare a concrete next action without turning them into setup busywork.
 ## Handoff
 
 Consumes: the repository as found and its settled decisions
-Produces: the toolchain, check, ignore and README baseline, committed, reviewed and verified as this ticket's own result; a rationale row and an explicit greenline-roots root statement in .greenline/DECISIONS.md; one compact ticket for the setup itself (or an initiative when the request is larger)
-Next: project-router picks up continuity; implement builds the next requested work
+Produces: the recommended combination and the owner's open choices, in the reply and the change record's start section; through the change, the toolchain, check, ignore and README baseline, a rationale row and an explicit greenline-roots root statement in .greenline/DECISIONS.md
+Next: frame, under the mode the owner approves

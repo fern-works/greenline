@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-show-me-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-record-architecture-decisions-recipe",
+    "sha256": "fbe6e555c84ec99ca4782941d036997b045f5282f66972459a2419e7aba141c7"
+  },
+  "subject": "skill:show-me",
+  "recipe": "0a8c8199d785c0432daa582f82c4fc5dbfdd9c47af8e1677768ffabf41dc6f67",
+  "result": "7ff41b897b3fda7455385d1703dd857906dfa55241c52b4cf5a96ef15147f50e",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves show-me to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at replay-s7-show-me-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "humanlayer",
+        "segments": 34,
+        "taken": 30,
+        "exact": 29,
+        "retention": 0.9666666666666667,
+        "coverage": 0.8823529411764706,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 269
+  }
+}

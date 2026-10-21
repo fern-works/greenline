@@ -1,0 +1,53 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-improve-codebase-architecture-glossary",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-domain-modeling-glossary",
+    "sha256": "1e1f8d9f66290be711916994b1271b3fffd80e770de852cfe56628a42e228189"
+  },
+  "subject": "skill:improve-codebase-architecture",
+  "recipe": "297ccf911134fbf08abf5f5b8f665801c880c830de5db7c0ddaec1fa7f791bc2",
+  "result": "58970c68021a4eb572613cbd74b1bf6052fde9cee812500045d5d044093466ec",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Follows upstream's rename to GLOSSARY.md, dropping five pointer edits",
+  "reason": "Follows upstream's rename: the glossary home is GLOSSARY.md, so the five pointer edits that kept CONTEXT go and the two written method passages and their drops name GLOSSARY.md. Retention stays under the minimum.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-15",
+      "words": "The method items carry the operator's ruling of 2026-09-15 at the card J-8 (roster-keepers-fix-2026-09-15), the docs/DECISIONS.md row of that date: the inline glossary writes of domain-modeling and improve-codebase-architecture wait on the request's grant or an offer in one line"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "its retention under the minimum is the copy as it stands, moved under the operator's ruling of 2026-10-04 on Q1 (modes-records-recipes), in the operator's words \"okay then lock in what you recommend\", and inventoried, not remediated, under the docs/DECISIONS.md row of 2026-10-01 on existing divergence (with R1 and C2), whose remediation is separately authorized work"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 147,
+        "taken": 130,
+        "exact": 111,
+        "retention": 0.8538461538461538,
+        "coverage": 0.8843537414965986,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 1149
+  }
+}

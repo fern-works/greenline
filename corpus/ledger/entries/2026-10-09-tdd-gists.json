@@ -1,0 +1,107 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-tdd-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-improve-instructions-gists",
+    "sha256": "b465e13427d12df8edc6a4c366b174121c0e5cda49510b4847f2ad895ec5f690"
+  },
+  "subject": "skill:tdd",
+  "recipe": "b75626345e2498a7b6cd1815a159f0ffa14354f0f192cff850d6f9452547455d",
+  "result": "4c27aed1bd61e28d677b7db19106a64934ba4193e3f19dc5775d72fe61bc10f6",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "useful-tests of tjcages, at commit 170f1ca406f926f47433217f731ebf80a613719c, lifted with credit, ideas only, in greenline's words (the operator's ruling of 2026-10-08, \"everything is good\"): name the failure a new test would catch, extend an existing test first, and accept zero new tests only where existing coverage is the check the floor asks for (contradictions 17 and 21, ruled as recommended)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 156,
+        "taken": 14,
+        "exact": 14,
+        "retention": 1,
+        "coverage": 0.08974358974358974,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 84,
+        "taken": 80,
+        "exact": 79,
+        "retention": 0.9875,
+        "coverage": 0.9523809523809523,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 62,
+        "taken": 37,
+        "exact": 35,
+        "retention": 0.9459459459459459,
+        "coverage": 0.5967741935483871,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 264,
+        "taken": 65,
+        "exact": 65,
+        "retention": 1,
+        "coverage": 0.24621212121212122,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 677
+  }
+}

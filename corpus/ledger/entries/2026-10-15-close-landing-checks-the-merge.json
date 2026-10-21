@@ -1,0 +1,125 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-15-close-landing-checks-the-merge",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-15-ingest-superpowers-using-git-worktrees",
+    "sha256": "a1f102b2f09fac21790ad4a5b0af1e50a5dd97d106a5e86175e14ab30facfb6c"
+  },
+  "subject": "skill:close",
+  "recipe": "dbd87326361b41b4dd5d5a55543940c1cd57546dcfe55054b283f9a69c8b4938",
+  "result": "2b844c603db2b045cf6b165a009736f15a503b3856b7fdc21afdce83065abb96",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The landing names its base and checks the merged result",
+  "reason": "Close's landing gains superpowers' finishing-a-development-branch: before a local merge it names the base branch, and after the merge it runs the change's checks on the merged result, a red result stopping the landing; a rejected push is never forced.",
+  "authorisedBy": {
+    "date": "2026-10-15",
+    "words": "The operator's cards of 2026-10-15 on the batch brief of the test ingestion, \"Combine as a default on my ruling\": superpowers' finishing-a-development-branch combines into the close step's landing as a strengthen of 88 words at every mode, shipping as a default on the operator's ruling in place of a run's or a walk's finding; its claimed evidence is ruled in; its words are accepted at fast; a merge from the owner's worktree is not taken; the bound parts of the three other sources decline, and finishing-a-development-branch's portable form, the landing by the setup with no harness tool and no command spelt out, is taken"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): show-me-your-work's end-of-run audit is lifted into close and its decision log declined; documentation-and-adrs' one sentence on a conflicting convention is lifted into close, the rest of it garden's, its sequential numbering and status field losing to record-architecture-decisions'; handoff, claude-handoff and finishing-a-development-branch stay declined"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the builder runs every task itself; doubt-driven-development's doubt pass is one delegated agent per round only where anticipate is looped, and the self-questioning form, recorded as degraded, at the inline and written depths and where the harness has no delegation; its cross-model escalation to outside tools is dropped; show-me-your-work's audit reads the change's commits and checks, never a transcript, and its cross-model reviewer is dropped"
+    },
+    {
+      "date": "2026-09-15",
+      "words": "roster-keepers-2026-09-15: the operator's ruling of 2026-09-15 at the card J-8, recorded as the register's row of that date on the two inline glossary writes"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+    },
+    {
+      "date": "2026-10-15",
+      "words": "The operator's cards of 2026-10-15 on the batch brief of the test ingestion, \"Combine as a default on my ruling\": superpowers' finishing-a-development-branch combines into the close step's landing as a strengthen of 88 words at every mode, shipping as a default on the operator's ruling in place of a run's or a walk's finding; its claimed evidence is ruled in; its words are accepted at fast; a merge from the owner's worktree is not taken; the bound parts of the three other sources decline, and finishing-a-development-branch's portable form, the landing by the setup with no harness tool and no command spelt out, is taken"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ericclemmons",
+        "segments": 61,
+        "taken": 56,
+        "exact": 54,
+        "retention": 0.9642857142857143,
+        "coverage": 0.9180327868852459,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 114,
+        "taken": 35,
+        "exact": 34,
+        "retention": 0.9714285714285714,
+        "coverage": 0.30701754385964913,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "addyosmani",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "superpowers",
+        "segments": 87,
+        "taken": 1,
+        "exact": 1,
+        "retention": 1,
+        "coverage": 0.011494252873563218,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1510
+  }
+}

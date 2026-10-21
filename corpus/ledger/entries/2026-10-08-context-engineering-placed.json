@@ -1,0 +1,76 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-context-engineering-placed",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-guard-the-context-window-placed",
+    "sha256": "0544e51cd369c6e82279194fc218cc32f339a455efc8c34aea16f5fdfd0b4a49"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/context-engineering"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Placed again on the slot named guard-the-context-window",
+  "reason": "Its context-budget section joins the trial habit guard-the-context-window, the slot R22 names, and its rules-file packing the start improve-instructions. Its MCP table goes to garden.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21; R22)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21; R22)"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "its MCP table",
+        "locator": "skills/context-engineering/SKILL.md, \"MCP Integrations\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "habit",
+    "slot": "guard-the-context-window",
+    "catches": "A thread filled with raw output until the agent's reasoning degrades",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 300
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 300
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 300
+      }
+    ],
+    "ships": "trial"
+  }
+}

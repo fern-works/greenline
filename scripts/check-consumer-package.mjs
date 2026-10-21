@@ -2,9 +2,8 @@
 /**
  * Check the actual npm payload, including artifacts left by an overseer
  * build: its paths against an exact allowlist, its references, its notices
- * and licences, and, where the repository of record's records and private
- * names stand, that it carries no guidance unit identity and no private
- * name. Then install the tarball into a clean directory and run it there
+ * and licences, and, where the repository of record's private names and
+ * frozen guidance unit identities stand, that it carries neither. Then install the tarball into a clean directory and run it there
  * offline: with garden disabled, every network connection refused, no garden
  * process started and no receipt written; then, where a POSIX launcher can
  * run the synthetic garden executable beside this script, with garden
@@ -46,33 +45,23 @@ assert(
   paths.includes("dist/bin/greenline.mjs"),
   "Build the consumer CLI before checking its package",
 );
-// The leak proof: no packed file names a guidance unit id a publication
-// entry of the ledger's chain names. The ids come from the prefix's
-// publication records, which only the repository of record holds; the public
-// tree (workshop/components/public-export.md) has no records, and its run of
-// this script proves the package's shape only. A second argument names
-// another records directory, the seam the tests read a fixture through.
-const records = process.argv[3]
-  ? resolve(process.argv[3])
-  : fileURLToPath(new URL("../corpus/ledger/records", import.meta.url));
-const unitIds = existsSync(records)
-  ? [
-      ...new Set(
-        readdirSync(records)
-          .filter((name) => name.endsWith(".json"))
-          .map((name) => JSON.parse(readFileSync(join(records, name), "utf8")))
-          .filter((entry) => entry.kind === "publication")
-          .flatMap((entry) =>
-            entry.changes.flatMap((change) => change.units.map((unit) => unit.id)),
-          ),
-      ),
-    ]
+// The private names and the guidance unit identities live in files the
+// public tree refuses (workshop/components/public-export.md), so the two
+// proofs below run in the repository of record, and the public tree's run of
+// this script proves the package's shape only.
+const privateNames = new URL("./lib/private-names.mjs", import.meta.url);
+const privateList = existsSync(fileURLToPath(privateNames))
+  ? await import(privateNames.href)
   : undefined;
+// The leak proof: no packed file names a guidance unit id the old ledger's
+// publication entries named, frozen beside the private names. A second
+// argument names another JSON list of ids, the seam the tests read a
+// fixture through.
+const unitIds = process.argv[3]
+  ? JSON.parse(readFileSync(resolve(process.argv[3]), "utf8"))
+  : privateList?.publicationUnitIds();
 if (unitIds !== undefined) {
-  assert(
-    unitIds.length > 0,
-    "the ledger's publication entries name no unit; the leak proof has no ids",
-  );
+  assert(unitIds.length > 0, "the frozen list names no guidance unit; the leak proof has no ids");
   const named = new RegExp(`(?<![a-z0-9-])(${unitIds.join("|")})(?![a-z0-9-])`);
   for (const path of paths) {
     const found = named.exec(read(path));
@@ -80,13 +69,8 @@ if (unitIds !== undefined) {
   }
 }
 // The private-name proof: no packed file carries a credential variable, a
-// hosting resource's name, a sibling checkout or garden's own package. The
-// names live in a file the public tree refuses, so this proof, like the one
-// above, runs in the repository of record.
-const privateNames = new URL("./lib/private-names.mjs", import.meta.url);
-const namesIn = existsSync(fileURLToPath(privateNames))
-  ? (await import(privateNames.href)).privateNamesIn
-  : undefined;
+// hosting resource's name, a sibling checkout or garden's own package.
+const namesIn = privateList?.privateNamesIn;
 if (namesIn !== undefined)
   for (const path of paths) {
     const found = namesIn(read(path));
@@ -95,15 +79,15 @@ if (namesIn !== undefined)
 const rootFiles = new Set(["package.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"]);
 // The inspector's fonts are embedded in the bundle; their licence ships beside it.
 const FONT_LICENCE = "assets/inspect-fonts/OFL.txt";
-// The provenance pages ship and are never installed (the ledger plan's rulings D1 and D2).
-const provenance = (path) => /^provenance\/(INDEX|[a-z][a-z0-9-]*)\.md$/.test(path);
+// The ledger's index ships and is never installed (the ledger plan's rulings D1 and D2).
+const LEDGER_INDEX = "provenance/INDEX.md";
 const unexpected = paths.filter(
   (path) =>
     !rootFiles.has(path) &&
     path !== "dist/bin/greenline.mjs" &&
     path !== "dist/corpus/installation.json" &&
     path !== FONT_LICENCE &&
-    !provenance(path),
+    path !== LEDGER_INDEX,
 );
 assert.deepEqual(unexpected, [], `Unexpected consumer package paths: ${unexpected.join(", ")}`);
 for (const field of ["scripts", "devDependencies", "private", "packageManager"])
@@ -124,7 +108,7 @@ for (const path of Object.values(pkg.bin ?? {})) requirePackagePath("package.jso
 for (const path of pkg.files ?? []) requirePackagePath("package.json", path);
 const external = (path) => /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(path);
 const workspace = (path) =>
-  /^(?:\.(?:greenline|agents|claude|git|github)\/|AGENTS(?:\.override)?\.md$|CLAUDE\.md$|CONTEXT(?:-MAP)?\.md$)/.test(
+  /^(?:\.(?:greenline|agents|claude|git|github)\/|AGENTS(?:\.override)?\.md$|CLAUDE\.md$|GLOSSARY(?:-MAP)?\.md$)/.test(
     path.replace(/^\.\//, ""),
   );
 for (const path of paths) {
@@ -208,68 +192,65 @@ const noticeRows = new Map(
     match[2],
   ]),
 );
+// The notices list the sources a recipe takes from or credits
+// (workshop/components/ledger.md, "The views"), not every pin: a source pinned
+// for the intake that no recipe names yet ships nothing. The modes recipe is
+// the definition's and names no source (workshop/components/recipes.md).
+const recipes = readdirSync("corpus/recipes")
+  .filter((file) => file.endsWith(".json") && file !== "modes.json")
+  .map((file) => JSON.parse(readFileSync(join("corpus/recipes", file), "utf8")));
+const named = new Set(recipes.flatMap((recipe) => recipe.sources));
 assert.deepEqual(
   [...noticeRows.keys()].sort(),
-  manifest.upstreams.map((upstream) => upstream.name).sort(),
-  "Source families and packed notices differ",
+  manifest.sources
+    .map((pinned) => pinned.name)
+    .filter((name) => named.has(name))
+    .sort(),
+  "The sources the recipes name and the packed notices differ",
 );
-for (const upstream of manifest.upstreams) {
-  const row = noticeRows.get(upstream.name);
+for (const pinned of manifest.sources.filter((source) => named.has(source.name))) {
+  const row = noticeRows.get(pinned.name);
   const methods = row.split("|").at(-1);
   assert.deepEqual(
     [...methods.matchAll(/`([a-z][a-z0-9-]*)`/g)].map((match) => match[1]).sort(),
-    manifest.skills
-      .filter((skill) => skill.upstream?.family === upstream.name)
-      .map((skill) => skill.name)
+    // A combined skill takes from several sources (S13 of the plan
+    // modes-records-recipes), so each source's skills are the recipes that
+    // name it, not the one upstream a copy's manifest entry states.
+    recipes
+      .filter((recipe) => recipe.sources.includes(pinned.name))
+      .map((recipe) => recipe.name)
       .sort(),
-    `${upstream.name}: notices must map every distributed method to its source terms`,
+    `${pinned.name}: notices must map every distributed method to its source terms`,
   );
   assert(
-    row.includes(upstream.repo) && row.includes(upstream.commit),
-    `${upstream.name}: source or revision missing from notices`,
+    row.includes(pinned.repo) && row.includes(pinned.commit),
+    `${pinned.name}: source or revision missing from notices`,
   );
-  const licencePath = join("corpus", upstream.snapshot, "LICENSE");
+  const licencePath = join("corpus", pinned.snapshot, "LICENSE");
   if (existsSync(licencePath)) {
     const license = readFileSync(licencePath, "utf8");
     const copyright = /^Copyright.*$/m.exec(license)?.[0];
     const start = license.indexOf("Permission is hereby granted");
-    assert(start >= 0, `${upstream.name}: preserved MIT permission text is missing`);
+    assert(start >= 0, `${pinned.name}: preserved MIT permission text is missing`);
     const permission = license.slice(start).trim();
     assert(
       copyright && row.includes("MIT") && row.includes(copyright) && notices.includes(permission),
-      `${upstream.name}: preserved MIT copyright or terms missing`,
+      `${pinned.name}: preserved MIT copyright or terms missing`,
     );
   } else {
     assert(
-      upstream.holder && row.includes("MIT") && row.includes(upstream.holder),
-      `${upstream.name}: copyright line missing from notices`,
+      pinned.holder && row.includes("MIT") && row.includes(pinned.holder),
+      `${pinned.name}: copyright line missing from notices`,
     );
   }
 }
-// Every vendored copy's provenance page and the index ship byte for byte as the corpus holds them.
+// The fresh chain's index ships byte for byte as the corpus holds it.
 assert(paths.includes("provenance/INDEX.md"), "Missing the ledger index under provenance/");
 assert.equal(
   read("provenance/INDEX.md"),
   readFileSync("corpus/ledger/INDEX.md", "utf8"),
   "Rebuild: the packed ledger index differs from the corpus",
 );
-for (const skill of manifest.skills) {
-  if (skill.upstream === undefined) continue;
-  const page = `provenance/${skill.name}.md`;
-  assert(paths.includes(page), `${skill.name}: provenance page missing from the package`);
-  assert.equal(
-    read(page),
-    readFileSync(join("corpus/skills", skill.name, "PROVENANCE.md"), "utf8"),
-    `${skill.name}: the packed provenance page differs from the corpus`,
-  );
-}
-for (const path of paths.filter(provenance))
-  assert(
-    manifest.skills.some(
-      (skill) => skill.upstream !== undefined && `provenance/${skill.name}.md` === path,
-    ) || path === "provenance/INDEX.md",
-    `${path}: not a vendored copy's provenance page`,
-  );
 
 /**
  * Install the packed tarball into a clean directory and run it there with
@@ -278,14 +259,14 @@ for (const path of paths.filter(provenance))
  *
  * With garden disabled, a stand-in `garden` on the PATH leaves a mark if
  * anything starts it and the run's environment holds no key: init, sync,
- * doctor, status and the connectors listing must succeed, with garden
+ * status and the connectors listing must succeed, with garden
  * reported disabled, no connector entry, no receipt, and neither mark.
  *
  * With garden then enabled against the synthetic garden executable the
  * connector tests own (`test/connectors/fake-garden.mjs`, which answers from
  * the copied contract's fixtures and opens no connection), named by its
- * absolute launcher: enabling installs use-garden, doctor and status report
- * it enabled and ready with no GL0125, one read is recorded in a receipt
+ * absolute launcher: enabling installs use-garden, status reports it
+ * enabled and ready with no GL0125, one read is recorded in a receipt
  * that keeps no body while the body reaches the caller, and disabling
  * removes the skill and keeps the receipt. The network mark and the
  * stand-in's mark must still be absent. The enabled run needs a POSIX
@@ -377,20 +358,18 @@ function runInstalledOffline() {
       ["sync", "--json"],
     ])
       assert.equal(JSON.parse(run(...command)).ok, true, `greenline ${command[0]} is not ok`);
-    for (const command of ["doctor", "status"]) {
-      const envelope = JSON.parse(run(command, "--json"));
-      assert.equal(envelope.ok, true, `greenline ${command} is not ok in the clean install`);
-      assert.deepEqual(
-        envelope.connectors.map((connector) => [connector.id, connector.state]),
-        [["garden", "disabled"]],
-        `greenline ${command} does not report garden disabled`,
-      );
-      assert.deepEqual(
-        envelope.diagnostics.filter((item) => item.code === "GL0125"),
-        [],
-        `greenline ${command} raises a connector finding with garden disabled`,
-      );
-    }
+    const disabled = JSON.parse(run("status", "--json"));
+    assert.equal(disabled.ok, true, "greenline status is not ok in the clean install");
+    assert.deepEqual(
+      disabled.connectors.map((connector) => [connector.id, connector.state]),
+      [["garden", "disabled"]],
+      "greenline status does not report garden disabled",
+    );
+    assert.deepEqual(
+      disabled.diagnostics.filter((item) => item.code === "GL0125"),
+      [],
+      "greenline status raises a connector finding with garden disabled",
+    );
     assert.deepEqual(
       JSON.parse(run("connectors", "list", "--json")).connectors.map((c) => c.state),
       ["disabled"],
@@ -451,45 +430,21 @@ function runEnabled(scratch, repo, run, setEnvironment, marks) {
       existsSync(join(repo, tree, "skills/use-garden/SKILL.md")),
       `enabling garden did not install use-garden under ${tree}`,
     );
-  for (const command of ["doctor", "status"]) {
-    const envelope = JSON.parse(run(command, "--json"));
-    assert.equal(envelope.ok, true, `greenline ${command} is not ok with garden enabled`);
-    assert.deepEqual(
-      envelope.connectors.map((connector) => [connector.state, connector.executable]),
-      [["enabled", launcher]],
-      `greenline ${command} does not report garden enabled at its launcher`,
-    );
-    assert.deepEqual(
-      envelope.diagnostics.filter((item) => item.code === "GL0125"),
-      [],
-      `greenline ${command} raises a connector finding with garden enabled and ready`,
-    );
-  }
-  mkdirSync(join(repo, ".greenline/ledger/records"), { recursive: true });
-  writeFileSync(
-    join(repo, ".greenline/ledger/records/work-one.json"),
-    `${JSON.stringify({
-      schemaVersion: 3,
-      id: "work-one",
-      context: "ctx-one",
-      actor: "agent",
-      role: "maintenance",
-      work: null,
-      scopes: ["."],
-      selections: [],
-    })}\n`,
+  const enabled = JSON.parse(run("status", "--json"));
+  assert.equal(enabled.ok, true, "greenline status is not ok with garden enabled");
+  assert.deepEqual(
+    enabled.connectors.map((connector) => [connector.state, connector.executable]),
+    [["enabled", launcher]],
+    "greenline status does not report garden enabled at its launcher",
+  );
+  assert.deepEqual(
+    enabled.diagnostics.filter((item) => item.code === "GL0125"),
+    [],
+    "greenline status raises a connector finding with garden enabled and ready",
   );
   const body = "Synthetic text: the unit a contract fixture reads.";
-  const delivered = run(
-    "connectors",
-    "call",
-    "garden",
-    "read",
-    "--record",
-    "work-one",
-    "--id",
-    "example-rule",
-  );
+  // A question's consultation: a request no change owns.
+  const delivered = run("connectors", "call", "garden", "read", "--id", "example-rule");
   assert(delivered.includes(body), "the read's body did not reach the caller");
   const receipts = join(repo, ".greenline/ledger/receipts");
   const files = existsSync(receipts) ? readdirSync(receipts) : [];
@@ -520,18 +475,18 @@ function runEnabled(scratch, repo, run, setEnvironment, marks) {
   );
   assert(!existsSync(join(marks, "network")), "greenline reached for the network offline");
   assert(!existsSync(join(marks, "garden")), "greenline started the stand-in garden on the PATH");
-  return "with garden enabled against the synthetic executable, doctor and status reported it ready, one read was recorded in a body-free receipt, and disabling kept the receipt";
+  return "with garden enabled against the synthetic executable, status reported it ready, one read was recorded in a body-free receipt, and disabling kept the receipt";
 }
 const enabledRun = runInstalledOffline();
 
 process.stdout.write(
   `Consumer package matches its path allowlist; package-owned document, manifest and import paths resolve; no development scripts are packed; only two runtime dependencies remain; ${
     unitIds !== undefined
-      ? `none of the ${unitIds.length} guidance unit ids the ledger's publications name is packed`
-      : "the unit-id leak proof runs where the ledger's records stand"
+      ? `none of the ${unitIds.length} guidance unit ids the old ledger's publications named is packed`
+      : "the unit-id leak proof runs where the frozen list stands"
   }; ${
     namesIn !== undefined
       ? "no private name is packed"
       : "the private-name proof runs where its list stands"
-  }; installed into a clean directory, init, sync, doctor, status and the connectors listing ran offline with garden disabled, no connection, no garden process and no receipt; ${enabledRun}.\n`,
+  }; installed into a clean directory, init, sync, status and the connectors listing ran offline with garden disabled, no connection, no garden process and no receipt; ${enabledRun}.\n`,
 );

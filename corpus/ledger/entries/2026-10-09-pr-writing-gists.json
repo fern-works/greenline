@@ -1,0 +1,79 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-09-pr-writing-gists",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-09-guard-the-context-window-gists",
+    "sha256": "1845a0bd60973db4ca9753a8ce5c6a7284b5b81ba21320a6930c888cbdc8e975"
+  },
+  "subject": "skill:pr-writing",
+  "recipe": "38720a62a83c67c29a06c2c22214d44f6f31f71f7aa3b4c4066cec9f3195f732",
+  "result": "7513eb127b7082195d1ba8b7c4d2c331691b89a8dd791f95e3460dac70841d38",
+  "pages": [],
+  "gist": "Every account gets a short gist for the website",
+  "reason": "Adds a gist of at most twelve words, for the website's edition, to every account of the recipe whose reason is stated. No text, measure or method changes.",
+  "authorisedBy": {
+    "date": "2026-10-09",
+    "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 32,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.28125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "humanlayer",
+        "segments": 43,
+        "taken": 3,
+        "exact": 3,
+        "retention": 1,
+        "coverage": 0.06976744186046512,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 49,
+        "taken": 13,
+        "exact": 13,
+        "retention": 1,
+        "coverage": 0.2653061224489796,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "tjcages",
+        "segments": 58,
+        "taken": 28,
+        "exact": 28,
+        "retention": 1,
+        "coverage": 0.4827586206896552,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 517
+  }
+}

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Verify"
+  short_description: "Prove a change's claims with fresh evidence: restate each item of its acceptance so it can fail, capture a baseline and a treatment with the same command, compare the raw artifacts, and return VERIFIED, NOT VERIFIED or INCONCLUSIVE for each, at the depth the change's mode gives the verify step. Use when the mode reaches verify, or when the owner says \"verify this\", \"prove it works\" or \"did this fix it\"."

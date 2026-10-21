@@ -1,0 +1,49 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-tdd-glossary",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-project-router-glossary",
+    "sha256": "004d26d311bc4a7b3131cbfa18007716888485c6b022602358d1f18c20c1e952"
+  },
+  "subject": "skill:tdd",
+  "recipe": "211ecc8dbc1bdbe5e331d799e7e89736e53dddc2fae84760afb682319d58ce5d",
+  "result": "61038d40ab725489b4dd0fba78bf6392970048933b62868fc045b493828276ae",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Its glossary passage now names GLOSSARY.md; the measure is unchanged",
+  "reason": "Follows upstream's rename: greenline's written passage that reads the ticket, its spec and the glossary names GLOSSARY.md, as the upstream sentence it replaces now does. That sentence stays dropped for its pointer reason.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 84,
+        "taken": 79,
+        "exact": 79,
+        "retention": 1,
+        "coverage": 0.9404761904761905,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 394
+  }
+}

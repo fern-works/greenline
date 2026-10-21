@@ -20,7 +20,7 @@ export interface LinkableFile {
   readonly content: string;
 }
 
-const MARKDOWN_LINK = /\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
+export const MARKDOWN_LINK: RegExp = /\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
 
 function basenameOf(path: string): string {
   const parts = path.split("/");

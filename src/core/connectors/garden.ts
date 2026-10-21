@@ -21,7 +21,7 @@ export interface GardenConfiguration {
 /** The executable an entry names when enabling is given none: the garden command on the PATH. */
 export const GARDEN_COMMAND = "garden";
 
-/** The opt-in skill that explains a garden consultation, installed only while garden is enabled. */
+/** The connector's skill that explains a garden consultation, installed only while garden is enabled. */
 export const GARDEN_SKILL = "use-garden";
 
 /** One line naming the connector in a listing. */

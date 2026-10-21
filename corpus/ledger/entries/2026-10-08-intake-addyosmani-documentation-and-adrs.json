@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-documentation-and-adrs",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-finishing-a-development-branch",
+    "sha256": "236d1ad72704d06dc7e336732604d174d5e80e0164d1c5cd0d0206832b37cea3"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/documentation-and-adrs"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Documentation knowledge goes to garden; the ADR half is a duplicate",
+  "reason": "Comments, API docs, READMEs and changelogs are knowledge for garden; its ADR half duplicates record-architecture-decisions.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "comments",
+        "locator": "skills/documentation-and-adrs/SKILL.md, \"Inline Documentation\""
+      },
+      {
+        "part": "API docs",
+        "locator": "skills/documentation-and-adrs/SKILL.md, \"API Documentation\""
+      },
+      {
+        "part": "READMEs",
+        "locator": "skills/documentation-and-adrs/SKILL.md, \"README Structure\""
+      },
+      {
+        "part": "changelogs",
+        "locator": "skills/documentation-and-adrs/SKILL.md, \"Changelog Maintenance\""
+      }
+    ]
+  }
+}

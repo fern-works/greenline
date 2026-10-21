@@ -1,0 +1,30 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-using-git-worktrees",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-superpowers-subagent-driven-development",
+    "sha256": "c9aa1fb54dcec7bef2c0fd59f30205878642c73c76364fdab957167efffc58df"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/using-git-worktrees"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Not read: it falls under the rule on subagents",
+  "reason": "Declined before it was read, under the rule that greenline runs its subagents one after another and uses no worktrees.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-07",
+      "words": "Decline, ruled before the reading"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20: greenline runs its subagents one after another, never in parallel, and uses no worktrees"
+    }
+  ]
+}

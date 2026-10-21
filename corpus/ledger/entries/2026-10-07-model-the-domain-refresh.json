@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-model-the-domain-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-boundary-discipline-refresh",
+    "sha256": "05e74b38288629455d88c87536744c90fbe65920f587feaf0905467c2c084baf"
+  },
+  "subject": "skill:model-the-domain",
+  "recipe": "e63e5ed973464e1a19599e9ba6ec20d1a34522c74128c1bccabe1abc1f778678",
+  "result": "00d315dcccaf78d179bb388f34c0bb1b50a1d853e357224b1ff496f303bb72de",
+  "pages": [],
+  "gist": "Upstream unchanged; the licence now comes from the plugin directory",
+  "reason": "Refreshes model-the-domain to pstack d0ef80d86795: no segment changed, so the recipe re-anchors as it stands. The repository root has no licence file, so the snapshot's LICENSE is the plugin directory's own, byte-identical to before.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 23,
+        "taken": 23,
+        "exact": 23,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 0
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-use-garden-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-progress-check-recut",
+    "sha256": "e8f60763e504947f16d289186d51215ffa99bbf4792fd081eb0a37e24d99af63"
+  },
+  "subject": "skill:use-garden",
+  "recipe": "8786e8ea574a8c876a953e1b7d40fe3a170d9469cadf1ceabef96e66b1a749c3",
+  "result": "fd2c47fcc6f4cbc236676de488b011beb05f4fc3f3208297edfeb60918935c5c",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "operations.md"
+    }
+  ],
+  "gist": "Re-cut on the change record; consultations name their change",
+  "reason": "use-garden is re-cut on the change record: a consultation that serves a change names it with --change, a question's names no change, and the change's sections say what a consultation changed.",
+  "authorisedBy": {
+    "date": "2026-10-04",
+    "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-22",
+      "words": "The method items carry the old chain's native entries use-garden-2026-09-26, under the operator's rulings of 2026-09-22 that garden is consulted when relevant without a per-lookup question and that one optional skill owns the instructions, and use-garden-answers-2026-09-28, under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own, the installed ledger guide saying a consultation that serves a change runs with --change and a question's names no change"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 2550
+  }
+}

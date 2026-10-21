@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-diagram-design-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-architecture-map-recipe",
+    "sha256": "d84d0a12b1ce721d873541950336ec9a1b1c9ed3b33f3cc9f9b740b0e8cf0c4b"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "84a2029bfa99ee60154f14c9c24e85d5c22414c2a2d130de634f0e303dd1f7a6",
+  "result": "75e9d793d9cf89632fda5bc1bd95cffd1bcc2ab90d577813aa8b3092c15bdf15",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves diagram-design to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at series-s7-roster-2026-09-11.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 6368,
+        "taken": 6337,
+        "exact": 6328,
+        "retention": 0.9985797696070696,
+        "coverage": 0.9951319095477387,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 608
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-progress-check-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-product-description-recipe",
+    "sha256": "137943eee13660545b2866445207b52ae4ca9654a0a12de9c9bbcecf99f19769"
+  },
+  "subject": "skill:progress-check",
+  "recipe": "a46dac47d5b51c7de1a020ff5fdcd6f6bb0654e5f85de3f494a92b907b37d51e",
+  "result": "f74930f20198d409b74d3ae1aabba426301585a417ba53d34c9b9e2a58388332",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves progress-check to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at vocabulary-owner-2026-09-12.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "tjcages",
+        "segments": 157,
+        "taken": 126,
+        "exact": 123,
+        "retention": 0.9761904761904762,
+        "coverage": 0.802547770700637,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 574
+  }
+}

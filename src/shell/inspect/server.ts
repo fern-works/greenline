@@ -1,12 +1,19 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { execFileSync, type ExecFileSyncOptionsWithStringEncoding } from "node:child_process";
-import { join, sep } from "node:path";
-import { realpathSync, lstatSync, existsSync } from "node:fs";
+import { join } from "node:path";
+import { lstatSync, existsSync } from "node:fs";
 import { z } from "zod";
 import { parseJson } from "../../core/contract.ts";
-import { err } from "../../commons/result.ts";
 import { sha256Hex } from "../../commons/hash.ts";
-import { parseManifest, serializeManifest, type Manifest } from "../../core/manifest.ts";
+import {
+  NO_PROCEED,
+  parseManifest,
+  serializeManifest,
+  trialSkillNames,
+  type HookSettings,
+  type Manifest,
+} from "../../core/manifest.ts";
+import type { HooksReport } from "../../core/adapters.ts";
 import { isConnectorSkill, type SkillChoices } from "../../core/connectors/registry.ts";
 import { parseDecisionDocument, type RootStatement } from "../../core/root-statements.ts";
 import { parseHouseRulings } from "../../core/house-rulings.ts";
@@ -19,19 +26,35 @@ import {
 } from "../../core/inspect.ts";
 import { parseLock } from "../../core/lock.ts";
 import { renderProjection } from "../../core/render.ts";
-import { buildStatusView, type ProjectView } from "../../core/status.ts";
-import type { ExecutionLedger } from "../../core/execution-ledger.ts";
-import { AtomicWriteFailed, createNodeFileIo, type FileIo } from "../fs/io.ts";
+import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { applyFilePlan } from "../fs/apply.ts";
 import { withWorkspaceWrite } from "../fs/workspace-write.ts";
-import { readExecutionLedger } from "../execution-ledger.ts";
+import { rosterOf } from "../repository-state.ts";
+import type { Installation } from "../../core/installation.ts";
 import { GuidanceRequests } from "../guidance-requests.ts";
-import { collectArtifacts } from "../artifacts.ts";
 import { runCommand } from "../cli/commands.ts";
 import type { CliEnvironment } from "../cli/command-environment.ts";
 import type { CommandOutcome } from "../cli/command-outcome.ts";
 import type { Diagnostic } from "../cli/output.ts";
 import { renderInspectorPage } from "./page.ts";
+import { readInstalledFile } from "./repository-read.ts";
+import {
+  changeDetail,
+  changesList,
+  type ChangeDetail,
+  type ChangesList,
+  type CommitLog,
+} from "./ledger.ts";
+import { changeHtml, changesListHtml } from "./ledger-html.ts";
+import { planDetail, plansList, type PlanDetail, type PlansList } from "./plans.ts";
+import { planHtml, plansListHtml } from "./plans-html.ts";
+import {
+  knowledgeHome,
+  knowledgeList,
+  type KnowledgeHome,
+  type KnowledgeList,
+} from "./knowledge.ts";
+import { knowledgeHomeHtml, knowledgeListHtml } from "./knowledge-html.ts";
 
 export const INSPECT_DEFAULT_PORT = 7433;
 /** Installed context and current policy, without any remotely retrieved guidance body. */
@@ -49,13 +72,16 @@ export interface InspectorState {
     readonly at: string;
   }[];
   readonly houseRulings: { readonly stanza: string; readonly rulings: readonly string[] };
-  readonly ledger: ExecutionLedger | null;
-  /** The schema-4 request collections, body-free, as the evidence view shows them. */
+  /** The request collections, body-free, as the evidence view shows them. */
   readonly receipts: readonly ReceiptRequestView[];
-  /** The collection files, or the directory, that could not be read, each with the refusal; doctor names the finding. */
+  /** The collection files, or the directory, that could not be read, each with the refusal. */
   readonly receiptProblems: readonly { readonly file: string; readonly message: string }[];
-  readonly work: ProjectView;
   readonly checks: readonly Diagnostic[];
+  /**
+   * The declared checks and the hooks as `greenline status` reports them, with
+   * the manifest's hooks settings; null when status could not read the manifest.
+   */
+  readonly hooks: (HooksReport & { readonly settings: HookSettings }) | null;
   readonly files: readonly {
     readonly path: string;
     readonly content: string | null;
@@ -66,10 +92,13 @@ export interface InspectorState {
     readonly files: readonly { readonly path: string; readonly diff: readonly DiffLine[] }[];
     readonly unavailable: readonly string[];
   };
+  /** What the two settings may hold, from the installation: `proceed`'s values in order, and the trial skills. */
+  readonly settings: { readonly proceed: readonly string[]; readonly trials: readonly string[] };
   readonly skills: readonly {
     readonly name: string;
     readonly installed: boolean;
-    readonly optIn: boolean;
+    /** An extra installs only when the manifest's include list names it. */
+    readonly extra: boolean;
   }[];
 }
 const editable = [".greenline/manifest.json", ".greenline/DECISIONS.md", "AGENTS.md"] as const;
@@ -91,22 +120,6 @@ function editableTexts(root: string, io: FileIo) {
     },
   };
 }
-/** Refuse installed-context links outside the repository before reading content. */
-function readInstalledFile(root: string, io: FileIo, path: string): ReturnType<FileIo["read"]> {
-  const location = join(root, path);
-  try {
-    const resolved = realpathSync(location);
-    if (!resolved.startsWith(realpathSync(root) + sep))
-      return err(
-        new AtomicWriteFailed(path, "read", "installed context resolves outside the repository"),
-      );
-    return io.read(resolved);
-  } catch (error) {
-    const absent = z.object({ code: z.literal("ENOENT") }).safeParse(error).success;
-    return err(new AtomicWriteFailed(path, absent ? "absent" : "read", String(error)));
-  }
-}
-
 /** Pin one readable Git tree for the whole comparison. */
 function gitBaseline(
   root: string,
@@ -142,11 +155,46 @@ function atHead(root: string, revision: string, path: string): string | undefine
   }
 }
 
+/** A commit id as git prints it; nothing else reaches git's arguments. */
+const COMMIT = /^[0-9a-f]{7,64}$/;
+
+/**
+ * The subject and date of each commit, in one read of git; a commit git
+ * cannot describe is left out, and the page shows its subject as unknown.
+ */
+function commitLog(root: string): CommitLog {
+  return (hashes) => {
+    const found = new Map<string, { subject: string; date: string }>();
+    const asked = hashes.filter((hash) => COMMIT.test(hash));
+    if (asked.length === 0) return found;
+    let text: string;
+    try {
+      text = execFileSync(
+        "git",
+        ["log", "--no-walk=unsorted", "--format=%H%x00%s%x00%cI%x1e", ...asked],
+        { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+      );
+    } catch {
+      return found;
+    }
+    for (const record of text.split("\x1e")) {
+      const [hash, subject, date] = record.trim().split("\0");
+      if (hash !== undefined && subject !== undefined && date !== undefined)
+        found.set(hash, { subject, date });
+    }
+    return found;
+  };
+}
+
 function inspectorState(root: string, env: CliEnvironment): InspectorState | { error: string } {
   const io = createNodeFileIo(),
     texts = editableTexts(root, io);
   if (texts._tag === "err") return { error: texts.error.message };
-  const manifest = parseManifest(texts.value.manifest, ".greenline/manifest.json"),
+  const manifest = parseManifest(
+      texts.value.manifest,
+      ".greenline/manifest.json",
+      rosterOf(env.installation),
+    ),
     decisions = parseDecisionDocument(texts.value.decisions, ".greenline/DECISIONS.md");
   if (manifest._tag === "err" || decisions._tag === "err")
     return { error: "No readable repository configuration or decisions." };
@@ -189,11 +237,9 @@ function inspectorState(root: string, env: CliEnvironment): InspectorState | { e
   if (!markerData.success) return { error: "Policy change evidence is invalid." };
   const survey = new GuidanceRequests(root, io).survey();
   const RECEIPTS = ".greenline/ledger/receipts";
-  const ledger = readExecutionLedger(root, io),
-    artifacts = collectArtifacts(join(root, ".greenline/work"));
-  const doctor = runCommand(
+  const diagnosis = runCommand(
     {
-      command: "doctor",
+      command: "status",
       json: true,
       dryRun: true,
       yes: false,
@@ -213,8 +259,7 @@ function inspectorState(root: string, env: CliEnvironment): InspectorState | { e
     policyChanges: markerData.data.changes,
     decisions: texts.value.decisions,
     houseRulings: { stanza: rulings.map((r) => `- ${r}`).join("\n"), rulings },
-    ledger: ledger._tag === "ok" ? ledger.value : null,
-    // Each collection is read as it stands, so the valid ones show beside those that cannot be read, even while the account audit refuses the set (doctor names why).
+    // Each collection is read as it stands, so the valid ones show beside those that cannot be read.
     receipts:
       survey._tag === "ok"
         ? receiptView(survey.value.flatMap((item) => ("request" in item ? [item.request] : [])))
@@ -225,19 +270,26 @@ function inspectorState(root: string, env: CliEnvironment): InspectorState | { e
             "failure" in item ? [{ file: `${RECEIPTS}/${item.file}`, message: item.failure }] : [],
           )
         : [{ file: RECEIPTS, message: survey.error.message }],
-    work: buildStatusView(artifacts._tag === "ok" ? artifacts.value.parsed : []),
-    checks: doctor.diagnostics,
+    checks: diagnosis.diagnostics,
+    hooks:
+      diagnosis.hooks === undefined ? null : { settings: manifest.value.hooks, ...diagnosis.hooks },
     files,
     changes: { baseline: baseline?.revision ?? null, files: changes, unavailable },
-    // A connector's skill is its connector's to install, so it is never offered as a choice.
+    settings: {
+      proceed: [NO_PROCEED, ...env.installation.modes.modes.map((mode) => mode.name)],
+      // The trial skills beside the line, which `trials` names, so a save keeps an enabled one.
+      trials: trialSkillNames(env.installation.modes, env.installation.skills),
+    },
+    // A connector's skill is its connector's to install, and a trial skill the trials
+    // setting's, so neither is offered as a choice.
     skills: env.installation.skills
-      .filter((skill) => !isConnectorSkill(skill.name))
+      .filter((skill) => !unlisted(env.installation, skill.name))
       .map((skill) => ({
         name: skill.name,
         installed: files.some(
           (file) => file.path.endsWith(`/skills/${skill.name}/SKILL.md`) && file.content !== null,
         ),
-        optIn: skill.optIn === true,
+        extra: skill.extra === true,
       })),
   };
 }
@@ -253,6 +305,8 @@ const settings = z
       .object({ include: z.array(z.string()), exclude: z.array(z.string()) })
       .strict()
       .optional(),
+    proceed: z.string().optional(),
+    trials: z.array(z.string()).optional(),
   })
   .strict();
 const prose = z.object({ expectedRevision: revision, body: z.string() }).strict();
@@ -267,15 +321,31 @@ const markers = z
   })
   .strict();
 /**
- * The saved skill choices: the page's, for the skills it lists, and the
- * manifest's own entries for a connector's skill, which the page never
- * lists. A save can therefore neither write an exclusion that would block
- * enabling a connector later nor drop one the owner wrote by hand.
+ * Whether the page leaves a skill out of its choices: a connector's skill,
+ * which its connector installs, and a trial skill beside the line, which the
+ * trials setting installs (S17 of the plan modes-records-recipes).
  */
-function keepConnectorChoices(written: SkillChoices, current: SkillChoices): SkillChoices {
+function unlisted(installation: Installation, name: string): boolean {
+  return (
+    isConnectorSkill(name) ||
+    trialSkillNames(installation.modes, installation.skills).includes(name)
+  );
+}
+/**
+ * The saved skill choices: the page's, for the skills it lists, and the
+ * manifest's own entries for a skill the page never lists, a connector's or
+ * a trial's. A save can therefore neither write an exclusion that would block
+ * enabling a connector or a trial later nor drop one the owner wrote by hand.
+ */
+function keepConnectorChoices(
+  written: SkillChoices,
+  current: SkillChoices,
+  installation: Installation,
+): SkillChoices {
+  const hidden = (name: string): boolean => unlisted(installation, name);
   const merge = (page: readonly string[], manifest: readonly string[]): readonly string[] => [
-    ...page.filter((name) => !isConnectorSkill(name)),
-    ...manifest.filter(isConnectorSkill),
+    ...page.filter((name) => !hidden(name)),
+    ...manifest.filter(hidden),
   ];
   return {
     include: merge(written.include, current.include),
@@ -286,6 +356,7 @@ function save(
   root: string,
   endpoint: string,
   body: string,
+  installation: Installation,
 ): { outcome: CommandOutcome } | { error: string; conflict?: boolean } {
   const io = createNodeFileIo();
   try {
@@ -332,9 +403,12 @@ function save(
         skills:
           write.skills === undefined
             ? current.value.skills
-            : keepConnectorChoices(write.skills, current.value.skills),
+            : keepConnectorChoices(write.skills, current.value.skills, installation),
+        proceed: write.proceed ?? current.value.proceed,
+        trials: write.trials ?? current.value.trials,
       };
-      const checked = parseManifest(serializeManifest(next), path);
+      // The settings are checked against the installation's modes, as sync checks them.
+      const checked = parseManifest(serializeManifest(next), path, rosterOf(installation));
       if (checked._tag === "err") return { error: checked.error.message };
       after = serializeManifest(checked.value);
     } else {
@@ -384,7 +458,13 @@ function send(
   body:
     | InspectorState
     | { error: string }
-    | { outcome: CommandOutcome; state: InspectorState | { error: string } },
+    | { outcome: CommandOutcome; state: InspectorState | { error: string } }
+    | (ChangesList & { html: string })
+    | { change: ChangeDetail; html: string }
+    | (PlansList & { html: string })
+    | { plan: PlanDetail; html: string }
+    | (KnowledgeList & { html: string })
+    | { home: KnowledgeHome; html: string },
 ): void {
   response.writeHead(status, {
     "content-type": "application/json; charset=utf-8",
@@ -400,6 +480,14 @@ async function readBody(request: IncomingMessage): Promise<string> {
     if (Buffer.byteLength(text) > 1048576) throw new Error("Request body too large.");
   }
   return text;
+}
+/** A path segment decoded; a malformed escape stays as written, so it names no change and is answered 404. */
+function decodedPart(part: string): string {
+  try {
+    return decodeURIComponent(part);
+  } catch {
+    return part;
+  }
 }
 /** A loopback inspector with explicit saves and sync; no guidance API requests. */
 export interface InspectorHandle {
@@ -437,11 +525,56 @@ export function startInspector(
       send(response, "error" in state ? 409 : 200, state);
       return;
     }
+    // The changes view: the list, and one change's page, each its data with the HTML it renders to.
+    if (request.method === "GET" && url.pathname === "/api/changes") {
+      const list = changesList(root, env, new Date());
+      send(response, 200, { ...list, html: changesListHtml(list) });
+      return;
+    }
+    const changePath = /^\/api\/changes\/([^/]+)$/.exec(url.pathname);
+    if (request.method === "GET" && changePath !== null) {
+      const detail = changeDetail(
+        root,
+        env,
+        decodedPart(changePath[1] ?? ""),
+        new Date(),
+        commitLog(root),
+      );
+      if (detail === undefined) send(response, 404, { error: "No such change record." });
+      else send(response, 200, { change: detail, html: changeHtml(detail) });
+      return;
+    }
+    // The plans view: the plan directories, and one plan's page.
+    if (request.method === "GET" && url.pathname === "/api/plans") {
+      const list = plansList(root, env);
+      send(response, 200, { ...list, html: plansListHtml(list) });
+      return;
+    }
+    const planPath = /^\/api\/plans\/([^/]+)$/.exec(url.pathname);
+    if (request.method === "GET" && planPath !== null) {
+      const plan = planDetail(root, env, decodedPart(planPath[1] ?? ""));
+      if (plan === undefined) send(response, 404, { error: "No such plan directory." });
+      else send(response, 200, { plan, html: planHtml(plan) });
+      return;
+    }
+    // The knowledge view: the homes the repository keeps, and one home's page.
+    if (request.method === "GET" && url.pathname === "/api/knowledge") {
+      const list = knowledgeList(root);
+      send(response, 200, { ...list, html: knowledgeListHtml(list) });
+      return;
+    }
+    const homePath = /^\/api\/knowledge\/([^/]+)$/.exec(url.pathname);
+    if (request.method === "GET" && homePath !== null) {
+      const home = knowledgeHome(root, decodedPart(homePath[1] ?? ""));
+      if (home === undefined) send(response, 404, { error: "No such knowledge home here." });
+      else send(response, 200, { home, html: knowledgeHomeHtml(home) });
+      return;
+    }
     if (
       request.method === "POST" &&
       ["/api/manifest", "/api/policy", "/api/rulings"].includes(url.pathname)
     ) {
-      const result = save(root, url.pathname, await readBody(request));
+      const result = save(root, url.pathname, await readBody(request), env.installation);
       if ("error" in result) send(response, result.conflict ? 409 : 400, { error: result.error });
       else send(response, 200, { outcome: result.outcome, state: inspectorState(root, env) });
       return;

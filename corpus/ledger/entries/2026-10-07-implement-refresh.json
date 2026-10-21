@@ -1,0 +1,31 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-implement-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-grilling-refresh",
+    "sha256": "ba38af2f6f54e29a1b34b8eb372d25f61f0144be3b3493b1aaf0aeca52fbd969"
+  },
+  "subject": "skill:implement",
+  "recipe": "eec871518482b5bdf0216b15a1d2a7b8c87be3bbb10ac8634de7f0642ab558b5",
+  "result": "e4d97fcbd396a20c8bdac8aa5a63df4d5d3c4148b399de2e22a1dd8a031f5f11",
+  "pages": [],
+  "gist": "Upstream now calls the Skill tool; still a stub, text unchanged",
+  "reason": "Refreshes implement to mattpocock-skills 6fd947921b93: upstream calls the Skill tool where it named /tdd and /code-review, every segment dropped as before. The body still delegates and lists the same steps, so the stub ruling stands.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "A stub under the operator's ruling of 2026-10-04 on the stub trigger (C15), in the operator's words \"cool then lock everything in\""
+    },
+    {
+      "date": "2026-09-11",
+      "words": "its method items carry the operator's ruling of 2026-09-11 (review-contracts-2026-09-26), in the operator's words \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": true,
+    "sources": [],
+    "growth": 751
+  }
+}

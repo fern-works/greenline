@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-addyosmani-source-driven-development",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-mattpocock-skills-grill-me",
+    "sha256": "779e1955d105324cc40af0cea2ca939b64d7bb798a25434efa70b5823ad16742"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "path": "skills/source-driven-development"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Version-checked documentation lookup is garden's guidance to weigh",
+  "reason": "Checking a framework's API against its official documentation by version is guidance consulted for an engineering choice; its version-and-citation method is named for garden to weigh.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hand-off to garden's maintainer, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hand-off to garden's maintainer, \"everything is good\""
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "checking a framework's API against its official documentation by version, with its version-and-citation method",
+        "locator": "skills/source-driven-development"
+      }
+    ]
+  }
+}

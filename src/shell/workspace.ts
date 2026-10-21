@@ -3,6 +3,13 @@ import { sha256Hex } from "../commons/hash.ts";
 import type { LockFileMap, FileTarget } from "../core/managed-file.ts";
 import { composeBlockTarget, splitManagedBlock } from "../core/managed-block.ts";
 import { POLICY_BLOCK_KEY, type DesiredFile } from "../core/render.ts";
+import {
+  composeJsonAdapter,
+  jsonAdapterAt,
+  NO_ENTRIES,
+  ownedBytes,
+  ownedOnDisk,
+} from "../core/adapters.ts";
 import type { FileIo } from "./fs/io.ts";
 
 /**
@@ -47,8 +54,25 @@ export function snapshotWorkspace(
   for (const file of desired) {
     const disk = readIfPresent(join(root, file.path), io);
     if (file.kind === "file") {
-      targets.set(file.path, { text: file.content, owned: file.content });
+      targets.set(file.path, {
+        text: file.content,
+        owned: file.content,
+        executable: file.executable === true,
+      });
       if (disk !== undefined) diskHashes.set(file.path, sha256Hex(disk));
+      continue;
+    }
+    const adapter = file.kind === "json" ? jsonAdapterAt(file.path) : undefined;
+    if (adapter !== undefined) {
+      // A harness configuration: greenline's entries merged beside the owner's, the entries alone owned.
+      const composed = composeJsonAdapter(adapter, disk);
+      if ("issues" in composed) {
+        blockFailures.set(file.path, composed.issues);
+        continue;
+      }
+      targets.set(file.path, { text: composed.text, owned: ownedBytes(adapter) });
+      const owned = disk === undefined ? undefined : ownedOnDisk(adapter, disk);
+      if (owned !== undefined && owned !== NO_ENTRIES) diskHashes.set(file.path, sha256Hex(owned));
       continue;
     }
     const key: string = file.key ?? POLICY_BLOCK_KEY;
@@ -73,7 +97,11 @@ export function snapshotWorkspace(
   for (const path of lockedPaths) {
     if (desiredPaths.has(path)) continue;
     const disk = readIfPresent(join(root, path), io);
-    if (disk !== undefined) diskHashes.set(path, sha256Hex(disk));
+    if (disk === undefined) continue;
+    // A harness configuration greenline merged into owns only its entries there.
+    const adapter = jsonAdapterAt(path);
+    const owned = adapter === undefined ? disk : ownedOnDisk(adapter, disk);
+    if (owned !== undefined && owned !== NO_ENTRIES) diskHashes.set(path, sha256Hex(owned));
   }
   return { manifestText, lockText, overridePresent, targets, diskHashes, blockFailures };
 }

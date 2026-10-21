@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-tdd-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-research-refresh",
+    "sha256": "6d4d74913153e1140f185d9745a5909aa5d014b048cb1757e67f110575cfbba9"
+  },
+  "subject": "skill:tdd",
+  "recipe": "b9868c09f78ed0e6e8502ab92e82afac725d7067c12e66d5914f58fb79223aa3",
+  "result": "940f8ce2ded30a41f68c0692241a290c4425dffc15e7e18db89d4ae8bbd0ca1d",
+  "pages": [],
+  "gist": "The one changed sentence stays dropped; text unchanged",
+  "reason": "Refreshes tdd to mattpocock-skills 6fd947921b93: the one changed segment, the dropped sentence that reads CONTEXT.md, now names GLOSSARY.md and stays replaced by greenline's passage. The installed text and measure are unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 84,
+        "taken": 79,
+        "exact": 79,
+        "retention": 1,
+        "coverage": 0.9404761904761905,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 394
+  }
+}

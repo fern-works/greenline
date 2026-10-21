@@ -1,0 +1,5 @@
+interface:
+  display_name: "Build"
+  short_description: "Turn a change's plan into working code one slice at a time, each slice tested, verified and committed with the change's trailer and the build green between slices, every command's output compared with what the plan expected and every deviation recorded, at the depth the change's mode gives the build step. Use when the mode reaches build, or when the owner asks to build a ready ticket or to make a small settled fix."
+policy:
+  allow_implicit_invocation: false

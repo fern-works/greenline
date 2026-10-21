@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-07-diagnosing-bugs-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-07-delivery-review-refresh",
+    "sha256": "89e8880b2d4ed0cf82aabdbf52898ff7d1f563131e0033b16bc58ccbfd5ba4be"
+  },
+  "subject": "skill:diagnosing-bugs",
+  "recipe": "eb389bec133148c3b6b7191a653232f911d8201b6ddea1145be2aacd332d767b",
+  "result": "f0793002a2c962d0929e4186b5f1367befb5b792dd7daca07fee10a466c5f58d",
+  "pages": [],
+  "gist": "Keeps CONTEXT.md through upstream's rename to GLOSSARY.md; text unchanged",
+  "reason": "Refreshes diagnosing-bugs to mattpocock-skills 6fd947921b93: upstream renamed CONTEXT.md to GLOSSARY.md, kept out by a pointer edit on each renamed sentence, since the installed work guide still names CONTEXT.md. The installed text is unchanged.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 127,
+        "taken": 124,
+        "exact": 119,
+        "retention": 0.9596774193548387,
+        "coverage": 0.9763779527559056,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 408
+  }
+}

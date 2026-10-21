@@ -1,0 +1,73 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-11-constraint-driven-development-interview-page",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-11-review-reviewers",
+    "sha256": "7c3b95a58aeae8922e2052745d2bb381a50ee4e942dd56b1976ae2d801c0c6aa"
+  },
+  "subject": "skill:constraint-driven-development",
+  "recipe": "a6087d669a6128c55df0788c7dd6751d58111d7d82d7c415bff3766d87a8dc5e",
+  "result": "aa65ea03bbcfe5968722347946cbdfc26f9be1e2af28c8c7fede64613d7b6d6d",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Its pointer names the page where frame's interview now lives",
+  "reason": "Step 2's pointer to frame's interview now names the frame skill's references/interview.md, since frame reads that page only at its written depth and these questions are asked at any depth. No sentence of the method changes.",
+  "authorisedBy": {
+    "date": "2026-10-11",
+    "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): constraint-driven-development asks its four questions at any frame depth, so its pointer names the page frame's interview now lives on"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, the method core taken, the tables garden's and groundwork's side of contradiction 29 standing"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the bar in the decision home with no line in the instructions file and the floor guard a repository check, never a harness hook"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the harness names, the home of the bar and the steps renumbered once step 4 left"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): constraint-driven-development asks its four questions at any frame depth, so its pointer names the page frame's interview now lives on"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 255,
+        "taken": 134,
+        "exact": 116,
+        "retention": 0.8656716417910447,
+        "coverage": 0.5254901960784314,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 350
+  }
+}

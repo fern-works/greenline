@@ -1,0 +1,450 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "benchmark-checklist",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "benchmark-checklist"
+    },
+    {
+      "field": "description",
+      "value": "Vet a measured number before you report or act on it: name the limiter, check the sides were tuned, do the arithmetic against physical limits, count the errors, run each side at least five times alternating them, weigh the result end to end and confirm the work happened, then report the verdict with the median and the range. Use when a performance or eval number is about to be reported, or to decide a choice."
+    }
+  ],
+  "sources": ["pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "benchmark-checklist/SKILL.md",
+          "segments": ["601d77d986ed"]
+        },
+        {
+          "passage": "written",
+          "text": "benchmark-checklist is a trial habit, installed only where the workspace's `trials` names it, for the moment a performance or eval number is about to be reported, or to decide a choice: a library or configuration choice at frame, a performance regression in diagnose, a speedup or a regression at verify. It writes no record of its own: the number goes into the section of the step that measured it, with its run count, its range and its limiter, and the runs it reports are checks, run as the verify step runs its own. For a measured number its alternating runs replace the verify step's single baseline then treatment; every other claim keeps the verify step's method. Proving that an output is real is the verify step's, and finding the cause of a regression is diagnose's.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations its block row keys it by, that it is a trial installed only where trials names it, that it writes no record and where the number and its runs go, the ruled contradiction with the verify step, and the step and the start beside it.",
+          "gist": "Opens the trial habit: vet a performance number before reporting or deciding"
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "benchmark-checklist/SKILL.md",
+          "segments": ["f141e523b0aa"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-explain-the-number/SKILL.md",
+          "segments": ["4358b687895e", "79c4e72ae510", "3aec5869f012"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "benchmark-checklist/SKILL.md",
+          "segments": [
+            "9893031e09d9",
+            "b21364eb15d4",
+            "0c472e5eefe8",
+            "2ff613aa3c6c",
+            "317225f7325f",
+            "217ad5be48d9",
+            "dfb5f183806d",
+            "6bf19bc4d6d3",
+            "b5d0f0ed8d0c",
+            "d4881445973e",
+            "534ae189e187",
+            "fbd80d4dfce3",
+            "cbac1897a15a",
+            "407b05138e99",
+            "01924035f9b8",
+            "46bc34ba501a",
+            "9d1ee4f5be63",
+            "ef0f6b044439",
+            "cafb5fbd40d7",
+            "42009a6457fe",
+            "1a5ffe1e54e0",
+            "0561b97f1f6f",
+            "e3455f455e0b",
+            "c2291334ad52",
+            "6dc2c4e1bc4c",
+            "0d92db473727",
+            "915f10b41a0e",
+            "0045d1f8dec7",
+            "388fd371aa8d",
+            "cf8211e2b849",
+            "b34f5ae5fb67",
+            "d6fb4e0c2569",
+            "d5ff41706162",
+            "8a936d9ff447",
+            "25d62c5e63ad",
+            "bf07178573dd",
+            "eecf8e19e664",
+            "90bfddb28b67",
+            "46ccab4e39c0",
+            "8d4e66201949",
+            "52a755c0135a",
+            "cd8d25945631",
+            "309bedda1f59",
+            "846524c6e1d9",
+            "672e0a5da812",
+            "6c3e8ecd1738",
+            "b85e2166b84b",
+            "7dcfc3c9fd7d",
+            "81180be5b9e1",
+            "533faf369107",
+            "5d04ac683dae",
+            "1cbed0ddf3e9",
+            "11f25bf8a79b"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-explain-the-number/SKILL.md",
+          "segments": ["7006bb4d9465"]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "benchmark-checklist/SKILL.md",
+          "segments": [
+            "355a41a8b410",
+            "32ecf60dca70",
+            "81319afbe332",
+            "ea162d811dd2",
+            "c4521b96c413",
+            "05eef85f6ac6"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "- Keep a PR body to one primary number. Put the runs, the range and the limiter evidence in the claim's evidence in the change's folder, as the verify step promotes its evidence, and cite them from the step's section.",
+          "kind": "home",
+          "reason": "The evidence lives in the change's folder the verify step promotes into, cited from the record, in place of a linked artifact, a notes file or a playbook the installation does not carry. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Evidence goes in the change's verify folder, cited from the step's section",
+          "credits": ["pstack"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "In the verify step the verdict is one of its three: faster or slower as the claim predicts is `VERIFIED`, the other direction, or no measurable difference where the claim named one, is `NOT VERIFIED`, and inconclusive is `INCONCLUSIVE`.",
+          "kind": "scope",
+          "reason": "The habit's four verdicts map onto the verify step's three, so a number reported in the verify section reads in that step's words.",
+          "gist": "Maps its four verdicts onto the verify step's three"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-explain-the-number/SKILL.md",
+          "segments": ["69ea05ca9b10"]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Benchmark checklist: the practice's mechanics\n\nThis page holds where benchmark-checklist's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
+          "gist": "Opens the skill's mechanics page, read with SKILL.md"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nA benchmark's runs, its range and its limiter evidence go in the claim's evidence, `.greenline/ledger/<id>/verify/<claim-slug>/`, as the verify step promotes its own.",
+          "kind": "home",
+          "reason": "benchmark-checklist's mechanics: where a benchmark's runs and evidence land, held apart since J-93 S2.",
+          "gist": "Where a benchmark's runs and evidence land"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "b42947f504af",
+      "kind": "pointer",
+      "reason": "The pointer to Explain the Number gives way to its why, grafted in its place.",
+      "gist": "The why of Explain the Number replaces the link to it",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "c437a206ff16",
+      "kind": "home",
+      "reason": "The PR body's one number stands; the playbook it names is not carried, and the evidence goes to the change's folder.",
+      "gist": "One number per PR body stands; evidence goes in the change's folder",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "c6555434748f",
+      "kind": "home",
+      "reason": "The PR body's one number stands; the playbook it names is not carried, and the evidence goes to the change's folder.",
+      "gist": "One number per PR body stands; evidence goes in the change's folder",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "b27c36d07aeb",
+      "kind": "pointer",
+      "reason": "The perf-issue and hill-climb playbooks are not carried; the opening paragraph names where the habit runs instead, beside diagnose and the verify step.",
+      "gist": "Absent playbooks give way to diagnose and the verify step as neighbours",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "9aecd816d67c",
+      "kind": "pointer",
+      "reason": "The perf-issue and hill-climb playbooks are not carried; the opening paragraph names where the habit runs instead, beside diagnose and the verify step.",
+      "gist": "Absent playbooks give way to diagnose and the verify step as neighbours",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "ba875cf69655",
+      "kind": "pointer",
+      "reason": "The perf-issue and hill-climb playbooks are not carried; the opening paragraph names where the habit runs instead, beside diagnose and the verify step.",
+      "gist": "Absent playbooks give way to diagnose and the verify step as neighbours",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "ff521cbf0fb5",
+      "kind": "pointer",
+      "reason": "The perf-issue and hill-climb playbooks are not carried; the opening paragraph names where the habit runs instead, beside diagnose and the verify step.",
+      "gist": "Absent playbooks give way to diagnose and the verify step as neighbours",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "a23f73e919e2",
+      "kind": "pointer",
+      "reason": "The perf-issue and hill-climb playbooks are not carried; the opening paragraph names where the habit runs instead, beside diagnose and the verify step.",
+      "gist": "Absent playbooks give way to diagnose and the verify step as neighbours",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "benchmark-checklist/SKILL.md",
+      "segment": "e1c67a6ef0dc",
+      "kind": "pointer",
+      "reason": "The perf-issue and hill-climb playbooks are not carried; the opening paragraph names where the habit runs instead, beside diagnose and the verify step.",
+      "gist": "Absent playbooks give way to diagnose and the verify step as neighbours",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "7a36a77b2064",
+      "kind": "scope",
+      "reason": "The title and the claim that a number must be explained before it is trusted are the spine's own opening and questions.",
+      "gist": "Title and opening claim repeat the spine's own opening and questions"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "838952bb28ba",
+      "kind": "scope",
+      "reason": "The title and the claim that a number must be explained before it is trusted are the spine's own opening and questions.",
+      "gist": "Title and opening claim repeat the spine's own opening and questions"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "f8aa4b92a3ea",
+      "kind": "scope",
+      "reason": "The title and the claim that a number must be explained before it is trusted are the spine's own opening and questions.",
+      "gist": "Title and opening claim repeat the spine's own opening and questions"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "8261c007be0b",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "26022c95db18",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "4926e6832c74",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "aa552261278e",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "ec6f42bf2ba1",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "5170f114b23a",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "caa90b1617b2",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "753b2bcef553",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "2472e5508fe8",
+      "kind": "scope",
+      "reason": "The pattern duplicates the spine's questions: why not double is question 1, the other suspects questions 2 to 7, and the evidence kept with the number the report.",
+      "gist": "The pattern repeats the spine's questions, why not double first",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "984db94679c7",
+      "kind": "pointer",
+      "reason": "The pointer to benchmark-checklist points at this skill itself.",
+      "gist": "The link to benchmark-checklist points at this skill itself"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "f694f1d6642c",
+      "kind": "pointer",
+      "reason": "The pointer to Prove It Works becomes the opening paragraph's neighbour, the verify step.",
+      "gist": "Prove It Works becomes the opening's neighbour, the verify step",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-explain-the-number/SKILL.md",
+      "segment": "7f502300c177",
+      "kind": "pointer",
+      "reason": "The pointer to Prove It Works becomes the opening paragraph's neighbour, the verify step.",
+      "gist": "Prove It Works becomes the opening's neighbour, the verify step",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    }
+  ]
+}

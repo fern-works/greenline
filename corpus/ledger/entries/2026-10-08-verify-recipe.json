@@ -1,0 +1,90 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-verify-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-review-recipe",
+    "sha256": "2d62c7a305971ee60cb8564cec7f23f442850db9fce82a94519e72eaed3e58b7"
+  },
+  "subject": "skill:verify",
+  "recipe": "605b83a57fde2191469ffefd03486c5f237d452e56317ff4f4f6114f26f1eb84",
+  "result": "0d258ee2d071fb72a348a2c1fe8cbce8d6a96e4119c8f05a42ccc1bd6d2114a2",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/control-cli.md"
+    },
+    {
+      "path": "references/control-ui.md"
+    }
+  ],
+  "gist": "Verify is made on verify-this, each acceptance item made to fail",
+  "reason": "verify is made with verify-this as its spine, each acceptance item restated so it can fail and checked through greenline check, grafted with verification-before-completion and principle-prove-it-works. control-cli and control-ui become its reference files.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13); its rationalization tables and its absolutes are dropped as rhetoric; browser-testing-with-devtools' security core enters control-ui as default guardrails; loop-on-ci and frontend-ui-engineering are garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 137,
+        "taken": 134,
+        "exact": 127,
+        "retention": 0.9477611940298507,
+        "coverage": 0.9781021897810219,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 63,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.2222222222222222,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 15,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.6,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 137,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.15328467153284672,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1398
+  }
+}

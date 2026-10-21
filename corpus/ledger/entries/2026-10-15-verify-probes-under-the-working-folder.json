@@ -1,0 +1,103 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-15-verify-probes-under-the-working-folder",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-15-close-landing-names-the-repository-rule",
+    "sha256": "304408f79cadb44eee58580abf6894cc087e9cb661e9b7b05210a2f38ff83c29"
+  },
+  "subject": "skill:verify",
+  "recipe": "e39d9171a70d70afc35517cc9ac3c81e2f1efe26c9deab803a17ae82d17db913",
+  "result": "ee7c78c1f344b9f6c546a832aa2d36547a38723e45d378b410ae0a46d150b380",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Probes go under the change's working folder, never the host's temporary directory",
+  "reason": "Verify's probes, scratch scripts and before-and-after copies go under the change's working folder, never the host's temporary directory, and a check's facts cite paths inside the repository.",
+  "authorisedBy": {
+    "date": "2026-10-15",
+    "words": "The operator's finalise words of 2026-10-15 on the QA series' third fix job, \"Finalise J-81 S1 as drafted, fast\": every probe, scratch script and before-and-after copy of a change goes under .greenline/tmp/<id>/, never the host's temporary directory, and a check's facts cite paths inside the repository"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, review and verify among them, and control-cli and control-ui become reference files of verify"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): verification-before-completion and principle-prove-it-works combine into verify on verify-this' spine, and the contradictions stand as recommended: freshness is verify-this', a shared measurement of the same code cited rather than a separate run claimed (contradiction 11), and the relied-on check is promoted with its results rather than committed only for large work (13); its rationalization tables and its absolutes are dropped as rhetoric; browser-testing-with-devtools' security core enters control-ui as default guardrails; loop-on-ci and frontend-ui-engineering are garden's"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: review's independent reviewers run one after another, each a fresh agent started through the harness's delegation where the mode spends one, inline by the builder at fast, with no parallel axes and no forked turns; interrogate's single-message dispatch, model table and model diversity are dropped; thermo-nuclear-review's BugBot step is dropped, the change's own review reports being what a reviewer reads after its own pass; requesting-code-review's template becomes the brief the review step's agent reads, its dispatch syntax and worktree option dropped; no-comments' agent file becomes a reference passage the excess lens reads, with no agent of its own and its persona voice dropped; browser-testing-with-devtools' security core is restated for any browser an agent drives, its DevTools setup garden's"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, independent a fresh agent's report the record cites and looped that pass repeated until clean up to the mode's rounds, clean for review meaning no finding at a blocking rung and for verify every item verified, and a step's handoff names the next step of the change's mode"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-15",
+      "words": "The operator's finalise words of 2026-10-15 on the QA series' third fix job, \"Finalise J-81 S1 as drafted, fast\": every probe, scratch script and before-and-after copy of a change goes under .greenline/tmp/<id>/, never the host's temporary directory, and a check's facts cite paths inside the repository"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 137,
+        "taken": 134,
+        "exact": 127,
+        "retention": 0.9477611940298507,
+        "coverage": 0.9781021897810219,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 63,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.2222222222222222,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 15,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.6,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 137,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.15328467153284672,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1557
+  }
+}

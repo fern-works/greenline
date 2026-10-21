@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-pstack-show-me-your-work",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-frontend-ui-engineering",
+    "sha256": "a4028e2eae8fe6164d1c865bbc3e5c4e16e6ee7656e429a5ea470b8fdb3609bc"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "pstack/skills/show-me-your-work"
+  },
+  "pin": "pstack",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its end-of-run audit enters close in greenline's words",
+  "reason": "Its end-of-run audit, every claim of the record against the change's commits, checks and files, enters the re-cut close recipe in greenline's words. Its decision log is declined; its cross-model reviewer and transcript reading are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Lift, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Lift, \"yes go ahead\" (R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "record-architecture-decisions",
+    "catches": "A record that claims a decision or check that did not happen, or omits a pivot",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "close",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "close",
+        "depth": "written",
+        "cost": 100
+      },
+      {
+        "mode": "high",
+        "step": "close",
+        "depth": "written",
+        "cost": 100
+      },
+      {
+        "mode": "max",
+        "step": "close",
+        "depth": "written",
+        "cost": 100
+      }
+    ],
+    "ships": "default"
+  }
+}

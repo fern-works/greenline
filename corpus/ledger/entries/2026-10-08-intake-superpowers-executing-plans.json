@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-executing-plans",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-incremental-implementation",
+    "sha256": "ae61ae7b5b3661ef69121697c0cd396949bb9fc7303b0b5124f7d58f9973677c"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/executing-plans"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Three outcomes, deviations and a completion contract join build",
+  "reason": "Its expected-output comparison with three outcomes, recorded deviations and completion contract enter the re-cut build recipe, the builder running every task itself. Its subagent alternative, worktree setup, scripts and superpowers cross-references are dropped.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"yes go ahead\" (R21)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"yes go ahead\" (R21)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "implement",
+    "catches": "A break buried in a large change, or a task called done without its evidence, found only after the batch",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "build",
+        "depth": "written",
+        "cost": 400
+      },
+      {
+        "mode": "high",
+        "step": "build",
+        "depth": "written",
+        "cost": 400
+      },
+      {
+        "mode": "max",
+        "step": "build",
+        "depth": "written",
+        "cost": 400
+      }
+    ],
+    "ships": "default"
+  }
+}

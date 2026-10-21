@@ -1,0 +1,84 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-prose-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-secrets-recipe",
+    "sha256": "36567ab3f4e235e33983c4f8737e230e950c0a1c9b623def5bd05ccb3da491cd"
+  },
+  "subject": "skill:prose",
+  "recipe": "f6fe8dd8d5d946bbd92b5d429478aad66d600ce8dab0f57096b634ecffc3fadf",
+  "result": "9553d769d59590c9f14454058b08db011a8d8a5a484af8db95ffae96704e4168",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "documents.md"
+    },
+    {
+      "path": "tells.md"
+    }
+  ],
+  "gist": "Three writing skills become one prose habit",
+  "reason": "prose joins answer-plainly, unslop and technical-writing as one habit: answer-plainly its spine, unslop's catalog its page of tells, technical-writing's layers its page for documents, and wait-what lifted as the re-pitch.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R23 of 2026-10-08, \"change context md to glossary md\", the glossary home being GLOSSARY.md"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 26,
+        "taken": 24,
+        "exact": 24,
+        "retention": 1,
+        "coverage": 0.9230769230769231,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 2,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "pstack",
+        "segments": 296,
+        "taken": 293,
+        "exact": 289,
+        "retention": 0.9863481228668942,
+        "coverage": 0.9898648648648649,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 476
+  }
+}

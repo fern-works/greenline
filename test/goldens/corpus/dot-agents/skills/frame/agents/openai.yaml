@@ -1,0 +1,5 @@
+interface:
+  display_name: "Frame"
+  short_description: "Turn a request into a shared understanding before any plan or code: the intent, what is out of scope, the terms and the questions still open, at the depth the change's mode gives the frame step. Use when the mode reaches frame, when the owner says \"grill me\" or \"grill with docs\", and when a term is doing two jobs."
+policy:
+  allow_implicit_invocation: false

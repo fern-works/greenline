@@ -1,0 +1,1346 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "guard-the-context-window",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "guard-the-context-window"
+    },
+    {
+      "field": "description",
+      "value": "Keep the thread worth its cost: read a large output by excerpt, carry a summary forward rather than the payload, cap what a phase reads, trim failed attempts and replaced drafts before the window is full, protect the task and the live error, and put the task-critical material last. Use when a large output, a long file or a long stretch of exploration is about to enter the thread, and when the thread has grown long mid-task."
+    }
+  ],
+  "sources": ["addyosmani", "pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-guard-the-context-window/SKILL.md",
+          "segments": ["1e4e467ba809"]
+        },
+        {
+          "passage": "written",
+          "text": "guard-the-context-window is a trial habit, installed only where the workspace's `trials` names it, for the moment a large output, a long file or a long stretch of exploration is about to fill the thread, at whatever step the work is in, and for a thread already long mid-task. It writes no record of its own and starts no agent: a read delegated to a fresh agent is one of the mode's agents, spent by the step that owns it, never by this habit. What a step relies on goes into its section of the change record or the change's folder, never only into the thread, since the record is what a fresh session resumes from. A skill, a guide and the file you are changing are still read whole: a summary is not a full read, as AGENTS.md says. Where the harness cannot remove text from the thread, cutting means not quoting it again and carrying its one-sentence summary forward, and putting material last means restating it at the end of the work in hand. Reporting progress to the owner is progress-check's concern.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations its block row keys it by, that it is a trial installed only where trials names it, that it writes no record and spends no agent of the mode's, that the record and not the thread carries what a step relies on, that the block's full read of a skill stands, and the habit beside it.",
+          "gist": "Opens the trial habit: large outputs stay out of the thread"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-guard-the-context-window/SKILL.md",
+          "segments": [
+            "72437e695354",
+            "e7011d260bbb",
+            "2e4f90b5a7a6",
+            "8261c007be0b",
+            "e20abbdf1e44"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Read a large output by excerpt: its head, a search, or the lines that matter. Carry forward a summary of what it showed, not the payload.",
+          "kind": "method",
+          "reason": "The portable form of R21: the payload stays out of the thread by excerpt and summary, with no subagent of its own.",
+          "gist": "Reads large output by excerpt and carries a summary, not the payload",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, is a copy in its portable form, a new trial habit guard-the-context-window: raw payloads kept out of the thread by excerpt and summary, with no agent of its own; context-engineering is a combine whose context budget joins it; under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-guard-the-context-window/SKILL.md",
+          "segments": ["56d82f4cbaee", "d6b5f57326c1"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "context-engineering/SKILL.md",
+          "segments": [
+            "cd27273fdc87",
+            "d8192abe42f5",
+            "3c6be976086b",
+            "414e76bdfa2b",
+            "6301e1cf1360",
+            "ec16e21d192a",
+            "f2f536c74e42",
+            "0996a90aa231",
+            "0900ca6d91ce",
+            "edd22f53a070",
+            "4199ba454d6d",
+            "dfa7f859f34b",
+            "cfa3c763c840",
+            "51249284b746",
+            "9a485b7f1cb6",
+            "4d1cb2c8dfac",
+            "5bf462628b71",
+            "3506b4fefb61",
+            "bd0b9865da8e",
+            "990a49282f51",
+            "a3c2eff25d24",
+            "55b4fe06a047",
+            "781e96d60efc",
+            "ba9ee6d245d1",
+            "d9cbc5b9396f",
+            "c5da1f89840b",
+            "e3f1638da5f6",
+            "7fb5925bc092",
+            "bbf5e97227df",
+            "bae3a598c3e2",
+            "36c10d5463f2"
+          ]
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "f36cdd127b83",
+      "kind": "method",
+      "reason": "Routing verbose output to subagents spends an agent of the mode's from a habit; the portable form keeps the payload out of the thread by excerpt and summary (R21).",
+      "gist": "Excerpt and summary replace routing verbose output to subagents",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, is a copy in its portable form, a new trial habit guard-the-context-window: raw payloads kept out of the thread by excerpt and summary, with no agent of its own; context-engineering is a combine whose context budget joins it; under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "d0d920b23866",
+      "kind": "method",
+      "reason": "Routing verbose output to subagents spends an agent of the mode's from a habit; the portable form keeps the payload out of the thread by excerpt and summary (R21).",
+      "gist": "Excerpt and summary replace routing verbose output to subagents",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, is a copy in its portable form, a new trial habit guard-the-context-window: raw payloads kept out of the thread by excerpt and summary, with no agent of its own; context-engineering is a combine whose context budget joins it; under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "3f8d9ae9092e",
+      "kind": "scope",
+      "reason": "Keeping frequently used content inline in a skill file is a rule for writing skills, handed to the workshop's craft-writing-for-agents.",
+      "gist": "Keeping content inline is skill-writing advice, handed to craft-writing-for-agents"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "bc09456a82d5",
+      "kind": "scope",
+      "reason": "Keeping frequently used content inline in a skill file is a rule for writing skills, handed to the workshop's craft-writing-for-agents.",
+      "gist": "Keeping content inline is skill-writing advice, handed to craft-writing-for-agents"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "60ffd7598d87",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7337f3d0aa29",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "14c7783ae557",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "544000833591",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "3a5c0b790836",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "a443d8e9a654",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "ff54db3d263a",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "552dbfac7fa6",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "228b2d7b9e7e",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "f5561ac1cc24",
+      "kind": "scope",
+      "reason": "The overview and the situations of context-engineering are the curation of an agent's context as a whole; this habit takes its context budget alone, as ruled.",
+      "gist": "Whole-context curation goes; this habit takes only the context budget"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "37446819177e",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "4d1995fad580",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "e611b65c3406",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d3371b8764d3",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "85ac8600fcf7",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "bcb7cfe39114",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "6ae60f8591ae",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7edf7738510f",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "a16b47dff1ba",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "3d22770c4db6",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8faeb2c69f0b",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "435d8cd3d33d",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "5e20f5ac9e00",
+      "kind": "harness",
+      "reason": "The context hierarchy and the rules files by harness are the improve-instructions start's, restated against the agent instructions file of any harness (R21).",
+      "gist": "The context hierarchy and rules files belong to improve-instructions"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "cdba498f11eb",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "37368bbdb68e",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1175d3e18871",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "f1dcbaf45e3d",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "833af7753322",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "31cccf08706f",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "089e86688c67",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "c0ff9b416754",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "07b48afee5f6",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "0c9dfc78e1bb",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "2e5cfa5316c4",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "e1c6b95f56d8",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7cacfd78e587",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "c0400388d648",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "525f4bbfa0f6",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "5b08d7c39bd1",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "2fc35cc52637",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "2bac84f807bd",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "639f5c76bcce",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8a14847432f8",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "b315a2311cab",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "05c1552cdfef",
+      "kind": "scope",
+      "reason": "Loading a spec's section, the source files and the error output is how each step reads its inputs, not the context budget this habit takes.",
+      "gist": "Loading spec sections and sources is each step's own reading"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "979c736c8cbd",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "da591e92f9d8",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "3655c73db7b8",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "80a65f8f07a1",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "ce80453a55b0",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "64f0a72a17bf",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "25da5e60e1ad",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7ad547c176b4",
+      "kind": "harness",
+      "reason": "Fresh sessions and compaction are a harness's mechanisms; the budget section taken states the discipline without them (R21).",
+      "gist": "Fresh sessions and compaction are tool mechanisms; the budget stands without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "551e403f6440",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "4b925e2916e2",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1f310d1cf3e9",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "99fb76b329c8",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "ea54fc6d05ff",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1b8c148a047c",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1205b26703f4",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1b38f4343e2d",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8146f7aacff4",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "748ffe4268ab",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8244f8e8d29d",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "54625733fd20",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "972dabc257a7",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "e7c4d44a1b55",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "49df39e490bb",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "53c3a6b13b09",
+      "kind": "scope",
+      "reason": "Restartable session boundaries duplicate the change record and its next line, which a fresh session resumes from, as the opening paragraph says.",
+      "gist": "Restartable sessions duplicate the change record a fresh session resumes from",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1ac59fe0f516",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "afe0f53a2b48",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8030ca0f27b5",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "faa402a226bc",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "b53463215727",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "9eaf5b58d7b9",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "9fd7d3ce3378",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7a6ba38d83c6",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "b066ac526902",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "9d0f5c4cdc84",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "5a45dc5d8fbe",
+      "kind": "scope",
+      "reason": "Context packing for a session's start is the improve-instructions start's rules-file packing (R21).",
+      "gist": "Packing context at session start is improve-instructions' rules-file work"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "2ad514d1b930",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "adaeea2fae5a",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "e592c4d33e7e",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "6967f2696fa6",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "5b598996c831",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d8c1ba9777d0",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "c14993430c05",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8aa75786dc99",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "a797665c8302",
+      "kind": "scope",
+      "reason": "The MCP table is knowledge of tools an agent consults to make an engineering choice, handed to garden's maintainer.",
+      "gist": "The MCP table is tool knowledge, handed to garden's maintainer"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "196717fdcafd",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1f12c6689f4f",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "36da3d9fe469",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "b8264eae174d",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "e73e483c78ac",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "a4464c5c8855",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "17c0d22d64a1",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7ea0ba12e28f",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "b7b0d9fe3464",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "0d209525d051",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "a809c1b68c3f",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "6f4174e07fc6",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "db59e8c0539c",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d291b9e3e9dc",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "79449981363a",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "ec27fda5bd17",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d7ba6d377e0e",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "3f4165216442",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "c73772ac173d",
+      "kind": "scope",
+      "reason": "Confusion management duplicates frame's questioning and the router's choice of the next step.",
+      "gist": "Confusion management repeats frame's questions and the router's next step"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1d6ab5b0c60f",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "01314a552f58",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "23cca02b74f3",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "e04d561d7bc4",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "c198b9c4478c",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "ab61dcb0b35d",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "0afb88e85f00",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "b68373d8a585",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "17bc750be7e9",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "346781e3e487",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "3025f172a1d3",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "4199ba454d6d#2",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "a9866a971f8e",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8936932486ce",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d942f30928fc",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "1b2c18325955",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "052cfba57d12",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d26b4c7289e7",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "2cd2bb92f17f",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "4eef157e3618",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "61acc008593b",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "7be725ca2db5",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "119dd5a48aec",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "80937328f4f7",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "47ed4f9c54b7",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "6ed8a81bf76d",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "cc2a8b96589b",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "d0b11a9f2edc",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "dd9d52e1839a",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "8ee1d3708c0b",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "addyosmani",
+      "file": "context-engineering/SKILL.md",
+      "segment": "6b6ea93bc817",
+      "kind": "scope",
+      "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
+      "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    }
+  ],
+  "notStub": [
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "ruling": "Not a stub: its upstream body, 98 words under the stub trigger, states a method of its own, three patterns with no delegation (isolate large payloads, keep frequently used content inline, size phases and cap scope), so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-08 on the intake R3, \"yes go ahead\", on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-08 on the roster made whole)"
+    }
+  ]
+}

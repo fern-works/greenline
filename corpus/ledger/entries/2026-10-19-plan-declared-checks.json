@@ -1,0 +1,127 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-19-plan-declared-checks",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-19-verify-split-review-fixes",
+    "sha256": "97a5bc07776c6bc9a68b49559a55d82e32b9c88a1f3d028da994b3ea888d837a"
+  },
+  "subject": "skill:plan",
+  "recipe": "14cc43bc6cc43d3daa4ed42b519a80d896070a9db0e52123d592b67e41d0102f",
+  "result": "7adc4e8063795125e419f20777ea426aa3b562d764d251e9043a178bbb141428",
+  "pages": [
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Plan's references page names the declared checks and the declaration",
+  "reason": "The checks the plan names are the ones the manifest declares, which init proposes and the first change confirms; one the project lacks is declared with greenline check --declare (J-93 S3, the review's fix cycle).",
+  "authorisedBy": {
+    "date": "2026-10-19",
+    "words": "the operator's ruling of 2026-10-19 that no hook parses a command and the setup is the agent's reasoning, \"not every case can be parsed and we have to use green line agents reasoning to set things up for hooks to work in an brownfield and Greenfield repos across stacks languages and repo archs\": the workspace declares its checks once, init proposing them from the project's files and the agent declaring one it adds in the plan"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\": plan is made from to-spec and to-tickets"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the R3 rulings of 2026-10-08, \"yes go ahead\": spec-driven-development's reframing passage, planning-and-task-breakdown, writing-plans and architect combine into it, the spec and the tickets stay path-free while a single change's plan section may name files and signatures, questioning is frame's, the trunk's wait after ticketing stands over architect's \"No human checkpoint\", and spec-driven's capability map is not taken"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: the parallel sections and the worktree line are declined"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: architect's arena runners and their models are gone, the candidates designed in turn by one agent"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\", on the depths a mode gives a step and the two waits of planned work, each ticket with its own mode (R10)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "to-spec's seam check carried from series-s7-roster-2026-09-11"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", and the card of that day, \"Words at the list edit the entry; at a ticket's open they override\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a request that names a mode is taken as chosen and goes on with no yes awaited, a question asked only for a choice it leaves open; the record names every floor found and, where the owner names a mode below one, says so with choice owner and the floor's reason; a mode named at the ticket list edits the entry and one named at a ticket's open overrides it; the builder reads the reviewer's brief at the inline depth only; and at the written frame depth every open behaviour goes to the owner through the interview, an inline frame line crediting the owner only with the owner's answers"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "the operator's ruling of 2026-10-19 that no hook parses a command and the setup is the agent's reasoning, \"not every case can be parsed and we have to use green line agents reasoning to set things up for hooks to work in an brownfield and Greenfield repos across stacks languages and repo archs\": the workspace declares its checks once, init proposing them from the project's files and the agent declaring one it adds in the plan"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 130,
+        "taken": 85,
+        "exact": 84,
+        "retention": 0.9882352941176471,
+        "coverage": 0.6538461538461539,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 263,
+        "taken": 28,
+        "exact": 28,
+        "retention": 1,
+        "coverage": 0.10646387832699619,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 108,
+        "taken": 19,
+        "exact": 19,
+        "retention": 1,
+        "coverage": 0.17592592592592593,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 79,
+        "taken": 8,
+        "exact": 8,
+        "retention": 1,
+        "coverage": 0.10126582278481013,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1488
+  }
+}

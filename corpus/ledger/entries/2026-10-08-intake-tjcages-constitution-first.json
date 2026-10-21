@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-tjcages-constitution-first",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-tjcages-behavior-contracts",
+    "sha256": "ec0528cc7bc8b944b57c5b169c9e91c79dc88a5c3788024f4ee445fb13b623bf"
+  },
+  "source": {
+    "repository": "https://github.com/tjcages/skills",
+    "commit": "170f1ca406f926f47433217f731ebf80a613719c",
+    "path": "constitution-first/skills/constitution-first"
+  },
+  "licence": "ideas-only",
+  "verdict": "hold",
+  "gist": "Held until upstream publishes a licence",
+  "reason": "Ideas only on rights, with no licence file covering it until its first publish. It reopens when upstream publishes a licence, or on a ruling to lift it as ideas.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Hold, \"everything is good\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Hold, \"everything is good\""
+    }
+  ]
+}

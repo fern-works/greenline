@@ -1,0 +1,46 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-to-questionnaire-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-pr-writing-recipe",
+    "sha256": "01080adb3bbdf5dfcd1b15d1ef421f10ae805fd7877eeb91590d47e1a43fc1c8"
+  },
+  "subject": "skill:to-questionnaire",
+  "recipe": "a2ab253ba4533334e4afe272ad39e9d848966f23ab7f14172c7ea1361b79f7f9",
+  "result": "74e1e40d6505568704cd9be49935374d945b3a26f7662a23ff1efc5be54da698",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Enters as a trial habit copied from mattpocock",
+  "reason": "to-questionnaire enters as a trial habit copied from mattpocock, with a title and opening in its own voice and its file in the change's working files.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; to-questionnaire a copy, a new trial habit for a decision only someone other than the owner can answer"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 41,
+        "taken": 41,
+        "exact": 39,
+        "retention": 0.9512195121951219,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 126
+  }
+}

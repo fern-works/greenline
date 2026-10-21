@@ -1,0 +1,26 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-model-the-domain-retired",
+  "kind": "retirement",
+  "previous": {
+    "id": "2026-10-08-codebase-design-retired",
+    "sha256": "1609b47d7044af37ef7a063cf01e9671dc007ac9d18e80ae2c8465fc526ca01d"
+  },
+  "skill": "model-the-domain",
+  "slice": "S18a of the plan modes-records-recipes",
+  "replacedBy": "domain-and-types",
+  "recipe": "e63e5ed973464e1a19599e9ba6ec20d1a34522c74128c1bccabe1abc1f778678",
+  "gist": "Becomes the spine of domain-and-types",
+  "reason": "model-the-domain is domain-and-types' spine now.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the intake R3, \"everything is good\""
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-ponytail-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-verify-this-recipe",
+    "sha256": "a358560ba54eecef383e5b2214049a4f162000312de000ab5268dec0ac7b8c23"
+  },
+  "subject": "skill:ponytail",
+  "recipe": "38f96c47d1867ca5b6773bf5388a1195a0a2b748f6c2fd88d958a1eb15112b96",
+  "result": "7d26648b0adfd1d6eb293430699b6e6dcdfb7c82077c7219a0488059e536f10f",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves ponytail to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at fold-2026-09-11.",
+  "authorisedBy": null,
+  "ruling": [],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ponytail",
+        "segments": 36,
+        "taken": 36,
+        "exact": 35,
+        "retention": 0.9722222222222222,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 107
+  }
+}

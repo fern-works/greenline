@@ -1,6 +1,8 @@
 import { Command, CommanderError } from "commander";
 import type { OptionValues } from "commander";
 import { parseConnectorId, type ConnectorId } from "../../core/connectors/registry.ts";
+import { isChangeId } from "../../core/change.ts";
+import type { ChangesRequest } from "../../core/status.ts";
 
 /**
  * Command-line argument parsing (`docs/SPEC.md` §4). One canonical
@@ -8,7 +10,7 @@ import { parseConnectorId, type ConnectorId } from "../../core/connectors/regist
  * turns argv into a typed request or a usage outcome.
  */
 
-export type CommandName = "init" | "sync" | "doctor" | "status" | "inspect";
+export type CommandName = "init" | "sync" | "status" | "tidy" | "inspect";
 
 export interface RunRequest {
   readonly command: CommandName;
@@ -19,6 +21,10 @@ export interface RunRequest {
   readonly forceManaged: readonly string[];
   /** The inspector's port; undefined takes the default. */
   readonly port: number | undefined;
+  /** Which view status shows: the default list, every change with `--all`, or one change with `--change`; absent, the default list. */
+  readonly status?: ChangesRequest;
+  /** Which working folders tidy removes: the one change `--change` names, or every finished change's when it names none. */
+  readonly tidy?: { readonly change: string | undefined };
 }
 
 /** A request one of the workspace verbs runs; the inspector is served by the runner. */
@@ -188,7 +194,7 @@ function addConnectorsCommands(program: Command, set: (parse: ConnectorsParse) =
       })),
     );
   });
-  // The entrypoint dispatches `connectors call` to its own parser, as it does evidence.
+  // The entrypoint dispatches `connectors call` to its own parser, as it does check.
   connectors
     .command("call")
     .description("Call a connector's read inside a recorded request; use connectors call --help");
@@ -216,6 +222,7 @@ function buildProgram(
   capture: Capture,
   setRequest: (request: RunRequest) => void,
   setConnectors: (parse: ConnectorsParse) => void,
+  setRefusal: (message: string) => void,
 ): Command {
   const program = new Command();
   program
@@ -235,7 +242,10 @@ function buildProgram(
   const init = program
     .command("init")
     .description("Initialize this Git repository as a greenline workspace")
-    .option("--yes", "accept defaults: both harness trees")
+    .option(
+      "--yes",
+      "on the owner's yes, run 'git init' outside a repository and install both harness trees",
+    )
     .option(
       "--targets <targets>",
       "harness trees to install, comma-separated: codex, claude-code (asked at a terminal when absent)",
@@ -270,28 +280,23 @@ function buildProgram(
     });
   });
   program
-    .command("doctor")
-    .description("Validate environment, manifest, lock, and managed files")
-    .option("--json", "emit the versioned JSON automation envelope")
-    .action((options: OptionValues): void => {
-      const flags = snapshotOptions(options);
-      setRequest({
-        command: "doctor",
-        json: flags.json,
-        dryRun: false,
-        yes: false,
-        targets: undefined,
-        forceManaged: [],
-        port: undefined,
-      });
-    });
-  program
     .command("status")
-    .description("Show durable work with the same structural verdict as doctor")
+    .description("Diagnose the installation and the connectors, and show the changes")
     .option("--json", "emit the versioned JSON automation envelope with the view")
+    .option("--all", "list every change, not only the open ones and the last ten finished")
+    .option("--change <id>", "show one change's resume view")
     .action((options: OptionValues): void => {
       const flags = snapshotOptions(options);
+      const change: unknown = options["change"];
+      if (change !== undefined && options["all"] === true) {
+        setRefusal("--all and --change show different views; give one");
+        return;
+      }
       setRequest({
+        status:
+          change === undefined
+            ? { view: "list", all: options["all"] === true }
+            : { view: "resume", change: String(change) },
         command: "status",
         json: flags.json,
         dryRun: false,
@@ -302,8 +307,32 @@ function buildProgram(
       });
     });
   program
+    .command("tidy")
+    .description(
+      "Remove the working files of done and dropped changes from .greenline/tmp/; run it at every change's close, whatever its mode",
+    )
+    .option("--json", "emit the versioned JSON automation envelope")
+    .option("--change <id>", "remove only this change's working files")
+    .action((options: OptionValues): void => {
+      const change: unknown = options["change"];
+      if (change !== undefined && !isChangeId(String(change))) {
+        setRefusal(`'${String(change)}' is not a change id: a real date and a slug`);
+        return;
+      }
+      setRequest({
+        tidy: { change: change === undefined ? undefined : String(change) },
+        command: "tidy",
+        json: options["json"] === true,
+        dryRun: false,
+        yes: false,
+        targets: undefined,
+        forceManaged: [],
+        port: undefined,
+      });
+    });
+  program
     .command("inspect")
-    .description("Read work and receipts; edit local policy in the localhost inspector")
+    .description("Read diagnostics and receipts; edit local policy in the localhost inspector")
     .option("--port <port>", "the port to listen on (default 7433)")
     .action((options: OptionValues): void => {
       const portRaw: unknown = options["port"];
@@ -319,11 +348,44 @@ function buildProgram(
       setRequest(base);
     });
   addConnectorsCommands(program, setConnectors);
-  // The entrypoint dispatches this group to its own parser before workspace parsing.
+  // The entrypoint dispatches check to its own parser, before workspace parsing.
   program
-    .command("evidence <paths...>")
-    .description("Return exact file references; use evidence --help for flags");
+    .command("check")
+    .description(
+      "Run one repository command for a change and record its facts: check -- <command> for the open change at its step; use check --help",
+    );
+  // The entrypoint dispatches brief to its own parser too.
+  program
+    .command("brief")
+    .description(
+      "Write a fresh reviewer's or verifier's brief from the change record and print its path; use brief --help",
+    );
+  // The entrypoint dispatches event and hook too, before any installation is read.
+  program
+    .command("event")
+    .description(
+      "Take one harness event on stdin from the harness's adapter: event [<kind>] --harness <name> [--native <event>]",
+    );
+  program
+    .command("hook")
+    .description(
+      "Run one of the git hooks greenline installs, as its script under .greenline/hooks/ does: hook <name> [<arg>...]",
+    );
   return program;
+}
+
+/**
+ * The refusal of a top-level command the program does not know, `doctor` and
+ * `evidence` among them since their removal, run or asked for with `help`: it
+ * names the commands, `status` among them. Undefined when the command is
+ * known, so a known group's own refusal stands.
+ */
+function unknownCommand(program: Command, argv: readonly string[]): string | undefined {
+  const named = argv[0] === "help" ? argv[1] : argv[0];
+  const names = program.commands.map((command) => command.name());
+  if (named === undefined || named.startsWith("-") || names.includes(named) || named === "help")
+    return undefined;
+  return `unknown command '${named}'; the commands are ${names.slice(0, -1).join(", ")} and ${names.at(-1) ?? ""}`;
 }
 
 /** Parse argv into a typed invocation. Never executes command work. */
@@ -331,6 +393,7 @@ export function parseArgs(argv: readonly string[], version: string): CliInvocati
   const capture: Capture = { out: "", err: "" };
   let request: RunRequest | undefined;
   let connectors: ConnectorsParse | undefined;
+  let refusal: string | undefined;
   const program: Command = buildProgram(
     version,
     capture,
@@ -339,6 +402,9 @@ export function parseArgs(argv: readonly string[], version: string): CliInvocati
     },
     (parse: ConnectorsParse): void => {
       connectors = parse;
+    },
+    (message: string): void => {
+      refusal = message;
     },
   );
   try {
@@ -356,18 +422,23 @@ export function parseArgs(argv: readonly string[], version: string): CliInvocati
       )
         return { kind: "help", text: capture.out };
       if (error.code === "commander.version") return { kind: "version", text: capture.out };
+      const unknown = unknownCommand(program, argv);
       const detail =
-        error.code === "commander.help"
-          ? argv[0] === "connectors"
-            ? "connectors needs an operation: list, status, enable or disable"
-            : "no command given; run 'greenline --help'"
-          : error.message === ""
-            ? capture.err.trim()
-            : error.message;
+        unknown !== undefined &&
+        (error.code === "commander.unknownCommand" || error.code === "commander.help")
+          ? unknown
+          : error.code === "commander.help"
+            ? argv[0] === "connectors"
+              ? "connectors needs an operation: list, status, enable or disable"
+              : "no command given; run 'greenline --help'"
+            : error.message === ""
+              ? capture.err.trim()
+              : error.message;
       return { kind: "usage-error", message: detail === "" ? "invalid arguments" : detail };
     }
     throw error;
   }
+  if (refusal !== undefined) return { kind: "usage-error", message: refusal };
   if (connectors !== undefined)
     return connectors.kind === "refused"
       ? { kind: "usage-error", message: connectors.message }

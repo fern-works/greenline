@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-intake-superpowers-verification-before-completion",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-08-intake-addyosmani-code-review-and-quality",
+    "sha256": "ceb33cfb0d9cb0b9e1731b5a97cae5a93c5ce72b3d5be35abe0ac6aec8b52faf"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
+    "path": "skills/verification-before-completion"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "An ordered gate and evidence table join verify",
+  "reason": "Its ordered gate and claim-to-evidence table enter the re-cut verify recipe on verify-this' spine; freshness follows verify-this.",
+  "authorisedBy": {
+    "date": "2026-10-08",
+    "words": "Combine, \"everything is good\" (contradiction 11)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "Combine, \"everything is good\" (contradiction 11)"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "verify-this",
+    "catches": "A change closed on should-pass, an agent's report of success or a stale run instead of evidence of the final code",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here in which a change met the failure this method names"
+    },
+    "modes": [
+      {
+        "mode": "fast",
+        "step": "verify",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "medium",
+        "step": "verify",
+        "depth": "written",
+        "cost": 180
+      },
+      {
+        "mode": "high",
+        "step": "verify",
+        "depth": "independent",
+        "cost": 180
+      },
+      {
+        "mode": "max",
+        "step": "verify",
+        "depth": "looped",
+        "cost": 180
+      }
+    ],
+    "ships": "default"
+  }
+}

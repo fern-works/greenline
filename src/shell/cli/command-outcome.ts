@@ -1,9 +1,10 @@
 import { isAbsolute, relative, sep } from "node:path";
 import { isRepositoryPath } from "../../commons/repository-path.ts";
 import type { ConnectorStatus } from "../../core/connectors/registry.ts";
-import { type LedgerSummary } from "../../core/ledger-audit.ts";
-import { diagnostic, type Diagnostic, type EffectJson } from "./output.ts";
-import type { ProjectView } from "../../core/status.ts";
+import { diagnostic, type Diagnostic, type EffectJson, type TidyJson } from "./output.ts";
+import type { Situation } from "../../core/situation.ts";
+import type { ChangesReport } from "../../core/status.ts";
+import type { HooksReport } from "../../core/adapters.ts";
 
 /** The factual result returned by a workspace command. */
 export interface CommandOutcome {
@@ -12,13 +13,18 @@ export interface CommandOutcome {
   readonly diagnostics: readonly Diagnostic[];
   /** Rendered human view; set only by commands that print a view. */
   readonly text?: string;
-  /** Structured view for the JSON envelope; set only by status. */
-  readonly view?: ProjectView;
   /** The House rulings stanza's dash lines; set only by status. */
   readonly houseRulings?: readonly string[];
-  readonly ledger?: LedgerSummary;
-  /** The connectors' registered and installed state; set by the `connectors` group, status and doctor. */
+  /** The changes view; set only by status. */
+  readonly changes?: ChangesReport;
+  /** The connectors' registered and installed state; set by the `connectors` group and status. */
   readonly connectors?: readonly ConnectorStatus[];
+  /** The situation the repository is in; set only by status's default view. */
+  readonly situation?: Situation;
+  /** What tidy removed and kept; set only by tidy. */
+  readonly tidy?: TidyJson;
+  /** The git hooks, the declared checks and the adapters; set by init, sync and status. */
+  readonly hooks?: HooksReport;
 }
 
 function isClean(diagnostics: readonly Diagnostic[]): boolean {
@@ -47,24 +53,14 @@ export function contractDiagnostics(
   issues: readonly { path: string; message: string }[],
   source?: string,
 ): readonly Diagnostic[] {
-  return issues.map((issue) => {
-    const message = `${issue.message}${fieldHint(issue.path)}`;
-    return diagnostic(
+  return issues.map((issue) =>
+    diagnostic(
       code,
       "error",
-      source === undefined ? message : `${issue.path || "document"}: ${message}`,
+      source === undefined ? issue.message : `${issue.path || "document"}: ${issue.message}`,
       source ?? issue.path,
-    );
-  });
-}
-
-/**
- * A ledger entry's `decision` is one of the four words; the sentence an
- * author reaches for belongs in its sibling `reason`. The field name invites
- * the prose reading, so the refusal names where the prose goes.
- */
-function fieldHint(path: string): string {
-  return /(^|\.)decision$/.test(path) ? " The prose belongs in the sibling 'reason' field." : "";
+    ),
+  );
 }
 
 /** Project filesystem locations into repository-relative CLI fields; invalid input stays in messages. */

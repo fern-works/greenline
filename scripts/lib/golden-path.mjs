@@ -6,6 +6,8 @@
 export function goldenPath(path) {
   if (path.startsWith(".claude/")) return `dot-claude/${path.slice(".claude/".length)}`;
   if (path.startsWith(".agents/")) return `dot-agents/${path.slice(".agents/".length)}`;
+  // A committed .codex/hooks.json would be a live Codex hook layer here, so it is mapped too (J-93 S3).
+  if (path.startsWith(".codex/")) return `dot-codex/${path.slice(".codex/".length)}`;
   return path;
 }
 

@@ -1,0 +1,41 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-05-to-spec-recipe",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-05-implement-recipe",
+    "sha256": "df443886a951b339b751c89d97eb12b284f4c52cca73aa6094f554d116553277"
+  },
+  "subject": "skill:to-spec",
+  "recipe": "cb33992af70c91ddfe506fab283431a7d6cfd9301dfebfd4b46b950f4105c36c",
+  "result": "7498f37981baa9a8961b42030861874f3b86af35377b0f9ee9d22d65b8fb21af",
+  "pages": "unknown",
+  "gist": "Moves to its recipe byte for byte, nothing changed",
+  "reason": "Moves to-spec to its recipe byte for byte, under Q1 of 2026-10-04. The old chain pinned this copy at series-s7-roster-2026-09-11.",
+  "authorisedBy": {
+    "date": "2026-09-11",
+    "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 52,
+        "taken": 47,
+        "exact": 47,
+        "retention": 1,
+        "coverage": 0.9038461538461539,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 362
+  }
+}

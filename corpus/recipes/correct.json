@@ -1,0 +1,333 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "correct",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "correct"
+    },
+    {
+      "field": "description",
+      "value": "Find the mistakes agents keep repeating in this repository and make each one impossible: architecture first, then types, then a lint whose error names the fix, then a test, and written rules last, each check proved on a real past mistake. Use when the owner corrects an agent for a mistake made before, or asks to stop a repeated one."
+    }
+  ],
+  "sources": ["pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "correct/SKILL.md",
+          "segments": ["6fecdf655321"]
+        },
+        {
+          "passage": "written",
+          "text": "correct is a trial start for an owner who keeps correcting agents in this repository for the same mistake. Finding the classes of mistake edits no file; fixing them is a change: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming correct and the classes it found, and run the line from `frame`, each class fixed as one commit of that change. A lint, a CI check or a script the repository lacks is furniture: propose it in the reply, as AGENTS.md says, and add it on the owner's yes.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the finding of classes that edits no file, and the fixes run as one change on the line, a commit per class.",
+          "gist": "Opens correct: finding mistake classes edits nothing; fixes run as one change",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): correct enters as a trial start, correct as spine with principle-encode-lessons-in-structure grafted, and the contradictions stand as recommended: a test is deleted only through sweep-tests and its mutation proof (contradiction 23), and an instruction that can be encoded is encoded and deleted while the rule table lives in the decision home, since greenline's block lives in the instructions file (30); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, and every commit of a change carries its trailer; R16 of 2026-10-07, a start chosen from the situation a request begins in"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "correct/SKILL.md",
+          "segments": [
+            "8cac926860e2",
+            "d402261304ad",
+            "3223953682ae",
+            "18d5d6d204cf",
+            "7f939c05f50c",
+            "8f03f4a2d315",
+            "17a52a4fae0c",
+            "5f13e0b25b12",
+            "ef671da77726",
+            "505390493cd0",
+            "0cb3ee215850",
+            "17ca674c4376",
+            "445f6edc79b4",
+            "dcad1ebda95f",
+            "fb0340789da0",
+            "87795e57bd74",
+            "a97e7fd805ab",
+            "bc831ee87727"
+          ],
+          "edits": [
+            {
+              "segment": "8cac926860e2",
+              "find": "The operator",
+              "replace": "The owner",
+              "kind": "name",
+              "reason": "The person whose word governs is the owner in greenline's ruled words.",
+              "gist": "Says the owner, greenline's word for the person whose word governs"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Fix any test that would still pass if every function it calls returned nothing; a test that should go is deleted only through sweep-tests and its mutation proof.",
+          "kind": "method",
+          "reason": "Deleting a weak test goes through sweep-tests and its mutation proof, the roster's side of contradiction 23.",
+          "gist": "A weak test is deleted only through sweep-tests and its mutation proof",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): correct enters as a trial start, correct as spine with principle-encode-lessons-in-structure grafted, and the contradictions stand as recommended: a test is deleted only through sweep-tests and its mutation proof (contradiction 23), and an instruction that can be encoded is encoded and deleted while the rule table lives in the decision home, since greenline's block lives in the instructions file (30)",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "correct/SKILL.md",
+          "segments": ["8111f84043b3", "294a3d7bf5e7"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-encode-lessons-in-structure/SKILL.md",
+          "segments": [
+            "72bd691e76e4",
+            "2cdd3225efc1",
+            "24efcc81aaa1",
+            "0150a83bb9b0",
+            "859d03ceb39e",
+            "e291a4efb457",
+            "2d0fbf56d5b1",
+            "7a9209da0e0c",
+            "12ca72c7386f",
+            "22cae3f0567d",
+            "7c61bcf69de0",
+            "06c4ec39d0ed"
+          ],
+          "edits": [
+            {
+              "segment": "0150a83bb9b0",
+              "find": "**Pattern:**\nWhen",
+              "replace": "When",
+              "kind": "scope",
+              "reason": "The principle's pattern label gives way to the sentence it introduced, inside correct's fix step.",
+              "gist": "The Pattern label gives way to the sentence it introduced"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "correct/SKILL.md",
+          "segments": [
+            "3503e2748b49",
+            "43466888045c",
+            "3339c63c1a72",
+            "b03e516c84ff",
+            "696ef782c5ab",
+            "e881e090347a",
+            "9897b416c12a"
+          ],
+          "edits": [
+            {
+              "segment": "9897b416c12a",
+              "find": "the agent instruction file",
+              "replace": "the repository's decision home",
+              "kind": "home",
+              "reason": "The rule table lives in the decision home, since greenline's block lives in the instructions file (contradiction 30).",
+              "gist": "The rule table moves to the decisions document, away from greenline's block"
+            }
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "correct/SKILL.md",
+          "segments": ["b6c459000e54", "dec7b2f18f7d", "601489d8d7cd", "c581e63c24c9"],
+          "edits": [
+            {
+              "segment": "b6c459000e54",
+              "find": "the operator",
+              "replace": "the owner",
+              "kind": "name",
+              "reason": "The person whose word governs is the owner in greenline's ruled words.",
+              "gist": "Says the owner, greenline's word for the person whose word governs"
+            },
+            {
+              "segment": "b6c459000e54",
+              "find": "corrects you,",
+              "replace": "corrects you within this change,",
+              "kind": "scope",
+              "reason": "The rule table is kept inside the change correct opens, never as a standing rule outside it.",
+              "gist": "The rule table holds only within the change correct opens"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the owner's repeated corrections; recent commits, reverts, review comments, the change records and the agent instructions file\nProduces: the mistake classes with their evidence, in the reply; through the change, each class fixed at the highest level that works, one commit each with its check proved on a real past mistake, and the rule table in the decision home\nNext: frame, under the mode the owner approves",
+          "kind": "pointer",
+          "reason": "A start's handoff: the classes in the reply and the fixes through the change, and the step its hand reaches, frame under the approved mode.",
+          "gist": "Hands over the mistake classes and their fixes; next is frame"
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "correct/SKILL.md",
+      "segment": "e3c495fd5468",
+      "kind": "method",
+      "reason": "Deleting a test outside sweep-tests' mutation proof loses to the roster (contradiction 23).",
+      "gist": "Deleting a test outside sweep-tests' mutation proof is dropped",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): correct enters as a trial start, correct as spine with principle-encode-lessons-in-structure grafted, and the contradictions stand as recommended: a test is deleted only through sweep-tests and its mutation proof (contradiction 23), and an instruction that can be encoded is encoded and deleted while the rule table lives in the decision home, since greenline's block lives in the instructions file (30)",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 3
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "b6bd59c53445",
+      "kind": "scope",
+      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
+      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "dd3a1c488725",
+      "kind": "scope",
+      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
+      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "703a33a10e02",
+      "kind": "scope",
+      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
+      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "e0cde67e8844",
+      "kind": "scope",
+      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
+      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "93f8d81f5c2d",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "25bc9c1f28ff",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "e02f1445ab73",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "88934be64d3d",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "446a19fe9b0c",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "6febdfe3c529",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "b63eb0aebeba",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "49871ff14989",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "0bea5eaae980",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "37f9ab6de18f",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "c949eb38411a",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "32778924f4d2",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "efcdec06ed97",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "60b7c2eed9aa",
+      "kind": "pointer",
+      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
+      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+    }
+  ]
+}

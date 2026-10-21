@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-08-diagram-design-recut",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-08-product-description-recut",
+    "sha256": "c91d0ffdea6915ea4496c4beb17137781cbfea2b3023401dfba03004fab60eee"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "61911a81eec47d6e85366b7db31007df3343861150d49cc2dc560b6736145d4d",
+  "result": "815c386c18334bd0ebfddcd456041d3232d2e9188c65b7e12c78eac5a079a9c3",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Re-cut as an extra habit; diagrams name the change they serve",
+  "reason": "diagram-design is re-cut as an extra habit on the change record: diagrams named by the change or plan they serve and linked from it, in place of artifacts and tickets. Its onboarding keeps upstream's harness install paths as data.",
+  "authorisedBy": "unknown",
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7155,
+        "taken": 7123,
+        "exact": 7115,
+        "retention": 0.9988768777200617,
+        "coverage": 0.9955276030747728,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 672
+  }
+}

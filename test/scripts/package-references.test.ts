@@ -82,22 +82,16 @@ it("G3 checks the real package prefix before accepting a placeholder path", () =
   }
 });
 
-it("refuses a packed file that names a guidance unit id a publication entry of the ledger names, and only the whole id", () => {
-  const records = mkdtempSync(join(tmpdir(), "greenline-leak-records-"));
-  writeFileSync(
-    join(records, "a-publication.json"),
-    JSON.stringify({
-      kind: "publication",
-      changes: [{ units: [{ id: "example-leaked-unit" }, { id: "example-loops" }] }],
-    }),
-  );
-  writeFileSync(join(records, "a-copy.json"), JSON.stringify({ kind: "copy", changes: [] }));
+it("refuses a packed file that names a frozen guidance unit id, and only the whole id", () => {
+  const scratch = mkdtempSync(join(tmpdir(), "greenline-leak-ids-"));
+  const ids = join(scratch, "unit-ids.json");
+  writeFileSync(ids, JSON.stringify(["example-leaked-unit", "example-loops"]));
   const leaked = packageFixture("Read the example-leaked-unit unit.\n");
   const bounded = packageFixture("Read about example-leaked-units and example-loopsmith.\n");
   const audited = (root: string) =>
     spawnSync(
       process.execPath,
-      [join(import.meta.dirname, "../../scripts/check-consumer-package.mjs"), root, records],
+      [join(import.meta.dirname, "../../scripts/check-consumer-package.mjs"), root, ids],
       { encoding: "utf8" },
     );
   try {
@@ -108,6 +102,6 @@ it("refuses a packed file that names a guidance unit id a publication entry of t
     );
     expect(audited(bounded).stderr).not.toContain("guidance unit identity");
   } finally {
-    for (const path of [records, leaked, bounded]) rmSync(path, { recursive: true, force: true });
+    for (const path of [scratch, leaked, bounded]) rmSync(path, { recursive: true, force: true });
   }
 });
