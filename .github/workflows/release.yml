@@ -38,13 +38,14 @@ jobs:
           fi
       # The public row set builds the package (its tsdown-build row) and audits it (consumer-package); nothing rebuilds after.
       - run: node scripts/check.mjs --public
+      # The allowlist is package.json's `files`, the seven entries, and package.json itself; test/scripts/public-tree.test.ts holds the two in step.
       - name: audit the tarball
         run: |
           npm pack --dry-run --json ./dist/package > /tmp/pack.json
           node -e '
             const files = require("/tmp/pack.json")[0].files.map(f => f.path);
             const leaks = files.filter(p =>
-              !/^(dist\/(bin|corpus)\/|provenance\/|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|package\.json$)/.test(p));
+              !/^(dist\/(bin|corpus)\/|provenance\/|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|assets\/inspect-fonts\/OFL\.txt$|package\.json$)/.test(p));
             if (leaks.length) { console.error("unexpected files in the tarball:", leaks); process.exit(1); }
             console.log(files.length, "files, all of the package");'
       - run: npm publish ./dist/package --access public

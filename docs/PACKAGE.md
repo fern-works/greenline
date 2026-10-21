@@ -39,5 +39,6 @@ guidance unit id the old ledger's publications named and no private name is
 packed run in the repository of record, which holds both lists.
 
 A release: a version tag, which only the export makes, runs `release.yml`:
-the install, the public gate, the build, the tarball audit and
-`npm publish ./dist/package` under trusted publishing with provenance.
+the install, the public gate, the build, the tarball audit, which admits
+the files above and nothing else, and `npm publish ./dist/package` under
+trusted publishing with provenance.

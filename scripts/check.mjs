@@ -23,8 +23,10 @@ import { fileURLToPath } from "node:url";
 
 // This script is part of the public tree, while the workshop allocator is
 // private. The public gate inherits the controller check's owned environment.
-const privateStoragePath = fileURLToPath(new URL("./lib/qa-storage.mjs", import.meta.url));
-const privateStorage = existsSync(privateStoragePath) ? await import(privateStoragePath) : null;
+// Imported by its URL: Node's ESM loader refuses a bare absolute path on Windows (J-104 S2).
+const privateStorageUrl = new URL("./lib/qa-storage.mjs", import.meta.url);
+const privateStoragePath = fileURLToPath(privateStorageUrl);
+const privateStorage = existsSync(privateStoragePath) ? await import(privateStorageUrl.href) : null;
 const checkTask = privateStorage
   ? privateStorage.beginWorkshopTask("check", { repository: resolve("."), env: process.env })
   : null;
