@@ -1,0 +1,64 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-architecture-map-a-default-in-the-visual-home",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-diagram-design-a-default-in-the-visual-home",
+    "sha256": "2e4f33f3b5ccbb8d248b387d30b0787538647ad532a7bd897833daffd4165b87"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "553ebcb3425879fb03decdae95bb8f7942a4dafaf0809d740a3fcfdf5fb84f21",
+  "result": "1d32ffada63a17bff7dccb296b43c2caf5195cb5564e60ee4a3d3dafa4dd983d",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "architecture-map is a default keeping the map in the visual home",
+  "reason": "architecture-map is a default, no longer an extra loaded only when asked: the map's folder is in the visual home with the viewer's manifest, and a build or a refresh is offered, never taken unasked.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1148
+  }
+}

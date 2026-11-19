@@ -28,7 +28,7 @@ describe("S18a the block's habit table", () => {
   const rows = (habit: string) =>
     table.split("\n").filter((line) => line.startsWith("| ") && line.endsWith(` | \`${habit}\` |`));
 
-  it("S18a lists the eight habits by situation, one row per situation each covers", () => {
+  it("S18a lists the habits by situation, one row per situation each covers, prose and progress-check re-cut by J-107 S3", () => {
     const counts = {
       tdd: 3,
       ponytail: 4,
@@ -37,12 +37,18 @@ describe("S18a the block's habit table", () => {
       boundaries: 3,
       concurrency: 3,
       secrets: 3,
-      prose: 4,
+      prose: 2,
+      "progress-check": 2,
     };
     for (const [habit, count] of Object.entries(counts))
       expect(rows(habit), habit).toHaveLength(count);
     expect(table).toContain("| Fixing a bug whose cause is known | `tdd` |");
     expect(table).toContain("| The owner says a reply did not land | `prose` |");
+    // J-107 S3: the reply section carries the answer and the progress inside a change; the habits keep their occasions.
+    expect(table).not.toContain("| Answering a question or reporting a result | `prose` |");
+    expect(table).toContain(
+      "| Long work with no change open, such as a survey or a long diagnosis | `progress-check` |",
+    );
     expect(table).toContain("| Comparing alternative interfaces for one module | `deep-modules` |");
   });
 

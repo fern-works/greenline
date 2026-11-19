@@ -188,6 +188,19 @@ describe("S16b the proceed and trials settings", () => {
       : [];
   };
 
+  it("J-114 S1 takes the ground setting, branch or worktree, writes it only where set, and refuses another", () => {
+    const set = parseManifest(JSON.stringify({ ...base, ground: "worktree" }), "m", roster());
+    expect(set._tag === "ok" ? set.value.ground : undefined).toBe("worktree");
+    if (set._tag === "ok") expect(serializeManifest(set.value)).toContain('"ground": "worktree"');
+    const unset = parseManifest(JSON.stringify(base), "m", roster());
+    expect(unset._tag === "ok" ? unset.value.ground : "read").toBeUndefined();
+    if (unset._tag === "ok") expect(serializeManifest(unset.value)).not.toContain('"ground"');
+    const refused = parseManifest(JSON.stringify({ ...base, ground: "current" }), "m", roster());
+    expect(refused._tag === "err" ? refused.error.issues.map((issue) => issue.path) : []).toEqual([
+      "ground",
+    ]);
+  });
+
   it("S16b defaults proceed to none and trials to empty, and the serializer writes both", () => {
     const parsed = parseManifest(JSON.stringify(base), "m", roster());
     expect(parsed._tag).toBe("ok");

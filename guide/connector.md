@@ -7,11 +7,10 @@ records are the whole product, and every part of it is free and open source.
 
 ## greenline and garden
 
-A greenline install now needs no account, no key and no service; it works
-entirely offline and keeps every method it had. The
-built-in guidance was the premium part; it moves to garden, which the owner
-can enable when they want it. A fresh install has no maintained knowledge
-until its owner enables garden.
+A greenline install needs no account, no key and no service; it works
+entirely offline with every method it carries. Maintained engineering
+knowledge is garden's, which the owner can enable when they want it. A
+fresh install has no maintained knowledge until its owner enables garden.
 
 garden is a separate product with its own command. It answers questions of
 engineering knowledge: architecture, testing, language rules, patterns,

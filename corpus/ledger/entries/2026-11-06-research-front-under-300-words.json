@@ -1,0 +1,78 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-research-front-under-300-words",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-redesign-front-under-300-words",
+    "sha256": "dcf419babba273b92f4628c2048b77b87448d8467c4200669d1f760be4106519"
+  },
+  "subject": "skill:research",
+  "recipe": "4c24e715eed5d20ef3cdb37adbbe78e76a0b20085ad3ac1529d8b44f59fab936",
+  "result": "af6bb2091fac1812d6848c654a58f06a66f9889a3a21ddef5d719a958c488739",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "method.md"
+    }
+  ],
+  "gist": "Front cut under 300 words; the rest moved to the method page",
+  "reason": "The front is cut under 300 words to the sentences its step reads first. The rest moves unchanged, in its order, to the method page the front points to.",
+  "authorisedBy": {
+    "date": "2026-11-06",
+    "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-07",
+      "words": "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's rows of 2026-10-23 on frame's nodes and on its pre-research, on the operator's words of 2026-10-23 and the cards \"Take the fourteen (Recommended)\" and \"One at a time (Recommended)\": frame reads the code the request touches before the first round and may propose research at any round, each topic with its node, its source class and what it would change, run on the owner's acceptance by fresh agents working by the new start research, papers through arXiv and the citation graphs, the high-signal web and code on GitHub, one at a time, each report awaited before the next starts, the reports cited by the frame section; J-119's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": athola's papers the spine of the papers page with arxiv-analyze's read order and summary inserted and arxiv-search lifted, the citation graph and its backoff in greenline's words, the GitHub practice greenline's own, no rate figures, arXiv's own HTML first, the fetched texts kept in the change's working files, anonymous calls, no paying or emailing, the owner's gh session only, patterns never code; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ai-skill-arxiv",
+        "segments": 64,
+        "taken": 20,
+        "exact": 18,
+        "retention": 0.9,
+        "coverage": 0.3125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "claude-night-market",
+        "segments": 45,
+        "taken": 13,
+        "exact": 12,
+        "retention": 0.9230769230769231,
+        "coverage": 0.28888888888888886,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1657
+  }
+}

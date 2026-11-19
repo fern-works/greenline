@@ -1,0 +1,23 @@
+{
+  "commit": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746"
+    },
+    {
+      "path": "wcag-audit-patterns/SKILL.md",
+      "sha256": "db263a3405deb95a63175f33da4a9d82d8595599fbee4a81979059b35a7cec40"
+    },
+    {
+      "path": "wcag-audit-patterns/references/details.md",
+      "sha256": "0a61237ccb4e1b2cba4291f83e0747ad64ac9ba81b37427ee0e648537c9c78d6"
+    }
+  ],
+  "entries": [
+    {
+      "name": "wcag-audit-patterns",
+      "path": "plugins/accessibility-compliance/skills/wcag-audit-patterns"
+    }
+  ]
+}

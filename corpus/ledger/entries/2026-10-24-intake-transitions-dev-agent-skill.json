@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-transitions-dev-agent-skill",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-transitions-dev-agent-lib",
+    "sha256": "f67edb8942ca6d429c9b288795e4387fbd8a170223763e6a2d729da8b601f2b9"
+  },
+  "source": {
+    "repository": "https://github.com/Jakubantalik/transitions.dev",
+    "commit": "54fbee8e9d698598b4e7ceabb2fb43ea30beacfc",
+    "path": "agent/skill"
+  },
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A sales flow for a paid fix service, declined",
+  "reason": "Its agent skill steers toward a paid service that uploads source files; nothing of it serves greenline's practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's agent skill and fix service are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's agent skill and fix service are declined"
+    }
+  ]
+}

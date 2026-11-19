@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Turn a decision the owner can't fully answer into a questionnaire for the person who can, to fill in async or together over a meeting: ask the owner only who it goes to and what they need back, then write the questions most-important-first, one idea each, with \"I don't know\" welcome. Use when a decision the work needs can be answered only by someone other than the owner."
+      "value": "Turn a decision the owner can't fully answer into a questionnaire for the person who can, to fill in async or together over a meeting: ask the owner only who it goes to and what they need back, then write the questions most-important-first, one idea each, with \"I don't know\" welcome. Use when a decision the work needs can be answered only by someone other than the owner, someone the owner says can confirm it."
     }
   ],
   "sources": ["mattpocock-skills"],
@@ -36,6 +36,25 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the questionnaire is written, read [method.md](method.md): the send, its recipient, what you need back and the document's structure.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# To questionnaire: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "taken",
@@ -135,5 +154,49 @@
     }
   ],
   "copies": [],
-  "drops": []
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "It asks the owner only about the send: who the questionnaire goes to and what they need back, each in one exchange.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "These are questions in the reply that no hook reads. No cited run used this trial habit."
+    },
+    {
+      "promise": "It writes the questionnaire to .greenline/tmp/<id>/to-questionnaire-<slug>.md in the open change's working files and reports the path; with no change open it gives the questionnaire in the reply instead.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No hold reads the path, and a write under .greenline/tmp/ is allowed with or without a change open. No cited run observed it."
+    },
+    {
+      "promise": "The questionnaire is never committed.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "It is held structurally by the ignored .greenline/tmp/ folder, which is no fact, hold or record. No run observed it fail."
+    },
+    {
+      "promise": "The questions are most important first, one idea each, with an answer stub and 'I don't know' welcome, covering every item the owner named.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is the quality of a working file that no reading checks, and no cited run reached it."
+    },
+    {
+      "promise": "The answers that come back settle the decision in the section of the step that asked.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No lint reads a section for answers brought back from a questionnaire, and no cited run reached it."
+    }
+  ],
+  "triggers": [
+    {
+      "words": ["can confirm", "someone else", "ask them", "questionnaire", "only they know"],
+      "weight": 2,
+      "read": "part"
+    }
+  ]
 }

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-prototyper-create-component",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-balise-motion-graphic",
+    "sha256": "1027153e888db6eb8666a8ae1d186be8836971f9c6c8e3ab2fc5d006d2644e91"
+  },
+  "source": {
+    "repository": "https://github.com/PrototyperAI/prototyper-ui",
+    "commit": "eff1e06fa43a1fc3ba4e940b43b7ba0fa5b72339",
+    "path": "apps/docs/skill/create-component"
+  },
+  "pin": "prototyper-ui",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Library-specific component wrapping, declined",
+  "reason": "It wraps one library's primitives into one registry; the per-component contracts enter through build-primitive.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Prototyper's create-component and prototyper-ui skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Prototyper's create-component and prototyper-ui skills are declined"
+    }
+  ]
+}

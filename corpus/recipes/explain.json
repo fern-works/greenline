@@ -1,0 +1,287 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "explain",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "explain"
+    },
+    {
+      "field": "description",
+      "value": "Explain how a part of the code works, the mental model needed to start working in it, traced from the real code; and keep the repository's atlas: propose its candidate subsystems, write one page per subsystem in the explain form with a journey or more through it, and refresh a page reported drifting on the owner's yes. Use for \"how does X work\", \"walk me through\" or \"end to end\", before changing an area you cannot yet narrate end to end, to map a repository's subsystems, or when a page of the atlas drifts."
+    }
+  ],
+  "sources": ["pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Explain",
+          "kind": "name",
+          "reason": "The skill's title, its name.",
+          "gist": "The skill's title"
+        },
+        {
+          "passage": "written",
+          "text": "explain is the start for \"how does X work\", for an area the work must change that you cannot yet narrate end to end, for the map of a repository's subsystems, and for a page of the atlas reported drifting.",
+          "kind": "method",
+          "reason": "The start's opening in its own voice: its four situations, the reply that answers a question and writes nothing, and the atlas as edits proposed and run as a change. J-147 S2 and S4: the question's words read as the code's path, and the one maker rule.",
+          "gist": "Opens the start: explains in the reply; a fresh agent writes pages",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\""
+        },
+        {
+          "passage": "written",
+          "text": "An explanation asked for in a question is answered in the reply, traced from the files, and writes nothing.",
+          "kind": "method",
+          "reason": "The start's opening in its own voice: its four situations, the reply that answers a question and writes nothing, and the atlas as edits proposed and run as a change. J-147 S2 and S4: the question's words read as the code's path, and the one maker rule.",
+          "gist": "Opens the start: explains in the reply; a fresh agent writes pages",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\"",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the references page, where its homes and commands stand.",
+          "gist": "Points at the references page for its homes and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first file is traced, read [method.md](method.md): the atlas's mode, the walk, the form, and the atlas's discovery, pages and refresh.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the question and the code it names; for the atlas, the repository's tree, entry points, dependency graph and history, or its plan's modules; for a refresh, the pages reported drifting and the commits since each was read\nProduces: the explanation in the reply; the candidate subsystems in the reply for the owner's pick; through the change, the atlas's pages, journeys and index\nNext: frame, under the mode the owner approves, when the atlas is written or refreshed; otherwise none, the explanation staying in the reply",
+          "kind": "method",
+          "reason": "The start's handoff: what it reads, what it leaves in the reply and through the change, and frame next when the atlas is written.",
+          "gist": "Hands the atlas's writing to frame under an approved mode",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\""
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Explain: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "\"How does X work\" and \"end to end\" mean the code's path, unless the owner names the practice.",
+          "kind": "method",
+          "reason": "The start's opening in its own voice: its four situations, the reply that answers a question and writes nothing, and the atlas as edits proposed and run as a change. J-147 S2 and S4: the question's words read as the code's path, and the one maker rule.",
+          "gist": "Opens the start: explains in the reply; a fresh agent writes pages",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\""
+        },
+        {
+          "passage": "written",
+          "text": "The atlas is durable: its pages, its journeys and its index are edits, so propose the mode and wait, as AGENTS.md says, open the change's record with a `## start` section naming explain and the pages it will write, and run the line from `frame`. A fresh agent, started by the change's build or its close with the skill's brief, makes the map, each atlas page and its journey and every durable diagram; the session draws only inline. The close names the pages it wrote.",
+          "kind": "method",
+          "reason": "The start's opening in its own voice: its four situations, the reply that answers a question and writes nothing, and the atlas as edits proposed and run as a change. J-147 S2 and S4: the question's words read as the code's path, and the one maker rule.",
+          "gist": "Opens the start: explains in the reply; a fresh agent writes pages",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\""
+        },
+        {
+          "passage": "written",
+          "text": "## The walk\n\nProduce the explanation someone needs to start working in a part of the code: enough for a working mental model, never annotated source code. When the question is \"what is wrong with it\", the findings are review's or diagnose's, and the explanation stays clear of verdicts.\n\n1. **Scope the question**: a subsystem, a feature flow, a runtime trace (\"what happens when...\"). If the subject is vague, state your best reading of it in one line and proceed; the owner will redirect you.\n2. **Assess the size.** A single module or a narrow function: one pass, read and explain. A cross-cutting subsystem: split the ground into two to four slices (the data model, the driving path, the configuration and composition is a common cut), cover each, then reconcile them.\n3. **Trace, never guess.** From an entry point, follow the call chain: callers, callees, data flow, types. Read the code; a file's name does not say what it does at run time. You are done tracing when you can describe the whole path from input to output without hand-waving one step. \"I could not determine how X connects to Y\", said plainly, beats a smooth invention.\n4. **Collect what a newcomer would get wrong**: the surprising default, the invariant that lives one file away from where it fires, the historical remnant. When the question is really why, read the history and the repository's decision home.",
+          "kind": "method",
+          "reason": "The walk from a question to a traced mental model, lifted from the workshop's explain craft, itself adapted from pstack's how: scope, size, trace and the newcomer's traps, findings left to the review and the diagnosis.",
+          "gist": "Walks from the question to a traced model, never a guess",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\"",
+          "credits": ["pstack"]
+        },
+        {
+          "passage": "written",
+          "text": "## The form\n\n- **Overview**: a paragraph or two: what it is, what it does, why it exists. Enough to decide whether to keep reading.\n- **Key concepts**: the few types, modules or contracts needed to understand the rest, one line each. Never exhaustive.\n- **How it works**: what triggers it, the steps, where the data goes, the decision points. Prose that names real files and functions so the reader can go and look; a code block only where the snippet is load-bearing.\n- **A journey**: the path a request, an event or a value takes through it, drawn in one of the reply's six forms, most often a call tree or a box drawing, at most 72 columns and twelve nodes.\n- **Where things live**: the short map of the directories and files a reader needs to start working here. Not every file.\n- **Gotchas**: the non-obvious things that trip people, each with its anchor.\n\nMatch the depth to the question: a narrow ask gets the overview and how it works, and stops. The explanation stands alone, so that someone who only wants to understand never wades through anything else. A subsystem's page and its journey are kept in the atlas only on the owner's ask; nothing is offered.",
+          "kind": "method",
+          "reason": "The explanation's form, lifted from the workshop's explain craft with pstack's how behind it, and a journey drawn in one of the reply's six forms for a subsystem's path. J-147 S2: the explanation of a subsystem ends with the offer to keep its page and journey. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the offer at the end of an explanation leaves (the seven cuts: the offer ritual gone).",
+          "gist": "The explanation's form, ending with the offer to keep it",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\"; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave",
+          "credits": ["pstack"]
+        },
+        {
+          "passage": "written",
+          "text": "## The atlas\n\nThe atlas is the repository's map kept as pages: one page per subsystem in the form above, with the files it covers and the commit it was read at, one or more journeys through it, and an index the inspector reads, beside the map `architecture-map` draws. Its pages are for the next agent and the owner, who read them cold. show-me's table of kinds says which journey fits which shape.",
+          "kind": "method",
+          "reason": "The atlas as the register's row of 2026-10-22 rules it: a page per subsystem in the explain form with its files and commit, its journeys and an index, beside architecture-map's map. J-147 S4 points at show-me's table of kinds.",
+          "gist": "The atlas: a page per subsystem, its journeys, an index",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\""
+        },
+        {
+          "passage": "written",
+          "text": "### Discovery\n\nWhen the atlas has no pages, propose the candidate subsystems before writing any; the owner's ask for the map runs this discovery:\n\n- A repository with code: read its tree, its entry points (the commands, the servers, the exported packages, the jobs), the dependency graph between its directories or modules, and its hot spots, the files the history changes most. Propose one subsystem per cohesive part, four to twelve, each with a name, a one-line summary, the files it covers and its layer, from the entry points down to the foundations.\n- A repository with little or no code: propose them from its plan's modules, its design or the request's parts, each as it will stand once built, its files the paths it will hold.\n\nShow the candidates in the reply as a table with a box drawing of their layers, and write nothing until the owner picks; the owner's pick, a rename or a merge included, is final. Beside them, list the repository's own documents, the README at the top and the pages under `docs/`, each with the files it covers and whether the owner wrote it, for the documents index; a repository with many pages gets the pages the owner picks. A document the owner wrote is named for its refresh, never rewritten unasked. A map the owner asked for is carried to its last page under the change's record, and the close names any page not made.",
+          "kind": "method",
+          "reason": "The discovery mode the register's row of 2026-10-22 asks for: candidates from the tree, the entry points, the dependency graph and the hot spots on a brownfield repository, from the plan's modules on a greenfield one, shown for the owner's pick before any write. J-147 S1 and S2: the map's first offer runs discovery, and discovery seeds the documents index with each document's covered files and author. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the map is made on the owner's ask and carried to its last page under a record (j109t-cli F3).",
+          "gist": "Proposes the candidate subsystems and the documents for the owner's pick",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\"; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
+        },
+        {
+          "passage": "written",
+          "text": "### Pages and journeys\n\nFor each picked subsystem, the fresh agent writes its page in the form above and at least one journey: the path a newcomer would trace first, then any other worth keeping, a request through it, an event, a state chart of what it holds, a sequence across its neighbours. A journey is a durable visual of any kind and either system: a drawing `diagram-design` makes, or a text page with a box drawing in one of the six forms. Read before you write: every claim on a page is one you traced. Before the fresh agent draws a journey, write its brief, one line a field: the question the journey answers, in its reader's words; its form; its node count; its finish, text, branded SVG or interactive; its palette; and its reader.",
+          "kind": "method",
+          "reason": "One page per picked subsystem and one or more journeys of any kind and either visual system, each traced before it is written. J-147 S4: the fresh agent writes each page and journey. J-204 S1 (the register's row of 2026-11-08, \"One offer per change at the caps\"): a brief precedes each journey as every durable picture.",
+          "gist": "Writes a page and its journeys per picked subsystem",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\"; and the register's row of 2026-11-08, \"One offer per change at the caps\", on the operator's words of 2026-11-08, \"so did you draft j204? i think you should draft it the way you recommend and we fold this within 0.2.0 as well\": the picture decision a table in show-me's method that the block points at, one offer of a kept picture per change only where the shape passes twelve nodes or 72 columns, in one line the turn's end counts, never a lost picture's remake, and a brief before every durable picture read into its manifest"
+        },
+        {
+          "passage": "written",
+          "text": "### Refresh\n\nA page drifts when a commit since it was read touched a file it covers; the status line counts the drifting pages, and the close names the pages its change touched. The close refreshes them without asking: one fresh agent, started with this skill's brief, re-reads only the files that changed since each page's commit and rewrites only those pages and their journeys, and the map when a page changed, up to three pages; every other page stays as it stands, and the record's `refreshes` line names the pages and the agent's cost. Past three pages, or for the whole atlas, the refresh waits for the owner's ask and is a change of its own. The whole atlas is re-read at most once per minor version of the practice, unless the owner names it.",
+          "kind": "method",
+          "reason": "The refresh rule of the register's row of 2026-10-22: offered, never taken unasked; only dirty files re-read and dirty pages rewritten; the whole atlas at most once per minor version unless the owner names it; every refresh a change whose record holds its cost. J-147 S2 and S4 (the register's row of 2026-10-28 on the permanent pages refreshed at the close): the close's refresh of the touched pages without asking, up to three, by one fresh agent, its cost in the record, a larger or whole refresh offered. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): a larger refresh waits for the owner's ask, nothing offered.",
+          "gist": "The close refreshes touched pages, up to three; a larger refresh offered",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110); the explain start lifted from the workshop's own explain craft, itself adapted from pstack's how (Explain Mode), MIT, credited here: the register's row of 2026-10-22 on the atlas, the explain start with a discovery mode, on the operator's words of 2026-10-22, \"they should kind of be a system in itself\"; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "part": "references",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# explain: the practice's mechanics\n\nThis page holds where explain's work lands in the workspace and the commands its refresh reads, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "Opens explain's references page and says when to read it.",
+          "gist": "Opens explain's references page and says when to read it"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe change that writes or refreshes the atlas has its record at `.greenline/ledger/<id>.md`, its `## start` section naming explain and the pages. The atlas lives in the visual home, `.greenline/visuals/`:\n\n- `atlas.json`, the index: its layers in order from the entry points to the foundations; each subsystem with its name, title, layer, one-line summary, the files it covers (a trailing `/` for a directory), the commit its page was read at, the date and the subsystems it calls; the refreshes, each with its change, its commit, whether it was whole, the pages it rewrote, the version of the practice it ran under and its cost.\n- `subsystems/<name>.md`, each subsystem's page.\n- `subsystems/<name>/<slug>.svg`, `.html` or `.md`, each journey, with its manifest `<slug>.visual.json` beside it in the form `.greenline/WORK.md` gives (\"Durable visuals\"), its `skill` `explain` or `diagram-design` and its `form` `journey`, and its `brief`, the six fields of the brief written first at `.greenline/tmp/<id>/pictures/<slug>.brief.md`, which the fresh agent copies into the manifest.\n- `documents.json`, the documents index: each of the repository's own documents with its `path`, its `author`, `practice` or `owner`, the `files` it covers, the `commit` it was kept at and the `change` that kept it, null for discovery's; the hooks keep a listed document's commit when a change writes it.\n\n```json\n{\n  \"schema\": \"greenline.atlas/v1\",\n  \"layers\": [\"entry\", \"core\", \"foundations\"],\n  \"subsystems\": [\n    {\n      \"name\": \"http\",\n      \"title\": \"The HTTP layer\",\n      \"layer\": \"entry\",\n      \"summary\": \"Hands each request to its handler and writes the answer.\",\n      \"files\": [\"src/http/\"],\n      \"commit\": \"0123abc\",\n      \"read\": \"2026-10-25\",\n      \"calls\": []\n    }\n  ],\n  \"refreshes\": [\n    {\n      \"change\": \"2026-10-25-atlas\",\n      \"commit\": \"0123abc\",\n      \"whole\": true,\n      \"pages\": [\"http\"],\n      \"greenline\": \"0.2.0\",\n      \"cost\": \"one agent, four minutes\"\n    }\n  ]\n}\n```\n\nA page's commit is `git rev-parse HEAD` when it was read, and the version is the one `greenline --version` prints.",
+          "kind": "home",
+          "reason": "explain's mechanics: the atlas's index with its form, each page and journey with its manifest, held apart from the front. J-147 S1: the documents index, the refresh's cost and the map's offers. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the index's offers leave, since J-176 S1 refuses an index that carries them. J-204 S1 (the register's row of 2026-11-08, \"One offer per change at the caps\"): each journey's brief and its manifest's fields.",
+          "gist": "The atlas's index, its pages and journeys, with their manifests"
+        },
+        {
+          "passage": "written",
+          "text": "## Drift and the refresh\n\n`greenline status` reports a page whose covered files changed since the commit it was read at (GL0603), and a listed document that drifted the same way (GL0607). The files a page's refresh re-reads are those `git diff --name-only <commit>..HEAD -- <files>` names. The close's refresh writes each page's new commit into `atlas.json` and its refresh with its cost, and the record's `refreshes` line names the agent apart, counted nowhere, with its pages and its cost: `{ by: explain, pages: \"http, map\", cost: \"one agent, four minutes\" }`. Done waits until the touched pages are refreshed, or the owner's words \"leave the pages\" stand in the close section; a refresh of its own change records its cost in its front matter's `agents` and `rounds`.",
+          "kind": "home",
+          "reason": "explain's mechanics for a refresh: the drift status reports, the diff that names the dirty files, and where the refresh and its cost are recorded. J-147 S1 and S3: GL0607, the close's refresh in the index and the record, and done held until the pages are refreshed or left in the owner's words.",
+          "gist": "The drift notices, the dirty files' diff, the refresh's record and hold"
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "An explanation asked for in a question is answered in the reply and writes nothing.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap"
+    },
+    {
+      "promise": "Writing the atlas waits for a proposed mode and the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "The atlas change's record opens with a ## start section naming explain and the pages it will write, and its close names the pages written.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No status reading requires the start section or the pages named, and no scenario reaches explain's start. J-147 notes explain loaded twice in 101 runs, but no run observed this record's form fail, so the second condition fails."
+    },
+    {
+      "promise": "A fresh agent makes the map, every journey and every durable diagram, and the session draws only inline.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0604",
+      "cost": "free",
+      "oracle": "The pictures, the offer and the making"
+    },
+    {
+      "promise": "A subsystem's page and journey are kept in the atlas only on the owner's ask; nothing is offered.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The map's first pages and the documents' drift",
+      "cost": "free"
+    },
+    {
+      "promise": "Show the candidate subsystems in the reply as a table with a box drawing of their layers, and write nothing until the owner picks.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Inside the open atlas change, no hold stops a write before the pick. No run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "A document the owner wrote is named for its refresh, never rewritten unasked.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0607",
+      "cost": "free",
+      "oracle": "The pictures, the drift notice"
+    },
+    {
+      "promise": "A map the owner asked for is carried to its last page under the change's record, and the close names any page not made.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The map's first pages and the documents' drift",
+      "cost": "free"
+    },
+    {
+      "promise": "Write the atlas index, the documents index and each journey's manifest in the forms the references page gives.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0602",
+      "cost": "free"
+    },
+    {
+      "promise": "The close refreshes the touched pages, up to three, without asking, through one fresh agent, and names them with their cost in the record's refreshes line. Done waits for the refresh or for the owner's words \"leave the pages\".",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "atlas-refresh",
+      "cost": "cheap",
+      "oracle": "The pictures, the drift notice"
+    },
+    {
+      "promise": "Past three pages, or for the whole atlas, the refresh waits for the owner's ask as a change of its own.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "atlas:",
+      "cost": "free"
+    },
+    {
+      "promise": "Re-read the whole atlas at most once per minor version of the practice, unless the owner names it.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "atlas.json's refreshes carry the version, but nothing reads them for this limit. No run observed it fail, so the second condition fails."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "how does",
+        "how do",
+        "explain",
+        "walk me through",
+        "end to end",
+        "what happens when",
+        "map its subsystems",
+        "subsystems",
+        "atlas"
+      ],
+      "weight": 3,
+      "read": "whole"
+    },
+    {
+      "words": ["how did you", "why does", "where is"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
+    }
+  ]
+}

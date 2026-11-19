@@ -1,0 +1,60 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-intake-design-md-enters-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-25-intake-impeccable-enters-design",
+    "sha256": "51be41a4d4d03eb65fe70aa747a0b300976e21c4458ba1937234c4c19173bdac"
+  },
+  "source": {
+    "repository": "https://github.com/google-labs-code/design.md",
+    "commit": "6e5da5382f41edbba9d73b2c62f33f32e9971f15",
+    "path": "docs/spec.md"
+  },
+  "licence": "permissive-other",
+  "verdict": "lift",
+  "gist": "The DESIGN.md format is the home's; its lint rules restated",
+  "reason": "The DESIGN.md format is the home's, by its schema and section order, and its linter's rules enter the registry as drift rules restated; its prose and code are not copied.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "design",
+    "catches": "An interface built with no design context: no direction dealt before code, no home for the owner's taste, no rule checked at widths, no fresh reading of the render",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "J-123's walk on the real candidate, which shows the step and its pages read at each depth"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "design",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "design",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "design",
+        "depth": "independent",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-lieflat-charts",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-refactoring-ui-skill",
+    "sha256": "26922b416a9e97eff9a571a4e23e6f6660637061ffc52f85de5eeeee1904a59b"
+  },
+  "source": {
+    "repository": "https://github.com/larashero3-dotcom/lieflat-charts",
+    "commit": "ed436ba56b3cbeee20b9b9966b38a9a9689e239c",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held: a noncommercial licence",
+  "reason": "Its noncommercial licence is not open source; its honesty rules enter only as facts with independent sources.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': lieflat-charts is held on its noncommercial licence"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': lieflat-charts is held on its noncommercial licence"
+    }
+  ]
+}

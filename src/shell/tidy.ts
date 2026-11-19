@@ -11,19 +11,24 @@ import { dirname, join, parse, sep } from "node:path";
 import { z } from "zod";
 import { err, ok, type Result } from "../commons/result.ts";
 import { isChangeId } from "../core/change.ts";
+import { discussionPath } from "../core/discussion.ts";
 import {
+  discussionTidyVerdict,
   tidyVerdict,
   type LedgerText,
   type TargetPath,
   type TidyDisk,
   type TidyReason,
+  type TidyVerdict,
 } from "../core/tidy.ts";
 
 /**
  * `greenline tidy` on the disk (`workshop/components/cli-contracts.md`,
  * "The tidy command"): it removes `.greenline/tmp/<id>/` of a done or dropped
  * change, by `tidyVerdict` in `src/core/tidy.ts`, and nothing else. It runs
- * under the writer lock the CLI takes for every write and runs no git. Before
+ * under the writer lock the CLI takes for every write and runs no git; the
+ * change's own worktree, which `--worktree` removes, is
+ * `src/shell/worktree.ts`'s. Before
  * it removes a folder it checks the disk: `.greenline/` and its tmp folder
  * are folders, no links and on one file system, the working folder is a
  * folder inside tmp and no link, every file of the ledger could be read, no
@@ -323,13 +328,79 @@ export function tidyWorkingFolders(
   change: string | undefined,
   deviceOf: DeviceOf = lstatDevice,
 ): Result<TidyReport, TidyRemovalFailed> {
-  const named = change !== undefined;
-  const refuse = (path: string, reason: TidyReason): Result<TidyReport, never> =>
-    ok({ removed: [], kept: [{ path, reason, refused: true }] });
   if (change !== undefined && !isChangeId(change))
-    return refuse(WORKING, { kind: "not-a-change-id", name: change });
+    return ok(refused(WORKING, { kind: "not-a-change-id", name: change }));
+  return tidyFolders(
+    root,
+    change,
+    (id, ledger, disk) =>
+      tidyVerdict(
+        id,
+        ledger.find((file) => file.path === `${LEDGER}/${id}.md`)?.text,
+        ledger.texts,
+        disk,
+      ),
+    deviceOf,
+  );
+}
+
+/**
+ * Remove one discussion's working folder, `.greenline/tmp/<id>/`, once its
+ * record parses and it is declined, promoted or merged, and nothing in the
+ * ledger cites a path in it (J-118 S1, `greenline tidy --discussion`): the
+ * disk's checks are the changes' own, and keeping it refuses the request.
+ * @param root the repository root
+ * @param discussion the discussion's id
+ * @param deviceOf the device id a path stands on; the disk's, unless a test names another
+ * @returns what was removed and kept, or the removal that failed part way
+ */
+export function tidyDiscussionFolder(
+  root: string,
+  discussion: string,
+  deviceOf: DeviceOf = lstatDevice,
+): Result<TidyReport, TidyRemovalFailed> {
+  if (!isChangeId(discussion))
+    return ok(refused(WORKING, { kind: "not-a-discussion-id", name: discussion }));
+  return tidyFolders(
+    root,
+    discussion,
+    (id, ledger, disk) =>
+      discussionTidyVerdict(
+        id,
+        ledger.find((file) => file.path === discussionPath(id))?.text,
+        ledger.texts,
+        disk,
+      ),
+    deviceOf,
+  );
+}
+
+/** One folder kept, refusing the request. */
+function refused(path: string, reason: TidyReason): TidyReport {
+  return { removed: [], kept: [{ path, reason, refused: true }] };
+}
+
+/** The ledger as the verdicts read it: its texts, and a finder by path. */
+interface LedgerTexts {
+  readonly texts: readonly LedgerText[];
+  readonly find: (predicate: (file: LedgerText) => boolean) => LedgerText | undefined;
+}
+
+/** How one working folder is judged: from its id, the ledger and the disk's view. */
+type FolderVerdict = (id: string, ledger: LedgerTexts, disk: TidyDisk | undefined) => TidyVerdict;
+
+/**
+ * Remove the working folders the verdict allows: the one named, or every
+ * change's when none is named, with the disk's checks before each removal.
+ */
+function tidyFolders(
+  root: string,
+  named: string | undefined,
+  verdictOf: FolderVerdict,
+  deviceOf: DeviceOf,
+): Result<TidyReport, TidyRemovalFailed> {
   const redirect = redirection(root);
-  if (redirect !== undefined) return refuse(redirect, { kind: "redirected" });
+  if (redirect !== undefined) return ok(refused(redirect, { kind: "redirected" }));
   const working = join(root, WORKING);
   if (!exists(working)) return ok({ removed: [], kept: [] });
   const rootReal = realpathSync(root);
@@ -337,33 +408,36 @@ export function tidyWorkingFolders(
   const device = deviceOf(working);
 
   let candidates: readonly string[];
-  if (change !== undefined) candidates = exists(join(working, change)) ? [change] : [];
+  if (named !== undefined) candidates = exists(join(working, named)) ? [named] : [];
   else {
     try {
       candidates = readdirSync(working)
         .filter((name) => isChangeId(name))
         .sort();
     } catch (error) {
-      return refuse(WORKING, { kind: "unreadable", detail: `${WORKING}: ${String(error)}` });
+      return ok(refused(WORKING, { kind: "unreadable", detail: `${WORKING}: ${String(error)}` }));
     }
   }
   if (candidates.length === 0) return ok({ removed: [], kept: [] });
 
-  const ledger = ledgerFiles(root);
-  if (ledger.kind === "unreadable")
-    return refuse(LEDGER, { kind: "unreadable", detail: ledger.detail });
+  const read = ledgerFiles(root);
+  if (read.kind === "unreadable")
+    return ok(refused(LEDGER, { kind: "unreadable", detail: read.detail }));
+  const ledger: LedgerTexts = {
+    texts: read.texts,
+    find: (predicate) => read.texts.find(predicate),
+  };
   const removed: string[] = [];
   const kept: TidyKept[] = [];
   for (const id of candidates) {
     const path = `${WORKING}/${id}`;
     const real = join(workingReal, id);
-    const record = ledger.texts.find((file) => file.path === `${LEDGER}/${id}.md`)?.text;
     // A link in the ledger that resolves into the folder makes it a place the ledger holds.
-    const linked = ledger.links.find((link) => touches(link.real, real));
+    const linked = read.links.find((link) => touches(link.real, real));
     const verdict =
       linked === undefined
-        ? tidyVerdict(id, record, ledger.texts, diskFor(rootReal, real))
-        : tidyVerdict(id, record, []);
+        ? verdictOf(id, ledger, diskFor(rootReal, real))
+        : verdictOf(id, { texts: [], find: ledger.find }, undefined);
     const reason: TidyReason | undefined =
       verdict.kind === "keep"
         ? verdict.reason
@@ -372,7 +446,7 @@ export function tidyWorkingFolders(
           : { kind: "cited", by: linked.path, target: linked.real };
     if (reason !== undefined) {
       const quiet =
-        !named &&
+        named === undefined &&
         (reason.kind === "unfinished" || reason.kind === "no-record" || reason.kind === "unparsed");
       kept.push({ path, reason, refused: !quiet });
       continue;

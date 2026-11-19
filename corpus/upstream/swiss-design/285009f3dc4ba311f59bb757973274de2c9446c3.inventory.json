@@ -1,0 +1,35 @@
+{
+  "commit": "285009f3dc4ba311f59bb757973274de2c9446c3",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "edeb16e7ab15c9ef740bd80355d8d414c59a17306ac333b8448bf67e8ed69e9f"
+    },
+    {
+      "path": "swiss-design/SKILL.md",
+      "sha256": "7b7b471950e66d68491c8320e1acaa781e6cefb32a3fe04dcefc650ed8ac4eb8"
+    },
+    {
+      "path": "swiss-design/references/components.md",
+      "sha256": "818789842a93f14527afd27526148d45a1b343469b20c27c795fb1061c8c91d3"
+    },
+    {
+      "path": "swiss-design/references/design-system.md",
+      "sha256": "1108ac4dbde618762580833e41903ed565733de073b18bde3ab6f05e0e868aa5"
+    },
+    {
+      "path": "swiss-design/references/prompting.md",
+      "sha256": "be62dc5462286b3ed984a59bd2a0ba0bf655a777ed599c8b8fa5734b04bd7870"
+    },
+    {
+      "path": "swiss-design/references/tailwind-config.md",
+      "sha256": "74e0c44275efb78360053470d24dd841c22812bc45d2b549997f75f685371d01"
+    }
+  ],
+  "entries": [
+    {
+      "name": "swiss-design",
+      "path": "swiss-design"
+    }
+  ]
+}

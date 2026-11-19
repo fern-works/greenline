@@ -18,7 +18,43 @@
       "passages": [
         {
           "passage": "written",
-          "text": "# Use garden\n\ngarden is a separately installed command that answers engineering guidance\nquestions from a published body of units. This repository's owner enabled it,\nso you may consult it whenever a question below is relevant, without asking\neach time. This method says when a consultation is relevant, what must be in\nplace, how a consultation stays bounded, what a result is worth here and what\nto do when a consultation fails. The commands, their flags and their replies\nare in [operations.md](operations.md). This habit writes no record of its own: the CLI\nwrites each consultation's receipts, and the section of the step that made the\nchoice says what a consultation changed.",
+          "text": "# Use garden\n\ngarden is a separately installed command that answers engineering guidance\nquestions from a published body of units.",
+          "kind": "method",
+          "reason": "The title and opening: garden is a separately installed guidance command the owner enabled, consulted through greenline. Re-cut at S18b: the habit writes no record of its own, the receipts being the CLI's and the step's section saying what a consultation changed.",
+          "gist": "Opens the habit: garden is a separate command the owner enabled",
+          "ruling": "use-garden-2026-09-26, the old chain's native entry that wrote the method under the operator's rulings of 2026-09-22 (garden is consulted when relevant without a per-lookup question, never as a duty before every edit, and one optional skill owns the instructions behind a short conditional pointer), and use-garden-answers-2026-09-28, which corrected it under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request; under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling"
+        },
+        {
+          "passage": "written",
+          "text": "The commands, their flags and their replies\nare in [operations.md](operations.md). This habit writes no record of its own: the CLI\nwrites each consultation's receipts, and the section of the step that made the\nchoice says what a consultation changed.",
+          "kind": "method",
+          "reason": "The title and opening: garden is a separately installed guidance command the owner enabled, consulted through greenline. Re-cut at S18b: the habit writes no record of its own, the receipts being the CLI's and the step's section saying what a consultation changed.",
+          "gist": "Opens the habit: garden is a separate command the owner enabled",
+          "ruling": "use-garden-2026-09-26, the old chain's native entry that wrote the method under the operator's rulings of 2026-09-22 (garden is consulted when relevant without a per-lookup question, never as a duty before every edit, and one optional skill owns the instructions behind a short conditional pointer), and use-garden-answers-2026-09-28, which corrected it under the operator's ruling of 2026-09-28 that a request for a recommendation consults under a minimal recorded request; under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Before the first consultation, read [method.md](method.md): when one is relevant, what must be in place, how it runs, what a result is worth here and what to do when it fails.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Use garden: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "This repository's owner enabled it,\nso you may consult it whenever a question below is relevant, without asking\neach time. This method says when a consultation is relevant, what must be in\nplace, how a consultation stays bounded, what a result is worth here and what\nto do when a consultation fails.",
           "kind": "method",
           "reason": "The title and opening: garden is a separately installed guidance command the owner enabled, consulted through greenline. Re-cut at S18b: the habit writes no record of its own, the receipts being the CLI's and the step's section saying what a consultation changed.",
           "gist": "Opens the habit: garden is a separate command the owner enabled",
@@ -121,5 +157,106 @@
     }
   ],
   "copies": [],
-  "drops": []
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "A consultation is not announced as a step, and no consultation that was not made is announced or implied.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing compares a reply's claims with the receipts, and no QA scenario exercises garden."
+    },
+    {
+      "promise": "It never fetches garden's service or site directly and never runs the garden command itself. Every consultation goes through the connector's call.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No before-tool rule reads the command text for a direct run, and no run observed one, so condition 2 fails."
+    },
+    {
+      "promise": "The key is checked only for presence. It is never printed, written to a file or the manifest, or asked for in the conversation.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The connector's own private-data refusal guards the call's arguments, but no hook reads a print or a write of the key. No run observed a breach."
+    },
+    {
+      "promise": "A consultation that serves a change names that change, open or stopped, and a question's consultation names none and writes only its receipts.",
+      "page": "method.md",
+      "kind": "record",
+      "where": ".greenline/ledger/receipts/, listed per change as its consultations by greenline status",
+      "cost": "free"
+    },
+    {
+      "promise": "It never enables, disables, installs or reconfigures garden, and on a configuration failure it changes no configuration.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No hook rule reads the connector's enable or disable commands, and no run exercised this."
+    },
+    {
+      "promise": "Unit bodies stay in the tool output. A result is never saved to a file or copied into the decisions book or a rule file.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading compares written files with delivered units, and no run exercised garden."
+    },
+    {
+      "promise": "What a consultation changed is said in the change's sections, with the consultation ids and the code or check evidence. A question's consultation says it in the answer.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Status lists the receipts but no lint reads the sections for their consultation ids. No run cites a breach."
+    },
+    {
+      "promise": "A relevant consultation is attempted even when garden looks unavailable. A failure gets one notice per request, no permission question and no retry loop.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing records a skipped consultation, and no run exercised garden."
+    },
+    {
+      "promise": "A budget or exclusion refusal is met by narrowing the call, never by opening another request to get past it.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The connector refuses per request, but nothing reads a second request opened to get round it. No run exercised this."
+    },
+    {
+      "promise": "On a private-data failure the owner is told that the endpoint needs checking and the key may be exposed, and the same call is not repeated.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No run exercised a private-data failure, so condition 2 fails."
+    },
+    {
+      "promise": "Where missing guidance blocks an action, only that action is held, with the missing guidance and the reason named, and the rest of the work continues.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is judgment on the work's scope with no reader. No run exercised it."
+    },
+    {
+      "promise": "It never manufactures a reply, a receipt or a unit's content, never switches silently to another source, keeps no copy of a unit, and never edits a receipt by hand.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "GL0401 names only a receipt collection that does not parse, not a hand edit that still parses. No run exercised garden."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "best practice",
+        "which library",
+        "should we use",
+        "is it worth",
+        "pitfall",
+        "recommended way",
+        "which approach"
+      ],
+      "weight": 2,
+      "read": "part"
+    }
+  ]
 }

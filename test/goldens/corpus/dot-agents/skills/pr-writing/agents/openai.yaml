@@ -1,0 +1,3 @@
+interface:
+  display_name: "Pr Writing"
+  short_description: "Write or review a commit message, a PR title or a PR body that says what changed and why: the diff read first, a commit in build's commit form and a PR title in the same form, a body of what and why, never how, and a PR body of what changed, why, how to verify, the risk and the notes, linking the change record. Use when a commit message, a PR title or a PR body is about to be written, reworded or reviewed, and at a change's close."

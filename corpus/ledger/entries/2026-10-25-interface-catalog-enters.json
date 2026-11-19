@@ -1,0 +1,198 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-interface-catalog-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-architecture-survey-learns-the-interface-practice",
+    "sha256": "26aa260940b41ab4caf5afc6b1c7570f59e96a7e302f3c0164b5900b9587fe34"
+  },
+  "subject": "skill:interface-catalog",
+  "recipe": "4d57de54d54085f14ee540d2f81019418567a00307e0e39b5b90ac748acb9b83",
+  "result": "b0be4ec726fe77fe16c9984a727cdde0fe26ed36eaf8674a838d86a2c735856d",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The extra habit interface-catalog enters, the entries the design step deals from",
+  "reason": "interface-catalog enters as an extra habit installed on request: a short page on how the deal is drawn and an entry read, its mechanics page with the deal command, and the entries J-122 S4 normalised as data beside it.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "taste-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "arla6ka-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "emilkowalski-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "web-animation-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "prototyper-ui",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "jakubkrehel-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "shadow-plugin",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "antfu-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "swiss-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "elithrar-dotfiles",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "regards-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "dimillian-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "callstack-agent-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "joe-bell-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 546
+  }
+}

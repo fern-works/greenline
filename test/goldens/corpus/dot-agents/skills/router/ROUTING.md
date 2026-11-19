@@ -55,6 +55,9 @@ steps its plan's record holds.
 | The repository lacks its baseline | `groundwork`, a start that sets up only what the purpose needs | `build`, which works inside a baseline |
 | An idea the owner brings is still vague | `idea-refine` (trial), a start that varies it, stress-tests it and states its assumptions before any change | `what-to-build`, which proposes ideas from the repository's own evidence |
 | The repository's quality bar is unwritten, or a check was loosened to reach green | `constraint-driven-development` (trial), a start that writes the bar down and guards it | `groundwork`, which sets up the baseline a bar measures |
+| A promise an order of events or an input no test reached could break | `verify-formally`, a start that checks a model or a bound and keeps the check in step with the code | `verify`, which proves a change's claims on the code as it runs |
+| How a part of the code works, or the map of its subsystems | `explain`, a start that traces it from the code and keeps the atlas's pages | `architecture-survey`, which surveys the whole structure for deepenings |
+| A mechanism to explain as a figure | `anatomy`, a habit that builds an interactive figure of a real object driven by a truth model | `show-me`, which draws the reply's text views |
 
 Use evidence available locally before asking the owner a factual question.
 When two plausible tasks remain, explain the difference in the intended

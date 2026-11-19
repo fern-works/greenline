@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-mattpocock-skills-git-guardrails",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-superpowers-using-git-worktrees",
+    "sha256": "caf7b2b8316f2be6a7cbadecdcf6e9ed8eb105c5d953def05d3039caa61786fe"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+    "path": "skills/misc/git-guardrails-claude-code"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its list of destructive git commands lifts into the harness hook",
+  "reason": "Its refused git commands enter greenline's harness hook on every harness, each lifted by the record's rebase, discard or landing line, built in J-114 S3. Its settings.json mechanism and its substring match stay behind.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': git-guardrails-claude-code lifts into the harness hook, placed on build at no words, in its portable form, the substring-match finding passed to the hook's build"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': git-guardrails-claude-code lifts into the harness hook, placed on build at no words, in its portable form, the substring-match finding passed to the hook's build"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "build",
+    "catches": "Uncommitted work or a branch's history destroyed by one command the owner never authorised",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run where the hook's refusal alone did not lead the agent to ask the owner for the record's line"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "build",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "build",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

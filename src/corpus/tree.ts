@@ -126,6 +126,7 @@ export function readSnapshots(
   };
   return ok({
     sources: new Set(roots.keys()),
+    words: new Map(manifest.value.words.map((source) => [source.name, source.phrases])),
     bytes,
     text: (source, file) => {
       const raw = bytes(source, file);
@@ -405,8 +406,17 @@ function isDirectory(path: string): boolean {
   return existsSync(path) && statSync(path).isDirectory();
 }
 
+/** The file that marks a studied site's capture, the pin of a source with no commit. */
+const CAPTURE_FILE = "capture.json";
+
 /**
- * Every snapshot directory under `corpus/upstream/`, pinned or not.
+ * Every snapshot directory under `corpus/upstream/`, pinned or not. A
+ * directory holding `capture.json` is a studied site's capture, not a
+ * snapshot: the site's screenshots and its sheet of computed values, dated,
+ * kept beside the snapshots as its pin (the pin item of
+ * `workshop/skills/procedure-ingest/SKILL.md`; `craft-design-study`). The
+ * manifest never pins a capture, so it is passed over here and no cleanup
+ * counts it removable.
  * @param corpus the corpus directory
  * @returns each `upstream/<source>/<commit>` directory, sorted; none when there is no `upstream`
  */
@@ -420,6 +430,7 @@ export function snapshotDirectories(corpus: string): readonly SnapshotDirectory[
       readdirSync(join(upstream, source))
         .sort()
         .filter((commit) => isDirectory(join(upstream, source, commit)))
+        .filter((commit) => !existsSync(join(upstream, source, commit, CAPTURE_FILE)))
         .map((commit) => ({ source, commit, snapshot: `upstream/${source}/${commit}` })),
     );
 }

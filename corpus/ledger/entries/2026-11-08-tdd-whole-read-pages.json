@@ -1,0 +1,151 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-08-tdd-whole-read-pages",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-08-close-merge-on-the-owners-words",
+    "sha256": "5af5a3479682ee9f161d3d3771498cbecea73e87807cf9e77db31408e0765eb1"
+  },
+  "subject": "skill:tdd",
+  "recipe": "123527d20f0dbdaeb092c78a9d392c79e996dbe7c99bca50a59038fb9b6a4c2b",
+  "result": "32ccf59024dad68a0597059dce600be9d0c1fa46a915c5b71b79c1d6b1228a3a",
+  "pages": [],
+  "gist": "A whole read names the method and tests pages",
+  "reason": "The recipe names the pages a whole read of tdd includes, its method page and its tests page, so the owes line and the done door hold tdd owed whole until each is read whole, one page per read.",
+  "authorisedBy": {
+    "date": "2026-11-08",
+    "words": "J-203 S1, on the operator's words of 2026-11-08, \"you have my go, see this through release of 0.2.0\", fast with the review waived, and the job's ruling under the register's row of 2026-11-05, \"The keeper over the oracle\": the pages a whole read includes are the recipe's fact, rendered into the runtime and read by the owes line and the record lint, so a skill owed whole is held until its front and each page is read whole, one page per read"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the rename is the operator's ruling R23 of 2026-10-08 (modes-records-recipes), in the operator's words \"change context md to glossary md... for this one we follow upstream .. but do it correctly where if its being used by piepline then we have to update those as well\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "useful-tests of tjcages, at commit 170f1ca406f926f47433217f731ebf80a613719c, lifted with credit, ideas only, in greenline's words (the operator's ruling of 2026-10-08, \"everything is good\"): name the failure a new test would catch, extend an existing test first, and accept zero new tests only where existing coverage is the check the floor asks for (contradictions 17 and 21, ruled as recommended)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-26",
+      "words": "J-132's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the register's row of 2026-10-26, the judge's grade governs a stop: the merged-skills run's two blocking findings cured by putting each page where its method starts, ponytail's simplify page before a refactor's first edit, and tdd's references page, its bug-fix page and tests.md's checks in the rules of the loop"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; the pointer-before-use reading of J-140 S4 routed to it: a skill's reference page is pointed at where the method that needs it starts"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    },
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    },
+    {
+      "date": "2026-11-08",
+      "words": "J-203 S1, on the operator's words of 2026-11-08, \"you have my go, see this through release of 0.2.0\", fast with the review waived, and the job's ruling under the register's row of 2026-11-05, \"The keeper over the oracle\": the pages a whole read includes are the recipe's fact, rendered into the runtime and read by the owes line and the record lint, so a skill owed whole is held until its front and each page is read whole, one page per read"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 156,
+        "taken": 14,
+        "exact": 14,
+        "retention": 1,
+        "coverage": 0.08974358974358974,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 85,
+        "taken": 81,
+        "exact": 80,
+        "retention": 0.9876543209876543,
+        "coverage": 0.9529411764705882,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 66,
+        "taken": 46,
+        "exact": 46,
+        "retention": 1,
+        "coverage": 0.696969696969697,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 264,
+        "taken": 65,
+        "exact": 65,
+        "retention": 1,
+        "coverage": 0.24621212121212122,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 887
+  }
+}

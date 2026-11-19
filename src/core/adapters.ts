@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { shouldNeverHappen } from "../commons/defect.ts";
 import type { DeclaredCheck } from "./checks.ts";
 import { isJsonObject, parseJson, type JsonValue } from "./contract.ts";
 
@@ -43,6 +45,235 @@ export type Harness = (typeof HARNESSES)[number];
  */
 export function isHarness(name: string): name is Harness {
   return HARNESSES.some((harness) => harness === name);
+}
+
+/** A fact a source names for a surface, or `unknown` where none does. */
+export type SurfaceAnswer = "yes" | "no" | "unknown";
+
+/**
+ * One surface a harness runs on, and what it does there (J-110 S4; the note
+ * on what each harness renders, N-59): whether a person works at it, whether
+ * it renders a mermaid block or shows its source, so that the agent draws in
+ * the Unicode form, whether it gives the session a delegation tool for a
+ * fresh agent, and whether it gives one that makes a worktree, the ground's
+ * native tool (J-114 S1), and where the harness's question tool renders to
+ * the owner, `cards`, or does not, `reply`, which the interview's channel
+ * follows (J-117 S2; the register's row of 2026-10-23 on the interview's
+ * channel). A harness no source has read renders text, puts its questions in
+ * the reply and its other facts are unknown.
+ */
+export interface SurfaceFacts {
+  readonly harness: Harness;
+  readonly surface: string;
+  readonly interactive: SurfaceAnswer;
+  readonly renders: "mermaid" | "text";
+  readonly delegation: SurfaceAnswer;
+  /** Whether the harness gives the session a native tool that makes a worktree, which the ground's worktree is made with before git. */
+  readonly worktree: SurfaceAnswer;
+  /** Where frame's questions go: through the harness's question tool, which renders cards to the owner here, or in the reply that ends the turn. */
+  readonly questions: "cards" | "reply";
+}
+
+/**
+ * The adapters' table, one row per harness and surface, each harness's
+ * first row the one a hook reads as running where the session says nothing
+ * of its surface: the first row is one that renders text, which every
+ * surface shows. Its questions fact is its interactive surface's, cards
+ * where the harness has a question tool that renders: a session the tool is
+ * not offered to, as Codex's default mode is, or where it does not render,
+ * puts every question in the reply, as frame's interview page says. A Codex
+ * session says which of its rows runs (J-151 S1, {@link runningSurface}).
+ */
+export const SURFACES: readonly SurfaceFacts[] = [
+  {
+    harness: "claude-code",
+    surface: "terminal",
+    interactive: "yes",
+    renders: "text",
+    delegation: "yes",
+    worktree: "yes",
+    questions: "cards",
+  },
+  {
+    harness: "claude-code",
+    surface: "desktop app, VS Code extension and mobile",
+    interactive: "yes",
+    renders: "text",
+    delegation: "yes",
+    worktree: "yes",
+    questions: "cards",
+  },
+  {
+    harness: "claude-code",
+    surface: "headless, claude -p",
+    interactive: "no",
+    renders: "text",
+    delegation: "yes",
+    worktree: "yes",
+    questions: "reply",
+  },
+  // Codex hands the session no tool that makes a worktree on the CLI and in exec, which the runs of the final
+  // series read in the session's tools (j217t-ground F7): worktree no there, the app's rows unknown (J-228 S1).
+  // Codex offers its question tool in plan mode alone, on the CLI and in the app; exec strips it.
+  // Codex starts a sub-agent where AGENTS.md or a skill asks for one, its developer message says,
+  // and the runs of 2026-10-31 started sixteen through it (j109t-linear): delegation yes (J-174).
+  {
+    harness: "codex",
+    surface: "CLI, plan mode",
+    interactive: "yes",
+    renders: "text",
+    delegation: "yes",
+    worktree: "no",
+    questions: "cards",
+  },
+  {
+    harness: "codex",
+    surface: "CLI, default mode",
+    interactive: "yes",
+    renders: "text",
+    delegation: "yes",
+    worktree: "no",
+    questions: "reply",
+  },
+  {
+    harness: "codex",
+    surface: "desktop app, plan mode",
+    interactive: "yes",
+    renders: "mermaid",
+    delegation: "yes",
+    worktree: "unknown",
+    questions: "cards",
+  },
+  {
+    harness: "codex",
+    surface: "desktop app, default mode",
+    interactive: "yes",
+    renders: "mermaid",
+    delegation: "yes",
+    worktree: "unknown",
+    questions: "reply",
+  },
+  {
+    harness: "codex",
+    surface: "headless, codex exec",
+    interactive: "no",
+    renders: "text",
+    delegation: "yes",
+    worktree: "no",
+    questions: "reply",
+  },
+  ...HARNESSES.filter((harness) => harness !== "claude-code" && harness !== "codex").map(
+    (harness): SurfaceFacts => ({
+      harness,
+      surface: "its own",
+      interactive: "unknown",
+      renders: "text",
+      delegation: "unknown",
+      worktree: "unknown",
+      questions: "reply",
+    }),
+  ),
+];
+
+/**
+ * What a session says of the surface it runs on, each fact as the harness
+ * records it and undefined where it records none: the hook payload's
+ * `permission_mode`, `plan` in Codex's plan mode, and the session's
+ * `source`, which a Codex rollout's first line names, `exec` under `codex
+ * exec` (J-151 S1).
+ */
+export interface SurfaceSignals {
+  readonly permissionMode?: string | undefined;
+  readonly source?: string | undefined;
+}
+
+/** Codex's row a session's signals name: exec headless, else plan mode's or the default mode's row of its CLI, which renders text; undefined where they say nothing. */
+function codexSurfaceName(signals: SurfaceSignals): string | undefined {
+  if (signals.source === "exec") return "headless, codex exec";
+  if (signals.permissionMode === undefined) return undefined;
+  return signals.permissionMode === "plan" ? "CLI, plan mode" : "CLI, default mode";
+}
+
+/**
+ * The surface a hook reads as running for a harness (J-151 S1): on Codex
+ * the row the session's signals name, the exec row wherever the session's
+ * source is exec, whose question tool is stripped, so its questions go in
+ * the reply; plan mode's row for the plan permission mode and the default
+ * mode's for any other; and the harness's first row where the signals say
+ * nothing or the harness has no row they choose. Codex's app is not told
+ * from its CLI, so an interactive session reads the CLI's rows, which render
+ * text.
+ * @param harness the harness the adapter names
+ * @param signals what the session says of its surface
+ * @returns its row
+ */
+export function runningSurface(harness: Harness, signals: SurfaceSignals = {}): SurfaceFacts {
+  const rows = SURFACES.filter((row) => row.harness === harness);
+  const named = harness === "codex" ? codexSurfaceName(signals) : undefined;
+  return (
+    rows.find((row) => row.surface === named) ??
+    rows[0] ??
+    shouldNeverHappen(`the adapters' table holds no row for ${harness}`)
+  );
+}
+
+/**
+ * A row of the adapters' table by its harness and surface.
+ * @param harness the harness
+ * @param surface the surface's name, as the row names it
+ * @returns the row, or undefined where the table holds none
+ */
+export function surfaceRow(harness: Harness, surface: string): SurfaceFacts | undefined {
+  return SURFACES.find((row) => row.harness === harness && row.surface === surface);
+}
+
+/** A Codex rollout's first line: the session's meta, whose source names how it was started. */
+const SESSION_META = z.object({
+  type: z.literal("session_meta"),
+  payload: z.object({ source: z.string().min(1) }),
+});
+
+/**
+ * The session's source a Codex rollout's first line names, its
+ * `session_meta` line's `source`: `exec` for `codex exec`, `cli` for the
+ * interactive CLI (J-151 S1). A sub-agent's thread names its source as an
+ * object, which is no surface.
+ * @param line the rollout's first line
+ * @returns the source, or undefined where the line names none
+ */
+export function codexSessionSource(line: string): string | undefined {
+  const read = SESSION_META.safeParse(parseJson(line));
+  return read.success ? read.data.payload.source : undefined;
+}
+
+/**
+ * The running surface's row as status prints it.
+ * @param row the row
+ * @returns the line, unindented
+ */
+export function surfaceLine(row: SurfaceFacts): string {
+  return `surface: ${row.harness}, ${row.surface}: renders ${row.renders}; interactive ${row.interactive}; delegation ${row.delegation}; worktree ${row.worktree}; questions ${row.questions}`;
+}
+
+/**
+ * The rule the Codex adapter's instructions carry beside the block at every
+ * turn (J-144 S3; the register's row of 2026-10-27 on the reply's polish):
+ * Codex named skills by their files, linked their pages and quoted AGENTS.md
+ * at the owner, so its context restates the block's rule with the reasons
+ * Claude Code reads there.
+ */
+export const CODEX_REPLY_RULE =
+  "reply: no skill's name, page link or quote of AGENTS.md reaches the owner, who reads none of them; name a rule only when it stops something they asked for, in their terms, and say what it protects, as the block's reply section says on every harness";
+
+/**
+ * The instructions an adapter adds beside the block at a turn's start: the
+ * Codex rule on the owner's words, none on another harness, whose block
+ * alone carries it.
+ * @param harness the harness the adapter names
+ * @returns the line, or undefined
+ */
+export function adapterInstructions(harness: Harness): string | undefined {
+  return harness === "codex" ? CODEX_REPLY_RULE : undefined;
 }
 
 /**
@@ -577,6 +808,23 @@ export interface HooksReport {
   /** The harnesses whose adapter this workspace holds. */
   readonly adapters: readonly Harness[];
 }
+
+/**
+ * Who runs the sync that installs greenline's hooks where none is installed
+ * (J-224 S1, the runs j217t-states-stop and j217c-states-stop): the owner,
+ * or the agent on the owner's word, never the agent on a line's say-so.
+ */
+export const SYNC_ON_WORD =
+  "greenline sync installs them, run by the owner or, once the owner is told what it installs, on the owner's word";
+
+/**
+ * The line status prints in a checkout whose git configuration registers
+ * none of greenline's hooks where nothing else holds them, a clone before
+ * its first sync above all (J-193 S1, the run j179c-states-stop-2b): the
+ * hooks are not installed here, what installs them and whose word runs it
+ * (J-224 S1), never a hook on its own.
+ */
+export const HOOKS_NOT_INSTALLED_LINE: string = `hooks not installed here: this checkout's git configuration registers none of greenline's hooks, so no commit, rewrite or push is held to the record; ${SYNC_ON_WORD}`;
 
 /** The one line status and init print when no check is declared, with the two ways to declare one. */
 export const NO_CHECKS_LINE =

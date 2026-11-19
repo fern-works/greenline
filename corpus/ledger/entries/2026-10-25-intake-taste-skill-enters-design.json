@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-intake-taste-skill-enters-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-25-intake-hallmark-enters-design",
+    "sha256": "006c7d0431cba0231822c6bdc06d8c9f666e2f6952546bdc324480dfa9688f0e"
+  },
+  "source": {
+    "repository": "https://github.com/Leonxlnx/taste-skill",
+    "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+    "path": "skills/taste-skill"
+  },
+  "pin": "taste-skill",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its inventory, passes, imagery and app screens lift into design",
+  "reason": "Taste's material inventory, idea sentence, fourteen looking passes, three widths, imagery and app screens lift into design's pages in greenline's words, and its checks into the registry.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "design",
+    "catches": "An interface built with no design context: no direction dealt before code, no home for the owner's taste, no rule checked at widths, no fresh reading of the render",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "J-123's walk on the real candidate, which shows the step and its pages read at each depth"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "design",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "design",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "design",
+        "depth": "independent",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

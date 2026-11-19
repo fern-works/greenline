@@ -268,6 +268,46 @@ describe("greenline check runs the command", () => {
   });
 });
 
+describe("J-135 S2 a run of the interface check carries its name", () => {
+  it("records greenline check -- greenline check interface --path / on an interface change as the check named interface", async () => {
+    const space = workspace({
+      "2026-10-04-fix": record("open", ['interface: "yes, app"']),
+    });
+    writeFileSync(
+      join(space.root, ".greenline", "manifest.json"),
+      JSON.stringify({
+        schemaVersion: 6,
+        targets: ["claude-code"],
+        checks: [],
+        interface: {
+          roots: ["src/components"],
+          extensions: ["tsx"],
+          platform: "web",
+          frameworks: ["react"],
+          evidence: [],
+          confirmed: true,
+          check: true,
+        },
+      }),
+    );
+    // A greenline on the PATH the run reads, standing for the installed command.
+    const bin = mkdtempSync(join(tmpdir(), "check-bin-"));
+    cleanup.push(bin);
+    writeFileSync(join(bin, "greenline"), "#!/bin/sh\nexit 0\n", { mode: 0o755 });
+    const ran = await check(space, ["--", "greenline", "check", "interface", "--path", "/"], {
+      environment: { ...process.env, PATH: `${bin}:${process.env["PATH"] ?? ""}` },
+    });
+    expect(ran.code, ran.err).toBe(0);
+    const [facts] = factsOf(space.root, "2026-10-04-fix");
+    expect(facts).toMatchObject({
+      arguments: ["greenline", "check", "interface", "--path", "/"],
+      check: "interface",
+    });
+    expect(facts).not.toHaveProperty("dir");
+    expect(ran.err).toContain("the declared check 'interface'");
+  });
+});
+
 describe("greenline check runs a declared check in the directory it is declared in", () => {
   /** A workspace whose manifest declares the checks given, with a probe script in each directory that marks where it ran. */
   function declaring(
@@ -430,7 +470,7 @@ describe("greenline check refuses, runs nothing and writes no facts", () => {
     await refusedWith(
       workspace(),
       ["--step", "deploy", ...marking],
-      "unknown step 'deploy'; the steps are frame, plan, anticipate, build, review, verify, close",
+      "unknown step 'deploy'; the steps are frame, design, plan, anticipate, build, review, verify, close",
     );
   });
 
@@ -712,12 +752,15 @@ describe("greenline check --probe marks a probe recorded by mistake", () => {
     expect(result.out).toContain("never written over");
   });
 
-  it("J-89 S2 the help gives the short form first and names the step it reads and the plain run a probe", async () => {
+  it("J-89 S2 the help gives the short form first and names the step it reads, and J-178 S1 the probe recorded then marked", async () => {
     const result = await check(workspace(), ["--help"]);
     const text = result.out.replace(/\s+/g, " ");
     expect(text).toContain("'greenline check -- npm test' records it for the open change");
     expect(text).toContain("default: the step the record is in");
-    expect(text).toContain("A run whose green the change never claims, a probe, runs plainly");
+    expect(text).toContain(
+      "A run whose green the change never claims, a probe, goes through check too and is then marked with --probe",
+    );
+    expect(text).not.toContain("runs plainly");
   });
 });
 

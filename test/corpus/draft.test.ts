@@ -85,7 +85,7 @@ const todo = { kind: "<<fill>>", reason: "<<fill>>" };
 describe("draftRecipe", () => {
   it("drafts the fixture's copy to the fixture recipe's passages, every account left as the fill marker", () => {
     const { recipe, todos } = drafted();
-    expect(todos).toBe(3);
+    expect(todos).toBe(4);
     expect(asFile(recipeText(recipe))).toEqual({
       schema: "greenline.recipe/v1",
       name: "fixture-skill",
@@ -131,6 +131,8 @@ describe("draftRecipe", () => {
       ],
       copies: [{ path: "run.sh", source: SOURCE, file: "fixture/run.sh" }],
       drops: [{ source: SOURCE, file: "fixture/SKILL.md", segment: SKILL_IDS[7], ...todo }],
+      keepers: [],
+      promises: "<<fill>>",
     });
   });
 
@@ -193,7 +195,7 @@ describe("recipeText", () => {
     expect(long).toContain(`          "segments": [\n            "${SKILL_IDS[0]}",\n`);
   });
 
-  it("writes a notStub ruling last, in the credit's place, and reads back as the recipe it printed", () => {
+  it("writes a notStub ruling in the credit's place, before the keepers, and reads back as the recipe it printed", () => {
     const recipe = drafted().recipe;
     const ruled = {
       ...recipe,
@@ -201,7 +203,7 @@ describe("recipeText", () => {
     };
     const text = recipeText(ruled);
     expect(text).toMatch(
-      /\n {2}\],\n {2}"notStub": \[\n {4}\{\n {6}"source": "fixture-upstream",\n {6}"file": "fixture\/SKILL.md",\n {6}"ruling": "not a stub, the fixture's ruling"\n {4}\}\n {2}\]\n\}\n$/,
+      /\n {2}\],\n {2}"notStub": \[\n {4}\{\n {6}"source": "fixture-upstream",\n {6}"file": "fixture\/SKILL.md",\n {6}"ruling": "not a stub, the fixture's ruling"\n {4}\}\n {2}\],\n {2}"keepers": \[\],\n {2}"promises": "<<fill>>"\n\}\n$/,
     );
     expect(asFile(text)).toMatchObject({ notStub: ruled.notStub });
   });
@@ -218,6 +220,22 @@ describe("recipeText", () => {
     expect(text).toContain(`"reason": "R",\n      "gist": "G",\n      "ruling": "W"`);
     expect(asFile(text)).toMatchObject({ drops: [{ reason: "R", gist: "G", ruling: "W" }] });
     expect(recipeText(recipe)).not.toContain('"gist"');
+  });
+
+  it("J-182 S1 writes a drop's verdict and failure after its account, and leaves them out where the load test has not read it", () => {
+    const recipe = drafted().recipe;
+    const drop = recipe.drops[0];
+    if (drop === undefined) throw new Error("the fixture drops a segment");
+    const read = {
+      ...recipe,
+      drops: [{ ...drop, reason: "R", gist: "G", verdict: "load-bearing" as const, failure: "F" }],
+    };
+    const text = recipeText(read);
+    expect(text).toContain(
+      `"reason": "R",\n      "gist": "G",\n      "verdict": "load-bearing",\n      "failure": "F"`,
+    );
+    expect(asFile(text)).toMatchObject({ drops: [{ verdict: "load-bearing", failure: "F" }] });
+    expect(recipeText(recipe)).not.toContain('"verdict"');
   });
 });
 
@@ -280,7 +298,7 @@ describe("the draft verb", () => {
         verb: "draft",
         skill: "fixture-skill",
         wrote: "corpus/recipes/fixture-skill.json",
-        todos: 3,
+        todos: 4,
         differences: [],
         refused: [],
       },
@@ -395,7 +413,7 @@ describe("a source that is one file", () => {
       verb: "draft",
       skill: "fixture-skill",
       wrote: "corpus/recipes/fixture-skill.json",
-      todos: 3,
+      todos: 4,
       differences: [],
       refused: [],
     });
@@ -435,12 +453,19 @@ describe("a source that is one file", () => {
       ],
       copies: [],
       drops: [{ source: SOURCE, file: "rule/SKILL.md", segment: SKILL_IDS[7], ...todo }],
+      keepers: [],
+      promises: "<<fill>>",
     });
   });
   it("is read by the stub trigger like any other SKILL.md body, so a tiny rule trips it", () => {
     const frontMatter = RENDERED_SKILL.slice(0, RENDERED_SKILL.indexOf("# Fixture method"));
     const corpus = oneFileCorpus(TINY_RULE, frontMatter + TINY_RULE);
     expect(draftVerb(corpus, "fixture-skill", "copy").output.refused).toEqual([]);
+    const proposal = join(corpus, "recipes/fixture-skill.json");
+    writeFileSync(
+      proposal,
+      readFileSync(proposal, "utf8").replace(`"promises": "<<fill>>"`, `"promises": "none"`),
+    );
     expect(measureVerb(corpus, ["fixture-skill"]).output.refused).toEqual([
       {
         skill: "fixture-skill",
@@ -527,7 +552,7 @@ function snapshotsWithNotes(notes: string): Snapshots {
   };
 }
 
-describe("a prose file's ending (diagram-design's CRLF page, close's ADR pages with no final newline)", () => {
+describe("a prose file's ending (a CRLF page, as diagram-design's icon page was until J-112 S1, and close's ADR pages with no final newline)", () => {
   for (const [label, notes, ending] of [
     ["a carriage return and a newline", UPSTREAM_NOTES.replaceAll("\n", "\r\n"), "\r\n"],
     ["nothing", UPSTREAM_NOTES.slice(0, -1), ""],
@@ -563,6 +588,7 @@ describe("a prose file's ending (diagram-design's CRLF page, close's ADR pages w
       ]);
       const reparsed = parseRecipe(
         text
+          .replace(`"promises": "<<fill>>"`, `"promises": "none"`)
           .replaceAll(`"<<fill>>"`, `"scope"`)
           .replace(
             /"kind": "scope",\n(\s*)"reason": "scope"/g,
@@ -754,7 +780,7 @@ describe("a native skill (draft --native)", () => {
   it("proposes written passages, one per top-level section, each a method item with its reason and ruling to fill, and no source", () => {
     const result = draftNative({ skill: "fixture-skill", copy: nativeCopy });
     if (result._tag === "err") throw result.error;
-    expect(result.value.todos).toBe(11);
+    expect(result.value.todos).toBe(12);
     expect(asFile(recipeText(result.value.recipe))).toEqual({
       schema: "greenline.recipe/v1",
       name: "fixture-skill",
@@ -795,6 +821,8 @@ describe("a native skill (draft --native)", () => {
       ],
       copies: [{ path: "run.sh", sha256: sha256(UPSTREAM_SCRIPT), ...todo }],
       drops: [],
+      keepers: [],
+      promises: "<<fill>>",
     });
   });
 
@@ -875,7 +903,7 @@ describe("a native skill (draft --native)", () => {
       verb: "draft",
       skill: "fixture-skill",
       wrote: "corpus/recipes/fixture-skill.json",
-      todos: 10,
+      todos: 11,
       differences: [],
       refused: [],
     });
@@ -883,10 +911,12 @@ describe("a native skill (draft --native)", () => {
     const path = join(corpus, "recipes/fixture-skill.json");
     writeFileSync(
       path,
-      readFileSync(path, "utf8").replaceAll(
-        `"reason": "<<fill>>",\n          "ruling": "<<fill>>"`,
-        `"reason": "what the section is for",\n          "ruling": "the fixture's ruling"`,
-      ),
+      readFileSync(path, "utf8")
+        .replaceAll(
+          `"reason": "<<fill>>",\n          "ruling": "<<fill>>"`,
+          `"reason": "what the section is for",\n          "ruling": "the fixture's ruling"`,
+        )
+        .replace(`"promises": "<<fill>>"`, `"promises": "none"`),
     );
     expect(renderVerb(corpus, "fixture-skill").output.refused).toEqual([]);
     expect(readFileSync(join(corpus, "skills/fixture-skill/SKILL.md"), "utf8")).toBe(
@@ -952,11 +982,11 @@ describe("the places in this tree that need the authored file and the endings", 
     expect(compareSkill(renderSkill(checked), copy, checked.authored)).toEqual([]);
   });
 
-  it("drafts diagram-design's CRLF page, stating its ending", () => {
+  it("drafts diagram-design's icon page with the default ending, since upstream moved it from CRLF to LF at 7a12007b (J-112 S1)", () => {
     const { recipe, checked, copy } = draftedFromTree("diagram-design");
-    expect(recipe.files.find((file) => file.path === "references/primitive-icons.md")?.ending).toBe(
-      "\r\n",
-    );
+    expect(
+      recipe.files.find((file) => file.path === "references/primitive-icons.md")?.ending,
+    ).toBeUndefined();
     expect(compareSkill(renderSkill(checked), copy, checked.authored)).toEqual([]);
   });
 

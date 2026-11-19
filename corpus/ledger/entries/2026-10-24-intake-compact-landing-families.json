@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-compact-landing-families",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-design-plugin",
+    "sha256": "244f1899be7ad977309fb491c0fea6235afd87b1cd4581dca26b329090b81ca5"
+  },
+  "source": {
+    "repository": "https://github.com/Danilaa1/compact-landing-skill",
+    "commit": "1d79ea7832d16b88151ccf48e05d97014d139ebb",
+    "path": "skills/compact-landing/references/style-dna.md"
+  },
+  "pin": "compact-landing",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Six style families held: ranges and words without tokens",
+  "reason": "Its families are ranges and words with no tokens and no provenance beyond the author; its axes enter and the families wait.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': compact-landing's six families are held as entries; its axes are lifted"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': compact-landing's six families are held as entries; its axes are lifted"
+    }
+  ]
+}

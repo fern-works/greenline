@@ -16,6 +16,7 @@ import { createNodeFileIo, type FileIo } from "../fs/io.ts";
 import { snapshotWorkspace } from "../workspace.ts";
 import { optInLines, renderHooksText } from "../../core/adapters.ts";
 import { proposedChecks } from "../../core/checks.ts";
+import { detectedSetting, detectWorkspaceInterface, interfaceOfferText } from "../interface.ts";
 import {
   gitHooksState,
   hooksReport,
@@ -153,6 +154,7 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
   // Init asks nothing about a connector and enables none: each stays disabled until enabled explicitly.
   // It writes the two settings' defaults: the agent waits under every mode, and no trial skill installs.
   // It proposes the checks from the project's own files and turns the git hooks and the adapters on.
+  const detectedInterface = detectWorkspaceInterface(root);
   const manifest: Manifest = {
     schemaVersion: MANIFEST_SCHEMA_VERSION,
     targets,
@@ -162,6 +164,8 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
     trials: [],
     checks: proposedChecks(projectFiles(root)),
     hooks: HOOKS_ON,
+    // The interface the workspace already has, detected for the owner to confirm (J-123 S1).
+    interface: detectedInterface === undefined ? undefined : detectedSetting(detectedInterface),
   };
   const desired = renderProjection(manifest, env.installation, presentHarnesses(root));
   const snapshot = snapshotWorkspace(root, desired, io, new Set<string>());
@@ -247,7 +251,11 @@ export function runInit(request: RunRequest, env: CliEnvironment): CommandOutcom
   }
   // The scripts stand now, so git can be told to run them.
   const hooks = hooksReport(manifest, desired, registerGitHooks(root, manifest.hooks));
-  return { ...succeed(effects, unknownForce), hooks, text: initText(hooks) };
+  return {
+    ...succeed(effects, unknownForce),
+    hooks,
+    text: initText(hooks) + interfaceOfferText(root, manifest.interface),
+  };
 }
 
 /**

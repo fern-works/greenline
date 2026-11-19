@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-mattpocock-skills-setup-pre-commit",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-awesome-copilot-plantuml-ascii",
+    "sha256": "b7c4de169ad341a047a84435f7c8d28a46d5ed21809b40bf51d5bae68167d174"
+  },
+  "source": {
+    "repository": "https://github.com/mattpocock/skills",
+    "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+    "path": "skills/misc/setup-pre-commit"
+  },
+  "pin": "mattpocock-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "A Node pre-commit setup procedure, handed to garden",
+  "reason": "Its Husky, lint-staged and Prettier setup is a stack-specific procedure, garden's; greenline's declared checks and git hooks hold the commit, beside any pre-commit tooling a project keeps.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': setup-pre-commit hands off to garden as a stack-specific setup procedure"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': setup-pre-commit hands off to garden as a stack-specific setup procedure"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "a Node pre-commit setup with Husky, lint-staged and Prettier",
+        "locator": "skills/misc/setup-pre-commit/SKILL.md"
+      }
+    ]
+  }
+}

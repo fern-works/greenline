@@ -1,10 +1,20 @@
 import type { ContractParseFailed } from "../../core/contract.ts";
 import type { ParsedFile, PlanView } from "../../core/status.ts";
+import { changeRef, planRef, ticketRef } from "./refs.ts";
+import { waitingOn } from "./waiting.ts";
 import type { PlanDocument, TicketProgress, TicketsFile } from "../../core/plan-documents.ts";
 import { readChangesOnDisk } from "../changes.ts";
-import { runStatus } from "../cli/status.ts";
 import type { CliEnvironment } from "../cli/command-environment.ts";
-import { formOf, type ChangeState } from "./ledger.ts";
+import type {
+  PlanDetail,
+  PlanDocumentView,
+  PlanListEntry,
+  PlanRecord,
+  PlansList,
+} from "../../core/inspector/documents.ts";
+import { formOf, listedStatus } from "./ledger.ts";
+import { planHref, repositoryResolver } from "./links.ts";
+import { renderDocument } from "./markdown.ts";
 import { readShownFile, resolvesOutside } from "./repository-read.ts";
 
 /*
@@ -24,103 +34,6 @@ const TICKETS = "tickets.md";
 const OUTSIDE = "it resolves outside the repository";
 /** The plan documents the work guide names, in the order a reader takes them; any other follows by name. */
 const DOCUMENT_ORDER = ["spec.md", "decisions.md", "map.md"];
-
-/** A change record that names the plan, as the plans view shows it. */
-export interface PlanRecord {
-  readonly id: string;
-  readonly state: ChangeState | null;
-  readonly mode: string | null;
-  /** The mode it opened under, before any raise, the one status holds against the ticket's entry. */
-  readonly opened: string | null;
-  readonly why: string | null;
-  readonly ticket: string | null;
-  /** The mode the owner overrode, when the record says `choice: owner` with `proposed`; null otherwise. */
-  readonly proposed: string | null;
-  readonly owner: boolean;
-}
-
-/** One plan as the list shows it. */
-export interface PlanListEntry {
-  readonly name: string;
-  readonly path: string;
-  /** The tickets file's mark; null when there is none or it does not parse. */
-  readonly tickets: "draft" | "complete" | null;
-  readonly counts: {
-    readonly total: number;
-    readonly done: number;
-    readonly inProgress: number;
-    readonly notStarted: number;
-  };
-  /** The tickets ready to start, as `greenline status` derives them. */
-  readonly ready: readonly string[];
-  readonly documents: readonly { readonly file: string; readonly status: string | null }[];
-  /** The planning change's records: each record naming the plan and no ticket. */
-  readonly planning: readonly PlanRecord[];
-  /** Why the directory or its tickets file cannot be read; null when they can. */
-  readonly problem: string | null;
-}
-
-/** The plans view's list, or why the plans cannot be read. */
-export interface PlansList {
-  readonly plans: readonly PlanListEntry[];
-  readonly unavailable: string | null;
-  /** Whether `greenline status` derived the tickets' progress; false leaves it unknown, never "not started". */
-  readonly derived: boolean;
-}
-
-/** One entry of the tickets file, with what is derived for it. */
-export interface TicketView {
-  readonly id: string;
-  readonly intent: string;
-  readonly scope: readonly string[];
-  readonly acceptance: readonly string[];
-  readonly after: readonly string[];
-  readonly mode: string;
-  readonly progress: TicketProgress;
-  readonly ready: boolean;
-  /** The change records that name this ticket, newest first. */
-  readonly records: readonly PlanRecord[];
-}
-
-/** A plan document other than the tickets file. */
-export interface PlanDocumentView {
-  readonly file: string;
-  /** The text of the first-level heading that opens it, or its file name. */
-  readonly title: string;
-  readonly status: string | null;
-  /** The document's text without its front matter; null when it cannot be shown. */
-  readonly body: string | null;
-  readonly problem: string | null;
-}
-
-/** One plan as its page shows it. */
-export interface PlanDetail {
-  readonly name: string;
-  readonly path: string;
-  /** The tickets file's mark; null when there is none or it does not parse. */
-  readonly mark: "draft" | "complete" | null;
-  /** Whether the plan directory holds a tickets file. */
-  readonly hasTickets: boolean;
-  /** Why the tickets file cannot be shown; null when it parses or is absent. */
-  readonly ticketsProblem: string | null;
-  /** Whether the tickets file is refused because it resolves outside the repository. */
-  readonly ticketsRefused: boolean;
-  readonly tickets: readonly TicketView[];
-  readonly frontier: readonly string[];
-  /** Whether `greenline status` derived the tickets' progress and the frontier. */
-  readonly derived: boolean;
-  readonly documents: readonly PlanDocumentView[];
-  readonly planning: readonly PlanRecord[];
-  /** Records naming a ticket the tickets file does not hold. */
-  readonly strays: readonly PlanRecord[];
-  /** The findings and notices `greenline status` gives for the plan directory. */
-  readonly notes: readonly {
-    readonly code: string;
-    readonly severity: string;
-    readonly message: string;
-  }[];
-  readonly problem: string | null;
-}
 
 /** A plan directory as the page may show it: what resolves inside the repository, and why the rest is refused. */
 interface ContainedPlan {
@@ -177,13 +90,29 @@ function readPlans(root: string, env: CliEnvironment) {
       })),
     };
   });
+  // The ticket's progress and the ready frontier are status's own derivation, read through it.
+  const status = listedStatus(root, env);
+  const listed =
+    status.changes?.view === "list" ? [...status.changes.current, ...status.changes.finished] : [];
+  const steps = new Map(listed.map((view) => [view.id, view.step]));
   const records = disk.value.changes.flatMap((entry) => {
     const { form } = formOf(entry);
     if (form?.belongs === undefined) return [];
-    const record: PlanRecord & { readonly plan: string } = {
+    const position = form.position;
+    const waiting =
+      position.state === "open" &&
+      waitingOn(root, {
+        id: entry.id,
+        state: position.state,
+        next: position.next,
+        step: steps.get(entry.id) ?? null,
+        touchesInterface: form.interface?.touches === true,
+      }) !== null;
+    // The plan it names stays beside the record, so the record served carries only its own fields.
+    const record: PlanRecord = {
       id: entry.id,
-      plan: form.belongs.plan,
-      state: form.position.state,
+      ref: changeRef(entry.id),
+      state: position.state === "open" ? (waiting ? "waiting" : "in-progress") : position.state,
       mode: form.mode,
       opened: form.raises[0]?.from ?? form.mode,
       why: form.why,
@@ -191,10 +120,8 @@ function readPlans(root: string, env: CliEnvironment) {
       proposed: form.choice.by === "owner" ? (form.choice.proposed ?? null) : null,
       owner: form.choice.by === "owner",
     };
-    return [record];
+    return [{ plan: form.belongs.plan, record }];
   });
-  // The ticket's progress and the ready frontier are status's own derivation, read through it.
-  const status = runStatus({ ...env, cwd: root }, { view: "list", all: true });
   const derived = status.changes?.view === "list";
   const views: readonly PlanView[] = status.changes?.view === "list" ? status.changes.plans : [];
   // A plan whose directory or tickets file is refused shows nothing derived from what it holds.
@@ -225,6 +152,7 @@ export function plansList(root: string, env: CliEnvironment): PlansList {
         progress.filter((entry) => entry.progress === state).length;
       return {
         name: plan.name,
+        ref: planRef(plan.name),
         path: plan.path,
         tickets: view?.tickets ?? null,
         counts: {
@@ -244,7 +172,8 @@ export function plansList(root: string, env: CliEnvironment): PlansList {
           }))
           .sort((a, b) => documentOrder(a.file, b.file)),
         planning: read.records
-          .filter((record) => record.plan === plan.name && record.ticket === null)
+          .filter((named) => named.plan === plan.name && named.record.ticket === null)
+          .map((named) => named.record)
           .sort(newest),
         problem:
           plan.problem ??
@@ -264,6 +193,12 @@ function titleOf(file: string, body: string | null): string {
   return (body === null ? undefined : /^ {0,3}#\s+(.+?)\s*#*\s*$/m.exec(body)?.[1]) ?? file;
 }
 
+/** A plan document's body rendered, its opening heading taken out as the title. */
+function rendered(plan: ContainedPlan, file: string, body: string): string {
+  return renderDocument(body, repositoryResolver(plan.path.slice(0, -1)), planHref(plan.name, file))
+    .html;
+}
+
 function documentView(
   root: string,
   plan: ContainedPlan,
@@ -275,6 +210,7 @@ function documentView(
       title: document.file,
       status: null,
       body: null,
+      html: null,
       problem: OUTSIDE,
     };
   if (document.parsed._tag === "ok")
@@ -283,6 +219,7 @@ function documentView(
       title: titleOf(document.file, document.parsed.value.body),
       status: document.parsed.value.status,
       body: document.parsed.value.body,
+      html: rendered(plan, document.file, document.parsed.value.body),
       problem: null,
     };
   // A document that does not parse is shown as written, with why.
@@ -292,6 +229,7 @@ function documentView(
     title: titleOf(document.file, shown.text),
     status: null,
     body: shown.text,
+    html: shown.text === null ? null : rendered(plan, document.file, shown.text),
     problem: `it does not parse: ${issuesText(document.parsed.error)}`,
   };
 }
@@ -314,7 +252,9 @@ export function planDetail(
   const plan = read.plans.find((candidate) => candidate.name === name);
   if (plan === undefined) return undefined;
   const view = read.viewOf(plan);
-  const mine = read.records.filter((record) => record.plan === plan.name);
+  const mine = read.records
+    .filter((named) => named.plan === plan.name)
+    .map((named) => named.record);
   // The plan's own notes: its directory or a file in it, never a sibling whose name it prefixes.
   const directory = plan.path.slice(0, -1);
   const notes = read.diagnostics
@@ -328,6 +268,7 @@ export function planDetail(
   const ids = new Set<string>(file?.tickets.map((ticket) => ticket.id) ?? []);
   return {
     name: plan.name,
+    ref: planRef(plan.name),
     path: plan.path,
     mark: file?.status ?? null,
     hasTickets: parsed !== undefined || plan.ticketsRefused !== null,
@@ -340,6 +281,7 @@ export function planDetail(
     ticketsRefused: plan.ticketsRefused !== null,
     tickets: (file?.tickets ?? []).map((ticket) => ({
       id: ticket.id,
+      ref: ticketRef(plan.name, ticket.id, ticket.intent),
       intent: ticket.intent,
       scope: ticket.scope,
       acceptance: ticket.acceptance,

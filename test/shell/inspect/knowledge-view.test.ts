@@ -54,25 +54,27 @@ describe("the knowledge view, served", () => {
       ["adr", "docs/adr/", true],
       ["glossary", "GLOSSARY.md", true],
     ]);
-    expect(body.html).toContain('href="#knowledge/decisions"');
     const kept = (await json(bare, "api/knowledge")).body;
     expect(kept.homes.filter((home: { present: boolean }) => home.present)).toEqual([
       expect.objectContaining({ id: "work" }),
     ]);
-    expect(kept.html).toContain("not kept here yet");
-    expect(kept.html).not.toContain('href="#knowledge/glossary"');
+    expect(kept.homes).toHaveLength(4);
   });
 
   it("S2 renders the work guide whole, its title the page's and its sections outlined", async () => {
     const { status, body } = await json(url, "api/knowledge/work");
     expect(status).toBe(200);
-    // The guide's own title heads the page, once.
-    expect(body.html).toContain("<h1>Work in this workspace</h1>");
-    expect(body.html.split("Work in this workspace")).toHaveLength(2);
-    expect(body.html).toContain('<h2 data-anchor="plans-and-tickets">Plans and tickets</h2>');
-    // The outline beside the guide opens each section in the page.
-    const outline = body.html.slice(body.html.indexOf('<nav class="outline"'));
-    expect(outline).toContain('<a href="#knowledge/work/plans-and-tickets">Plans and tickets</a>');
+    // The guide's own title heads the page, taken out of the body, once.
+    const rendered = body.home.rendered;
+    expect(rendered.heading).toBe("Work in this workspace");
+    expect(rendered.html).not.toContain("Work in this workspace");
+    expect(rendered.html).toContain('<h2 data-anchor="plans-and-tickets">Plans and tickets</h2>');
+    // The outline opens each section at the home's address.
+    expect(rendered.outline).toContainEqual({
+      level: 2,
+      text: "Plans and tickets",
+      anchor: "plans-and-tickets",
+    });
   });
 
   it("S2 renders the decisions book with its root statements as their own component, never as a fence", async () => {
@@ -81,12 +83,13 @@ describe("the knowledge view, served", () => {
       expect.objectContaining({ root: "apps/api", languages: ["typescript"], decision: "#api" }),
     ]);
     expect(body.home.problem).toBeNull();
-    expect(body.html).toContain('class="roots"');
-    expect(body.html).not.toContain('data-language="greenline-roots"');
-    expect(body.html).toContain('<a href="#knowledge/decisions/api">#api</a>');
-    expect(body.html).toContain("orm-active-record");
+    const html = body.home.rendered.html;
+    // The block stands named where it stood; its roots are the root statement cards.
+    expect(html).toContain('class="roots-note"');
+    expect(html).not.toContain('data-language="greenline-roots"');
+    expect(JSON.stringify(body.home.roots)).toContain("orm-active-record");
     // The book's link to an ADR opens that record in the page.
-    expect(body.html).toContain('<a href="#knowledge/adr/0001-typescript.md">the record</a>');
+    expect(html).toContain('<a href="/knowledge/adr/0001-typescript.md">the record</a>');
   });
 
   it("S2 lists the ADR home's records with their number, title, status and date", async () => {
@@ -104,14 +107,18 @@ describe("the knowledge view, served", () => {
       ["0001-typescript.md", "1. Use TypeScript for the API", "Accepted", "2026-09-01"],
       ["0002-postgres.md", "2. Store sessions in Postgres", "proposed", "2026-09-20"],
     ]);
-    expect(body.html).not.toContain("<script>alert");
-    expect(body.html).toContain('data-anchor="0002-postgres.md"');
+    const html = body.home.records
+      .map((record: { html: string | null }) => record.html ?? "")
+      .join("\n");
+    expect(html).not.toContain("<script>alert");
   });
 
   it("S2 renders the glossary, its link into the decisions book opening that heading", async () => {
     const { body } = await json(url, "api/knowledge/glossary");
-    expect(body.html).toContain("<h1>Glossary</h1>");
-    expect(body.html).toContain('<a href="#knowledge/decisions/storage">the decisions</a>');
+    expect(body.home.rendered.heading).toBe("Glossary");
+    expect(body.home.rendered.html).toContain(
+      '<a href="/knowledge/decisions/storage">the decisions</a>',
+    );
   });
 
   it("S2 answers a home it does not keep, and a name that is no home, with 404", async () => {

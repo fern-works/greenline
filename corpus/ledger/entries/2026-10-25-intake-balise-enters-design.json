@@ -1,0 +1,60 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-intake-balise-enters-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-25-intake-design-md-enters-design",
+    "sha256": "3f6e0c3df0165ca7dac59812b9f6eebb8cef5d9b179882b8fb26e97c102f11fc"
+  },
+  "source": {
+    "repository": "https://github.com/mrstev3n/balise-skills",
+    "commit": "f596a61fa8f4471054b1ed75d17bc6699db4572d",
+    "path": "skills"
+  },
+  "licence": "permissive-other",
+  "verdict": "lift",
+  "gist": "Its states, copy and provenance lift as ideas",
+  "reason": "balise's state families, tone by stakes and provenance record lift as ideas into design's states, copy and study pages.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "design",
+    "catches": "An interface built with no design context: no direction dealt before code, no home for the owner's taste, no rule checked at widths, no fresh reading of the render",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "J-123's walk on the real candidate, which shows the step and its pages read at each depth"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "design",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "design",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "design",
+        "depth": "independent",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

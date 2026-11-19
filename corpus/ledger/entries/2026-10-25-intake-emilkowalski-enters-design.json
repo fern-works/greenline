@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-intake-emilkowalski-enters-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-25-intake-web-interface-guidelines-enters-design",
+    "sha256": "f827c5086166bde22cbde3c45b900cc72fdfd48db0d5b1c01ca20b1d3313ca0c"
+  },
+  "source": {
+    "repository": "https://github.com/emilkowalski/skills",
+    "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+    "path": "skills"
+  },
+  "pin": "emilkowalski-skills",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its motion spine and worst-case data lift into design",
+  "reason": "emilkowalski's motion gate, durations, gestures and performance order become design's motion and performance pages; its worst-case data enters capture, and its Expo motion the React Native page.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "design",
+    "catches": "An interface built with no design context: no direction dealt before code, no home for the owner's taste, no rule checked at widths, no fresh reading of the render",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "J-123's walk on the real candidate, which shows the step and its pages read at each depth"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "design",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "design",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "design",
+        "depth": "independent",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-diagram-design-a-default-in-the-visual-home",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-show-me-six-forms-and-the-offer",
+    "sha256": "3d1932f052521f5fc7710405a40b7d88a7d26fd8500f483a92cd6d3fe2519288"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "58c1128791c1a6336c52676289b86c65dcc5127a117d467161424fe60c1c5d00",
+  "result": "769b34035094b6e25e25e0d733c92fc306fe90618991ff4ca3b58d374df0bd00",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "diagram-design is a default drawing into the visual home",
+  "reason": "diagram-design is a default, no longer an extra: a durable diagram is saved under the change in the visual home beside its manifest, offered in one sentence and drawn by a fresh agent on the owner's yes.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7512,
+        "taken": 7478,
+        "exact": 7471,
+        "retention": 0.9990639208344477,
+        "coverage": 0.9954739084132055,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 950
+  }
+}

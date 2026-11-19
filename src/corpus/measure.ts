@@ -5,7 +5,9 @@ import { joinSegments, wordsOf, type SegmentedFile } from "./segments.ts";
 /**
  * The measure and the stub trigger (`workshop/components/recipes.md`).
  * Per source of a recipe: `segments`, every segment of the files the recipe
- * names in it; `taken`, the segments it takes; `exact`, the taken segments
+ * names in it; `taken`, the segments it takes; `passages`, the taken
+ * passages, each counted whole however many segments it runs (J-182 S1);
+ * `exact`, the taken segments
  * that are unedited and in upstream order, which is per source file the
  * longest run of unedited taken segments, in recipe order, whose upstream
  * places rise; `retention`, exact over taken; `coverage`, taken over
@@ -46,8 +48,8 @@ export function bodyWords(segmented: SegmentedFile): number {
 const STUB_QUESTION =
   "does it state a method of its own, with steps, an order or criteria, or does it only delegate to other skills or tools?";
 
-/** One source's measure. */
-export interface SourceMeasure {
+/** One source's measure as a change entry records it: everything but its passages. */
+export interface RecordedSourceMeasure {
   readonly source: string;
   readonly segments: number;
   readonly taken: number;
@@ -58,6 +60,12 @@ export interface SourceMeasure {
   readonly meetsMinimum: boolean | null;
   /** Whether the source is a credit line: the recipe takes no segment of it exactly (C14). */
   readonly creditLine: boolean;
+}
+
+/** One source's measure: the recorded measure and the passages taken whole (J-182 S1). */
+export interface SourceMeasure extends RecordedSourceMeasure {
+  /** The taken passages of the source, each a run of its segments counted once. */
+  readonly passages: number;
 }
 
 /** A recipe's measure. */
@@ -127,7 +135,9 @@ export function measureRecipe(checked: CheckedRecipe): Result<RecipeMeasure, Rec
       });
   if (triggered.length > 0) return err(new RecipeRefused(recipe.name, triggered));
 
-  const sources = recipe.sources.map((source) => {
+  // A words source has no snapshot to retain: a phrase passage is held to its phrase instead (J-194 S1).
+  const measured = recipe.sources.filter((source) => !checked.words.includes(source));
+  const sources = measured.map((source) => {
     const files = checked.sourceFiles.filter((entry) => entry.source === source);
     const segments = files.reduce((sum, entry) => sum + entry.segmented.segments.length, 0);
     const mine = taken.filter((item) => item.source === source);
@@ -149,6 +159,7 @@ export function measureRecipe(checked: CheckedRecipe): Result<RecipeMeasure, Rec
       source,
       segments,
       taken: count,
+      passages: mine.length,
       exact,
       retention,
       coverage: ratio(count, segments),

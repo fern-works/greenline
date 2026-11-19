@@ -23,7 +23,8 @@
 // `render` writes corpus/skills/<skill>/ from
 // corpus/recipes/<skill>.json and the frozen snapshots; `verify` compares,
 // checks the chain under corpus/ledger/entries/ and that every recipe's
-// latest change entry records it, and with no skill named that each
+// latest change entry records it, reads each skill's pointers to its
+// reference pages (pointer-before-use, scripts/lib/corpus-pointers.mjs), and with no skill named that each
 // committed view is its rendering, and reports each snapshot the manifest no
 // longer pins, and never writes; `verify` and `measure`
 // with no skill read every recipe on disk. `record` checks an entry against
@@ -62,7 +63,15 @@ import {
   verifyVerb,
   viewsVerb,
 } from "../src/corpus/instrument.ts";
+import { existsSync } from "node:fs";
 import { compileInstallation } from "../src/shell/installation.ts";
+
+// The pointer-before-use reading is the workshop's (J-140 S4): the public
+// tree, which keeps this script without the module, verifies without it.
+const pointersUrl = new URL("./lib/corpus-pointers.mjs", import.meta.url);
+const pointerReading = existsSync(fileURLToPath(pointersUrl))
+  ? await import(pointersUrl.href)
+  : undefined;
 
 const corpus = join(fileURLToPath(new URL("..", import.meta.url)), "corpus");
 const [verb, ...rest] = process.argv.slice(2);
@@ -147,6 +156,22 @@ function budgetOf(args) {
 
 const budget = verb === "budget" ? budgetOf(rest) : undefined;
 
+/** `verify` with the pointer-before-use reading (J-140 S4) over the skills
+ * named, or every installed skill: its findings in `pointers`, any one a failure. */
+function withPointers(outcome, skills) {
+  const named = skills.filter((skill) => skill !== "modes");
+  // `verify modes` names no skill: the reading is the skills', never the modes recipe's.
+  if (!pointerReading || (skills.length > 0 && named.length === 0)) return outcome;
+  const verdict = pointerReading.pointerVerdict(
+    pointerReading.rosterPointerFindings(corpus, named),
+  );
+  // An excepted finding is reported with its follow-up and refuses nothing.
+  return {
+    output: { ...outcome.output, pointers: verdict.refused, excepted: verdict.excepted },
+    failed: outcome.failed || verdict.refused.length > 0,
+  };
+}
+
 function outcomeOf() {
   const modes = { "--stub": "stub", "--native": "native" };
   if (
@@ -155,7 +180,7 @@ function outcomeOf() {
   )
     return draftVerb(corpus, rest[0], rest.length === 2 ? modes[rest[1]] : "copy");
   if (verb === "render" && rest.length === 1) return renderVerb(corpus, rest[0]);
-  if (verb === "verify") return verifyVerb(corpus, rest);
+  if (verb === "verify") return withPointers(verifyVerb(corpus, rest), rest);
   if (verb === "measure") return measureVerb(corpus, rest);
   if (verb === "fronts") return frontsVerb(corpus, rest);
   if (budget !== undefined) return budgetVerb(corpus, compileInstallation(corpus), budget.modes);

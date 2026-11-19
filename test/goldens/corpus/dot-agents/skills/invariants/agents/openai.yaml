@@ -1,0 +1,5 @@
+interface:
+  display_name: "Invariants"
+  short_description: "List every invariant the app relies on but does not enforce: each with where it is relied on and the door that would hold it. Use for \"find every invariant my app relies on but doesn't explicitly enforce\", for what a part of the code relies on or assumes, or beside a floor on a public contract or a security boundary."
+policy:
+  allow_implicit_invocation: false

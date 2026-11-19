@@ -1,0 +1,52 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-anatomy-a-default-in-the-visual-home",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-architecture-survey-reads-the-map-in-the-visual-home",
+    "sha256": "d23caf960addd9409be501de97296289fdca85c62aac6991fb29c65e587d1c6d"
+  },
+  "subject": "skill:anatomy",
+  "recipe": "8f628cb536015183db78a346267598ba8882879dee1699f18e06ec4334832cf7",
+  "result": "e8534565f565a3994955db83384e57884b3e723bae5de9de16421902036cd1da",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "anatomy is a default, its explaining figures in the visual home",
+  "reason": "anatomy is a default, no longer an extra: a figure made to explain lands under the change in the visual home beside its manifest, and a figure for the docs or site where the owner places it.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; the kit and the scripts taken, the tests, evals/ and agents/openai.yaml left out; the worked examples left out of the snapshot, since the refresh holds a directory by its last name and the corpus and the public export carry every snapshot byte; publish.mjs and session.mjs left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "anatomy",
+        "segments": 2845,
+        "taken": 2811,
+        "exact": 2809,
+        "retention": 0.9992885094272501,
+        "coverage": 0.9880492091388401,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 556
+  }
+}

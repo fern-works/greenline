@@ -1,0 +1,393 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-29-design-keeps-the-deal-by-the-owners-words",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-29-frame-marks-the-recommended-card-and-the-open-question",
+    "sha256": "36746d0191ea9472b001a988abcb46628303c3c26d32dbca157bd47af14fb510"
+  },
+  "subject": "skill:design",
+  "recipe": "aa15a37aa593ba3b5ac1913bd6ffa8a2a621cb5f81e02fa66fd69ee6647fe7bc",
+  "result": "361573c9768d5ee65c864484becd606355ab176a9ff3028717aad32866b19ed0",
+  "pages": [],
+  "gist": "The deal's cards held by the deal-words hold",
+  "reason": "The promise that the reroll is spent only on the owner's answer is kept by the deal-words hold on the deal command. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-26",
+      "words": "The register's row of 2026-10-24 naming the UI work the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"), which confirm the records drafted on 2026-10-23 and 2026-10-24 as written, the hand among them: the owner's marks on captures, each an element or a region with a note and an intent, read at the next turn, addressed by its element, an options mark answered with variants on the real route, re-captured at the same width and closed only on the owner's act; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-26",
+      "words": "J-129's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the cards of 2026-10-26: Words must be the owner's verdict; Committed before the act. The card Words must be the owner's verdict: a mark closes in words only on the owner's verdict on that mark, an instruction to close marks unseen refused, the marks left open and said so"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-133's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the register's row of 2026-10-26, the judge's grade governs a stop: the interface run's blocking finding cured by holding done on an interface change until each route it touched is captured at the three widths or its browser limit named, the review brief carrying the design section and the critique page, and a change to DESIGN.md's tokens or palette proposed to the owner and written on the yes"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-134's finalise words, the operator's words of 2026-10-27: i dont see the agent suggesting diagrams and explanatory artefact visuals anywhere, and the card Draft now, open after the replays confirm; drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; lock in all the jobs"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-143's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; lock in all the jobs; and of 2026-10-27: everything decided mid implementation becomes part of the 0.2.0 release; the product and workshop jobs first, then the codex and linear runs on the final 0.2.0 build"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; and the register's row of 2026-10-27 on the reply's polish, ruled at the interview of that night on the operator's words \"everything needs to be 5 star\" and the card \"Brainstorm now, ship in 0.2.0\": the proposal is one sentence, the table, the open points with their defaults and a yes, its rituals gone; three cards a round answerable in one word, free text read, no glyphs or tags in a reply's questions; one interim line per act in the owner's words; the close in four parts with an offer made once a session; and the interface waiver asked once per workspace in plain words"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "antfu-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "arla6ka-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "callstack-agent-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "compact-landing",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "dimillian-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "elaya-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "elithrar-dotfiles",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "emilkowalski-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "feel",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "flornkm-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "gsap-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "hig-agent-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "ibelick-ui-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "interface-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "jakubkrehel-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "joe-bell-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "kemiljk-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 90,
+        "taken": 89,
+        "exact": 86,
+        "retention": 0.9662921348314607,
+        "coverage": 0.9888888888888889,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mengto-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "millionco-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "prototyper-ui",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "regards-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "shadow-plugin",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "swiss-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "taste-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "ui-ux-pro-max",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "web-animation-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "web-interface-guidelines",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "web-quality-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "wshobson-agents",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 19863
+  }
+}

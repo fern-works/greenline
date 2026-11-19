@@ -28,8 +28,10 @@ const URL = "https://garden.example/";
 const SKILL_FILES: readonly string[] = [
   ".agents/skills/use-garden/SKILL.md",
   ".agents/skills/use-garden/agents/openai.yaml",
+  ".agents/skills/use-garden/method.md",
   ".agents/skills/use-garden/operations.md",
   ".claude/skills/use-garden/SKILL.md",
+  ".claude/skills/use-garden/method.md",
   ".claude/skills/use-garden/operations.md",
 ];
 const ENABLED: Manifest = {
@@ -76,9 +78,9 @@ function installedText(name: string): string {
   return file?.content ?? "";
 }
 
-/** The installed text of the skill, whitespace folded. */
+/** The installed text of the skill, its front with the method page J-180 S1 moved its method to, whitespace folded. */
 function skillText(): string {
-  return installedText("SKILL.md").replace(/\s+/g, " ");
+  return `${installedText("SKILL.md")}\n${installedText("method.md")}`.replace(/\s+/g, " ");
 }
 
 describe("use-garden in the corpus", () => {
@@ -87,7 +89,7 @@ describe("use-garden in the corpus", () => {
     expect(skill?.kind).toBe("habit");
     expect(skill?.activation).toBe("implicit");
     expect(skill?.extra).toBeUndefined();
-    expect(skill?.supportFiles?.map((file) => file.path)).toEqual(["operations.md"]);
+    expect(skill?.supportFiles?.map((file) => file.path)).toEqual(["method.md", "operations.md"]);
     expect(installation.intents.filter((row) => row.skills.includes("use-garden"))).toEqual([
       { intent: POINTER, skills: ["use-garden"] },
     ]);
@@ -100,7 +102,7 @@ describe("use-garden in the corpus", () => {
     expect(read(root, "CLAUDE.md")).not.toMatch(/garden/i);
     expect(read(root, "agents/openai.yaml")).not.toContain("use-garden");
     expect(read(root, ".greenline/lock.json")).not.toContain("use-garden");
-  });
+  }, 120_000); // It installs the real skill, up to 26 seconds alone, on a machine that may be busy.
 
   it("with garden disabled the block has no garden duty, pointer or advertised skill, and no other method names it", () => {
     const projection = renderProjection(fixtureConfiguration, installation);
@@ -344,7 +346,7 @@ describe("enable and disable with the real skill", () => {
     expect(connectors(root, "disable", "garden").code).toBe(0);
     // Files and directories alike: no use-garden directory is left behind empty.
     expect(tree(root)).toEqual(before);
-  });
+  }, 120_000); // It installs the real skill, up to 26 seconds alone, on a machine that may be busy.
 
   it("a file the owner added inside the skill's directory keeps that directory when disabling removes the skill", () => {
     const root = workspace("kept");
@@ -354,7 +356,7 @@ describe("enable and disable with the real skill", () => {
     expect(read(root, ".claude/skills/use-garden/notes.md")).toBe("Mine.\n");
     expect(existsSync(join(root, ".claude/skills/use-garden/SKILL.md"))).toBe(false);
     expect(existsSync(join(root, ".agents/skills/use-garden"))).toBe(false);
-  });
+  }, 120_000); // It installs the real skill, up to 26 seconds alone, on a machine that may be busy.
 
   it("sync's forced removal of an orphaned skill leaves no empty directory either", () => {
     const root = workspace("orphan");
@@ -373,7 +375,11 @@ describe("enable and disable with the real skill", () => {
         "--force-managed",
         ".claude/skills/boundaries/SKILL.md",
         "--force-managed",
+        ".claude/skills/boundaries/method.md",
+        "--force-managed",
         ".agents/skills/boundaries/SKILL.md",
+        "--force-managed",
+        ".agents/skills/boundaries/method.md",
         "--force-managed",
         ".agents/skills/boundaries/agents/openai.yaml",
       ],
@@ -383,7 +389,7 @@ describe("enable and disable with the real skill", () => {
     expect(existsSync(join(root, ".claude/skills/boundaries"))).toBe(false);
     expect(existsSync(join(root, ".agents/skills/boundaries"))).toBe(false);
     expect(existsSync(join(root, ".claude/skills"))).toBe(true);
-  });
+  }, 120_000); // It installs the real skill, up to 26 seconds alone, on a machine that may be busy.
 });
 
 describe("the inspector and garden's skill", () => {
@@ -395,11 +401,11 @@ describe("the inspector and garden's skill", () => {
   }
   /** Save the inspector's settings the way its page does, with these skill choices. */
   async function saveSkills(url: string, skills: { include: string[]; exclude: string[] }) {
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/settings`)).json();
     return fetch(`${url}api/manifest`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ expectedRevision: state.editRevision, skills }),
+      body: JSON.stringify({ expectedRevision: state.revisions.manifest, skills }),
     });
   }
   const manifestOf = (root: string) => JSON.parse(read(root, ".greenline/manifest.json"));
@@ -407,7 +413,7 @@ describe("the inspector and garden's skill", () => {
   it("the inspector never lists use-garden, and a save with garden disabled writes no exclusion that would block enabling", async () => {
     const root = workspace("inspect-off");
     const url = await inspector(root);
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/settings`)).json();
     const names = state.skills.map((skill: { name: string }) => skill.name);
     expect(names).toContain("boundaries");
     expect(names).not.toContain("use-garden");
@@ -416,7 +422,7 @@ describe("the inspector and garden's skill", () => {
     expect(saved.status).toBe(200);
     expect(manifestOf(root).skills).toEqual({ include: [], exclude: ["boundaries"] });
     expect(connectors(root, "enable", "garden", "--url", URL).code).toBe(0);
-  });
+  }, 120_000); // It installs the real skill, up to 26 seconds alone, on a machine that may be busy.
 
   it("a save with garden enabled keeps garden and its skill, and a hand-written exclusion survives a save", async () => {
     const root = workspace("inspect-on");
@@ -436,5 +442,5 @@ describe("the inspector and garden's skill", () => {
     );
     expect((await saveSkills(url, { include: [], exclude: ["boundaries"] })).status).toBe(200);
     expect(manifestOf(root).skills).toEqual({ include: [], exclude: ["boundaries", "use-garden"] });
-  });
+  }, 120_000); // It installs the real skill, up to 26 seconds alone, on a machine that may be busy.
 });

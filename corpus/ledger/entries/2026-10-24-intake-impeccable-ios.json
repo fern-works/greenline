@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-impeccable-ios",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-impeccable-generate",
+    "sha256": "d427c1280013d5536371459acb0e891f8f17cecb5312005bfdbcaa7f6f4c7b79"
+  },
+  "source": {
+    "repository": "https://github.com/pbakaus/impeccable",
+    "commit": "e3818550d291a5157f309124dc1872d96ec81bf2",
+    "path": "skill/reference/ios.md"
+  },
+  "licence": "permissive-other",
+  "verdict": "hold",
+  "gist": "iOS page held: distilled from Apple's guidelines",
+  "reason": "Its notice says it is distilled from Apple's guidelines through another project; it waits for an independent source per rule.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's ios and android pages are held as vendor guideline text"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's ios and android pages are held as vendor guideline text"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-show-me-lists-its-promises-and-keepers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-secrets-lists-its-promises-and-keepers",
+    "sha256": "829725b6f24ea4bfef72da6261d890736662c3e9ac6e14954a241428db2ef9ff"
+  },
+  "subject": "skill:show-me",
+  "recipe": "2187e3a95004b74fc2bf08e32f5d2c4d882bc09cc57522fccb330a936ae2ec8a",
+  "result": "d8140c30e0a4ee42803d758d35bd32515679549bb5e29dc3202313e1f4ffe08e",
+  "pages": [],
+  "gist": "Each promise listed with the keeper that holds it, or its gap",
+  "reason": "The roster audit lists the 10 promises the skill's pages state, 8 held by a fact, a hold, a record or an oracle and 2 gaps marked by the keeper test. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-26",
+      "words": "J-129's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the cards of 2026-10-26: Words must be the owner's verdict; Committed before the act. The QA series' owed finding on the pictures: an inline picture past twelve nodes or 72 columns is counted and named, a durable one offered, and a visual records whether a fresh agent or the session made it"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-134's finalise words, the operator's words of 2026-10-27: i dont see the agent suggesting diagrams and explanatory artefact visuals anywhere, and the card Draft now, open after the replays confirm; drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; lock in all the jobs"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-145 S1, under J-145's finalise words, the operator's card of 2026-10-28, Finalise as drafted, on the standing words of 2026-10-24: drive the implementation of the full job board till the end; lock in all the jobs. The series' blocking finding on the pictures: the agent drew the durable visual itself, reading the mode's agents at most as forbidding the fresh agent a method starts"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "humanlayer",
+        "segments": 34,
+        "taken": 30,
+        "exact": 29,
+        "retention": 0.9666666666666667,
+        "coverage": 0.8823529411764706,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "curiositech",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "awesome-copilot",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 2114
+  }
+}

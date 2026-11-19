@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-wshobson-interaction-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ui-ux-pro-max-design-system",
+    "sha256": "4e6a288c849beebab4d3d114d667145cf96b473d0d4ae688d4af97c7051773b3"
+  },
+  "source": {
+    "repository": "https://github.com/wshobson/agents",
+    "commit": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+    "path": "plugins/ui-design/skills/interaction-design"
+  },
+  "pin": "wshobson-agents",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Held on its animation-library dependencies",
+  "reason": "Its examples depend on animation libraries and break the pause and drag floors; it waits on a dependency ruling.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': wshobson's interaction-design is held"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': wshobson's interaction-design is held"
+    }
+  ]
+}

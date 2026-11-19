@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-emilkowalski-animation-vocabulary",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-emilkowalski-ask-sonner",
+    "sha256": "8ec561ae2d11b325439b783ca2b48ab69a1228fdbe3fa8aea8e8713ff9dfd526"
+  },
+  "source": {
+    "repository": "https://github.com/emilkowalski/skills",
+    "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+    "path": "skills/animation-vocabulary"
+  },
+  "pin": "emilkowalski-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "A motion glossary, handed to garden",
+  "reason": "A glossary of motion terms and principles is knowledge consulted to choose, garden's.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': emilkowalski's animation-vocabulary and write-swift hand off to garden"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': emilkowalski's animation-vocabulary and write-swift hand off to garden"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "a glossary of motion terms and principles",
+        "locator": "skills/animation-vocabulary/SKILL.md"
+      }
+    ]
+  }
+}

@@ -9,7 +9,7 @@ A prototype is **throwaway code that answers a question**. The question decides 
 Identify which question is being answered, using the user's prompt, the surrounding code, or by asking if the user is around:
 
 - **"Does this logic / state model feel right?"** → [LOGIC.md](prototype/LOGIC.md). Build a single shareable HTML file (free-play buttons plus tabbed guided walkthroughs) that pushes the state machine through cases that are hard to reason about on paper, and that a non-developer can drive.
-- **"What should this look like?"** → [UI.md](prototype/UI.md). Generate several radically different UI variations on a single route, switchable via a URL search param and a floating bottom bar.
+- **"What should this look like?"** → design's prototype page, where the design step builds it once the change says it touches an interface. Generate several radically different UI variations on a single route, switchable via a URL search param and a floating bottom bar.
 
 The two branches produce very different artifacts, so getting this wrong wastes the whole prototype. If the question is genuinely ambiguous and the user isn't reachable, default to whichever branch better matches the surrounding code (a backend module → logic; a page or component → UI) and state the assumption at the top of the prototype.
 
@@ -29,11 +29,16 @@ When a novel interaction or architectural decision has no established precedent,
 - Bug fixes or refactors with a clear target state
 - Changes where constraints dictate a single viable approach
 
-**Exploring approaches:**
+**Lay out the approaches.** Once you understand what they want, and
+before you write anything up, put the ways of building it in a message
+of its own. Come up with several real alternatives and drop the weak
+ones, including any that work against why they want it and any the
+existing work rules out. Present the two or three that remain, grounding
+each in what the project actually does and saying what it trades off.
+Recommend one and say why, then ask which way they want to go. When
+there's genuinely one sensible way, say so and explain why the others
+don't fit.
 
-- Propose 2-3 different approaches with trade-offs
-- Present options conversationally with your recommendation and reasoning
-- Lead with your recommended option and explain why
 - YAGNI ruthlessly - remove unnecessary features from every approach and design
 
 ## Rules that apply to both

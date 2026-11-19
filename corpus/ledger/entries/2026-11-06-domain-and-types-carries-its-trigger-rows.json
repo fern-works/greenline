@@ -1,0 +1,73 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-domain-and-types-carries-its-trigger-rows",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-tdd-carries-its-trigger-rows",
+    "sha256": "d5e61201b3f10c7b6f467c0f08d730f9a89f8bb555a0b7e0f51b869c93751fae"
+  },
+  "subject": "skill:domain-and-types",
+  "recipe": "262360e61ee37ef4ee383508094e22079e97d2a7b7c66078e34d7aff3ef26819",
+  "result": "2bb35682a769a7bba771049fc62a4494289fa7e821dd61fb2766e0cfdce160b8",
+  "pages": [],
+  "gist": "Trigger rows: a schema touched, or a state machine named",
+  "reason": "The runs found habits and starts owed and never loaded; the skill's cases become trigger rows the instrument renders into corpus/runtime/triggers.json, which status reads for the skills a change owes. No page changes.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: model-the-domain and type-system-discipline are one habit, and principle-redesign-from-first-principles grafts its procedure, ruled not a stub, with \"Prefer boring code if the current shape is already clear\" read as its condition"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112 S2, under the operator's words \"for smaller decisions go with your recommended suggestions\": the seven stub flags are not stubs and keep their text; the method upstream's edit pass at eb4db2b5 cut stays as written passages crediting pstack; elsewhere upstream's change is taken"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 46,
+        "taken": 37,
+        "exact": 37,
+        "retention": 1,
+        "coverage": 0.8043478260869565,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 693
+  }
+}

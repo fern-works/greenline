@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-agents365-semanticscholar-skill",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-caveman-caveman-commit",
+    "sha256": "370678e54ccf887a54e0b346100211e1c197abd06e3f7eb433ed161b3c426fec"
+  },
+  "source": {
+    "repository": "https://github.com/Agents365-ai/365-skills",
+    "commit": "02d91076f86efef61d5c70ed1ab28411899063ac",
+    "path": "plugins/semanticscholar/skills/semanticscholar-skill"
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "MIT declared without a licence file; held until one confirms it",
+  "reason": "Its MIT stands in front matter and a marketplace entry with no licence file, so nothing of it enters until a file confirms it; the papers page in J-117 S3 states citation-following and backoff in greenline's words.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': Agents365's Semantic Scholar skill is held until a licence file confirms its declared MIT, a declaration without a file being no licence class"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': Agents365's Semantic Scholar skill is held until a licence file confirms its declared MIT, a declaration without a file being no licence class"
+    }
+  ]
+}

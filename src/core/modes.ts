@@ -97,6 +97,14 @@ export type Depth =
   | { readonly depth: "independent"; readonly agents: number }
   | { readonly depth: "looped"; readonly rounds: number };
 
+/**
+ * The record facts a step's applicability may name: `interface`, the fact
+ * the proposal states for a change that touches an interface (J-123 S2).
+ */
+export const STEP_FACTS = ["interface"] as const;
+/** A record fact a step's applicability names. */
+export type StepFact = (typeof STEP_FACTS)[number];
+
 /** One ordered step, run wherever a mode gives it a depth other than none. */
 export interface Step {
   readonly name: StepName;
@@ -104,6 +112,14 @@ export interface Step {
   readonly whenSplit: "plan" | "ticket" | "both";
   /** Whether the step's findings go back to the build step in a fix pass, which spends the mode's fix rounds outside a loop. */
   readonly fixPass: boolean;
+  /**
+   * The record fact the step applies by (J-121 S3's applicability rule,
+   * J-123 S2): where the record states the fact yes the step runs at its
+   * mode's depth; elsewhere its section is the one line
+   * {@link inapplicableLine} and its skill's words are not charged to the
+   * change's budget. Absent, the step applies to every change.
+   */
+  readonly appliesWhen?: StepFact | undefined;
 }
 
 /** One mode: its promise, the request it suits, its budget and the depth of every step. */
@@ -168,7 +184,8 @@ function closedSet<const Values extends readonly [string, ...string[]]>(
   values: Values,
   noun: string,
 ) {
-  const listed = `${values.slice(0, -1).join(", ")} or ${values.at(-1) ?? ""}`;
+  const listed =
+    values.length === 1 ? values[0] : `${values.slice(0, -1).join(", ")} or ${values.at(-1) ?? ""}`;
   return z.enum(values, {
     error: (issue) => `${noun} is ${listed}, not '${String(issue.input)}'`,
   });
@@ -193,6 +210,7 @@ const declared = z
           name: stepName,
           whenSplit: z.enum(["plan", "ticket", "both"]),
           fixPass: z.boolean(),
+          appliesWhen: closedSet(STEP_FACTS, "a step's fact").optional(),
         })
         .strict(),
     ),
@@ -432,6 +450,33 @@ export function noneLine(mode: Pick<Mode, "name">): string {
 }
 
 /**
+ * The one line a step that does not apply to a change holds in its record:
+ * `none, no <fact>`, such as design's `none, no interface`.
+ * @param fact the fact the step applies by
+ * @returns the line
+ */
+export function inapplicableLine(fact: StepFact): string {
+  return `none, no ${fact}`;
+}
+
+/** The facts a record states that a step's applicability reads. */
+export interface StepFacts {
+  /** Whether the record states that the change touches an interface. */
+  readonly interface: boolean;
+}
+
+/**
+ * Whether a step applies to a change: always, or where the record states
+ * the fact it applies by.
+ * @param step the step
+ * @param facts the record's facts
+ * @returns true where the step runs at its mode's depth
+ */
+export function stepApplies(step: Pick<Step, "appliesWhen">, facts: StepFacts): boolean {
+  return step.appliesWhen === undefined || facts[step.appliesWhen];
+}
+
+/**
  * The fresh agents a depth starts: an independent depth's agents, a looped
  * depth's rounds, none otherwise.
  * @param value the depth
@@ -575,8 +620,8 @@ export function renderModeTable(definition: ModesDefinition): string {
     ),
     "",
     loops
-      ? `The agents count the builder. A looped step repeats until clean, and its rounds include its fixes${fixes}.`
-      : `The agents count the builder${fixes}.`,
+      ? `The agents count the builder, never an agent a method starts. A looped step repeats until clean, and its rounds include its fixes${fixes}.`
+      : `The agents count the builder, never an agent a method starts${fixes}.`,
     "",
   ].join("\n");
 }

@@ -15,14 +15,21 @@ import {
   type BodyLine,
   type FieldData,
 } from "./front-matter.ts";
+import { parseAgent, parseGround, type Ground } from "./ground.ts";
+import { parseInterfaceFact, type InterfaceFact } from "./interface-fact.ts";
+import { CAREFUL_MODE, isMarksLine, isPlaceholder } from "./record-lines.ts";
 import {
   agentsAtMost,
   depthOf,
+  inapplicableLine,
   meetsFloor,
   noneLine,
   recordSections,
   roundsAtMost,
+  stepApplies,
   STEP_KIND,
+  type StepFact,
+  type StepFacts,
   type Depth,
   type FloorName,
   type Kind,
@@ -47,7 +54,9 @@ import {
  * whose record is a section writes one optional `## <kind>` section, before
  * the steps' sections when its mechanism is `open` and after them
  * otherwise; a kind whose record is a line writes one optional front-matter
- * line `<kind>: <text>`; a kind whose record is none writes nothing. A
+ * line `<kind>: <text>`; a kind whose record is none writes nothing. An
+ * interface change's record may hold one `## Interface` section of the
+ * owner's rulings, wherever it stands among the others (J-186 S1). A
  * record that parses but does not match its mode is not refused: the
  * mismatch is a finding `mismatches` derives.
  */
@@ -89,6 +98,12 @@ export interface Raise {
 export interface Cost {
   readonly agents: number;
   readonly rounds: number;
+  /**
+   * The owner's words accepting a cost past the mode's count, quoted in the
+   * record's `overrun` line beside `agents` (J-174): status reads such a cost
+   * as accepted, never as a mismatch, and the count stays as it was.
+   */
+  readonly overrun?: string;
 }
 
 /**
@@ -127,6 +142,17 @@ export interface KindLine {
   readonly text: string;
 }
 
+/**
+ * One refresh the close made of the pages the change touched (J-147 S1):
+ * the method whose fresh agent made it, named apart and counted nowhere,
+ * the pages it rewrote as one comma-separated text, and its cost.
+ */
+export interface PageRefresh {
+  readonly by: string;
+  readonly pages: string;
+  readonly cost: string;
+}
+
 /** One parsed change record. */
 export interface ChangeRecord {
   readonly id: ChangeId;
@@ -144,8 +170,33 @@ export interface ChangeRecord {
   readonly starts?: readonly Start[];
   /** The owner's words for a push, a pull request or a merge, written at close; absent, no push. */
   readonly landing?: string;
+  /** The owner's words that answered the proposal, quoted by the event hook (J-151 S2). */
+  readonly yes?: string;
+  /**
+   * The owner's words that confirmed a careful frame's restatement, said
+   * after the CLI noted it put to them (J-223 S1); owed at careful alone.
+   */
+  readonly confirmed?: string;
+  /** What landed, in one sentence of the agent's own words, written at close (J-168 S1). */
+  readonly outcome?: string;
   /** The owner's words for a rebase of the change's branch; absent, git's hooks refuse one. */
   readonly rebase?: string;
+  /** The owner's words for throwing the change's work away; absent, the harness hook refuses a discard. */
+  readonly discard?: string;
+  /** The owner's words that stopped the change, one message of theirs whole; a stopped record quotes them, and git's hooks and the harness hook refuse a stop without them (J-200 S1). */
+  readonly stopped?: string;
+  /** Where the change's commits go: in place on a branch, or a worktree of its own. */
+  readonly ground?: Ground;
+  /** The harness and the model that do the work, `<harness>/<model>`, the model as the harness states it. */
+  readonly agent?: string;
+  /** The skills the change loaded, by name, as the close states them from the facts (J-116 S3). */
+  readonly skills?: readonly string[];
+  /** The discussions the change was promoted from, by id (J-118 S3). */
+  readonly from?: readonly string[];
+  /** Whether the change touches an interface, as the proposal states it (J-123 S1); absent where the record states none. */
+  readonly interface?: InterfaceFact;
+  /** The close's refreshes of the pages the change touched, each by a method's agent with its cost (J-147 S1). */
+  readonly refreshes?: readonly PageRefresh[];
   readonly sections: readonly Section[];
   /** The sections of the other kinds whose record is a section, in the order the record holds them. */
   readonly kindSections: readonly KindSection[];
@@ -177,7 +228,18 @@ export interface RecordForm {
   readonly belongs?: Membership;
   readonly cost?: Cost;
   readonly landing?: string;
+  readonly yes?: string;
+  readonly confirmed?: string;
+  readonly outcome?: string;
   readonly rebase?: string;
+  readonly discard?: string;
+  readonly stopped?: string;
+  readonly ground?: Ground;
+  readonly agent?: string;
+  readonly skills?: readonly string[];
+  readonly from?: readonly string[];
+  readonly interface?: InterfaceFact;
+  readonly refreshes?: readonly PageRefresh[];
   /** Each second-level heading outside a fence, in order, with its text and its rounds. */
   readonly sections: readonly {
     readonly heading: string;
@@ -201,6 +263,8 @@ const DEPTH_NAMES = [
 export const CHANGE_ID: RegExp = /^(\d{4})-(\d{2})-(\d{2})-[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const PLAN_NAME = /^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const TICKET_ID = /^[A-Za-z][A-Za-z0-9-]*$/;
+/** A roster skill's name, as the `skills` line names it. */
+const SKILL_NAME = /^[a-z0-9][a-z0-9-]*$/;
 const NONE = "none";
 const text = z.string().min(1);
 
@@ -212,16 +276,30 @@ const declared = z
     why: text,
     state: z.enum(["open", "stopped", "done", "dropped"]),
     next: text.optional(),
-    floors: z.array(text).optional(),
+    // The word none answers the line as the empty list does (J-226 S1).
+    floors: z.union([z.literal(NONE).transform((): string[] => []), z.array(text)]).optional(),
     raises: z.array(z.object({ from: text, reason: text }).strict()).optional(),
     reviewed: z.enum(DEPTH_NAMES).optional(),
     plan: z.string().regex(PLAN_NAME).optional(),
     ticket: z.string().regex(TICKET_ID).optional(),
     agents: z.number().int().min(1).optional(),
     rounds: z.number().int().min(0).optional(),
+    overrun: text.optional(),
     starts: z.array(text).optional(),
     landing: text.optional(),
+    yes: text.optional(),
+    confirmed: text.optional(),
+    outcome: text.optional(),
     rebase: text.optional(),
+    discard: text.optional(),
+    stopped: text.optional(),
+    ground: text.optional(),
+    agent: text.optional(),
+    skills: z.array(text).optional(),
+    // A bare id is read as a list of one.
+    from: z.union([text.transform((id) => [id]), z.array(text)]).optional(),
+    interface: text.optional(),
+    refreshes: z.array(z.object({ by: text, pages: text, cost: text }).strict()).optional(),
   })
   .strict();
 
@@ -276,6 +354,8 @@ interface ReadRecord {
 
 /** The fields the record itself defines; any other field may only be a kind's line. */
 const RECORD_FIELDS: ReadonlySet<string> = new Set<string>(declared.keyof().options);
+/** The fields a record is not read without. */
+const REQUIRED: ReadonlySet<string> = new Set(["mode", "choice", "why", "state"]);
 const IDENTIFIER = /^[a-z][a-z0-9-]*$/;
 /** The "next" line's form: a step, a colon and a space, and the action that resumes it. */
 const NEXT_LINE = /^([a-z][a-z0-9-]*): (\S.*)$/;
@@ -298,7 +378,19 @@ function readRecord(fileName: string, input: string): Result<ReadRecord, Contrac
     ]);
   const document = parseFrontMatter(input, "a change record");
   if (document._tag === "err") return contractFailure(fileName, document.error.issues);
-  const data = Object.entries(fieldData(document.value.fields));
+  // A line still holding the skeleton's placeholder states nothing yet (J-176 S1); a line the
+  // record cannot be read without names its placeholder, so status says what to write.
+  const all = Object.entries(fieldData(document.value.fields));
+  const unwritten = all.filter(([field, value]) => REQUIRED.has(field) && isPlaceholder(value));
+  if (unwritten.length > 0)
+    return contractFailure(
+      fileName,
+      unwritten.map(([field]) => ({
+        path: field,
+        message: `the ${field} line still holds the skeleton's placeholder: write it in your own words (${LEDGER_GUIDE})`,
+      })),
+    );
+  const data = all.filter(([, value]) => !isPlaceholder(value));
   const parsed = declared.safeParse(
     Object.fromEntries(data.filter(([field]) => RECORD_FIELDS.has(field))),
   );
@@ -365,6 +457,79 @@ function formIssues(value: Declared, issues: InvalidField[]): void {
     issues.push({ path: "ticket", message: "a ticket is named only with its plan" });
   if ((value.agents === undefined) !== (value.rounds === undefined))
     issues.push({ path: "agents", message: "the cost states both agents and rounds" });
+  if (value.overrun !== undefined && value.agents === undefined)
+    issues.push({
+      path: "overrun",
+      message:
+        "the overrun line quotes the owner's words accepting the cost the record states: state agents and rounds beside it",
+    });
+  if (value.ground !== undefined && parseGround(value.ground) === undefined)
+    issues.push({
+      path: "ground",
+      message: `the ground line is branch, or "worktree: <path>" for a worktree of its own (${LEDGER_GUIDE})`,
+    });
+  if (value.agent !== undefined && parseAgent(value.agent) === undefined)
+    issues.push({
+      path: "agent",
+      message: `the agent line is "<harness>/<model>", the model as the harness states it (${LEDGER_GUIDE})`,
+    });
+  for (const [index, id] of fromOf(value).entries())
+    if (!isChangeId(id))
+      issues.push({
+        path: `from[${String(index)}]`,
+        message: `the from line names each discussion the change was promoted from by its id, a real date and a slug, and '${id}' is none (${LEDGER_GUIDE})`,
+      });
+  if (value.interface !== undefined && parseInterfaceFact(value.interface) === undefined)
+    issues.push({
+      path: "interface",
+      message: `the interface line is no, or "yes, <register>" with site or app (${LEDGER_GUIDE})`,
+    });
+  if (value.skills?.some((skill) => !SKILL_NAME.test(skill)) === true)
+    issues.push({
+      path: "skills",
+      message: `the skills line names each skill the change loaded by its name, such as [frame, tdd] (${LEDGER_GUIDE})`,
+    });
+}
+
+/** The discussions a record's `from` line names; none when it states none. */
+function fromOf(value: Declared): readonly string[] {
+  return value.from ?? [];
+}
+
+/** The lines of the owner's words and the ground, each added only where the record states it; the form is checked already. */
+function addWordsAndGround(
+  value: Declared,
+  draft: {
+    landing?: string;
+    yes?: string;
+    confirmed?: string;
+    outcome?: string;
+    rebase?: string;
+    discard?: string;
+    stopped?: string;
+    ground?: Ground;
+    agent?: string;
+    skills?: readonly string[];
+    from?: readonly string[];
+    interface?: InterfaceFact;
+    refreshes?: readonly PageRefresh[];
+  },
+): void {
+  const fact = value.interface === undefined ? undefined : parseInterfaceFact(value.interface);
+  if (fact !== undefined) draft.interface = fact;
+  if (value.landing !== undefined) draft.landing = value.landing;
+  if (value.yes !== undefined) draft.yes = value.yes;
+  if (value.confirmed !== undefined) draft.confirmed = value.confirmed;
+  if (value.outcome !== undefined) draft.outcome = value.outcome;
+  if (value.rebase !== undefined) draft.rebase = value.rebase;
+  if (value.discard !== undefined) draft.discard = value.discard;
+  if (value.stopped !== undefined) draft.stopped = value.stopped;
+  const ground = value.ground === undefined ? undefined : parseGround(value.ground);
+  if (ground !== undefined) draft.ground = ground;
+  if (value.agent !== undefined) draft.agent = value.agent;
+  if (value.skills !== undefined) draft.skills = value.skills;
+  if (value.from !== undefined) draft.from = fromOf(value);
+  if (value.refreshes !== undefined) draft.refreshes = value.refreshes;
 }
 
 /**
@@ -456,6 +621,16 @@ function headingRefusal(definition: ModesDefinition, title: string): string {
   }
 }
 
+/**
+ * The heading of the record's Interface section, matched in any case
+ * (J-148 S3, J-186 S1): the owner's rulings an interface change carries,
+ * its unlocks, its floors' answers and its pages, which
+ * `src/core/record-interface.ts` reads. It is no step's and no kind's
+ * section, so it stands once wherever the agent writes it among the
+ * steps' sections, beside the design section most often.
+ */
+const INTERFACE_SECTION = "interface";
+
 /** The body's sections: the steps' and the other kinds'. */
 interface BodySections {
   readonly sections: readonly Section[];
@@ -473,7 +648,18 @@ function sectionsOf(
   const kindSections: KindSection[] = [];
   // The section kind after the steps whose section the record has already reached, if any.
   let after: KindName | undefined;
+  let interfaceSeen = false;
   for (const heading of headings) {
+    // The interface rulings' section the design pages ask for, once, wherever it stands (J-186 S1).
+    if (heading.title.toLowerCase() === INTERFACE_SECTION) {
+      if (interfaceSeen)
+        issues.push({
+          path: "",
+          message: `${heading.at}: the record holds an Interface section already`,
+        });
+      interfaceSeen = true;
+      continue;
+    }
     const kind = definition.kinds.find((entry) => entry.name === heading.title);
     if (kind !== undefined && writesSection(kind)) {
       if (kindSections.some((section) => section.kind === kind.name))
@@ -569,9 +755,9 @@ function membershipOf(value: Declared): Membership | undefined {
 }
 
 function costOf(value: Declared): Cost | undefined {
-  return value.agents === undefined || value.rounds === undefined
-    ? undefined
-    : { agents: value.agents, rounds: value.rounds };
+  if (value.agents === undefined || value.rounds === undefined) return undefined;
+  const cost = { agents: value.agents, rounds: value.rounds };
+  return value.overrun === undefined ? cost : { ...cost, overrun: value.overrun };
 }
 
 /**
@@ -639,8 +825,7 @@ export function parseRecordForm(
   if (belongs !== undefined) form.belongs = belongs;
   const cost = costOf(value);
   if (cost !== undefined) form.cost = cost;
-  if (value.landing !== undefined) form.landing = value.landing;
-  if (value.rebase !== undefined) form.rebase = value.rebase;
+  addWordsAndGround(value, form);
   return contractOk(form);
 }
 
@@ -755,9 +940,45 @@ export function parseChangeRecord(
   const cost = costOf(value);
   if (cost !== undefined) record.cost = cost;
   if (starts !== undefined) record.starts = starts;
-  if (value.landing !== undefined) record.landing = value.landing;
-  if (value.rebase !== undefined) record.rebase = value.rebase;
+  addWordsAndGround(value, record);
   return contractOk(record);
+}
+
+/**
+ * A parse's issues in one line, as `greenline status` prints them after
+ * "does not parse:": each issue's path and message, joined by semicolons.
+ * @param error the parse's failure
+ * @returns the line
+ */
+export function issuesLine(error: ContractParseFailed): string {
+  return error.issues
+    .map((issue) => (issue.path === "" ? issue.message : `${issue.path}: ${issue.message}`))
+    .join("; ");
+}
+
+/**
+ * Why `greenline status` cannot read a record, in the parser's words
+ * (J-208 S1, the run j196t-conduct-emptyc): its form first, as status
+ * reads history; then, unless it is dropped, which status reads as history
+ * alone, the record against the definition, as status judges an open,
+ * stopped or done record, a start naming a method and not a step among
+ * its refusals. Where no definition is read, the form alone decides, since
+ * a refusal rests only on a fact greenline could read.
+ * @param definition the loaded modes definition, undefined where none is read
+ * @param fileName the record's file name, `<date>-<slug>.md`
+ * @param input the record's text
+ * @returns the issues in one line, or undefined where status reads the record
+ */
+export function unreadRecord(
+  definition: ModesDefinition | undefined,
+  fileName: string,
+  input: string,
+): string | undefined {
+  const form = parseRecordForm(fileName, input);
+  if (form._tag === "err") return issuesLine(form.error);
+  if (definition === undefined || form.value.position.state === "dropped") return undefined;
+  const record = parseChangeRecord(definition, fileName, input);
+  return record._tag === "err" ? issuesLine(record.error) : undefined;
 }
 
 /** What a derivation needs beyond the record: whether the record's plan has a tickets file. */
@@ -821,8 +1042,34 @@ export function requiredSections(
   context: RecordContext,
 ): readonly RecordSection[] {
   return recordSections(definition, modeOf(definition, record)).filter(
-    (section) => heldElsewhere(definition, record, context, section.step) === undefined,
+    (section) =>
+      heldElsewhere(definition, record, context, section.step) === undefined &&
+      inapplicableFact(definition, record, section.step) === undefined,
   );
+}
+
+/**
+ * The facts a record states that a step's applicability reads.
+ * @param record the record
+ * @returns its facts
+ */
+function recordStepFacts(record: Pick<ChangeRecord, "interface">): StepFacts {
+  return { interface: record.interface?.touches === true };
+}
+
+/**
+ * The fact a step applies by, where the record does not state it, so the
+ * step does not apply to the change (J-123 S2): its section is optional and
+ * holds only the line {@link inapplicableLine} where it stands.
+ */
+function inapplicableFact(
+  definition: ModesDefinition,
+  record: ChangeRecord,
+  step: StepName,
+): StepFact | undefined {
+  const entry = definition.steps.find((candidate) => candidate.name === step);
+  if (entry?.appliesWhen === undefined) return undefined;
+  return stepApplies(entry, recordStepFacts(record)) ? undefined : entry.appliesWhen;
 }
 
 /**
@@ -833,7 +1080,8 @@ export function requiredSections(
  */
 export type Unrequired =
   | { readonly by: "mode" }
-  | { readonly by: "split"; readonly holder: "plan" | "ticket" };
+  | { readonly by: "split"; readonly holder: "plan" | "ticket" }
+  | { readonly by: "fact"; readonly fact: StepFact };
 
 /** Why this record does not run the step, or undefined when it does. */
 function unrunBecause(
@@ -844,11 +1092,13 @@ function unrunBecause(
 ): Unrequired | undefined {
   const holder = heldElsewhere(definition, record, context, step);
   if (holder !== undefined) return { by: "split", holder };
+  const fact = inapplicableFact(definition, record, step);
+  if (fact !== undefined) return { by: "fact", fact };
   return depthOf(modeOf(definition, record), step).depth === "none" ? { by: "mode" } : undefined;
 }
 
 /** The line a skipped step's section holds, whichever mode it names, as a raise from a mode that skipped the step leaves it. */
-const NONE_LINE = /^none at [a-z][a-z0-9-]*$/;
+const NONE_LINE = /^none(?: at [a-z][a-z0-9-]*|, no [a-z]+)$/;
 
 /** A run step's section with its work in it: present, not empty, and not the line of a mode that skipped it. */
 function written(record: ChangeRecord, step: StepName): Section | undefined {
@@ -904,6 +1154,12 @@ export type Mismatch =
       readonly holder: "plan" | "ticket";
     }
   | { readonly kind: "unrun-section"; readonly step: StepName; readonly line: string }
+  | {
+      readonly kind: "inapplicable-section";
+      readonly step: StepName;
+      readonly fact: StepFact;
+      readonly line: string;
+    }
   | { readonly kind: "missing-section"; readonly step: StepName }
   | { readonly kind: "missing-none-line"; readonly step: StepName; readonly line: string }
   | { readonly kind: "next-unrequired"; readonly step: StepName; readonly why: Unrequired }
@@ -915,7 +1171,13 @@ export type Mismatch =
       readonly cap: number;
     }
   | { readonly kind: "below-floor"; readonly floor: FloorName }
-  | { readonly kind: "over-budget"; readonly cost: Cost; readonly budget: Cost };
+  | {
+      readonly kind: "over-budget";
+      readonly cost: Cost;
+      readonly budget: Cost;
+      /** The agents a method started that the record's cost counted, which the limit leaves out, and their words (J-134 S2). */
+      readonly methods?: { readonly out: number; readonly words: string } | undefined;
+    };
 
 /**
  * Each way a record fails to match its mode: a section the other record of
@@ -926,7 +1188,8 @@ export type Mismatch =
  * floor the mode does not meet when the agent took the mode without waiting
  * (`choice: standing`), under the `proceed` setting or the request's own
  * words, and a cost over the mode's budget: the agents and the rounds the
- * definition derives for the mode ({@link agentsAtMost}, {@link roundsAtMost}).
+ * definition derives for the mode ({@link agentsAtMost}, {@link roundsAtMost}),
+ * unless the record's `overrun` line quotes the owner accepting it (J-174).
  * @param definition the definition the record was parsed with
  * @param record the record
  * @param context whether the record's plan has a tickets file
@@ -944,6 +1207,14 @@ export function mismatches(
   // A raise leaves the line of the mode it was raised from on a step neither mode runs, and that line stands.
   const lines = new Set([line, ...record.raises.map((raise) => noneLine({ name: raise.from }))]);
   for (const section of record.sections) {
+    // A step that does not apply to the change keeps, where its section stands, the one line saying so.
+    const fact = inapplicableFact(definition, record, section.step);
+    if (fact !== undefined) {
+      const inapplicable = inapplicableLine(fact);
+      if (section.text !== inapplicable)
+        found.push({ kind: "inapplicable-section", step: section.step, fact, line: inapplicable });
+      continue;
+    }
     const wanted = required.find((entry) => entry.step === section.step);
     if (wanted === undefined) {
       found.push({
@@ -960,7 +1231,16 @@ export function mismatches(
       if (!lines.has(section.text)) found.push({ kind: "unrun-section", step: section.step, line });
       continue;
     }
-    if (wanted.depth.depth === "inline" && section.text.includes("\n"))
+    // The close's marks line on a line of its own is no second line of an inline close (J-226 S1).
+    const counted =
+      section.step === "close"
+        ? section.text
+            .split("\n")
+            .filter((line) => !isMarksLine(line))
+            .join("\n")
+            .trim()
+        : section.text;
+    if (wanted.depth.depth === "inline" && counted.includes("\n"))
       found.push({ kind: "inline-over-one-line", step: section.step });
     if (wanted.depth.depth === "looped" && section.rounds > wanted.depth.rounds)
       found.push({
@@ -1002,7 +1282,11 @@ export function mismatches(
       agents: agentsAtMost(definition, mode),
       rounds: roundsAtMost(definition, mode),
     };
-    if (record.cost.agents > budget.agents || record.cost.rounds > budget.rounds)
+    // A cost the owner accepted past the count, in the record's overrun line, is read as accepted (J-174).
+    if (
+      record.cost.overrun === undefined &&
+      (record.cost.agents > budget.agents || record.cost.rounds > budget.rounds)
+    )
       found.push({ kind: "over-budget", cost: record.cost, budget });
   }
   return found;
@@ -1041,18 +1325,26 @@ function kindSection(kind: Kind): string {
 
 /**
  * The skeleton of a record of one mode, from the definition's kinds and
- * their contracts (the ruling Q1 on S16b): the front matter a
- * record opens with, a line for each kind whose record is a line; then a
- * section for each other kind whose record is a section and whose mechanism
- * is `open`; one section per step of the line, each saying what its depth
- * asks, a step the mode does not run holding `none at <mode>`; and a
- * section for each remaining kind whose record is a section. A kind whose
- * record is none adds nothing.
+ * their contracts (the ruling Q1 on S16b), which `greenline open` writes
+ * when a change opens (J-176 S1): the front matter with every line the mode
+ * owes named and a placeholder in each, `"<...>"`, a line for each kind
+ * whose record is a line; then a section for each other kind whose record
+ * is a section and whose mechanism is `open`; one section per step of the
+ * line, each saying what its depth asks, a step the mode does not run
+ * holding `none at <mode>`; and a section for each remaining kind whose
+ * record is a section. A kind whose record is none adds nothing. The
+ * placeholders are the agent's to replace with its own words; the lint
+ * refuses one left in place at the done commit.
  * @param definition the loaded modes definition
  * @param mode a mode of that definition
+ * @param interfaceLine the interface line's form: `named` where the workspace names interface roots, `none` where it names none, `either` for the guide, which says both
  * @returns the skeleton as Markdown, ending in a newline
  */
-export function renderRecordSkeleton(definition: ModesDefinition, mode: Mode): string {
+export function renderRecordSkeleton(
+  definition: ModesDefinition,
+  mode: Mode,
+  interfaceLine: "named" | "none" | "either" = "either",
+): string {
   const lines = definition.kinds
     .filter((kind) => kind.record === "line")
     .map(
@@ -1060,17 +1352,60 @@ export function renderRecordSkeleton(definition: ModesDefinition, mode: Mode): s
         `${kind.name}: "<one line by the ${kind.name} skill that ran; leave the line out when none did>"`,
     );
   const kinds = definition.kinds.filter(writesSection);
-  const steps = recordSections(definition, mode).map((section) =>
-    [`## ${section.step}`, "", sectionPlaceholder(section.depth, mode), ""].join("\n"),
-  );
+  const steps = recordSections(definition, mode).map((section) => {
+    const fact = definition.steps.find((step) => step.name === section.step)?.appliesWhen;
+    // A step that applies by a fact says both forms: its depth's, and the one line where the fact is no.
+    const placeholder =
+      fact === undefined
+        ? sectionPlaceholder(section.depth, mode)
+        : `${sectionPlaceholder(section.depth, mode)} where ${fact} is yes; ${inapplicableLine(fact)} where it is no`;
+    return [`## ${section.step}`, "", placeholder, ""].join("\n");
+  });
+  const interfaceText =
+    interfaceLine === "named"
+      ? ['interface: "<no, or yes, site or app>"']
+      : interfaceLine === "either"
+        ? [
+            'interface: "<no, or yes, site or app; leave the line out where the workspace names no interface roots>"',
+          ]
+        : [];
+  // A mode of the builder alone and no round fixes its cost, so its skeleton names no cost line.
+  const cost =
+    agentsAtMost(definition, mode) > 1 || roundsAtMost(definition, mode) > 0
+      ? [
+          'agents: "<the agents the line\'s depths started, the builder counted, written at close>"',
+          'rounds: "<the fix rounds and loops it ran, written at close>"',
+        ]
+      : [];
+  const starts =
+    agentsAtMost(definition, mode) > 1
+      ? ['starts: "<each fresh agent the depths started, as [review 1], written at close>"']
+      : [];
+  // Careful's frame is confirmed by the owner's words after its restatement was put, read by the mode's name (J-223 S1).
+  const confirmed =
+    mode.name === CAREFUL_MODE
+      ? [
+          "confirmed: \"<the owner's words that confirmed the frame's restatement, as they said them after it was put to them; written once they confirm it, and left out of a ticket's record, whose frame is its planning change's>\"",
+        ]
+      : [];
   return [
     [
       "---",
       `mode: ${mode.name}`,
-      "choice: <owner, accepted or standing>",
-      'why: "<why the change exists>"',
+      'choice: "<owner, accepted or standing>"',
+      'yes: "<the owner\'s words that answered the proposal, as they said them; leave the line out unless the choice is accepted>"',
+      ...confirmed,
+      'why: "<why the change exists, in one line>"',
+      'floors: "<each floor you found, as [security], or none>"',
       "state: open",
       'next: "<step>: <the action that resumes it>"',
+      'ground: "<branch, or worktree: <its path> for a worktree of its own>"',
+      'agent: "<harness>/<the model, as the harness states it>"',
+      ...interfaceText,
+      'skills: "<the skills the change used, by name, as [frame, tdd], written at close>"',
+      ...cost,
+      ...starts,
+      'outcome: "<what landed, one sentence of your own under 200 characters, written at close>"',
       ...lines,
       "---",
       "",

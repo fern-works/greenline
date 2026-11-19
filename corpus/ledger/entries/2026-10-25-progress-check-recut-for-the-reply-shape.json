@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-progress-check-recut-for-the-reply-shape",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-prose-recut-for-the-reply-shape",
+    "sha256": "7f3312c72fbd408291712295ca63622beb79c9f5f62410196e26074051302b11"
+  },
+  "subject": "skill:progress-check",
+  "recipe": "2da4b6f242f4135174f890dee9ce32c7ffeac6752abad3f9eef5cb66163374fe",
+  "result": "603b409bc01bc76a159d1bbdb7627c915afb3cba3b42252378d5c1a08f69d144",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "In a change, the block's progress line counts the steps",
+  "reason": "progress-check is re-cut for the reply shape: inside a change the block's progress line counts the steps, so the habit keeps long work with no change open and the owner's ask to change the cadence.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "tjcages",
+        "segments": 157,
+        "taken": 126,
+        "exact": 123,
+        "retention": 0.9761904761904762,
+        "coverage": 0.802547770700637,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 689
+  }
+}

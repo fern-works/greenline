@@ -1,0 +1,31 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-invariants-description-shortened",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-state-machines-description-shortened",
+    "sha256": "6b11ae18e268ae2b1f63ccaaaff3885352f3cae3364bf9afc0f42d6b3809a6c5"
+  },
+  "subject": "skill:invariants",
+  "recipe": "56fb6595657addd1da17bbfcc17b36658b10113457f7dec6f4657593d4e45c83",
+  "result": "371696ab3e4fee7a67d73ae697465f752127be3e54352dc3923811d8532a5caa",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The description shortened so the settings page stays under its cap",
+  "reason": "The description keeps the owner's phrase and the cases and names the three parts briefly, so the viewer's settings document stays under its size cap.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 776
+  }
+}

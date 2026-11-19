@@ -1,0 +1,98 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-design-survey-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-frame-hands-the-ui-prototype-to-design",
+    "sha256": "1af17c32a6488f202ec3b6b82bba7585abba166a25db7a23224a6374ef957777"
+  },
+  "subject": "skill:design-survey",
+  "recipe": "a737fabdc0919eed54540017dbbd4a21842c46cc9e92f8d602611982ea4bdc01",
+  "result": "c8cad6b532d98aac289e96d2275529eac61ca7b1f905a601b4ff285ee38bb087",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The start design-survey enters, reading an interface into its home",
+  "reason": "design-survey enters as a default start: it traces the code and the rendered pages, measures with an instrument declared as a check, confirms with the owner, and writes DESIGN.md, the rulings and the survey's sheet.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "ibelick-ui-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "interface-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "jakubkrehel-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "kemiljk-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 859
+  }
+}

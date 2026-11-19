@@ -13,6 +13,7 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  realpathSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -100,7 +101,7 @@ describe("J-93 S3 init installs the hooks and proposes the checks", () => {
     // The scripts are written executable, so an older git runs them and no registration changes a mode.
     expect(statSync(join(root, ".greenline/hooks/pre-commit")).mode & 0o111).not.toBe(0);
     expect(gitConfig(root, "hook.greenline-pre-commit.command")).toBe(
-      "sh .greenline/hooks/pre-commit",
+      `test -f '${join(realpathSync(root), ".greenline/hooks/pre-commit")}' || exit 0; sh '${join(realpathSync(root), ".greenline/hooks/pre-commit")}'`,
     );
     for (const path of [
       ".greenline/hooks/pre-commit",

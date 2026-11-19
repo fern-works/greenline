@@ -1,0 +1,213 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "interface-catalog",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "interface-catalog"
+    },
+    {
+      "field": "description",
+      "value": "The interface catalog: entries of design language, each a material, a palette, a type pairing, a composition, a motion register or the anatomy a page's job gives, with its facets, its tokens or its sketch, and its provenance, and the deal that draws three directions from them. Use at the design step when a change's direction is open and the owner installed the catalog, and when the owner asks to pick among different looks."
+    }
+  ],
+  "sources": [
+    "hallmark",
+    "taste-skill",
+    "arla6ka-skills",
+    "fluid-functionalism",
+    "emilkowalski-skills",
+    "web-animation-skills",
+    "prototyper-ui",
+    "jakubkrehel-skills",
+    "shadow-plugin",
+    "antfu-design",
+    "swiss-design",
+    "elithrar-dotfiles",
+    "regards-skill",
+    "dimillian-skills",
+    "callstack-agent-skills",
+    "joe-bell-skills"
+  ],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Interface catalog\n\ninterface-catalog is an extra habit, installed on the owner's request, for the moment the design step deals directions: a change whose record says it touches an interface, where nothing locked a direction for its root. It writes no record of its own; the deal and the owner's pick are written in the change's design section. The design step owns the ask, the showing and the lock, and the interface rules own every constraint a measurement can check.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situation the design step deals in, that it writes no record of its own, and the step and the rules that own the neighbouring concerns (J-123 S6).",
+          "gist": "Opens the catalog: the extra the design step deals from"
+        },
+        {
+          "passage": "written",
+          "text": "The deal never prints the catalog whole.",
+          "kind": "method",
+          "reason": "How the deal draws three directions by the facets in play, the job, the tone and the material, under a seed with one reroll, never the catalog whole, in greenline's words from the families' draw and deal (J-123 S6).",
+          "gist": "Draws three directions by the facets, the job and the material",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the catalog's entries; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": ["taste-skill", "hallmark"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand, so the front holds the method alone.",
+          "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the deal is drawn, read [method.md](method.md): how the deal is drawn, reading an entry, and what follows the pick.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Interface catalog: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "## How the deal is drawn\n\nThe deal draws three directions, each a material, a palette, a type pairing, a composition and a motion register, from the entries that serve the register and the platform in play: a site's heroes and page shapes, an app's shells and screen patterns. The page's job gives the anatomy, the same for the three. The tone, the sector and the material in hand weight the draw toward the entries whose words name them, and a composition that needs pictures is never dealt to a product that has none. The three differ entry by entry. The same ask deals the same three, and the owner may reroll once.",
+          "kind": "method",
+          "reason": "How the deal draws three directions by the facets in play, the job, the tone and the material, under a seed with one reroll, never the catalog whole, in greenline's words from the families' draw and deal (J-123 S6).",
+          "gist": "Draws three directions by the facets, the job and the material",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the catalog's entries; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": ["taste-skill", "hallmark"]
+        },
+        {
+          "passage": "written",
+          "text": "## Reading an entry\n\nAn entry is data. Its tokens stand in DESIGN.md's groups, so a pick writes into the design system with no translation; its sketch is rows, columns and the slot each region holds; its words give its reasons and its pitfalls. Its colours come with the ink-on-ground pairs they are read in, each meeting the floor. A constraint a measurement can check belongs to the interface rules, never to an entry. An entry names where its language came from, a source at its commit or a site studied on the day it was seen, and the source's own expression stays out of it.",
+          "kind": "method",
+          "reason": "How an entry is read: tokens in DESIGN.md's groups, the sketch, the pairs meeting the floor, provenance without the source's expression, in greenline's words over the families J-122 normalised (J-123 S6).",
+          "gist": "Reads an entry as data with its pairs and its source",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the catalog's entries; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "hallmark",
+            "taste-skill",
+            "arla6ka-skills",
+            "fluid-functionalism",
+            "emilkowalski-skills",
+            "web-animation-skills",
+            "prototyper-ui",
+            "jakubkrehel-skills",
+            "shadow-plugin",
+            "antfu-design",
+            "swiss-design",
+            "elithrar-dotfiles",
+            "regards-skill",
+            "dimillian-skills",
+            "callstack-agent-skills",
+            "joe-bell-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## After the pick\n\nThe pick is the owner's. Write it into the design section with its entries' ids, and into the design system as the design step's pages say. Combine entries only within one direction, and settle the direction whole before deriving its tokens.",
+          "kind": "method",
+          "reason": "What follows the owner's pick: its ids in the design section, the system written as the design step says, one direction settled whole (J-123 S6).",
+          "gist": "Writes the owner's pick by its ids and settles it whole",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the catalog's entries; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Interface catalog: the practice's mechanics\n\nThis page holds where the catalog's data stands and its commands. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "home",
+          "reason": "Opens the references page: where the catalog's mechanics stand (J-123 S6).",
+          "gist": "Opens the mechanics page of the catalog"
+        },
+        {
+          "passage": "written",
+          "text": "## Where it stands\n\n- The entries are `catalog/entries.json` in this skill's folder, one schema for every entry: its id, kind, register, platform, facets, tokens, contrast pairs, sketch, words and provenance. Never paste the file whole into a reply or a record; deal from it.\n- A pick names its entries by their ids in the record's design section, beside the owner's words.",
+          "kind": "home",
+          "reason": "Where the entries stand beside the skill and how a pick names them (J-123 S6).",
+          "gist": "Where the entries stand and how a pick names them"
+        },
+        {
+          "passage": "written",
+          "text": "## Commands\n\n- `greenline deal --register <site or app> --job <the page's job> --tone <words> --material <what is in hand>` deals three directions and prints the seed it drew under; the same ask deals the same three, `--reroll` draws once again on the owner's word alone, and the harness hook refuses a `--seed` the owner's words did not name and a `--reroll` they did not ask for, or a second one, and `--json` prints the entries' ids alone.\n- `greenline inspect` shows the three side by side in its deal view, whose pick button writes `.greenline/ledger/<id>/design-pick.json`, and the catalog's entries as specimens in the Atlas's catalog.",
+          "kind": "home",
+          "reason": "The deal's command and the viewer's deal view and catalog browser (J-123 S6). J-149 S4: the deal's three come from the ask, a seed scan and an unasked reroll refused by the hook with the owner's words as the exit.",
+          "gist": "The deal's command and the viewer's views"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [
+    {
+      "path": "catalog/entries.json",
+      "sha256": "4230c655b9ed357a91f0315dfc449d47d1762431df6a29c1d2a80877a0407956",
+      "kind": "home",
+      "reason": "The catalog's entries as data beside the skill, the same bytes as corpus/interface/catalog/entries.json, which J-122 S4 normalised; the interface-catalog gate row holds the two equal (J-123 S6).",
+      "gist": "The entries as data beside the skill"
+    }
+  ],
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "The deal is the three directions the command draws for the ask; the owner may reroll once, on the owner's own ask, and the pick is the owner's.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "deal-words",
+      "cost": "cheap",
+      "oracle": "An interface deal, greenfield"
+    },
+    {
+      "promise": "The deal and the owner's pick are written into the change's design section, with the entries' ids beside the owner's words, and into the design system.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "design pick:",
+      "cost": "free",
+      "oracle": "An interface deal, greenfield"
+    },
+    {
+      "promise": "It never prints or pastes the catalog whole into a reply or a record; it deals from it.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "oracle": "An interface deal, greenfield",
+      "warrants": "prose",
+      "reason": "No hook reads replies or records for the catalog's entries. No cited run saw it printed whole."
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["page"],
+      "steps": ["design"],
+      "weight": 2,
+      "read": "whole"
+    },
+    {
+      "files": ["page"],
+      "weight": 1,
+      "read": "part"
+    },
+    {
+      "words": [
+        "different looks",
+        "choose how it looks",
+        "pick a look",
+        "choose the look",
+        "show me some versions",
+        "deal three"
+      ],
+      "weight": 2,
+      "read": "whole"
+    }
+  ]
+}

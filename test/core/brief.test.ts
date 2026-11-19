@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  BRIEF_STEPS,
   briefFileName,
   composeBrief,
   readBrief,
@@ -58,6 +59,7 @@ function sources(text: string, overrides: Partial<BriefSources> = {}): BriefSour
     tickets: undefined,
     skillPages: [".claude/skills/review/references/brief.md"],
     scratch: `/repo/.greenline/tmp/${ID}/review-1`,
+    nonce: "0a1b2c3d",
     ...overrides,
   };
 }
@@ -306,5 +308,146 @@ describe("J-89 S1 reading a brief file in the change's folder", () => {
     expect(readBrief(ID, "brief-review-1.md", brief.text.replace(/\n/g, "\r\n")).kind).toBe(
       "written",
     );
+  });
+});
+
+describe("J-195 S3 the standard every brief opens on", () => {
+  const text = recordText(HIGH_FRONT, HIGH_BODY);
+  const STANDARD =
+    "You are responsible for maintaining a high standard of excellence and demanding the same of any subagents";
+
+  it("opens the brief of every step it writes on the operator's phrase, the first line after its mark", () => {
+    const briefed = BRIEF_STEPS.map((step) => {
+      const brief = written(
+        {
+          change: ID,
+          step,
+          round: 1,
+          axis: step === "review" ? "standards" : undefined,
+          intent: step === "review" ? "The retry must stop at the deadline." : undefined,
+          artifact: step === "anticipate" ? "src/retry.ts" : undefined,
+          contract: step === "anticipate" ? "The retry stops at the deadline." : undefined,
+        },
+        sources(text),
+      );
+      return [step, brief.text] as const;
+    });
+    for (const [step, brief] of briefed) {
+      const lines = brief.split("\n");
+      expect(lines.slice(1, 5), step).toEqual([
+        "",
+        STANDARD,
+        "",
+        `# The brief for ${step} 1 of ${ID}`,
+      ]);
+    }
+  });
+
+  it("keeps the mark's digest true over the line it adds", () => {
+    const brief = written(REVIEW_ONE, sources(text));
+    expect(readBrief(ID, "brief-review-1.md", brief.text).kind).toBe("written");
+  });
+});
+
+describe("J-192 S1 the brief of every step that starts a fresh agent, anticipate included", () => {
+  const text = recordText(HIGH_FRONT, HIGH_BODY);
+  const ANTICIPATE: BriefRequest = {
+    change: ID,
+    step: "anticipate",
+    round: 1,
+    axis: undefined,
+    intent: undefined,
+    artifact: "src/export.js, the CSV export of the open loans",
+    contract:
+      "An overdue loan's row carries its due date and the days overdue; the file opens in Excel on Windows.",
+  };
+
+  it("names the steps the line starts fresh agents at, each a step some mode runs at the independent or looped depth", () => {
+    const fresh = definition.steps
+      .map((step) => step.name)
+      .filter((name) =>
+        definition.modes.some((mode) => {
+          const depth = mode.steps[name]?.depth;
+          return depth === "independent" || depth === "looped";
+        }),
+      );
+    expect([...BRIEF_STEPS]).toEqual(fresh);
+    expect(BRIEF_STEPS).toContain("anticipate");
+  });
+
+  it("writes anticipate's brief at careful with its artifact and contract and a nonce its report cites (j179c-mode-choice-careful finding 4)", () => {
+    const brief = written(
+      ANTICIPATE,
+      sources(text, {
+        skillPages: [".claude/skills/anticipate/SKILL.md"],
+        scratch: `/repo/.greenline/tmp/${ID}/anticipate-1`,
+      }),
+    );
+    expect(brief.file).toBe(`.greenline/ledger/${ID}/brief-anticipate-1.md`);
+    expect(brief.text.split("\n")[0]).toMatch(
+      new RegExp(
+        `^<!-- greenline brief --change ${ID} --step anticipate --round 1 --artifact <the artifact> --contract <the contract> sha256:[0-9a-f]{64}; `,
+      ),
+    );
+    expect(brief.text).toContain(
+      `Write your report to \`.greenline/ledger/${ID}/anticipate-1.md\`, and only there. Its first line is \`<!-- brief nonce 0a1b2c3d -->\``,
+    );
+    expect(brief.text).toContain(
+      "### The artifact\n\nsrc/export.js, the CSV export of the open loans",
+    );
+    expect(brief.text).toContain("### The contract\n\nAn overdue loan's row carries its due date");
+    expect(brief.text).toContain("never the claim");
+    expect(brief.text).toContain("`.claude/skills/anticipate/SKILL.md`");
+    expect(brief.text).toContain("- The retry stops at the deadline.");
+    expect(brief.text).not.toContain("My diagnosis: the timer was the cause.");
+    expect(readBrief(ID, "brief-anticipate-1.md", brief.text)).toEqual({
+      kind: "written",
+      step: "anticipate",
+      round: 1,
+    });
+  });
+
+  it("refuses anticipate's brief without its artifact or its contract, below the independent depth, and the extras on another step", () => {
+    const refusal = (request: BriefRequest, from: BriefSources): string => {
+      const brief = composeBrief(request, from);
+      if (brief._tag !== "refused") throw new Error("a refusal expected");
+      return brief.message;
+    };
+    expect(refusal({ ...ANTICIPATE, artifact: undefined }, sources(text))).toContain("--artifact");
+    expect(refusal({ ...ANTICIPATE, contract: undefined }, sources(text))).toContain("--contract");
+    const regular = recordText(
+      ["mode: regular", "choice: accepted", 'why: "w"', "state: open"],
+      HIGH_BODY,
+    );
+    expect(refusal(ANTICIPATE, sources(regular))).toContain(
+      "the anticipate step runs at the none depth under regular",
+    );
+    expect(refusal({ ...REVIEW_ONE, artifact: "src/export.js" }, sources(text))).toContain(
+      "--artifact and --contract are anticipate's",
+    );
+  });
+
+  it("writes the design agent's brief from the frame section, since design runs before the plan", () => {
+    const framed = recordText(HIGH_FRONT, [
+      "## frame",
+      "The owner wants the members page.",
+      "## design",
+      "x",
+    ]);
+    const brief = written(
+      {
+        change: ID,
+        step: "design",
+        round: 1,
+        axis: undefined,
+        intent: undefined,
+        extras: "The ask's answers: a table.",
+      },
+      sources(framed, { skillPages: [".claude/skills/design/SKILL.md"] }),
+    );
+    expect(brief.file).toBe(`.greenline/ledger/${ID}/brief-design-1.md`);
+    expect(brief.text).toContain("The owner wants the members page.");
+    expect(brief.text).toContain("The ask's answers: a table.");
+    expect(readBrief(ID, "brief-design-1.md", brief.text).kind).toBe("written");
   });
 });

@@ -1,0 +1,19 @@
+{
+  "commit": "cf1c0094e1826230623ecdb6e7b3c44bdfc593c3",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "ee07c059bf7e1d1b453f3fa0091c260853d301a3466a0f7a5e8a724aea4f79c6"
+    },
+    {
+      "path": "prefer-container-queries/SKILL.md",
+      "sha256": "aaa09557f532585e06f1c122f18f2e585bf0f55fb8293be20ffed18fc9507bf5"
+    }
+  ],
+  "entries": [
+    {
+      "name": "prefer-container-queries",
+      "path": "skills/prefer-container-queries"
+    }
+  ]
+}

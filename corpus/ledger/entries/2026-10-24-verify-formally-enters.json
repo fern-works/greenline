@@ -1,0 +1,51 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-verify-formally-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-wayfinder-retention-ruling",
+    "sha256": "3d898211179e3378686060a7866cafcf85ccf8cc7d934d61185072876f0877de"
+  },
+  "subject": "skill:verify-formally",
+  "recipe": "9b1d5a373b9f7dc8c8fe4678e3cd29e7b614248f9f63b234b86f6f8e35cc7ac8",
+  "result": "ccbfce511bc080ec6870575d1e081c2ba4e1e284a0ffd0b196732d5cda8d3fc6",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    },
+    {
+      "path": "upkeep.md"
+    }
+  ],
+  "gist": "Adds the start verify-formally from pstack's two formal verification skills",
+  "reason": "Adds verify-formally, a default start combining pstack's create and maintain formal verification skills, its upkeep on a page of its own and its coverage record a note beside the verification.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; the coverage record a short note beside the verification files; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; the coverage record a short note beside the verification files; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 141,
+        "taken": 131,
+        "exact": 119,
+        "retention": 0.9083969465648855,
+        "coverage": 0.9290780141843972,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 683
+  }
+}

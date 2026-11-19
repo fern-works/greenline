@@ -1,0 +1,114 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-pr-writing-a-default-for-the-pr-body",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-close-lands-one-pull-request",
+    "sha256": "f1b00ef0f66d1344d220a48b3e3e47540005228357b6f109de96c4ffe87dbdb0"
+  },
+  "subject": "skill:pr-writing",
+  "recipe": "855bd8fcf7a93484b5dfbe69a52241ee9c942849fb57f09bdf889527e9153344",
+  "result": "9fe0143fa6361b9043620c1ef1beb6a93bb6ad2e3ab7036fb19e1decd3c84bf1",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "pr-writing becomes a default habit for the PR body",
+  "reason": "pr-writing leaves the trials as a default habit for the PR body, the commit form build's commit page's; the subject takes that form, the capital the repository's, and the size note stands in the body.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': visual-pr combines into pr-writing as the change outline, pr-writing staying a trial, the pin at ca7c8088; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The register's row of 2026-10-22 on the agent's identity, on the operator's words of 2026-10-22 and the card \"Record and commit trailer (Recommended)\": the record's front matter carries agent: <harness>/<model>, the model as the harness states it to the agent, and every commit of the change carries Greenline-Agent: <harness>/<model> beside Greenline-Change; the proposal's facts table shows it"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 32,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.28125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "humanlayer",
+        "segments": 43,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.32558139534883723,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 49,
+        "taken": 13,
+        "exact": 13,
+        "retention": 1,
+        "coverage": 0.2653061224489796,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "tjcages",
+        "segments": 58,
+        "taken": 26,
+        "exact": 26,
+        "retention": 1,
+        "coverage": 0.4482758620689655,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 816
+  }
+}

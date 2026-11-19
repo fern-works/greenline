@@ -1,0 +1,111 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-redesign-trigger-rows-widened",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-design-survey-trigger-rows-widened",
+    "sha256": "c62d8cb471cede795fc6aefb12a20cfb86b24e19bf2330585374ff1df9cc6b1d"
+  },
+  "subject": "skill:redesign",
+  "recipe": "f35432bc6d9c384059eda3c365342f4602eddde92c409aeafb3357a6fb0415e4",
+  "result": "aa4229f9c8fbd5b8337c6ce28044bffa854d546ba030b54582e82c71c775ec52",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Trigger rows widened by mode; the description names the same cases",
+  "reason": "The 0.2.0 series loaded few starts and habits; the skill's invocation cases widen as trigger rows loosened by mode within the reading budget, and its description names the same cases in the owner's words.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-31",
+      "words": "J-174's finalise words, the operator's words of 2026-10-31: okay then lets kick it off, on the final order laid out before them, whose stage C reads: findings from the two runs become fix jobs, one worker each, fast, review waived; only the failed scenarios rerun"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "arla6ka-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "ibelick-ui-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "swiss-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "taste-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 562
+  }
+}

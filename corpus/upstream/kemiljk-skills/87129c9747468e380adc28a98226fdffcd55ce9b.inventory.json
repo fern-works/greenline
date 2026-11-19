@@ -1,0 +1,175 @@
+{
+  "commit": "87129c9747468e380adc28a98226fdffcd55ce9b",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "21a7612180f31f07eed57727344c0794defb4cfed934727194903d6450234613"
+    },
+    {
+      "path": "ai-output-judgement/SKILL.md",
+      "sha256": "3fda54971b1c8a1d95bfecfde686eacb98b8b106943b9e0d64b8de13f96cd8ae"
+    },
+    {
+      "path": "android-native-ui/SKILL.md",
+      "sha256": "855675dd8dc789229ff265a88663890324702a60806ab8f81b96a5d3b2898f98"
+    },
+    {
+      "path": "android-native-ui/references/android-verification.md",
+      "sha256": "6fc8bab267218f640c034bd70f5e4ab05a8ae5383bc2fa22ab5b88910734dcd0"
+    },
+    {
+      "path": "apple-native-ui/SKILL.md",
+      "sha256": "52d15ffd4b97f9fedfacd9745c838e745cf312c5650fdd6bc4edeff7c6d58000"
+    },
+    {
+      "path": "apple-native-ui/references/apple-verification.md",
+      "sha256": "dff6d280bbe3c98f4f546c17a4c150ab7bacf19757722493a7fab97aed48f14f"
+    },
+    {
+      "path": "apple-native-ui/references/macos-native-workflows.md",
+      "sha256": "05a806b9113144eca057ba80ec02a7a963b6436f7925684542f6565c41593b50"
+    },
+    {
+      "path": "apple-native-ui/references/macos-source-license.txt",
+      "sha256": "b829decfb63b0f0feb9630ba60c08182d24dadf96b8be3925ad1405303ca9c94"
+    },
+    {
+      "path": "design-engineering/SKILL.md",
+      "sha256": "5c232c97d64deadc939b4a37e643ed1eb21922d708f33c4f520711322c9e409d"
+    },
+    {
+      "path": "design-for-repetition/SKILL.md",
+      "sha256": "11d57aeca94b7e9d63175014f1d82b2aff3723d96f3d9b3b20dc90acccee3aca"
+    },
+    {
+      "path": "design-system-evolution/SKILL.md",
+      "sha256": "fc388d4a06a31552a104fad24b61dc814c81e1aaec4ee94111b326a29455a9a8"
+    },
+    {
+      "path": "dxe/SKILL.md",
+      "sha256": "2454e97c4b8cffd1124f9e3483dc68831df77367a7a2b071bc2c7def4620cc28"
+    },
+    {
+      "path": "dxe/references/dxe-core.md",
+      "sha256": "f059434ec1e57218f6473642d9a56d30972fcf8b60e6f29e6e886d361c902edb"
+    },
+    {
+      "path": "fluid-design/SKILL.md",
+      "sha256": "7b553eba21cc930436c38180b8e5c9661867be2733251b1b9accfe622055d281"
+    },
+    {
+      "path": "fluid-design/references/motion-recipes.md",
+      "sha256": "97bbc7c54fab5aa89a6560b687a0ba8c0912f1f49890e26f011f3dab4b728b97"
+    },
+    {
+      "path": "fluid-design/references/principles.md",
+      "sha256": "2f41fb60086bd0bad2a3fcf71eb0d2856e1fad5bcf17bab33c3da1830b1dccc1"
+    },
+    {
+      "path": "interaction-contracts/SKILL.md",
+      "sha256": "4bfcd105704e86050a46419932ddbb3c2a6da41550b7c48b01bcc832035b80d8"
+    },
+    {
+      "path": "interface-affordances/SKILL.md",
+      "sha256": "3459f139a129ce99804258ebdd5a9511ad18983041b5fb9aba5c9e63d5cb5c56"
+    },
+    {
+      "path": "modern-css-html/SKILL.md",
+      "sha256": "a7374995aeb7796f5eae0af6461fb406f0f2f9db5085c2e7faeaac562a1f7ab8"
+    },
+    {
+      "path": "modern-css-html/references/features.md",
+      "sha256": "ec79c97f7637b4adc88adc597a4df1aaec754e303a6029877eba1df08ca0bfcd"
+    },
+    {
+      "path": "modern-css-html/references/recipes.md",
+      "sha256": "e4d9c2715d73a4d38c897d87e6c116bf5afdff099628621f828cbb45ae8cd4ef"
+    },
+    {
+      "path": "prototype-to-production/SKILL.md",
+      "sha256": "fa8b3dcc52f668092bce5c6c13e9a7eb14f3fa6485448c973b406246cea044bd"
+    },
+    {
+      "path": "real-content-design/SKILL.md",
+      "sha256": "61288c1cd5c98ddd647de93b330f6dd5c5820df482bb83ef53092c586c382a19"
+    },
+    {
+      "path": "semantic-html-first/SKILL.md",
+      "sha256": "7b1904e96e76de05d39de4bddeb3f52824741721e129c47e357eef4998b6016d"
+    },
+    {
+      "path": "subtractive-design/SKILL.md",
+      "sha256": "6cbddb97e18aac17b502b7bdf4e4d045d5e9bb4a4a086a97786ad56981c087e1"
+    },
+    {
+      "path": "write-first-design/SKILL.md",
+      "sha256": "88deab2c885b8a24a176d0f80941246ef2dc70203098ca446d10169e2bf50959"
+    }
+  ],
+  "entries": [
+    {
+      "name": "dxe",
+      "path": "skills/dxe"
+    },
+    {
+      "name": "interaction-contracts",
+      "path": "skills/interaction-contracts"
+    },
+    {
+      "name": "semantic-html-first",
+      "path": "skills/semantic-html-first"
+    },
+    {
+      "name": "real-content-design",
+      "path": "skills/real-content-design"
+    },
+    {
+      "name": "design-system-evolution",
+      "path": "skills/design-system-evolution"
+    },
+    {
+      "name": "design-engineering",
+      "path": "skills/design-engineering"
+    },
+    {
+      "name": "apple-native-ui",
+      "path": "skills/apple-native-ui"
+    },
+    {
+      "name": "android-native-ui",
+      "path": "skills/android-native-ui"
+    },
+    {
+      "name": "prototype-to-production",
+      "path": "skills/prototype-to-production"
+    },
+    {
+      "name": "subtractive-design",
+      "path": "skills/subtractive-design"
+    },
+    {
+      "name": "interface-affordances",
+      "path": "skills/interface-affordances"
+    },
+    {
+      "name": "ai-output-judgement",
+      "path": "skills/ai-output-judgement"
+    },
+    {
+      "name": "write-first-design",
+      "path": "skills/write-first-design"
+    },
+    {
+      "name": "fluid-design",
+      "path": "skills/fluid-design"
+    },
+    {
+      "name": "modern-css-html",
+      "path": "skills/modern-css-html"
+    },
+    {
+      "name": "design-for-repetition",
+      "path": "skills/design-for-repetition"
+    }
+  ]
+}

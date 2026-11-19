@@ -14,23 +14,21 @@ const compiled = compileInstallation(corpusRoot);
 if (compiled._tag === "err") throw compiled.error;
 const installation = compiled.value;
 
-/** The habits S18b re-cut in place, kept under their names. */
-const KEPT = ["show-me", "progress-check", "use-garden"];
-/** The five trial habits the intake placed, gated by the workspace's trials. */
+/** The habits S18b re-cut in place, kept under their names, and pr-writing, a default habit since J-114 S2. */
+const KEPT = ["show-me", "progress-check", "use-garden", "pr-writing"];
+/** The four trial habits the intake placed, gated by the workspace's trials; pr-writing left them at J-114 S2. */
 const TRIALS = [
   "build-the-lever",
   "guard-the-context-window",
-  "pr-writing",
   "to-questionnaire",
   "benchmark-checklist",
 ];
-/** The three extras, two habits and a start, installed on request. */
-const EXTRAS = ["diagram-design", "architecture-map", "product-description"];
-/** Every roster name the re-cut retired or renamed, S13 to S18a. */
+/** The one extra, a start, installed on request; the visual habits are defaults since J-110 S4. */
+const EXTRAS = ["product-description"];
+/** Every roster name the re-cut retired or renamed, S13 to S18a; `research` returns as a start in J-117 S3. */
 const RETIRED = [
   "grilling",
   "grill-with-docs",
-  "research",
   "prototype",
   "to-spec",
   "to-tickets",
@@ -62,6 +60,14 @@ const skill = (name: string) => {
   if (found === undefined) throw new Error(`${name} is not on the roster`);
   return found;
 };
+/** A skill's front with its method page, where J-180 S1 moved every sentence past the front. */
+const prose = (name: string) =>
+  [
+    skill(name).body,
+    ...(skill(name).supportFiles ?? [])
+      .filter((file) => file.path === "method.md")
+      .map((file) => file.content),
+  ].join("\n");
 /** A skill's prose pages: its body and its Markdown support files. */
 const pages = (name: string) => [
   skill(name).body,
@@ -78,16 +84,16 @@ describe("S18b the kept habits, the trial habits and the extras", () => {
   it("S18b every habit of the slice is a habit with no handoff that writes no record of its own", () => {
     for (const name of [...KEPT, ...TRIALS, "diagram-design", "architecture-map"]) {
       expect(skill(name).kind, name).toBe("habit");
-      expect(skill(name).body, name).not.toMatch(/^## Handoff$/m);
-      expect(skill(name).body, name).toContain("writes no record of its own");
+      expect(prose(name), name).not.toMatch(/^## Handoff$/m);
+      expect(prose(name), name).toContain("writes no record of its own");
     }
-    expect(skill("architecture-map").activation).toBe("explicit");
+    expect(skill("architecture-map").activation).toBe("implicit");
     expect(skill("show-me").activation).toBe("implicit");
     expect(skill("product-description").kind).toBe("start");
-    expect(skill("product-description").body).toMatch(/^## Handoff$/m);
+    expect(prose("product-description")).toMatch(/^## Handoff$/m);
   });
 
-  it("S18b flags the five trials and the three extras, and nothing else of the slice", () => {
+  it("S18b flags the four trials and the one extra, and nothing else of the slice", () => {
     for (const name of TRIALS) {
       expect(skill(name).trial, name).toBe(true);
       expect(skill(name).extra, name).toBeUndefined();
@@ -120,7 +126,7 @@ describe("S18b the kept habits, the trial habits and the extras", () => {
   });
 
   it("S18b product-description drafts one document after another and writes its entry file without an include syntax", () => {
-    const body = skill("product-description").body;
+    const body = prose("product-description");
     expect(body).toContain("## Phase 3: draft the rest, one after another");
     expect(body).toContain(
       "Draft them one after another, one document or small cluster at a time.",
@@ -130,7 +136,7 @@ describe("S18b the kept habits, the trial habits and the extras", () => {
   });
 
   it("S18b guard-the-context-window keeps payloads out of the thread and spends no agent", () => {
-    const body = skill("guard-the-context-window").body;
+    const body = prose("guard-the-context-window");
     expect(body).toContain("Read a large output by excerpt");
     expect(body).toContain("starts no agent");
     expect(body).not.toMatch(/to subagents/);
@@ -138,7 +144,7 @@ describe("S18b the kept habits, the trial habits and the extras", () => {
   });
 
   it("S18b pr-writing links the change record and opens a PR only on the owner's word", () => {
-    const body = skill("pr-writing").body;
+    const body = prose("pr-writing");
     expect(body).toContain("Change record: `.greenline/ledger/<id>.md`");
     expect(body).toContain("The body is a projection of the change record");
     // J-73 S3: the push and the PR are the close step's landing; the habit offers only the forge edit.
@@ -150,7 +156,7 @@ describe("S18b the kept habits, the trial habits and the extras", () => {
   });
 });
 
-describe("S18b the five trial habits are gated by trials", () => {
+describe("S18b the four trial habits are gated by trials", () => {
   const rows = new Map<string, string>([
     [
       "build-the-lever",
@@ -160,7 +166,6 @@ describe("S18b the five trial habits are gated by trials", () => {
       "guard-the-context-window",
       "| A large output or a long file about to fill the thread, or a thread grown long mid-task | `guard-the-context-window` (trial) |",
     ],
-    ["pr-writing", "| Writing a commit message, a PR title or a PR body | `pr-writing` (trial) |"],
     [
       "to-questionnaire",
       "| A decision only someone other than the owner can answer | `to-questionnaire` (trial) |",
@@ -199,14 +204,24 @@ describe("S18b the five trial habits are gated by trials", () => {
 
   it("S18b naming one trial habit installs that one alone", () => {
     const files = renderProjection(
-      { ...fixtureConfiguration, trials: ["pr-writing"] },
+      { ...fixtureConfiguration, trials: ["to-questionnaire"] },
       installation,
     );
     for (const name of TRIALS)
       expect(
         files.some((file) => file.path === `.claude/skills/${name}/SKILL.md`),
         name,
-      ).toBe(name === "pr-writing");
+      ).toBe(name === "to-questionnaire");
+  });
+
+  it("J-114 S2 installs pr-writing by default, its row unmarked, with no trials named", () => {
+    const files = renderProjection({ ...fixtureConfiguration, trials: [] }, installation);
+    expect(files.some((file) => file.path === ".claude/skills/pr-writing/SKILL.md")).toBe(true);
+    const habits = blockOf([]).slice(blockOf([]).indexOf("## Habit skills"));
+    expect(habits).toContain(
+      "| Writing a commit message, a PR title or a PR body | `pr-writing` |",
+    );
+    expect(habits).toContain("| Writing a document or a README | `prose` |");
   });
 });
 

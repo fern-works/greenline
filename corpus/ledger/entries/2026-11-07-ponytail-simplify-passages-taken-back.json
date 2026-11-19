@@ -1,0 +1,119 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-ponytail-simplify-passages-taken-back",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-frame-front-starts-a-named-mode-at-once",
+    "sha256": "990273dc93fe4c53b48719c8c1042b88635e780c179f94b10ab97b7ab506a7df"
+  },
+  "subject": "skill:ponytail",
+  "recipe": "5260a7018fc73d59c68c57f8dde637f5379563b62dfcecaef13fd2250ae496ab",
+  "result": "abf82d46a7dbe1f2d8de6b10526001a9a40b4d198dd04e7bc32c706490a2a94d",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "method.md"
+    },
+    {
+      "path": "simplify.md"
+    }
+  ],
+  "gist": "Eight dropped simplification passages taken back; the front loads the page",
+  "reason": "The series found the agent replacing working code, and the passage reading of code-simplification found eight load-bearing passages dropped; simplify.md takes them back whole at their moments, and the front loads the page for a simplification request.",
+  "authorisedBy": {
+    "date": "2026-11-07",
+    "words": "The operator's card of 2026-11-07, \"J-185 rulings\", \"All four as recommended\", whose words finalised the amendment of ponytail's simplify page on the reading of code-simplification and the merged-skills run's finding: the comprehension goal and its new-team-member test are the measure of a simplification, the ladder's line unchanged (contradiction 24); the extensibility trap stays dropped while the three balance traps return and a seam a declared plan names is kept (25); the Rule of 500 is a tooling sentence under step 3, the bar of triviality standing (26); a comment that says why stays at the simplifying moment unless the why now stands in the code, and the review lens's comments rule stands at review; a request to simplify, refactor or clean up working code loads the habit and reads simplify.md whole"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112 S2, under the operator's words \"for smaller decisions go with your recommended suggestions\": the seven stub flags are not stubs and keep their text; the method upstream's edit pass at eb4db2b5 cut stays as written passages crediting pstack; elsewhere upstream's change is taken"
+    },
+    {
+      "date": "2026-10-26",
+      "words": "J-132's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the register's row of 2026-10-26, the judge's grade governs a stop: the merged-skills run's two blocking findings cured by putting each page where its method starts, ponytail's simplify page before a refactor's first edit, and tdd's references page, its bug-fix page and tests.md's checks in the rules of the loop"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    },
+    {
+      "date": "2026-11-07",
+      "words": "The operator's card of 2026-11-07, \"J-185 rulings\", \"All four as recommended\", whose words finalised the amendment of ponytail's simplify page on the reading of code-simplification and the merged-skills run's finding: the comprehension goal and its new-team-member test are the measure of a simplification, the ladder's line unchanged (contradiction 24); the extensibility trap stays dropped while the three balance traps return and a seam a declared plan names is kept (25); the Rule of 500 is a tooling sentence under step 3, the bar of triviality standing (26); a comment that says why stays at the simplifying moment unless the why now stands in the code, and the review lens's comments rule stands at review; a request to simplify, refactor or clean up working code loads the habit and reads simplify.md whole"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 130,
+        "taken": 53,
+        "exact": 51,
+        "retention": 0.9622641509433962,
+        "coverage": 0.4076923076923077,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "ponytail",
+        "segments": 56,
+        "taken": 54,
+        "exact": 53,
+        "retention": 0.9814814814814815,
+        "coverage": 0.9642857142857143,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 24,
+        "taken": 15,
+        "exact": 15,
+        "retention": 1,
+        "coverage": 0.625,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 714
+  }
+}

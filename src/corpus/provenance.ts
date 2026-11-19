@@ -1,6 +1,6 @@
 import { shouldNeverHappen } from "../commons/defect.ts";
 import type { Authority, ChangeEntry, Pages, RulingItem } from "./chain.ts";
-import type { SourceMeasure } from "./measure.ts";
+import type { RecordedSourceMeasure, SourceMeasure } from "./measure.ts";
 import {
   isAuthored,
   type Account,
@@ -118,7 +118,7 @@ export interface SourceProvenance {
   readonly commit: string;
   readonly licence: string;
   /** The recipe's measure of the source; undefined for a stub, which takes nothing. */
-  readonly measure?: Omit<SourceMeasure, "source"> | undefined;
+  readonly measure?: Omit<RecordedSourceMeasure, "source"> | undefined;
 }
 
 /** A skill's provenance: its latest change entry, its sources, its shipped files and its coverage per source file. */
@@ -281,7 +281,11 @@ function coverageOf(checked: CheckedRecipe): readonly FileCoverage[] {
 export function skillProvenance(input: ProvenanceInput): SkillProvenance {
   const { checked, entry } = input;
   const { recipe } = checked;
-  const named = [...recipe.sources, ...(recipe.credit === undefined ? [] : [recipe.credit.source])];
+  // A words source has no repository, pin or licence, so the provenance's sources leave it out (J-194 S1).
+  const named = [
+    ...recipe.sources.filter((name) => !checked.words.includes(name)),
+    ...(recipe.credit === undefined ? [] : [recipe.credit.source]),
+  ];
   const sources = [...new Set<string>(named)].map((name): SourceProvenance => {
     const pin =
       input.pins.get(name) ??

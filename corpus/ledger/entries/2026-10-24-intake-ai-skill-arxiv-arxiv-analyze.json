@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-ai-skill-arxiv-arxiv-analyze",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-claude-night-market-papers",
+    "sha256": "126afe459cc551ffa24e723bb7fdd4993c716e8700fed0b85e3fbe13e39a249c"
+  },
+  "source": {
+    "repository": "https://github.com/dsebastien/ai-skill-arxiv",
+    "commit": "bbbe55b4c91ecd0555b819e3f547a7a3f379c8f5",
+    "path": "skills/arxiv-analyze"
+  },
+  "pin": "ai-skill-arxiv",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its tiered read and summary form join the papers page",
+  "reason": "The tiered read from arXiv's own HTML to the PDF and the TeX source, and the seven-part summary, graft into the research start's papers page, the text landing in J-117 S3; the script, cache and third-party tier stay out.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': arxiv-analyze combines into the research start's papers page, inserted on athola's spine, starting at arXiv's own HTML with the third-party renderer left out and fetched texts kept in the change's working files"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': arxiv-analyze combines into the research start's papers page, inserted on athola's spine, starting at arXiv's own HTML with the third-party renderer left out and fetched texts kept in the change's working files"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "research",
+    "catches": "A paper read from its abstract or a secondary page, a PDF read whole beside an HTML rendering, a paper fetched twice, or a summary inventing a result",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run whose report cited a claim the paper does not make"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

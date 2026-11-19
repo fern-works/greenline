@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planted</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: 17px;
+        color: #1c1c1a;
+        background: #ffffff;
+      }
+      .faint {
+        color: #aaaaaa;
+      }
+      .wide {
+        width: 480px;
+        background: #eeeeee;
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        border: 0;
+        background: #1f3a5f;
+        color: #ffffff;
+      }
+      .tiny {
+        font-size: 9px;
+      }
+      input {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 44px;
+        margin: 0;
+      }
+      .bare:focus {
+        outline: none;
+      }
+      .tablet {
+        display: none;
+      }
+      @media (min-width: 700px) and (max-width: 900px) {
+        .tablet {
+          display: block;
+          font-size: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>A planted headline that runs long enough to wrap at a phone width</h1>
+    <p class="faint">This paragraph is set in a grey too faint for its white ground.</p>
+    <div class="wide">A block fixed at four hundred and eighty pixels.</div>
+    <button class="icon" aria-label="Close">x</button>
+    <button class="icon" aria-label="Open">o</button>
+    <p class="tiny">Fine print set at nine pixels.</p>
+    <p class="tablet">Shown only at a tablet's width, set at eight pixels.</p>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" />
+    <a class="bare" href="#top">A link whose focus shows nothing</a>
+    <img src="/missing.png" alt="A picture that does not load" width="40" height="40" />
+    <script>
+      console.error("planted console error");
+    </script>
+  </body>
+</html>

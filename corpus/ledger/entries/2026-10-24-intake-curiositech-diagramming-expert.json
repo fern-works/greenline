@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-curiositech-diagramming-expert",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-humanlayer-visual-pr-outline",
+    "sha256": "2f87175efcf4edc591d5d115f3b28e50ced15b7f1f4d948cd9d6d0187261cc6d"
+  },
+  "source": {
+    "repository": "https://github.com/curiositech/some_claude_skills",
+    "commit": "6713fc7a6451c8dee5903b98cd2063ff4cbf7317",
+    "path": ".claude/skills/diagramming-expert"
+  },
+  "pin": "curiositech",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its Unicode drawing method lifts into show-me's drawing page",
+  "reason": "Its kinds, weights, arrows, chunking and characters enter show-me's drawing page in greenline's words, improved with a width, a node count and the code's names; the psychology pages stay behind.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "show-me",
+    "catches": "An inline picture that wraps, crowds, names things the code does not, or crosses its arrows, so the owner reads the prose instead",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run where show-me's situation and the inline drawing's diverge, making the drawing a habit of its own"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 42
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 42
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 42
+      }
+    ],
+    "ships": "default"
+  }
+}

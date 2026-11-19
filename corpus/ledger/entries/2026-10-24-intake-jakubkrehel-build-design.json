@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-jakubkrehel-build-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-jakubkrehel-variant",
+    "sha256": "32a1e96f1ae2066b7ac8f516c94ea865d2d3c6a570daa1fbcf3dfe4bcf082428"
+  },
+  "source": {
+    "repository": "https://github.com/jakubkrehel/skills",
+    "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+    "path": "skills/build-design"
+  },
+  "pin": "jakubkrehel-skills",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Building from Figma held on its MCP dependency",
+  "reason": "It depends on a Figma MCP server; it waits for a design-source path that needs none.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': jakubkrehel's build-design is held on its Figma dependency"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': jakubkrehel's build-design is held on its Figma dependency"
+    }
+  ]
+}

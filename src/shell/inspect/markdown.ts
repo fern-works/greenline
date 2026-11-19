@@ -29,7 +29,7 @@ export type LinkResolver = (target: string) => LinkTarget;
  * @param text any text
  * @returns the text with every markup character escaped
  */
-export function escapeHtml(text: string): string {
+function escapeHtml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -477,7 +477,7 @@ function matching(text: string, open: number, left: string, right: string): numb
  * @param resolve decides where it leads
  * @returns the link's HTML, or its text with the target beside it
  */
-export function link(label: string, target: string, resolve: LinkResolver): string {
+function link(label: string, target: string, resolve: LinkResolver): string {
   const destination = target
     .trim()
     .replace(/\s+(?:"[^"]*"|'[^']*')$/, "")

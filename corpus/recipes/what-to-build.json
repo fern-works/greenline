@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Propose what this product could do next at three altitudes: sharpen a shipped slice, extend one, or open ground the product does not stand on yet. Use for 'what should we build next', 'any ideas for this app', 'what's missing', 'is this done or is there more in it', and quick-win hunts. Not for refactors, which belong to the architecture survey."
+      "value": "Propose what this product could do next at three altitudes: sharpen a shipped slice, extend one, or open ground the product does not stand on yet. Use for 'what should we build next', 'what next', 'any ideas for this app', a roadmap, 'what's missing', 'is this done or is there more in it', and quick-win hunts. Not for refactors, which belong to the architecture survey."
     }
   ],
   "sources": [],
@@ -30,6 +30,33 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first idea, read [method.md](method.md): what to read before you invent, the three altitudes, the shape of one idea, the rules of the pass, where it lands and when to offer it.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the decisions book, finished plans' spec.md, ponytail comments, greenline status\nProduces: a ranked proposal in the reply; nothing durable until the user's yes\nNext: frame, under the mode the owner approves, for an idea the user takes up",
+          "kind": "method",
+          "reason": "The handoff: what the skill consumes, what it produces and that nothing is durable until the user's yes; re-cut at S17: an idea taken up is a change proposed and run on the line, the work in flight read from greenline status and the change records, and no retired skill, ticket lifecycle or old guide section named.",
+          "gist": "Gives a ranked list in the reply; nothing durable until a yes",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, an idea taken up becomes a change under the mode the owner approves, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in; R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names; and the contradiction 33 of R3, ruled that day (\"yes go ahead\"), a list of ideas being no project state"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# What To Build: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "written",
@@ -78,14 +105,6 @@
           "reason": "When to offer this: the moments worth proposing the pass, which starts on the user's yes; re-cut at S17: an idea taken up is a change proposed and run on the line, the work in flight read from greenline status and the change records, and no retired skill, ticket lifecycle or old guide section named.",
           "gist": "Offered after a close or a release, never inside an open change",
           "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, an idea taken up becomes a change under the mode the owner approves, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in; R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names; and the contradiction 33 of R3, ruled that day (\"yes go ahead\"), a list of ideas being no project state"
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the decisions book, finished plans' spec.md, ponytail comments, greenline status\nProduces: a ranked proposal in the reply; nothing durable until the user's yes\nNext: frame, under the mode the owner approves, for an idea the user takes up",
-          "kind": "method",
-          "reason": "The handoff: what the skill consumes, what it produces and that nothing is durable until the user's yes; re-cut at S17: an idea taken up is a change proposed and run on the line, the work in flight read from greenline status and the change records, and no retired skill, ticket lifecycle or old guide section named.",
-          "gist": "Gives a ranked list in the reply; nothing durable until a yes",
-          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, an idea taken up becomes a change under the mode the owner approves, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in; R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names; and the contradiction 33 of R3, ruled that day (\"yes go ahead\"), a list of ideas being no project state"
         }
       ]
     },
@@ -111,5 +130,82 @@
     }
   ],
   "copies": [],
-  "drops": []
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "The pass is read-only until the user picks: it edits no file and opens no mode or record.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap"
+    },
+    {
+      "promise": "Say which of the five sources were read and which were absent, and label an idea with no source as speculative.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No scenario reaches this start, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "File each idea at a stated altitude in at most six lines, without an id. Rank the set in a reply view and say in one sentence which to take first and why.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is the reply's shape and content, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Never re-pitch an idea the decisions book refused. An idea that reopens a ruling names the ruling and what changed.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Never propose a refactor, a test-suite change or a process change.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "An idea the user takes becomes a change proposed with its mode, waiting for the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "That change's record opens with a ## start section naming what-to-build and the idea's intent and evidence line.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No status reading requires the start section, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Only offer the pass, which the user's yes starts, and never offer it inside an open change, mid-review or inside a grill.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No run observed it fail, so the second condition fails."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "what should we build",
+        "what to build",
+        "what next",
+        "build next",
+        "next feature",
+        "roadmap",
+        "any ideas",
+        "what's missing",
+        "is this done",
+        "quick win",
+        "quick wins"
+      ],
+      "weight": 3,
+      "read": "whole"
+    }
+  ]
 }

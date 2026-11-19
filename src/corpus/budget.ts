@@ -33,7 +33,12 @@ import { wordsOf } from "./segments.ts";
  * "The depths", is read only at the modes those bullets name, and counts
  * against each one's ceiling (the operator's ruling of 2026-10-20, "Count it
  * against careful's ceiling": a step method only careful reads enters on
- * such a page). The block is the one the renderer
+ * such a page). The ceiling bounds the first move (the register's row of
+ * 2026-11-06, "The words budget bounds the first move"): each page of a
+ * step's front its `SKILL.md` points to, the method page J-180 S1 cut
+ * every front to, is read at the moment the pointer names, so it is
+ * printed per step with its words, a moment page, and counted against no
+ * ceiling. The block is the one the renderer
  * writes into `AGENTS.md` for the installation `greenline init` makes,
  * garden disabled, and the same workspace with garden enabled. A word is
  * the corpus's word (`wordsOf` in `src/corpus/segments.ts`), the one growth
@@ -43,15 +48,17 @@ import { wordsOf } from "./segments.ts";
  * installation carries; this module names none. A mode reads at most the
  * larger of its two totals, and one over its words budget is refused, unless
  * the modes recipe's account for the mode carries the operator's ruling on
- * an excess at least as large. The words budget is a ceiling: lowered by
- * each change that cuts, never raised without that ruling.
+ * an excess at least as large. The words budget is a ceiling, never raised
+ * without that ruling; the words a cut frees are the owed line's room.
  */
 
-/** One step of the line: the skills of a kind on the line serving it, and their `SKILL.md` words. */
+/** One step of the line: the skills of a kind on the line serving it, their `SKILL.md` words and their moment pages. */
 export interface LineStep {
   readonly step: StepName;
   readonly skills: readonly string[];
   readonly words: number;
+  /** The pages of its skills' fronts their `SKILL.md` points to, read at the moments the pointers name ({@link MomentPage}). */
+  readonly moments: readonly MomentPage[];
 }
 
 /** One step a mode runs, at its depth there. */
@@ -79,6 +86,13 @@ export interface ModeBudget {
   readonly pages: readonly DepthPage[];
   /** The block, the steps' `SKILL.md` words and its pages' words. */
   readonly total: InstalledWords;
+  /**
+   * The same for a change that a step applying by a record fact does not
+   * reach (J-123 S2): the step's skill and pages left out, so design's
+   * words are not charged to a change whose record says `interface: no`.
+   * The verdict reads {@link total}, the larger.
+   */
+  readonly withoutFacts: InstalledWords;
   readonly budget: number;
   /** The larger total's words over the budget; 0 within it. */
   readonly excess: number;
@@ -101,6 +115,17 @@ export interface ReferenceWords {
  * those bullets name.
  */
 export interface DepthPage {
+  readonly skill: string;
+  readonly path: string;
+  readonly words: number;
+}
+
+/**
+ * A page of a step skill's front that its `SKILL.md` links, a references
+ * page aside: the method a later moment of the step reads, at the moment
+ * the pointer names. It counts against no ceiling and is printed per step.
+ */
+export interface MomentPage {
   readonly skill: string;
   readonly path: string;
   readonly words: number;
@@ -302,8 +327,37 @@ function boundPages(
   });
 }
 
-/** Every step of the definition, each with the skills of a kind on the line that serve it. */
-function lineOf(definition: ModesDefinition, skills: readonly SkillWords[]): readonly LineStep[] {
+/**
+ * The moment pages of a skill: each Markdown page beside `SKILL.md`, a
+ * references page aside, that `SKILL.md` links, in the order it links them.
+ * @param skill the skill as installed
+ * @param references its references pages
+ * @param modes the definition's mode names
+ * @returns the pages with their words, each once
+ */
+function momentPages(
+  skill: SkillSource,
+  references: ReadonlySet<string> | undefined,
+  modes: readonly string[],
+): readonly MomentPage[] {
+  const markdown = new Map(
+    (skill.supportFiles ?? [])
+      .filter((file) => file.path.endsWith(".md") && references?.has(file.path) !== true)
+      .map((file) => [file.path, file.content] as const),
+  );
+  const named = new Set(linksOf("SKILL.md", skill.body, false, modes).map((link) => link.target));
+  return [...named].flatMap((path) => {
+    const content = markdown.get(path);
+    return content === undefined ? [] : [{ skill: skill.name, path, words: count(content) }];
+  });
+}
+
+/** Every step of the definition, each with the skills of a kind on the line that serve it and their moment pages. */
+function lineOf(
+  definition: ModesDefinition,
+  skills: readonly SkillWords[],
+  moments: ReadonlyMap<string, readonly MomentPage[]>,
+): readonly LineStep[] {
   const onTheLine = new Set<string>(
     definition.kinds.filter((kind) => kind.place === "ordered").map((kind) => kind.name),
   );
@@ -313,6 +367,7 @@ function lineOf(definition: ModesDefinition, skills: readonly SkillWords[]): rea
       step: step.name,
       skills: serving.map((skill) => skill.name),
       words: serving.reduce((sum, skill) => sum + skill.words, 0),
+      moments: serving.flatMap((skill) => moments.get(skill.name) ?? []),
     };
   });
 }
@@ -352,6 +407,17 @@ function modeBudget(
     steps.reduce((sum, step) => sum + step.words, 0) +
     pages.reduce((sum, page) => sum + page.words, 0);
   const total = { default: block.default + read, garden: block.garden + read };
+  // The steps that apply by a record fact, which a change without the fact never reads.
+  const gated = new Set<string>(
+    definition.steps.filter((step) => step.appliesWhen !== undefined).map((step) => step.name),
+  );
+  const gatedSkills = new Set(
+    steps.filter((step) => gated.has(step.step)).flatMap((step) => step.skills),
+  );
+  const unread =
+    steps.filter((step) => gated.has(step.step)).reduce((sum, step) => sum + step.words, 0) +
+    pages.filter((page) => gatedSkills.has(page.skill)).reduce((sum, page) => sum + page.words, 0);
+  const withoutFacts = { default: total.default - unread, garden: total.garden - unread };
   const most = Math.max(total.default, total.garden);
   const excess = Math.max(0, most - mode.budget.words);
   const ruled = recipe === undefined ? undefined : excessOf(recipe, mode.name);
@@ -364,6 +430,7 @@ function modeBudget(
     steps,
     pages,
     total,
+    withoutFacts,
     budget: mode.budget.words,
     excess,
     ruled: ruled?.words ?? null,
@@ -406,8 +473,13 @@ export function budgetReport(
     default: blockWords(INITIALIZED, installation),
     garden: blockWords(GARDEN_ENABLED, installation),
   };
-  const line = lineOf(definition, skills);
   const modeNames = definition.modes.map((mode) => mode.name);
+  const moments = new Map(
+    installation.skills.map(
+      (skill) => [skill.name, momentPages(skill, pages.get(skill.name), modeNames)] as const,
+    ),
+  );
+  const line = lineOf(definition, skills, moments);
   const onTheLine = new Set(line.flatMap((step) => step.skills));
   const bound = new Map(
     installation.skills
@@ -492,8 +564,45 @@ function modesTable(report: BudgetOutput, block: InstalledWords): readonly strin
     ]),
     row(["Words read", ...modes.map((mode) => mode.total.default)]),
     row(["Words read, garden enabled", ...modes.map((mode) => mode.total.garden)]),
+    row([
+      "Words read, garden enabled, no step a record fact gates",
+      ...modes.map((mode) => mode.withoutFacts.garden),
+    ]),
     row(["Words budget", ...modes.map((mode) => mode.budget)]),
     row(["Against the budget", ...modes.map(verdict)]),
+  ];
+}
+
+/**
+ * The moment pages per step, uncapped: each step's pages with their words,
+ * and each mode's column the words where the mode runs the step.
+ */
+function momentsTable(report: BudgetOutput): readonly string[] {
+  const { modes } = report;
+  const words = (pages: readonly MomentPage[]): number =>
+    pages.reduce((sum, page) => sum + page.words, 0);
+  const stepRows = report.line.map((step) =>
+    row([
+      step.step,
+      step.moments.length === 0
+        ? "none"
+        : step.moments
+            .map((page) => `\`${page.path}\` of \`${page.skill}\`, ${counted(page.words, "word")}`)
+            .join("; "),
+      ...modes.map((mode) =>
+        mode.steps.some((run) => run.step === step.step) ? words(step.moments) : "not run",
+      ),
+    ]),
+  );
+  return [
+    row(["Step", "Pages", ...modes.map((mode) => mode.mode)]),
+    row(["---", "---", ...modes.map(() => "---")]),
+    ...stepRows,
+    row([
+      "Moment pages",
+      "",
+      ...modes.map((mode) => mode.steps.reduce((sum, step) => sum + words(step.moments), 0)),
+    ]),
   ];
 }
 
@@ -523,8 +632,9 @@ function skillsTable(skills: readonly SkillWords[]): readonly string[] {
 }
 
 /**
- * The report as the operator reads it: the per-mode table, the skills read
- * apart, and each refusal.
+ * The report as the operator reads it: the per-mode table, the moment
+ * pages per step where a front points to one, the skills read apart, and
+ * each refusal.
  * @param report `budget`'s report
  * @returns Markdown, ending in a newline
  */
@@ -535,6 +645,15 @@ export function renderBudgetTable(report: BudgetOutput): string {
       "## The words an agent reads, per mode",
       "",
       ...modesTable(report, report.block),
+      "",
+    );
+  if (report.modes.length > 0 && report.line.some((step) => step.moments.length > 0))
+    lines.push(
+      "## The moment pages, per step, uncapped",
+      "",
+      "A step's front points at each page below and names the moment it is read; the ceiling above bounds the first move, and these pages stand outside it.",
+      "",
+      ...momentsTable(report),
       "",
     );
   if (report.skills.length > 0)

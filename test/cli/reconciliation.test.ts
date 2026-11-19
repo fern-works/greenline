@@ -19,13 +19,28 @@ it("refuses a dry-run flag on status while preserving sync dry-run", () => {
 
 /** A skeleton's placeholders filled as an agent opening its change would fill them. */
 function filled(skeleton: string): string {
-  return skeleton
-    .replace("<owner, accepted or standing>", "accepted")
-    .replace('"<why the change exists>"', '"the retry loses the deadline"')
-    .replace('next: "<step>: <the action that resumes it>"', 'next: "frame: read the retry loop"')
-    .replace(/<the start skill[^>]*>/, "diagnose reproduced the lost deadline.")
-    .replace(/<one "### Round <n>" sub-heading[^>]*>/g, "### Round 1\n\n[report](report-1.md)")
-    .replace(/<[^<>\n]+>/g, "Written.");
+  return (
+    skeleton
+      .replace('"<owner, accepted or standing>"', "accepted")
+      .replace(/^yes: .*$/m, 'yes: "Yes, go ahead."')
+      .replace(/^why: .*$/m, 'why: "the retry loses the deadline"')
+      // The floors line is owed from the open, none answering it (J-226 S1).
+      .replace(/^floors: .*$/m, "floors: none")
+      // The close's lines stay out at open, as the skeleton says (J-176 S1).
+      .replace(/^(?:skills|agents|rounds|starts|outcome): .*\n/gm, "")
+      .replace('next: "<step>: <the action that resumes it>"', 'next: "frame: read the retry loop"')
+      .replace(/^ground: .*$/m, "ground: branch")
+      .replace(/^agent: .*$/m, "agent: claude-code/opus")
+      // J-123 S2: the retry change touches no interface, so design holds its one line.
+      .replace(/^interface: .*$/m, "interface: no")
+      .replace(
+        /^<[^\n]*> where interface is yes; none, no interface where it is no$/m,
+        "none, no interface",
+      )
+      .replace(/<the start skill[^>]*>/, "diagnose reproduced the lost deadline.")
+      .replace(/<one "### Round <n>" sub-heading[^>]*>/g, "### Round 1\n\n[report](report-1.md)")
+      .replace(/<[^<>\n]+>/g, "Written.")
+  );
 }
 
 it("S16b each skeleton the installed ledger guide prints, filled, is a record status reads without a finding", () => {

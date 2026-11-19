@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-intake-callstack-enters-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-25-intake-mengto-enters-design",
+    "sha256": "6b045bfdb140b7251eafefbd431a0b891eaf0fc328c263e7b1c9a9d321accbc3"
+  },
+  "source": {
+    "repository": "https://github.com/callstackincubator/agent-skills",
+    "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+    "path": "skills/react-navigation"
+  },
+  "pin": "callstack-agent-skills",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its navigation and sheets lift into the React Native page",
+  "reason": "callstack's React Navigation tabs, drawers, form sheets and safe areas lift into design's React Native, Android and component pages.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "J-122's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\" and confirmed by the operator's words of 2026-10-24, \"lock in all the jobs\": each entering interface family lifts into the design step's pages, the two starts or the registry in greenline's words, Apache-2.0 families as ideas only, the step added by J-123; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "design",
+    "catches": "An interface built with no design context: no direction dealt before code, no home for the owner's taste, no rule checked at widths, no fresh reading of the render",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "J-123's walk on the real candidate, which shows the step and its pages read at each depth"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "design",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "design",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "design",
+        "depth": "independent",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

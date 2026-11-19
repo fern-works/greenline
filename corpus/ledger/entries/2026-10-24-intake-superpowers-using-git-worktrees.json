@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-superpowers-using-git-worktrees",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-mattpocock-skills-setup-pre-commit",
+    "sha256": "48592e0872fd2cabd6363d8b272ddd50f75efe5fbc7828396b4f8ecf1c86e876"
+  },
+  "source": {
+    "repository": "https://github.com/obra/superpowers",
+    "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+    "path": "skills/using-git-worktrees"
+  },
+  "pin": "superpowers",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its worktree method lifts into frame's ground, ignored locally",
+  "reason": "Detection, the harness's tool first, a locally ignored directory, the setup and a clean baseline enter frame's ground in greenline's words, the text landing in J-114 S2. The ruling behind the two earlier declines is superseded.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': using-git-worktrees lifts into a page of frame's front linked from its references, its directory ignored through the local exclude file and never a commit, the native tool an adapter fact worktree, a refused worktree offering the branch in place and waiting, in its portable form"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': using-git-worktrees lifts into a page of frame's front linked from its references, its directory ignored through the local exclude file and never a commit, the native tool an adapter fact worktree, a refused worktree offering the branch in place and waiting, in its portable form"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "frame",
+    "catches": "A worktree made inside another, beside the harness's own tool, left unignored so the main checkout shows it as edits, or started on a red baseline",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run where a worktree's setup outgrew a page of frame, making the checkout of its own a start"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

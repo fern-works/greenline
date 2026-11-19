@@ -1,0 +1,59 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-research-lists-its-promises-and-keepers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-redesign-lists-its-promises-and-keepers",
+    "sha256": "60d14e1e9046aaf3cb46ef73d5b635734f89be239c6c5c1698a358500b387fd9"
+  },
+  "subject": "skill:research",
+  "recipe": "3e0c11f2c508472b4c788c7c12dd929c9911ff896a1391f60ef13eedeb8d4197",
+  "result": "f53e46f0d8da005de3a49d3e76e0a87e7a89f1eed85c9a152aa7cceddb473b1e",
+  "pages": [],
+  "gist": "Each promise listed with the keeper that holds it, or its gap",
+  "reason": "The roster audit lists the 11 promises the skill's pages state, 3 held by a fact, a hold, a record or an oracle and 8 gaps marked by the keeper test. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-07",
+      "words": "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's rows of 2026-10-23 on frame's nodes and on its pre-research, on the operator's words of 2026-10-23 and the cards \"Take the fourteen (Recommended)\" and \"One at a time (Recommended)\": frame reads the code the request touches before the first round and may propose research at any round, each topic with its node, its source class and what it would change, run on the owner's acceptance by fresh agents working by the new start research, papers through arXiv and the citation graphs, the high-signal web and code on GitHub, one at a time, each report awaited before the next starts, the reports cited by the frame section; J-119's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": athola's papers the spine of the papers page with arxiv-analyze's read order and summary inserted and arxiv-search lifted, the citation graph and its backoff in greenline's words, the GitHub practice greenline's own, no rate figures, arXiv's own HTML first, the fetched texts kept in the change's working files, anonymous calls, no paying or emailing, the owner's gh session only, patterns never code; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ai-skill-arxiv",
+        "segments": 64,
+        "taken": 20,
+        "exact": 18,
+        "retention": 0.9,
+        "coverage": 0.3125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "claude-night-market",
+        "segments": 45,
+        "taken": 13,
+        "exact": 12,
+        "retention": 0.9230769230769231,
+        "coverage": 0.28888888888888886,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1589
+  }
+}

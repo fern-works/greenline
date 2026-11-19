@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-ui-ux-pro-max-banner-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ui-ux-pro-max-brand",
+    "sha256": "02ce2813fb98fb32993051e5d536bceefa92fb03e3b53b01137d71ae1f55a87d"
+  },
+  "source": {
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "commit": "d14efff8ed1faa4187f004f79926f428c8074ec7",
+    "path": ".claude/skills/banner-design"
+  },
+  "pin": "ui-ux-pro-max",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "An off-practice suite skill, declined",
+  "reason": "It lies outside the interface practice or needs paid image keys.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ui-ux-pro-max's other skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ui-ux-pro-max's other skills are declined"
+    }
+  ]
+}

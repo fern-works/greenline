@@ -1,0 +1,39 @@
+{
+  "commit": "6713fc7a6451c8dee5903b98cd2063ff4cbf7317",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "e63fc1f714ed1365777e2479f4618a5be27d63a246f4b73f4deec0d3292ad33c"
+    },
+    {
+      "path": "diagramming-expert/.claude-plugin/plugin.json",
+      "sha256": "3279e4121f01a446f1245dc0b8d5b2d84c7f18ec1888a4b3e677db15543c265d"
+    },
+    {
+      "path": "diagramming-expert/SKILL.md",
+      "sha256": "98dbf84baf3c82f243f8c576398f124ec72d5b1af856e4bfe742ffc411a2a788"
+    },
+    {
+      "path": "diagramming-expert/references/diagram-types.md",
+      "sha256": "f7709bd92f56552579df6f30ffe528ff4411708350b8f7008b901356f1858590"
+    },
+    {
+      "path": "diagramming-expert/references/jungian-diagrams.md",
+      "sha256": "cb6296af689ff1b59f761cc2bc4df1ffd94c4338469ac9e3f9af9836fa1e8a7e"
+    },
+    {
+      "path": "diagramming-expert/references/patterns-library.md",
+      "sha256": "3742a06110da84b14d221ba39d8a332a713f25ada9a02921a5bcc87acd70d1ce"
+    },
+    {
+      "path": "diagramming-expert/references/unicode-characters.md",
+      "sha256": "9d07b28c701bab552c178b8d2e6310b94cb3276ce57bbfa3265fbbd91552502e"
+    }
+  ],
+  "entries": [
+    {
+      "name": "diagramming-expert",
+      "path": ".claude/skills/diagramming-expert"
+    }
+  ]
+}

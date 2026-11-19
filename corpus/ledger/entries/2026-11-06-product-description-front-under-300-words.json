@@ -1,0 +1,84 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-product-description-front-under-300-words",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-pr-writing-front-under-300-words",
+    "sha256": "0d5e0155f83888db664104b2e202962a85abb180a165d74ab641cbd2146065cc"
+  },
+  "subject": "skill:product-description",
+  "recipe": "59fa1396377dc259fc0baa3bd9ecf0feba7b566bc353578eb9d2f2cfabbbc6ee",
+  "result": "8b3daea29a5d61d10ece9ac13e23008e43607ed2091ea80e5196f94c4ba070ab",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "method.md"
+    }
+  ],
+  "gist": "Front cut under 300 words; the rest moved to the method page",
+  "reason": "The front is cut under 300 words to the sentences its step reads first. The rest moves unchanged, in its order, to the method page the front points to.",
+  "authorisedBy": {
+    "date": "2026-11-06",
+    "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\", whose correction for product-description is named for this re-cut"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "product-description",
+        "segments": 618,
+        "taken": 612,
+        "exact": 605,
+        "retention": 0.988562091503268,
+        "coverage": 0.9902912621359223,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 703
+  }
+}

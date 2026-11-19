@@ -24,10 +24,18 @@
         },
         {
           "passage": "written",
-          "text": "product-description is an extra start, installed on request, for an owner who wants how the product behaves for its user described feature by feature. It runs a standing program in a repository of its own, outside this one, so it opens no change record here. Before it starts, say what it will build, where, and whether it would spend fresh agents, and wait for the owner's yes. A repair its triage finds, once the owner takes it up, becomes a change proposed and run on the line from `frame`, its record's `## start` section naming product-description and the triage entry it handed on. It runs on a shipped surface, as reconnaissance before a change is framed or after one is verified, to describe what shipped. Driving the product in the verification pass follows the verify step's pages for a CLI and a UI, the proof of a single claim is the verify step's, and a state chart that outgrows a Mermaid block is `diagram-design`'s (extra).",
+          "text": "product-description is an extra start, installed on request, for an owner who wants how the product behaves for its user described feature by feature.",
           "kind": "scope",
           "reason": "One opening paragraph in the start's own voice: the situation the block's start table keys it by, that it works in a repository of its own and waits for the owner's yes, that a repair it hands on becomes a change run from frame with its start section, where it runs, and the step and the habit that own the verification and the durable chart. Re-cut at S18b onto the change record, in place of an initiative, its ticket and the retired names verify-this, control-cli and control-ui.",
           "gist": "Opens product-description: an extra that works in its own repository"
+        },
+        {
+          "passage": "written",
+          "text": "Before it starts, say what it will build, where, and whether it would spend fresh agents, and wait for the owner's yes.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the start's own voice: the situation the block's start table keys it by, that it works in a repository of its own and waits for the owner's yes, that a repair it hands on becomes a change run from frame with its start section, where it runs, and the step and the habit that own the verification and the durable chart. Re-cut at S18b onto the change record, in place of an initiative, its ticket and the retired names verify-this, control-cli and control-ui.",
+          "gist": "Opens product-description: an extra that works in its own repository",
+          "join": " "
         },
         {
           "passage": "written",
@@ -35,6 +43,46 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the scope is asked, read [method.md](method.md): the outputs, the seven phases, the resume and the writing rules.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the shipped surface at a pinned commit\nProduces: a separate description repository (README, goal, glossary, one document per feature, verification protocol and checklists, one triage file); no change opened per triage entry; filing external issues needs the owner\nNext: none; a standing program whose triage returns to the owner, a repair the owner takes up becoming a change run from frame",
+          "kind": "pointer",
+          "reason": "The Handoff section the skills-handoff gate parses: consumes the shipped surface at a pinned commit, produces a separate description repository with no change opened per triage entry and owner-gated issue filing, and names no next step, since the program is standing and its triage returns to the owner, a repair it hands on becoming a change run from frame.",
+          "gist": "Hands over a separate repository; a standing program has no next step"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Product description repo: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "It runs a standing program in a repository of its own, outside this one, so it opens no change record here.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the start's own voice: the situation the block's start table keys it by, that it works in a repository of its own and waits for the owner's yes, that a repair it hands on becomes a change run from frame with its start section, where it runs, and the step and the habit that own the verification and the durable chart. Re-cut at S18b onto the change record, in place of an initiative, its ticket and the retired names verify-this, control-cli and control-ui.",
+          "gist": "Opens product-description: an extra that works in its own repository"
+        },
+        {
+          "passage": "written",
+          "text": "A repair its triage finds, once the owner takes it up, becomes a change proposed and run on the line from `frame`, its record's `## start` section naming product-description and the triage entry it handed on. It runs on a shipped surface, as reconnaissance before a change is framed or after one is verified, to describe what shipped. Driving the product in the verification pass follows the verify step's pages for a CLI and a UI, the proof of a single claim is the verify step's, and a state chart that outgrows a Mermaid block is `diagram-design`'s.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the start's own voice: the situation the block's start table keys it by, that it works in a repository of its own and waits for the owner's yes, that a repair it hands on becomes a change run from frame with its start section, where it runs, and the step and the habit that own the verification and the durable chart. Re-cut at S18b onto the change record, in place of an initiative, its ticket and the retired names verify-this, control-cli and control-ui.",
+          "gist": "Opens product-description: an extra that works in its own repository"
         },
         {
           "passage": "taken",
@@ -292,7 +340,7 @@
         },
         {
           "passage": "written",
-          "text": "When a chart outgrows a readable Mermaid block, draw it with `diagram-design` (extra) into the description repo and link it from the document.",
+          "text": "When a chart outgrows a readable Mermaid block, draw it with `diagram-design` into the description repo and link it from the document.",
           "kind": "pointer",
           "reason": "The writing rule for one Mermaid state diagram per interaction names diagram-design as the owner of a chart that outgrows a readable Mermaid block, drawn into the description repo and linked from the document; its marker is the block's for an extra.",
           "gist": "An outgrown Mermaid chart is drawn with diagram-design and linked",
@@ -315,13 +363,6 @@
             "24a3c77b86b8"
           ],
           "join": "\n"
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the shipped surface at a pinned commit\nProduces: a separate description repository (README, goal, glossary, one document per feature, verification protocol and checklists, one triage file); no change opened per triage entry; filing external issues needs the owner\nNext: none; a standing program whose triage returns to the owner, a repair the owner takes up becoming a change run from frame",
-          "kind": "pointer",
-          "reason": "The Handoff section the skills-handoff gate parses: consumes the shipped surface at a pinned commit, produces a separate description repository with no change opened per triage entry and owner-gated issue filing, and names no next step, since the program is standing and its triage returns to the owner, a repair it hands on becoming a change run from frame.",
-          "gist": "Hands over a separate repository; a standing program has no next step"
         }
       ]
     },
@@ -966,7 +1007,7 @@
       "reason": "The outputs fence names CLAUDE.md with \"Read @AGENTS.md.\", one harness's include syntax, and subagents among the drafters. R21 of 2026-10-08 names this correction for the re-cut of the extras: the documents are drafted one after another, never by subagents fanned out in parallel (R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")), and the entry file is written for the agent instructions file the harness reads, without one harness's include syntax.",
       "gist": "The outputs drop CLAUDE.md's include and subagent drafters",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 4
       }
     },
@@ -978,7 +1019,7 @@
       "reason": "Phase 0's where the repo goes names a directory of its own outside this repository, linked from the record of a change that commissioned it.",
       "gist": "The new repository sits outside this one, linked from the commissioning record",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 6
       }
     },
@@ -990,7 +1031,7 @@
       "reason": "The heading named drafting in parallel. R21 of 2026-10-08 names this correction for the re-cut of the extras: the documents are drafted one after another, never by subagents fanned out in parallel (R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")), and the entry file is written for the agent instructions file the harness reads, without one harness's include syntax.",
       "gist": "Phase 3's heading now says one after another, not in parallel",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 8
       }
     },
@@ -1002,7 +1043,7 @@
       "reason": "The fan-out to subagents, one per document, gives way to drafting in turn. R21 of 2026-10-08 names this correction for the re-cut of the extras: the documents are drafted one after another, never by subagents fanned out in parallel (R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")), and the entry file is written for the agent instructions file the harness reads, without one harness's include syntax.",
       "gist": "The subagent fan-out, one per document, gives way to drafting in turn",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 10
       }
     },
@@ -1014,7 +1055,7 @@
       "reason": "The fan-out to subagents, one per document, gives way to drafting in turn. R21 of 2026-10-08 names this correction for the re-cut of the extras: the documents are drafted one after another, never by subagents fanned out in parallel (R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")), and the entry file is written for the agent instructions file the harness reads, without one harness's include syntax.",
       "gist": "The subagent fan-out, one per document, gives way to drafting in turn",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 10
       }
     },
@@ -1026,9 +1067,95 @@
       "reason": "Filing upstream is outward: offered, never done unasked, and done only on the owner's authorization.",
       "gist": "Upstream issues are offered, and filed only on the owner's word",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 17
       }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Before starting, the agent says what it will build, where, and whether it would spend fresh agents, and waits for the owner's yes; it opens no change record in this repository.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap"
+    },
+    {
+      "promise": "The description repository goes in a new directory outside this repository, never under .greenline/, with git init and a first commit.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The write hook admits .greenline/tmp/ while no change is open, so a repository made there would not be refused. No run of this start is cited."
+    },
+    {
+      "promise": "The scope answers are recorded in the README's \"Scope decisions\" section, and AGENTS.md (and any other harness's instructions file) holds the one entry line, never left empty.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Files in a separate repository that no greenline reading checks. No observed failure."
+    },
+    {
+      "promise": "Fresh drafting agents run only on the owner's yes, one at a time; each result is reviewed before it is accepted, the coverage table updated, and each step committed as docs: add or docs: revise.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The program opens no record here, so no count or hook reads its agents or commits. No observed failure."
+    },
+    {
+      "promise": "A document is never marked verified on an automated pass alone, and verification/README.md says what that pass did and did not cover.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Content of the separate repository. No observed failure."
+    },
+    {
+      "promise": "Every suspected defect goes into one bug-triage file with repro, cause, severity and the decision needed; it returns to the owner, and next actions are offered without opening a change per entry.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Content and an offer with no observed failure."
+    },
+    {
+      "promise": "Filing upstream issues is offered, never done unasked, and done only on the owner's authorization after the target repository and format are confirmed.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "It is an outward act, but no guard rule reads an issue-filing command and no run observed it fail, so condition 2 fails."
+    },
+    {
+      "promise": "The source repository is never modified.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "no-open-change covers only the case where the source is this workspace and no change is open. No observed failure."
+    },
+    {
+      "promise": "On a resume, a moved source commit is decided with the owner, never silently mixed, and checklist and triage IDs are never renumbered once used.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Content of the separate repository with no observed failure."
+    },
+    {
+      "promise": "A repair the owner takes up becomes a change run from frame, its ## start naming product-description and the triage entry.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks start sections. No observed failure."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "product description",
+        "describe the user experience",
+        "behaves for the user",
+        "behavior spec",
+        "behaviour spec",
+        "feature by feature"
+      ],
+      "weight": 3,
+      "read": "whole"
     }
   ]
 }

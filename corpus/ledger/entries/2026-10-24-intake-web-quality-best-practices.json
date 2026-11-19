@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-web-quality-best-practices",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-web-quality-seo",
+    "sha256": "8e4a1f014aa3d87342786a317d3204504ed36ce8f82f41bbacfa7233944135a0"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/web-quality-skills",
+    "commit": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "path": "skills/best-practices"
+  },
+  "pin": "web-quality-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Security headers and deprecated APIs, declined",
+  "reason": "Security headers and deprecated browser APIs lie outside the interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': web-quality-skills' seo and best-practices are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': web-quality-skills' seo and best-practices are declined"
+    }
+  ]
+}

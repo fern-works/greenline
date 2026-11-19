@@ -31,7 +31,8 @@ const exclusionSchema: z.ZodType<RootExclusion> = z.discriminatedUnion("kind", [
     .strict(),
   z.object({ kind: z.literal("option-group"), responsibility: text }).strict(),
 ]);
-const statement: z.ZodType<RootStatement> = z
+/** One root statement's schema, which the inspector's contract reuses for its settings document. */
+export const rootStatementSchema: z.ZodType<RootStatement> = z
   .object({
     root: z
       .string()
@@ -43,7 +44,7 @@ const statement: z.ZodType<RootStatement> = z
     exclusions: z.array(exclusionSchema),
   })
   .strict();
-const statements = z.array(statement).superRefine((entries, context) => {
+const statements = z.array(rootStatementSchema).superRefine((entries, context) => {
   const roots = new Set<string>();
   entries.forEach((entry, index) => {
     if (roots.has(entry.root))

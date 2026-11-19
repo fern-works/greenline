@@ -1,299 +1,45 @@
+import type { CaptureLimit } from "../../core/interface-check.ts";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import { execFileSync, type ExecFileSyncOptionsWithStringEncoding } from "node:child_process";
 import { join } from "node:path";
 import { lstatSync, existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { z } from "zod";
 import { parseJson } from "../../core/contract.ts";
 import { sha256Hex } from "../../commons/hash.ts";
-import {
-  NO_PROCEED,
-  parseManifest,
-  serializeManifest,
-  trialSkillNames,
-  type HookSettings,
-  type Manifest,
-} from "../../core/manifest.ts";
-import type { HooksReport } from "../../core/adapters.ts";
-import { isConnectorSkill, type SkillChoices } from "../../core/connectors/registry.ts";
-import { parseDecisionDocument, type RootStatement } from "../../core/root-statements.ts";
-import { parseHouseRulings } from "../../core/house-rulings.ts";
-import {
-  lineDiff,
-  receiptView,
-  withStanza,
-  type DiffLine,
-  type ReceiptRequestView,
-} from "../../core/inspect.ts";
-import { parseLock } from "../../core/lock.ts";
-import { renderProjection } from "../../core/render.ts";
-import { createNodeFileIo, type FileIo } from "../fs/io.ts";
+import { parseManifest, serializeManifest } from "../../core/manifest.ts";
+import type { SkillChoices } from "../../core/connectors/registry.ts";
+import { parseDecisionDocument } from "../../core/root-statements.ts";
+import { withStanza } from "../../core/inspect.ts";
+import { createNodeFileIo } from "../fs/io.ts";
 import { applyFilePlan } from "../fs/apply.ts";
 import { withWorkspaceWrite } from "../fs/workspace-write.ts";
 import { rosterOf } from "../repository-state.ts";
 import type { Installation } from "../../core/installation.ts";
-import { GuidanceRequests } from "../guidance-requests.ts";
 import { runCommand } from "../cli/commands.ts";
 import type { CliEnvironment } from "../cli/command-environment.ts";
 import type { CommandOutcome } from "../cli/command-outcome.ts";
-import type { Diagnostic } from "../cli/output.ts";
-import { renderInspectorPage } from "./page.ts";
+import { placeOf } from "./app/addresses.ts";
+import { CLIENT_ASSET, renderShellPage } from "./page.ts";
 import { readInstalledFile } from "./repository-read.ts";
+import type { DesignPick } from "../../core/design-pick.ts";
+import { captureAt, closeFromViewer, markFromViewer } from "./captures.ts";
+import { markedCaptures } from "../marks.ts";
+import { savePick } from "./interface.ts";
+import { deleteVisual, rawVisual, VISUAL_POLICY } from "./visuals.ts";
 import {
-  changeDetail,
-  changesList,
-  type ChangeDetail,
-  type ChangesList,
-  type CommitLog,
-} from "./ledger.ts";
-import { changeHtml, changesListHtml } from "./ledger-html.ts";
-import { planDetail, plansList, type PlanDetail, type PlansList } from "./plans.ts";
-import { planHtml, plansListHtml } from "./plans-html.ts";
-import {
-  knowledgeHome,
-  knowledgeList,
-  type KnowledgeHome,
-  type KnowledgeList,
-} from "./knowledge.ts";
-import { knowledgeHomeHtml, knowledgeListHtml } from "./knowledge-html.ts";
+  decodedPart,
+  editable,
+  editableTexts,
+  markers,
+  type PolicyChanges,
+  revision,
+  unlisted,
+  visualIdOf,
+} from "./answers.ts";
+import { BuilderPool, buildHere, type Built } from "./builder.ts";
+import { DocumentReader, fsWatchSource, type Reading } from "./readers.ts";
 
 export const INSPECT_DEFAULT_PORT = 7433;
-/** Installed context and current policy, without any remotely retrieved guidance body. */
-export interface InspectorState {
-  readonly manifest: Manifest;
-  readonly installation: string;
-  readonly editRevision: string;
-  readonly cliVersion: string;
-  readonly roots: readonly RootStatement[];
-  readonly decisions: string;
-  readonly policyChanges: readonly {
-    readonly path: string;
-    readonly before: string;
-    readonly after: string;
-    readonly at: string;
-  }[];
-  readonly houseRulings: { readonly stanza: string; readonly rulings: readonly string[] };
-  /** The request collections, body-free, as the evidence view shows them. */
-  readonly receipts: readonly ReceiptRequestView[];
-  /** The collection files, or the directory, that could not be read, each with the refusal. */
-  readonly receiptProblems: readonly { readonly file: string; readonly message: string }[];
-  readonly checks: readonly Diagnostic[];
-  /**
-   * The declared checks and the hooks as `greenline status` reports them, with
-   * the manifest's hooks settings; null when status could not read the manifest.
-   */
-  readonly hooks: (HooksReport & { readonly settings: HookSettings }) | null;
-  readonly files: readonly {
-    readonly path: string;
-    readonly content: string | null;
-    readonly error: string | null;
-  }[];
-  readonly changes: {
-    readonly baseline: string | null;
-    readonly files: readonly { readonly path: string; readonly diff: readonly DiffLine[] }[];
-    readonly unavailable: readonly string[];
-  };
-  /** What the two settings may hold, from the installation: `proceed`'s values in order, and the trial skills. */
-  readonly settings: { readonly proceed: readonly string[]; readonly trials: readonly string[] };
-  readonly skills: readonly {
-    readonly name: string;
-    readonly installed: boolean;
-    /** An extra installs only when the manifest's include list names it. */
-    readonly extra: boolean;
-  }[];
-}
-const editable = [".greenline/manifest.json", ".greenline/DECISIONS.md", "AGENTS.md"] as const;
-function editableTexts(root: string, io: FileIo) {
-  const values: string[] = [];
-  for (const path of editable) {
-    const result = readInstalledFile(root, io, path);
-    if (result._tag === "err" && (result.error.step !== "absent" || path === editable[0]))
-      return result;
-    values.push(result._tag === "ok" ? result.value : "");
-  }
-  return {
-    _tag: "ok" as const,
-    value: {
-      manifest: values[0] ?? "",
-      decisions: values[1] ?? "",
-      agents: values[2] ?? "",
-      revision: sha256Hex(JSON.stringify(values)),
-    },
-  };
-}
-/** Pin one readable Git tree for the whole comparison. */
-function gitBaseline(
-  root: string,
-): { readonly revision: string; readonly paths: ReadonlySet<string> } | undefined {
-  try {
-    const options: ExecFileSyncOptionsWithStringEncoding = {
-      cwd: root,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-    } as const;
-    const revision = execFileSync(
-      "git",
-      ["rev-parse", "--verify", "HEAD^{commit}"],
-      options,
-    ).trim();
-    const paths = execFileSync("git", ["ls-tree", "-r", "--name-only", "-z", revision], options);
-    return { revision, paths: new Set(paths.split("\0").filter(Boolean)) };
-  } catch {
-    return undefined;
-  }
-}
-
-/** The text at the pinned commit, or undefined when its blob cannot be read. */
-function atHead(root: string, revision: string, path: string): string | undefined {
-  try {
-    return execFileSync("git", ["show", revision + ":" + path], {
-      cwd: root,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-    });
-  } catch {
-    return undefined;
-  }
-}
-
-/** A commit id as git prints it; nothing else reaches git's arguments. */
-const COMMIT = /^[0-9a-f]{7,64}$/;
-
-/**
- * The subject and date of each commit, in one read of git; a commit git
- * cannot describe is left out, and the page shows its subject as unknown.
- */
-function commitLog(root: string): CommitLog {
-  return (hashes) => {
-    const found = new Map<string, { subject: string; date: string }>();
-    const asked = hashes.filter((hash) => COMMIT.test(hash));
-    if (asked.length === 0) return found;
-    let text: string;
-    try {
-      text = execFileSync(
-        "git",
-        ["log", "--no-walk=unsorted", "--format=%H%x00%s%x00%cI%x1e", ...asked],
-        { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
-      );
-    } catch {
-      return found;
-    }
-    for (const record of text.split("\x1e")) {
-      const [hash, subject, date] = record.trim().split("\0");
-      if (hash !== undefined && subject !== undefined && date !== undefined)
-        found.set(hash, { subject, date });
-    }
-    return found;
-  };
-}
-
-function inspectorState(root: string, env: CliEnvironment): InspectorState | { error: string } {
-  const io = createNodeFileIo(),
-    texts = editableTexts(root, io);
-  if (texts._tag === "err") return { error: texts.error.message };
-  const manifest = parseManifest(
-      texts.value.manifest,
-      ".greenline/manifest.json",
-      rosterOf(env.installation),
-    ),
-    decisions = parseDecisionDocument(texts.value.decisions, ".greenline/DECISIONS.md");
-  if (manifest._tag === "err" || decisions._tag === "err")
-    return { error: "No readable repository configuration or decisions." };
-  const projected = renderProjection(manifest.value, env.installation),
-    paths = new Set(projected.map((file) => file.path));
-  const lockText = readInstalledFile(root, io, ".greenline/lock.json");
-  const lock =
-    lockText._tag === "ok" ? parseLock(lockText.value, ".greenline/lock.json") : undefined;
-  if (lock?._tag === "ok") for (const path of lock.value.files.keys()) paths.add(path);
-  const baseline = gitBaseline(root);
-  const files: InspectorState["files"][number][] = [],
-    changes: InspectorState["changes"]["files"][number][] = [],
-    unavailable: string[] = [];
-  for (const path of [...paths].sort()) {
-    const actual = readInstalledFile(root, io, path);
-    files.push({
-      path,
-      content: actual._tag === "ok" ? actual.value : null,
-      error: actual._tag === "err" ? actual.error.message : null,
-    });
-    if (actual._tag === "err" && actual.error.step !== "absent") {
-      unavailable.push(path);
-      continue;
-    }
-    if (baseline === undefined) continue;
-    const before = baseline.paths.has(path) ? atHead(root, baseline.revision, path) : "";
-    if (before === undefined) {
-      unavailable.push(path);
-      continue;
-    }
-    const after = actual._tag === "ok" ? actual.value : "";
-    if (before !== after) changes.push({ path, diff: lineDiff(before, after) });
-  }
-  const markerText = readInstalledFile(root, io, ".greenline/policy-changes.json");
-  if (markerText._tag === "err" && markerText.error.step !== "absent")
-    return { error: markerText.error.message };
-  const markerData = markers.safeParse(
-    markerText._tag === "ok" ? parseJson(markerText.value) : { schemaVersion: 1, changes: [] },
-  );
-  if (!markerData.success) return { error: "Policy change evidence is invalid." };
-  const survey = new GuidanceRequests(root, io).survey();
-  const RECEIPTS = ".greenline/ledger/receipts";
-  const diagnosis = runCommand(
-    {
-      command: "status",
-      json: true,
-      dryRun: true,
-      yes: false,
-      targets: undefined,
-      forceManaged: [],
-      port: undefined,
-    },
-    env,
-  );
-  const rulings = parseHouseRulings(texts.value.agents);
-  return {
-    manifest: manifest.value,
-    installation: env.installation.revision,
-    editRevision: texts.value.revision,
-    cliVersion: env.version,
-    roots: decisions.value.roots,
-    policyChanges: markerData.data.changes,
-    decisions: texts.value.decisions,
-    houseRulings: { stanza: rulings.map((r) => `- ${r}`).join("\n"), rulings },
-    // Each collection is read as it stands, so the valid ones show beside those that cannot be read.
-    receipts:
-      survey._tag === "ok"
-        ? receiptView(survey.value.flatMap((item) => ("request" in item ? [item.request] : [])))
-        : [],
-    receiptProblems:
-      survey._tag === "ok"
-        ? survey.value.flatMap((item) =>
-            "failure" in item ? [{ file: `${RECEIPTS}/${item.file}`, message: item.failure }] : [],
-          )
-        : [{ file: RECEIPTS, message: survey.error.message }],
-    checks: diagnosis.diagnostics,
-    hooks:
-      diagnosis.hooks === undefined ? null : { settings: manifest.value.hooks, ...diagnosis.hooks },
-    files,
-    changes: { baseline: baseline?.revision ?? null, files: changes, unavailable },
-    settings: {
-      proceed: [NO_PROCEED, ...env.installation.modes.modes.map((mode) => mode.name)],
-      // The trial skills beside the line, which `trials` names, so a save keeps an enabled one.
-      trials: trialSkillNames(env.installation.modes, env.installation.skills),
-    },
-    // A connector's skill is its connector's to install, and a trial skill the trials
-    // setting's, so neither is offered as a choice.
-    skills: env.installation.skills
-      .filter((skill) => !unlisted(env.installation, skill.name))
-      .map((skill) => ({
-        name: skill.name,
-        installed: files.some(
-          (file) => file.path.endsWith(`/skills/${skill.name}/SKILL.md`) && file.content !== null,
-        ),
-        extra: skill.extra === true,
-      })),
-  };
-}
-const revision = z.string().regex(/^[a-f0-9]{64}$/);
 const settings = z
   .object({
     expectedRevision: revision,
@@ -310,27 +56,6 @@ const settings = z
   })
   .strict();
 const prose = z.object({ expectedRevision: revision, body: z.string() }).strict();
-const markers = z
-  .object({
-    schemaVersion: z.literal(1),
-    changes: z.array(
-      z
-        .object({ path: z.enum(editable), before: revision, after: revision, at: z.iso.datetime() })
-        .strict(),
-    ),
-  })
-  .strict();
-/**
- * Whether the page leaves a skill out of its choices: a connector's skill,
- * which its connector installs, and a trial skill beside the line, which the
- * trials setting installs (S17 of the plan modes-records-recipes).
- */
-function unlisted(installation: Installation, name: string): boolean {
-  return (
-    isConnectorSkill(name) ||
-    trialSkillNames(installation.modes, installation.skills).includes(name)
-  );
-}
 /**
  * The saved skill choices: the page's, for the skills it lists, and the
  * manifest's own entries for a skill the page never lists, a connector's or
@@ -375,17 +100,24 @@ function save(
     const json = parseJson(body);
     const parsed = endpoint === "/api/manifest" ? settings.safeParse(json) : prose.safeParse(json);
     if (!parsed.success) return { error: parsed.error.message };
-    if (parsed.data.expectedRevision !== texts.value.revision)
-      return {
-        error: "Repository settings or policy changed; reload before saving.",
-        conflict: true,
-      };
     const path =
       endpoint === "/api/manifest"
         ? editable[0]
         : endpoint === "/api/policy"
           ? editable[1]
           : editable[2];
+    // Each file is checked against its own revision, so a save of one is never refused for another's edit (J-165 S1).
+    const standing =
+      path === editable[0]
+        ? texts.value.revisions.manifest
+        : path === editable[1]
+          ? texts.value.revisions.decisions
+          : texts.value.revisions.agents;
+    if (parsed.data.expectedRevision !== standing)
+      return {
+        error: `${path} changed since this page read it, so the save is refused; discard the draft to take the file as it stands.`,
+        conflict: true,
+      };
     const before =
       path === editable[0]
         ? texts.value.manifest
@@ -424,7 +156,7 @@ function save(
       previous = readInstalledFile(root, io, markerPath);
     if (previous._tag === "err" && previous.error.step !== "absent")
       return { error: previous.error.message };
-    let entries: z.infer<typeof markers>;
+    let entries: PolicyChanges;
     try {
       entries = markers.parse(
         previous._tag === "ok" ? JSON.parse(previous.value) : { schemaVersion: 1, changes: [] },
@@ -456,21 +188,52 @@ function send(
   response: ServerResponse,
   status: number,
   body:
-    | InspectorState
     | { error: string }
-    | { outcome: CommandOutcome; state: InspectorState | { error: string } }
-    | (ChangesList & { html: string })
-    | { change: ChangeDetail; html: string }
-    | (PlansList & { html: string })
-    | { plan: PlanDetail; html: string }
-    | (KnowledgeList & { html: string })
-    | { home: KnowledgeHome; html: string },
+    | { pick: DesignPick }
+    | { captured: string | null; limit: string | null; detail: CaptureLimit | null },
 ): void {
   response.writeHead(status, {
     "content-type": "application/json; charset=utf-8",
     "cache-control": "no-store",
   });
   response.end(JSON.stringify(body));
+}
+/**
+ * A document read through the cache: answered "not modified" with no body
+ * when the page sends back the tag it holds, else the body with its tag.
+ */
+function sendReading(request: IncomingMessage, response: ServerResponse, reading: Reading): void {
+  const type = { "content-type": "application/json; charset=utf-8" };
+  // A refusal carries no tag and is asked again; a document is asked again each time, and its tag makes the answer a diff.
+  if (reading.status !== 200) {
+    response.writeHead(reading.status, { ...type, "cache-control": "no-store" });
+    response.end(reading.body);
+    return;
+  }
+  const headers = { ...type, "cache-control": "no-cache", etag: reading.tag };
+  if (request.headers["if-none-match"] === reading.tag) {
+    response.writeHead(304, headers);
+    response.end();
+    return;
+  }
+  response.writeHead(200, headers);
+  response.end(reading.body);
+}
+/** A write's answer with the settings as they now stand, read through the cache. */
+function sendWithState(response: ServerResponse, outcome: CommandOutcome, state: Reading): void {
+  sendJoined(response, { outcome: JSON.stringify(outcome), settings: state.body });
+}
+/** A write's answer of several parts, each already JSON text, as one object. */
+function sendJoined(response: ServerResponse, parts: Readonly<Record<string, string>>): void {
+  response.writeHead(200, {
+    "content-type": "application/json; charset=utf-8",
+    "cache-control": "no-store",
+  });
+  response.end(
+    `{${Object.entries(parts)
+      .map(([key, text]) => `${JSON.stringify(key)}:${text}`)
+      .join(",")}}`,
+  );
 }
 async function readBody(request: IncomingMessage): Promise<string> {
   request.setEncoding("utf8");
@@ -481,29 +244,94 @@ async function readBody(request: IncomingMessage): Promise<string> {
   }
   return text;
 }
-/** A path segment decoded; a malformed escape stays as written, so it names no change and is answered 404. */
-function decodedPart(part: string): string {
+/**
+ * What the shell's page may load: its own script and the contract from its
+ * own origin, its inline style and the fonts embedded in it; nothing from
+ * another host, and no inline script.
+ */
+const SHELL_POLICY =
+  "default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'unsafe-inline'; font-src data:; img-src 'self' data:; frame-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'";
+
+/**
+ * The client asset beside the CLI's bundle, read each time it is asked so a
+ * rebuild shows on the next reload; undefined when this checkout has none.
+ * @returns the asset's text, or undefined
+ */
+async function clientAsset(): Promise<string | undefined> {
   try {
-    return decodeURIComponent(part);
+    return await readFile(new URL(`./${CLIENT_ASSET}`, import.meta.url), "utf8");
   } catch {
-    return part;
+    return undefined;
   }
 }
+
+/** How the inspector builds and reports its reads. */
+export interface InspectorOptions {
+  /** Each read's line, for `greenline inspect --timing`. */
+  readonly timing?: (line: string) => void;
+  /**
+   * Where documents are built: on builder threads, so no request waits on a
+   * build, as `greenline inspect` asks; or, the default for any other
+   * caller, a test's, in the server's own thread, one build at a time.
+   */
+  readonly builders?: "threads" | "here";
+  /**
+   * Watch the working tree for writes elsewhere than the ledger, the
+   * installation and git, as `greenline inspect` asks; another caller's
+   * server, a test's, does not unless it asks, and sees such a write at its
+   * own next write.
+   */
+  readonly watch?: boolean;
+}
+
 /** A loopback inspector with explicit saves and sync; no guidance API requests. */
 export interface InspectorHandle {
   readonly url: string;
+  /** The port it listens on, which the address file records (J-142 S1). */
+  readonly port: number;
   readonly close: () => Promise<void>;
 }
 export function startInspector(
   root: string,
   env: CliEnvironment,
   port: number,
+  client: () => string | undefined | Promise<string | undefined> = clientAsset,
+  options: InspectorOptions = {},
 ): Promise<InspectorHandle> {
+  const pool = options.builders === "threads" ? new BuilderPool(root, env) : undefined;
+  // A build on a thread that cannot start, or that fails, is built here instead: slower, and still answered.
+  const build = async (address: string, query: string, state: string): Promise<Built> => {
+    if (pool !== undefined)
+      try {
+        return await pool.build(address, query, state);
+      } catch (error) {
+        // A closing server builds nothing more; any other refusal, this thread can build.
+        if (pool.closing) throw error;
+      }
+    return buildHere(root, env, address, query, state);
+  };
+  const reader = new DocumentReader(root, {
+    build,
+    watch: options.watch === true ? fsWatchSource : undefined,
+    timing: options.timing,
+    edition: `${env.version} ${env.installation.revision}`,
+  });
+
+  /** The settings as they stand after a write, read again through the cache. */
+  const stateAfterWrite = (): Promise<Reading> => {
+    reader.moveState();
+    return reader.read("/api/settings", new URLSearchParams());
+  };
   const server = createServer((request, response) => {
-    void serve(request, response).catch(() => {
-      if (response.headersSent) response.destroy();
-      else send(response, 400, { error: "Inspector request failed." });
-    });
+    void serve(request, response)
+      .catch(() => {
+        if (response.headersSent) response.destroy();
+        else send(response, 400, { error: "Inspector request failed." });
+      })
+      // A write the server made moves the state now, before the watcher sees it.
+      .finally(() => {
+        if (request.method === "POST") reader.moveState();
+      });
   });
   async function serve(request: IncomingMessage, response: ServerResponse): Promise<void> {
     const host = `127.0.0.1:${request.socket.localPort}`;
@@ -515,59 +343,61 @@ export function startInspector(
       return;
     }
     const url = new URL(request.url ?? "/", `http://${host}`);
-    if (request.method === "GET" && url.pathname === "/") {
-      response.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-      response.end(renderInspectorPage());
+    // The shell answers every path the app shows; the app reads the contract under /api/.
+    if (request.method === "GET" && placeOf(url.pathname) !== undefined) {
+      response.writeHead(200, {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-store",
+        "content-security-policy": SHELL_POLICY,
+      });
+      response.end(renderShellPage());
       return;
     }
-    if (request.method === "GET" && url.pathname === "/api/state") {
-      const state = inspectorState(root, env);
-      send(response, "error" in state ? 409 : 200, state);
-      return;
-    }
-    // The changes view: the list, and one change's page, each its data with the HTML it renders to.
-    if (request.method === "GET" && url.pathname === "/api/changes") {
-      const list = changesList(root, env, new Date());
-      send(response, 200, { ...list, html: changesListHtml(list) });
-      return;
-    }
-    const changePath = /^\/api\/changes\/([^/]+)$/.exec(url.pathname);
-    if (request.method === "GET" && changePath !== null) {
-      const detail = changeDetail(
-        root,
-        env,
-        decodedPart(changePath[1] ?? ""),
-        new Date(),
-        commitLog(root),
+    if (request.method === "GET" && url.pathname === `/${CLIENT_ASSET}`) {
+      const asset = await client();
+      response.writeHead(asset === undefined ? 503 : 200, {
+        "content-type":
+          asset === undefined ? "text/plain; charset=utf-8" : "text/javascript; charset=utf-8",
+        "cache-control": "no-store",
+      });
+      response.end(
+        asset ??
+          "The inspector's client is not built in this checkout: run pnpm build, then greenline inspect from dist/bin.",
       );
-      if (detail === undefined) send(response, 404, { error: "No such change record." });
-      else send(response, 200, { change: detail, html: changeHtml(detail) });
       return;
     }
-    // The plans view: the plan directories, and one plan's page.
-    if (request.method === "GET" && url.pathname === "/api/plans") {
-      const list = plansList(root, env);
-      send(response, 200, { ...list, html: plansListHtml(list) });
+    // A visual's own bytes, shown in place by the Visuals view: an SVG as an image, an HTML page in a sandboxed frame.
+    const raw = /^\/raw\/visuals\/(.+)$/.exec(url.pathname)?.[1];
+    if (request.method === "GET" && raw !== undefined) {
+      const id = visualIdOf(raw);
+      const answer =
+        id === undefined
+          ? ({
+              status: 404,
+              type: "text/plain; charset=utf-8",
+              body: "No such visual file.",
+            } as const)
+          : rawVisual(root, id);
+      response.writeHead(answer.status, {
+        "content-type": answer.type,
+        "cache-control": "no-store",
+        "content-security-policy": answer.status === 200 ? answer.policy : VISUAL_POLICY,
+        "x-content-type-options": "nosniff",
+      });
+      response.end(answer.body);
       return;
     }
-    const planPath = /^\/api\/plans\/([^/]+)$/.exec(url.pathname);
-    if (request.method === "GET" && planPath !== null) {
-      const plan = planDetail(root, env, decodedPart(planPath[1] ?? ""));
-      if (plan === undefined) send(response, 404, { error: "No such plan directory." });
-      else send(response, 200, { plan, html: planHtml(plan) });
+    if (request.method === "GET" && !url.pathname.startsWith("/api/")) {
+      response.writeHead(404, {
+        "content-type": "text/html; charset=utf-8",
+        "content-security-policy": SHELL_POLICY,
+      });
+      // The app draws the not-found page, which offers the records the address's words name (J-158 S2).
+      response.end(renderShellPage());
       return;
     }
-    // The knowledge view: the homes the repository keeps, and one home's page.
-    if (request.method === "GET" && url.pathname === "/api/knowledge") {
-      const list = knowledgeList(root);
-      send(response, 200, { ...list, html: knowledgeListHtml(list) });
-      return;
-    }
-    const homePath = /^\/api\/knowledge\/([^/]+)$/.exec(url.pathname);
-    if (request.method === "GET" && homePath !== null) {
-      const home = knowledgeHome(root, decodedPart(homePath[1] ?? ""));
-      if (home === undefined) send(response, 404, { error: "No such knowledge home here." });
-      else send(response, 200, { home, html: knowledgeHomeHtml(home) });
+    if (request.method === "GET" && url.pathname.startsWith("/api/")) {
+      sendReading(request, response, await reader.read(url.pathname, url.searchParams));
       return;
     }
     if (
@@ -576,7 +406,59 @@ export function startInspector(
     ) {
       const result = save(root, url.pathname, await readBody(request), env.installation);
       if ("error" in result) send(response, result.conflict ? 409 : 400, { error: result.error });
-      else send(response, 200, { outcome: result.outcome, state: inspectorState(root, env) });
+      else sendWithState(response, result.outcome, await stateAfterWrite());
+      return;
+    }
+    if (request.method === "POST" && url.pathname === "/api/pictures/delete") {
+      const result = deleteVisual(root, await readBody(request));
+      if ("error" in result)
+        send(response, result.conflict === true ? 409 : 400, { error: result.error });
+      else {
+        reader.moveState();
+        const pictures = await reader.read("/api/pictures", new URLSearchParams());
+        sendJoined(response, { removed: JSON.stringify(result.removed), pictures: pictures.body });
+      }
+      return;
+    }
+    // Capture now: the owner's running page rendered and kept as a capture (J-124 S1); a limit is an answer, never an error.
+    if (request.method === "POST" && url.pathname === "/api/captures") {
+      // The viewer's own address, which capture now refuses as the app's (J-191 S1).
+      const own = z.object({ port: z.number() }).safeParse(server.address());
+      const answer = await captureAt(
+        root,
+        await readBody(request),
+        env.environment ?? process.env,
+        markedCaptures(root),
+        own.success ? `http://127.0.0.1:${String(own.data.port)}/` : undefined,
+      );
+      if (answer.kind === "refused") send(response, 400, { error: answer.error });
+      else if (answer.kind === "limit")
+        send(response, 200, { captured: null, limit: answer.limit, detail: answer.detail });
+      else send(response, 200, { captured: answer.capture, limit: null, detail: null });
+      return;
+    }
+    // The owner's mark and the owner's closure, each with the revision check (J-124 S2).
+    const closing = /^\/api\/marks\/(m[0-9a-f]{7})\/close$/.exec(url.pathname)?.[1];
+    if (request.method === "POST" && (url.pathname === "/api/marks" || closing !== undefined)) {
+      const body = await readBody(request);
+      const written =
+        closing === undefined ? markFromViewer(root, body) : closeFromViewer(root, closing, body);
+      if (written.kind === "refused")
+        send(response, written.conflict ? 409 : 400, { error: written.error });
+      else {
+        reader.moveState();
+        const facing = await reader.read("/api/interface", new URLSearchParams());
+        sendJoined(response, { mark: JSON.stringify(written.mark), interface: facing.body });
+      }
+      return;
+    }
+    // The deal view's pick, its one write, with the revision check (J-123 S7).
+    const picked = /^\/api\/changes\/([^/]+)\/deal\/pick$/.exec(url.pathname)?.[1];
+    if (request.method === "POST" && picked !== undefined) {
+      const result = savePick(root, decodedPart(picked), await readBody(request));
+      if (result.kind === "refused")
+        send(response, result.conflict ? 409 : 400, { error: result.error });
+      else send(response, 200, { pick: result.pick });
       return;
     }
     if (request.method === "POST" && url.pathname === "/api/sync") {
@@ -592,19 +474,31 @@ export function startInspector(
         },
         env,
       );
-      send(response, 200, { outcome, state: inspectorState(root, env) });
+      sendWithState(response, outcome, await stateAfterWrite());
       return;
     }
     send(response, 404, { error: "No such path." });
   }
   return new Promise((resolve, reject) => {
-    server.once("error", reject);
+    // A server that cannot listen leaves no watcher or builder behind.
+    server.once("error", (error) => {
+      reader.close();
+      void pool?.close();
+      reject(error);
+    });
     server.listen(port, "127.0.0.1", () => {
       const address = z.object({ port: z.number() }).parse(server.address());
+      // The watcher starts once the server listens, after the caller has its address.
+      setImmediate(() => reader.startWatching());
+      // The builders start now, so the first read waits on no thread's start (J-165 S1).
+      pool?.warm();
       resolve({
         url: `http://127.0.0.1:${address.port}/`,
+        port: address.port,
         close: () =>
           new Promise((done) => {
+            reader.close();
+            void pool?.close();
             server.closeAllConnections();
             server.close(() => done());
           }),

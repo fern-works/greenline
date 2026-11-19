@@ -1,0 +1,19 @@
+{
+  "commit": "da27869da759283fa0e9dc1353449aa474b8bad0",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "ee07c059bf7e1d1b453f3fa0091c260853d301a3466a0f7a5e8a724aea4f79c6"
+    },
+    {
+      "path": "smooth-shadow-ring/SKILL.md",
+      "sha256": "acc6717961c4cc0719b005e86f6d916be486b415efcf769de4ae5a76993e518a"
+    }
+  ],
+  "entries": [
+    {
+      "name": "smooth-shadow-ring",
+      "path": ".claude/skills/smooth-shadow-ring"
+    }
+  ]
+}

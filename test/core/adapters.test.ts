@@ -8,6 +8,7 @@
  */
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
+import type { JsonValue } from "../../src/core/contract.ts";
 import {
   composeJsonAdapter,
   FILE_ADAPTERS,
@@ -20,9 +21,156 @@ import {
   ownedBytes,
   ownedOnDisk,
   renderHooksText,
+  codexSessionSource,
+  runningSurface,
+  SURFACES,
+  surfaceLine,
+  adapterInstructions,
+  CODEX_REPLY_RULE,
   withoutGreenline,
   type JsonAdapter,
 } from "../../src/core/adapters.ts";
+
+describe("J-110 S4 the adapters' table, one row per harness and surface", () => {
+  it("gives every harness a row, its first one rendering text, which a hook reads where the session says nothing of its surface", () => {
+    for (const harness of HARNESSES) {
+      expect(
+        SURFACES.some((row) => row.harness === harness),
+        harness,
+      ).toBe(true);
+      expect(runningSurface(harness).renders, harness).toBe("text");
+    }
+  });
+
+  it("records the surfaces the note on rendering read: mermaid on Codex's desktop app alone, and the headless ones not interactive", () => {
+    expect(SURFACES.filter((row) => row.renders === "mermaid")).toEqual([
+      expect.objectContaining({ harness: "codex", surface: "desktop app, plan mode" }),
+      expect.objectContaining({ harness: "codex", surface: "desktop app, default mode" }),
+    ]);
+    expect(SURFACES.filter((row) => row.interactive === "no").map((row) => row.harness)).toEqual([
+      "claude-code",
+      "codex",
+    ]);
+  });
+
+  it("prints the running surface's row for status", () => {
+    expect(surfaceLine(runningSurface("claude-code"))).toBe(
+      "surface: claude-code, terminal: renders text; interactive yes; delegation yes; worktree yes; questions cards",
+    );
+  });
+
+  it("J-114 S1 names the harness's native worktree tool where a source reads one, Claude Code's on every surface", () => {
+    expect(SURFACES.filter((row) => row.worktree === "yes").map((row) => row.harness)).toEqual([
+      "claude-code",
+      "claude-code",
+      "claude-code",
+    ]);
+    expect(runningSurface("codex").worktree).toBe("no");
+  });
+
+  it("J-228 S1 says Codex makes no worktree on the CLI and in exec, which the runs read, and leaves the desktop app's rows unknown (j217t-ground F7)", () => {
+    expect(
+      SURFACES.filter((row) => row.harness === "codex").map(
+        (row) => `${row.surface}: ${row.worktree}`,
+      ),
+    ).toEqual([
+      "CLI, plan mode: no",
+      "CLI, default mode: no",
+      "desktop app, plan mode: unknown",
+      "desktop app, default mode: unknown",
+      "headless, codex exec: no",
+    ]);
+  });
+
+  it("J-117 S2 names where the harness's question tool renders: cards there, the reply everywhere else", () => {
+    expect(
+      SURFACES.filter((row) => row.questions === "cards").map((row) => [row.harness, row.surface]),
+    ).toEqual([
+      ["claude-code", "terminal"],
+      // The register's row of 2026-10-25: the desktop app's Code tab renders the cards too.
+      ["claude-code", "desktop app, VS Code extension and mobile"],
+      ["codex", "CLI, plan mode"],
+      ["codex", "desktop app, plan mode"],
+    ]);
+    expect(
+      SURFACES.filter((row) => row.harness === "claude-code" || row.harness === "codex").map(
+        (row) => `${row.harness}, ${row.surface}: ${row.questions}`,
+      ),
+    ).toEqual([
+      "claude-code, terminal: cards",
+      "claude-code, desktop app, VS Code extension and mobile: cards",
+      "claude-code, headless, claude -p: reply",
+      "codex, CLI, plan mode: cards",
+      "codex, CLI, default mode: reply",
+      "codex, desktop app, plan mode: cards",
+      "codex, desktop app, default mode: reply",
+      "codex, headless, codex exec: reply",
+    ]);
+    // A harness no source has read puts every question in the reply.
+    for (const harness of HARNESSES.filter((name) => name !== "claude-code" && name !== "codex"))
+      expect(runningSurface(harness).questions, harness).toBe("reply");
+  });
+
+  it("J-117 S2 prints each fixture surface's questions fact in its row", () => {
+    for (const row of SURFACES)
+      expect(surfaceLine(row).endsWith(`; questions ${row.questions}`), row.surface).toBe(true);
+    expect(surfaceLine(runningSurface("codex"))).toBe(
+      "surface: codex, CLI, plan mode: renders text; interactive yes; delegation yes; worktree no; questions cards",
+    );
+  });
+});
+
+describe("J-151 S1 the running surface read from the session's mode", () => {
+  it("reads Codex's exec session as headless, whose questions go in the reply, whatever its permission mode", () => {
+    for (const permissionMode of [undefined, "default", "plan", "bypassPermissions"]) {
+      const row = runningSurface("codex", { source: "exec", permissionMode });
+      expect(row.surface, permissionMode).toBe("headless, codex exec");
+      expect(row.questions, permissionMode).toBe("reply");
+    }
+    expect(surfaceLine(runningSurface("codex", { source: "exec" }))).toBe(
+      "surface: codex, headless, codex exec: renders text; interactive no; delegation yes; worktree no; questions reply",
+    );
+  });
+
+  it("reads an interactive Codex session's row by its permission mode: plan mode's cards, the reply in any other", () => {
+    expect(runningSurface("codex", { permissionMode: "plan" }).surface).toBe("CLI, plan mode");
+    expect(runningSurface("codex", { permissionMode: "plan", source: "cli" }).questions).toBe(
+      "cards",
+    );
+    for (const permissionMode of ["default", "acceptEdits", "dontAsk", "bypassPermissions"]) {
+      const row = runningSurface("codex", { permissionMode, source: "cli" });
+      expect(row.surface, permissionMode).toBe("CLI, default mode");
+      expect(row.questions, permissionMode).toBe("reply");
+    }
+  });
+
+  it("keeps the first row where the session says nothing, and on a harness whose rows no signal chooses", () => {
+    expect(runningSurface("codex", {})).toBe(runningSurface("codex"));
+    expect(runningSurface("codex").surface).toBe("CLI, plan mode");
+    expect(runningSurface("claude-code", { source: "exec", permissionMode: "plan" }).surface).toBe(
+      "terminal",
+    );
+    expect(runningSurface("gemini", { source: "exec" }).surface).toBe("its own");
+  });
+
+  it("reads the session's source from a Codex rollout's first line, its session_meta, and nothing from any other line", () => {
+    const meta = (payload: JsonValue): string => JSON.stringify({ type: "session_meta", payload });
+    expect(codexSessionSource(meta({ id: "s", originator: "codex_exec", source: "exec" }))).toBe(
+      "exec",
+    );
+    expect(codexSessionSource(meta({ source: "cli" }))).toBe("cli");
+    // A sub-agent's thread names its source as an object, which says no surface.
+    expect(codexSessionSource(meta({ source: { subagent: { thread_spawn: {} } } }))).toBe(
+      undefined,
+    );
+    expect(codexSessionSource(meta({ id: "s" }))).toBe(undefined);
+    expect(
+      codexSessionSource(JSON.stringify({ type: "turn_context", payload: { source: "exec" } })),
+    ).toBe(undefined);
+    expect(codexSessionSource("not json")).toBe(undefined);
+    expect(codexSessionSource("")).toBe(undefined);
+  });
+});
 
 /** A hook entry as the command-hook files hold one. */
 const GROUP = z.object({
@@ -50,6 +198,20 @@ function adapter(path: string): JsonAdapter {
 function commands(text: string): readonly string[] {
   return [...text.matchAll(/"(?:command|bash)": "([^"]+)"/g)].map((match) => match[1] ?? "");
 }
+
+describe("J-144 S3 the Codex adapter's instructions carry the rule on the owner's words", () => {
+  it("gives Codex the rule that no skill name, page link or AGENTS.md quote reaches the owner, with its reasons, and no other harness a line", () => {
+    expect(adapterInstructions("codex")).toBe(CODEX_REPLY_RULE);
+    expect(CODEX_REPLY_RULE).toContain(
+      "no skill's name, page link or quote of AGENTS.md reaches the owner, who reads none of them",
+    );
+    expect(CODEX_REPLY_RULE).toContain(
+      "name a rule only when it stops something they asked for, in their terms",
+    );
+    expect(adapterInstructions("claude-code")).toBeUndefined();
+    expect(adapterInstructions("hermes")).toBeUndefined();
+  });
+});
 
 describe("J-93 S3 the command-hook adapters are stable bytes", () => {
   it("every entry of one harness's file is the same command, with --harness naming it", () => {

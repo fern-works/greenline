@@ -5,6 +5,23 @@ import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 
 const corpusRoot = join(import.meta.dirname, "..", "..", "corpus");
+
+/** A loaded skill's body read with its method page, where J-180 S1 moved every sentence past the front. */
+function prose(
+  skill:
+    | {
+        readonly body: string;
+        readonly supportFiles?: readonly { path: string; content: string }[];
+      }
+    | undefined,
+): string {
+  return [
+    skill?.body ?? "",
+    ...(skill?.supportFiles ?? [])
+      .filter((file) => file.path === "method.md")
+      .map((file) => file.content),
+  ].join("\n");
+}
 /** The ten roster names the merged habits retired at S18a. */
 const RETIRED_HABITS = [
   "codebase-design",
@@ -88,6 +105,16 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(names).not.toContain("ask-matt");
   });
 
+  it("J-178 S1 holds every description to 1,024 characters, the length both harnesses select by", () => {
+    const result = loadCorpus(corpusRoot);
+    expect(result._tag).toBe("ok");
+    if (result._tag !== "ok") return;
+    const long = result.value
+      .filter((skill) => skill.description.length > 1024)
+      .map((skill) => `${skill.name} ${String(skill.description.length)}`);
+    expect(long).toEqual([]);
+  });
+
   it("reads ponytail as a copy of the vendored rule body under greenline frontmatter", () => {
     const result = loadCorpus(corpusRoot);
     expect(result._tag).toBe("ok");
@@ -97,7 +124,7 @@ describe("loadCorpus (real vendored corpus)", () => {
     if (ponytail === undefined) return;
     expect(ponytail.activation).toBe("implicit");
     // The vendored rule file is the body, byte-identical, no frontmatter.
-    expect(ponytail.body).toContain("# Ponytail, lazy senior dev mode");
+    expect(prose(ponytail)).toContain("# Ponytail, lazy senior dev mode");
     // The copy carries greenline frontmatter; the upstream rule file had none.
     expect(ponytail.description.length).toBeGreaterThan(0);
     // ponytail-review is review's excess lens since S15: a reference file the
@@ -118,9 +145,9 @@ describe("loadCorpus (real vendored corpus)", () => {
     const review = result.value.find((skill) => skill.name === "review");
     expect(review).toBeDefined();
     if (review === undefined) return;
-    expect(review.body).toMatch(/^Next: the next step of the change's mode$/m);
-    expect(review.body).toContain("## The reviewer's brief");
-    expect(review.body).toContain("## The builder's half");
+    expect(prose(review)).toMatch(/^Next: the next step of the change's mode$/m);
+    expect(prose(review)).toContain("## The reviewer's brief");
+    expect(prose(review)).toContain("## The builder's half");
     // J-93 S2: the depths, the reviewers one after another among them, stand on the references page.
     const mechanics = (review.supportFiles ?? []).find(
       (file) => file.path === "references/greenline.md",
@@ -128,7 +155,7 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(mechanics?.content).toContain("one after another");
     // R20 and R21: no parallel dispatch, no worktree, no harness's own
     // subagent settings or forked turns.
-    expect(review.body).not.toMatch(/parallel|worktree|subagent_type|fork_turns/i);
+    expect(prose(review)).not.toMatch(/parallel|worktree|subagent_type|fork_turns/i);
     const paths = (review.supportFiles ?? []).map((file) => file.path);
     expect(paths).toEqual(
       expect.arrayContaining([
@@ -147,8 +174,8 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(verify).toBeDefined();
     if (verify === undefined) return;
     expect(verify.activation).toBe("implicit");
-    expect(verify.body).toContain("NOT VERIFIED");
-    expect(verify.body).toMatch(/^Next: the next step of the change's mode$/m);
+    expect(prose(verify)).toContain("NOT VERIFIED");
+    expect(prose(verify)).toMatch(/^Next: the next step of the change's mode$/m);
     const paths = (verify.supportFiles ?? []).map((file) => file.path);
     expect(paths).toEqual(
       expect.arrayContaining(["references/control-cli.md", "references/control-ui.md"]),
@@ -159,15 +186,15 @@ describe("loadCorpus (real vendored corpus)", () => {
     const result = loadCorpus(corpusRoot);
     expect(result._tag).toBe("ok");
     if (result._tag !== "ok") return;
-    const prose = result.value.find((skill) => skill.name === "prose");
-    expect(prose?.activation).toBe("implicit");
-    const tells = (prose?.supportFiles ?? []).find((file) => file.path === "tells.md");
+    const proseSkill = result.value.find((skill) => skill.name === "prose");
+    expect(proseSkill?.activation).toBe("implicit");
+    const tells = (proseSkill?.supportFiles ?? []).find((file) => file.path === "tells.md");
     expect(tells?.content).toContain("Mannered prose");
-    expect((prose?.supportFiles ?? []).map((file) => file.path)).toContain("documents.md");
+    expect((proseSkill?.supportFiles ?? []).map((file) => file.path)).toContain("documents.md");
     const domain = result.value.find((skill) => skill.name === "domain-and-types");
-    expect(domain?.body).toContain("state machine");
-    expect(domain?.body).toContain("unrepresentable");
-    expect(domain?.body).toContain("Redesign from first principles");
+    expect(prose(domain)).toContain("state machine");
+    expect(prose(domain)).toContain("unrepresentable");
+    expect(prose(domain)).toContain("Redesign from first principles");
   });
 
   it("composes product-description with its reference templates as support files", () => {
@@ -178,14 +205,16 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(pd).toBeDefined();
     if (pd === undefined) return;
     expect(pd.activation).toBe("explicit");
-    expect(pd.body).toContain("state chart");
-    expect(pd.body).toContain("## Handoff");
+    expect(prose(pd)).toContain("state chart");
+    expect(prose(pd)).toContain("## Handoff");
     const paths = (pd.supportFiles ?? []).map((file) => file.path);
     expect(paths).toContain("references/product-kinds.md");
     expect(paths).toContain("references/check-links.py");
     // J-93 S2: its references page holds the workspace's own folder its front names by its noun.
     expect(paths).toContain("references/greenline.md");
-    expect(paths).toHaveLength(9);
+    // J-180 S1: the method page its front points to.
+    expect(paths).toContain("method.md");
+    expect(paths).toHaveLength(10);
   });
 
   it("composes diagram-design with its full reference and asset catalog", () => {
@@ -196,7 +225,7 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(dd).toBeDefined();
     if (dd === undefined) return;
     expect(dd.activation).toBe("implicit");
-    expect(dd.body).toContain("Durable output:");
+    expect(prose(dd)).toContain("Durable output:");
     const paths = (dd.supportFiles ?? []).map((file) => file.path);
     expect(paths).toContain("references/style-guide.md");
     expect(paths).toContain("assets/template-dark.html");
@@ -211,8 +240,9 @@ describe("loadCorpus (real vendored corpus)", () => {
     const map = result.value.find((skill) => skill.name === "architecture-map");
     expect(map).toBeDefined();
     if (map === undefined) return;
-    expect(map.activation).toBe("explicit");
-    expect(map.body).toContain("Durable output:");
+    // A default habit since J-110 S4, loaded on its situation like the others.
+    expect(map.activation).toBe("implicit");
+    expect(prose(map)).toContain("Durable output:");
     const paths = (map.supportFiles ?? []).map((file) => file.path);
     expect(paths).toContain("scripts/architecture-sync.mjs");
     expect(paths).toContain("assets/core/types.ts");
@@ -228,13 +258,13 @@ describe("loadCorpus (real vendored corpus)", () => {
     if (result._tag !== "ok") return;
     const sweep = result.value.find((skill) => skill.name === "sweep-tests");
     expect(sweep?.activation).toBe("explicit");
-    expect(sweep?.body).toContain("mutation");
+    expect(prose(sweep)).toContain("mutation");
     expect((sweep?.supportFiles ?? []).map((file) => file.path)).toContain("bin/mutate.mjs");
     const loud = result.value.find((skill) => skill.name === "boundaries");
     expect(loud?.activation).toBe("implicit");
-    expect(loud?.body).toContain("success-shaped");
+    expect(prose(loud)).toContain("success-shaped");
     const plain = result.value.find((skill) => skill.name === "prose");
-    expect(plain?.body).not.toContain("## Handoff");
+    expect(prose(plain)).not.toContain("## Handoff");
   });
 
   it("composes close with its ADR seed pages and its glossary format as support files", () => {
@@ -248,8 +278,8 @@ describe("loadCorpus (real vendored corpus)", () => {
     // something durable; close keeps that activation.
     expect(close.activation).toBe("implicit");
     expect(close.description).not.toContain("monorepo");
-    expect(close.body).toContain("Supersedes");
-    expect(close.body).toMatch(/^Next: none when the change is done/m);
+    expect(prose(close)).toContain("Supersedes");
+    expect(prose(close)).toMatch(/^Next: none when the change is done/m);
     const paths = (close.supportFiles ?? []).map((file) => file.path);
     expect(paths).toEqual(
       expect.arrayContaining(["adr/template.md", "adr/README.md", "references/GLOSSARY-FORMAT.md"]),
@@ -264,14 +294,14 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(router).toBeDefined();
     if (router === undefined) return;
     expect(router.activation).toBe("implicit");
-    expect(router.body).toContain("# Router");
+    expect(prose(router)).toContain("# Router");
     // J-93 S2: the status command stands on the router's references page, its front naming it by its noun.
-    expect(router.body).toContain("the workspace's status");
+    expect(prose(router)).toContain("the workspace's status");
     expect(
       (router.supportFiles ?? []).find((file) => file.path === "references/greenline.md")?.content,
     ).toContain("greenline status");
     // The renamed upstream foundation said "Ask Matt"; the native body does not.
-    expect(router.body).not.toContain("Ask Matt");
+    expect(prose(router)).not.toContain("Ask Matt");
   });
 
   it("carries no bookend above or below any body: the copy says what greenline means (ADR 0039)", () => {
@@ -279,14 +309,16 @@ describe("loadCorpus (real vendored corpus)", () => {
     expect(result._tag).toBe("ok");
     if (result._tag !== "ok") return;
     for (const skill of result.value) {
-      expect(skill.body, `${skill.name} still carries a prelude`).not.toMatch(/greenline prelude/);
-      expect(skill.body, `${skill.name} still carries a completion`).not.toMatch(
+      expect(prose(skill), `${skill.name} still carries a prelude`).not.toMatch(
+        /greenline prelude/,
+      );
+      expect(prose(skill), `${skill.name} still carries a completion`).not.toMatch(
         /greenline completion/,
       );
     }
     const plan = result.value.find((skill) => skill.name === "plan");
-    expect(plan?.body).toContain("## Handoff");
-    expect(plan?.body).toMatch(/^Next: the next step of the change's mode$/m);
+    expect(prose(plan)).toContain("## Handoff");
+    expect(prose(plan)).toMatch(/^Next: the next step of the change's mode$/m);
   });
 
   it("rewrites every cross-reference to renamed skills", () => {
@@ -347,8 +379,8 @@ describe("S18a the merged habits", () => {
     for (const habit of habits) {
       expect(habit.kind, habit.name).toBe("habit");
       expect(habit.activation, habit.name).toBe("implicit");
-      expect(habit.body, habit.name).not.toMatch(/^## Handoff$/m);
-      expect(habit.body, habit.name).toContain("writes no record of its own");
+      expect(prose(habit), habit.name).not.toMatch(/^## Handoff$/m);
+      expect(prose(habit), habit.name).toContain("writes no record of its own");
     }
   });
 
@@ -379,16 +411,17 @@ describe("S18a the merged habits", () => {
 
   it("S18a tdd runs the affected tests and leaves wider runs to the build and verify steps", () => {
     const tdd = habits.find((habit) => habit.name === "tdd");
-    expect(tdd?.body).toContain(
+    expect(prose(tdd)).toContain(
       "wider runs are the build step's increment check and the verify step's",
     );
     // J-93 S2: the recorder stands on tdd's references page, its front naming the runs as checks.
-    expect(tdd?.body).toContain("Record the focused command's runs during the loop as checks");
+    expect(prose(tdd)).toContain("Record the focused command's runs during the loop as checks");
     expect(
       (tdd?.supportFiles ?? []).find((file) => file.path === "references/greenline.md")?.content,
     ).toContain("greenline check");
     expect((tdd?.supportFiles ?? []).map((file) => file.path).sort()).toEqual([
       "bug-fix.md",
+      "method.md",
       "mocking.md",
       "references/greenline.md",
       "tests.md",

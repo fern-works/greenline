@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-kemiljk-intentional-craft",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-kemiljk-humane-functionalism",
+    "sha256": "a8649d39554287992d4bd092d38e281bc20e8b5f7d3c74bfa3227c27ca1226c9"
+  },
+  "source": {
+    "repository": "https://github.com/kemiljk/skills",
+    "commit": "87129c9747468e380adc28a98226fdffcd55ce9b",
+    "path": "skills/intentional-craft"
+  },
+  "pin": "kemiljk-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "A film's method on craft, handed to garden",
+  "reason": "A method read from a film whose rights stay with its maker is theory, garden's.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's humane-functionalism, intentional-craft and product-delight hand off to garden"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's humane-functionalism, intentional-craft and product-delight hand off to garden"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "craft principles read from a film",
+        "locator": "skills/intentional-craft/SKILL.md"
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-prose-refresh-pstack",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-ponytail-refresh-pstack",
+    "sha256": "e0f6607dfcae397e35bdf8536f0b6d49b498178d5768476ad326e6ae10e4724e"
+  },
+  "subject": "skill:prose",
+  "recipe": "7937dda3a34488aca3f0a4bcd0f893190f3e1b42148f972d0466bbf9e32c9124",
+  "result": "b5f94fd3bd2da460ec092a3033d9ea048d7183ee5f5c9ac875ab8461399a6249",
+  "pages": [
+    {
+      "path": "documents.md"
+    },
+    {
+      "path": "tells.md"
+    }
+  ],
+  "gist": "Takes upstream's tightened unslop and technical-writing wording",
+  "reason": "Refreshes prose to pstack eb4db2b55b2b, taking unslop's and technical-writing's tightened wording, the metaphor nouns' plain words folded into the list; the rules read as before.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R23 of 2026-10-08, \"change context md to glossary md\", the glossary home being GLOSSARY.md"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 26,
+        "taken": 24,
+        "exact": 24,
+        "retention": 1,
+        "coverage": 0.9230769230769231,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 2,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "pstack",
+        "segments": 273,
+        "taken": 270,
+        "exact": 266,
+        "retention": 0.9851851851851852,
+        "coverage": 0.989010989010989,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 557
+  }
+}

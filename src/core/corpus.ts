@@ -42,6 +42,42 @@ export interface CorpusSource {
   readonly holder?: string | undefined;
 }
 
+/** What holds a placed phrase's promise: a kind of keeper and where it stands (`workshop/components/recipes.md`, "The keepers"). */
+export interface PhraseKeeper {
+  readonly kind: "fact" | "hold" | "record" | "oracle";
+  readonly where: string;
+}
+
+/**
+ * One phrase of a words source: its text as the operator wrote it, the
+ * date it was brought, and either its homes or its dismissal with the
+ * failure the fit craft named, never both.
+ */
+export interface WordsPhrase {
+  readonly id: string;
+  readonly text: string;
+  readonly date: string;
+  /** Its homes: a roster skill's page, `corpus/skills/<skill>/<page>`, or a repository path outside a recipe. */
+  readonly where?: readonly string[] | undefined;
+  readonly dismissed?: { readonly failure: string } | undefined;
+  /** The keeper its home names, beside a home only. */
+  readonly keeper?: PhraseKeeper | undefined;
+}
+
+/**
+ * A source of kind `words` (J-194 S1): the phrases the operator brings, each
+ * a source of one passage with no repository, commit, snapshot or licence.
+ * It stands in the manifest's `sources` after every pinned source; the lock's
+ * pins and the notices leave it out, and a recipe credits it only through a
+ * phrase passage (`workshop/components/recipes.md`, "The recipe's fields").
+ */
+export interface WordsSource {
+  readonly name: string;
+  readonly kind: "words";
+  readonly author: string;
+  readonly phrases: readonly WordsPhrase[];
+}
+
 /** Where a vendored copy came from: its source (`family`), the skill's name there, and its path in the repository. */
 export interface CorpusUpstreamOrigin {
   readonly family: string;
@@ -153,7 +189,10 @@ export interface CorpusIntent {
 
 export interface CorpusManifest {
   readonly schemaVersion: typeof CORPUS_SCHEMA_VERSION;
+  /** The pinned sources, in the manifest's order. */
   readonly sources: readonly CorpusSource[];
+  /** The words sources, which stand after the pinned ones; none when the manifest states none. */
+  readonly words: readonly WordsSource[];
   readonly skills: readonly CorpusSkillEntry[];
   readonly intents: readonly CorpusIntent[];
 }
@@ -187,6 +226,94 @@ const sourceSchema = z
   })
   .strict();
 
+/** The fields a words source never carries, since it has no repository, pin or licence. */
+const PIN_FIELDS = ["repo", "commit", "snapshot", "license", "holder"] as const;
+
+/** One line of a phrase's record: not empty, no line break, and no white space at either end, held as written. */
+const phraseLine = z
+  .string()
+  .min(1)
+  .refine(
+    (value) => value.trim() === value && !/[\r\n]/.test(value),
+    "a phrase's line has no line break and no white space at either end",
+  );
+
+const phraseSchema = z
+  .object({
+    id: z.string().regex(KEBAB_CASE),
+    text: phraseLine,
+    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "a phrase's date is YYYY-MM-DD"),
+    where: z.array(z.string().regex(SAFE_RELATIVE_PATH).refine(hasNoTraversal)).min(1).optional(),
+    dismissed: z.object({ failure: phraseLine }).strict().optional(),
+    keeper: z
+      .object({
+        kind: z.enum(["fact", "hold", "record", "oracle"]),
+        where: phraseLine,
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+  .superRefine((phrase, context) => {
+    if (phrase.where !== undefined && phrase.dismissed !== undefined)
+      context.addIssue({
+        code: "custom",
+        message: "a phrase states its home in where or its failure in dismissed, never both",
+      });
+    else if (phrase.where === undefined && phrase.dismissed === undefined)
+      context.addIssue({
+        code: "custom",
+        message: "a phrase states its home in where or its failure in dismissed",
+      });
+    else if (phrase.keeper !== undefined && phrase.where === undefined)
+      context.addIssue({ code: "custom", message: "a keeper stands only beside a home" });
+  });
+
+const wordsSourceSchema = z
+  .object({
+    name: z.string().regex(KEBAB_CASE),
+    kind: z.literal("words"),
+    author: phraseLine,
+    phrases: z.array(phraseSchema).min(1),
+  })
+  .strict();
+
+/** What marks a words source before its own schema reads it: its kind, and any pin field it wrongly carries. */
+const wordsMarker = z.looseObject({
+  kind: z.literal("words"),
+  repo: z.unknown().optional(),
+  commit: z.unknown().optional(),
+  snapshot: z.unknown().optional(),
+  license: z.unknown().optional(),
+  holder: z.unknown().optional(),
+});
+
+/**
+ * A manifest source: a words source when it states `kind: "words"`, a pinned
+ * one otherwise, each read by its own strict schema so its issues name its
+ * own fields.
+ */
+const anySourceSchema = z.unknown().transform((value, context) => {
+  const marked = wordsMarker.safeParse(value);
+  if (marked.success) {
+    const pinField = PIN_FIELDS.find((field) => marked.data[field] !== undefined);
+    if (pinField !== undefined) {
+      context.addIssue({
+        code: "custom",
+        message: `a words source carries no repository, commit, snapshot, license or holder; '${pinField}' is one`,
+      });
+      return z.NEVER;
+    }
+  }
+  const parsed = marked.success
+    ? wordsSourceSchema.safeParse(value)
+    : sourceSchema.safeParse(value);
+  if (parsed.success) return parsed.data;
+  for (const issue of parsed.error.issues)
+    context.addIssue({ code: "custom", path: issue.path, message: issue.message });
+  return z.NEVER;
+});
+
 const skillEntrySchema = z
   .object({
     name: z.string().regex(KEBAB_CASE),
@@ -208,15 +335,15 @@ const skillEntrySchema = z
     credits: z.string().trim().min(1).optional(),
   })
   .refine(
-    (entry) => entry.credits === undefined || entry.extra === true,
-    "credits belong to the assets an extra copy carries",
+    (entry) => entry.credits === undefined || entry.upstream !== undefined,
+    "credits belong to the assets an upstream copy carries",
   )
   .strict();
 
 const corpusManifestSchema = z
   .object({
     schemaVersion: z.literal(CORPUS_SCHEMA_VERSION),
-    sources: z.array(sourceSchema).min(1),
+    sources: z.array(anySourceSchema).min(1),
     skills: z.array(skillEntrySchema).min(1),
     intents: z
       .array(
@@ -260,12 +387,26 @@ function uniquenessIssues(skills: readonly z.infer<typeof skillEntrySchema>[]): 
   return issues;
 }
 
-/** Source names are unique, and every vendored skill names a pinned source. */
+/** One source of the parsed manifest, pinned or of words. */
+type AnySource = z.infer<typeof sourceSchema> | z.infer<typeof wordsSourceSchema>;
+
+function isWordsSource(source: AnySource): source is z.infer<typeof wordsSourceSchema> {
+  return "kind" in source;
+}
+
+/**
+ * Source names are unique across both kinds, a words source stands after
+ * every pinned source and holds each phrase id once, and every vendored
+ * skill names a pinned source.
+ */
 function sourceIssues(
   manifest: z.infer<typeof corpusManifestSchema>,
 ): readonly { path: string; message: string }[] {
   const issues: { path: string; message: string }[] = [];
   const names = new Set<string>();
+  const pinned = new Set<string>();
+  let firstWords: number | undefined;
+  let misplaced = false;
   for (const [index, entry] of manifest.sources.entries()) {
     if (names.has(entry.name)) {
       issues.push({
@@ -274,9 +415,30 @@ function sourceIssues(
       });
     }
     names.add(entry.name);
+    if (!isWordsSource(entry)) {
+      pinned.add(entry.name);
+      if (firstWords !== undefined && !misplaced) {
+        misplaced = true;
+        issues.push({
+          path: `sources[${firstWords}]`,
+          message: "a words source stands after every pinned source",
+        });
+      }
+      continue;
+    }
+    firstWords ??= index;
+    const ids = new Set<string>();
+    for (const [p, phrase] of entry.phrases.entries()) {
+      if (ids.has(phrase.id))
+        issues.push({
+          path: `sources[${index}].phrases[${p}].id`,
+          message: `duplicate phrase '${phrase.id}'`,
+        });
+      ids.add(phrase.id);
+    }
   }
   for (const [index, skill] of manifest.skills.entries()) {
-    if (skill.upstream !== undefined && !names.has(skill.upstream.family)) {
+    if (skill.upstream !== undefined && !pinned.has(skill.upstream.family)) {
       issues.push({
         path: `skills[${index}].upstream.family`,
         message: `unknown source '${skill.upstream.family}'`,
@@ -304,7 +466,7 @@ export function parseCorpusManifest(
     ...uniquenessIssues(parsed.data.skills),
     ...sourceIssues(parsed.data),
     ...[
-      ...parsed.data.sources.map((entry) => entry.snapshot),
+      ...parsed.data.sources.flatMap((entry) => (isWordsSource(entry) ? [] : [entry.snapshot])),
       ...parsed.data.skills.flatMap((skill) =>
         skill.upstream === undefined ? [] : [skill.upstream.path],
       ),
@@ -316,7 +478,10 @@ export function parseCorpusManifest(
   if (pathIssues.length > 0) return contractFailure(source, pathIssues);
   return ok({
     schemaVersion: parsed.data.schemaVersion,
-    sources: parsed.data.sources,
+    sources: parsed.data.sources.filter(
+      (entry): entry is z.infer<typeof sourceSchema> => !isWordsSource(entry),
+    ),
+    words: parsed.data.sources.filter(isWordsSource),
     skills: parsed.data.skills,
     intents: parsed.data.intents,
   });

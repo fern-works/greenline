@@ -91,6 +91,17 @@ describe("J-93 S2 the fronts row", () => {
     expect(run.status).toBe(1);
   });
 
+  it("J-181 S1 refuses a front of 300 words or more, naming the skill, the line of its 300th word and its count", () => {
+    // The fixture's front reads 141 words; 22 sentences of ten add 220, the passage on line 16.
+    const run = runRow(
+      fixture("Each test names one behavior and fails for one reason. ".repeat(22).trim()),
+    );
+    expect(summary(run.stdout), run.stdout + run.stderr).toBe(
+      `corpus-fronts FAIL ${SEPARATOR} corpus-fronts refused 1: fixture-skill SKILL.md:16: a front of 300 words or more, 361 words by wordsOf`,
+    );
+    expect(run.status).toBe(1);
+  });
+
   it("passes a front of upstream prose beside its references page", () => {
     const run = runRow(fixture(undefined));
     expect(summary(run.stdout), run.stdout + run.stderr).toBe("corpus-fronts PASS");

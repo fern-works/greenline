@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-refactoring-ui-skill",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-scandinavian-design",
+    "sha256": "8fa4a9201ab7b4f66bb2a5aee83909706b54dffea9aed6454e709271e30efd1c"
+  },
+  "source": {
+    "repository": "https://github.com/s0xDk/refactoring-ui-skill",
+    "commit": "48872143abb0a8feb6d9bf58e222afbd800210b0",
+    "path": "."
+  },
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Held: a close derivative of a commercial book",
+  "reason": "It restates a commercial book's decisions; only rules with an independent source may enter.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': s0xDk's refactoring-ui skill is held as a book's derivative"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': s0xDk's refactoring-ui skill is held as a book's derivative"
+    }
+  ]
+}

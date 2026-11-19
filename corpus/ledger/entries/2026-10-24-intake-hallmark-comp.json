@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-hallmark-comp",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-hallmark-genres",
+    "sha256": "43a9f675e8d82e89c160ccd282b98598c1e008479eb6aa6f762fdaee8d469d65"
+  },
+  "source": {
+    "repository": "https://github.com/Nutlope/hallmark",
+    "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+    "path": "skills/hallmark/references/comp.md"
+  },
+  "pin": "hallmark",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Image-generated comps on a paid key, declined",
+  "reason": "Its comps need a paid image service and key; the one idea kept, checking a reproduction at the comp's size, enters critique through the family's other parts.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's image generation and comps are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's image generation and comps are declined"
+    }
+  ]
+}

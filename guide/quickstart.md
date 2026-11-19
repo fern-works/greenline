@@ -3,20 +3,17 @@
 Install greenline in a Git repository, then describe the work to your agent.
 You need no account, no key and no service.
 
-## Install the current pre-beta build
+## Install
 
-Version 0.1.0 has not been published. Use its supplied or locally built tarball:
+greenline 0.2.0 is on npm and needs Node.js 22 or newer. In a Git repository:
 
 ```bash
-npm install --global /path/to/greenline-0.1.0.tgz
-greenline init --targets codex,claude-code
+npx greenline@0.2.0 init --targets codex,claude-code
 ```
 
-After publication, `npx greenline@0.1.0 init` selects this release. An unversioned
-registry command can still select the older product until then. The git
-hooks init registers run `greenline` from the `PATH`, so install it there
-too; while it is missing they let every commit through, and
-`greenline status` says so. The source of
+The git hooks init registers run `greenline` from the `PATH`, so install it
+there too, `npm install --global greenline@0.2.0`; while it is missing they
+let every commit through, and `greenline status` says so. The source of
 the tool and the skills is public at https://github.com/fern-works/greenline
 under the MIT licence.
 
@@ -44,9 +41,13 @@ reaches the agent at a request, so it reads `greenline status` itself, and
 no write is refused, while the git hooks hold their promises as on every
 harness. Trust the project when Codex asks, and the event hooks start then.
 
-Three skills are extras that install only on request: diagram-design,
-architecture-map and product-description, each with a large set of support
-files. Include one by name in .greenline/manifest.json's skills.include
+Two skills are extras that install only on request: product-description,
+with a large set of support files, and interface-catalog, the catalog of
+design directions the agent deals from when a change touches an interface
+([the catalog](./interface-catalog.md)); the visual skills, diagram-design,
+architecture-map and anatomy, are defaults. Where init finds an interface
+(a web app, a site, a native or cross-platform app), it writes its roots
+into the manifest and offers the design home ([the interface practice](./interface.md)). Include one by name in .greenline/manifest.json's skills.include
 list, then run `greenline sync`; init and sync refuse unknown names in either list before writing. Explicit skills.exclude entries override inclusion.
 Removing a method from availability does not delete its files. Sync reports
 orphans; inspect `greenline sync --dry-run --json`, then ask your agent to collect
@@ -72,22 +73,34 @@ the files it cites are committed with the change.
   records and explains where each stands. With none to resume, it says so,
   proposes nothing and asks what you want done.
 - **Your first request for a change, while no branch holds a change
-  record,** is the orientation: on an empty tree the agent runs
-  `groundwork`, which sets up only what the purpose needs, as its own change
-  before the feature you asked for, or as your request's own change when
-  you asked to set the repository up; otherwise it surveys the documents
-  your repository already keeps and, under a quick record it opens first,
-  writes what it learns into their homes.
-  A question needs no orientation.
+  record,** carries the orientation `greenline status` names on its
+  `orientation` line, inside that change's frame, with no record, proposal
+  or wait of its own: on an empty tree the change runs `groundwork`, which
+  sets up only what the purpose needs, before the feature you asked for;
+  otherwise, even where the tree holds only documents, it reads the
+  documents your repository already keeps and writes what it learns into
+  their homes before it closes. A question needs no orientation.
 - **"Fix the empty-list count."** The agent proposes a mode, likely quick,
-  with its reason and cost, and waits for your yes. It then opens one change
-  record and runs the mode's steps: at quick, frame, plan, build, verify and
+  with its reason and cost, and where the work goes: on a repository with a remote, a branch
+  of its own, `greenline/<id>`, recommended, and a worktree of its own
+  named in one sentence, which you take by answering "worktree". It waits
+  for your yes, which greenline quotes in the record from your own words,
+  so "just write the code now" is no yes; then it opens one change record and runs the mode's steps: at quick, frame, plan, build, verify and
   close, each in one line, with no review, the record keeping a review
-  section that says `none at quick`.
+  section that says `none at quick`. While it works, `greenline status` and the viewer show a
+  one-line progress bar on those steps; each reply holds one sentence of
+  what happened, the line of what it waits on and the viewer's address.
 - **"Fix the empty-list count in quick."** A request that names a mode has
-  chosen it: the agent states the mode and where its commits will go, then
-  starts without waiting for a yes, asking only a choice your request
+  chosen it: the agent states the mode, its floors, which the record's
+  `floors` line holds from the open, a list or `none`, and where the work goes
+  in one line, then starts without waiting for a yes or putting an
+  orientation question first, asking only a choice your request
   leaves open.
+- **"Commit it" and "open the PR."** Each slice is committed once its
+  checks are green, its files staged by name, in one message form with the
+  change's trailer and the agent's, `Greenline-Agent: <harness>/<model>`.
+  The close offers one pull request for the change, its body written for a
+  reviewer, and pushes and opens it only on your word.
 - **"Build a booking feature."** The agent proposes careful and waits.
   Once you agree, it plans; when the work splits into tickets, it lists them
   with a mode beside each and waits again on that list. [The pipeline](./pipeline.md) shows
@@ -132,14 +145,52 @@ stores none of its output; a recorded
 fact is never removed, and a change is done only when every check's latest
 run is green. A check the project lacks is declared once with
 `greenline check --declare -- <command>`, so a hook can tell its runs
-from other commands without guessing. `greenline tidy` removes the working files of done and
+from other commands without guessing. Set `"fileTokens": {}` in the manifest
+and the plan declares a cap on authored files, 5,000 tokens unless you name
+another: `greenline check files` refuses a file over it with how to split
+it, lockfiles, generated files, vendored trees and data left out.
+`greenline tidy` removes the working files of done and
 dropped changes, and never a file a record cites; the close runs it for its
-change at every mode.
+change at every mode, and on your word `--worktree` removes a done change's
+own worktree too.
+
+## Taking a new version
+
+Install the new version on the `PATH`, where the hooks find it, then run `greenline sync`
+in your repository, in your own terminal:
+
+```bash
+npm install --global greenline
+greenline sync
+```
+
+greenline never commits. Sync rewrites the block, the skills, the guides
+and the lock, then counts the installed files that differ from HEAD in one
+warning, GL0115, those under `.greenline/` apart from the rest; `git
+status` lists them. `greenline status` gives the same warning while any
+stands. They travel with the repository in a change's commit: the
+change that is open, or the next one, commits them with its work, and that
+commit carries the change's trailer. A commit of them alone is refused while
+no change is open.
+
+The files sync writes are never the code a check ran on: `.greenline/` and
+every file the lock names are left out of the tree a check records, so a
+sync does not ask for a check again. A check recorded before 0.2.0 took
+its tree with those files in, and reads as moved once; running it again
+settles it.
+
+A change opened under an earlier version keeps its record as it stands, and
+no command converts it. While it is open, the `record lacks:` line names the
+lines its record has no line for at all as the form of a record written
+before this version, and your two ways: your agent completes it as
+ordinary work, or closes the change and opens it again. A missing `yes` is
+yours: it holds your words that answered the proposal, which your agent
+quotes where its session heard them and asks you for where it did not.
 
 ## What lives where
 
 ```text
-.greenline/manifest.json       installation choices, the proceed and trials settings, the declared checks, the hooks' switches, enabled connectors
+.greenline/manifest.json       installation choices, the proceed, ground and trials settings, the declared checks, the hooks' switches, the file token cap, enabled connectors
 .greenline/lock.json           generated owned-file hashes
 .greenline/WORK.md             where the work's files live and how long each lives
 .greenline/ledger/README.md    the change record's format and the skeleton of each mode
@@ -170,4 +221,39 @@ available through their own harness-supported discovery files.
 No engineering knowledge is stored in this tree; a receipt keeps what a
 consultation received, never its text. Authored records are yours;
 generated methods and managed regions reconcile through sync.
+
+## Removing greenline
+
+No command removes greenline. Take it out by hand in this order, then
+commit what is left.
+
+1. **The git hooks.** They are registered in the clone's local git
+   configuration, which no commit carries, so take them out in each clone.
+   Set `"git": false` under `hooks` in `.greenline/manifest.json` and run
+   `greenline sync`, which removes the registration. Without the command,
+   `git config --local --get-regexp '^hook\.greenline-'` lists the entries
+   and `git config --local --remove-section hook.greenline-pre-commit`
+   removes one, a section for each hook; where an older git runs them
+   through `core.hooksPath`, `git config --local --unset core.hooksPath`.
+   Do this first: while they run, they refuse a commit with no change open.
+2. **The harness adapters.** `.greenline/lock.json` lists every file init
+   and sync wrote, so read it before you delete `.greenline/`. In
+   `.claude/settings.json`, `.codex/hooks.json` and any other harness
+   settings file it lists, remove each hook entry whose command is
+   `greenline event --harness <name>` and keep yours. Delete an adapter
+   greenline wrote whole, such as `.github/hooks/greenline.json` or
+   `.opencode/plugins/greenline.js`, and the Hermes or dsh lines you added
+   at your user level.
+3. **The skills.** Delete each skill folder the lock lists under
+   `.agents/skills/` and `.claude/skills/`, and `agents/openai.yaml`.
+4. **The instruction block.** In AGENTS.md and CLAUDE.md, delete the lines
+   from `<!-- greenline:managed begin policy -->` to
+   `<!-- greenline:managed end policy -->`. The rest of each file is yours;
+   a file left empty can go.
+5. **`.greenline/`.** It holds your change records, plans, decisions book
+   and pictures beside greenline's own files. Stop `greenline inspect`,
+   copy what you want to keep, then delete the folder. Every record you
+   committed stays in git's history.
+6. **The command.** `npm uninstall --global greenline`.
+
 Next: [the pipeline](./pipeline.md).

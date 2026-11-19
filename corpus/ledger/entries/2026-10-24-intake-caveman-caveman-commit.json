@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-caveman-caveman-commit",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-addyosmani-git-workflow-commits",
+    "sha256": "b7b6430375a87a5e8b1da7c6a1b1617a6bad33d514006e796dc8c9c6aa3221a9"
+  },
+  "source": {
+    "repository": "https://github.com/juliusbrussee/caveman",
+    "commit": "8b0c1d3699b8d83e87fe4605b378da20c41555e0",
+    "path": "skills/caveman-commit"
+  },
+  "pin": "caveman",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its commit message form is the spine of build's commits",
+  "reason": "Its form is the spine of build's commit page, landing in J-114 S2. Pinned at v2.7.0, its last release with its skills under MIT; the head is Apache-2.0 since 3.0.0, so a refresh past 2.7.0 enters by lift only.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': caveman pinned at v2.7.0 as mit and combined as the spine of build's commit page, a page of its front named from step 4; the repository's capitalisation convention, lowercase where it keeps none; the subject 50 the aim and 72 the hard cap; in its portable form"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': caveman pinned at v2.7.0 as mit and combined as the spine of build's commit page, a page of its front named from step 4; the repository's capitalisation convention, lowercase where it keeps none; the subject 50 the aim and 72 the hard cap; in its portable form"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "build",
+    "catches": "A commit message that restates the diff, opens with this commit, carries attribution in its subject or drops the why of a breaking change, a security fix, a migration or a revert",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run where a commit made outside a change's build broke the form, making the commit form a habit"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "build",
+        "depth": "inline",
+        "cost": 4
+      },
+      {
+        "mode": "regular",
+        "step": "build",
+        "depth": "written",
+        "cost": 4
+      },
+      {
+        "mode": "careful",
+        "step": "build",
+        "depth": "written",
+        "cost": 4
+      }
+    ],
+    "ships": "default"
+  }
+}

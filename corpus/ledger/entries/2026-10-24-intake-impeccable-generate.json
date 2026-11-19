@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-impeccable-generate",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-impeccable-live",
+    "sha256": "1f0ab04c29fec88f15ac36909b223ac42d2f731a31346284d788abbff3271dc9"
+  },
+  "source": {
+    "repository": "https://github.com/pbakaus/impeccable",
+    "commit": "e3818550d291a5157f309124dc1872d96ec81bf2",
+    "path": "skill/reference/generate.md"
+  },
+  "licence": "permissive-other",
+  "verdict": "decline",
+  "gist": "Live generation through the daemon, declined",
+  "reason": "It drives the same live daemon and a package script run in a shell.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's live mode and generate are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's live mode and generate are declined"
+    }
+  ]
+}

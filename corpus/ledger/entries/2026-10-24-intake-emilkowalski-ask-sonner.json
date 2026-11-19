@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-emilkowalski-ask-sonner",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-emilkowalski-pick-ui-library",
+    "sha256": "be054a20986ac11662fffc8952740ec606932997928e24fc22916f39d28581a5"
+  },
+  "source": {
+    "repository": "https://github.com/emilkowalski/skills",
+    "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+    "path": "skills/ask-sonner"
+  },
+  "pin": "emilkowalski-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A toast library's manual, declined",
+  "reason": "It is the manual of one library, not an interface method.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': emilkowalski's pick-ui-library and ask-sonner are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': emilkowalski's pick-ui-library and ask-sonner are declined"
+    }
+  ]
+}

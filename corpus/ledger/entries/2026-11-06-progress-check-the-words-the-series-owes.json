@@ -1,0 +1,73 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-progress-check-the-words-the-series-owes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-plan-the-words-the-series-owes",
+    "sha256": "b37c56c24c9eea71849f3b67a4a30c3f669292887c66dc5e2b7934be51f75b3d"
+  },
+  "subject": "skill:progress-check",
+  "recipe": "694517ef4024584ffcfdef55f843d6a5dcb76ca9fdcba28d727581444fdbf7b3",
+  "result": "38f6193e5f74ae935db3686fffe74eeaebdb09fd656111ca0140195cc186ccb9",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The progress line is the status line's",
+  "reason": "The block no longer carries a progress line, so the habit names the status line's.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "tjcages",
+        "segments": 157,
+        "taken": 126,
+        "exact": 123,
+        "retention": 0.9761904761904762,
+        "coverage": 0.802547770700637,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 692
+  }
+}

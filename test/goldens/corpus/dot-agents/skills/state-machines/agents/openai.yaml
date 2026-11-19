@@ -1,0 +1,5 @@
+interface:
+  display_name: "State Machines"
+  short_description: "Find the implicit state machines in the app: each flow whose states live in flags or status fields, drawn as a map. Use for \"find all of the implicit state machines in my app\", for states, transitions or a lifecycle the code never names, or when a record's flags contradict each other."
+policy:
+  allow_implicit_invocation: false

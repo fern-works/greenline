@@ -1,0 +1,63 @@
+{
+  "commit": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
+  "files": [
+    {
+      "path": "60fps-animation/README.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "60fps-animation/SKILL.md",
+      "sha256": "deb5d78aabae2289cbe161733be81aca6c3b4cd0940c0df3acf10196efdfe962"
+    },
+    {
+      "path": "60fps-animation/references/patterns-and-profiling.md",
+      "sha256": "f6562a32eb70bea6dd27f0796ea6597d93ee5ecf4d3ab334ec44b773cde65f05"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "33d6cd35a20903b5e968a76a1e584a7aeae2c83e3e58ea58ecc50b889b83e668"
+    },
+    {
+      "path": "accessible-animation/README.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "accessible-animation/SKILL.md",
+      "sha256": "29d5fec1be9fa5e978738c313678974f61c06443e02ffce1bdc20434dfb0a767"
+    },
+    {
+      "path": "accessible-animation/references/patterns.md",
+      "sha256": "baebceae2c8e1eef8f6095abb05384b5caf3500380bba3d8dff6bec019445f17"
+    },
+    {
+      "path": "micro-interaction/README.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "micro-interaction/SKILL.md",
+      "sha256": "f8ae0fc6137448bce51f689a13513a0a8742b1cbffa1b9f32ac723b46309e6e0"
+    },
+    {
+      "path": "micro-interaction/references/css-recipes.md",
+      "sha256": "e32eec6eda6f40dac5972c7944cb72a24f79f849ff42a4238caf94f9a90daebc"
+    },
+    {
+      "path": "micro-interaction/references/framer-motion-recipes.md",
+      "sha256": "5be7a9c3bca7feb2ba23f907da8e69c2d84f8ce8f61763dde89b7f718a904bdb"
+    }
+  ],
+  "entries": [
+    {
+      "name": "accessible-animation",
+      "path": "skills/accessible-animation"
+    },
+    {
+      "name": "60fps-animation",
+      "path": "skills/60fps-animation"
+    },
+    {
+      "name": "micro-interaction",
+      "path": "skills/micro-interaction"
+    }
+  ]
+}

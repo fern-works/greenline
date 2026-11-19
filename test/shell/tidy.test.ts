@@ -11,7 +11,7 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { tidyWorkingFolders, type TidyReport } from "../../src/shell/tidy.ts";
+import { tidyDiscussionFolder, tidyWorkingFolders, type TidyReport } from "../../src/shell/tidy.ts";
 
 /**
  * `greenline tidy` on a real disk (J-73 S4): it removes `.greenline/tmp/<id>/`
@@ -397,5 +397,100 @@ describe("J-73 S4 greenline tidy removes a finished change's working files and n
       "notes/a.md",
     ])
       expect(existsSync(join(root, ".greenline/tmp", path)), path).toBe(true);
+  });
+});
+
+describe("J-118 S1 greenline tidy --discussion removes a finished discussion's working files", () => {
+  const TALK = "2026-10-21-offline-mode";
+  const talk = (state: string, extra: readonly string[] = [], body = ""): string =>
+    ["---", 'idea: "offline"', `state: ${state}`, ...extra, "---", "", body].join("\n");
+  const settled = {
+    declined: ['reason: "online-only"', 'words: "drop it"'],
+    promoted: ["changes: [2026-10-24-cache-headers]", 'words: "make it a change"'],
+    merged: ["into: 2026-10-23-plugins", 'words: "fold it in"'],
+  } as const;
+
+  function discussionTidy(root: string, id: string): TidyReport {
+    const report = tidyDiscussionFolder(root, id);
+    if (report._tag === "err") throw report.error;
+    return report.value;
+  }
+
+  it("removes a declined, promoted or merged discussion's working folder, leaving its record and the cited reports in its folder", () => {
+    for (const [state, lines] of Object.entries(settled)) {
+      const root = workspace();
+      write(root, {
+        [`.greenline/ledger/discussions/${TALK}.md`]: talk(state, lines),
+        [`.greenline/ledger/discussions/${TALK}/frame-research-1.md`]: "a report\n",
+        [`.greenline/tmp/${TALK}/research-1/fetched.html`]: "<p>x</p>\n",
+      });
+      expect(discussionTidy(root, TALK)).toEqual({
+        removed: [`.greenline/tmp/${TALK}`],
+        kept: [],
+      });
+      expect(existsSync(join(root, ".greenline/tmp", TALK)), state).toBe(false);
+      expect(
+        existsSync(join(root, `.greenline/ledger/discussions/${TALK}/frame-research-1.md`)),
+      ).toBe(true);
+    }
+  });
+
+  it("keeps an open or parked discussion's folder, one with no record or a record that does not read, and one a ledger file cites", () => {
+    const cases: readonly (readonly [Record<string, string>, string])[] = [
+      [{ [`.greenline/ledger/discussions/${TALK}.md`]: talk("open") }, "discussion-unfinished"],
+      [
+        {
+          [`.greenline/ledger/discussions/${TALK}.md`]: talk("parked", [
+            'revisit: "after the release"',
+            'words: "park it"',
+          ]),
+        },
+        "discussion-unfinished",
+      ],
+      [{}, "no-discussion"],
+      [
+        { [`.greenline/ledger/discussions/${TALK}.md`]: "---\nidea: x\n---\n" },
+        "discussion-unparsed",
+      ],
+      [
+        {
+          [`.greenline/ledger/discussions/${TALK}.md`]: talk(
+            "declined",
+            settled.declined,
+            `## research\n\n- [the page](../../tmp/${TALK}/research-1/fetched.html)\n`,
+          ),
+        },
+        "cited",
+      ],
+    ];
+    for (const [files, reason] of cases) {
+      const root = workspace();
+      write(root, { ...files, [`.greenline/tmp/${TALK}/research-1/fetched.html`]: "<p>x</p>\n" });
+      expect(kept(discussionTidy(root, TALK)), reason).toEqual([
+        [`.greenline/tmp/${TALK}`, reason, true],
+      ]);
+      expect(existsSync(join(root, ".greenline/tmp", TALK))).toBe(true);
+    }
+  });
+
+  it("refuses a name that is no discussion id, and has nothing to remove where no working folder stands", () => {
+    const root = workspace();
+    expect(kept(discussionTidy(root, "../.."))).toEqual([
+      [".greenline/tmp", "not-a-discussion-id", true],
+    ]);
+    write(root, {
+      [`.greenline/ledger/discussions/${TALK}.md`]: talk("declined", settled.declined),
+    });
+    expect(discussionTidy(root, TALK)).toEqual({ removed: [], kept: [] });
+  });
+
+  it("leaves a discussion's working folder to --discussion when it sweeps the changes", () => {
+    const root = workspace();
+    write(root, {
+      [`.greenline/ledger/discussions/${TALK}.md`]: talk("declined", settled.declined),
+      [`.greenline/tmp/${TALK}/a.txt`]: "a\n",
+    });
+    expect(tidy(root).removed).toEqual([]);
+    expect(existsSync(join(root, ".greenline/tmp", TALK))).toBe(true);
   });
 });

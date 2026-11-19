@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-bencium-typography",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-lieflat-charts",
+    "sha256": "c3d71d16f2e8cd91114ab268e3d50cf17cb75aaf0b1704bfb1f31c15e8926d7d"
+  },
+  "source": {
+    "repository": "https://github.com/bencium/bencium-marketplace",
+    "commit": "5de46a39b4640fa419560cd0b67e4c4b50dac802",
+    "path": "typography"
+  },
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Held: distilled from a typography book",
+  "reason": "It describes itself as distilled from a book; its finish rules wait for an independent source.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': bencium's typography skill is held as a book's distillation"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': bencium's typography skill is held as a book's distillation"
+    }
+  ]
+}

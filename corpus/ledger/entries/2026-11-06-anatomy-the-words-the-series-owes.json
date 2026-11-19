@@ -1,0 +1,73 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-anatomy-the-words-the-series-owes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-review-delegation-recorded-brief-without-model",
+    "sha256": "5d75dad78788f6d533334294f3d742f615583a39cac0ee9e630cc6935e0b303d"
+  },
+  "subject": "skill:anatomy",
+  "recipe": "6fc59a27eb45bae5c46744960ec077dd78d160107199542448e900b6360fe7cb",
+  "result": "8d0fffd016b83805121c0a1c1c947f257862d06d2e67dcb645a4c9d6cd509b08",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "A figure made on the owner's ask, nothing offered",
+  "reason": "The offer of a figure and of its remake leaves under the seven cuts: a figure is made or remade on the owner's ask alone, and the close names it.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; the kit and the scripts taken, the tests, evals/ and agents/openai.yaml left out; the worked examples left out of the snapshot, since the refresh holds a directory by its last name and the corpus and the public export carry every snapshot byte; publish.mjs and session.mjs left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; the pointer-before-use reading of J-140 S4 routed to it: a skill's reference page is pointed at where the method that needs it starts"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "anatomy",
+        "segments": 2845,
+        "taken": 2811,
+        "exact": 2809,
+        "retention": 0.9992885094272501,
+        "coverage": 0.9880492091388401,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 620
+  }
+}

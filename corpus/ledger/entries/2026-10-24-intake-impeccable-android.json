@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-impeccable-android",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-impeccable-ios",
+    "sha256": "a74a4b63339d7d962512878d58aa8e1e2528e0a34a6e085ed5842dabe3a8b0c8"
+  },
+  "source": {
+    "repository": "https://github.com/pbakaus/impeccable",
+    "commit": "e3818550d291a5157f309124dc1872d96ec81bf2",
+    "path": "skill/reference/android.md"
+  },
+  "licence": "permissive-other",
+  "verdict": "hold",
+  "gist": "Android page held: distilled from Material's guidelines",
+  "reason": "Its notice says it is distilled from Google's Material guidelines through another project; it waits for an independent source per rule.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's ios and android pages are held as vendor guideline text"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's ios and android pages are held as vendor guideline text"
+    }
+  ]
+}

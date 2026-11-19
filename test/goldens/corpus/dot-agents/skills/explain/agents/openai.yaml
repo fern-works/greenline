@@ -1,0 +1,5 @@
+interface:
+  display_name: "Explain"
+  short_description: "Explain how a part of the code works, the mental model needed to start working in it, traced from the real code; and keep the repository's atlas: propose its candidate subsystems, write one page per subsystem in the explain form with a journey or more through it, and refresh a page reported drifting on the owner's yes. Use for \"how does X work\", \"walk me through\" or \"end to end\", before changing an area you cannot yet narrate end to end, to map a repository's subsystems, or when a page of the atlas drifts."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-kemiljk-hiring-manager-bar",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-arla6ka-design-system-boss",
+    "sha256": "324e79f1d775c946f74caa87890f4c115918b563d1945fc519bdbece9249288a"
+  },
+  "source": {
+    "repository": "https://github.com/kemiljk/skills",
+    "commit": "87129c9747468e380adc28a98226fdffcd55ce9b",
+    "path": "skills/hiring-manager-bar"
+  },
+  "pin": "kemiljk-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Portfolio review from podcast paraphrases, declined",
+  "reason": "It reviews design portfolios from paraphrased podcasts, outside interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's hiring-manager-bar is declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's hiring-manager-bar is declined"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 /** The proposal, the modes and the floors (J-84 S3): the sentences the block, the ledger guide and the frame, plan and review skills give an agent, read from the corpus as it ships. The public tree carries this test and the corpus, never docs/ or workshop/, so it reads the corpus alone. */
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { corpusPage } from "./skill-text.ts";
 
 const repository = join(import.meta.dirname, "..", "..");
 
 /** A file's text with its line breaks and runs of spaces read as one space, as an agent reads the prose. */
 function page(path: string): string {
-  return readFileSync(join(repository, "corpus", path), "utf8").replace(/\s+/g, " ");
+  return corpusPage(repository, path);
 }
 
 /**
@@ -42,21 +42,34 @@ describe("J-84 S3 a named mode needs no yes", () => {
     expect(block).toContain(
       "Proceed without waiting in two cases only: the request names the mode, or the workspace's `proceed` setting allows the proposed mode (none by default).",
     );
-    // J-102 S2: the request's own words are no yes, and a standing choice holds only where proceed admits the mode.
+    // J-175 S1: the start without a wait is stated in one line, with no orientation question or survey proposal first.
     expect(block).toContain(
-      "The owner's yes to a mode is the record's choice line, `owner` or `accepted`, written after the proposal: a request to commit, to checkpoint, to \"go ahead\" or to put a fix straight into a file is not that yes, and neither are words saying to implement without asking.",
+      'Then the first reply states the mode taken and why, such as "the request names careful" or "`proceed` allows regular", with its floors and the ground, in one line before the first edit, and goes on: no orientation question, no survey proposal and no yes awaited.',
+    );
+    // J-102 S2: the request's own words are no yes, and a standing choice holds only where proceed admits the mode.
+    // J-175 S1: words to implement without asking start the work where proceed allows the mode, the floor's raise asking its one yes.
+    expect(block).toContain(
+      "The owner's yes to a mode is the record's choice line, `owner` or `accepted`, written after the proposal: a request to commit, to checkpoint, to \"go ahead\" or to put a fix straight into a file is not that yes, and neither are words saying to implement without asking, which start the work only where `proceed` allows the mode: where a floor raises it above that, the proposal names the floor and asks that one yes.",
     );
     expect(block).toContain(
       "A `choice: standing` applies only where `proceed` admits the mode, that mode and every faster one; elsewhere the hooks refuse it.",
     );
     expect(block).toContain(
-      "The proposal still comes before the first edit, the mode stated as taken with its reason and the where line, and asks only a substantive choice the request leaves open.",
+      "The proposal still comes before the first edit, the mode stated as taken with its reason and the ground, and asks only a substantive choice the request leaves open.",
     );
   });
 
   it("the wait stays where the request names no mode", () => {
+    // J-144 S2, J-176 S1: the proposal in its shape, no facts table, ending on the question the owner answers.
     expect(block).toContain(
-      "Then state where the commits go, below, and wait. The owner accepts it or names another mode",
+      "Before any edit, propose, in the reply that ends your turn. Open with one sentence of what would be built, then the change's id, the mode you would use from the table in AGENTS.md with its cost, where it goes and a floor only where you found one, and end on the line of what the owner's next word decides, `Waiting on:`, as AGENTS.md's reply section gives it; the proposal carries no facts table.",
+    );
+    expect(block).toContain(
+      'Then the open points, each with the answer you would take, so a yes takes them all; one sentence of cost only where the mode is not quick; then "Yes?". A plain change\'s proposal stays under 120 words.',
+    );
+    // J-176 S1: the yes line quotes the owner's words, held against the hooks' journal.
+    expect(block).toContain(
+      "When you write `choice: accepted`, quote the owner's words that answered the proposal in the record's `yes` line, as they said them;",
     );
     expect(block).toContain("**Propose the mode and where, then wait.**");
     expect(block).toContain(
@@ -74,7 +87,7 @@ describe("J-84 S3 a named mode needs no yes", () => {
 describe("J-84 S3 the floor recorded and the owner's choice below it", () => {
   it("the block has the record name every floor found, whoever chose the mode", () => {
     expect(block).toContain(
-      "Either way the record names every floor found, as the ledger guide says.",
+      "Either way the record names every floor found, as the ledger guide says: its `floors` line is owed from the open, a list of the floors found or `none`, done is refused without it,",
     );
   });
 
@@ -126,13 +139,13 @@ describe("J-84 S3 the ticket list's words edit the entry; at a ticket's open the
 describe("J-84 S3 the mode stated first and its cost restated, and J-93 S1 no step a trial", () => {
   it("under proceed the proposal states the mode before the work", () => {
     expect(block).toContain(
-      "The proposal still comes before the first edit, the mode stated as taken with its reason and the where line,",
+      "The proposal still comes before the first edit, the mode stated as taken with its reason and the ground,",
     );
   });
 
   it("a mode the owner names above the proposal has its cost restated before the work", () => {
     expect(block).toContain(
-      "The owner accepts it or names another mode or branch, and that choice is final; a mode named above yours has its cost in agents and rounds restated before the work.",
+      "The owner accepts it or names another mode, branch or ground, and that choice is final; a mode named above yours has its cost restated before the work.",
     );
   });
 

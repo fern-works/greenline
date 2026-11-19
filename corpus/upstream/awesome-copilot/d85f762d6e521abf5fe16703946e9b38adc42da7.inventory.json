@@ -1,0 +1,19 @@
+{
+  "commit": "d85f762d6e521abf5fe16703946e9b38adc42da7",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823"
+    },
+    {
+      "path": "plantuml-ascii/SKILL.md",
+      "sha256": "8bfd83efc42a70cdb9d1e3d64ec305bd4d6f09e1753a03bbb7d3805d9bd13e53"
+    }
+  ],
+  "entries": [
+    {
+      "name": "plantuml-ascii",
+      "path": "skills/plantuml-ascii"
+    }
+  ]
+}

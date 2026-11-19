@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-ai-skill-arxiv-arxiv-search",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ai-skill-arxiv-arxiv-monitor",
+    "sha256": "da66a197c7b4d3296c5b854e3a74d59ab5f8b2b463127619ac79112ef9058b4a"
+  },
+  "source": {
+    "repository": "https://github.com/dsebastien/ai-skill-arxiv",
+    "commit": "bbbe55b4c91ecd0555b819e3f547a7a3f379c8f5",
+    "path": "skills/arxiv-search"
+  },
+  "pin": "ai-skill-arxiv",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its search by topic, category, author and window lifts",
+  "reason": "Searching arXiv's own index by topic, category, author and date window, a bounded first list narrowed before widened, lifts into the research start's papers page, the text landing in J-117 S3; the script stays out.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': arxiv-search lifts into the research start's papers page, credited to the pin, placed on the start research by default with no block row and no rate number"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': arxiv-search lifts into the research start's papers page, credited to the pin, placed on the start research by default with no block row and no rate number"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "research",
+    "catches": "A researcher that searches the web for a paper arXiv indexes, floods its context with abstracts, or reports a miss without widening once",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run whose report missed a paper the arXiv API returns for the topic's words"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

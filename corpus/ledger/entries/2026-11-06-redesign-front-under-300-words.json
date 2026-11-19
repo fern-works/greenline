@@ -1,0 +1,118 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-redesign-front-under-300-words",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-prose-front-under-300-words",
+    "sha256": "67ef1f650530be23c012444bf69742034ff02d6e380dbc86da05db3ef0500499"
+  },
+  "subject": "skill:redesign",
+  "recipe": "5c9849d4410b10049d3794f5ed785ac3b08131da3962649c3250a9ce5f3a1ea7",
+  "result": "f2462237346938f7775e06a29a61ba9ff72ab17f62e1f0a065533167cae5ca76",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "method.md"
+    }
+  ],
+  "gist": "Front cut under 300 words; the rest moved to the method page",
+  "reason": "The front is cut under 300 words to the sentences its step reads first. The rest moves unchanged, in its order, to the method page the front points to.",
+  "authorisedBy": {
+    "date": "2026-11-06",
+    "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-31",
+      "words": "J-174's finalise words, the operator's words of 2026-10-31: okay then lets kick it off, on the final order laid out before them, whose stage C reads: findings from the two runs become fix jobs, one worker each, fast, review waived; only the failed scenarios rerun"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "arla6ka-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "ibelick-ui-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "swiss-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "taste-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 589
+  }
+}

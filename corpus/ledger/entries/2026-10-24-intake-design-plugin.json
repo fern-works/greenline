@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-design-plugin",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-superfuture-design-review",
+    "sha256": "1e0d98cea9d8074d6704be3215ec262b1f3a3c39db58b4c98f2c7f4058982b3e"
+  },
+  "source": {
+    "repository": "https://github.com/0xdesign/design-plugin",
+    "commit": "913a7ab2ac7e0f48eab77c93f2f5376150864b02",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held: no licence file",
+  "reason": "It has no licence file; its five variant axes stand as an idea already carried by other sources.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': 0xdesign's plugin is held: no licence"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': 0xdesign's plugin is held: no licence"
+    }
+  ]
+}

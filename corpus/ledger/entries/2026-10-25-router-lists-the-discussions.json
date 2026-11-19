@@ -1,0 +1,93 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-router-lists-the-discussions",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-frame-reads-code-and-proposes-research",
+    "sha256": "30ece744a34c34f818df4a4ee2137e0c9ea8669b69679764024680badd73aa7a"
+  },
+  "subject": "skill:router",
+  "recipe": "faccdeb7360144cbe24f6286673da09a6eb49a7b651e24795839f920b69b8f08",
+  "result": "1aee9767e08554345f1a34b14730fe86ddde17c149c0f993133cf5d3c11db5e0",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Router lists stopped changes and open discussions, then waits",
+  "reason": "Asked what to work on, router lists the stopped changes with their next lines and the open and parked discussions with their ideas, recommends one and waits for the owner's pick.",
+  "authorisedBy": {
+    "date": "2026-10-23",
+    "words": "The register's row of 2026-10-23 on the discussion, on the operator's words of 2026-10-23 (\"a system in which user can simply discuss new feature ideas without them outright becoming changes\") and the card \"A ledger record kind, as proposed (Recommended)\": a discussion is a record kind of the ledger, .greenline/ledger/discussions/<id>.md with a folder beside it, an idea explored with frame's engine at the written depth, with no mode, no ground, no branch and no checks, its states open, parked, declined, promoted and merged set on the owner's word, committed with the trailer Greenline-Discussion: <id>; greenline status and router list discussions beside the changes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method items carry the cutover of the block to the modes (S16a), under the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on parts 1 and 2 of the-whole-change: \"Lifetime by reader\" (P1.3), a brief, a relay note or a probe being a working file under tmp/<id>/ that the CLI deletes when the change is done and refuses to delete while the record cites it; and P2.11, \"Rule as proposed\", greenline tidy [--change <id>] removing tmp/<id>/ for done and dropped changes, refusing a path the record cites, and being what the close step runs"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-21",
+      "words": "The operator's card of 2026-10-21, \"A record for every write (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): a close asked for by name that writes only to the decisions book, the ADR home or the glossary, and the orientation's survey writing its result into the knowledge homes, each open a quick record first, so the hooks' hold on a workspace while no change is open is one rule with no list of exempt paths"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verdicts on pstack's two formal verification skills and on anatomy, whose new skills carry the routing mention the update procedure's table gives a new skill: verify-formally beside verify and anatomy beside show-me; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's row of 2026-10-23 on the discussion, on the operator's words of 2026-10-23 (\"a system in which user can simply discuss new feature ideas without them outright becoming changes\") and the card \"A ledger record kind, as proposed (Recommended)\": a discussion is a record kind of the ledger, .greenline/ledger/discussions/<id>.md with a folder beside it, an idea explored with frame's engine at the written depth, with no mode, no ground, no branch and no checks, its states open, parked, declined, promoted and merged set on the owner's word, committed with the trailer Greenline-Discussion: <id>; greenline status and router list discussions beside the changes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 1810
+  }
+}

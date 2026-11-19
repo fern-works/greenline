@@ -1,0 +1,221 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "redesign",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "redesign"
+    },
+    {
+      "field": "description",
+      "value": "Change how a working interface looks without breaking what it does: capture the before, write the kept list of what must survive, audit, state the constraint, and hand the change on at careful. Use when the owner asks for a page, a screen or a site to be redesigned, or for a working page to look denser, cleaner, less tired or like another product while it keeps what it does."
+    }
+  ],
+  "sources": [
+    "arla6ka-skills",
+    "fluid-functionalism",
+    "hallmark",
+    "ibelick-ui-skills",
+    "swiss-design",
+    "taste-skill"
+  ],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Redesign\n\nA redesign changes how a working interface looks without breaking what it does. Start it before any edit when the owner asks for a page, a screen or a whole site to be redesigned, or for a working page to look different while it keeps what it does, such as denser, cleaner or like another product; it captures what stands, writes down what must survive, states the constraint, and hands the work on at careful, where the design step and two reviews carry it.\n\n1. **Name the depth.** A polish keeps the system and fixes its details; a restyle replaces the material and keeps the structure; a full redesign replaces both. An audit alone writes findings and changes nothing.",
+          "kind": "method",
+          "reason": "The start redesign's part 1 of 2 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3). J-174 widens when the start runs to a working page asked to look different while it keeps what it does, before any edit (j109t-linear request 6, report finding 5 and verdict F4: \"Make the issues list denser, like Linear's\" built without the start), a scope correction that keeps the method.",
+          "gist": "Opens the redesign: capture, keep, audit, constrain, hand on",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "hallmark",
+            "taste-skill",
+            "swiss-design",
+            "ibelick-ui-skills",
+            "arla6ka-skills",
+            "fluid-functionalism"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md).",
+          "kind": "method",
+          "reason": "The start redesign's part 1 of 2 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3). J-174 widens when the start runs to a working page asked to look different while it keeps what it does, before any edit (j109t-linear request 6, report finding 5 and verdict F4: \"Make the issues list denser, like Linear's\" built without the start), a scope correction that keeps the method.",
+          "gist": "Opens the redesign: capture, keep, audit, constrain, hand on",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "hallmark",
+            "taste-skill",
+            "swiss-design",
+            "ibelick-ui-skills",
+            "arla6ka-skills",
+            "fluid-functionalism"
+          ],
+          "join": "\n\n"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first capture, read [method.md](method.md): the before, the kept list, the audit, the constraint and the hand-on at careful.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the owner's request to redesign, and the interface as it stands\nProduces: the before's captures, the kept list and the constraint, as the frame's inputs of a change at careful\nNext: frame, under careful, which the owner approves",
+          "kind": "method",
+          "reason": "The start redesign's part 2 of 2 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Takes the request and the interface, hands the frame to careful",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Redesign: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "2. **Capture the before** of every page in scope at 1440, 768 and 390 wide, and record what each page says and does.\n3. **Write the kept list**, page by page: every link, every field, the hidden ones and the count of the unnamed ones included, every form action and submit control, every handler, every test hook, and the ids and classes a script queries; and the headings, figures and images, whose loss is recorded where it is meant.\n4. **Audit first**: count the colours, the type sizes and the families; check the measure, the body's leading, the ground, the section spacing, and where colour stands in for hierarchy. Reconstruct the system the interface already follows, and prove each finding.\n5. **State the constraint** in one paragraph the owner confirms: what must not change, such as the routes, the data shown, the brand's colours or the stack.\n6. **Hand on at careful.** Propose the change at careful with the before, the kept list and the constraint as its frame's inputs; the design step deals under the constraint, and verify checks the after against the kept list.\n\nRead the design step's redesign page, `references/redesign.md` of the skill `design`, for the work's order and its proof.",
+          "kind": "method",
+          "reason": "The start redesign's part 1 of 2 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3). J-174 widens when the start runs to a working page asked to look different while it keeps what it does, before any edit (j109t-linear request 6, report finding 5 and verdict F4: \"Make the issues list denser, like Linear's\" built without the start), a scope correction that keeps the method.",
+          "gist": "Opens the redesign: capture, keep, audit, constrain, hand on",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "hallmark",
+            "taste-skill",
+            "swiss-design",
+            "ibelick-ui-skills",
+            "arla6ka-skills",
+            "fluid-functionalism"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Redesign: the practice's mechanics\n\nThis page holds where the redesign's work lands and its commands. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "home",
+          "reason": "The start redesign's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where redesign's work lands and its commands"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\n- The before's captures are visuals of the form `capture` under the change's folder in the visual home, `.greenline/visuals/<id>/`, each with its manifest naming the route, the width and the commit; `greenline check interface --url <address> --path <route>` takes them at the three widths.\n- The kept list is `.greenline/ledger/<id>/kept.json`: per route its links, fields, handlers, test hooks, script hooks and headings, as the capture command reads them from the page, with any entry you add by hand. At verify the same command takes the after and compares it with the list.\n- The constraint stands in the record's `## start` section, with the depth, the routes in scope and the owner's words confirming it.",
+          "kind": "home",
+          "reason": "The start redesign's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where redesign's work lands and its commands"
+        },
+        {
+          "passage": "written",
+          "text": "## The change\n\nThe redesign proposes its change at careful, whose record says `interface: \"yes, <register>\"`; its frame starts from the start section, and its design section deals under the constraint.",
+          "kind": "home",
+          "reason": "The start redesign's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where redesign's work lands and its commands"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "The depth is named (polish, restyle or full redesign), and an audit alone writes findings and changes nothing.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks the depth. In the Linear replay (F5) the start was never loaded, so that run says nothing about this sentence on its own."
+    },
+    {
+      "promise": "The before of every page in scope is captured at 1440, 768 and 390 wide, as capture visuals whose manifests name the route, the width and the commit.",
+      "page": "method.md",
+      "kind": "gap",
+      "cost": "free",
+      "oracle": "A redesign with the kept list",
+      "warrants": "mechanism",
+      "need": "A status and mirror line read from the record and the change's folder: an open interface change whose ## start names redesign with no before capture under its visual folder and no kept.json, cleared once they stand or by the owner's words.",
+      "reason": "It reaches the owner's working pages. The Linear replay's F5 (part 004, 004/005 to 004/008, oracle 009) records a redesign with no before capture and no kept list, and a free fact would fire once per turn per change. In that run the start was never named, so this fact fires only once the design step routes a redesign to the start. No fix-round job names this."
+    },
+    {
+      "promise": "The kept list is written page by page to .greenline/ledger/<id>/kept.json: every link, field, form action, handler, test hook, queried id and class, and the headings, figures and images.",
+      "page": "method.md",
+      "kind": "gap",
+      "cost": "free",
+      "oracle": "A redesign with the kept list",
+      "warrants": "mechanism",
+      "need": "The same status and mirror line: an open change whose ## start names redesign and whose folder holds no kept.json.",
+      "reason": "A lost link or handler is a loss to the owner. The Linear replay's F5 and oracle 009 found the kept list empty. The capture command writes kept.json without the agent's help only when the start names redesign, and nothing says it is owed."
+    },
+    {
+      "promise": "The constraint is stated in one paragraph the owner confirms, and it stands in the record's ## start with the depth, the routes in scope and the owner's words.",
+      "page": "method.md",
+      "kind": "gap",
+      "oracle": "A redesign with the kept list",
+      "warrants": "prose",
+      "reason": "No reading checks the start section's constraint. In the Linear replay the constraint on the keys held as an acceptance item (004/006, 004/008), so it did not fail."
+    },
+    {
+      "promise": "The change is proposed at careful with the before, the kept list and the constraint as the frame's inputs, and nothing is edited before the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap",
+      "oracle": "A redesign with the kept list"
+    },
+    {
+      "promise": "The redesign's record says interface: \"yes, <register>\".",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "interface-fact",
+      "cost": "cheap"
+    },
+    {
+      "promise": "At verify the after is compared with the kept list, and a kept entry that is gone holds the close.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap",
+      "oracle": "A redesign with the kept list"
+    },
+    {
+      "promise": "The start runs before any edit when the owner asks for a page to be redesigned or for a working page to look different while it keeps what it does, such as denser, cleaner or like another product.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "A redesign with the kept list",
+      "cost": "free"
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "redesign",
+        "restyle",
+        "reskin",
+        "look and feel",
+        "make it look",
+        "denser",
+        "less cluttered",
+        "visual refresh",
+        "looks tired",
+        "look tired",
+        "look different",
+        "cleaner"
+      ],
+      "weight": 3,
+      "read": "whole"
+    }
+  ]
+}

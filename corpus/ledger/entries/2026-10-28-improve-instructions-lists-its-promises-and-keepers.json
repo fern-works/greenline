@@ -1,0 +1,83 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-improve-instructions-lists-its-promises-and-keepers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-idea-refine-lists-its-promises-and-keepers",
+    "sha256": "fbf71cb8b2c5e77c5a6a06f191c5645fdda1049435b46880b1ca1f5765233eb6"
+  },
+  "subject": "skill:improve-instructions",
+  "recipe": "84ac97ffc5a85917bb2af7f8d8bb186f21aa2e3d8f7e075c254c8140cb8ae688",
+  "result": "a4b58c69251f7feabd574f7701a98e8bf861f90cf9170d6d138630b9232d322f",
+  "pages": [],
+  "gist": "Each promise listed with the keeper that holds it, or its gap",
+  "reason": "The roster audit lists the 7 promises the skill's pages state, 2 held by a fact, a hold, a record or an oracle and 5 gaps marked by the keeper test. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, the file tidied outside the managed markers, a situation heading in place of the wrapper tag and context-engineering's rules-file packing joining it"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "its retention under the minimum is caused by the portable form ruled under R21 and the operator's \"yes go ahead\" of 2026-10-08, the wrapper tag and the harness names edited throughout"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 172,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "humanlayer",
+        "segments": 71,
+        "taken": 56,
+        "exact": 44,
+        "retention": 0.7857142857142857,
+        "coverage": 0.7887323943661971,
+        "meetsMinimum": false,
+        "creditLine": false
+      }
+    ],
+    "growth": 888
+  }
+}

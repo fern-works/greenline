@@ -80,6 +80,8 @@ function view(entries: readonly FixtureEntry[], path: string): string {
     chain: chainOf(entries),
     definition: definition(),
     recipeSources: new Map([["tiny-skill", STUB_SOURCES]]),
+    recipeKeepers: [],
+    recipeDrops: [],
     sources: [PINNED, HELD],
     skills: [
       { name: "fixture-skill", kind: "step", slot: "check" },

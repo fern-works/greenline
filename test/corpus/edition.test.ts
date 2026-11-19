@@ -398,7 +398,7 @@ describe("the line's facts", () => {
     const agents = new Map([
       ["quick", 1],
       ["regular", 2],
-      ["careful", 5],
+      ["careful", 6],
     ]);
     for (const mode of modes.modes) {
       const stated = facts.modes.find((candidate) => candidate.name === mode.name);
@@ -412,12 +412,13 @@ describe("the line's facts", () => {
         steps: modes.steps.map((step) => ({ step: step.name, ...mode.steps[step.name] })),
       });
     }
-    expect(facts.modes[2]?.steps[2]).toEqual({
+    expect(facts.modes[2]?.steps[3]).toEqual({
       step: "anticipate",
       depth: "independent",
       agents: 1,
     });
-    expect(facts.modes[1]?.steps[4]).toEqual({ step: "review", depth: "independent", agents: 1 });
+    expect(facts.modes[2]?.steps[1]).toEqual({ step: "design", depth: "independent", agents: 1 });
+    expect(facts.modes[1]?.steps[5]).toEqual({ step: "review", depth: "independent", agents: 1 });
   });
 });
 
@@ -427,8 +428,11 @@ describe("the example record", () => {
     const record = exampleRecord(modes);
     if (record._tag === "err") throw record.error;
     const text = record.value;
-    expect(text.split("\n").length).toBeLessThan(60);
+    // The floors line, owed from the open since J-226 S1, is the one more line.
+    expect(text.split("\n").length).toBeLessThan(61);
     expect(text.startsWith("---\nmode: regular\n")).toBe(true);
+    // The example states the floors line answered, as a change with no floor states it (J-226 S1).
+    expect(text).toContain('\nwhy: "Keep the caller\'s deadline across retries."\nfloors: none\n');
     const parsed = parseChangeRecord(modes, `${EXAMPLE_RECORD_ID}.md`, text);
     if (parsed._tag === "err") throw parsed.error;
     expect(parsed.value.position).toMatchObject({ state: "done" });
@@ -437,9 +441,10 @@ describe("the example record", () => {
     expect(text).toContain('\nagents: 2\nrounds: 1\nstarts: ["review 1"]\n');
     expect(parsed.value.starts).toEqual([{ step: "review", number: 1, restarted: false }]);
     expect(mismatches(modes, parsed.value, { ticketsFile: "absent" })).toEqual([]);
-    // J-93 S1: the step regular skips keeps its section, the one line saying so.
+    // J-93 S1: the step regular skips keeps its section, the one line saying so; J-123 S2: design holds its one line on a change that touches no interface.
     expect(parsed.value.sections.map((section) => section.step)).toEqual([
       "frame",
+      "design",
       "plan",
       "anticipate",
       "build",
@@ -545,8 +550,9 @@ describe("the released changes", () => {
     ]);
   });
 
-  it("reads this tree's changelog as two released versions, 0.1.0 with its two summary paragraphs and nine groups, then 0.0.1 with its four rows in one untitled group", () => {
-    const released = releasedChanges(readFileSync(join(repository, "CHANGELOG.md"), "utf8"));
+  it("reads this tree's changelog as three released versions, 0.2.0 dated 2026-11-12 and 0.1.0 each with two summary paragraphs and nine groups, then 0.0.1 with its four rows in one untitled group", () => {
+    const text = readFileSync(join(repository, "CHANGELOG.md"), "utf8");
+    const released = releasedChanges(text);
     expect(
       released.map((release) => [
         release.version,
@@ -555,6 +561,22 @@ describe("the released changes", () => {
         release.groups.map((group) => [group.title, group.items.length]),
       ]),
     ).toEqual([
+      [
+        "0.2.0",
+        "2026-11-12",
+        2,
+        [
+          ["The replies and the pictures", 6],
+          ["Where the work goes and how it lands", 12],
+          ["The loop and the record", 14],
+          ["The roster and its use", 12],
+          ["Frame and the discussions", 5],
+          ["The hooks and the checks", 5],
+          ["The inspector", 10],
+          ["The design practice and the marks", 4],
+          ["The package and the upgrade", 4],
+        ],
+      ],
       [
         "0.1.0",
         "2026-10-21",
@@ -573,8 +595,14 @@ describe("the released changes", () => {
       ],
       ["0.0.1", "2026-08-28", 0, [["", 4]]],
     ]);
-    expect(released[0]?.summary[0]).toMatch(/^greenline 0\.1\.0 installs a practice/);
-    expect(released[0]?.groups[0]?.items[0]).toMatch(/^A greenline install needs no account/);
-    expect(released[1]?.groups[0]?.items[0]).toMatch(/^Commands: `npx greenline init` initializes/);
+    // The release ritual dated 0.2.0's heading (J-109 S8), Unreleased left empty; its section names five places.
+    expect(text).toMatch(/^## Unreleased\n\n## 0\.2\.0 \(2026-11-12\)$/m);
+    expect(text).not.toMatch(/seven views/);
+    expect(released[0]?.summary[0]).toMatch(/^greenline 0\.2\.0 makes the agent's work easier/);
+    expect(released[0]?.summary[0]).toContain("Desk, Changes, Interface, Knowledge and Practice");
+    expect(released[0]?.groups[0]?.items[0]).toMatch(/^The agent's reply holds three parts/);
+    expect(released[1]?.summary[0]).toMatch(/^greenline 0\.1\.0 installs a practice/);
+    expect(released[1]?.groups[0]?.items[0]).toMatch(/^A greenline install needs no account/);
+    expect(released[2]?.groups[0]?.items[0]).toMatch(/^Commands: `npx greenline init` initializes/);
   });
 });

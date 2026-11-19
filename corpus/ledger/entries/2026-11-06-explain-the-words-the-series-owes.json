@@ -1,0 +1,64 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-explain-the-words-the-series-owes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-diagram-design-the-words-the-series-owes",
+    "sha256": "d30ca0e4cf6e95c82671755c9260ce0b2bb450e18b543445b829f0e39b2945c6"
+  },
+  "subject": "skill:explain",
+  "recipe": "260bb590a169e97bf50ded452f792ffadc7147cad6b2b51c1dd877d52e05ef1d",
+  "result": "1b36f87a8128ffc1e7cf3068e10705fc265e61f80054aa5de99fb58385f07436",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Pages kept on the owner's ask; an asked map carried through",
+  "reason": "The offers leave under the seven cuts: a page, the map and a larger refresh wait for the owner's ask, a map asked for is carried to its last page, and the index carries no offers.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 1718
+  }
+}

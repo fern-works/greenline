@@ -1,12 +1,22 @@
+import { FRAME_MAP_FILE } from "../core/frame-map.ts";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { err, ok, type Result } from "../commons/result.ts";
 import { isBriefFile } from "../core/brief.ts";
 import { isChangeId, parseChangeRecord } from "../core/change.ts";
-import { contractFailure, ContractParseFailed } from "../core/contract.ts";
+import { z } from "zod";
+import { contractFailure, ContractParseFailed, parseJson } from "../core/contract.ts";
+import { LINKS_FILE } from "../core/visuals.ts";
 import { parseChecksFile, type CheckFacts, type HookRun } from "../core/facts.ts";
 import type { ModesDefinition } from "../core/modes.ts";
 import { parsePlanDocument, parseTicketsFile } from "../core/plan-documents.ts";
+import {
+  oldestFirst,
+  onePerLoad,
+  parseChangeLoads,
+  settledLoads,
+  type SkillLoadFact,
+} from "../core/skill-loads.ts";
 import type {
   ChangeEntry,
   ChangeFolder,
@@ -114,6 +124,44 @@ function unreadable(where: string, detail: string): Result<never, ContractParseF
   return contractFailure(where, [{ path: "", message: `unreadable: ${detail}` }]);
 }
 
+/** A links file read for its count alone. */
+const linksCount = z.object({ visuals: z.array(z.unknown()) });
+
+/**
+ * How many visuals a change's links file lists (J-173 S1), which the record
+ * lint holds a done record to link.
+ * @param folder the change's folder on the disk
+ * @returns the count; none where the file stands nowhere or does not read
+ */
+function linkedVisualCount(folder: string): number {
+  try {
+    const read = linksCount.safeParse(parseJson(readFileSync(join(folder, LINKS_FILE), "utf8")));
+    return read.success ? read.data.visuals.length : 0;
+  } catch {
+    return 0;
+  }
+}
+
+/**
+ * A change's folder as the record lint reads it (J-173 S1): its files,
+ * relative to it, and how many visuals its links file lists.
+ * @param root the repository root
+ * @param id the change's id
+ * @returns the folder's facts; none where no folder stands
+ */
+export function lintFolder(
+  root: string,
+  id: string,
+): { readonly files: readonly string[]; readonly visuals: number } | undefined {
+  const folder = join(root, ".greenline", "ledger", id);
+  try {
+    if (!existsSync(folder) || !statSync(folder).isDirectory()) return undefined;
+    return { files: listFilesRecursive(folder), visuals: linkedVisualCount(folder) };
+  } catch {
+    return undefined;
+  }
+}
+
 function folderOf(
   folder: string,
   where: string,
@@ -126,6 +174,10 @@ function folderOf(
     return unreadable(where, String(error));
   }
   const isFacts = (file: string): boolean => file.startsWith("checks/") && file.endsWith(".json");
+  // The loads the hooks write are generated facts, never a report the record cites.
+  const isLoads = (file: string): boolean => /^skills\/[^/]+\.jsonl$/.test(file);
+  // The frame map is derived from the record's own frame section (J-117 S1), so it is never a report.
+  const isFrameMap = (file: string): boolean => file === FRAME_MAP_FILE;
   const checks: ParsedFile<CheckFacts>[] = [];
   const hookRuns: ParsedFile<HookRun>[] = [];
   for (const file of files.filter(isFacts)) {
@@ -144,8 +196,18 @@ function folderOf(
     if (read.kind === "hook") hookRuns.push({ file, parsed: read.parsed });
     else checks.push({ file, parsed: read.parsed });
   }
+  const loads: SkillLoadFact[] = [];
+  for (const file of files.filter(isLoads)) {
+    try {
+      loads.push(...parseChangeLoads(readFileSync(join(folder, file), "utf8")));
+    } catch {
+      // A loads file that cannot be read shows no load; the facts are generated, never cited.
+    }
+  }
   return ok({
-    reports: files.filter((file) => !isFacts(file)),
+    reports: files.filter((file) => !isFacts(file) && !isLoads(file) && !isFrameMap(file)),
+    // A read the harness cut, settled into the load it cut (J-203 S1); one fact per load, where two hooks wrote one load twice (J-208 S1).
+    loads: settledLoads(oldestFirst(onePerLoad(loads))),
     briefs: files.filter(isBriefFile).map((file) => {
       try {
         return { file, text: readFileSync(join(folder, file), "utf8") };
@@ -155,6 +217,7 @@ function folderOf(
     }),
     checks,
     hookRuns,
+    visuals: files.includes(LINKS_FILE) ? linkedVisualCount(folder) : 0,
   });
 }
 
@@ -182,6 +245,24 @@ function contentsOf(
       .filter((file) => file !== TICKETS)
       .map((file) => read(join(directory, file), file, (text) => parsePlanDocument(file, text))),
   });
+}
+
+/**
+ * Whether a plan the ledger holds lists tickets: what makes a record that
+ * belongs to it, and names no ticket, its planning record (the mirror's
+ * progress line, `src/core/progress.ts`).
+ * @param root the repository root
+ * @param name the plan's name
+ * @param definition the modes definition
+ * @returns true when the plan reads and lists tickets
+ */
+export function planHasTickets(root: string, name: string, definition: ModesDefinition): boolean {
+  const contents = contentsOf(
+    join(root, ".greenline", "plans", name),
+    `.greenline/plans/${name}`,
+    definition,
+  );
+  return contents._tag === "ok" && contents.value.tickets !== undefined;
 }
 
 function plansOf(

@@ -8,8 +8,9 @@ it("accepts the homes the product defines and refuses anything else under .green
     ".greenline/ledger/receipts/x.json",
     ".greenline/ledger/2026-10-08-retry/review-1.md",
     ".greenline/plans/003-login/tickets.md",
-    ".greenline/diagrams/auth/a.svg",
-    ".greenline/map/GLOSSARY-MAP.md",
+    ".greenline/visuals/2026-10-25-auth/a.svg",
+    ".greenline/visuals/map/architecture.html",
+    ".greenline/visuals",
     ".greenline/tmp/skill/scratch.txt",
     ".greenline/manifest.json",
     ".greenline/lock.json",
@@ -23,6 +24,8 @@ it("accepts the homes the product defines and refuses anything else under .green
     ".greenline/notes.md",
     ".greenline/evidence/x",
     ".greenline/manifest.json.bak",
+    ".greenline/diagrams/auth/a.svg",
+    ".greenline/map/map.md",
   ])
     expect(WORKSPACE_HOME.test(other), other).toBe(false);
 });

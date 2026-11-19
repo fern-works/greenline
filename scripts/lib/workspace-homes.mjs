@@ -2,8 +2,9 @@
 // (corpus/runtime/work.md). One regex, imported by every checker that
 // validates a `.greenline/` path; the two copies it replaced had agreed by
 // luck (the map's mismatch 12, 2026-09-12). `hooks/` holds the git hooks'
-// scripts and dsh's adapter since J-93 S3.
+// scripts and dsh's adapter since J-93 S3. `visuals/` holds every durable
+// visual since J-110 S1, which replaced the diagrams' and the map's homes.
 
 /** Matches a `.greenline/...` path that names a home the product defines; test a token with `WORKSPACE_HOME.test(token)`. */
 export const WORKSPACE_HOME =
-  /^\.greenline\/(ledger\/|plans\/|diagrams\/|map\/|tmp\/|hooks(?:\/|$)|manifest\.json$|lock\.json$|WORK\.md$|THIRD_PARTY_NOTICES\.md$|DECISIONS\.md$|policy-changes\.json$)/;
+  /^\.greenline\/(ledger\/|plans\/|visuals(?:\/|$)|tmp\/|hooks(?:\/|$)|manifest\.json$|lock\.json$|WORK\.md$|THIRD_PARTY_NOTICES\.md$|DECISIONS\.md$|policy-changes\.json$)/;

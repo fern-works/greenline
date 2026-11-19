@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-callstack-github-actions",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-callstack-create-react-native-library",
+    "sha256": "9765bdd9af2392dc4a3de8c3aae2474e2c78f66dd6e062a4a52fe44f922ecfc5"
+  },
+  "source": {
+    "repository": "https://github.com/callstackincubator/agent-skills",
+    "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+    "path": "skills/github-actions"
+  },
+  "pin": "callstack-agent-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Engineering outside the interface, declined",
+  "reason": "It is engineering and CI work outside the interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': callstack's engineering skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': callstack's engineering skills are declined"
+    }
+  ]
+}

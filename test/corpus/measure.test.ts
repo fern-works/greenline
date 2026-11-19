@@ -21,9 +21,11 @@ function measured(recipe: FixtureRecipe) {
 }
 
 describe("measureRecipe", () => {
-  it("measures the fixture: 12 segments, 11 taken, 10 exact, and 7 written words", () => {
+  it("measures the fixture: 12 segments, 11 taken in 4 passages, 10 exact, and 7 written words", () => {
     // SKILL.md has 9 segments and notes.md 3; one is dropped and one of the
-    // 11 taken is edited; the written passage has 7 words.
+    // 11 taken is edited; the written passage has 7 words. The recipe takes
+    // three passages of SKILL.md and one of notes.md, each counted whole
+    // (J-182 S1).
     expect(measured(fixtureRecipe())).toEqual({
       _tag: "ok",
       value: {
@@ -34,6 +36,7 @@ describe("measureRecipe", () => {
             source: SOURCE,
             segments: 12,
             taken: 11,
+            passages: 4,
             exact: 10,
             retention: 10 / 11,
             coverage: 11 / 12,
@@ -58,6 +61,7 @@ describe("measureRecipe", () => {
         source: CREDITED,
         segments: 0,
         taken: 0,
+        passages: 0,
         exact: 0,
         retention: null,
         coverage: null,
@@ -120,6 +124,7 @@ describe("measureRecipe", () => {
             source: SOURCE,
             segments: 14,
             taken: 13,
+            passages: 5,
             exact: 12,
             retention: 12 / 13,
             coverage: 13 / 14,

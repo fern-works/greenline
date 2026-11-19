@@ -10,7 +10,7 @@ import { BROKEN, CAREFUL, changesWorkspace, MISFIT, QUICK, REGULAR, TICKET } fro
  * and check facts against its commits, and a record that does not parse.
  */
 
-const STEPS = ["frame", "plan", "anticipate", "build", "review", "verify", "close"];
+const STEPS = ["frame", "design", "plan", "anticipate", "build", "review", "verify", "close"];
 let root = "";
 let url = "";
 let handle: InspectorHandle | undefined;
@@ -35,15 +35,32 @@ async function json(path: string) {
   return { status: response.status, body: await response.json() };
 }
 
-/** The values of one attribute, in document order, on the elements of a class. */
-function attributes(html: string, className: string, attribute: string): readonly string[] {
-  const found: string[] = [];
-  const pattern = new RegExp(`<[a-z]+ [^>]*class="${className}"[^>]*>`, "g");
-  for (const tag of html.match(pattern) ?? []) {
-    const value = new RegExp(`${attribute}="([^"]*)"`).exec(tag)?.[1];
-    if (value !== undefined) found.push(value);
-  }
-  return found;
+/**
+ * Every text of a change the server rendered: each written section's, read
+ * from its step document, and each report's and brief's, read from its file
+ * document (J-155 S2).
+ */
+async function renderedOf(change: {
+  id: string;
+  sections: readonly { heading: string; written: boolean }[];
+  reports: readonly { file: string }[];
+  briefs: readonly { file: string }[];
+}): Promise<string> {
+  const steps = await Promise.all(
+    change.sections
+      .filter((section) => section.written)
+      .map(async (section) => {
+        const step = await json(`api/changes/${change.id}/steps/${section.heading}`);
+        return String(step.body.section.html);
+      }),
+  );
+  const files = await Promise.all(
+    [...change.reports, ...change.briefs].map(async (entry) => {
+      const file = await json(`api/changes/${change.id}/files/${entry.file}`);
+      return String(file.body.file.html ?? "");
+    }),
+  );
+  return [...steps, ...files].join("\n");
 }
 
 describe("the changes view, served", () => {
@@ -63,14 +80,15 @@ describe("the changes view, served", () => {
     expect(broken).toMatchObject({ state: null, mode: null });
     expect(broken.problem).toEqual(expect.any(String));
     expect(careful).toMatchObject({
-      state: "open",
+      state: "in-progress",
+      waitingOn: null,
       mode: "careful",
       next: "verify: start the verifier on the final commit",
       opened: "2026-10-08",
       problem: null,
     });
     // Its form parses, so it keeps its state; the modes refuse its floor, and the list says so.
-    expect(misfit).toMatchObject({ state: "open", mode: "quick" });
+    expect(misfit).toMatchObject({ state: "in-progress", mode: "quick" });
     expect(misfit.problem).toContain("weather");
     expect(ticket).toMatchObject({ plan: "003-uploads", ticket: "T2" });
     expect(regular).toMatchObject({
@@ -82,17 +100,13 @@ describe("the changes view, served", () => {
     });
     expect(quick).toMatchObject({ state: "done", mode: "quick", next: null });
     expect(quick.ageDays).toBeGreaterThan(0);
-    expect(attributes(body.html, "change-row", "data-state")).toEqual([
-      "unreadable",
-      "open",
-      "open",
-      "open",
-      "stopped",
-      "done",
-    ]);
-    expect(body.html).toContain('<span class="row-problem">Does not parse:');
-    expect(body.html).toContain('href="#change/2026-10-05-retry"');
-    expect(body.html).toContain("rerun the reviewer on the fixed commits");
+    expect(
+      body.changes.map((change: { state: string | null }) => change.state ?? "unreadable"),
+    ).toEqual(["unreadable", "in-progress", "in-progress", "in-progress", "stopped", "done"]);
+    // Each change carries the step reached and its strip, the line's seven steps in the same words.
+    expect(regular.step).toBe("review");
+    expect(regular.strip.map((station: { step: string }) => station.step)).toEqual(STEPS);
+    expect(broken.strip).toEqual([]);
   });
 
   it("renders the record card with every front-matter field, stated or not", async () => {
@@ -102,7 +116,7 @@ describe("the changes view, served", () => {
       choice: "owner",
       proposed: "regular",
       why: "move the session store to the new schema",
-      state: "open",
+      state: "in-progress",
       next: "verify: start the verifier on the final commit",
       floors: ["data-migration"],
       raises: [{ from: "regular", reason: "the change migrates stored sessions" }],
@@ -110,29 +124,43 @@ describe("the changes view, served", () => {
       plan: null,
       agents: null,
     });
-    expect(attributes(body.html, "field", "data-field")).toEqual([
+    expect(Object.keys(body.change.card)).toEqual([
       "mode",
       "choice",
       "proposed",
       "why",
       "state",
       "next",
+      "step",
       "floors",
       "raises",
       "reviewed",
       "plan",
+      "ticket",
       "agents",
       "rounds",
       "starts",
+      "lines",
       "landing",
       "rebase",
+      "discard",
+      "stopped",
+      "ground",
+      "agent",
+      "from",
+      "refreshes",
     ]);
+    // J-114 S5: the ground and the agent as the record states them, null where it states none.
+    expect(body.change.card).toMatchObject({
+      ground: { kind: "worktree", path: ".worktrees/2026-10-08-sessions" },
+      agent: "claude-code/opus",
+      discard: null,
+    });
     const quick = (await json(`api/changes/${QUICK}`)).body;
     expect(quick.change.card).toMatchObject({ agents: 1, rounds: 0, reviewed: "none" });
     // S2: the owner's words for a push, quoted; absent, the card says the hooks refuse the act.
     expect(quick.change.card).toMatchObject({ landing: "push it to main", rebase: null });
-    expect(quick.html).toContain("<q>push it to main</q>");
-    expect(quick.html).toContain("no rewrite: the hooks refuse one");
+    expect(quick.change.card).toMatchObject({ ground: null, agent: null });
   });
 
   it("holds every step's section in the line's order, a skipped step as its one line", async () => {
@@ -151,18 +179,24 @@ describe("the changes view, served", () => {
           .filter((section: { state: string }) => section.state === "skipped")
           .map((section: { heading: string }) => section.heading),
       ).toEqual(skipped);
-      expect(attributes(body.html, "section", "data-step")).toEqual(STEPS);
     }
     const quick = (await json(`api/changes/${QUICK}`)).body;
-    expect(quick.html).toContain('<span class="none-line">none at quick</span>');
+    expect(
+      quick.change.sections.find((s: { heading: string }) => s.heading === "anticipate"),
+    ).toMatchObject({ state: "skipped", line: "none at quick", written: true });
     const careful = (await json(`api/changes/${CAREFUL}`)).body;
     expect(
       careful.change.sections.find((s: { heading: string }) => s.heading === "review"),
     ).toMatchObject({ state: "written", depth: "independent, 2 fresh agents" });
     expect(
       careful.change.sections.find((s: { heading: string }) => s.heading === "verify"),
-    ).toMatchObject({ state: "empty", current: true });
-    expect(careful.html).toContain("<th>Step</th>");
+    ).toMatchObject({ state: "now", current: true });
+    // A written section's step document carries its text rendered by the house renderer (J-155 S2).
+    const review = (await json(`api/changes/${CAREFUL}/steps/review`)).body;
+    expect(review.kind).toBe("step");
+    expect(review.section.html).toBe(
+      `<p><a href="/changes/${CAREFUL}/files/review-1.md">review 1</a> and <a href="/changes/${CAREFUL}/files/review-2.md">review 2</a>.</p>`,
+    );
   });
 
   it("names the planning record as the holder of a ticket's plan steps, never a missing section", async () => {
@@ -177,16 +211,15 @@ describe("the changes view, served", () => {
         section.heldBy,
       ]),
     ).toEqual([
-      ["frame", "elsewhere", "plan"],
-      ["plan", "elsewhere", "plan"],
-      ["anticipate", "elsewhere", "plan"],
-      ["build", "empty", null],
+      ["frame", "in-plan", "plan"],
+      ["design", "in-plan", "plan"],
+      ["plan", "in-plan", "plan"],
+      ["anticipate", "in-plan", "plan"],
+      ["build", "now", null],
       ["review", "skipped", null],
-      ["verify", "empty", null],
-      ["close", "empty", null],
+      ["verify", "not-yet", null],
+      ["close", "not-yet", null],
     ]);
-    expect(body.html).toContain("held by the planning record");
-    expect(body.html).not.toContain("The record has no section for this step yet.");
   });
 
   it("says why a record whose form parses fails against the modes, and keeps its sections", async () => {
@@ -194,30 +227,37 @@ describe("the changes view, served", () => {
     expect(body.change.reading).toBe("unparsed");
     expect(body.change.problem).toContain("weather");
     expect(body.change.sections.length).toBeGreaterThan(0);
-    expect(body.html).toContain("The record does not parse against the modes:");
-    expect(body.html).not.toContain("The record as written");
   });
 
   it("follows a document's link only into the page or to a web address", async () => {
     const { body } = await json(`api/changes/${CAREFUL}`);
-    expect(body.html).not.toMatch(/href="(javascript|data):/);
-    expect(body.html).not.toContain('href="//');
-    expect(body.html).toContain(
+    const html = await renderedOf(body.change);
+    expect(html).not.toMatch(/href="(javascript|data):/);
+    expect(html).not.toContain('href="//');
+    expect(html).toContain(
       '<a href="https://example.com/doc" target="_blank" rel="noreferrer noopener">d</a>',
     );
     // A file outside the change's folder is named, never served.
-    expect(body.html).toContain('<span class="link-text" title="../../src/sessions.ts">e</span>');
+    expect(html).toContain('<span class="link-text" title="../../src/sessions.ts">e</span>');
   });
 
-  it("puts a stopped change's next line first, before the record", async () => {
+  it("J-168 S1 opens a change on its outcome line, else on its why, never on the close's prose", async () => {
+    const quick = (await json(`api/changes/${QUICK}`)).body;
+    // The quick record's close says "Done." and states no outcome line: the page opens on the why.
+    expect(quick.change.summary).toMatchObject({ text: quick.change.card.why, from: "why" });
+    expect(quick.change.summary.html).toMatch(/^<p>/);
+    const regular = (await json(`api/changes/${REGULAR}`)).body;
+    expect(regular.change.summary).toMatchObject({ text: regular.change.card.why, from: "why" });
+    expect(regular.change.summary.html).toMatch(/^<p>/);
+  });
+
+  it("carries a stopped change's next line and the step it stopped at", async () => {
     const { body } = await json(`api/changes/${REGULAR}`);
-    const callout = body.html.indexOf('class="next-callout" data-state="stopped"');
-    expect(callout).toBeGreaterThan(-1);
-    expect(callout).toBeLessThan(body.html.indexOf('class="the-line"'));
-    expect(body.html).toContain('<span class="next-label">Stopped at review. Next:</span>');
-    expect(body.html).toContain(
-      '<p class="next-action">rerun the reviewer on the fixed commits</p>',
-    );
+    expect(body.change.card).toMatchObject({
+      state: "stopped",
+      next: "review: rerun the reviewer on the fixed commits",
+      step: "review",
+    });
   });
 
   it("shows the folder's reports and briefs, a cited report linked into the page and raw HTML as text", async () => {
@@ -230,15 +270,16 @@ describe("the changes view, served", () => {
     expect(body.change.briefs).toEqual([
       expect.objectContaining({ file: "brief-review-1.md", written: false }),
     ]);
-    expect(body.html).toContain(`<a href="#change/${CAREFUL}/review-2.md">review 2</a>`);
-    expect(body.html).toContain(`<a href="#change/${CAREFUL}/review-2.md">the other</a>`);
-    expect(body.html).toContain("not written by greenline brief");
-    expect(body.html).not.toContain("<script>alert");
+    const html = await renderedOf(body.change);
+    expect(html).toContain(`<a href="/changes/${CAREFUL}/files/review-2.md">the other</a>`);
+    expect(html).not.toContain("<script>alert");
+    expect(html).toContain("&lt;script&gt;alert(1)&lt;/script&gt;");
   });
 
   it("holds each recorded check against the commit whose code it ran on", async () => {
-    const { body } = await json(`api/changes/${CAREFUL}`);
-    const checks = body.change.checks;
+    // The checks are a part of the page at their own address (J-165 S1).
+    const { body } = await json(`api/changes/${CAREFUL}/checks`);
+    const checks = body.checks;
     expect(checks.runs).toBe(2);
     expect(checks.problems).toEqual([
       expect.objectContaining({ file: "checks/20261008T120000000Z-c3.json" }),
@@ -259,19 +300,15 @@ describe("the changes view, served", () => {
     expect(checks.elsewhere).toEqual([
       expect.objectContaining({ outcome: "failed", ended: "exit 1", latest: false }),
     ]);
-    // The passed run sits inside its commit's entry of the timeline, the failed one under other code.
-    const entry = body.html.slice(body.html.indexOf(`data-hash="${finalCommit}"`));
-    expect(entry.slice(0, entry.indexOf("</li></ul></li>"))).toContain('data-outcome="passed"');
-    expect(body.html.indexOf('data-outcome="failed"')).toBeGreaterThan(
-      body.html.indexOf("On other code"),
-    );
+    // The commit carries its message's trailers.
+    expect(commit.trailers).toEqual([{ key: "Greenline-Change", value: CAREFUL }]);
   });
 
   it("shows a record that does not parse as written, with why", async () => {
     const { body } = await json(`api/changes/${BROKEN}`);
     expect(body.change.reading).toBe("unparsed");
     expect(body.change.sections).toEqual([]);
-    expect(body.html).toContain("no front matter here");
+    expect(body.change.text).toContain("no front matter here");
   });
 
   it("answers a change it does not hold, and a name that is not a change's, with 404", async () => {
@@ -280,12 +317,22 @@ describe("the changes view, served", () => {
     expect((await json("api/changes/%E0")).status).toBe(404);
   });
 
-  it("opens on the changes view, first in the page's navigation", async () => {
-    const page = await (await fetch(url)).text();
-    expect(page).toContain(
-      '<ul><li><a href="#changes">Changes</a></li><li><a href="#plans">Plans</a></li>',
-    );
-    expect(page).toContain('<section data-view="changes">');
-    expect(page).not.toMatch(/https?:\/\/(?!127\.0\.0\.1)[a-z]/);
+  it("answers the shell for every path the app shows, and 404 for any other", async () => {
+    for (const path of [
+      "",
+      "changes",
+      `changes/${CAREFUL}`,
+      `changes/${CAREFUL}/review-1.md`,
+      "plans",
+      "catalogue",
+    ]) {
+      const page = await fetch(url + path);
+      expect(page.status, path).toBe(200);
+      const text = await page.text();
+      expect(text).toContain('<script type="module" src="/inspector.mjs">');
+      expect(text).not.toMatch(/https?:\/\/(?!127\.0\.0\.1)[a-z]/);
+    }
+    for (const path of ["nowhere", "changes/a/b/c", "atlas/elsewhere"])
+      expect((await fetch(url + path)).status, path).toBe(404);
   });
 });

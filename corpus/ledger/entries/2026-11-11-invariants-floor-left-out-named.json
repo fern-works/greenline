@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-11-invariants-floor-left-out-named",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-11-plan-ticket-floors-line",
+    "sha256": "e70d3b6e3d9264506df04530f78434b8e5670c1dd5b4ffa400ad9805b390aea0"
+  },
+  "subject": "skill:invariants",
+  "recipe": "26e037f1abde6ff6ade311c3f9eb15b9a41130b325f9fa0c936d530d8da1c043",
+  "result": "2be95924a80903e273084938895ef53338657a2b186df240751f35e7f43e16bf",
+  "pages": [
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "An invariant's floor the record leaves out is named, never refused",
+  "reason": "While the record's floors line leaves out a floor the invariants list raises, the situation line names it with the cure, and nothing is refused.",
+  "authorisedBy": {
+    "date": "2026-11-10",
+    "words": "J-226 S1, on the operator's words of 2026-11-10 on the layout of the fix round, \"go with your recommendations for each\", and the standing words of 2026-11-07, super fast, with one verdict review since the fold of 2026-11-11, and the register's rows of 2026-11-05, \"The keeper over the oracle\", and 2026-11-09, \"Outcomes, not manners\": over the run j217t-ground finding 3, a floor the hooks saw that the record's floors line leaves out is printed on the situation line and never refused"
+  },
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    },
+    {
+      "date": "2026-11-10",
+      "words": "J-226 S1, on the operator's words of 2026-11-10 on the layout of the fix round, \"go with your recommendations for each\", and the standing words of 2026-11-07, super fast, with one verdict review since the fold of 2026-11-11, and the register's rows of 2026-11-05, \"The keeper over the oracle\", and 2026-11-09, \"Outcomes, not manners\": over the run j217t-ground finding 3, a floor the hooks saw that the record's floors line leaves out is printed on the situation line and never refused"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 800
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-jakubkrehel-technical-drawing",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-impeccable-android",
+    "sha256": "935558c82716451490c9b191d80e12f3584ce90e2790909bb0eaef72b43c9561"
+  },
+  "source": {
+    "repository": "https://github.com/jakubkrehel/skills",
+    "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+    "path": "skills/technical-drawing"
+  },
+  "pin": "jakubkrehel-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Drawings of physical objects, declined",
+  "reason": "It draws physical objects in a viewer of its own, outside interface design.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': jakubkrehel's technical-drawing is declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': jakubkrehel's technical-drawing is declined"
+    }
+  ]
+}

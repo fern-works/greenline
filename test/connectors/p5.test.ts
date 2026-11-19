@@ -577,13 +577,30 @@ describe("the search of the tree", () => {
         )
         .map(([path]) => path),
     ).toEqual([]);
-    // The page's script runs in the owner's browser and asks its own local server for /api/*.
-    expect(fetching).toEqual(["src/shell/inspect/page.ts"]);
-    const page = all.find(([path]) => path === "src/shell/inspect/page.ts")?.[1] ?? "";
-    expect(page.match(/https?:\/\/[^\s"'`]+/g) ?? []).toEqual([]);
+    // The inspector's client app runs in the owner's browser and asks its own local server for /api/*;
+    // the render engine speaks to the local browser it launched, on its DevTools port at 127.0.0.1 (J-123 S5).
+    // greenline view asks the viewer the address file names whether it answers, an address the file's schema holds to 127.0.0.1 (J-142 S1).
+    // J-176 S1 lifted the web fetch's refusal at frame (J-151 S2), so no reader of one names the word.
+    expect(fetching).toEqual([
+      "src/shell/browser.ts",
+      "src/shell/inspect/app/client.ts",
+      "src/shell/inspect/view.ts",
+    ]);
+    const view = all.find(([path]) => path === "src/shell/inspect/view.ts")?.[1] ?? "";
+    expect(view.match(/https?:\/\/[^\s"'`]+/g) ?? []).toEqual([]);
+    expect(view).toContain("readServing(root)");
+    const address = all.find(([path]) => path === "src/core/inspect-address.ts")?.[1] ?? "";
+    expect(address).toContain(String.raw`const BASE = /^http:\/\/127\.0\.0\.1:(\d{1,5})\/$/;`);
+    const browser = all.find(([path]) => path === "src/shell/browser.ts")?.[1] ?? "";
+    expect([...new Set(browser.match(/https?:\/\/[^\s"'`$]+/g) ?? [])]).toEqual([
+      "http://127.0.0.1:",
+    ]);
+    expect(browser).toContain('"--remote-debugging-address=127.0.0.1"');
+    const client = all.find(([path]) => path === "src/shell/inspect/app/client.ts")?.[1] ?? "";
+    expect(client.match(/https?:\/\/[^\s"'`]+/g) ?? []).toEqual([]);
   });
 
-  it("no hidden installation path: the only processes the product starts are git, ps, the connector's own planned invocation and the command a check is given", () => {
+  it("no hidden installation path: the only processes the product starts are git, ps, the connector's own planned invocation, the command a check is given and its own inspector", () => {
     const all = sources();
     // The module reached by any specifier, and imported only by name, never whole or by default.
     expect(
@@ -612,11 +629,20 @@ describe("the search of the tree", () => {
       ),
     );
     expect(imported).toEqual([
+      // The render engine's local browser, the executable its discovery found (J-123 S5).
+      "src/shell/browser.ts: spawn, type ChildProcess",
       "src/shell/code-tree.ts: execFileSync",
       // init's offer: `git init`, on the owner's yes, the one git write (J-73 S4).
       "src/shell/git.ts: execFileSync",
-      "src/shell/inspect/server.ts: execFileSync, type ExecFileSyncOptionsWithStringEncoding",
+      // The inspector's documents: a change's commits and the settings' baseline, read from git (J-154 S2 moved them from the server).
+      "src/shell/inspect/answers.ts: execFileSync, type ExecFileSyncOptionsWithStringEncoding",
+      // The inspector's cache: HEAD and the index's path, read without blocking the server (J-154 S2).
+      "src/shell/inspect/readers.ts: execFile",
+      // greenline view starts this same CLI's inspector, detached, where none serves (J-142 S1).
+      "src/shell/inspect/view.ts: spawn",
       "src/shell/process.ts: spawn, type StdioOptions",
+      // The process table, `ps`, read for the processes a session started and the close stops (J-148 S1).
+      "src/shell/processes.ts: execFileSync",
     ]);
     const commands = spawning.flatMap(([path, text]) =>
       [
@@ -627,7 +653,12 @@ describe("the search of the tree", () => {
     );
     // Every call names its program literally, git and ps, or starts a file the one process module resolved.
     for (const line of commands)
-      expect(line).toMatch(/: execFileSync\("(?:git|ps)"$|^src\/shell\/process\.ts: spawn\(file$/);
+      expect(line).toMatch(
+        /: execFileSync\("(?:git|ps)"$|^src\/shell\/inspect\/readers\.ts: execFile\("git"$|^src\/shell\/process\.ts: spawn\(file$|^src\/shell\/browser\.ts: spawn\(executable$|^src\/shell\/inspect\/view\.ts: spawn\(process\.execPath$/,
+      );
+    // The one start greenline view makes: the running node on the CLI's own entry, inspect on a free local port.
+    const viewer = all.find(([path]) => path === "src/shell/inspect/view.ts")?.[1] ?? "";
+    expect(viewer).toContain('spawn(process.execPath, [entry, "inspect", "--port", "0"], {');
     // Two runners, two starts: the connector's planned invocation and a check's command.
     expect(commands.filter((line) => line.includes("process.ts"))).toEqual([
       "src/shell/process.ts: spawn(file",
@@ -640,9 +671,35 @@ describe("the search of the tree", () => {
         .map(([path]) => path),
     ).toEqual([
       "src/shell/cli/hook.ts",
+      // The file token cap's files: the staged ones, else the working tree's changed and new ones (J-114 S4).
+      "src/shell/file-tokens.ts",
       "src/shell/git-history.ts",
       "src/shell/hooks.ts",
+      // The files a change's commits touched, with their lines, for the inspector's change and desk (J-154 S3).
+      "src/shell/inspect/changed-files.ts",
+      // A closed change's last commit by its subject, for the desk (J-155 S1).
+      "src/shell/inspect/desk-facts.ts",
+      // One changed file's lines across a change's commits, for the change page (J-155 S2).
+      "src/shell/inspect/diff.ts",
+      // A discussion's last commit, for the inspector's list (J-118 S4).
+      "src/shell/inspect/discussions.ts",
+      // When a knowledge home was last written: its last commit's time, for the Knowledge overview (J-166 S1).
+      "src/shell/inspect/knowledge.ts",
+      // The interface check's files a change touched: the commits carrying its trailer (J-123 S4).
+      "src/shell/interface-check.ts",
+      // The interface detection's listing of the repository's files (J-123 S1).
+      "src/shell/interface.ts",
+      // A done change's landing: its commits by their trailer, the base's hold of its branch and its merge commit (J-202 S1).
+      "src/shell/landing.ts",
+      // The guardrails' spent lifts, kept in the git directory git names (J-173 S1).
+      "src/shell/lifts.ts",
+      // The files a turn changed: the commits since its start, for the turn's picture fact (J-204 S1).
+      "src/shell/pictures.ts",
       "src/shell/situation.ts",
+      // The visual home's drift: the commits since a visual's commit that touched its files (J-110 S3), and the files a change touched, the working tree's read with no optional lock (J-176 S1).
+      "src/shell/visuals.ts",
+      // A change's worktree at the landing's cleanup: the worktrees listed and its status read (J-114 S3).
+      "src/shell/worktree.ts",
     ]);
     // The connector runs only the file the manifest names, found on the absolute PATH entries; nothing is fetched, written to a PATH directory or installed.
     for (const [path, text] of all)

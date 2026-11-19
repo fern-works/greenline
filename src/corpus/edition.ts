@@ -450,16 +450,22 @@ const EXAMPLE_MODE = "regular";
 /** The example's front matter: each field of the skeleton with its value, then the fields stated at close. */
 const EXAMPLE_FIELDS: ReadonlyMap<string, string> = new Map([
   ["choice", "accepted"],
+  ["yes", `"Yes, go ahead."`],
   ["why", `"Keep the caller's deadline across retries."`],
+  // The floors line, owed from the open (J-226 S1), answered as a change with no floor answers it.
+  ["floors", "none"],
   ["state", "done"],
   ["next", "none"],
+  ["ground", "branch"],
+  ["agent", "claude-code/opus"],
+  ["interface", "no"],
+  ["skills", "[frame, plan, build, tdd, review, verify, close]"],
+  ["agents", "2"],
+  ["rounds", "1"],
+  ["starts", `["review 1"]`],
+  ["outcome", `"Each retry now stops at the caller's deadline."`],
 ]);
-const EXAMPLE_CLOSE_FIELDS = [
-  "reviewed: independent",
-  "agents: 2",
-  "rounds: 1",
-  `starts: ["review 1"]`,
-];
+const EXAMPLE_CLOSE_FIELDS = ["reviewed: independent"];
 
 /** The example's first line, saying what it is. */
 const EXAMPLE_LINE =
@@ -468,6 +474,8 @@ const EXAMPLE_LINE =
 /** The example's section of each step the regular mode runs; a step it skips keeps the skeleton's one line. */
 const EXAMPLE_SECTIONS: ReadonlyMap<string, string> = new Map([
   ["frame", "Retries reset the deadline; the caller's deadline must hold for the whole call."],
+  // The retry change touches no interface, so design holds its one line.
+  ["design", "none, no interface"],
   ["plan", "Carry the deadline in the retry context and stop retrying once it passes."],
   ["build", "The context now holds the deadline; a test covers three retries."],
   [

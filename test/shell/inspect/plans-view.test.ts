@@ -59,14 +59,12 @@ describe("the plans view, served", () => {
         { file: "spec.md", status: "complete" },
         { file: "decisions.md", status: "draft" },
       ],
-      planning: [expect.objectContaining({ id: PLANNING, state: "open", mode: "careful" })],
+      planning: [expect.objectContaining({ id: PLANNING, state: "in-progress", mode: "careful" })],
       problem: null,
     });
     expect(later).toMatchObject({ tickets: "draft", ready: [] });
     expect(broken.tickets).toBeNull();
     expect(broken.problem).toContain("T1.scope");
-    expect(body.html).toContain(`href="#plan/${PLAN}"`);
-    expect(body.html).toContain('data-ready="T2"');
   });
 
   it("S2 renders each ticket with its fields, its derived progress and the change records that name it", async () => {
@@ -96,24 +94,21 @@ describe("the plans view, served", () => {
     expect(body.plan.tickets[3].records).toEqual([
       expect.objectContaining({ id: OVERRIDDEN_TICKET, state: "stopped", mode: "quick" }),
     ]);
-    // A ticket links to its change's page; the owner's override shows beside the entry's mode.
-    expect(body.html).toContain(`href="#change/${DONE_TICKET}"`);
-    expect(body.html).toContain(`href="#change/${OVERRIDDEN_TICKET}"`);
-    expect(body.html).toContain("opened under quick, the owner's choice; the entry gives regular");
-    expect(body.html).toContain(`href="#change/${PLANNING}"`);
+    // A ticket names its change records; the owner's override reads beside the entry's mode.
+    expect(body.plan.tickets[0].records).toEqual([expect.objectContaining({ id: DONE_TICKET })]);
+    expect(body.plan.tickets[3].records[0]).toMatchObject({ opened: "quick", owner: true });
+    expect(body.plan.tickets[3].mode).toBe("regular");
+    expect(body.plan.planning).toEqual([expect.objectContaining({ id: PLANNING })]);
   });
 
   it("S2 shows the ready tickets first, in the order the tickets file gives", async () => {
     const { body } = await json(`api/plans/${PLAN}`);
     expect(body.plan.frontier).toEqual(["T2"]);
-    const ready = body.html.indexOf('class="frontier"');
-    expect(ready).toBeGreaterThan(-1);
-    expect(ready).toBeLessThan(body.html.indexOf('class="tickets"'));
-    expect(body.html.match(/data-ticket="T\d"/g)).toEqual([
-      'data-ticket="T1"',
-      'data-ticket="T2"',
-      'data-ticket="T3"',
-      'data-ticket="T4"',
+    expect(body.plan.tickets.map((ticket: { id: string }) => ticket.id)).toEqual([
+      "T1",
+      "T2",
+      "T3",
+      "T4",
     ]);
   });
 
@@ -129,24 +124,28 @@ describe("the plans view, served", () => {
       ["spec.md", "complete", "Search"],
       ["decisions.md", "draft", "Decisions"],
     ]);
-    expect(body.html).toContain(`<a href="#change/${DONE_TICKET}">its ticket&#39;s record</a>`);
-    expect(body.html).toContain(`<a href="#plan/${PLAN}">the tickets</a>`);
-    // The front matter is the mark, shown once, never as a rule and a paragraph.
-    expect(body.html).not.toContain("status: complete");
+    const html = body.plan.documents
+      .map((document: { html: string | null }) => document.html ?? "")
+      .join("\n");
+    expect(html).toContain(`<a href="/changes/${DONE_TICKET}">its ticket&#39;s record</a>`);
+    expect(html).toContain(`<a href="/plans/${PLAN}">the tickets</a>`);
+    // The front matter is the mark, shown once, never as a rule and a paragraph; the title is taken out.
+    expect(html).not.toContain("status: complete");
+    expect(html).not.toContain("<h1>");
   });
 
   it("S2 says a draft list waits for the owner, and names why a tickets file does not parse", async () => {
     const draft = (await json(`api/plans/${DRAFT_PLAN}`)).body;
     expect(draft.plan.frontier).toEqual([]);
-    expect(draft.html).toContain("waits for the owner's approval");
+    expect(draft.plan.mark).toBe("draft");
     const broken = (await json(`api/plans/${BROKEN_PLAN}`)).body;
     expect(broken.plan.ticketsProblem).toContain("T1.scope");
-    expect(broken.html).toContain("does not parse");
+    expect(broken.plan.ticketsRefused).toBe(false);
   });
 
   it("S2 links a ticket's change page to its plan", async () => {
     const { body } = await json(`api/changes/${OVERRIDDEN_TICKET}`);
-    expect(body.html).toContain(`<a href="#plan/${PLAN}">${PLAN}</a>`);
+    expect(body.change.card).toMatchObject({ plan: PLAN, ticket: "T4" });
   });
 
   it("S2 answers a plan it does not hold, and a name that is not a plan's, with 404", async () => {
@@ -194,9 +193,8 @@ describe("the plans view, served", () => {
       expect(third.records).toEqual([
         expect.objectContaining({ id: "2026-10-13-highlight", mode: "regular", opened: "quick" }),
       ]);
-      const card = body.html.slice(body.html.indexOf('data-ticket="T3"'));
-      expect(card.slice(0, card.indexOf("</li></ul></li>"))).not.toContain("the entry gives");
-      expect(card.slice(0, card.indexOf("</li></ul></li>"))).toContain("raised to regular");
+      // It opened under the entry's own mode and was raised after, so no override of the entry shows.
+      expect(third.mode).toBe("quick");
       expect(JSON.stringify(body.plan.notes)).not.toContain(`${PLAN}-v2`);
     } finally {
       rmSync(join(root, raised), { force: true });

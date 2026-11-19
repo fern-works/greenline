@@ -1,0 +1,70 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-research-the-words-the-series-owes",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-progress-check-the-words-the-series-owes",
+    "sha256": "b83d3071f6c58183d060195d486f0996d4c16b75e782e3eeb36f79199778ec7c"
+  },
+  "subject": "skill:research",
+  "recipe": "35f5711e650f60957fb01c11201d8b96b834e260d6a10788637330587e2d70cb",
+  "result": "8a0c1423cd77931aa32149b4dbfbf2bc7d14e6b556249b773dae6591afd39e73",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Inline reads need no agent; the report filed through the command",
+  "reason": "A fact looked up inline needs no research agent, which runs only for a stated question at careful, and the report is filed through greenline research report, never written by hand.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-07",
+      "words": "Not a stub: research's upstream body is under the stub trigger and states a method of its own, so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-07, in the words \"yes continue\" on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-07 on research), which the recipe's notStub carries"
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's rows of 2026-10-23 on frame's nodes and on its pre-research, on the operator's words of 2026-10-23 and the cards \"Take the fourteen (Recommended)\" and \"One at a time (Recommended)\": frame reads the code the request touches before the first round and may propose research at any round, each topic with its node, its source class and what it would change, run on the owner's acceptance by fresh agents working by the new start research, papers through arXiv and the citation graphs, the high-signal web and code on GitHub, one at a time, each report awaited before the next starts, the reports cited by the frame section; J-119's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": athola's papers the spine of the papers page with arxiv-analyze's read order and summary inserted and arxiv-search lifted, the citation graph and its backoff in greenline's words, the GitHub practice greenline's own, no rate figures, arXiv's own HTML first, the fetched texts kept in the change's working files, anonymous calls, no paying or emailing, the owner's gh session only, patterns never code; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "ai-skill-arxiv",
+        "segments": 64,
+        "taken": 20,
+        "exact": 18,
+        "retention": 0.9,
+        "coverage": 0.3125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "claude-night-market",
+        "segments": 45,
+        "taken": 13,
+        "exact": 12,
+        "retention": 0.9230769230769231,
+        "coverage": 0.28888888888888886,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1633
+  }
+}

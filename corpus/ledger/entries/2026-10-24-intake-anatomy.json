@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-anatomy",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-pstack-maintain-formal-verification-skill",
+    "sha256": "4bb6e2c7352b935b920b97808341272bd97a3b1beed4e48f367cefaa18cce3bb"
+  },
+  "source": {
+    "repository": "https://github.com/wheresryan22/anatomy",
+    "commit": "1482e8469b0a9e0d8cc18ea2740a01423d29ae80",
+    "path": "."
+  },
+  "pin": "anatomy",
+  "licence": "mit",
+  "verdict": "copy",
+  "gist": "The explanatory figure of a concept enters as the habit anatomy",
+  "reason": "Its method, kit and scripts enter as the habit anatomy for a concept's figure, offered and made on a yes; its gallery publication and session-log reader are left out.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; publish.mjs and session.mjs left out; the worked examples left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; publish.mjs and session.mjs left out; the worked examples left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "anatomy",
+    "catches": "An explanation of a mechanism the owner does not grasp from words and boxes, or a docs figure that is a slab with labels",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run here where the habit's offer and a fresh agent's figure fit poorly inside a change about something else, making it a start"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 5902
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 5902
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 5902
+      }
+    ],
+    "ships": "default"
+  }
+}

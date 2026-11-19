@@ -8,20 +8,28 @@
     },
     {
       "field": "description",
-      "value": "Explain the current topic visually in the reply: pseudocode, call trees, component trees, shallow file trees, shape diffs, and diagrams or a one-file HTML view where a renderer exists. Use whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison, or a change to an existing shape, and whenever the owner asks to be shown."
+      "value": "Explain the current topic visually in the reply: pseudocode, call trees, component trees, shallow file trees, shape diffs and box drawings in text, a mermaid block only where the surface renders one, and a lasting picture made only on the owner's ask. Use whenever a reply would walk through a flow, a hierarchy, a state machine, a comparison, or a change to an existing shape, and whenever the owner asks to be shown, a diagram or a sketch."
     }
   ],
-  "sources": ["humanlayer"],
+  "sources": ["humanlayer", "curiositech", "awesome-copilot"],
   "files": [
     {
       "path": "SKILL.md",
       "passages": [
         {
           "passage": "written",
-          "text": "# Show me\n\nshow-me is the habit for the moment a reply would walk through a flow, a hierarchy, a state machine, a comparison or a change to an existing shape, and for the owner asking to be shown, at whatever step the work is in or in a plain answer. It applies on your own judgment, unasked, and it writes no record of its own: the visual sits in the reply, beside the answer, in a form the current client renders, and earns its place only when it makes the explanation clearer. Answer first, then show: the prose habit governs the claim and the prose around the visual. A durable diagram the owner did not ask for is offered in one line. On the ask or the yes, `diagram-design` (extra, installs on request) draws it where it is installed; where it is not, offer it as AGENTS.md says, or draw the diagram as text into the repository's existing docs home.",
+          "text": "# Show me\n\nshow-me is the habit for the moment a reply would walk through a flow, a hierarchy, a state machine, a comparison or a change to an existing shape, and for the owner asking to be shown, at whatever step the work is in or in a plain answer. Draw a picture where its shape decides something, and of the resulting shape whenever a change moved one, a module extracted or a schema, a state machine or a flow changed, on the turn it lands: prose alone does not show a shape.",
           "kind": "scope",
-          "reason": "The title and the opening paragraph in the habit's own voice: the situations its block row keys it by, that it applies unasked and writes no record of its own, the visual living in the reply; the prose habit beside it for the claim; and a durable diagram offered in one line, drawn by diagram-design where it is installed and offered as the block offers an extra where it is not, or drawn as text into the repository's docs home. Re-cut at S18b: the prose habit replaces answer-plainly and unslop, which S18a merged into it, show-me stays implicit against upstream's explicit-only invocation (R22), and the extra is marked as the block marks it.",
-          "gist": "Opens the habit: visuals sit in the reply; durable diagrams are offered"
+          "reason": "The title and the opening paragraph in the habit's own voice: the situations its block row keys it by, that it applies unasked and writes no record of its own, the picture in the reply in one of the six forms at most 72 columns and twelve nodes, the block's reply section governing the words around it. Re-cut at S18b, and at J-107 onto the block's reply section. Since J-110 S4 a picture over twelve nodes, or one worth keeping, is offered and made under the change in the visual home by the visual skill for its kind, each a default, and a drawn state chart is checked by verify-formally. Since J-134 S1 the offer leads at the turns the block's table gives a picture, its one-sentence form and kinds named. J-147 S2 and S4: the offer at every turn in one warm sentence, owed by a reply that drew a picture, one a turn and none again for a declined subject, the kind the agent's own choice with the table of kinds a menu, the one maker rule, and the visual's address in the reply after the making. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the offer at every turn leaves (the seven cuts: the offer ritual gone, a durable picture on the owner's ask alone), and a structural change shows its resulting shape inline on the turn it lands (j109t-pictures-inline, the blocking finding).",
+          "gist": "Opens the habit: the offer each turn, six inline forms, one maker"
+        },
+        {
+          "passage": "written",
+          "text": "A picture over twelve nodes or 72 columns is never drawn inline: draw the part that decides.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the habit's own voice: the situations its block row keys it by, that it applies unasked and writes no record of its own, the picture in the reply in one of the six forms at most 72 columns and twelve nodes, the block's reply section governing the words around it. Re-cut at S18b, and at J-107 onto the block's reply section. Since J-110 S4 a picture over twelve nodes, or one worth keeping, is offered and made under the change in the visual home by the visual skill for its kind, each a default, and a drawn state chart is checked by verify-formally. Since J-134 S1 the offer leads at the turns the block's table gives a picture, its one-sentence form and kinds named. J-147 S2 and S4: the offer at every turn in one warm sentence, owed by a reply that drew a picture, one a turn and none again for a declined subject, the kind the agent's own choice with the table of kinds a menu, the one maker rule, and the visual's address in the reply after the making. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the offer at every turn leaves (the seven cuts: the offer ritual gone, a durable picture on the owner's ask alone), and a structural change shows its resulting shape inline on the turn it lands (j109t-pictures-inline, the blocking finding).",
+          "gist": "Opens the habit: the offer each turn, six inline forms, one maker",
+          "join": " "
         },
         {
           "passage": "written",
@@ -29,6 +37,62 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first picture, read [method.md](method.md): the table of the turn and the shape, the six forms, the one offer, the lasting visual, the kinds of visual, where a picture renders and the guidance.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed. J-204 S1 (the register's row of 2026-11-08, \"One offer per change at the caps\"): the pointer names the decision table and the one offer the page now holds.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "Durable output: none of its own. The picture lives in the reply; a view or a picture the owner asks to keep lands under `.greenline/visuals/<id>/` with its manifest.",
+          "kind": "scope",
+          "reason": "The habit's closing line agrees with the opening paragraph: nothing of its own, the picture in the reply, and since J-110 S4 a view or a picture the owner accepts lands under the change in the visual home with its manifest. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the durable output is kept on the owner's ask.",
+          "gist": "The closing line agrees: the reply's picture, a kept one offered"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Show me: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "The kind is yours to choose: the table of kinds below is a menu, and you may go past it where another kind fits. It applies on your own judgment, unasked, and it writes no record of its own: the picture sits in the reply, beside the answer, in one of six forms, pseudocode, a call tree, a component tree, a file tree, a shape diff or a box drawing, at most 72 columns and twelve nodes, a count you make before you draw, and earns its place only when it makes the explanation clearer. Answer first, then show: the block's reply section governs the claim and the words around the picture.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the habit's own voice: the situations its block row keys it by, that it applies unasked and writes no record of its own, the picture in the reply in one of the six forms at most 72 columns and twelve nodes, the block's reply section governing the words around it. Re-cut at S18b, and at J-107 onto the block's reply section. Since J-110 S4 a picture over twelve nodes, or one worth keeping, is offered and made under the change in the visual home by the visual skill for its kind, each a default, and a drawn state chart is checked by verify-formally. Since J-134 S1 the offer leads at the turns the block's table gives a picture, its one-sentence form and kinds named. J-147 S2 and S4: the offer at every turn in one warm sentence, owed by a reply that drew a picture, one a turn and none again for a declined subject, the kind the agent's own choice with the table of kinds a menu, the one maker rule, and the visual's address in the reply after the making. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the offer at every turn leaves (the seven cuts: the offer ritual gone, a durable picture on the owner's ask alone), and a structural change shows its resulting shape inline on the turn it lands (j109t-pictures-inline, the blocking finding).",
+          "gist": "Opens the habit: the offer each turn, six inline forms, one maker"
+        },
+        {
+          "passage": "written",
+          "text": "## When to draw: the turn and the shape\n\nFind the turn down the side and the shape the reply explains across: the cell is the form to draw, or none. A question about how something works is an explanation, never a plain answer. Draw the part that decides, within twelve nodes and 72 columns.\n\n| The turn | A flow or a sequence | A set of states | A hierarchy | The parts and their joins | A change to a shape | An algorithm |\n| --- | --- | --- | --- | --- | --- | --- |\n| A plain answer | none | none | none | none | none | none |\n| A proposal | call tree | box drawing | file tree | component tree | shape diff | pseudocode |\n| A build turn that moved code | call tree | box drawing | file tree | component tree | shape diff | pseudocode |\n| An explanation | box drawing | box drawing | file tree | component tree | shape diff | pseudocode |\n| A close | none | none | none | none | shape diff | none |",
+          "kind": "method",
+          "reason": "J-204 S1: the picture decision becomes a table of the kinds of turn and the shapes a reply explains, each cell one of the six forms or none, so the agent reads a table rather than a feeling; the replay batch drew in eleven of twenty-nine runs and the judges graded four omissions owed.",
+          "gist": "The decision table: each turn and shape, its form or none",
+          "ruling": "the register's row of 2026-11-08, \"One offer per change at the caps\", on the operator's words of 2026-11-08, \"so did you draft j204? i think you should draft it the way you recommend and we fold this within 0.2.0 as well\": the picture decision a table in show-me's method that the block points at, one offer of a kept picture per change only where the shape passes twelve nodes or 72 columns, in one line the turn's end counts, never a lost picture's remake, and a brief before every durable picture read into its manifest"
+        },
+        {
+          "passage": "written",
+          "text": "One offer per change, no more: where the shape a turn wants passes twelve nodes or 72 columns, draw the part that decides and offer the whole once in the change, in one line, `Picture offered: <what it would show>, <form>, <finish>; say keep`, its finish text, branded SVG or interactive, and never offer a lost picture's remake, which is the owner's ask alone. A lasting visual is made only on the owner's ask, by a fresh agent the change's build or its close starts with the skill's brief, at every mode, since an agent a method starts stands outside the mode's count of agents, and the session draws only inline; when it returns, give the owner the address the viewer serves for the visual.",
+          "kind": "method",
+          "reason": "The title and the opening paragraph in the habit's own voice: the situations its block row keys it by, that it applies unasked and writes no record of its own, the picture in the reply in one of the six forms at most 72 columns and twelve nodes, the block's reply section governing the words around it. Re-cut at S18b, and at J-107 onto the block's reply section. Since J-110 S4 a picture over twelve nodes, or one worth keeping, is offered and made under the change in the visual home by the visual skill for its kind, each a default, and a drawn state chart is checked by verify-formally. Since J-134 S1 the offer leads at the turns the block's table gives a picture, its one-sentence form and kinds named. J-147 S2 and S4: the offer at every turn in one warm sentence, owed by a reply that drew a picture, one a turn and none again for a declined subject, the kind the agent's own choice with the table of kinds a menu, the one maker rule, and the visual's address in the reply after the making. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the offer at every turn leaves (the seven cuts: the offer ritual gone, a durable picture on the owner's ask alone), and a structural change shows its resulting shape inline on the turn it lands (j109t-pictures-inline, the blocking finding). J-204 S1 (the register's row of 2026-11-08, \"One offer per change at the caps\", amending \"The seven cuts\"): one offer per change at the caps, in one line the turn's end counts, never a lost picture's remake.",
+          "gist": "One offer per change at the caps, a lasting visual on ask",
+          "ruling": "the register's row of 2026-11-08, \"One offer per change at the caps\", on the operator's words of 2026-11-08, \"so did you draft j204? i think you should draft it the way you recommend and we fold this within 0.2.0 as well\": the picture decision a table in show-me's method that the block points at, one offer of a kept picture per change only where the shape passes twelve nodes or 72 columns, in one line the turn's end counts, never a lost picture's remake, and a brief before every durable picture read into its manifest"
+        },
+        {
+          "passage": "written",
+          "text": "## The kinds of lasting visual\n\n| The shape | Inline | The durable kind and its skill | Its permanent home |\n| --- | --- | --- | --- |\n| a flow, a request's path | a call tree or a box drawing | a sequence diagram, `diagram-design` | a subsystem's journey in the atlas |\n| parts and their calls | a component tree or a box drawing | an architecture diagram, `diagram-design` | the map, `architecture-map` |\n| a change's shape | a shape diff | the change's diagram, `diagram-design` | under the change |\n| the change in the whole | none | the atlas's map with the changed parts marked, `diagram-design` | under the change |\n| a data model | a box drawing | an entity diagram, `diagram-design` | a subsystem's journey |\n| states | a box drawing | a state chart, `diagram-design`, the start `verify-formally`'s check offered after it | a subsystem's journey |\n| a decision's options | a shape diff | the decision's diagram, `diagram-design` | under the change |\n| a plan | a file tree | the plan's diagram, `diagram-design` | under the planning change |\n| a concept | pseudocode | an explanatory figure, `anatomy` | under the change |\n| the interface | none | the captures of the interface check | under the change |\n| the repository | a file tree | the map and its pages, `architecture-map` and the `explain` start | the atlas |\n\nThe table is a menu, never a limit: on the owner's ask, make what fits the shape, another kind included.",
+          "kind": "scope",
+          "reason": "The rubric of kinds whole (J-147 S4; the register's rows of 2026-10-28 on the visual system's flow and the offer at every turn): for each shape the inline form, the durable kind with the skill that makes it and its permanent home, the change in the whole, the plan's and the decision's diagrams and the state chart's check among them, a menu the agent may go past; diagram-design, explain, architecture-map and anatomy point here. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the table's last sentence offers nothing.",
+          "gist": "The table of kinds: each shape's inline form, durable kind and home"
         },
         {
           "passage": "taken",
@@ -81,18 +145,35 @@
         },
         {
           "passage": "written",
-          "text": "During a change the file is one of the change's working files; a plain answer writes it outside the repository. Then open it for the user with the harness's shell tool:",
+          "text": "During a change, a view is a durable visual: on the owner's ask a fresh agent makes it under the change in the visual home with its manifest, where the inspector shows it, and the harness's shell tool can open it:",
           "kind": "home",
-          "reason": "The HTML bullet keeps its file in the change's working files under .greenline/tmp/<id>/, and a plain answer's outside the repository, and compares density against a text view instead of the Mermaid option the copy removed because neither harness renders it. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
-          "gist": "The HTML file goes in working files, or outside the repository",
+          "reason": "A view too dense for text is a durable visual since J-110 S4: offered first and made on the yes under the change in the visual home with its manifest, the inspector showing it; the harness's shell tool can open it. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): a view is made on the owner's ask, never offered.",
+          "gist": "A dense view is offered, then made under the change",
           "join": " "
         },
         {
           "passage": "written",
-          "text": "```\nopen .greenline/tmp/<id>/{description}.html\n```",
+          "text": "```\nopen .greenline/visuals/<id>/{description}.html\n```",
           "kind": "harness",
-          "reason": "Upstream's Bash(open ...) is Claude Code's tool-call notation; the copy shows the plain shell command the harness's shell tool runs, at the change's working files.",
-          "gist": "Shows the plain open command, not Claude Code's tool-call notation"
+          "reason": "The command that opens the view, its path the change's folder in the visual home since J-110 S4.",
+          "gist": "Opens the view from the change's folder in the visual home"
+        },
+        {
+          "passage": "written",
+          "text": "- Draw a flow, layers, a sequence, a state chart, a class or a deployment as a box picture in text when it explains better than the views above, by the drawing page, [drawing.md](drawing.md): the kind from what you show, at most 72 columns and twelve nodes, the code's own names, three weights and arrows that do not cross.",
+          "kind": "method",
+          "reason": "The inline Unicode drawing joins show-me's views, its method on the drawing page lifted from diagramming-expert and plantuml-ascii.",
+          "gist": "Sends a box picture to the drawing page",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech", "awesome-copilot"]
+        },
+        {
+          "passage": "written",
+          "text": "### Where it renders\n\nThe six forms are text, so they render on every surface. A mermaid block renders only where the status line says `renders mermaid`; anywhere else the owner sees its source, so draw the box drawing in its place, and in a headless run never print a mermaid block alone.\n\n| Surface | A mermaid block | The six forms |\n| --- | --- | --- |\n| Claude Code in a terminal | its source | rendered |\n| Claude Code's desktop app, VS Code extension and mobile | its source | rendered |\n| The Codex desktop app | rendered | rendered |\n| The Codex CLI | its source | rendered |\n| A headless run of either | its source | rendered |\n| Another harness | its source, unless the status line says otherwise | rendered |",
+          "kind": "method",
+          "reason": "The harness table J-110 S4 adds from the note on what each harness renders: the six forms render on every surface, a mermaid block only where the status line's surface says it renders, and never alone in a headless run.",
+          "gist": "Where each form renders, and mermaid only where the surface does",
+          "ruling": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
         },
         {
           "passage": "taken",
@@ -105,13 +186,92 @@
             "45dfbd50616f",
             "64c1309efeec"
           ]
+        }
+      ]
+    },
+    {
+      "path": "drawing.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Drawing a picture in text\n\nThis page is how show-me draws a box picture in the reply: boxes, lines and arrows made of text characters, which read the same on every surface that shows the reply in a fixed-width font. Read it when a reply would draw boxes and arrows rather than one of `SKILL.md`'s text views; whether to draw, and in which form, is the table of the turn and the shape on [method.md](method.md).",
+          "kind": "method",
+          "reason": "Opens the drawing page: what a box picture in text is and when the page is read. J-204 S1: the page points at method.md's decision table, which says whether to draw and in which form.",
+          "gist": "Opens the drawing page and says when to read it",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": []
         },
         {
           "passage": "written",
-          "text": "Durable output: none. The visual lives in the reply, and an HTML view in the change's working files under `.greenline/tmp/<id>/`, deleted when the change closes.",
-          "kind": "scope",
-          "reason": "The habit's closing line agrees with the opening paragraph: nothing durable, the visual in the reply and an HTML view in the change's working files; the durable diagram's offer is the opening paragraph's.",
-          "gist": "The closing line agrees: nothing durable, the visual in the reply"
+          "text": "## Pick the kind from what you show\n\n| What the reply shows | Draw |\n| --- | --- |\n| steps and the decisions between them | a flow |\n| a whole and its parts | a tree |\n| a stack of levels, each using the one below | layers |\n| messages between parts, in time order | a sequence |\n| states and the events that move between them | a state chart |\n| things and how they connect | a relationship picture |\n| before and after, or options side by side | a comparison |\n| a loop whose output feeds its input | a cycle |\n| a choice along two axes | a matrix |\n| events in order | a timeline |\n| a type with its fields and methods | a class box |\n| components and the wiring between them | a component picture |\n| what runs where | a deployment |\n| who does what with the system | a use case picture |",
+          "kind": "method",
+          "reason": "The kind is picked from what the reply shows: diagramming-expert's ten kinds and plantuml-ascii's class, component, deployment and use case.",
+          "gist": "Picks the picture's kind from what the reply shows",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech", "awesome-copilot"]
+        },
+        {
+          "passage": "written",
+          "text": "## Keep it within the bounds\n\n- At most 72 columns on every line, so a narrow pane, a terminal and a PR body show it unwrapped.\n- At most twelve nodes. A larger subject splits inline into an overview of its parts and one picture per part, each beside the sentence it explains, only while each part keeps these caps; where a part would not, draw the part that decides and never past them: past the caps stands method.md's one offer, and a lasting visual is the owner's ask.\n- Every label is the name the code uses: the function, the file, the state, the table, the endpoint. Never paraphrase a name; when a label is too long for its box, widen the box and narrow its neighbours.\n- Keep labels short around the names: a long label breaks the alignment of every line it crosses.",
+          "kind": "method",
+          "reason": "Greenline's bounds on the inline picture: 72 columns, twelve nodes, the code's own names, and plantuml-ascii's short labels. J-147 S4 settles split against offer: a larger subject splits inline only while each part keeps the caps, else it is offered. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): past the caps the part that decides is drawn, and nothing is offered. J-204 S1 (the register's row of 2026-11-08): past the caps the one offer of method.md stands.",
+          "gist": "Bounds the picture at 72 columns, twelve nodes, the code's names",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave",
+          "credits": ["curiositech", "awesome-copilot"]
+        },
+        {
+          "passage": "written",
+          "text": "## Give each weight one meaning\n\n- Heavy or double lines for the one part the reader should watch.\n- Single lines for the structure.\n- Dashed lines for what is optional, asynchronous or removed.\n\nA weight that means nothing is decoration: stars, nested frames and emphasis on every box hide the point, so leave them out.",
+          "kind": "method",
+          "reason": "diagramming-expert's visual hierarchy cut to three weights with one meaning each, and its rule against chartjunk.",
+          "gist": "Gives the three line weights one meaning each",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech"]
+        },
+        {
+          "passage": "written",
+          "text": "## Draw the arrows so they read\n\n- One arrowhead style in a picture: `──►` and `▼`, or `->` and `v` in plain ASCII.\n- Flow runs left to right or top to bottom; an edge that goes back is routed around the outside, never across the picture.\n- Lines do not cross. When two would, move a node or split the picture in two.\n- Label an edge only when it means something its target does not already say.",
+          "kind": "method",
+          "reason": "diagramming-expert's rule against spaghetti arrows, made into one arrowhead style, one flow direction, no crossings and routed back edges.",
+          "gist": "Draws arrows in one style and direction, with no crossings",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech"]
+        },
+        {
+          "passage": "written",
+          "text": "## Group what belongs together\n\nEnclose related nodes in one box with a title, and keep unrelated ones apart: nearness and enclosure carry the grouping, so the picture needs no legend. Add a legend only for a symbol the picture cannot do without.",
+          "kind": "method",
+          "reason": "diagramming-expert's chunking and enclosure, with a legend only where a symbol needs one.",
+          "gist": "Groups related nodes by enclosure, a legend only when needed",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech"]
+        },
+        {
+          "passage": "written",
+          "text": "## The characters\n\n```text\nlight     ┌─┬─┐  │  ├─┼─┤  └─┴─┘\nrounded   ╭───╮  ╰───╯\nheavy     ┏━┳━┓  ┃  ┗━┻━┛\ndouble    ╔═╦═╗  ║  ╚═╩═╝\ndashed    ┄┄┄  ┆\narrows    ──►  ◄──  ◄──►  ▲  ▼\ntree      ├──  └──  │\nascii     +--+  |  -->  <--  v  ^\n```\n\nDraw with the ASCII set when the surface may not render box drawing, such as a terminal whose font lacks it.",
+          "kind": "method",
+          "reason": "The character set of diagramming-expert's reference and plantuml-ascii's box-drawing output, with the ASCII fallback.",
+          "gist": "Lists the box, arrow and tree characters and the ASCII set",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech", "awesome-copilot"]
+        },
+        {
+          "passage": "written",
+          "text": "## The forms\n\nEach form is the smallest that shows its kind: take its shape and give it the code's names.\n\nA flow with a decision:\n\n```text\n┌──────────┐    ┌──────────────┐ yes ┌────────────┐\n│ readSave │───►│ isUnchanged? │────►│ cachedFile │\n└──────────┘    └──────┬───────┘     └────────────┘\n                       │ no\n                       ▼\n                ┌────────────┐\n                │ writeFile  │\n                └────────────┘\n```\n\nLayers:\n\n```text\n┌─────────────────────────────┐\n│ routes/     http handlers   │\n├─────────────────────────────┤\n│ services/   the domain      │\n├─────────────────────────────┤\n│ store/      the database    │\n└─────────────────────────────┘\n```\n\nA sequence:\n\n```text\n client           api             db\n   │  POST /save   │               │\n   │──────────────►│  INSERT       │\n   │               │──────────────►│\n   │               │◄──────────────│\n   │◄──────────────│               │\n   │  201          │               │\n```\n\nA state chart, its one back edge routed around the outside:\n\n```text\n┌───────┐ submit ┌─────────┐ approve ┌──────────┐\n│ draft │───────►│ pending │────────►│ approved │\n└───────┘        └────┬────┘         └──────────┘\n    ▲                 │ reject\n    └─────────────────┘\n```\n\nA class box and its relation:\n\n```text\n┌───────────────┐ 1     * ┌─────────────────┐\n│ User          │─────────│ Order           │\n├───────────────┤         ├─────────────────┤\n│ id: int       │         │ id: int         │\n│ email: string │         │ total: number   │\n├───────────────┤         ├─────────────────┤\n│ login(): bool │         │ total(): number │\n└───────────────┘         └─────────────────┘\n```\n\nA deployment, the asynchronous edge dashed:\n\n```text\n          ┌───────────────┐\n          │ load balancer │\n          └───────┬───────┘\n          ┌───────┴───────┐\n          ▼               ▼\n     ┌─────────┐     ┌─────────┐\n     │ web-1   │     │ web-2   │\n     └────┬────┘     └────┬────┘\n          └───────┬───────┘\n                  │\n           ┌──────▼─────┐ replicate ┌────────────┐\n           │ primary db │┄┄┄┄┄┄┄┄┄┄►│ replica db │\n           └────────────┘           └────────────┘\n```\n\nThe other kinds keep the same parts: a tree is the shallow file tree of `SKILL.md`; a component picture is the deployment's boxes and lines, one box per component; a comparison is two boxes side by side whose rows line up; a cycle is a flow whose last arrow returns around the outside; a matrix is a table; a timeline is one vertical line with a `├──` entry per event; a use case picture is the actors on the left and the system's box with its actions inside.",
+          "kind": "method",
+          "reason": "One small form per main kind, drawn by hand within the bounds, from both sources' patterns; plantuml-ascii's program is declined.",
+          "gist": "Gives one small drawn form for each main kind",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech", "awesome-copilot"]
+        },
+        {
+          "passage": "written",
+          "text": "## Check it before you send it\n\n- Draw it in a fenced `text` block, so it keeps its fixed-width font, right after the sentence it explains.\n- Count the widest line: 72 columns at most. Close every box and line up every column.\n- Read it once as the owner would, without the code beside it: does it answer the question the sentence raised? If it does not, cut it or change its kind.",
+          "kind": "method",
+          "reason": "The picture is placed after the sentence it explains and checked for width, closed boxes and whether it answers the question.",
+          "gist": "Places the picture and checks its width before the reply",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": ["curiositech", "awesome-copilot"]
         }
       ]
     },
@@ -127,10 +287,10 @@
         },
         {
           "passage": "written",
-          "text": "## Where its work lands\n\nDuring a change a page is a working file under `.greenline/tmp/<id>/`, such as `.greenline/tmp/<id>/{description}.html`.",
+          "text": "## Where its work lands\n\nA picture or a view the owner asks to keep is drawn by a fresh agent under the change's working files, `.greenline/tmp/<id>/`, by the brief and the form `.greenline/WORK.md` gives (\"Durable visuals\"), and kept with `greenline picture keep <file> --change <id>`, which writes it and its manifest `<slug>.visual.json` under `.greenline/visuals/<id>/` together, the owner's words its `ask`; every other write into the change's folder of the visual home is refused. The surface's `renders` fact is the status line's `surface:` line; `greenline status` prints the running surface's row. The count reads every text picture, a box drawing by its boxes, a tree by its lines, a sequence by its lifelines and a drawing of labels joined by arrows by its labels, and a mermaid picture by its nodes; pseudocode carries no drawing glyphs and is never counted. Where the harness hands the hooks the reply's text, the next turn's status line names a picture past twelve nodes or 72 columns, `picture: one past its cap at turn <n>`; a turn that changed code and drew no shape, `picture: the turn changed <n> files and drew no shape`; a second offer in a change, `offer: a second picture offer in this change`; and an offer of a picture status names drifting, stale or deleted, `offer: the offer at turn <n> remakes <id>`; each a notice, never a refusal, and elsewhere these words hold alone. The offers are counted per change in a working file under `.greenline/tmp/sessions/`, never in the record, and no turn's end is held for a picture. Before a durable picture is drawn, its brief stands at `.greenline/tmp/<id>/pictures/<slug>.brief.md`, one line each, `- question:`, `- form:`, `- nodes:`, `- finish:` (text, branded SVG or interactive), `- palette:` and `- reader:`; `greenline picture keep` reads it into the manifest's `brief`, refuses one that does not read, and `greenline status` names a kept picture without one (GL0606).",
           "kind": "home",
-          "reason": "show-me's mechanics: the working files a page sits in during a change, held apart since J-93 S2.",
-          "gist": "The working files a page sits in"
+          "reason": "show-me's mechanics since J-110 S4: an accepted picture made into the change's folder of the visual home with its manifest by the work guide's brief, and the surface's renders fact on the status line; since J-134 S1 the hook's line for a rubric turn that carried neither a picture nor an offer. J-147 S3: the offer memory in the record and the index, and the two holds with their kinds. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the offers' memory, the picture owed at a turn and the turn's end holds leave, since J-176 S1 removed them; a kept picture goes through greenline picture keep. J-204 S1 (the register's row of 2026-11-08, \"One offer per change at the caps\"): the count reads every text form, the turn's end names a code-moving turn that drew no shape, a second offer and a remake offer, and the brief's file and its notice.",
+          "gist": "Where an accepted picture lands, and where the renders fact shows"
         }
       ],
       "part": "references"
@@ -169,6 +329,96 @@
       "kind": "harness",
       "reason": "Upstream's Bash(open ...) is Claude Code's tool-call notation; the copy shows the plain shell command the harness's shell tool runs, at the greenline scratch path.",
       "gist": "The plain shell command replaces Claude Code's Bash(open) notation"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "A picture is drawn where its shape decides something, and the resulting shape of a change that moved one is drawn on the turn it lands; a lasting visual is made only on the owner's ask.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "The pictures, inline",
+      "cost": "free"
+    },
+    {
+      "promise": "Whether a turn draws, and in which of the six forms, is read from the table of the turn and the shape.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The reply shape",
+      "cost": "free"
+    },
+    {
+      "promise": "A turn that changed code and whose reply drew no shape is named at the next turn's mirror.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "picture:",
+      "cost": "free",
+      "oracle": "The pictures, the offer and the making"
+    },
+    {
+      "promise": "A kept picture is offered at most once per change, in its one line, and never as a lost picture's remake; a second offer or a remake offer is named at the next turn's mirror.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "offer:",
+      "cost": "free",
+      "oracle": "The pictures, the offer and the making"
+    },
+    {
+      "promise": "An inline picture keeps to 72 columns and twelve nodes; a larger one is never drawn inline, and the part that decides is drawn instead.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "picture:",
+      "cost": "free",
+      "oracle": "The pictures, the offer and the making"
+    },
+    {
+      "promise": "A mermaid block is drawn only where the status line's surface says renders mermaid, and never alone in a headless run; elsewhere the box drawing takes its place.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The pictures, inline",
+      "cost": "free"
+    },
+    {
+      "promise": "On the owner's ask a fresh agent makes the durable visual, at every mode; the session never writes a change's visual itself.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0604",
+      "cost": "free",
+      "oracle": "The pictures, the offer and the making"
+    },
+    {
+      "promise": "When the fresh agent returns, the reply gives the owner the address the viewer serves for the visual.",
+      "page": "method.md",
+      "kind": "gap",
+      "oracle": "The pictures, the home and the view",
+      "warrants": "prose",
+      "reason": "No hook reads the reply after a making for the address. No cited run or fix-round record names this failing."
+    },
+    {
+      "promise": "A durable visual lands only in the open change's folder of the visual home, .greenline/visuals/<id>/, beside its manifest.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap",
+      "oracle": "The pictures, the offer and the making"
+    }
+  ],
+  "triggers": [
+    {
+      "words": ["show me", "diagram", "draw", "picture", "visualize", "visualise", "sketch"],
+      "weight": 2,
+      "read": "whole"
+    },
+    {
+      "files": ["schema", "module"],
+      "steps": ["build", "close"],
+      "weight": 1,
+      "read": "part"
+    },
+    {
+      "steps": ["verify", "close"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
     }
   ]
 }

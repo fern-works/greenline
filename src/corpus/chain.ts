@@ -9,7 +9,7 @@ import {
   type ContractParseFailed,
 } from "../core/contract.ts";
 import { STEP_KIND, type Depth } from "../core/modes.ts";
-import type { RecipeMeasure, SourceMeasure } from "./measure.ts";
+import type { RecipeMeasure, RecordedSourceMeasure } from "./measure.ts";
 import { gistIssues } from "./recipe.ts";
 import type { SkillFile } from "./render.ts";
 
@@ -215,7 +215,7 @@ export type Previous = PreviousEntry | OldChainTip;
 /** A change entry's measure: S9's measure of the recipe, without the skill its subject names. */
 export interface EntryMeasure {
   readonly stub: boolean;
-  readonly sources: readonly SourceMeasure[];
+  readonly sources: readonly RecordedSourceMeasure[];
   readonly growth: number;
 }
 

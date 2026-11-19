@@ -9,6 +9,7 @@ import { readRepositoryManifest, readRepositoryDecisions, rosterOf } from "../re
 import type { FileIo } from "../fs/io.ts";
 import { snapshotWorkspace } from "../workspace.ts";
 import { presentHarnesses } from "../hooks.ts";
+import { uncommittedInstallation } from "../code-tree.ts";
 import { GL, diagnostic, type Diagnostic } from "./output.ts";
 import { type RepositoryEnvironment, envRead } from "./command-environment.ts";
 import { contractDiagnostics } from "./command-outcome.ts";
@@ -101,7 +102,33 @@ export function diagnoseInstallation(
 
   if (manifest._tag === "ok" && lock?._tag === "ok" && env.installation !== undefined)
     diagnostics.push(...driftDiagnostics(root, io, manifest.value, lock.value, env.installation));
+  diagnostics.push(...uncommittedInstallationWarning(root));
   return { diagnostics, connectors };
+}
+
+/**
+ * The one warning sync, status and the connectors' commands raise while an
+ * installed file differs from HEAD (J-229 S1, j217c-workspace-010 finding
+ * 5): their count, those under `.greenline/` and those outside it counted
+ * apart, and the act that settles them, the change that is open, or the
+ * next one, committing them with its work. greenline never commits, and a
+ * commit of them alone is refused while no change is open.
+ * @param root the repository root
+ * @returns the warning, or none where nothing installed differs or git cannot say
+ */
+export function uncommittedInstallationWarning(root: string): readonly Diagnostic[] {
+  const reading = uncommittedInstallation(root);
+  if (reading.kind === "unknown") return [];
+  const total = reading.workspace.length + reading.outside.length;
+  if (total === 0) return [];
+  return [
+    diagnostic(
+      GL.installationUncommitted,
+      "warning",
+      `commit the ${total} installed file${total === 1 ? "" : "s"} that differ${total === 1 ? "s" : ""} from HEAD with the work of the change that is open, or of the next one: ${reading.workspace.length} under .greenline/ and ${reading.outside.length} outside it, which git status lists; greenline never commits, and pre-commit refuses a commit of them alone while no change is open`,
+      LOCK,
+    ),
+  ];
 }
 
 /** The installed files that differ from what the settings generate, and the projection's unresolved references. */

@@ -1,0 +1,259 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-frame-offers-invariants",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-build-four-lines",
+    "sha256": "223ef00ab796d4c9291b66a5f7d49f9e84a89173d69f5995426583526253e3f9"
+  },
+  "subject": "skill:frame",
+  "recipe": "fb38576f282ac7c51b0448fc4f097a740b13f90e74af04960734a68aaf73919c",
+  "result": "feec9e584f93bba417463369101250b2d2b3f8b4e078a13c330b25412d4452e2",
+  "pages": [
+    {
+      "path": "method.md"
+    }
+  ],
+  "gist": "Frame offers the invariants start beside a contract or security floor",
+  "reason": "The method page offers the invariants start before the proposal where a floor on a public contract or a security boundary stands, its marked entries the proposal's floors.",
+  "authorisedBy": {
+    "date": "2026-11-07",
+    "words": "the ruling of 2026-11-07 on J-195 S1, under the operator's words of 2026-11-07 on the phrasebook: the invariants start is offered at frame beside a floor on a public contract or a security boundary"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, \"yes amend, with one change\": frame is made from grilling, grill-with-docs and the questioning half of domain-modeling, with research and prototype as its reference files"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the R3 rulings of 2026-10-08, \"yes go ahead\": interview-me, brainstorming's intent and approaches passages and principle-exhaust-the-design-space combine into it, and grilling's whole frontier in one round stands over one question per message"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: the agent looks a fact up itself before the next round and research reads itself or through one delegated agent the step waits for"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R20 of 2026-10-07, \"not worktrees also\": prototype works in the one checkout, never a worktree or a second checkout"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the rulings of 2026-10-04, \"cool then lock everything in\", on the depths a mode gives a step and on grill-with-docs as a stub (C15)"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "research is not a stub (the decisions row of 2026-10-07)"
+    },
+    {
+      "date": "2026-09-11",
+      "words": "the prototype rules carried from series-s7-roster-2026-09-11, superseded by R20 on the checkout alone"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-11",
+      "words": "R44 of 2026-10-11, \"S6, right after S5, same worker, normal route\", and the ruling made that day under the operator's delegation (\"i want you to finish implementing them from here and out\"): frame's interview moves to references/interview.md, which its written depth reads"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": one agent at a time through the harness's delegation, in the change's one checkout and never a worktree; one brief for every fresh agent, the change's front matter, its acceptance, its id, the path of its report and the skill it works by, then the step's extras, and no fresh agent delegates; every fresh agent's report is <step>-<n>.md in the change's folder; the fix rounds are per step, and a fix after verify is not reviewed again outside a loop without the owner's word; verify's verdicts stand as the agent gave them; and where the harness has no delegation the block's fallback runs every depth above written"
+    },
+    {
+      "date": "2026-10-12",
+      "words": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\": frame's interview page names the repository's glossary, its rule that facts are the agent's to find and decisions the owner's stands on frame's opening for both depths, and frame loaded by a start with no change open runs at the written depth"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's card of 2026-10-14, \"The record's frame section\": a start's four frame answers live in the change record's frame section, and the start writes no section of its own for them"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", and the card of that day, \"Words at the list edit the entry; at a ticket's open they override\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a request that names a mode is taken as chosen and goes on with no yes awaited, a question asked only for a choice it leaves open; the record names every floor found and, where the owner names a mode below one, says so with choice owner and the floor's reason; a mode named at the ticket list edits the entry and one named at a ticket's open overrides it; the builder reads the reviewer's brief at the inline depth only; and at the written frame depth every open behaviour goes to the owner through the interview, an inline frame line crediting the owner only with the owner's answers"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, item 3), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", with the design N-56 states: quick a one-line frame and acceptance, regular a written frame and plan with no interview, careful the interview; and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\": at regular this section stands over the written depth's interview, which the ruling of 2026-10-17 gave every written frame, until the step's page is re-cut"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-20",
+      "words": "The operator's card of 2026-10-20 that opened J-98, \"All of it: a two-slice fast job before 0.1.0 (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-20): every finding of the cold review REV-lean-design and the comparison J-60 S3b is fixed before 0.1.0"
+    },
+    {
+      "date": "2026-10-21",
+      "words": "The operator's cards of 2026-10-21, \"Fix first, then ship (Recommended)\" and the scope card naming 1 to 7 (docs/DECISIONS.md, the rows of 2026-10-21): 0.1.0 ships with its hooks whole, and frame, groundwork and build say what the owner's yes is, that the setup record precedes the setup commit, that a trailer-shaped line of another key after a refusal is no answer to it, and that scratch goes under the change's own id"
+    },
+    {
+      "date": "2026-10-21",
+      "words": "The operator's card of 2026-10-21, \"A record for every write (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): a close asked for by name that writes only to the decisions book, the ADR home or the glossary, and the orientation's survey writing its result into the knowledge homes, each open a quick record first, so the hooks' hold on a workspace while no change is open is one rule with no list of exempt paths"
+    },
+    {
+      "date": "2026-10-21",
+      "words": "The operator's card of 2026-10-21, \"Fix it in this job (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-21): no page says the request's own words let the agent go on without a yes, a standing choice applying only where the proceed setting admits the mode"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112, under the operator's words \"for smaller decisions go with your recommended suggestions\": a rewrite that keeps the rule is taken; a cut that removes a rule, a test or a calibration greenline's recipe used is kept as a written passage crediting its source"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112 S2, under the operator's words \"for smaller decisions go with your recommended suggestions\": the seven stub flags are not stubs and keep their text; the method upstream's edit pass at eb4db2b5 cut stays as written passages crediting pstack; elsewhere upstream's change is taken"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The register's rows of 2026-10-22 on the ground and its two-way offer, on the operator's words of 2026-10-22, \"greenline should cater to work in any way the user wants ... it should offer choices itself, a branch or a worktree for the job in hand and then how to merge it to main or open a pr\" and \"the agent offers either to use worktree or just the branch on main ... personally i would pick branch only\", and the card \"A branch of its own (Recommended)\": with a remote the proposal recommends a branch of its own, greenline/<id> from the default, and names a worktree of its own as the one alternative, recommended first only when the checkout holds unfinished work, another change is open or more than one agent runs; the worktree is made with the harness's native tool where it has one and with git under the repository's worktree directory where it has none, with the project's setup and a clean baseline; the manifest's ground is a standing preference the proposal states; with no remote the current branch holds the change; the record's ground line names it"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The register's row of 2026-10-22 on the agent's identity, on the operator's words of 2026-10-22 and the card \"Record and commit trailer (Recommended)\": the record's front matter carries agent: <harness>/<model>, the model as the harness states it to the agent, and every commit of the change carries Greenline-Agent: <harness>/<model> beside Greenline-Change; the proposal's facts table shows it"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "J-114's finalise words of 2026-10-25, the operator's words of 2026-10-24, \"lock in all the jobs\" and \"drive the implementation of the full job board till the end\", over its S2's amendment from J-107's agent walk: frame's proposal and close's landing and stops name the reply's facts table and its progress line in one sentence each, and the rubric's build row gives what changed its place"
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's row of 2026-10-23 on frame's nodes, on the operator's words of 2026-10-23 and the card \"Take the fourteen (Recommended)\": frame thinks a request through its default nodes, every question carrying one, opens only the nodes the request touches, says in one line which it left closed and why, never asks for a node's sake and settles purpose and scope in the first round, the interface node being the design step's as the records the operator locked on 2026-10-24 hold; the frame section's questions take one list form from which the CLI derives the frame map the inspector draws; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's row of 2026-10-23 on the interview's channel, on the operator's words of 2026-10-23, \"if the harness have a better UI UX tool for asking questions it must use it\", and the card \"Cards where they render, reply otherwise (Recommended)\": a round goes through the harness's question tool when the session is interactive and the tool renders to the owner, the recommended answer first and marked, and in the reply otherwise; the adapter prints questions cards or questions reply in the status mirror and the agent follows it, narrowing J-98's rule to the surfaces where cards do not render; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's rows of 2026-10-23 on frame's nodes and on its pre-research, on the operator's words of 2026-10-23 and the cards \"Take the fourteen (Recommended)\" and \"One at a time (Recommended)\": frame reads the code the request touches before the first round and may propose research at any round, each topic with its node, its source class and what it would change, run on the owner's acceptance by fresh agents working by the new start research, papers through arXiv and the citation graphs, the high-signal web and code on GitHub, one at a time, each report awaited before the next starts, the reports cited by the frame section; J-119's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": athola's papers the spine of the papers page with arxiv-analyze's read order and summary inserted and arxiv-search lifted, the citation graph and its backoff in greenline's words, the GitHub practice greenline's own, no rate figures, arXiv's own HTML first, the fetched texts kept in the change's working files, anonymous calls, no paying or emailing, the owner's gh session only, patterns never code; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-23",
+      "words": "The register's row of 2026-10-23 on the discussion, on the operator's words of 2026-10-23 (\"a system in which user can simply discuss new feature ideas without them outright becoming changes\") and the card \"A ledger record kind, as proposed (Recommended)\": a discussion is a record kind of the ledger, .greenline/ledger/discussions/<id>.md with a folder beside it, an idea explored with frame's engine at the written depth, with no mode, no ground, no branch and no checks, its states open, parked, declined, promoted and merged set on the owner's word, committed with the trailer Greenline-Discussion: <id>; greenline status and router list discussions beside the changes; The register's row of 2026-10-23 on the routing and the promotion, on the operator's card \"Read the shape, offer the other; one to many (Recommended)\": a concrete deliverable is a change and a whether, what or how about something not yet built a discussion, the agent saying what it read it as and offering the other in one sentence when unsure, one word overriding; a discussion promotes one or many changes, each change's proposal citing its discussion with from, its frame starting from the discussion's decisions and the discussion's research copied into the change's folder, a large discussion promoting a planning change; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-26",
+      "words": "J-129's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the cards of 2026-10-26: Words must be the owner's verdict; Committed before the act. The QA series' blocking finding on a tree of documents without code: the orientation is the one greenline status names, groundwork only on an empty tree, the survey of the documents otherwise"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-143's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; lock in all the jobs; and of 2026-10-27: everything decided mid implementation becomes part of the 0.2.0 release; the product and workshop jobs first, then the codex and linear runs on the final 0.2.0 build"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; and the register's row of 2026-10-27 on the reply's polish, ruled at the interview of that night on the operator's words \"everything needs to be 5 star\" and the card \"Brainstorm now, ship in 0.2.0\": the proposal is one sentence, the table, the open points with their defaults and a yes, its rituals gone; three cards a round answerable in one word, free text read, no glyphs or tags in a reply's questions; one interim line per act in the owner's words; the close in four parts with an offer made once a session; and the interface waiver asked once per workspace in plain words"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-144's one fix cycle on its verdict review of 2026-10-28, under J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted: a refusal reaches the owner by its first sentence in the owner's terms, and a card's option is one word"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-151's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card Yes, go parallel, QA fresh at the end: under codex exec the surface line says questions reply, the question tool is not called, and the round stands in the reply as numbered answers, the recommended first with its label and its reason, the owner's next request read as the answers (J-151 S1)"
+    },
+    {
+      "date": "2026-10-30",
+      "words": "J-151's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card Yes, go parallel, QA fresh at the end; and J-151 S2's rulings of 2026-10-30, each on the worker's recommendation under those words: the owner's words that answered the proposal quoted by the hooks in a yes line beside choice, an accepted those words never gave taken out so owner-yes holds the first commit; research topics written as - R<n> items beside the questions, a web fetch at frame refused until one's accepted line stands, under owner-yes (J-151 S2)"
+    },
+    {
+      "date": "2026-10-31",
+      "words": "J-174's finalise words, the operator's words of 2026-10-31: okay then lets kick it off, on the final order laid out before them, whose stage C reads: findings from the two runs become fix jobs, one worker each, fast, review waived; only the failed scenarios rerun"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The register's rows of 2026-11-05, \"The keeper over the oracle\", \"The seven cuts\" and \"The record's lines are the agent's\", on the operator's words of that day, \"okay we will do this as you laid out\", the card \"Cut all seven (Recommended)\" and \"records have to be written by the agent, we need semantic fidelity in them\": the reply carries no facts table, no offer ritual, every record line the agent's, the skills a change owes printed from trigger rows, the research report filed through a command"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The register's row of 2026-11-06, \"Words to implement without asking are no yes at a floor\": where proceed allows the proposed mode the work starts with the first reply stating the mode and why; and the operator's words of 2026-11-06 opening J-186, everything on super fast mode, the replays' blocking findings opening a fix"
+    },
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    },
+    {
+      "date": "2026-11-07",
+      "words": "the ruling of 2026-11-07 on J-195 S1, under the operator's words of 2026-11-07 on the phrasebook: the invariants start is offered at frame beside a floor on a public contract or a security boundary"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "mattpocock-skills",
+        "segments": 177,
+        "taken": 133,
+        "exact": 127,
+        "retention": 0.9548872180451128,
+        "coverage": 0.751412429378531,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "addyosmani",
+        "segments": 171,
+        "taken": 21,
+        "exact": 21,
+        "retention": 1,
+        "coverage": 0.12280701754385964,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "superpowers",
+        "segments": 182,
+        "taken": 6,
+        "exact": 6,
+        "retention": 1,
+        "coverage": 0.03296703296703297,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 2,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 6619
+  }
+}

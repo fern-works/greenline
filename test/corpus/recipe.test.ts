@@ -328,6 +328,41 @@ describe("parseRecipe", () => {
       ),
     ).toEqual(["copies[1].gist: a gist is a clause of at least one word"]);
   });
+
+  it("J-182 S1 keeps a drop's load-test verdict and its failure, and a decoration's verdict alone", () => {
+    const recipe = fixtureRecipe();
+    const [drop] = recipe.drops;
+    if (drop === undefined) throw new Error("the fixture drops one segment");
+    drop.verdict = "load-bearing";
+    drop.failure = "the agent reports before the whole suite has run again";
+    const decoration = { ...drop, segment: SKILL_IDS[7], verdict: "decoration" };
+    delete decoration.failure;
+    const result = parsed(recipe);
+    if (result._tag === "err") throw result.error;
+    expect(result.value.drops[0]).toMatchObject({
+      verdict: "load-bearing",
+      failure: "the agent reports before the whole suite has run again",
+    });
+    expect(parseIssues({ ...recipe, drops: [decoration] })).toEqual(["parsed"]);
+  });
+
+  it("J-182 S1 refuses a load-bearing or scaffolding drop with no failure, a verdict outside the four and a failure with no verdict", () => {
+    const recipe = fixtureRecipe();
+    const [drop] = recipe.drops;
+    if (drop === undefined) throw new Error("the fixture drops one segment");
+    const drops = [
+      { ...drop, verdict: "load-bearing" },
+      { ...drop, verdict: "scaffolding" },
+      { ...drop, verdict: "ornament" },
+      { ...drop, failure: "the agent skips the suite" },
+    ];
+    expect(parseIssues({ ...recipe, drops })).toEqual([
+      "drops[0].failure: a load-bearing drop names the failure its load test named, the behaviour the agent loses without the passage",
+      "drops[1].failure: a scaffolding drop names the failure its load test named, the behaviour the agent loses without the passage",
+      "drops[2].verdict: a drop's verdict is one of load-bearing, scaffolding, duplicate and decoration",
+      "drops[3].verdict: a drop that names a failure carries the load test's verdict that named it",
+    ]);
+  });
 });
 
 describe("checkRecipe", () => {
@@ -515,7 +550,7 @@ describe("checkRecipe", () => {
 describe("S1 the gists of this tree's recipes", () => {
   const recipes = join(import.meta.dirname, "..", "..", "corpus", "recipes");
   /** The step skills whose every account carries a gist (J-59 S1). */
-  const STEPS = ["frame", "plan", "anticipate", "build", "review", "verify", "close"];
+  const STEPS = ["frame", "design", "plan", "anticipate", "build", "review", "verify", "close"];
   /** The starts whose every account carries a gist (J-59 S2). */
   const STARTS = [
     "router",
@@ -530,6 +565,13 @@ describe("S1 the gists of this tree's recipes", () => {
     "constraint-driven-development",
     "correct",
     "improve-instructions",
+    "verify-formally",
+    "explain",
+    "research",
+    "design-survey",
+    "redesign",
+    "state-machines",
+    "invariants",
   ];
   /** The habits whose every account carries a gist (J-59 S3). */
   const HABITS = [
@@ -545,12 +587,15 @@ describe("S1 the gists of this tree's recipes", () => {
     "progress-check",
     "use-garden",
     "diagram-design",
+    "anatomy",
     "architecture-map",
     "build-the-lever",
     "guard-the-context-window",
     "pr-writing",
     "to-questionnaire",
     "benchmark-checklist",
+    // J-123 S6: the catalog the design step deals from, an extra.
+    "interface-catalog",
   ];
   /** Every recipe of the roster, each carrying its gists. */
   const GISTED = [...STEPS, ...STARTS, ...HABITS];
@@ -615,21 +660,81 @@ describe("S1 the gists of this tree's recipes", () => {
     // J-93 S1 added 29 accounts, the seven steps' references pages, each with its own reason;
     // J-93 S2 folded the depth bullets and the moved mechanics into those pages.
     // J-98 S1 adds frame interview page's passage on the reply that ends the turn.
-    expect(gisted(STEPS)).toEqual({ count: 2269, reasons: 512 });
+    // J-112 refreshes diagram-design, pstack, mattpocock-skills, superpowers and addyosmani:
+    // new upstream segments read and taken or dropped, each with its account and gist.
+    // J-111 adds verify's careful passage on a covering verification.
+    // J-110 S4 adds close's checklist item for the visuals.
+    // J-117 adds frame's nodes, the question list form, the channel and the research proposal.
+    // J-123 adds design, its front, its references and its forty-seven pages with their checked rules,
+    // moves frame's UI prototype page there, and adds an interface passage to build, review, verify and close.
+    // J-124 S4 adds design's marks page, five written passages under one reason.
+    // J-144 S2 rewrites frame's two round sentences as passages crediting grilling, their drops beside them,
+    // adds build's lines while it runs, and moves the proposal, the cards, the close and the waiver to their forms.
+    // J-147 adds plan's passage on its diagram and the greenfield map's first offer.
+    // J-148 S3 gives two of design's references passages, the lock's on home.md and the close's line on marks.md, whose reason others shared, a reason of their own.
+    // J-174 amends passages of eight steps' pages, each reason gaining its sentence, so two that shared a reason have their own.
+    // J-180 S1 cuts each front under 300 words: a passage split between the front and the method page keeps its
+    // account on both halves, and the method page's title, the front's pointer and close's handoff add their own.
+    // J-186 S1 gives frame's front its no-wait sentence under a reason of its own, its scope sentence going.
+    // J-195 S1 and S2 add frame's constraints sentence and its offer of the invariants start, anticipate's three
+    // questions and build's four lines, each phrase passage with its reason and the sentences that carry it.
+    expect(gisted(STEPS)).toEqual({ count: 2912, reasons: 683 });
   });
 
   it("S2 gives every account of the twelve starts a gist within the rule, without its kind word or a never-word, the same reason always the same gist", () => {
     // J-93 S2 gave the starts that carry a mechanic a references page and a pointer to it.
     // J-98 S1 adds groundwork's section on the setup change's commit.
-    expect(gisted(STARTS)).toEqual({ count: 1181, reasons: 283 });
+    // J-112 refreshes diagram-design, pstack, mattpocock-skills, superpowers and addyosmani:
+    // new upstream segments read and taken or dropped, each with its account and gist.
+    // J-111 adds verify-formally and router's two rows of the map.
+    // J-110 S7 adds explain, thirteen written passages, each its own reason.
+    // J-117 S3 adds research: its pages' written passages, two edits and the drops of its two sources.
+    // J-123 S3 adds design-survey and redesign, and an interface passage to router, groundwork and architecture-survey.
+    // J-147 S2 adds the map's first offer to groundwork and architecture-survey under one reason.
+    // J-175 S1 takes that offer out of both, each reason gaining its own sentence, so the shared reason splits in two.
+    // J-180 S1 splits passages between each front and its method page, and adds the page's title, the pointer and verify-formally's handoff.
+    // J-195 S1 adds the starts state-machines and invariants, and architecture-survey's offer of the first;
+    // state-machines' path stands in its handoff, so it carries no references page.
+    expect(gisted(STARTS)).toEqual({ count: 1485, reasons: 400 });
   });
 
   it("S3 gives every account of the eighteen habits a gist within the rule, without its kind word or a never-word, the same reason always the same gist", () => {
-    expect(gisted(HABITS)).toEqual({ count: 1546, reasons: 346 });
+    // J-112 refreshes diagram-design, pstack, mattpocock-skills, superpowers and addyosmani:
+    // new upstream segments read and taken or dropped, each with its account and gist.
+    // J-111 adds anatomy, show-me's drawing page and pr-writing's change outline.
+    // J-107 S3 re-cuts prose: answer-plainly's 24 taken segments become drops, one written passage goes.
+    // J-110 S4 adds show-me's harness table and pr-writing's rule on the visuals.
+    // J-123 S3 adds pr-writing's rule for an interface change; S6 the extra habit interface-catalog, eight passages and its data.
+    // J-132 S1 moves ponytail's simplify page to the first rung and tdd's pages into the loop's rules.
+    // J-144 S5 points at anatomy's walkthrough where the workflow starts and at tdd's references page where its commands start.
+    // J-147 S4 adds show-me's table of kinds, and moves show-me's and architecture-map's accounts.
+    // J-180 S1 splits passages between each front and its method page, and adds the page's title and the pointer.
+    // J-185 S1 takes 30 of code-simplification's dropped segments back onto ponytail's simplify page, its drops' reasons split by the load test's verdicts.
+    // J-195 S2 adds tdd's careful first test, the operator's phrase between two sentences of its own.
+    // J-204 S1 adds show-me's decision table and the brief before a diagram, a figure and the map, and amends seven passages' reasons.
+    expect(gisted(HABITS)).toEqual({ count: 2064, reasons: 398 });
   });
 
   it("S3 gives the same reason the same gist across the whole roster, and the roster is every recipe but the modes recipe", () => {
-    expect(gisted(GISTED)).toEqual({ count: 4996, reasons: 1139 });
+    // J-112 refreshes diagram-design, pstack, mattpocock-skills, superpowers and addyosmani:
+    // new upstream segments read and taken or dropped, each with its account and gist.
+    // J-111 adds verify-formally, anatomy and the passages of verify, router, show-me and pr-writing.
+    // J-107 S3 re-cuts prose: answer-plainly's 24 taken segments become drops, one written passage goes.
+    // J-110 adds explain, show-me's harness table, pr-writing's rule and close's visuals item.
+    // J-117 adds research and frame's nodes, list form, channel and research proposal.
+    // J-123 adds design, design-survey and redesign, and the interface passages of eight skills.
+    // J-124 S4 adds design's marks page, five written passages under one reason.
+    // J-132 S1 moves ponytail's simplify page to the first rung and tdd's pages into the loop's rules.
+    // J-144 S2 and S5 add the reply's forms to frame, build, close and design, and the two roster pointers.
+    // J-147 adds show-me's table of kinds and the first map's offer to plan, groundwork and architecture-survey.
+    // J-174 amends passages of eight steps and the redesign start, two shared reasons becoming their own.
+    // J-175 S1 takes the map's offer out of groundwork and architecture-survey, their shared reason becoming two.
+    // J-180 S1 cuts every front under 300 words, its method page's title and pointer and two handoffs adding reasons.
+    // J-186 S1 gives frame's front its no-wait sentence under a reason of its own.
+    // J-185 S1 takes 30 of code-simplification's dropped segments back onto ponytail's simplify page, its drops' reasons split by the load test's verdicts.
+    // J-195 S1 and S2 add the phrasebook's two starts and its passages on frame, anticipate, build, tdd and architecture-survey.
+    // J-204 S1 adds show-me's decision table and the brief before a diagram, a figure and the map, and amends seven passages' reasons.
+    expect(gisted(GISTED)).toEqual({ count: 6461, reasons: 1468 });
     const roster = readdirSync(recipes)
       .filter((file) => file.endsWith(".json") && file !== "modes.json")
       .map((file) => file.slice(0, -".json".length));

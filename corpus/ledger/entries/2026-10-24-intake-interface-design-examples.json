@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-interface-design-examples",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-hallmark-lint-hook",
+    "sha256": "69209a737b987d535c6a5b8e0e867ce9e9f897a9755c96da757a5427ddd3c532"
+  },
+  "source": {
+    "repository": "https://github.com/Dammyjay93/interface-design",
+    "commit": "2f9be3206855bcb2d1d0af262c8bae25cba6658d",
+    "path": "reference/examples"
+  },
+  "pin": "interface-design",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Two example systems held: colours named, no values",
+  "reason": "Its example systems name a framework's palette colours with no values of their own; they wait for values.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': interface-design's two example systems are held"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': interface-design's two example systems are held"
+    }
+  ]
+}

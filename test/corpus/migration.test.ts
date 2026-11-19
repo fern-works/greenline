@@ -71,7 +71,11 @@ describe("S8c: the ledger's migration to the entry's form", () => {
 
   it("holds every clause of each roster skill's latest old entry inside exactly one item of that entry's list", () => {
     const latest = [...latestChanges(chain).values()];
-    expect(latest).toHaveLength(37);
+    // J-111 adds two roster skills, verify-formally and anatomy, each with its first change entry; J-110 S7 adds explain.
+    // J-117 S3 brings research back as a start, its latest change entry the one it enters with.
+    // J-123 adds the step design and the starts design-survey and redesign, each entering with its first change entry, and the extra habit interface-catalog (S6).
+    // J-195 S1 adds the starts state-machines and invariants, each entering with its first change entry.
+    expect(latest).toHaveLength(47);
     expect(latest.flatMap((entry) => strays(entry, before.entries[entry.id] ?? []))).toEqual([]);
   });
 

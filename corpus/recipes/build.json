@@ -11,14 +11,56 @@
       "value": "Turn a change's plan into working code one slice at a time, each slice tested, verified and committed with the change's trailer and the build green between slices, every command's output compared with what the plan expected and every deviation recorded, at the depth the change's mode gives the build step. Use when the mode reaches build, or when the owner asks to build a ready ticket or to make a small settled fix."
     }
   ],
-  "sources": ["addyosmani", "pstack", "superpowers", "mattpocock-skills"],
+  "sources": ["addyosmani", "pstack", "superpowers", "mattpocock-skills", "caveman", "phrasebook"],
   "files": [
     {
       "path": "SKILL.md",
       "passages": [
         {
           "passage": "written",
-          "text": "# Build\n\nBuild turns a change's plan into working code, one slice at a time, each slice tested, verified and committed before the next. It runs where the change's mode reaches the build step, at the depth the mode gives it, and alone when the owner asks to build a ready ticket, which opens its own change record under the mode approved with the ticket list, or to make a small settled fix, which opens its own change record under the mode the owner accepts. It reads the change record's plan section first, or its frame section where the mode skipped the plan, and for a ticket its entry in the plan directory's tickets file and the planning change's plan section. The builder runs every task itself, one after another, and no agent runs beside the conversation. A consequential choice the plan leaves open, a product or a contract choice, returns to the owner rather than being decided during the build. It never reviews its own result or verifies the change's claim: those are the review and verify steps'.",
+          "text": "# Build\n\nBuild turns a change's plan into working code, one slice at a time, each slice tested, verified and committed before the next.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the step skill's own voice: what build produces, where it runs (the step of the change's mode, at that mode's depth) and the direct ask it keeps from implement, a ready ticket, what it reads first, that the builder runs every task itself, that an open product or contract choice returns to the owner as implement said, and that review and verification are other steps'; it replaces implement's scope paragraph and the overviews of the three sources. Since J-93 S2 it names the tickets file by its noun.",
+          "gist": "Opens build: one slice at a time; the builder runs every task"
+        },
+        {
+          "passage": "written",
+          "text": "The builder runs every task itself, one after another, and no agent runs beside the conversation. A consequential choice the plan leaves open, a product or a contract choice, returns to the owner rather than being decided during the build. It never reviews its own result or verifies the change's claim: those are the review and verify steps'.",
+          "kind": "scope",
+          "reason": "The title and the opening paragraph in the step skill's own voice: what build produces, where it runs (the step of the change's mode, at that mode's depth) and the direct ask it keeps from implement, a ready ticket, what it reads first, that the builder runs every task itself, that an open product or contract choice returns to the owner as implement said, and that review and verification are other steps'; it replaces implement's scope paragraph and the overviews of the three sources. Since J-93 S2 it names the tickets file by its noun.",
+          "gist": "Opens build: one slice at a time; the builder runs every task",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Before the first slice read [method.md](method.md), the slices and the rules each keeps; before a task is called done, its completion contract.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the slices, the rules, the checklist, the comparison against the plan and the completion contract moved to the method page, and the front points there at the moment each is needed.",
+          "gist": "Points at the method page before the first slice and at done"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the change record's plan section in .greenline/ledger/<id>.md, or its frame section where the mode skipped the plan; for a ticket, its entry in the plan directory's tickets.md and the planning change's plan section\nProduces: the commits on the change's branch, each carrying the trailer Greenline-Change: <id>; the checks greenline check records under .greenline/ledger/<id>/checks/; the build section of .greenline/ledger/<id>.md, one line at the inline depth, and at the written depth what was built with the deviations from the plan, the approaches tried and dropped, and what was noticed and left alone\nNext: the next step of the change's mode",
+          "kind": "method",
+          "reason": "implement's handoff lines kept as greenline's under R22, naming what the build reads and writes in the change record and the branch its commits go to; a step skill's Next names the next step of the change's mode, never a fixed skill, where implement named delivery-review and record-architecture-decisions.",
+          "gist": "The handoff lists the build's outputs and names the mode's next step",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Build: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "It runs where the change's mode reaches the build step, at the depth the mode gives it, and alone when the owner asks to build a ready ticket, which opens its own change record under the mode approved with the ticket list, or to make a small settled fix, which opens its own change record under the mode the owner accepts. It reads the change record's plan section first, or its frame section where the mode skipped the plan, and for a ticket its entry in the plan directory's tickets file and the planning change's plan section.",
           "kind": "scope",
           "reason": "The title and the opening paragraph in the step skill's own voice: what build produces, where it runs (the step of the change's mode, at that mode's depth) and the direct ask it keeps from implement, a ready ticket, what it reads first, that the builder runs every task itself, that an open product or contract choice returns to the owner as implement said, and that review and verification are other steps'; it replaces implement's scope paragraph and the overviews of the three sources. Since J-93 S2 it names the tickets file by its noun.",
           "gist": "Opens build: one slice at a time; the builder runs every task"
@@ -51,10 +93,10 @@
         },
         {
           "passage": "written",
-          "text": "4. **Commit** -- save your progress with a descriptive message",
+          "text": "4. **Commit** -- by [the commit page](references/commits.md)",
           "kind": "pointer",
-          "reason": "Upstream's commit step without its pointer to a git workflow skill no install carries; where each commit goes and what it carries stand on build's references page since J-93 S2.",
-          "gist": "Commit each slice; its branch and trailer are the references page's",
+          "reason": "Upstream's commit step names greenline's commit page in place of its pointer to a git workflow skill no install carries; where each commit goes and what it carries stand on build's references page since J-93 S2.",
+          "gist": "Commit each slice by the commit page",
           "credits": ["addyosmani"],
           "join": "\n"
         },
@@ -216,6 +258,41 @@
         },
         {
           "passage": "written",
+          "text": "## Trying several ways\n\nWhere a slice's way is an implementation choice the plan leaves to the build, such as a query's shape, a tuning or a performance fix, and more than one way could serve, try them by four lines, each try a check the build records:",
+          "kind": "method",
+          "reason": "Where several ways could serve a slice, the operator's four lines steer the cheap tries, each a recorded check.",
+          "gist": "The operator's four lines steer cheap tries of several ways",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\": a phrase that is a stance at one step enters as a sentence on that step's method page, at the moment it serves"
+        },
+        {
+          "passage": "written",
+          "text": "1. Name the axes. 2. Iterate cheap, in parallel. 3. Keep moves that improve any axis and harm none. 4. Don't aim, let the frontier walk itself.",
+          "kind": "method",
+          "reason": "The operator's four numbered lines, lifted with the one recorded edit, where the build tries several ways.",
+          "gist": "The operator's four lines, lifted with one recorded edit",
+          "ruling": "the operator's words of 2026-11-07: we should lift phrases as they are with minimal changes",
+          "credits": ["phrasebook"],
+          "phrase": "godspeed-axes",
+          "edits": [
+            {
+              "find": " — ",
+              "replace": ", ",
+              "reason": "the fourth line's dash made a comma, since greenline's pages take no em dash; the one edit the operator's ruling of 2026-11-07 records"
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "A product or a contract choice still returns to the owner.",
+          "kind": "method",
+          "reason": "Keeps a consequential choice the owner's.",
+          "gist": "A consequential choice stays the owner's",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\": a phrase that is a stance at one step enters as a sentence on that step's method page, at the moment it serves",
+          "join": " "
+        },
+        {
+          "passage": "written",
           "text": "## Against the plan\n\nIn what follows the spec is the plan directory's spec, or, for a change that stands alone, its frame section with its acceptance criteria. Where the plan states what a step's command should show, run the command, read its output, and compare.",
           "kind": "home",
           "reason": "The bridge into executing-plans' three outcomes: its plan's Expected lines become what the plan states a step's command should show, and its spec is the plan directory's or, for a change that stands alone, the frame section with its acceptance criteria. Since J-93 S2 it names the spec by its noun.",
@@ -260,14 +337,193 @@
           "source": "superpowers",
           "file": "executing-plans/SKILL.md",
           "segments": ["2d2ed9a218f2"]
+        }
+      ]
+    },
+    {
+      "path": "references/commits.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Commits\n\nBuild reads this page each time a slice is about to be committed, and at every stop. A commit holds one tested slice in the form below, so a reviewer and a later reader can read it, revert it or find a fault in it alone. Commit once for each slice that leaves the change's checks green, once as the change's record first enters, and at every stop; stage the slice's files by name, never the whole tree, so a file other work left there stays out of the commit.",
+          "kind": "method",
+          "reason": "The commit page opens on when it is read and on the ruled cadence: one commit per green slice, the record's first and every stop, the slice's files staged by name.",
+          "gist": "The commit page's cadence: each green slice, the record, each stop",
+          "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked; J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number",
+          "credits": ["addyosmani", "caveman"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "git-workflow-and-versioning/SKILL.md",
+          "segments": [
+            "e5d495a5f591",
+            "3e48c726a8a9",
+            "02398ab8f396",
+            "d497110f8ed9",
+            "d945ceed3a2d"
+          ]
         },
         {
           "passage": "written",
-          "text": "## Handoff\n\nConsumes: the change record's plan section in .greenline/ledger/<id>.md, or its frame section where the mode skipped the plan; for a ticket, its entry in the plan directory's tickets.md and the planning change's plan section\nProduces: the commits on the change's branch, each carrying the trailer Greenline-Change: <id>; the checks greenline check records under .greenline/ledger/<id>/checks/; the build section of .greenline/ledger/<id>.md, one line at the inline depth, and at the written depth what was built with the deviations from the plan, the approaches tried and dropped, and what was noticed and left alone\nNext: the next step of the change's mode",
+          "text": "A slice that breaks is fixed forward from the last commit, by a new one: throwing its edits away is the owner's word, never a step of the build.",
           "kind": "method",
-          "reason": "implement's handoff lines kept as greenline's under R22, naming what the build reads and writes in the change record and the branch its commits go to; a step skill's Next names the next step of the change's mode, never a fixed skill, where implement named delivery-review and record-architecture-decisions.",
-          "gist": "The handoff lists the build's outputs and names the mode's next step",
-          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+          "reason": "The source's revert to the last good state becomes greenline's fixing forward, throwing a slice's edits away being the owner's word.",
+          "gist": "A revert to the last state becomes a fix forward",
+          "ruling": "J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number; The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "git-workflow-and-versioning/SKILL.md",
+          "segments": [
+            "ba5701a0067b",
+            "c8aab47ee195",
+            "518ea3040d44",
+            "508611283225",
+            "801792e9e195",
+            "6815f6fd544e"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "git-workflow-and-versioning/SKILL.md",
+          "segments": [
+            "9d72505fca94",
+            "3b755b5a2090",
+            "5e84c217a86b",
+            "0f35181c37ba",
+            "2add8d763c31",
+            "c2055cd19eb6",
+            "12f0fbec263b",
+            "a1f55e93082a",
+            "f7e45a23f369"
+          ],
+          "edits": [
+            {
+              "segment": "0f35181c37ba",
+              "find": "commit — and ideally a separate PR:",
+              "replace": "commit:",
+              "kind": "method",
+              "reason": "A change lands as one pull request, so separate concerns are separate commits within it, never pull requests of their own.",
+              "gist": "Separate concerns are separate commits in the one pull request",
+              "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## The message",
+          "kind": "scope",
+          "reason": "The message's heading names what caveman-commit's rules hold on this page, in place of its own heading for them.",
+          "gist": "The message's heading in place of the source's rules heading",
+          "credits": ["caveman"]
+        },
+        {
+          "passage": "taken",
+          "source": "caveman",
+          "file": "caveman-commit/SKILL.md",
+          "segments": ["4e7867f8d7e7", "decd219cecc6", "30f9db776277", "2196ba311af5"]
+        },
+        {
+          "passage": "taken",
+          "source": "caveman",
+          "file": "caveman-commit/SKILL.md",
+          "segments": [
+            "22759eeae8fe",
+            "27604b8f6936",
+            "b1ef7d09c51e",
+            "5709875e09e4",
+            "f9f340ca89b5",
+            "20a177dc4731",
+            "5457279e064d"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Where the repository keeps a commit convention of its own, such as a tracker's key, it governs the subject; where it keeps none for the capital after the colon, write lower case.",
+          "kind": "method",
+          "reason": "The repository's convention governs the subject, and lower case after the colon where it keeps none, as J-115 ruled the capital.",
+          "gist": "The repository's convention governs, lower case where it keeps none",
+          "ruling": "J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number",
+          "credits": ["caveman"]
+        },
+        {
+          "passage": "taken",
+          "source": "caveman",
+          "file": "caveman-commit/SKILL.md",
+          "segments": [
+            "9e6fe3e9e33e",
+            "681176a68291",
+            "b39c4781c495",
+            "b12ba95bf9c5",
+            "4969bd324769",
+            "aaa6f538fbab",
+            "060650a23c65",
+            "b5644a0534f7",
+            "4d56c5bbdc4a",
+            "6335ebf928d2",
+            "23c757863dec",
+            "a8bf249f9aaa",
+            "e06092d89e5a"
+          ]
+        },
+        {
+          "passage": "taken",
+          "source": "caveman",
+          "file": "caveman-commit/SKILL.md",
+          "segments": [
+            "0d19ab463197",
+            "57141a663cbf",
+            "91d13ad0f81f",
+            "1d456424c3dc",
+            "4d5e87022785",
+            "46f4983ce602",
+            "1d456424c3dc#2",
+            "746f01a80c5f",
+            "e6e0e1942997",
+            "8a5032a7950a",
+            "6a6c547841ca"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "The practice's own trailers stand last in every message, after any issue reference, as build's references page says: the change the commit belongs to and the agent that made it, the one attribution the practice asks for.",
+          "kind": "method",
+          "reason": "The two greenline trailers close every message, after the source's issue references, as the register's rows on the commit form and the identity rule.",
+          "gist": "The practice's two trailers stand last in every message",
+          "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked; The register's row of 2026-10-22 on the agent's identity, on the operator's words of 2026-10-22 and the card \"Record and commit trailer (Recommended)\": the record's front matter carries agent: <harness>/<model>, the model as the harness states it to the agent, and every commit of the change carries Greenline-Agent: <harness>/<model> beside Greenline-Change; the proposal's facts table shows it",
+          "credits": ["caveman"]
+        },
+        {
+          "passage": "written",
+          "text": "## The branch\n\nThe change's branch is its own, as frame's references page gives it:",
+          "kind": "scope",
+          "reason": "The branch premise enters under a heading of its own, the change's branch being the one frame's ground gives.",
+          "gist": "The branch premise under its own heading",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "git-workflow-and-versioning/SKILL.md",
+          "segments": ["414a64a0533b", "805d88166ebd"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "git-workflow-and-versioning/SKILL.md",
+          "segments": [
+            "80937328f4f7",
+            "08a26596c594",
+            "52c186027c8e",
+            "48b0afaaac5d",
+            "399249087965",
+            "12013ad1cdac",
+            "127e86d57ebb"
+          ]
         }
       ]
     },
@@ -284,27 +540,43 @@
         },
         {
           "passage": "written",
-          "text": "## The depths\n\n- **Inline, at quick.** Build the change by `SKILL.md`'s slices, and write the change record's build section, in `.greenline/ledger/<id>.md`, as one line: what was built and the check that shows it, with any deviation from the plan.\n- **Written, at regular and careful.** Build the change by `SKILL.md`'s slices, and write the build section: what was built, slice by slice; each deviation from the plan, with what you decided and why; each approach tried and dropped, with what dropped it; and what was noticed outside the task and left alone.",
+          "text": "## The depths\n\n- **Inline, at quick.** Build the change by `SKILL.md`'s slices, and write the change record's build section, in `.greenline/ledger/<id>.md`, as one line: what was built and the check that shows it, with any deviation from the plan.\n- **Written, at regular and careful.** Build the change by `SKILL.md`'s slices, and write the build section: what was built, slice by slice; each deviation from the plan, with what you decided and why; each approach tried and dropped, with what dropped it; and what was noticed outside the task and left alone. At careful the build starts only once anticipate's report is in and the plan answers its findings: a premise review run after the code is no premise review.",
           "kind": "method",
-          "reason": "Build's depths at each mode and what its section holds: quick's one line of what was built and its check, the written section's slices, deviations, dropped approaches and what was left alone; moved from the front's depth bullets by J-93 S2.",
+          "reason": "Build's depths at each mode and what its section holds: quick's one line of what was built and its check, the written section's slices, deviations, dropped approaches and what was left alone; moved from the front's depth bullets by J-93 S2. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): careful's premise review runs before the build (j109t-pictures-offer, finding 3).",
           "gist": "Quick writes one line; written records slices, deviations and dropped approaches",
-          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a step runs at the depth the change's mode gives it, inline being one line of its section, written a section the builder writes, and looped an independent pass repeated until clean up to the mode's rounds, and a step's handoff names the next step of the change's mode; The operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": build's spine is incremental-implementation, implement being a stub, anticipate ships as a trial on the trial step, and domain-modeling splits, its questioning into frame and its glossary into close; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
         },
         {
           "passage": "written",
-          "text": "## Checks\n\nEvery check runs through `greenline check`, its red runs included; a probe, a run whose green the change never claims, runs outside it, as the verify skill says. A recorded check fact is never removed or edited: a rerun records a new one, and a probe recorded by mistake is marked with `greenline check --change <id> --probe <fact>`. Every file written on the way and not part of the change, a probe, a scratch script or a before-and-after copy, yours or a fresh agent's, goes under `.greenline/tmp/<id>/`, never the host's temporary directory, and a check's facts cite paths inside the repository.\n\nRun each of `SKILL.md`'s increment checks, and the completion contract's final test run, through `greenline check -- <command>`, its red runs included, so the change's checks record it: the short form takes the open change and the step its record is in, and names that step beside the facts, so give `--change <id> --step <step>` where it names another. A run of the change's code you make only to read, a failing test's detail or a quick look after an edit, is a check too: `greenline check -- node --test --test-name-pattern=<name> <file>` records it, and its output shows as it runs, so read the detail there. Each such command is a check of its own: once its cause is fixed, run it again green, since `done` waits on the latest run of every check. The one run left plain is a probe, a run whose green the change never claims: a baseline at an earlier commit, a mutation run, a negative control. `greenline status --change <id>` counts the commits since the last recorded check, and a count above zero is code committed since that no recorded check saw.",
+          "text": "## While it runs\n\nWhile a long build runs, say in one line per act what you learned or decided, in the owner's words, such as \"Red for the right reason: the search finds nothing for a lower-case name. Now the fix.\" Never say which page, skill or tool you are loading, a retry or an editor's quirk, and never paste a table. A slice that moves a shape, a module extracted or a schema, a state machine or a flow changed, shows the resulting shape inline on the turn it lands, in one of show-me's six forms: prose alone does not show a shape.",
           "kind": "method",
-          "reason": "Build's references page: every check recorded through greenline check, the short form and its flags, a run made to read named a check, the plain run a probe alone, and status's count of commits since the last recorded check; scratch under the change's working folder. The checklist's recorder moved here from the front by J-93 S2. The probe's mark and the fact never edited are stated once.",
+          "reason": "The interim lines of a build say what was learned or decided, one line per act in the owner's words, never a page, a tool, a retry or a table, since the series' lines named pages and pasted tables (J-144 S2). J-174 adds that the progress line never ticks a step not yet run (j109t-linear 001/003 and 001/004, verdict F5: design to close ticked during frame), a correction. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the progress line leaves, since status and the viewer hold it, and a structural slice shows its resulting shape inline (j109t-pictures-inline, the blocking finding).",
+          "gist": "One line per act in the owner's words while it runs",
+          "ruling": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; and the register's row of 2026-10-27 on the reply's polish, ruled at the interview of that night on the operator's words \"everything needs to be 5 star\" and the card \"Brainstorm now, ship in 0.2.0\": the proposal is one sentence, the table, the open points with their defaults and a yes, its rituals gone; three cards a round answerable in one word, free text read, no glyphs or tags in a reply's questions; one interim line per act in the owner's words; the close in four parts with an offer made once a session; and the interface waiver asked once per workspace in plain words; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
+        },
+        {
+          "passage": "written",
+          "text": "## Checks\n\nEvery run of the change's code goes through `greenline check`, its red runs, a baseline, a probe and an assertion script included, the builder's and every fresh agent's alike; a probe, a run whose green the change never claims, is then marked with `greenline check --change <id> --probe <fact>`, which keeps it out of the change's checks, as the verify skill says. A recorded check fact is never removed or edited: a rerun records a new one. Every file written on the way and not part of the change, a probe, a scratch script or a before-and-after copy, yours or a fresh agent's, goes under `.greenline/tmp/<id>/`, never the host's temporary directory, and a check's facts cite paths inside the repository. That folder is this change's own, under its own id: a test or a script that needs a scratch folder takes it from the open change, never from a path an earlier change left in the code, and a path naming another change's folder is moved before the commit.\n\nRun each of `SKILL.md`'s increment checks, and the completion contract's final test run, through `greenline check -- <command>`, its red runs included, so the change's checks record it: the short form takes the open change and the step its record is in, and names that step beside the facts, so give `--change <id> --step <step>` where it names another. A run of the change's code you make only to read, a failing test's detail or a quick look after an edit, is a check too: `greenline check -- node --test --test-name-pattern=<name> <file>` records it, and its output shows as it runs, so read the detail there. Each such command is a check of its own: once its cause is fixed, run it again green, since `done` waits on the latest run of every check. A probe, a baseline at an earlier commit, a mutation run or a negative control, is recorded the same way and marked a probe: no run you cite stays plain. `greenline status --change <id>` counts the commits since the last recorded check, and a count above zero is code committed since that no recorded check saw.",
+          "kind": "method",
+          "reason": "Build's references page: every check recorded through greenline check, the short form and its flags, a run made to read named a check, the plain run a probe alone, and status's count of commits since the last recorded check; scratch under the change's working folder. The checklist's recorder moved here from the front by J-93 S2. The probe's mark and the fact never edited are stated once. J-174 adds that the scratch is this change's own (j109t-linear, verdict F6: the browser check hardcoding an earlier change's scratch), a correction. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): every run, a baseline, a probe and an assertion script included, goes through greenline check and a probe is then marked (j109t-wait-named-1 F2, j109t-starts-habits-floor finding 1, j109t-states-stop-1 F2, j109t-situation-brownfield-proceed F4).",
           "gist": "Every check recorded through greenline check; only a probe runs plainly",
-          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
         },
         {
           "passage": "written",
-          "text": "## Commits\n\nEach slice's commit goes on the change's branch, the one its proposal named or, for a ticket, the planning change's, never another change's, and the change's first commit carries its record, `.greenline/ledger/<id>.md`, since `greenline status` reads history only from the commit where the first change record entered. Every commit carries the trailer `Greenline-Change: <id>` from the moment it is made, as the last line of the message's last paragraph, one block with any trailer the harness adds there, such as `Co-Authored-By`; no commit, an unpushed one included, is reset, amended, rebuilt or rewritten with `filter-branch` to move it. A trailer-shaped line of another key, such as `Related-Change: <id>`, put in a message after a hook refuses it is not an answer to the refusal: report the refusal to the owner and ask. Generated code follows its generator; vendored contributions follow their upstream's contract.",
+          "text": "## The file token cap\n\nWhere the manifest's `fileTokens` is set, every authored file the change writes stays under its cap, 5,000 tokens unless it names another, a token counted as four bytes. `greenline check files` reads the files named, else the staged ones, else those the working tree changed or added, and refuses one over the cap with its count and how to split it; lockfiles, generated files, vendored trees, data and the manifest's `fileTokens.exempt` globs are left out. Run it through `greenline check -- greenline check files --max-tokens <cap>` before each slice's commit, so a red run is a fact of the change that `done` waits on. A file that grows past the cap is split in a slice of its own, the move committed before any other change to either part. It is a declared check, never a git hook, and where `fileTokens` is absent no cap applies.",
           "kind": "method",
-          "reason": "Build's references page: each slice's commit on the change's branch with its trailer, the first carrying the record, and the trailer on every commit, never moved by a rewrite. The commit step's homes moved here from the front by J-93 S2. The trailer is stated once. J-102 S2: a trailer-shaped line of another key after a refusal is no answer to it; the refusal goes to the owner.",
-          "gist": "Commits on the change's branch, each with its trailer, never rewritten",
-          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5); The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); The operator's cards of 2026-10-21, \"Fix first, then ship (Recommended)\" and the scope card naming 1 to 7 (docs/DECISIONS.md, the rows of 2026-10-21): 0.1.0 ships with its hooks whole, and frame, groundwork and build say what the owner's yes is, that the setup record precedes the setup commit, that a trailer-shaped line of another key after a refusal is no answer to it, and that scratch goes under the change's own id"
+          "reason": "Build's references page: an authored file stays under the manifest's file token cap, checked through greenline check before each slice's commit, and a file past it is split in a slice of its own, as the register's row on the token cap rules.",
+          "gist": "An authored file stays under the cap, split in its own slice",
+          "ruling": "The register's row of 2026-10-22 on the file token cap, on the operator's words of 2026-10-22 and the card \"Opt-in, default cap 5,000 (Recommended)\": greenline check files --max-tokens, opt-in in the manifest with 5,000 as its default cap and the standard exemptions, its red runs recorded facts done refuses over, declared at the plan step when on, and build's rule that an authored file stays under the cap and is split in its own slice; never a git hook"
+        },
+        {
+          "passage": "written",
+          "text": "## Commits\n\nWhere the request names the mode and no proposal waits for the owner's yes, the first reply still states, in one line before the first edit, the record's included, the mode, the ground, the branch or the worktree as `greenline status` names it, and any repository rule you read that bears on it, such as a contribution guide's rule on branches; a rule named only after the commits is named too late.\n\nEach slice's commit goes on the change's branch, the one its proposal named or, for a ticket, the planning change's, never another change's, in the form [commits.md](commits.md) gives, and the change's first commit carries its record, `.greenline/ledger/<id>.md`, since `greenline status` reads history only from the commit where the first change record entered. A change commits once for each slice that leaves its checks green, once as its record first enters and at every stop, which commits the record and its folder alone. Stage the slice's files by name, `git add <path>...`, never `git add -A`, `git add .` or `git commit -a`, so a file the owner or another change left in the tree stays out of the slice's commit. Stage the record and its folder by path too, `git add .greenline/ledger/<id>.md .greenline/ledger/<id>/`, never the ledger folder whole: git's pre-commit hook refuses a commit that stages another change's record or folder, such as a finished change's visuals file the inspector rewrote, naming the path; unstage it and tell the owner it changed. A commit carries one change's trailer: on a planning change's branch a ticket's commit carries the ticket's own, never two tickets'. Every commit's subject, a stop's and the close's included, takes the form [commits.md](commits.md) gives, `<type>(<scope>): <imperative summary>`, never a bare sentence, unless the repository keeps a convention of its own.\n\nEvery commit carries the trailer `Greenline-Change: <id>` from the moment it is made, as the last line of the message's last paragraph, one block with any trailer the harness adds there, such as `Co-Authored-By`; `Greenline-Agent: <harness>/<model>`, the record's `agent` line, stands just above it, and the git hooks write both where the message lacks them and the record states the agent; no commit, an unpushed one included, is reset, amended, rebuilt or rewritten with `filter-branch` to move it. A trailer-shaped line of another key, such as `Related-Change: <id>`, put in a message after a hook refuses it is not an answer to the refusal: report the refusal to the owner and ask. Generated code follows its generator; vendored contributions follow their upstream's contract.\n\nA slice that breaks is fixed forward from the last commit. Throwing its work away is the owner's word, written in the record's `discard` line: the harness hook refuses `git reset --hard`, `git clean -f`, `git checkout .` and `git restore .` until that line holds it, `git branch -D` until it or the `landing` line does, `git push --force` until the `rebase` and `landing` lines both do, and a push to a branch other than the change's until the `landing` line does, each refusal naming the line that lifts it. A line lifts only once the record is committed with it: quote the owner's words into it, commit the record alone, then run the act, since an uncommitted line goes with the work a reset throws away. A request that leads to the act, such as \"start over\", is not those words: they lift it only when they say so of that act. A project's own pre-commit tooling runs beside greenline's hooks, never in their place. A hook's refusal is answered by the line it names, never by `--no-verify`, which is the owner's bypass alone. A refusal you believe wrong is reported to the owner by its first sentence, in their terms, and never worked around, by a working copy set apart from the index or any other way.\n\n## The processes you start\n\nA server or a watcher you start in the background, with `&`, `nohup` or the harness's own background run, is noted for the session by the hooks, and `greenline status` names those still running as `running:`. Stop a process by its pid, one the session started: the harness hook refuses `pkill`, `killall`, `fuser -k` and a `kill` with no literal pid, since a pattern reaches the owner's own processes too, and refuses a `kill` of a pid the session did not start until the owner's words name that pid, which you quote in the record. To free a port the owner's process holds, ask the owner, naming the pid and what it runs. The close stops what the session started.",
+          "kind": "method",
+          "reason": "Build's references page: each slice's commit on the change's branch with its trailer, the first carrying the record, and the trailer on every commit, never moved by a rewrite. The commit step's homes moved here from the front by J-93 S2. The trailer is stated once. J-102 S2: a trailer-shaped line of another key after a refusal is no answer to it; the refusal goes to the owner. J-114 S2: the commit page names the form, the ruled cadence and the staging by name, the agent's trailer stands beside the change's, and a broken slice is fixed forward, the harness hook's refusals named with the lines that lift them. J-130 S1: a hook's refusal is answered by its named line, never by --no-verify, the owner's bypass, since a run recommended the bypass after a refusal. J-135 S1: a refusal the agent believes wrong goes to the owner with its line and is never worked around, since a run passed pre-commit with the working copy set apart from the index. J-144 S3: a refusal reaches the owner by its first sentence, in their terms, its rule's name left for the agent. J-148 S1: a process is stopped by its pid, one the session started, the kill guard refusing a kill by name or pattern, and the processes a background command starts noted for the session. J-174 adds the subject's form on every commit (j109t-conduct-runner, verdict finding 6: three bare subjects), a correction.",
+          "gist": "Commits on the change's branch in the commit form, both trailers last",
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5); The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: every check of a change's code, a reviewer's and a verifier's included, runs through greenline check, a plain test command proving nothing to the record; a recorded check fact is never removed or edited, a probe recorded by mistake being marked with greenline check --probe; the close writes its terms and decisions before the checks' last run and ends with greenline tidy in every mode; the change's first commit carries its record; and verify's baseline runs on a copy, never over the change's working tree; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); The operator's cards of 2026-10-21, \"Fix first, then ship (Recommended)\" and the scope card naming 1 to 7 (docs/DECISIONS.md, the rows of 2026-10-21): 0.1.0 ships with its hooks whole, and frame, groundwork and build say what the owner's yes is, that the setup record precedes the setup commit, that a trailer-shaped line of another key after a refusal is no answer to it, and that scratch goes under the change's own id; The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked; The register's row of 2026-10-22 on the agent's identity, on the operator's words of 2026-10-22 and the card \"Record and commit trailer (Recommended)\": the record's front matter carries agent: <harness>/<model>, the model as the harness states it to the agent, and every commit of the change carries Greenline-Agent: <harness>/<model> beside Greenline-Change; the proposal's facts table shows it; The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line; J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number; and J-148's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end: the kill guard and the processes the session started (J-148 S1)"
         },
         {
           "passage": "written",
@@ -313,6 +585,13 @@
           "reason": "Build's references page: a secret is checked for presence, never printed. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation.",
           "gist": "A secret is checked for presence, never printed",
           "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        },
+        {
+          "passage": "written",
+          "text": "## An interface change\n\nOn a change whose record says `interface: yes`, read design's craft page before the first write to an interface file, and the pages its facets name. The harness hook returns the interface rules' findings after each such write: fix a floor finding before you go on. A reflex finding you keep, on the owner's yes, is waived by a line in the build section, `waived: <rule>: <reason>; the owner's yes: \"<the owner's words>\"`; a standing waiver in the `## Interface` rulings of `.greenline/DECISIONS.md` covers the whole workspace. A floor finding is never waived by you or by a standing waiver: fix it, or put it to the owner on a card, and their answer goes in the record's `## Interface` section, as design's references say.",
+          "kind": "home",
+          "reason": "build reads design's craft page at an interface write, fixes a floor finding the hook returns, and waives a kept reflex on the owner's yes by a line of the record (J-123 S3 and S4).",
+          "gist": "Reads the craft page at an interface write; waives a reflex"
         }
       ],
       "part": "references"
@@ -340,8 +619,8 @@
       "reason": "The overview heading gives way to the heading of the slices, over the same sentences.",
       "gist": "The overview heading gives way to the slices heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 1
+        "path": "method.md",
+        "passage": 2
       }
     },
     {
@@ -436,8 +715,8 @@
       "reason": "The increment cycle's heading gives way to the heading of the slices.",
       "gist": "The increment cycle's heading gives way to the slices heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 1
+        "path": "method.md",
+        "passage": 2
       }
     },
     {
@@ -448,8 +727,8 @@
       "reason": "The diagram draws the numbered cycle that follows it.",
       "gist": "The diagram draws the numbered cycle that follows it",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
@@ -461,8 +740,8 @@
       "gist": "Slices commit with the change's trailer; the git skill pointer goes",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 5
+        "path": "method.md",
+        "passage": 6
       }
     },
     {
@@ -660,8 +939,8 @@
       "reason": "The example note of what was noticed and not touched gives way to the build section, which lists it.",
       "gist": "The example note gives way to the build section's list",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 11
+        "path": "method.md",
+        "passage": 12
       }
     },
     {
@@ -821,8 +1100,8 @@
       "reason": "The pointer to a test-driven-development skill's section names a skill no install carries.",
       "gist": "It cites a test-driven-development skill no install carries",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 17
+        "path": "method.md",
+        "passage": 18
       }
     },
     {
@@ -993,8 +1272,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1005,8 +1284,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1017,8 +1296,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1029,8 +1308,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1041,8 +1320,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1053,8 +1332,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1065,8 +1344,8 @@
       "reason": "The verification after all increments repeats the cycle and the checklist; the completion contract says when a task is done.",
       "gist": "Its final checks repeat the cycle; the completion contract says when done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1121,8 +1400,8 @@
       "reason": "Small units each ending in a checkable state, the next not started until the current one is green, is the spine's overview, which stands.",
       "gist": "Its overview repeats the spine's small checkable units, which stand",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 4
       }
     },
     {
@@ -1280,8 +1559,8 @@
       "reason": "The core principle restates the cycle and the completion contract that are taken.",
       "gist": "Its core principle restates the cycle and completion contract taken here",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1292,8 +1571,8 @@
       "reason": "The core principle restates the cycle and the completion contract that are taken.",
       "gist": "Its core principle restates the cycle and completion contract taken here",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -1345,8 +1624,8 @@
       "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -1358,8 +1637,8 @@
       "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -1371,8 +1650,8 @@
       "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -1384,8 +1663,8 @@
       "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -1397,8 +1676,8 @@
       "gist": "Ruling alone is narrowed: product or contract choices return to the owner",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -1741,8 +2020,8 @@
       "reason": "The required sub-skill names a superpowers skill; the tdd habit and the pointer to it stand.",
       "gist": "The superpowers sub-skill goes; the line naming tdd stands",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -1753,8 +2032,8 @@
       "reason": "The required sub-skill names a superpowers skill; the tdd habit and the pointer to it stand.",
       "gist": "The superpowers sub-skill goes; the line naming tdd stands",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -1885,8 +2164,8 @@
       "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
       "gist": "Red before green is the tdd habit's, which the pointer names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -1897,8 +2176,8 @@
       "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
       "gist": "Red before green is the tdd habit's, which the pointer names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -1909,8 +2188,8 @@
       "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
       "gist": "Red before green is the tdd habit's, which the pointer names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -1921,8 +2200,8 @@
       "reason": "Red before green under a test-driven skill is the tdd habit's, which the pointer names.",
       "gist": "Red before green is the tdd habit's, which the pointer names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -1966,8 +2245,8 @@
       "gist": "Rulings become build-section deviations, the builder's only for spec-settled defects",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -1979,8 +2258,8 @@
       "gist": "Rulings become build-section deviations, the builder's only for spec-settled defects",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\" and \"everything is good\"): incremental-implementation, principle-sequence-verifiable-units and executing-plans combine into build, with incremental-implementation's feature flags, safe defaults and rollback handed to garden's maintainer and only principle-sequence-verifiable-units' known-good bracket and failing-test-first delivery order entering from it, and the contradictions stand as recommended: a commit per slice is allowed, each carrying the change's trailer (contradiction 4), and a plan defect the spec already settles is the builder's to rule while a product or contract choice returns to the owner (contradiction 5)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 25
+        "path": "method.md",
+        "passage": 26
       }
     },
     {
@@ -2007,8 +2286,8 @@
       "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
       "gist": "The completion contract's ledger line and scripts take greenline's names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2019,8 +2298,8 @@
       "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
       "gist": "The completion contract's ledger line and scripts take greenline's names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2031,8 +2310,8 @@
       "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
       "gist": "The completion contract's ledger line and scripts take greenline's names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2043,8 +2322,8 @@
       "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
       "gist": "The completion contract's ledger line and scripts take greenline's names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2055,8 +2334,8 @@
       "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
       "gist": "The completion contract's ledger line and scripts take greenline's names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2067,8 +2346,8 @@
       "reason": "The completion contract's ledger line, brief and task-done script are named for greenline's homes.",
       "gist": "The completion contract's ledger line and scripts take greenline's names",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2087,8 +2366,8 @@
       "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
       "gist": "Done scripts and ledger lines go; the contract and checks decide done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2099,8 +2378,8 @@
       "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
       "gist": "Done scripts and ledger lines go; the contract and checks decide done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2111,8 +2390,8 @@
       "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
       "gist": "Done scripts and ledger lines go; the contract and checks decide done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2123,8 +2402,8 @@
       "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
       "gist": "Done scripts and ledger lines go; the contract and checks decide done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2135,8 +2414,8 @@
       "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
       "gist": "Done scripts and ledger lines go; the contract and checks decide done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2147,8 +2426,8 @@
       "reason": "Completing a task through its done script and ledger line is the scripts'; the completion contract and the change's checks say when a task is done.",
       "gist": "Done scripts and ledger lines go; the contract and checks decide done",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 26
+        "path": "method.md",
+        "passage": 27
       }
     },
     {
@@ -2539,16 +2818,16 @@
       "file": "executing-plans/SKILL.md",
       "segment": "6ea9ab956697",
       "kind": "scope",
-      "reason": "The example workflow walks the scripts, the worktree and the final review, which are not taken.",
-      "gist": "The example walks scripts, a worktree and a review, none taken"
+      "reason": "removed upstream at 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "gist": "Upstream removed this text at commit 2ce8aa15"
     },
     {
       "source": "superpowers",
       "file": "executing-plans/SKILL.md",
       "segment": "3235c37b80de",
       "kind": "scope",
-      "reason": "The example workflow walks the scripts, the worktree and the final review, which are not taken.",
-      "gist": "The example walks scripts, a worktree and a review, none taken"
+      "reason": "removed upstream at 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "gist": "Upstream removed this text at commit 2ce8aa15"
     },
     {
       "source": "pstack",
@@ -2559,9 +2838,1369 @@
       "gist": "Build stacks commits; the pull request waits for close's landing",
       "ruling": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 13
+        "path": "method.md",
+        "passage": 14
       }
+    },
+    {
+      "source": "caveman",
+      "file": "caveman-commit/SKILL.md",
+      "segment": "b66542635d2a",
+      "kind": "scope",
+      "reason": "The rules heading gives way to the page's heading for the message.",
+      "gist": "The rules heading gives way to the message's heading",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 5
+      }
+    },
+    {
+      "source": "caveman",
+      "file": "caveman-commit/SKILL.md",
+      "segment": "1c6e9bf04beb",
+      "kind": "scope",
+      "reason": "The builder commits each slice, so the paste-only boundary and the toggle, a harness's invocation, stay behind; the form is read at every commit.",
+      "gist": "The paste-only boundary and the toggle stay behind"
+    },
+    {
+      "source": "caveman",
+      "file": "caveman-commit/SKILL.md",
+      "segment": "06a0d25208b1",
+      "kind": "scope",
+      "reason": "The builder commits each slice, so the paste-only boundary and the toggle, a harness's invocation, stay behind; the form is read at every commit.",
+      "gist": "The paste-only boundary and the toggle stay behind"
+    },
+    {
+      "source": "caveman",
+      "file": "caveman-commit/SKILL.md",
+      "segment": "cbed975d05f7",
+      "kind": "scope",
+      "reason": "The builder commits each slice, so the paste-only boundary and the toggle, a harness's invocation, stay behind; the form is read at every commit.",
+      "gist": "The paste-only boundary and the toggle stay behind"
+    },
+    {
+      "source": "caveman",
+      "file": "caveman-commit/SKILL.md",
+      "segment": "20e59ed016e6",
+      "kind": "scope",
+      "reason": "The builder commits each slice, so the paste-only boundary and the toggle, a harness's invocation, stay behind; the form is read at every commit.",
+      "gist": "The paste-only boundary and the toggle stay behind"
+    },
+    {
+      "source": "caveman",
+      "file": "caveman-commit/SKILL.md",
+      "segment": "8ed93a320c52",
+      "kind": "scope",
+      "reason": "The builder commits each slice, so the paste-only boundary and the toggle, a harness's invocation, stay behind; the form is read at every commit.",
+      "gist": "The paste-only boundary and the toggle stay behind"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "6588b69603fa",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7337f3d0aa29",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "2c7282b1612a",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "4cee1221eff9",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "934ae5aa959e",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "07933d588e41",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7f8369078fc5",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "9e3e2b58728b",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "c149fbc5280b",
+      "kind": "scope",
+      "reason": "The title, the overview and the when-to-use give way to the commit page's own opening.",
+      "gist": "The source's title and overview give way to the page's opening",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "a462bec0e30e",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "28842dcfa45e",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "268b93274402",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3b1ceff69daf",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "867c3e6cd973",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "699767a3c493",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "5d8b2819633b",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "343228b88e34",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "41b9e6896bea",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "e1b11e5c09eb",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "8b3ca428057a",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "cb5ea2b88b88",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "1ec1a9b7fa4f",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "4600289a8738",
+      "kind": "scope",
+      "reason": "The trunk-based premise and its kinds of branch are the ground's, the change's branch greenline/<id>; release branches and feature flags are garden's knowledge.",
+      "gist": "The trunk-based premise is the ground's; release branches are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "56dc026bbcca",
+      "kind": "method",
+      "reason": "The source's revert to the last good state becomes greenline's fixing forward, throwing a slice's edits away being the owner's word.",
+      "gist": "A revert to the last state becomes a fix forward",
+      "ruling": "J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number; The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "fbcaea27bc98",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7fa25f6e8b6e",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "37656a28dfe3",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "65f31ceb8e43",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "2c99c2871b1a",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3c72dc21dfa4",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "59bba443918d",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "8764414a4518",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "94d9c7c31d48",
+      "kind": "scope",
+      "reason": "The format and its six types give way to caveman-commit's subject form, the page's spine, whose list of types is fuller.",
+      "gist": "The format and types give way to caveman-commit's fuller form",
+      "replacedBy": {
+        "path": "references/commits.md",
+        "passage": 7
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "03d0d92c9332",
+      "kind": "method",
+      "reason": "The sizes per commit give way to the ruled note on the pull request at about 500 changed lines, never a gate; a commit's rule is one logical thing.",
+      "gist": "Sizes per commit give way to the ruled 500-line note",
+      "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "a3f1368556bf",
+      "kind": "method",
+      "reason": "The sizes per commit give way to the ruled note on the pull request at about 500 changed lines, never a gate; a commit's rule is one logical thing.",
+      "gist": "Sizes per commit give way to the ruled 500-line note",
+      "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "465dd94d5a07",
+      "kind": "method",
+      "reason": "The sizes per commit give way to the ruled note on the pull request at about 500 changed lines, never a gate; a commit's rule is one logical thing.",
+      "gist": "Sizes per commit give way to the ruled 500-line note",
+      "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "a3f6589d0dc9",
+      "kind": "method",
+      "reason": "The sizes per commit give way to the ruled note on the pull request at about 500 changed lines, never a gate; a commit's rule is one logical thing.",
+      "gist": "Sizes per commit give way to the ruled 500-line note",
+      "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "bafb238dedbe",
+      "kind": "method",
+      "reason": "The sizes per commit give way to the ruled note on the pull request at about 500 changed lines, never a gate; a commit's rule is one logical thing.",
+      "gist": "Sizes per commit give way to the ruled 500-line note",
+      "ruling": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "6644db77dfdb",
+      "kind": "scope",
+      "reason": "The branching strategy's heading and its tree of feature branches give way to the change's own branch.",
+      "gist": "The feature-branch tree gives way to the change's own branch"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "00cd78c21303",
+      "kind": "scope",
+      "reason": "The branching strategy's heading and its tree of feature branches give way to the change's own branch.",
+      "gist": "The feature-branch tree gives way to the change's own branch"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "510d87efd3df",
+      "kind": "scope",
+      "reason": "The branching strategy's heading and its tree of feature branches give way to the change's own branch.",
+      "gist": "The feature-branch tree gives way to the change's own branch"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "869ad91efeac",
+      "kind": "scope",
+      "reason": "Deleting a merged branch is the landing's cleanup on the owner's word, and feature flags are garden's knowledge.",
+      "gist": "Branch deletion is the landing's; feature flags are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "b4bf26219e79",
+      "kind": "scope",
+      "reason": "Deleting a merged branch is the landing's cleanup on the owner's word, and feature flags are garden's knowledge.",
+      "gist": "Branch deletion is the landing's; feature flags are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "82c93723ac5e",
+      "kind": "scope",
+      "reason": "The change's branch is named greenline/<id>, so the source's branch prefixes leave.",
+      "gist": "The change's branch name replaces the source's prefixes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "582d86d11172",
+      "kind": "scope",
+      "reason": "The change's branch is named greenline/<id>, so the source's branch prefixes leave.",
+      "gist": "The change's branch name replaces the source's prefixes"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "ed068b84640e",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "a9aaccdcb327",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "0db4cdcf590a",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "e13f018c0a9f",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "466aefd58b91",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "ddf7aeed44f3",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "9e53ce9cdc24",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "9492281db39d",
+      "kind": "scope",
+      "reason": "Worktrees for parallel agents are orchestration, declined, one agent working at a time; the change's own worktree is the ground's, from frame's page.",
+      "gist": "Parallel agents' worktrees are declined; the change's own is the ground's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "bfacd936d66b",
+      "kind": "method",
+      "reason": "The save point's hard reset is refused by the harness hook without the record's discard line; a failed slice is fixed forward instead.",
+      "gist": "The save point's hard reset is refused; a slice is fixed forward",
+      "ruling": "The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line; J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "13a58564a8a8",
+      "kind": "method",
+      "reason": "The save point's hard reset is refused by the harness hook without the record's discard line; a failed slice is fixed forward instead.",
+      "gist": "The save point's hard reset is refused; a slice is fixed forward",
+      "ruling": "The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line; J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7f4ceda8d970",
+      "kind": "method",
+      "reason": "The save point's hard reset is refused by the harness hook without the record's discard line; a failed slice is fixed forward instead.",
+      "gist": "The save point's hard reset is refused; a slice is fixed forward",
+      "ruling": "The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line; J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "6d6d1eda29a8",
+      "kind": "method",
+      "reason": "The save point's hard reset is refused by the harness hook without the record's discard line; a failed slice is fixed forward instead.",
+      "gist": "The save point's hard reset is refused; a slice is fixed forward",
+      "ruling": "The register's row of 2026-10-22 on the guardrails, on the operator's words of 2026-10-22: the harness hook refuses, on every harness, git reset --hard, git clean -f, git checkout ., git restore ., git branch -D, git push --force and a push to a branch other than the change's, the record's rebase line lifting a rewrite, its discard line the throwing away of work and its landing line a push, the refusal naming the line; J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "bb4cde89c8e6",
+      "kind": "scope",
+      "reason": "The change summary is the build section's, what was built with what was noticed and left alone, and the reply's facts.",
+      "gist": "The change summary is the build section's and the reply's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "aeaa4aedc226",
+      "kind": "scope",
+      "reason": "The change summary is the build section's, what was built with what was noticed and left alone, and the reply's facts.",
+      "gist": "The change summary is the build section's and the reply's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "136733b65af5",
+      "kind": "scope",
+      "reason": "The change summary is the build section's, what was built with what was noticed and left alone, and the reply's facts.",
+      "gist": "The change summary is the build section's and the reply's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "c70bb29a5441",
+      "kind": "scope",
+      "reason": "The change summary is the build section's, what was built with what was noticed and left alone, and the reply's facts.",
+      "gist": "The change summary is the build section's and the reply's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "50a0d695d331",
+      "kind": "scope",
+      "reason": "The change summary is the build section's, what was built with what was noticed and left alone, and the reply's facts.",
+      "gist": "The change summary is the build section's and the reply's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "31016a1c07de",
+      "kind": "scope",
+      "reason": "The change summary is the build section's, what was built with what was noticed and left alone, and the reply's facts.",
+      "gist": "The change summary is the build section's and the reply's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "9630748e6ab2",
+      "kind": "scope",
+      "reason": "The hygiene before a commit runs through the change's declared checks and git hooks; husky and lint-staged are garden's knowledge, handed off.",
+      "gist": "Pre-commit hygiene is the checks'; husky and lint-staged are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "46ee004be5c8",
+      "kind": "scope",
+      "reason": "The hygiene before a commit runs through the change's declared checks and git hooks; husky and lint-staged are garden's knowledge, handed off.",
+      "gist": "Pre-commit hygiene is the checks'; husky and lint-staged are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "1e1b46c69f7d",
+      "kind": "scope",
+      "reason": "The hygiene before a commit runs through the change's declared checks and git hooks; husky and lint-staged are garden's knowledge, handed off.",
+      "gist": "Pre-commit hygiene is the checks'; husky and lint-staged are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7fcdc3b955d4",
+      "kind": "scope",
+      "reason": "The hygiene before a commit runs through the change's declared checks and git hooks; husky and lint-staged are garden's knowledge, handed off.",
+      "gist": "Pre-commit hygiene is the checks'; husky and lint-staged are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "d5146ddb8ed4",
+      "kind": "scope",
+      "reason": "The hygiene before a commit runs through the change's declared checks and git hooks; husky and lint-staged are garden's knowledge, handed off.",
+      "gist": "Pre-commit hygiene is the checks'; husky and lint-staged are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "264adcf557a5",
+      "kind": "scope",
+      "reason": "Generated files and the ignore file are garden's knowledge, handed off.",
+      "gist": "Generated files and the ignore file are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "868d5400eb93",
+      "kind": "scope",
+      "reason": "Generated files and the ignore file are garden's knowledge, handed off.",
+      "gist": "Generated files and the ignore file are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "95c29f71e346",
+      "kind": "scope",
+      "reason": "Generated files and the ignore file are garden's knowledge, handed off.",
+      "gist": "Generated files and the ignore file are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "48dfe86c8546",
+      "kind": "scope",
+      "reason": "Generated files and the ignore file are garden's knowledge, handed off.",
+      "gist": "Generated files and the ignore file are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "c4fd14e8253a",
+      "kind": "scope",
+      "reason": "Bisect, log and blame are garden's knowledge, handed off.",
+      "gist": "Bisect, log and blame are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "67f4a6a3cef1",
+      "kind": "scope",
+      "reason": "Bisect, log and blame are garden's knowledge, handed off.",
+      "gist": "Bisect, log and blame are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "a711dc7c5b9c",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "c5c549683ddc",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "d0a261d328b4",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "fdb1fd51b381",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7bb33df85a24",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3bf547b19fc5",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "44cbd61506fd",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "76af6850c7e9",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "dff26d170741",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "8da8eebd79d2",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "dd170ae7b92a",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3bd80435be1a",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "390b52beda99",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "c957093f070e",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3caed9e16ebc",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7f5ac2d515fb",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "2efe47a354d9",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "401f99ec5e70",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "739aacfeee25",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "2b7959f98267",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "4790e2a2729d",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "9a86dc272588",
+      "kind": "scope",
+      "reason": "Release, semantic versions, tags and the changelog are garden's knowledge, handed off.",
+      "gist": "Releases, versions, tags and the changelog are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3c989b652646",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3025f172a1d3",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "4199ba454d6d",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "a1797e93259f",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "192522dec540",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "11d134ed59f5",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "f8f7b0847958",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "37bbe18d7ae2",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "b17185b48c60",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "63205b55845d",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "f66797d93286",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "e8a1e7b125c5",
+      "kind": "scope",
+      "reason": "The rationalizations restate the page's rules for an agent tempted to skip them, and garden's release knowledge; the rules stand without them.",
+      "gist": "The rationalizations restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "052cfba57d12",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "c7b08d8b416e",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "e1757a2a20fb",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "7d61ec4d7c14",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "9a6d10a37b0c",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "d2ce9cc59eda",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "3363a7a1b536",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "79bf8630b6af",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "435d50a5a002",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "98d8d8b4643a",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "d50a28727e7e",
+      "kind": "scope",
+      "reason": "The red flags restate the page's rules and garden's release knowledge; the rules stand without them.",
+      "gist": "The red flags restate rules that stand without them"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "1454abf8d450",
+      "kind": "scope",
+      "reason": "The ignore file and the release checklist are garden's knowledge, handed off.",
+      "gist": "The ignore file and the release checklist are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "cae6755084a8",
+      "kind": "scope",
+      "reason": "The ignore file and the release checklist are garden's knowledge, handed off.",
+      "gist": "The ignore file and the release checklist are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "19efdc757eef",
+      "kind": "scope",
+      "reason": "The ignore file and the release checklist are garden's knowledge, handed off.",
+      "gist": "The ignore file and the release checklist are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "0b24cda33b74",
+      "kind": "scope",
+      "reason": "The ignore file and the release checklist are garden's knowledge, handed off.",
+      "gist": "The ignore file and the release checklist are garden's"
+    },
+    {
+      "source": "addyosmani",
+      "file": "git-workflow-and-versioning/SKILL.md",
+      "segment": "8d551170f347",
+      "kind": "scope",
+      "reason": "The ignore file and the release checklist are garden's knowledge, handed off.",
+      "gist": "The ignore file and the release checklist are garden's"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Building a ready ticket or a small settled fix opens its own change record, under the mode approved with the ticket list or the one the owner accepts, before the build.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap",
+      "oracle": "Planned work"
+    },
+    {
+      "promise": "The builder runs every task itself, one after another, and no agent runs beside the conversation.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "The line at each depth",
+      "cost": "free"
+    },
+    {
+      "promise": "A product or contract choice the plan or the spec leaves open returns to the owner rather than being decided during the build.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Which choice is consequential is judgment that no file states, and no run in the sources cites a build deciding a product choice alone."
+    },
+    {
+      "promise": "Each slice is implemented, tested, verified and committed before the next, and the build and the existing tests stay green between slices.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "commits since the last recorded check",
+      "cost": "free",
+      "oracle": "The commits and the landing"
+    },
+    {
+      "promise": "The build touches only what the task requires. Its section records each deviation from the plan with what was decided and why, each approach tried and dropped, and what was noticed outside the task and left alone.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Scope and deviations are prose that no reader parses. No run in the sources cites a missing deviation line."
+    },
+    {
+      "promise": "When a step's output does not match the plan, the cause is found, and the symptom is never patched to make the output match.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "It reaches the owner's code, and the Linear replay shaped code to a check's text at 004/004 and 002/006 (verdict F2). But telling a fix from a symptom patch is judgment no free or cheap reading makes, so the third condition fails."
+    },
+    {
+      "promise": "Every run of the change's code goes through greenline check, red runs, runs made only to read, baselines, probes and assertion scripts included, a probe then marked with --probe. A task is done only on a passed final test run recorded as a check.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap",
+      "oracle": "J-89's cures, a recurrence read as a regression"
+    },
+    {
+      "promise": "The build section takes the mode's depth: one line at quick (what was built, the check that shows it and any deviation); at regular and careful a written section, slice by slice.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0402",
+      "cost": "free",
+      "oracle": "The line at each depth"
+    },
+    {
+      "promise": "At careful the build starts only once anticipate's report is in and the plan answers its findings.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The line at each depth",
+      "cost": "free"
+    },
+    {
+      "promise": "During a long build the agent says one plain line per act, in the owner's words, never naming a page, skill or tool and never pasting a table.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The reply shape",
+      "cost": "free"
+    },
+    {
+      "promise": "A slice that moves a shape shows the resulting shape inline on the turn it lands, in one of show-me's six forms.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The pictures, inline",
+      "cost": "free"
+    },
+    {
+      "promise": "A recorded check fact is never removed or edited: a rerun records a new one, and a probe is marked with --probe.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0459",
+      "cost": "free"
+    },
+    {
+      "promise": "Every file written on the way that is not part of the change goes under .greenline/tmp/<id>/, never the host's temporary directory.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "oracle": "J-89's cures, a recurrence read as a regression",
+      "warrants": "prose",
+      "reason": "A scratch file in the host's temporary directory reaches no record the owner relies on. The one such write the Linear replay saw was a verifier's, graded a note (verdict F14), so the first condition fails for the build."
+    },
+    {
+      "promise": "Where fileTokens is set, greenline check files runs through greenline check before each slice's commit, and a file past the cap is split in a slice of its own.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap",
+      "oracle": "The guardrails and the token cap"
+    },
+    {
+      "promise": "Where the request names the mode and no proposal waits, the first reply states in one line, before the first edit, the record, the mode, the ground and branch, and any repository rule that bears on them.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "ground:",
+      "cost": "free",
+      "oracle": "The wait, `proceed`"
+    },
+    {
+      "promise": "Each slice's commit goes on the change's own branch, or for a ticket on the planning change's branch, never on another change's.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "change-trailer",
+      "cost": "cheap",
+      "oracle": "Mode choice, one per mode"
+    },
+    {
+      "promise": "A slice's files are staged by name, never with git add -A, git add . or git commit -a, and the record and its folder are staged by path, never the ledger whole.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "other-change-paths",
+      "cost": "cheap",
+      "oracle": "The commits and the landing"
+    },
+    {
+      "promise": "Every commit carries Greenline-Change: <id> as its last line, with Greenline-Agent: <harness>/<model> just above it.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "message-trailer",
+      "cost": "cheap",
+      "oracle": "The git hooks"
+    },
+    {
+      "promise": "No commit of the change is reset, amended, rebuilt or rewritten to move it.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "rebase-words",
+      "cost": "cheap",
+      "oracle": "The git hooks"
+    },
+    {
+      "promise": "A slice that breaks is fixed forward. Its work is thrown away only once the record's discard line holds the owner's words in a commit.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "discard-words",
+      "cost": "cheap",
+      "oracle": "The guardrails and the token cap"
+    },
+    {
+      "promise": "A forced push runs only once the rebase and landing lines both hold the owner's words in a commit, and a push to a branch other than the change's only once the landing line does.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "force-push-words",
+      "cost": "cheap",
+      "oracle": "The guardrails and the token cap"
+    },
+    {
+      "promise": "A hook's refusal is answered by the line it names, never by --no-verify, a trailer of another key or any other workaround. A refusal the agent believes wrong is reported to the owner.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "oracle": "The landing at close",
+      "warrants": "prose",
+      "reason": "No run in the sources observed --no-verify or a workaround. A before-tool guard reading the command text would be cheap, but the second condition fails."
+    },
+    {
+      "promise": "A key, or a variable that may hold one, is checked for presence and never printed, and no secret enters a commit's diff.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "oracle": "Starts and habits",
+      "warrants": "prose",
+      "reason": "A printed key reaches the owner's secrets, but no run in the sources observed one, so the second condition fails."
+    },
+    {
+      "promise": "On an interface change, a floor finding is fixed before going on, or put to the owner, whose ruling in the record alone waives it. A kept reflex is waived only by a waived: line in the build section quoting the owner's yes.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap",
+      "oracle": "The floor and the waiver"
+    },
+    {
+      "promise": "Each commit message takes the form <type>(<scope>): <imperative summary> within 72 characters, with no trailing period, a body only where the why needs it, and no AI attribution beyond the practice's trailers.",
+      "page": "references/commits.md",
+      "kind": "oracle",
+      "where": "The commits and the landing",
+      "cost": "free"
+    },
+    {
+      "promise": "A process is stopped by its pid, one the session started: a kill by name or pattern, and a kill of a pid the session did not start that the owner's words do not name, is refused before it runs.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "kill-by-name",
+      "cost": "cheap",
+      "oracle": "The session's processes"
+    },
+    {
+      "promise": "A process a command starts in the background is noted for the session, and greenline status names those still running.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "running:",
+      "cost": "free",
+      "oracle": "The session's processes"
+    },
+    {
+      "promise": "A scratch folder is this change's own: a test or a script takes it from the open change, never from an earlier change's path left in the code.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The setup, greenfield",
+      "cost": "free"
+    },
+    {
+      "promise": "Every commit's subject, a stop's and the close's included, takes the form <type>(<scope>): <imperative summary>, never a bare sentence, unless the repository keeps a convention of its own.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The commits and the landing",
+      "cost": "free"
+    },
+    {
+      "promise": "Where several ways could serve a slice, they are tried by the four lines, each try a check the build records, and a product or a contract choice returns to the owner.",
+      "page": "method.md",
+      "kind": "record",
+      "where": "the change's recorded checks",
+      "cost": "free"
     }
   ]
 }

@@ -1,0 +1,51 @@
+{
+  "commit": "7387f361c07edee7b6447cc2d52301fef13ab180",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "3dc44f653f431ac7920c70f6f064a55a8852e6b7544499bb8506dfbfd351d2e1"
+    },
+    {
+      "path": "fluid-functionalism/SKILL.md",
+      "sha256": "b31b72e0a31e1dcd4d6ce68368e5dedfc2b083b7fc5ac8676e12228fe47e57cb"
+    },
+    {
+      "path": "fluid-functionalism/references/components.md",
+      "sha256": "49d4c53e906ef11b7dc425f096b002c46f1d5f28e82c72935f4c4a546a720e35"
+    },
+    {
+      "path": "fluid-functionalism/references/craft.md",
+      "sha256": "60d5d735095a7d8091c6e0fadfc689affd615c39f455cd9a2348cef9641b560c"
+    },
+    {
+      "path": "fluid-functionalism/references/custom-motion.md",
+      "sha256": "9b48138c73eae18c2f639761c46fcd6cd3142589fabe09ffcd9b6f79ddcf648f"
+    },
+    {
+      "path": "fluid-functionalism/references/stack-audit.md",
+      "sha256": "7523b097f28793032db5f2c598e50c0e5b609774413f555cb322427e43668e76"
+    },
+    {
+      "path": "fluid-functionalism/scripts/audit.mjs",
+      "sha256": "fe9df8dfe628b586e209f9e86d48504b41ee6257357a2a8c0de7191083d691b7"
+    },
+    {
+      "path": "fluid-functionalism/scripts/package.json",
+      "sha256": "4b402a4f86d4d6f12ede7ce475ae7b112e1fcecf892bb72960a0a947a96082ae"
+    },
+    {
+      "path": "fluid-functionalism/scripts/stack.mjs",
+      "sha256": "a3b1ec20d3df0e4c5d338ff260310bf251dc0e2f0f40640b8ee82c427ebaf822"
+    },
+    {
+      "path": "fluid-functionalism/scripts/upgrade.mjs",
+      "sha256": "5339673c0e152d33b338d5ce086f66f0b25b063066b0b9d47b2ce7094f40b76b"
+    }
+  ],
+  "entries": [
+    {
+      "name": "fluid-functionalism",
+      "path": "skills/fluid-functionalism"
+    }
+  ]
+}

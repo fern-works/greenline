@@ -1,6 +1,6 @@
 import { sha256Hex } from "../commons/hash.ts";
-import type { CorpusSource } from "../core/corpus.ts";
-import { commonRun, editOf, partners, recipeText } from "./draft.ts";
+import type { CorpusSource, WordsSource } from "../core/corpus.ts";
+import { commonRun, editOf, partners, recipeText, sourceText } from "./draft.ts";
 import { bodyWords, STUB_TRIGGER } from "./measure.ts";
 import {
   changedCharacters,
@@ -655,26 +655,19 @@ const SOURCES_CLOSE = "\n  ]";
  * it stands: each source an open object at the list's indentation, in the
  * form the formatter leaves as it is.
  * @param text the manifest's text
- * @param sources the sources, in order
+ * @param sources the sources, in order, the words sources after the pinned ones
  * @returns the new text, or undefined when the text holds no sources list at the top level
  */
 export function manifestWithSources(
   text: string,
-  sources: readonly CorpusSource[],
+  sources: readonly (CorpusSource | WordsSource)[],
 ): string | undefined {
   const open = text.indexOf(SOURCES_OPEN);
   if (open === -1) return undefined;
   const from = open + SOURCES_OPEN.length;
   const close = text.indexOf(SOURCES_CLOSE, from);
   if (close === -1) return undefined;
-  const body = sources
-    .map((source) =>
-      JSON.stringify(source, null, 2)
-        .split("\n")
-        .map((line) => `    ${line}`)
-        .join("\n"),
-    )
-    .join(",\n");
+  const body = sources.map((source) => `    ${sourceText(source, "    ")}`).join(",\n");
   return `${text.slice(0, from)}\n${body}${text.slice(close)}`;
 }
 

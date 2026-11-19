@@ -8,10 +8,10 @@
     },
     {
       "field": "description",
-      "value": "Test-first development at any step: discover the repository's own test commands, name the break a test catches, watch it fail for the intended reason, make it pass with the smallest change, and add a new test only where it catches a realistic failure the existing ones would miss. Use when writing or changing a test, building a feature or fixing a bug test-first, or deciding whether a change needs a new test; also on 'red-green-refactor' and integration tests."
+      "value": "Test-first development at any step: discover the repository's own test commands, name the break a test catches, watch it fail for the intended reason, make it pass with the smallest change, and add a new test only where it catches a realistic failure the existing ones would miss. Use when writing or changing a test, building a feature or fixing a bug test-first, or deciding whether a change needs a new test; also on 'red-green-refactor', 'test first', 'with a test' and integration tests, and whenever a test file is touched."
     }
   ],
-  "sources": ["addyosmani", "mattpocock-skills", "pstack", "superpowers"],
+  "sources": ["addyosmani", "mattpocock-skills", "pstack", "superpowers", "phrasebook"],
   "files": [
     {
       "path": "SKILL.md",
@@ -24,17 +24,72 @@
         },
         {
           "passage": "written",
-          "text": "tdd is the habit for the moment a test is written or changed, a change's need for a new test is weighed, or code is built or a bug fixed test-first, at whatever step the work is in, most often build. It writes no record of its own: the tests and the checks it leaves belong to the step that runs, and that step's section names them. Whether a change gains a new test is judged on its cost, below; a behavior change with no check that could fail is a floor in AGENTS.md, so leave one wherever you can: an existing test that fails if the change breaks, a new test, or the closest executable check. The shape of a seam is deep-modules', a bug whose cause is not yet known is diagnose's first, and removing a test is sweep-tests', with its mutation proof: this habit never deletes a test.",
+          "text": "tdd is the habit for the moment a test is written or changed, a change's need for a new test is weighed, or code is built or a bug fixed test-first, at whatever step the work is in, most often build. It writes no record of its own: the tests and the checks it leaves belong to the step that runs, and that step's section names them.",
           "kind": "scope",
           "reason": "One opening paragraph in the habit's own voice: the situation the block's rows key it by, that it writes no record of its own and the step's section names what it leaves, the floor that a behavior change keeps a check that could fail, and the owners of a seam's shape, an unknown cause and a test's removal.",
           "gist": "Opens the habit: when it applies and what it leaves"
         },
         {
           "passage": "written",
-          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "text": "The shape of a seam is deep-modules', a bug whose cause is not yet known is diagnose's first, and removing a test is sweep-tests', with its mutation proof: this habit never deletes a test.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situation the block's rows key it by, that it writes no record of its own and the step's section names what it leaves, the floor that a behavior change keeps a check that could fail, and the owners of a seam's shape, an unknown cause and a test's removal.",
+          "gist": "Opens the habit: when it applies and what it leaves",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Before the first test, read [method.md](method.md): the check a behavior change leaves, discovering the stack, what a good test is, when a new test earns its place, and the loop.",
           "kind": "pointer",
-          "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
-          "gist": "Points at the skill's references page for paths and commands"
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Test-Driven Development: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "Whether a change gains a new test is judged on its cost, below; a behavior change with no check that could fail is a floor in AGENTS.md, so leave one wherever you can: an existing test that fails if the change breaks, a new test, or the closest executable check.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situation the block's rows key it by, that it writes no record of its own and the step's section names what it leaves, the floor that a behavior change keeps a check that could fail, and the owners of a seam's shape, an unknown cause and a test's removal.",
+          "gist": "Opens the habit: when it applies and what it leaves"
+        },
+        {
+          "passage": "written",
+          "text": "At careful, the build's first test is the one anticipate named:",
+          "kind": "method",
+          "reason": "Names a careful build's first test, the one anticipate designed.",
+          "gist": "A careful build's first test",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\": a phrase that is a stance at one step enters as a sentence on that step's method page, at the moment it serves"
+        },
+        {
+          "passage": "written",
+          "text": "Design the single test that breaks this design on day one.",
+          "kind": "method",
+          "reason": "The operator's phrase, lifted as written, at the moment it serves.",
+          "gist": "The operator's phrase, lifted as written",
+          "ruling": "the operator's words of 2026-11-07: we should lift phrases as they are with minimal changes",
+          "credits": ["phrasebook"],
+          "phrase": "day-one-test",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Write it red before any other test, and name it in the build section.",
+          "kind": "method",
+          "reason": "The test runs red first and the build section names it.",
+          "gist": "The test red first, named in the build section",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\": a phrase that is a stance at one step enters as a sentence on that step's method page, at the moment it serves",
+          "join": " "
         },
         {
           "passage": "taken",
@@ -65,9 +120,9 @@
         },
         {
           "passage": "written",
-          "text": "Record the focused command's runs during the loop as checks, each red, each green and each rerun made only to read why a test failed; wider runs are the build step's increment check and the verify step's, at the depth the change's mode gives it.",
+          "text": "Record the focused command's runs during the loop as checks, each red, each green and each rerun made only to read why a test failed; wider runs are the build step's increment check and the verify step's, at the depth the change's mode gives it. In a workspace, the commands that record them and where they land stand on [references/greenline.md](references/greenline.md): read it before the first command you run.",
           "kind": "method",
-          "reason": "addyosmani's full suite before completion becomes the verify step's at its depth, and every run goes through greenline check, as the block runs every check (contradiction 21): the habit runs the focused command on the tests the change affects. The recorder's short form is given, and a rerun made only to read why a test failed is a check like any other, as the build step says (J-60, the Linear clone). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "reason": "addyosmani's full suite before completion becomes the verify step's at its depth, and every run goes through greenline check, as the block runs every check (contradiction 21): the habit runs the focused command on the tests the change affects. The recorder's short form is given, and a rerun made only to read why a test failed is a check like any other, as the build step says (J-60, the Linear clone). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page. The pointer to the references page stands here, where the loop's commands start (J-144 S5).",
           "gist": "Each test runs through greenline check; the full suite waits for verify",
           "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21; The operator's delegation of 2026-10-16, renewed on 2026-10-18 for the fix job after the Linear clone, whose words finalise its slices: every check of a change's code on a long build runs through greenline check, whose short form greenline check -- <command> takes the open change and the step its record is in; the one run left plain is a probe, one recorded by mistake being marked with greenline check --probe; and greenline status counts the commits since the last recorded check, a nudge and never a finding, while the close sets done only on green recorded checks of the final code; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
           "credits": ["addyosmani"]
@@ -132,6 +187,13 @@
           "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits; and the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood"
         },
         {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "tdd/SKILL.md",
+          "segments": ["b7c23c768660"],
+          "join": " "
+        },
+        {
           "passage": "written",
           "text": "When the shape of that interface is itself in question (how deep the module is, where the seam belongs, what the interface should expose), load deep-modules through the harness's skill mechanism, or read its installed SKILL.md, for the vocabulary.",
           "kind": "harness",
@@ -159,7 +221,22 @@
             "eaac3f08fd0c",
             "edac4692fbbe",
             "2364abba26fe",
-            "da50d705edea",
+            "da50d705edea"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "- **A known cause, its page before its test.** Fixing a bug whose cause is known, read [bug-fix.md](bug-fix.md) before the failing test: when a regression test is worth writing, where it goes, what stands in when it is impractical, and what the fix's report names.",
+          "kind": "method",
+          "reason": "The loop opens with bug-fix.md read before the first failing test for a bug whose cause is known, since a QA run fixed a bug test-first without reading it (J-109 S4, the merged skills); the references page is pointed at where the loop's commands start, above, said once (J-144 S5).",
+          "gist": "The loop opens with the bug-fix page for a known cause",
+          "ruling": "J-132's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the register's row of 2026-10-26, the judge's grade governs a stop: the merged-skills run's two blocking findings cured by putting each page where its method starts, ponytail's simplify page before a refactor's first edit, and tdd's references page, its bug-fix page and tests.md's checks in the rules of the loop"
+        },
+        {
+          "passage": "taken",
+          "source": "mattpocock-skills",
+          "file": "tdd/SKILL.md",
+          "segments": [
             "5be8a1678e13",
             "2fcb84f49532",
             "0ad36064695e",
@@ -177,7 +254,17 @@
               "reason": "Refactoring belongs to the review step, whose findings return to the build in the mode's fix round; the code-review skill is no roster skill (contradiction 20, the roster's side).",
               "gist": "Refactoring is the review step's; the roster has no code-review skill"
             }
-          ]
+          ],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "- **tests.md's checks before a test is kept.** Read the checks [tests.md](tests.md) holds and pass each before you keep a test.",
+          "kind": "method",
+          "reason": "The loop's rules say tests.md's checks are read before a test is kept, since a QA run kept a test-first bug fix's test without reading the page that holds them (J-109 S4, the merged skills).",
+          "gist": "A test is kept only after tests.md's checks",
+          "ruling": "J-132's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the register's row of 2026-10-26, the judge's grade governs a stop: the merged-skills run's two blocking findings cured by putting each page where its method starts, ponytail's simplify page before a refactor's first edit, and tdd's references page, its bug-fix page and tests.md's checks in the rules of the loop",
+          "join": "\n"
         },
         {
           "passage": "taken",
@@ -237,13 +324,6 @@
           "file": "test-driven-development/SKILL.md",
           "segments": ["58fe0e0ce627"],
           "join": " "
-        },
-        {
-          "passage": "written",
-          "text": "## A bug fix\n\nFixing a bug whose cause is known, read [bug-fix.md](bug-fix.md) before the failing test: when a regression test is worth writing, where it goes, what stands in when it is impractical, and what the fix's report names.",
-          "kind": "pointer",
-          "reason": "pstack's tdd and the correct-seam rule live on bug-fix.md, read only on that branch, so the body names the page and what it holds.",
-          "gist": "A known-cause bug fix reads bug-fix.md before the failing test"
         }
       ]
     },
@@ -367,17 +447,21 @@
           "passage": "taken",
           "source": "pstack",
           "file": "principle-test-behavior-not-implementation/SKILL.md",
-          "segments": ["f4ad67bb059e", "8921809d2597", "eed0c7422f13", "ad35381a71c6"],
-          "edits": [
-            {
-              "segment": "8921809d2597",
-              "find": "which calls the code made,",
-              "replace": "which calls the code made where the contract does not fix them,",
-              "kind": "method",
-              "reason": "Asserting calls is a defect only where the contract does not fix them; where it does, the specific doubles below assert them (contradiction 22).",
-              "gist": "Call assertions are a defect only where the contract leaves them open",
-              "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21"
-            }
+          "segments": [
+            "1deeb00bd1e2",
+            "7ea31e461e5e",
+            "dd27860d70b4",
+            "a3e97fd3de65",
+            "edbd885e3ef2",
+            "670bfdd354ca",
+            "e320ea1795e9",
+            "09fca059843d",
+            "dd9cd151be72",
+            "2040f0d575b7",
+            "3c36823b7ea0",
+            "00f1f3efe1a6",
+            "6373950759bc",
+            "d1f9cea4323e"
           ]
         },
         {
@@ -394,38 +478,8 @@
           "passage": "taken",
           "source": "pstack",
           "file": "principle-test-behavior-not-implementation/SKILL.md",
-          "segments": [
-            "58786c89c92c",
-            "5784eed6b99b",
-            "22cb9e40bdd1",
-            "ec60a695d496",
-            "6ee6e4507fe5"
-          ],
-          "edits": [
-            {
-              "segment": "58786c89c92c",
-              "find": "Five",
-              "replace": "Four",
-              "kind": "scope",
-              "reason": "The fifth shape, self-referential, is this page's tautological test, dropped as its duplicate, so the count names the four taken.",
-              "gist": "Counts four shapes; the fifth duplicated this page's tautological test"
-            }
-          ]
-        },
-        {
-          "passage": "taken",
-          "source": "pstack",
-          "file": "principle-test-behavior-not-implementation/SKILL.md",
-          "segments": [
-            "bd829ff4adc5",
-            "59caacff3090",
-            "53d36d84b02f",
-            "1efc85e024e4",
-            "813f5d503209",
-            "6a4c1548a41c",
-            "9c4e3f549b0d",
-            "698a48af6ab2"
-          ]
+          "segments": ["6f0c948b4955", "a914d4af0005", "5926e90524b9"],
+          "join": " "
         },
         {
           "passage": "written",
@@ -441,7 +495,18 @@
           "passage": "taken",
           "source": "pstack",
           "file": "principle-test-behavior-not-implementation/SKILL.md",
-          "segments": ["6f2ed05e547c"]
+          "segments": [
+            "fcbc56bde30d",
+            "7d4ef70fec43",
+            "eccf7a8cd690",
+            "c1d6bae16555",
+            "412429e4484a",
+            "32c644f40320",
+            "3d1f9d07de8f",
+            "c2ce24c8495b",
+            "f6c71f732bf4",
+            "c389df1635c7"
+          ]
         },
         {
           "passage": "written",
@@ -600,7 +665,7 @@
       "passages": [
         {
           "passage": "written",
-          "text": "# TDD: the practice's mechanics\n\nThis page holds where tdd's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.",
+          "text": "# TDD: the practice's mechanics\n\nThis page holds where tdd's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` before the first command the loop runs.",
           "kind": "scope",
           "reason": "The skill's references page opens: greenline's mechanics for the skill, the paths and commands its front names by their nouns, held apart from the upstream prose since J-93 S2.",
           "gist": "Opens the skill's mechanics page, read with SKILL.md"
@@ -627,8 +692,8 @@
       "gist": "The change record or the ticket confirms the seams, not the user",
       "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits; and the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 11
+        "path": "method.md",
+        "passage": 10
       }
     },
     {
@@ -640,8 +705,8 @@
       "gist": "Interface and seams come from that section or acceptance",
       "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations, which kept the nine method edits; and the operator's rulings of 2026-10-04, \"cool then lock everything in\", the change record's frame and plan sections and a ticket's acceptance standing where the ticket and its spec stood",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 13
+        "path": "method.md",
+        "passage": 12
       }
     },
     {
@@ -652,7 +717,7 @@
       "reason": "The Skill tool becomes the harness's skill mechanism, and codebase-design the habit deep-modules.",
       "gist": "Loads deep-modules by the skill mechanism, not upstream's Skill tool",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 14
       }
     },
@@ -777,8 +842,8 @@
       "gist": "The full suite before completion is the verify step's",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 6
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
@@ -2282,8 +2347,8 @@
       "reason": "npm test is one stack's command: the habit runs the repository's own focused command, named where the stack is discovered.",
       "gist": "npm test belongs to one stack; the repository's focused command replaces it",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 6
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
@@ -2366,8 +2431,8 @@
       "reason": "npm test is one stack's command: the repository's own focused command runs.",
       "gist": "The repository's own focused command runs, not one stack's npm test",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 6
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
@@ -2379,8 +2444,8 @@
       "gist": "The whole suite before done is the verify step's at its depth",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 21
+        "path": "method.md",
+        "passage": 24
       }
     },
     {
@@ -2392,8 +2457,8 @@
       "gist": "The whole suite before done is the verify step's at its depth",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 21
+        "path": "method.md",
+        "passage": 24
       }
     },
     {
@@ -2405,8 +2470,8 @@
       "gist": "The whole suite before done is the verify step's at its depth",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 21
+        "path": "method.md",
+        "passage": 24
       }
     },
     {
@@ -2418,8 +2483,8 @@
       "gist": "The whole suite before done is the verify step's at its depth",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 21
+        "path": "method.md",
+        "passage": 24
       }
     },
     {
@@ -3402,7 +3467,7 @@
       "gist": "Drops the number from the second principle's heading",
       "replacedBy": {
         "path": "tests.md",
-        "passage": 17
+        "passage": 16
       }
     },
     {
@@ -3461,8 +3526,8 @@
       "reason": "Tests ship with the implementation restates when a new test earns its place.",
       "gist": "Shipping tests with code repeats when a new test earns its place",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 9
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -3473,8 +3538,8 @@
       "reason": "Tests ship with the implementation restates when a new test earns its place.",
       "gist": "Shipping tests with code repeats when a new test earns its place",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 9
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -3485,8 +3550,8 @@
       "reason": "Tests ship with the implementation restates when a new test earns its place.",
       "gist": "Shipping tests with code repeats when a new test earns its place",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 9
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -3705,10 +3770,9 @@
       "source": "pstack",
       "file": "principle-test-behavior-not-implementation/SKILL.md",
       "segment": "286ed4da82af",
-      "kind": "method",
-      "reason": "The delete clause is dropped (contradiction 23).",
-      "gist": "Rewrites the assertion; the option to delete the test goes",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
         "path": "tests.md",
         "passage": 12
@@ -3719,44 +3783,43 @@
       "file": "principle-test-behavior-not-implementation/SKILL.md",
       "segment": "fbd694abdcf9",
       "kind": "scope",
-      "reason": "The why restates the check's own reason.",
-      "gist": "The why repeats the check's own reason"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-test-behavior-not-implementation/SKILL.md",
       "segment": "88a6774969d4",
       "kind": "scope",
-      "reason": "The why restates the check's own reason.",
-      "gist": "The why repeats the check's own reason"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-test-behavior-not-implementation/SKILL.md",
       "segment": "b70574ebbd7e",
       "kind": "scope",
-      "reason": "The self-referential shape is the tautological test this page already carries.",
-      "gist": "Self-referential tests are the tautological test this page already carries"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-test-behavior-not-implementation/SKILL.md",
       "segment": "62eb3b777786",
       "kind": "scope",
-      "reason": "The self-referential shape is the tautological test this page already carries.",
-      "gist": "Self-referential tests are the tautological test this page already carries"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-test-behavior-not-implementation/SKILL.md",
       "segment": "5bd5425fac51",
-      "kind": "method",
-      "reason": "The delete clause gives way to sweep-tests (contradiction 23).",
-      "gist": "Deleting the test gives way to sweep-tests",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
         "path": "tests.md",
-        "passage": 15
+        "passage": 14
       }
     },
     {
@@ -3910,6 +3973,272 @@
         "path": "bug-fix.md",
         "passage": 4
       }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "9752c3e19095",
+      "kind": "method",
+      "reason": "The delete clause gives way to sweep-tests (contradiction 23).",
+      "gist": "Deleting the test gives way to sweep-tests",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: the roster's judgment bounded by the cheap-path rule and the floor of a behavior change with no check that could fail (contradiction 17), a regression test only at a correct seam (18), code written before its test not deleted (19), refactoring outside the loop (20), the full suite the verify step's (21), call counts asserted where the contract fixes them (22), and a test removed only through sweep-tests and its mutation proof (23); the pyramid, the test sizes and the browser section garden's, and the subagents for testing not taken under R21"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "f4ad67bb059e",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "8921809d2597",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "eed0c7422f13",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "ad35381a71c6",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "58786c89c92c",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "5784eed6b99b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "22cb9e40bdd1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "ec60a695d496",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "6ee6e4507fe5",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "bd829ff4adc5",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "59caacff3090",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "53d36d84b02f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "1efc85e024e4",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "813f5d503209",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "6a4c1548a41c",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "9c4e3f549b0d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "698a48af6ab2",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-test-behavior-not-implementation/SKILL.md",
+      "segment": "6f2ed05e547c",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     }
-  ]
+  ],
+  "keepers": [
+    {
+      "promise": "The habit never deletes a test; removing one belongs to sweep-tests with its mutation proof.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No hook or status line reads whether a test was deleted. Neither the Linear replay's verdict nor the fix round's jobs name a deleted test, so no run saw this prose fail."
+    },
+    {
+      "promise": "A behavior change leaves a check that could fail when it breaks: an existing test, a new test or the closest executable check.",
+      "page": "method.md",
+      "kind": "gap",
+      "oracle": "Mode choice, a floor",
+      "warrants": "prose",
+      "reason": "GL0456 names only a done change with no check facts at all, and GL0403 only a standing choice below a floor. Neither reads whether the change left a check that fails when it breaks. The Linear replay graded tests met in every building part."
+    },
+    {
+      "promise": "Each run of the focused command during the loop (red, green, or a rerun made only to read a failure) goes through greenline check -- <command>, so the change's checks record it.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "J-89's cures, a recurrence read as a regression",
+      "cost": "free"
+    },
+    {
+      "promise": "Before any test is written, the seams under test are written down and confirmed in the record's frame or plan section or the acceptance, each with a one-line note on what it catches and misses. The owner is asked only when a consequential seam is still open.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No lint reads seams in a record section, and no run or fix-round job names this as a failure."
+    },
+    {
+      "promise": "Each new test is watched failing for the intended reason before the code that passes it is written.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The merged skills",
+      "cost": "free"
+    },
+    {
+      "promise": "The other tests the change affects pass before the work is finished, and a failing one is fixed now.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap",
+      "oracle": "J-89's cures, a recurrence read as a regression"
+    },
+    {
+      "promise": "Any failure the focused run shows, including one the change did not cause, is named in the report.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing reads a report against the failures recorded in the check facts. No run cites an unreported red."
+    },
+    {
+      "promise": "A regression test goes in only at a correct seam. Where there is none, the finding is recorded at close in the repository's decision home and the closest executable check stands in.",
+      "page": "bug-fix.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading ties a fix's decision-home entry to a missing seam, and no run names the lapse."
+    },
+    {
+      "promise": "Tests are never changed to match a wrong implementation, and assertions are not weakened unless the expected behavior truly changed.",
+      "page": "bug-fix.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing reads test diffs for weakened assertions. The replay's F2 (004/004) fitted code to an interface check's pattern, which is a neighbouring failure and not a test changed to match code."
+    },
+    {
+      "promise": "The fix's report names the test or check that failed before and its failure, the run that passed after, or why failing-before evidence could not be shown.",
+      "page": "bug-fix.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The check facts hold the runs but nothing reads the report against them. No run names a fix reported without its evidence."
+    },
+    {
+      "promise": "At careful, the build's first test is the one anticipate designed to break the design on day one, written red before any other and named in the build section.",
+      "page": "method.md",
+      "kind": "record",
+      "where": "the build section",
+      "cost": "free"
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["test"],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "files": ["test"],
+      "steps": ["build"],
+      "modes": ["regular", "careful"],
+      "weight": 2,
+      "read": "whole"
+    },
+    {
+      "words": [
+        "bug",
+        "regression",
+        "failing test",
+        "broken",
+        "test first",
+        "tests first",
+        "with a test",
+        "with tests",
+        "add a test",
+        "show me the tests"
+      ],
+      "steps": ["build"],
+      "weight": 2,
+      "read": "whole"
+    }
+  ],
+  "wholeRead": ["method.md", "tests.md"]
 }

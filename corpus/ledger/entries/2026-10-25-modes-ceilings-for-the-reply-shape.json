@@ -1,0 +1,50 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-modes-ceilings-for-the-reply-shape",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-intake-mengto-no-slop-article",
+    "sha256": "c9cafba66363e4dfadbc58bfdda0cf11c3a465f838f7d301ec7348a3f66a50f6"
+  },
+  "subject": "modes",
+  "recipe": "6791472e345b39eb3a4f94533d427e287b655b03c5762230bbd025c5620e8ad2",
+  "result": "78ddc3507af5aa5eccdbff241d0ef5452459c4b7a5148d6305c2102c8a1b9f95",
+  "pages": [],
+  "gist": "The three ceilings rise once for the version's block edition",
+  "reason": "Each mode's ceiling rises once for the version's block edition, measured whole with 100 words for unmeasured rows, rounded up: 10300, 11200 and 12500 (J-107 S3), each account carrying the operator's excess.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\" and \"The builder's written verify, no fresh verifier (Recommended)\": three modes each keeping the whole record, max folded into careful, the anticipate trial careful's premise review, and each words budget a ceiling"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

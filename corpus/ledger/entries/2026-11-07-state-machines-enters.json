@@ -1,0 +1,40 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-state-machines-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-ponytail-simplify-passages-taken-back",
+    "sha256": "98892df548fedbc18b4f5dbee56089e7530c3a5a69076327c7cc0667b47cf2ad"
+  },
+  "subject": "skill:state-machines",
+  "recipe": "291ef969f75ecf614e123ea8d114793c60035f2fcec7c6cdfc0a23828d3263f5",
+  "result": "891ee39a4fe9d9240c3172bb05f8f55ffcaeacfa36e0a89d59a7cfdab8288597",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "method.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Adds the start state-machines from the operator's phrase",
+  "reason": "Adds state-machines, a start the owner opens by name, whose trigger is the operator's phrase and whose product is a map of the app's implicit state machines.",
+  "authorisedBy": {
+    "date": "2026-11-07",
+    "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+  },
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 702
+  }
+}

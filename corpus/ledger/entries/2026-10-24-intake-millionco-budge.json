@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-millionco-budge",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-flornkm-webgl-components",
+    "sha256": "9c8b4fc1aa8d839b95a268e10ef43430151fb4720b8de195bdf007a45d35a183"
+  },
+  "source": {
+    "repository": "https://github.com/millionco/skills",
+    "commit": "462b78424e14ba6895a717733e1d57191dd9912f",
+    "path": "skills/budge"
+  },
+  "pin": "millionco-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A remote-loaded tweak bar, declined",
+  "reason": "It loads a runtime from a remote CDN and applies itself unasked.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': millionco's budge and paper-flex are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': millionco's budge and paper-flex are declined"
+    }
+  ]
+}

@@ -45,7 +45,7 @@ jobs:
           node -e '
             const files = require("/tmp/pack.json")[0].files.map(f => f.path);
             const leaks = files.filter(p =>
-              !/^(dist\/(bin|corpus)\/|provenance\/|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|assets\/inspect-fonts\/OFL\.txt$|package\.json$)/.test(p));
+              !/^(dist\/(bin|corpus|readers)\/|provenance\/|README\.md$|LICENSE$|THIRD_PARTY_NOTICES\.md$|assets\/inspect-fonts\/OFL\.txt$|package\.json$)/.test(p));
             if (leaks.length) { console.error("unexpected files in the tarball:", leaks); process.exit(1); }
             console.log(files.length, "files, all of the package");'
       - run: npm publish ./dist/package --access public

@@ -1,13 +1,13 @@
 /** The checks and the close's end (J-84 S2): the sentences the block, the ledger guide and the build, review, verify and close skills give an agent, read from the corpus as it ships. */
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { corpusPage } from "./skill-text.ts";
 
 const repository = join(import.meta.dirname, "..", "..");
 
 /** A corpus page's text with its line breaks and runs of spaces read as one space, as an agent reads the prose. */
 function page(path: string): string {
-  return readFileSync(join(repository, "corpus", path), "utf8").replace(/\s+/g, " ");
+  return corpusPage(repository, path);
 }
 
 const block = page("runtime/agent.md");
@@ -86,15 +86,15 @@ describe("J-89 S2 every check through the recorder on a long build", () => {
     );
   });
 
-  it("the build and verify skills name a rerun made only to read a check, and the plain run a probe alone", () => {
+  it("the build and verify skills name a rerun made only to read a check, and J-175 S1 records a probe too, then marks it", () => {
     expect(references("build")).toContain(
       "A run of the change's code you make only to read, a failing test's detail or a quick look after an edit, is a check too: `greenline check -- node --test --test-name-pattern=<name> <file>` records it,",
     );
     expect(references("build")).toContain(
-      "The one run left plain is a probe, a run whose green the change never claims: a baseline at an earlier commit, a mutation run, a negative control.",
+      "A probe, a baseline at an earlier commit, a mutation run or a negative control, is recorded the same way and marked a probe: no run you cite stays plain.",
     );
     expect(verify).toContain(
-      "and so is one test run plainly again to read why it failed: record it too. The one run left plain is a probe.",
+      "and so is one test run plainly again to read why it failed: record it too. No run you cite stays plain.",
     );
     expect(references("verify")).toContain(
       "Run each check through `greenline check -- <command>`, which takes the open change and the step its record is in and names that step beside the facts, or with both named, `greenline check --change <id> --step verify -- <command>`, a fresh verifier adding the `--round <n>` its brief names, as the block gives a fresh agent and wherever the step it names is another,",
@@ -140,12 +140,12 @@ describe("J-89 S2 every check through the recorder on a long build", () => {
     expect(tdd).not.toContain("each red and each green through `greenline check`,");
   });
 
-  it("the block's check sentence stays as J-84 made it, on build's page since J-93 S1, the block keeping its promise", () => {
+  it("the block's check sentence keeps J-84's promise, J-175 S1 adding the baseline and the probe, on build's page since J-93 S1", () => {
     expect(block).toContain(
-      "Every check runs through `greenline check`, a red run included; a command run plainly proves nothing.",
+      "Every check runs through `greenline check`, a red run, a baseline and a probe included, a probe then marked one; a command run plainly proves nothing.",
     );
     expect(references("build")).toContain(
-      "Every check runs through `greenline check`, its red runs included; a probe, a run whose green the change never claims, runs outside it, as the verify skill says.",
+      "Every run of the change's code goes through `greenline check`, its red runs, a baseline, a probe and an assertion script included, the builder's and every fresh agent's alike; a probe, a run whose green the change never claims, is then marked with `greenline check --change <id> --probe <fact>`, which keeps it out of the change's checks, as the verify skill says.",
     );
   });
 });
@@ -154,7 +154,7 @@ describe("J-84 S2 recorded facts never removed", () => {
   it("the block, build's page and the ledger guide forbid removing or editing a recorded fact, and name the probe mark", () => {
     expect(block).toContain("a recorded check fact is never edited or removed.");
     expect(references("build")).toContain(
-      "A recorded check fact is never removed or edited: a rerun records a new one, and a probe recorded by mistake is marked with `greenline check --change <id> --probe <fact>`.",
+      "A recorded check fact is never removed or edited: a rerun records a new one.",
     );
     expect(ledger).toContain(
       "A recorded check fact is never removed or edited, by the session holding the change or by a fresh agent: a rerun of a command records a new fact beside the earlier ones, and `check` never writes over a facts file already standing.",
@@ -163,13 +163,14 @@ describe("J-84 S2 recorded facts never removed", () => {
       "Each fact names, as `previous`, the newest fact the folder held when its run started, so `greenline status` names a fact removed from between two runs (GL0459), whose remedy is to restore it from history; a fact removed while it was the newest leaves no trace, since the next run names the one before it, and that is no licence to remove one.",
     );
     expect(ledger).toContain(
-      "A probe recorded through `check` by mistake stays where it is: mark it with `greenline check --change <id> --probe <fact>`, and `status` leaves it out of the change's checks, the latest-run rule and GL0451 included; the verify section says why it was marked.",
+      "A probe recorded through `check` stays where it is: mark it with `greenline check --change <id> --probe <fact>`, and `status` leaves it out of the change's checks, the latest-run rule and GL0451 included; the verify section says why it was marked.",
     );
+    // J-175 S1: a probe is recorded like a check and then marked, never run plainly.
     expect(verify).toContain(
-      "A probe recorded as a check by mistake is never removed or edited: mark it as verify's references page says, which leaves it out of the change's checks, and say in the verify section why.",
+      "A recorded fact is never removed or edited: say in the verify section why each one you marked is a probe.",
     );
     expect(references("verify")).toContain(
-      "a probe recorded through `greenline check` by mistake is marked with `greenline check --change <id> --probe <fact>`, which leaves it out of the change's checks.",
+      "and is then marked with `greenline check --change <id> --probe <fact>`, which leaves it out of the change's checks; a fresh verifier does the same.",
     );
   });
 });
@@ -177,7 +178,7 @@ describe("J-84 S2 recorded facts never removed", () => {
 describe("J-84 S2 the close's writes before the last check, and tidy at every close", () => {
   it("the close runs the checks again after its writes outside .greenline/, and close's page says every close does", () => {
     expect(close).toContain(
-      "Once the decisions and the terms are written, record again each check whose code they moved: an ADR or a glossary entry outside the workspace's own folder moves the code a check last ran on, and the change's status names each such check. No write outside that folder follows that run but the landing's merge, whose checks run on the merged result.",
+      "Once the decisions and the terms are written, record again each check whose code they moved: an ADR or a glossary entry outside the workspace's own folder moves the code a check last ran on, and the change's status names each such check. Record again, too, each check whose last run came before the change's last code commit, so the code the close commits has a run of its own. No write outside that folder follows that run but the landing's merge, whose checks run on the merged result.",
     );
     expect(references("close")).toContain(
       "a write outside `.greenline/` moves the code a check last ran on, and `greenline status --change <id>` names each such check (GL0451).",
@@ -241,7 +242,7 @@ describe("J-84 S2 verify's baseline on a copy", () => {
       "Once its probes have run and what the verdict relies on is promoted, remove the copy, so that no check of the change, run at the repository root, reads it.",
     );
     expect(verify).toContain(
-      "The revert runs in the baseline's copy, never in the change's working tree: put the regression test into the copy of the commit before the fix and run it there, plainly, as a probe that must fail;",
+      "The revert runs in the baseline's copy, never in the change's working tree: put the regression test into the copy of the commit before the fix and record its run there as a probe that must fail;",
     );
     expect(verify).not.toContain("return HEAD, the branch and any uncommitted work");
   });

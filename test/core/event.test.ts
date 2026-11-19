@@ -154,7 +154,11 @@ describe("J-93 S3 Claude Code: the outcome by event, the duration and the absolu
       tool: { name: "Bash", class: "shell" },
       command: { text: "pnpm run test", dir: null, exit: null, outcome: "ok", durationMs: 812 },
       write: null,
+      read: null,
+      skill: null,
       check: null,
+      cut: false,
+      refused: [],
     });
   });
 
@@ -425,6 +429,13 @@ describe("J-93 S3 the context, the homes and the patch envelope", () => {
     expect(inHomes(".greenline/tmp/2026-10-19-b/notes.md", "2026-10-19-a")).toBe(false);
     expect(inHomes("src/a.ts", "2026-10-19-a")).toBe(false);
     expect(inHomes(".greenline/manifest.json", "2026-10-19-a")).toBe(false);
+  });
+
+  it("J-176 S1 holds no folder of the visual home as a home, the open change's included: greenline picture keep writes there", () => {
+    expect(inHomes(".greenline/visuals/2026-10-19-a/flow.svg", "2026-10-19-a")).toBe(false);
+    expect(inHomes(".greenline/visuals/2026-10-19-b/flow.svg", "2026-10-19-a")).toBe(false);
+    expect(inHomes(".greenline/visuals/map/architecture.html", "2026-10-19-a")).toBe(false);
+    expect(inHomes(".greenline/visuals/2026-10-19-a/flow.svg", undefined)).toBe(false);
   });
 
   it("J-102 S1 while no change is open, holds the ledger and the working folders' home whole", () => {

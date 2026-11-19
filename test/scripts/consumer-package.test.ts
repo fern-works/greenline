@@ -64,3 +64,37 @@ it("R6 lets a root file name the workspace glossary homes GLOSSARY.md and GLOSSA
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+it("J-150 S2 refuses a package whose exports name a file the tarball lacks", () => {
+  const root = mkdtempSync(join(tmpdir(), "greenline-package-"));
+  try {
+    mkdirSync(join(root, "dist/bin"), { recursive: true });
+    writeFileSync(join(root, "dist/bin/greenline.mjs"), "export {};\n");
+    writeFileSync(
+      join(root, "package.json"),
+      JSON.stringify({
+        name: "greenline-package-fixture",
+        version: "0.0.0",
+        files: ["dist/bin"],
+        exports: {
+          "./readers": {
+            types: "./dist/readers/readers.d.mts",
+            import: "./dist/readers/readers.mjs",
+          },
+        },
+        dependencies: { commander: "15.0.0", zod: "4.4.3" },
+      }),
+    );
+    const result = spawnSync(
+      process.execPath,
+      [join(import.meta.dirname, "../../scripts/check-consumer-package.mjs"), "."],
+      { cwd: root, encoding: "utf8" },
+    );
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain(
+      "package.json: package path './dist/readers/readers.d.mts' is absent from the tarball",
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});

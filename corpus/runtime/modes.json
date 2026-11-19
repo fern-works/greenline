@@ -28,6 +28,7 @@
   ],
   "steps": [
     { "name": "frame", "whenSplit": "plan", "fixPass": false },
+    { "name": "design", "whenSplit": "plan", "fixPass": false, "appliesWhen": "interface" },
     { "name": "plan", "whenSplit": "plan", "fixPass": false },
     { "name": "anticipate", "whenSplit": "plan", "fixPass": false },
     { "name": "build", "whenSplit": "ticket", "fixPass": false },
@@ -41,9 +42,10 @@
       "promise": "quick, the builder alone",
       "typicalRequest": "a settled one-commit fix",
       "fixRounds": 0,
-      "budget": { "words": 9500 },
+      "budget": { "words": 11384 },
       "steps": {
         "frame": { "depth": "inline" },
+        "design": { "depth": "inline" },
         "plan": { "depth": "inline" },
         "anticipate": { "depth": "none" },
         "build": { "depth": "inline" },
@@ -57,9 +59,10 @@
       "promise": "one fresh review and one fix pass",
       "typicalRequest": "a bounded change with a clear goal",
       "fixRounds": 1,
-      "budget": { "words": 10400 },
+      "budget": { "words": 12325 },
       "steps": {
         "frame": { "depth": "written" },
+        "design": { "depth": "written" },
         "plan": { "depth": "written" },
         "anticipate": { "depth": "none" },
         "build": { "depth": "written" },
@@ -73,9 +76,10 @@
       "promise": "the premise attacked, two reviews and a fresh verifier",
       "typicalRequest": "open decisions, a floor, or several tickets",
       "fixRounds": 2,
-      "budget": { "words": 11700 },
+      "budget": { "words": 13588 },
       "steps": {
         "frame": { "depth": "written" },
+        "design": { "depth": "independent", "agents": 1 },
         "plan": { "depth": "written" },
         "anticipate": { "depth": "independent", "agents": 1 },
         "build": { "depth": "written" },

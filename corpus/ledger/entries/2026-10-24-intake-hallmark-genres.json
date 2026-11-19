@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-hallmark-genres",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-hallmark-themes",
+    "sha256": "2d1a434d73db255f8069269ba42b8bb25ed40fd5e3c4c95ace434ba34862b087"
+  },
+  "source": {
+    "repository": "https://github.com/Nutlope/hallmark",
+    "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+    "path": "skills/hallmark/references/genres"
+  },
+  "pin": "hallmark",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Four style genres held: styles, not the register facet",
+  "reason": "Its genres are style registers with allowed and refused lists, not the site and app register; they wait for a ruling on style families.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's four genres are held as style registers"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's four genres are held as style registers"
+    }
+  ]
+}

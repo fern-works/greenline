@@ -1,0 +1,96 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-26-show-me-counts-before-drawing",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-26-close-holds-marks-to-the-owners-verdict",
+    "sha256": "76d7eb134e318208b280b0d5aee6c151a2dbd672e49109adb4f6ed8f2def135b"
+  },
+  "subject": "skill:show-me",
+  "recipe": "b04061e20d6f6cd142db14875b287be298cf5063b125c12c1f8f9de3dd9cac1f",
+  "result": "c408044ff190b1e60e16d981eb0517dbf1ee036885658eb80226046df46905c8",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The caps are counted before drawing; only the offer passes them",
+  "reason": "Show-me's page makes the caps a count made before drawing and the offer the only path past them, and its references say the session never writes a change's visual, the hooks recording the maker and counting the reply's pictures.",
+  "authorisedBy": {
+    "date": "2026-10-26",
+    "words": "J-129's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the cards of 2026-10-26: Words must be the owner's verdict; Committed before the act. The QA series' owed finding on the pictures: an inline picture past twelve nodes or 72 columns is counted and named, a durable one offered, and a visual records whether a fresh agent or the session made it"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-26",
+      "words": "J-129's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the cards of 2026-10-26: Words must be the owner's verdict; Committed before the act. The QA series' owed finding on the pictures: an inline picture past twelve nodes or 72 columns is counted and named, a durable one offered, and a visual records whether a fresh agent or the session made it"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "humanlayer",
+        "segments": 34,
+        "taken": 30,
+        "exact": 29,
+        "retention": 0.9666666666666667,
+        "coverage": 0.8823529411764706,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "curiositech",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "awesome-copilot",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 1595
+  }
+}

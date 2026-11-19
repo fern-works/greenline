@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-build-the-lever-refresh-pstack",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-benchmark-checklist-refresh-pstack",
+    "sha256": "c55077c5e41ef52c5cd9c1734014bb4723b26148d8b038536f7131b4d196bfe7"
+  },
+  "subject": "skill:build-the-lever",
+  "recipe": "6ace8b6dfee9ad3e1956b189431eb25eb9a9eeefe7d9722c014f104d10bff560",
+  "result": "7523a5f311d78ef03e94b17fc6d241aca3986a361882bd19d1b3a2857f4f1c8a",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Takes upstream's tightened why and pattern lines at eb4db2b5",
+  "reason": "Refreshes build-the-lever to pstack eb4db2b55b2b, taking the principle's tightened opening without its why, pattern and balance labels; the method reads as before.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-build-the-lever is a copy, a new trial habit build-the-lever, its fan-out bullet dropped under R20 of 2026-10-07: greenline runs subagents one after another, never in parallel, and uses no worktrees (\"we are not doing worktrees and parralel susbs at all ... only linear sub flow\")"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 26,
+        "taken": 21,
+        "exact": 19,
+        "retention": 0.9047619047619048,
+        "coverage": 0.8076923076923077,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 257
+  }
+}

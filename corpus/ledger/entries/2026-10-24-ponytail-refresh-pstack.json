@@ -1,0 +1,89 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-ponytail-refresh-pstack",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-plan-refresh-pstack",
+    "sha256": "197a3e705cb893a070e9bc972515251989ecdc66a1aea68448a64e5e36506147"
+  },
+  "subject": "skill:ponytail",
+  "recipe": "c78f6930b451d4a66e5b46240912813241a23fccf82819dcc7f71544eefe503b",
+  "result": "a5c054b482dabc6819812e40fea858d439bb5acc4fcfde2cdbc780459e3e41f8",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Keeps the laziness and migrate-callers rules upstream cut",
+  "reason": "Refreshes ponytail to pstack eb4db2b55b2b: the rules laziness-protocol and migrate-callers-then-delete-legacy-apis lost upstream stay as greenline's text crediting pstack, subtract-before-you-add loses only its pattern label, and the three bodies stay not stubs.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-17",
+      "words": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112 S2, under the operator's words \"for smaller decisions go with your recommended suggestions\": the seven stub flags are not stubs and keep their text; the method upstream's edit pass at eb4db2b5 cut stays as written passages crediting pstack; elsewhere upstream's change is taken"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 130,
+        "taken": 23,
+        "exact": 22,
+        "retention": 0.9565217391304348,
+        "coverage": 0.17692307692307693,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "ponytail",
+        "segments": 56,
+        "taken": 54,
+        "exact": 53,
+        "retention": 0.9814814814814815,
+        "coverage": 0.9642857142857143,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 24,
+        "taken": 15,
+        "exact": 15,
+        "retention": 1,
+        "coverage": 0.625,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 530
+  }
+}

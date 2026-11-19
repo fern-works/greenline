@@ -1,0 +1,65 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-architecture-map-lists-its-promises-and-keepers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-anticipate-lists-its-promises-and-keepers",
+    "sha256": "601cff43eb0399e986c8fa376b86376394824ac2afc2a7ce02c1b112910a172a"
+  },
+  "subject": "skill:architecture-map",
+  "recipe": "79f8f269cce729b103c6a4ad5b730e1a98b84d28b18dfd78dacdd433fcb4b215",
+  "result": "e8dbf1634e90926a0437e0180d4ae828dab009c2a4903189448b135c46364430",
+  "pages": [],
+  "gist": "Each promise listed with the keeper that holds it, or its gap",
+  "reason": "The roster audit lists the 11 promises the skill's pages state, 6 held by a fact, a hold, a record or an oracle and 5 gaps marked by the keeper test. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "almendili",
+        "segments": 285,
+        "taken": 236,
+        "exact": 230,
+        "retention": 0.9745762711864406,
+        "coverage": 0.8280701754385965,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1287
+  }
+}

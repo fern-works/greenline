@@ -1,0 +1,119 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-pr-writing-lists-its-promises-and-keepers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-ponytail-lists-its-promises-and-keepers",
+    "sha256": "65a5fe3f1b469dfb7616eeadec15c8be6fcb95b3f1f18e6b4ea95bb4f524834c"
+  },
+  "subject": "skill:pr-writing",
+  "recipe": "f9569b0d4d940e1777540aca7583cc333a6665acffbaac9df6411a8db4b8abe8",
+  "result": "77d8138a1faaf62bdb81f9435ea132907a243ebd2f45e329450ebf0ea325c414",
+  "pages": [],
+  "gist": "Each promise listed with the keeper that holds it, or its gap",
+  "reason": "The roster audit lists the 13 promises the skill's pages state, 7 held by a fact, a hold, a record or an oracle and 6 gaps marked by the keeper test. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: contradictions 27 and 28 as recommended, the PR body a projection that links the change record, never make-pr-easy-to-review's history rewrite, and a PR opened only on the owner's word, since it is outward"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': visual-pr combines into pr-writing as the change outline, pr-writing staying a trial, the pin at ca7c8088; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The register's row of 2026-10-22 on the commit form and the PR unit, on the operator's words of 2026-10-22 and the card \"One PR per planning change (Recommended)\": one commit per slice that leaves the checks green, the record's first commit and every stop; the slice's files staged by name; <type>(<scope>): <imperative subject>, a body only when the subject is not enough and always for a breaking change, a security fix, a migration or a revert, no attribution in the subject, the two greenline trailers last; one pull request per change, and one per planning change with its tickets' commits grouped, its body in pr-writing's form with a TL;DR that matches the diff, the core files apart from the mechanical ones and the risks named; a change over about 500 changed lines said so with the split the plan should have made, never a gate; history cleanup only under the record's rebase line with the tree identity checked"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The register's row of 2026-10-22 on the agent's identity, on the operator's words of 2026-10-22 and the card \"Record and commit trailer (Recommended)\": the record's front matter carries agent: <harness>/<model>, the model as the harness states it to the agent, and every commit of the change carries Greenline-Agent: <harness>/<model> beside Greenline-Change; the proposal's facts table shows it"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "J-115's verdicts, ruled on 2026-10-24 under the operator's words \"for smaller decisions go with your recommended suggestions\": caveman-commit at v2.7.0 the spine of build's commit page, git-workflow-and-versioning combined into it with its versioning, tags, changelog, generated files, bisect and pre-commit hooks handed to garden; the subject's capital the repository's convention, lower case where it keeps none, 50 the aim and 72 the hard cap; a failed slice fixed forward, throwing its edits away the owner's word in the discard line; using-git-worktrees lifted into a page of frame's front, its directory ignored through the local exclude file, a refused worktree offered in place; make-pr-easy-to-review's history cleanup on close's row; the guardrails at no words; the ruled 500-line note, no per-commit number"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-26",
+      "words": "The register's row of 2026-10-24 naming the UI work the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"), which confirm the records drafted on 2026-10-23 and 2026-10-24 as written, the hand among them: the owner's marks on captures, each an element or a region with a note and an intent, read at the next turn, addressed by its element, an options mark answered with variants on the real route, re-captured at the same width and closed only on the owner's act; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cursor-team-kit",
+        "segments": 32,
+        "taken": 9,
+        "exact": 9,
+        "retention": 1,
+        "coverage": 0.28125,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "humanlayer",
+        "segments": 43,
+        "taken": 14,
+        "exact": 13,
+        "retention": 0.9285714285714286,
+        "coverage": 0.32558139534883723,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 49,
+        "taken": 13,
+        "exact": 13,
+        "retention": 1,
+        "coverage": 0.2653061224489796,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "tjcages",
+        "segments": 58,
+        "taken": 26,
+        "exact": 26,
+        "retention": 1,
+        "coverage": 0.4482758620689655,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 898
+  }
+}

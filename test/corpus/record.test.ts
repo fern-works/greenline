@@ -957,9 +957,12 @@ describe("views", () => {
     "THIRD_PARTY_NOTICES.md",
     "corpus/NOTICE.md",
     "corpus/ledger/LINE.md",
+    "corpus/ledger/KEEPERS.md",
+    "corpus/ledger/DISMISSALS.md",
+    "corpus/runtime/triggers.json",
   ];
 
-  it("prints the five views and writes nothing without --write", () => {
+  it("prints the eight views and writes nothing without --write", () => {
     const { root, corpus } = repositoryOnDisk();
     const outcome = viewsVerb(corpus, false);
     expect(outcome.failed).toBe(false);
@@ -1088,14 +1091,14 @@ describe("the corpus gate row", () => {
     const unrecorded = runRow(root);
     expect(unrecorded.status).toBe(1);
     expect(unrecorded.line).toBe(
-      "corpus FAIL — corpus refused 6: fixture-skill: no change entry records the recipe; no changes happen unledgered; corpus/ledger/INDEX.md: the view is not committed; run views --write; docs/SOURCES.md: the view is not committed; run views --write; THIRD_PARTY_NOTICES.md: the view is not committed; run views --write; corpus/NOTICE.md: the view is not committed; run views --write; corpus/ledger/LINE.md: the view is not committed; run views --write",
+      "corpus FAIL — corpus refused 9: fixture-skill: no change entry records the recipe; no changes happen unledgered; corpus/ledger/INDEX.md: the view is not committed; run views --write; docs/SOURCES.md: the view is not committed; run views --write; THIRD_PARTY_NOTICES.md: the view is not committed; run views --write; corpus/NOTICE.md: the view is not committed; run views --write; corpus/ledger/LINE.md: the view is not committed; run views --write; corpus/ledger/KEEPERS.md: the view is not committed; run views --write; corpus/ledger/DISMISSALS.md: the view is not committed; run views --write",
     );
     writeTree(
       join(root, "corpus"),
       new Map(RECORDED.map(({ name, text }) => [`ledger/entries/${name}`, text] as const)),
     );
     expect(runRow(root).line).toBe(
-      "corpus FAIL — corpus refused 5: corpus/ledger/INDEX.md: the view is not committed; run views --write; docs/SOURCES.md: the view is not committed; run views --write; THIRD_PARTY_NOTICES.md: the view is not committed; run views --write; corpus/NOTICE.md: the view is not committed; run views --write; corpus/ledger/LINE.md: the view is not committed; run views --write",
+      "corpus FAIL — corpus refused 8: corpus/ledger/INDEX.md: the view is not committed; run views --write; docs/SOURCES.md: the view is not committed; run views --write; THIRD_PARTY_NOTICES.md: the view is not committed; run views --write; corpus/NOTICE.md: the view is not committed; run views --write; corpus/ledger/LINE.md: the view is not committed; run views --write; corpus/ledger/KEEPERS.md: the view is not committed; run views --write; corpus/ledger/DISMISSALS.md: the view is not committed; run views --write; corpus/runtime/triggers.json: the view is not committed; run views --write",
     );
     expect(viewsVerb(join(root, "corpus"), true).failed).toBe(false);
     const recorded = runRow(root);

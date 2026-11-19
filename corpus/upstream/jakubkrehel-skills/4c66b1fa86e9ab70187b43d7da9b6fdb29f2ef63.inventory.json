@@ -1,0 +1,287 @@
+{
+  "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "ed1dfe988fc40511b4845ccd9050a143a2002fee3bedc8064c47fa342b5d8d4f"
+    },
+    {
+      "path": "better-accessibility/SKILL.md",
+      "sha256": "df0cafe0e75a08548cf46a2a430f46c198e7e0ee9d46bdf7884c2afefb44b70e"
+    },
+    {
+      "path": "better-accessibility/agents/openai.yaml",
+      "sha256": "98699206d4fb00b72bcaf69bb446f541644cc0cc3d23967e266731e100a55563"
+    },
+    {
+      "path": "better-accessibility/focus-and-keyboard.md",
+      "sha256": "3b97fab2629261751e33ffb4a22ef52fb8706082a914fa2243cf92e8180eb84b"
+    },
+    {
+      "path": "better-accessibility/forms.md",
+      "sha256": "66557dc714093f45f6cc0ab8e248092cb2e3bc994609c6e629135f0ddf09e0f4"
+    },
+    {
+      "path": "better-accessibility/hit-areas.md",
+      "sha256": "7ce9ee5c5420d046f1d87b466e5fe5978d90d17632a2ad084a803ad34d607d53"
+    },
+    {
+      "path": "better-accessibility/motion-and-zoom.md",
+      "sha256": "1a15404327c8c73010888c7665b2083d9c1b312202cb6ad241b342d49a170714"
+    },
+    {
+      "path": "better-accessibility/screen-readers.md",
+      "sha256": "0d0911a369bbf332a6237d2cf4c5209b13e7f02e5bb01a6d47bbca3f328df71a"
+    },
+    {
+      "path": "better-accessibility/semantics-and-aria.md",
+      "sha256": "818ad7d45a8b25a3291e52bdc51ec316c4e00e22ed58940f26321e35365b741e"
+    },
+    {
+      "path": "better-colors/SKILL.md",
+      "sha256": "e74f1c413a4094dc2a73fb0baa0da2241465e01d593b0257ba995500df9b0068"
+    },
+    {
+      "path": "better-colors/agents/openai.yaml",
+      "sha256": "9568572146c8d7d1dc2e12536c2b8ea63480f83f2f2ebfcf2f9a500a56830d4a"
+    },
+    {
+      "path": "better-colors/color-formats.md",
+      "sha256": "6c5d7f243dde1c2604c35f40a7668bc20ff8b79249fa52633ac4f1be02fa73ba"
+    },
+    {
+      "path": "better-colors/color-usage.md",
+      "sha256": "02ee247c8782d256a0841c154aee5decb456966f0f7db8701bef37ed4694e773"
+    },
+    {
+      "path": "better-colors/contrast.md",
+      "sha256": "a524a229232a522fc752be9503bba8caffd76894d04c941a1e7e982817d6fefc"
+    },
+    {
+      "path": "better-colors/palette-generation.md",
+      "sha256": "0b50caa5e77085d1d762bb3d362c552103ebbf5ca5ad297b364f8172441c72a5"
+    },
+    {
+      "path": "better-colors/palette-structure.md",
+      "sha256": "bba9cd296c1e4ee613420b32023b8ce1a1bb45d1340e99e906cee37413d3dd62"
+    },
+    {
+      "path": "better-colors/token-naming.md",
+      "sha256": "2cc8c435a37cff3d4320076953431572fa77a6f58aaf88ff62381d2cdcfd022a"
+    },
+    {
+      "path": "better-interface/SKILL.md",
+      "sha256": "23416fef4d08e0417927b6eb6763b7b08ed832451abfb9e26ea699262a28abcb"
+    },
+    {
+      "path": "better-interface/agents/openai.yaml",
+      "sha256": "541c5d823f474543d4f3a314a9292215f8c90c152249e72411ff3e3632cf55bc"
+    },
+    {
+      "path": "better-interface/review-format.md",
+      "sha256": "4bb2715d6cd7c8afbd984cbe71148a214c9d43ffd535ba00789f7709ee743c01"
+    },
+    {
+      "path": "better-layout/SKILL.md",
+      "sha256": "8c5883ccb23c27c39b7c58d101154ff35e032410e0dc4794be9ab7fe070c2297"
+    },
+    {
+      "path": "better-layout/agents/openai.yaml",
+      "sha256": "d51a2ca663c9331f8f23b7a550e5f848f83e81361e21f2280cc384e99cc0ae15"
+    },
+    {
+      "path": "better-layout/grouping-and-alignment.md",
+      "sha256": "30057c8e063a3cb0026140c82de0c16510080c7c306876caacba1206d7e2483a"
+    },
+    {
+      "path": "better-layout/spacing-and-adaptivity.md",
+      "sha256": "1b7e015f520b5e34cf9712fbb6586deb57a7c9f9902b54aa465719e9e5678958"
+    },
+    {
+      "path": "better-typography/SKILL.md",
+      "sha256": "e60ca6467ba60e68f95ed2d2cfa35f2a850d96ef2a0c0d3fcfcfd9510e51f184"
+    },
+    {
+      "path": "better-typography/agents/openai.yaml",
+      "sha256": "01d8b8f835112e97ba0e4d97a07775e919407ebb5aab0cce9b4fa280e66b19b8"
+    },
+    {
+      "path": "better-typography/choosing-fonts.md",
+      "sha256": "abd2c084ce7f9c3908dbfa09636ab87a2db731204c1e804b081e4fbd7e4d612d"
+    },
+    {
+      "path": "better-typography/css-cheat-sheet.md",
+      "sha256": "9aac06b524a25a780b950ab046735aab6f45c551fcab2ebf90a8faf7f12db3c9"
+    },
+    {
+      "path": "better-typography/details-and-accessibility.md",
+      "sha256": "705176db1784beed8b85086dd92dcfad6658e61fa8f9d017e648005029b7ab23"
+    },
+    {
+      "path": "better-typography/spacing-and-sizing.md",
+      "sha256": "db91919a92c1b7de16761e8d8a5addffabcde3dce97ff579f7cbbb585f42cb0f"
+    },
+    {
+      "path": "better-typography/variable-fonts-and-opentype.md",
+      "sha256": "3b8bfa85c483d1bd08490203f232c2002b838f89059d341e6b69cde040bf6556"
+    },
+    {
+      "path": "better-typography/wrapping-and-punctuation.md",
+      "sha256": "44ef7be30b3342c0a81f7b07c2f7138c9743b8df8c8edab518907e8ec0abd68a"
+    },
+    {
+      "path": "better-ui/SKILL.md",
+      "sha256": "fb9807bb5c59a3ca9d4a27b25f56b36e5596251d280fb30c4b7f2ff8b6f4fe2d"
+    },
+    {
+      "path": "better-ui/agents/openai.yaml",
+      "sha256": "799e0b58bded32edf5c217f97e08c364660ec24234978b2e3f7dee1868bea871"
+    },
+    {
+      "path": "better-ui/animations.md",
+      "sha256": "0e9ee790191d0761a6adf27fdf1e4279d79ecbe5d0d916fc331a28a8c86f39b3"
+    },
+    {
+      "path": "better-ui/enter-exit.md",
+      "sha256": "de087d3bc69461343409c275dea7d94bca6c1158558b887b7909ce505cdfa70a"
+    },
+    {
+      "path": "better-ui/icon-transitions.md",
+      "sha256": "676b344e7b22c37692a520c7ea2ab8fad3b3c8943a833f8133e51042297e9f06"
+    },
+    {
+      "path": "better-ui/icons.md",
+      "sha256": "eac6195bb5d5ba77efd6d9d7751295a7b0d4dadf6a68146639091b02f1e3dbbd"
+    },
+    {
+      "path": "better-ui/performance.md",
+      "sha256": "db59db84ab371903b7ebdb69f1e92bdc0f2e041331d9dd65d312e4d1b5d449d6"
+    },
+    {
+      "path": "better-ui/surfaces.md",
+      "sha256": "35a76b7c4e6da0fc933559e73ca8712fb7b804c383c6f69c25be3b9616ff2721"
+    },
+    {
+      "path": "better-writing/SKILL.md",
+      "sha256": "ef6843cbfcbafa62614b1a6e012c0b1ab6fd33eee0bdd84123cf49fe275c3a31"
+    },
+    {
+      "path": "better-writing/agents/openai.yaml",
+      "sha256": "a5aec7e0cbc87930962f139eff4341dcf87e83fd19b9447e3f614db2bc71de67"
+    },
+    {
+      "path": "better-writing/patterns.md",
+      "sha256": "93ed5285d2009213b600e6f5af53ae3f7e3ff0114014146779aeda1c1ab42077"
+    },
+    {
+      "path": "break/SKILL.md",
+      "sha256": "6b231897f10477fe2a9d335b457e53c670b07a8291a08b5d8dad3981b658b9d0"
+    },
+    {
+      "path": "break/agents/openai.yaml",
+      "sha256": "e3e6b1a83f90763fa8cb166b4ec483ebc78fc84311fb0594d29f03d8ef76eddc"
+    },
+    {
+      "path": "break/scenarios.md",
+      "sha256": "1db84afedc194c5959dfcb8ecad3466fc929e197159216c9db72588ed88c1fc5"
+    },
+    {
+      "path": "explain-interface/SKILL.md",
+      "sha256": "6795aff9a133b94c6398a95b5c8958a2eaccade5db18f58e752bc02460a356e0"
+    },
+    {
+      "path": "explain-interface/agents/openai.yaml",
+      "sha256": "3858853344ece1dd145523bd9d61c8905c4b2cb6c7307f023cc8666b8f4dc0bc"
+    },
+    {
+      "path": "explain-interface/find-the-effect.md",
+      "sha256": "baa6a8e168908ab9f9c95af106a10a10277375e796e3f206855d7bd04c4232df"
+    },
+    {
+      "path": "explain-interface/from-an-image.md",
+      "sha256": "11dda70e17116dd8b3967fcdaf8973043beda4e7a78a50cd7c6939e896957b77"
+    },
+    {
+      "path": "explain-interface/no-browser.md",
+      "sha256": "0b18239c712a877356610257a1a33e773062afab05646789075b2a643b0afe8f"
+    },
+    {
+      "path": "explain-interface/read-the-system.md",
+      "sha256": "cc0ea0470e72b17b2fab60b9c1a8fdd11298b58f96c3e4ad1d17e61605bd0482"
+    },
+    {
+      "path": "interface-review/SKILL.md",
+      "sha256": "8977988d63d7c17b8b0cd334ebd722d4e2dff00af0f152de2bc6f100d13d59ce"
+    },
+    {
+      "path": "interface-review/agents/openai.yaml",
+      "sha256": "c8bb068bbd40629f03d7d4c0284924f8df1dfdf7f1a7b0fabb88b265202fa23f"
+    },
+    {
+      "path": "interface-review/removed-signals.md",
+      "sha256": "a7f14e158bcfc6020912604fa9c10290141eae8617ccc03a1f0e2d625438b2ac"
+    },
+    {
+      "path": "interface-review/scope-resolution.md",
+      "sha256": "93eb3900d9149d3f51cb2713212d23025d2549b284b859be1d38d09ad7a4fe4e"
+    },
+    {
+      "path": "state-machine/SKILL.md",
+      "sha256": "30b72100000bc8039a81fd4150919430d6ba5bcff5b4e86de11e7490afa54010"
+    },
+    {
+      "path": "state-machine/agents/openai.yaml",
+      "sha256": "46f496a379f86d7ecd91912505b7545abd462fcaaec6529d7fe39e88ae7535ff"
+    },
+    {
+      "path": "state-machine/switcher.md",
+      "sha256": "32f0f1c82362557bfc7f83554359883b0c3d931d578ec8a7a390529699973c6d"
+    }
+  ],
+  "entries": [
+    {
+      "name": "better-accessibility",
+      "path": "skills/better-accessibility"
+    },
+    {
+      "name": "better-typography",
+      "path": "skills/better-typography"
+    },
+    {
+      "name": "better-colors",
+      "path": "skills/better-colors"
+    },
+    {
+      "name": "better-layout",
+      "path": "skills/better-layout"
+    },
+    {
+      "name": "better-ui",
+      "path": "skills/better-ui"
+    },
+    {
+      "name": "better-writing",
+      "path": "skills/better-writing"
+    },
+    {
+      "name": "better-interface",
+      "path": "skills/better-interface"
+    },
+    {
+      "name": "interface-review",
+      "path": "skills/interface-review"
+    },
+    {
+      "name": "explain-interface",
+      "path": "skills/explain-interface"
+    },
+    {
+      "name": "break",
+      "path": "skills/break"
+    },
+    {
+      "name": "state-machine",
+      "path": "skills/state-machine"
+    }
+  ]
+}

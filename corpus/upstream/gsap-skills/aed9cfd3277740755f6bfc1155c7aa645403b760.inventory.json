@@ -1,0 +1,43 @@
+{
+  "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "51b04b06556662dd817e8f4aa6d06bc7139dc73739e1319a7233cfde3e147b90"
+    },
+    {
+      "path": "gsap-frameworks/SKILL.md",
+      "sha256": "842d9d3659ec3ddc8abbdc524708f8facf81f468ac25d0577f48c759c4fa31e6"
+    },
+    {
+      "path": "gsap-performance/SKILL.md",
+      "sha256": "cb5408d6fba707aabcbfe3320317a14c1f8fca6070074e5261047930f50d441e"
+    },
+    {
+      "path": "gsap-react/SKILL.md",
+      "sha256": "88e2a5312b45e8cc7b3c496637ff5bc9af2ae9c925b555c8b235b34cbc989d74"
+    },
+    {
+      "path": "gsap-scrolltrigger/SKILL.md",
+      "sha256": "9351b6666a4749c0740406ea363aaccb99a087ff45cc5e8b99a0f367facf3ef4"
+    }
+  ],
+  "entries": [
+    {
+      "name": "gsap-react",
+      "path": "skills/gsap-react"
+    },
+    {
+      "name": "gsap-frameworks",
+      "path": "skills/gsap-frameworks"
+    },
+    {
+      "name": "gsap-scrolltrigger",
+      "path": "skills/gsap-scrolltrigger"
+    },
+    {
+      "name": "gsap-performance",
+      "path": "skills/gsap-performance"
+    }
+  ]
+}

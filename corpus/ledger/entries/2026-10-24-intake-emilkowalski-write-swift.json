@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-emilkowalski-write-swift",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-emilkowalski-animation-vocabulary",
+    "sha256": "1cd194abded28c7ef82771b993004fcbe0c64cb43759bc6395b9f8ae94784fd4"
+  },
+  "source": {
+    "repository": "https://github.com/emilkowalski/skills",
+    "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+    "path": "skills/write-swift"
+  },
+  "pin": "emilkowalski-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Swift language practice, handed to garden",
+  "reason": "Swift language practice is engineering of a stack, garden's.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': emilkowalski's animation-vocabulary and write-swift hand off to garden"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': emilkowalski's animation-vocabulary and write-swift hand off to garden"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "Swift 6 language practice",
+        "locator": "skills/write-swift/SKILL.md"
+      }
+    ]
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "design-survey",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "design-survey"
+    },
+    {
+      "field": "description",
+      "value": "Read an interface a repository already has into its home: trace its code and rendered pages, measure with an instrument declared as a check, confirm the hypotheses with the owner, and write DESIGN.md and the interface rulings. Use where the workspace names interface roots and holds no DESIGN.md, or when the owner asks for the interface's system, its design side or how it should look, to be written down."
+    }
+  ],
+  "sources": [
+    "fluid-functionalism",
+    "hallmark",
+    "ibelick-ui-skills",
+    "interface-design",
+    "jakubkrehel-skills",
+    "kemiljk-skills"
+  ],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Design survey\n\nThe survey reads an interface a repository already has into its home: what the code and the rendered pages hold, measured where it can be, written as DESIGN.md and the interface rulings once the owner confirms it. Start it where the workspace names interface roots and holds no DESIGN.md, or when the owner asks for the interface's system to be written down.",
+          "kind": "method",
+          "reason": "The start design-survey's part 1 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Opens the survey: the interface read into its home",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Before the first source is read, read [method.md](method.md): the mode, the order of the trace, the instrument, the sheet, the confirmation and the report.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the repository's interface roots, its source and its rendered pages; the owner's answers through cards\nProduces: DESIGN.md, the interface rulings and the survey's sheet, confirmed by the owner\nNext: frame, under the mode the owner approves, for the change that writes the home; otherwise none, the survey's findings staying in the reply",
+          "kind": "method",
+          "reason": "The start design-survey's part 8 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Takes the roots and the answers, hands the home to frame",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Design survey: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "## Choose the mode\n\nSurvey the repository whenever its source is at hand: only the source establishes token names and who owns them. Survey a site from its address alone only when no source exists; that needs a browser at a desktop and a phone width, samples up to three pages of different templates from the same site, and writes a draft labelled as reconstructed, since an address cannot show internal names or intent.",
+          "kind": "method",
+          "reason": "The start design-survey's part 2 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Chooses between the repository and the address alone",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Trace in order\n\nRead, in this order: an existing DESIGN.md and any written guidance; the tokens, themes and global styles; the shared primitives and their variants; the representative pages; and the local styles last. A source counts only when the product imports it or renders it. Write a short hypothesis and what is out of scope before sampling, then sample representative surfaces and say what you left out.",
+          "kind": "method",
+          "reason": "The start design-survey's part 3 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Traces the sources in order, the hypothesis first",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Measure with your own instrument\n\nWrite a small instrument into the project that measures what the sheet asks for, the distinct colours, faces, sizes, radii and spacing steps, and the routes, and declare it as one of the project's checks, so its numbers are recorded at a commit and anyone can run it again. Read the code and the rendered pages both; where they disagree, report both. Hierarchy and density need the rendered page.",
+          "kind": "method",
+          "reason": "The start design-survey's part 4 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Measures with an instrument declared as the project's check",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## One row per fact\n\nEach fact of the sheet is one row with one source: measured by a command at a commit, read by you from a file, or confirmed by the owner. A candidate value carries its role, its value, its source, its scope, how often it recurs and your confidence; promote a value when the computed and the declared values agree, or when it recurs across the samples.",
+          "kind": "method",
+          "reason": "The start design-survey's part 5 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Gives each fact of the sheet one source",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Confirm, then write\n\nPut your hypotheses to the owner through cards where they render: the register at each root, the platform, the faces and colours that are the system and the ones that are accidents. Ask before writing where ownership is unclear, and once about any behaviour the product never had. Then write DESIGN.md from the smallest valid front matter, only the sections the evidence supports, in the format's order, its tokens taken only from named shared values, inventing no personality; and write the interface rulings. On an update, compare with the old file and keep every decision the owner accepted.",
+          "kind": "method",
+          "reason": "The start design-survey's part 6 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Confirms the hypotheses with the owner, then writes the home",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Report\n\nThe mode, the sources used, the conflicts and omissions kept outside DESIGN.md, the drift the survey found, and the strengths the code already has.\n\nGreenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md).",
+          "kind": "method",
+          "reason": "The start design-survey's part 7 of 8 in greenline's words, from the sources J-122's verdicts route to it (J-123 S3).",
+          "gist": "Reports the mode, the sources, the conflicts and the drift",
+          "ruling": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the design step and its home; interface rules carry one of three tiers everywhere they appear, floor for accessibility, honesty and a layout that holds, reflex for a default a build may override on the record with a reason, finish for craft that never blocks, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\"",
+          "credits": [
+            "ibelick-ui-skills",
+            "kemiljk-skills",
+            "fluid-functionalism",
+            "hallmark",
+            "interface-design",
+            "jakubkrehel-skills"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Design survey: the practice's mechanics\n\nThis page holds where the survey's work lands and its commands. Read it with `SKILL.md` when the work lands in the workspace.",
+          "kind": "home",
+          "reason": "The start design-survey's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where design-survey's work lands and its commands"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\n- The sheet is `.greenline/ledger/interface/survey.json`, opening with its `generatedBy` key: one row per fact, `{ \"fact\", \"value\", \"source\" }`, the source one of `{ \"kind\": \"measured\", \"command\", \"commit\" }`, `{ \"kind\": \"read\", \"from\" }` or `{ \"kind\": \"confirmed\", \"date\" }`. `greenline check interface --survey` measures the rows it can and writes them, keeping every row you read and every row the owner confirmed.\n- Your instrument is a script in the project, declared as a check with `greenline check --declare --name interface-survey -- <its command>` and run through `greenline check`, so its numbers are facts at a commit.\n- DESIGN.md is written at the root, and at a root whose register differs; the rulings go under `## Interface` in `.greenline/DECISIONS.md`. Every write of the survey belongs to a change: where none is open, open a quick record first, and write the sheet, DESIGN.md and the rulings under it. The harness hook admits DESIGN.md and the ledger home before the owner's yes, never the decisions book.\n- `.greenline/manifest.json`'s `interface` block holds the roots, the platform and the frameworks the setup detected: set `confirmed` to true once the owner confirms them. In the same round ask the owner once whether the interface check holds the close, the opt-in, and write the answer as `check`, `true` or `false`, never leaving it out; where it is true the check and the render hold `done` on every class, a platform no browser renders included.",
+          "kind": "home",
+          "reason": "The start design-survey's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where design-survey's work lands and its commands"
+        },
+        {
+          "passage": "written",
+          "text": "## The section\n\nWhere a change is open, the record's `## start` section names `design-survey`, the mode, the sources read and the files it wrote, and cites the sheet. A survey with no change open opens a quick record first, its `## start` naming `design-survey`, and that change commits the sheet, DESIGN.md and the rulings.",
+          "kind": "home",
+          "reason": "The start design-survey's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where design-survey's work lands and its commands"
+        },
+        {
+          "passage": "written",
+          "text": "## Commands\n\n- `greenline status` prints the interface line and, once DESIGN.md reads, the drift between the code and it.\n- `greenline check interface --survey` measures the sheet's rows at the current commit.",
+          "kind": "home",
+          "reason": "The start design-survey's references page: where its work lands in the workspace and its commands (J-123 S3).",
+          "gist": "States where design-survey's work lands and its commands"
+        }
+      ],
+      "part": "references"
+    }
+  ],
+  "copies": [],
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "A small instrument is written into the project, declared as a check (interface-survey) and run through greenline check, so its numbers are facts at a commit.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The survey of an existing interface",
+      "cost": "free"
+    },
+    {
+      "promise": "The sheet holds one row per fact, each with one source (measured, read or confirmed), at .greenline/ledger/interface/survey.json.",
+      "page": "method.md",
+      "kind": "record",
+      "where": ".greenline/ledger/interface/survey.json",
+      "cost": "free",
+      "oracle": "The survey of an existing interface"
+    },
+    {
+      "promise": "The hypotheses (the register per root, the platform, the faces and colours) go to the owner through cards where they render, and nothing is written as a ruling before the owner confirms.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The survey of an existing interface",
+      "cost": "free"
+    },
+    {
+      "promise": "DESIGN.md is written from the smallest valid front matter, only the sections the evidence supports, in the format's order.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "interface:",
+      "cost": "free",
+      "oracle": "The survey of an existing interface"
+    },
+    {
+      "promise": "On an update, every decision the owner accepted is kept.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing compares DESIGN.md's old decisions with the new file. The lock edit in the Linear replay (F10, 001/009) came from a build, not this start, so no design-survey run shows the prose failing."
+    },
+    {
+      "promise": "The report gives the mode, the sources, the conflicts and omissions kept out of DESIGN.md, the drift found and the strengths.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "A reply's content with no observed failure."
+    },
+    {
+      "promise": "Every write of the survey belongs to a change: where none is open, a quick record is opened first, and the decisions book is never written before the owner's yes.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap"
+    },
+    {
+      "promise": "The manifest's interface block is set confirmed: true once the owner confirms the detected facts.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "interface:",
+      "cost": "free"
+    },
+    {
+      "promise": "The owner is asked once whether the interface check holds the close, and the answer is written as check: true or false, never left out.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The manifest schema defaults check to false, so an omitted answer reads the same as a no and nothing names it. No run observed this fail."
+    },
+    {
+      "promise": "The record's ## start section names design-survey, the mode, the sources read and the files written, and cites the sheet.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks a start section's contents, and no design-survey run is cited as failing."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "design side",
+        "design system",
+        "how it should look",
+        "how the board should look",
+        "write down how",
+        "design.md"
+      ],
+      "weight": 3,
+      "read": "whole"
+    }
+  ]
+}

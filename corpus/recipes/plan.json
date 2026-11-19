@@ -25,6 +25,33 @@
         },
         {
           "passage": "written",
+          "text": "Before the spec or the tickets read [method.md](method.md): the spec, the tickets, their order and size, and the shape of the code; once the plan is written, its self-review.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the spec, the tickets, their order and size, the shape of the code and the self-review moved to the method page, and the front points there before the spec and after the plan.",
+          "gist": "Points at the method before the spec and at the self-review"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the change record's frame section, and when the work splits the plan directory's decisions.md, research and prototypes\nProduces: the plan section of .greenline/ledger/<id>.md; when the work splits, .greenline/plans/<NNN-name>/spec.md and tickets.md, status draft then complete, each ticket with its approved mode\nNext: the next step of the change's mode",
+          "kind": "method",
+          "reason": "A step skill's handoff names the next step of the change's mode, never a fixed skill (the plan's rule for step skills); it consumes the frame section and produces the plan section, or the plan directory's spec and tickets.",
+          "gist": "The handoff names the mode's next step and the plan's outputs",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\": a step runs at the depth the change's mode gives it, inline being one line of its section and written a section the builder writes, and planned work waits before planning and after ticketing"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Plan: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
           "text": "## The spec",
           "kind": "scope",
           "reason": "The heading of the spec part, to-spec its spine.",
@@ -270,7 +297,8 @@
           "passage": "taken",
           "source": "pstack",
           "file": "architect/SKILL.md",
-          "segments": ["0b75a39c6dad", "0f382e289f0e"]
+          "segments": ["0f382e289f0e"],
+          "join": " "
         },
         {
           "passage": "taken",
@@ -410,14 +438,6 @@
           "source": "superpowers",
           "file": "writing-plans/SKILL.md",
           "segments": ["2d6a09438288", "16c9a4efa86e", "5b93bfc1c9e4"]
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the change record's frame section, and when the work splits the plan directory's decisions.md, research and prototypes\nProduces: the plan section of .greenline/ledger/<id>.md; when the work splits, .greenline/plans/<NNN-name>/spec.md and tickets.md, status draft then complete, each ticket with its approved mode\nNext: the next step of the change's mode",
-          "kind": "method",
-          "reason": "A step skill's handoff names the next step of the change's mode, never a fixed skill (the plan's rule for step skills); it consumes the frame section and produces the plan section, or the plan directory's spec and tickets.",
-          "gist": "The handoff names the mode's next step and the plan's outputs",
-          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\": a step runs at the depth the change's mode gives it, inline being one line of its section and written a section the builder writes, and planned work waits before planning and after ticketing"
         }
       ]
     },
@@ -442,11 +462,11 @@
         },
         {
           "passage": "written",
-          "text": "## Checks\n\nThe plan names the change's checks: the project's own commands that show the acceptance, each run through `greenline check`. They are the checks `.greenline/manifest.json` declares in its `checks`, which `greenline init` proposed from the project's own files: the first change confirms or corrects them, reading how the project runs its tests, its linter and its build. Where the project has no check that could fail, or lacks one the change needs, the plan names the one the change adds and declares it with `greenline check --declare -- <command>`, a line the owner's yes covers.",
+          "text": "## Checks\n\nThe plan names the change's checks: the project's own commands that show the acceptance, each run through `greenline check`. They are the checks `.greenline/manifest.json` declares in its `checks`, which `greenline init` proposed from the project's own files: the first change confirms or corrects them, reading how the project runs its tests, its linter and its build. Where the project has no check that could fail, or lacks one the change needs, the plan names the one the change adds and declares it with `greenline check --declare -- <command>`, a line the owner's yes covers. Declare them at plan, before the build runs any: each command the plan names to show the acceptance, the project's own test, lint and build runner among them, that the manifest's `checks` does not hold yet is declared with `greenline check --declare -- <command>`, so `greenline status` never says that no check is declared once one has run. Where the manifest's `fileTokens` is set, the plan declares the file token cap once as one of the workspace's checks, `greenline check --declare --name file-tokens -- greenline check files --max-tokens <cap>` at the cap it names, 5,000 by default; where it is absent, the plan declares none.",
           "kind": "method",
-          "reason": "Plan's references page: names the change's checks, the ones the manifest declares, and the one a project lacks, declared with greenline check --declare. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation.",
+          "reason": "Plan's references page: names the change's checks, the ones the manifest declares, and the one a project lacks, declared with greenline check --declare. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation. J-114 S4: where the manifest opts in, the plan declares the file token cap as a check. J-174 adds that the plan's commands are declared at plan (j109t-conduct-runner, verdict finding 1: the runner's commands run and never declared), a correction.",
           "gist": "Names the declared checks, and declares the one a project lacks",
-          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; and the operator's ruling of 2026-10-19 that no hook parses a command and the setup is the agent's reasoning, \"not every case can be parsed and we have to use green line agents reasoning to set things up for hooks to work in an brownfield and Greenfield repos across stacks languages and repo archs\": the workspace declares its checks once, init proposing them from the project's files and the agent declaring one it adds in the plan"
+          "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there; and the operator's ruling of 2026-10-19 that no hook parses a command and the setup is the agent's reasoning, \"not every case can be parsed and we have to use green line agents reasoning to set things up for hooks to work in an brownfield and Greenfield repos across stacks languages and repo archs\": the workspace declares its checks once, init proposing them from the project's files and the agent declaring one it adds in the plan; The register's row of 2026-10-22 on the file token cap, on the operator's words of 2026-10-22 and the card \"Opt-in, default cap 5,000 (Recommended)\": greenline check files --max-tokens, opt-in in the manifest with 5,000 as its default cap and the standard exemptions, its red runs recorded facts done refuses over, declared at the plan step when on, and build's rule that an authored file stays under the cap and is split in its own slice; never a git hook"
         },
         {
           "passage": "written",
@@ -458,9 +478,9 @@
         },
         {
           "passage": "written",
-          "text": "## The ticket list and the tickets file\n\nA ticket's change record takes its id as it opens, and the tickets share the planning change's branch: each ticket's commits go there carrying its own trailer, and the planning change's close offers the landing for the whole.\n\nShow beside each ticket the mode you propose for it, for the reasons a change's mode is proposed, its floors included. The owner's approval of the breakdown approves each ticket's mode: this is the plan's second wait, and no ticket opens before it. A mode the owner names beside a ticket while the list waits is part of approving it and edits that ticket's entry: write it there before the list is complete. A mode the owner names when a ticket opens, once the list is approved, overrides that ticket alone: open its record under the owner's mode with `choice: owner` and `proposed` the entry's mode, leave the entry as approved, and `greenline status` marks the difference (GL0406).\n\nWrite the approved tickets into the plan directory's `tickets.md`, in dependency order (blockers first): one `## <id>` entry per ticket, with its `intent`, its `scope` (the roots it touches), its `acceptance`, the entries it comes `after` and its `mode`. Mark it `status: complete` once the owner has approved the list. No ticket's progress is written there: it is read from the change records that name the ticket, and a ticket is ready once every entry it comes `after` is done, which `greenline status` shows as the ready frontier.",
+          "text": "## The ticket list and the tickets file\n\nA ticket's change record takes its id as it opens, and the tickets share the planning change's branch: each ticket's commits go there carrying its own trailer, and the planning change's close offers the landing for the whole.\n\nShow beside each ticket the mode you propose for it, for the reasons a change's mode is proposed, its floors included, which the ticket's record writes in its `floors` line as it opens, a list or `none`. The owner's approval of the breakdown approves each ticket's mode: this is the plan's second wait, and no ticket opens before it. A mode the owner names beside a ticket while the list waits is part of approving it and edits that ticket's entry: write it there before the list is complete. A mode the owner names when a ticket opens, once the list is approved, overrides that ticket alone: open its record under the owner's mode with `choice: owner` and `proposed` the entry's mode, leave the entry as approved, and `greenline status` marks the difference (GL0406).\n\nWrite the approved tickets into the plan directory's `tickets.md`, in dependency order (blockers first): one `## <id>` entry per ticket, with its `intent`, its `scope` (the roots it touches), its `acceptance`, the entries it comes `after` and its `mode`. Mark it `status: complete` once the owner has approved the list. No ticket's progress is written there: it is read from the change records that name the ticket, and a ticket is ready once every entry it comes `after` is done, which `greenline status` shows as the ready frontier.",
           "kind": "method",
-          "reason": "A ticket's id chosen as it opens, the tickets on the planning change's branch, the mode proposed beside each ticket and approved with the list, a mode named at a ticket's open overriding it, and the tickets file's form and marks; moved from the front by J-93 S2 beside the waits stated once above.",
+          "reason": "A ticket's id chosen as it opens, the tickets on the planning change's branch, the mode proposed beside each ticket and approved with the list, a mode named at a ticket's open overriding it, and the tickets file's form and marks; moved from the front by J-93 S2 beside the waits stated once above. J-226 S1: a ticket's record owes its floors line from the open, as every record does.",
           "gist": "Two waits, a mode per ticket, and the tickets file's form",
           "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\", and R12, \"two wait is good\": a step runs at the depth the change's mode gives it, inline being one line of its section and written a section the builder writes, and planned work waits before planning and after ticketing; The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): spec-driven-development's reframing passage, planning-and-task-breakdown, writing-plans and architect combine into plan, and the contradictions stand as recommended: the spec and the tickets stay path-free while a single change's plan section may name files and signatures, questioning is frame's, the trunk's wait after ticketing stands over architect's \"No human checkpoint\", and spec-driven's capability map is not taken; The operator's cards of 2026-10-14 on part 4 of the-whole-change, each \"Rule as proposed\", under N-49's root card that the owner chooses where the change's checkout lives: the proposal names where the change's commits will go, read from local facts with no network command, the current branch when it is not the default branch or there is no remote and a new branch greenline/<id> otherwise, the owner's answer final; a worktree holds the change's checkout only on the owner's request and only where the harness runs the session in it, and no fresh agent runs in one of its own; the close step offers the landing in one line by the setup, a push and a pull request where the remote is a forge, a local merge where there is no remote, or the branch left, each only on the owner's word, the push and pull-request rule moving into the block and the close step while pr-writing keeps the writing method; and a plan's tickets share the planning change's branch, each ticket's commits carrying its own trailer, and the planning change's close offers the landing for the whole; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", and the card of that day, \"Words at the list edit the entry; at a ticket's open they override\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a request that names a mode is taken as chosen and goes on with no yes awaited, a question asked only for a choice it leaves open; the record names every floor found and, where the owner names a mode below one, says so with choice owner and the floor's reason; a mode named at the ticket list edits the entry and one named at a ticket's open overrides it; the builder reads the reviewer's brief at the inline depth only; and at the written frame depth every open behaviour goes to the owner through the interview, an inline frame line crediting the owner only with the owner's answers; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
         },
@@ -471,6 +491,13 @@
           "reason": "Plan's references page: missing furniture is proposed, never added without authority. The block's sentences on it move here whole, so the block carries the loop, the promises, the modes and the situation index, and no promise leaves the installation.",
           "gist": "Missing furniture is proposed, never added without authority",
           "ruling": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\"; and J-93's finalise words of 2026-10-18, \"Finalise all six now; S1 opens after J-92 (Recommended); quick, regular, careful (Recommended); The builder's written verify, no fresh verifier (Recommended)\": a step's mechanics, where its work lands, its section's form and its commands, live in its references page, each sentence moved from the block under the ruling that first placed it there"
+        },
+        {
+          "passage": "written",
+          "text": "## The plan's diagram and the map\n\nThe plan's diagram, `diagram-design`'s, which a fresh agent makes under the planning change, and the map's first pages, which the `explain` start's discovery writes from the plan's modules, are made only on the owner's ask; show-me's table of kinds holds both, and nothing is offered.",
+          "kind": "home",
+          "reason": "The plan's diagram offered at six tickets or two subsystems, and the map's first offer at a greenfield plan's modules (J-147 S2 and S4; the register's rows of 2026-10-28 on the visual system's flow). J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the plan's diagram and the map's first pages are made on the owner's ask, nothing offered (the seven cuts: the offer ritual gone).",
+          "gist": "Offers the plan's diagram and, on a greenfield, the map's first pages"
         }
       ],
       "part": "references"
@@ -486,7 +513,7 @@
       "reason": "The tracker and label vocabulary points at a setup skill no install carries; the spec's inputs are named in its place.",
       "gist": "The tracker setup skill is not installed; the spec's inputs replace it",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 4
       }
     },
@@ -498,7 +525,7 @@
       "reason": "The tracker and label vocabulary points at a setup skill no install carries; the spec's inputs are named in its place.",
       "gist": "The tracker setup skill is not installed; the spec's inputs replace it",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 4
       }
     },
@@ -510,7 +537,7 @@
       "reason": "The process heading gives way to the spec part's heading, under which its numbered steps stand.",
       "gist": "The process heading gives way to the spec part's heading",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 1
       }
     },
@@ -523,7 +550,7 @@
       "gist": "Asks about seams only when a choice is unresolved and consequential",
       "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 6
       }
     },
@@ -535,7 +562,7 @@
       "reason": "Publishing to the tracker with a triage label becomes writing the plan directory's spec.md, draft then complete.",
       "gist": "The spec goes to spec.md, draft then complete, not to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 8
       }
     },
@@ -547,7 +574,7 @@
       "reason": "Publishing to the tracker with a triage label becomes writing the plan directory's spec.md, draft then complete.",
       "gist": "The spec goes to spec.md, draft then complete, not to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 8
       }
     },
@@ -559,7 +586,7 @@
       "reason": "The title gives way to plan's title and the tickets part's heading.",
       "gist": "The title gives way to plan's title and the tickets heading",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 10
       }
     },
@@ -571,7 +598,7 @@
       "reason": "The tracker and label vocabulary points at a setup skill no install carries; the plan the tickets read is named in its place.",
       "gist": "No install carries the tracker setup; tickets read the plan's spec instead",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 12
       }
     },
@@ -583,7 +610,7 @@
       "reason": "The tracker and label vocabulary points at a setup skill no install carries; the plan the tickets read is named in its place.",
       "gist": "No install carries the tracker setup; tickets read the plan's spec instead",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 12
       }
     },
@@ -595,7 +622,7 @@
       "reason": "The process heading gives way to the tickets part's heading, under which its numbered steps stand.",
       "gist": "The process heading gives way to the tickets part's heading",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 10
       }
     },
@@ -607,7 +634,7 @@
       "reason": "A reference is a greenline plan document read whole, not an issue number or URL with comments.",
       "gist": "A reference is a plan document read whole, not an issue URL",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 14
       }
     },
@@ -619,7 +646,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -631,7 +658,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -643,7 +670,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -655,7 +682,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -667,7 +694,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -679,7 +706,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -691,7 +718,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -703,7 +730,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -715,7 +742,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -727,7 +754,7 @@
       "reason": "Publishing to a configured tracker, as local files or issues with labels, becomes writing the plan directory's one tickets.md.",
       "gist": "Writes one tickets.md in place of publishing to a tracker",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -739,7 +766,7 @@
       "reason": "Working the frontier is the build's, ticket by ticket; the tickets file's step says when a ticket is ready.",
       "gist": "Working the frontier is the build's; tickets.md says when one is ready",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -751,7 +778,7 @@
       "reason": "Working the frontier is the build's, ticket by ticket; the tickets file's step says when a ticket is ready.",
       "gist": "Working the frontier is the build's; tickets.md says when one is ready",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -771,7 +798,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -783,7 +810,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -795,7 +822,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -807,7 +834,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -819,7 +846,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -831,7 +858,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -843,7 +870,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -855,7 +882,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -867,7 +894,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -879,7 +906,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -891,7 +918,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -903,7 +930,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -915,7 +942,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -927,7 +954,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -939,7 +966,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -951,7 +978,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -963,7 +990,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -975,7 +1002,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -987,7 +1014,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -999,7 +1026,7 @@
       "reason": "The per-ticket file and issue templates become the tickets file's entry, with its intent, scope, acceptance, after and mode.",
       "gist": "Per-ticket templates become one tickets.md entry: intent, scope, acceptance, after, mode",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -1011,7 +1038,7 @@
       "reason": "\"In either form\" named the two templates; the rule now addresses the ticket.",
       "gist": "The rule now speaks to the ticket, not the two templates",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 33
       }
     },
@@ -1406,7 +1433,7 @@
       "gist": "Clarifying questions belong to frame; the spec is written without an interview",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\"): spec-driven-development's reframing passage, planning-and-task-breakdown, writing-plans and architect combine into plan, and the contradictions stand as recommended: the spec and the tickets stay path-free while a single change's plan section may name files and signatures, questioning is frame's, the trunk's wait after ticketing stands over architect's \"No human checkpoint\", and spec-driven's capability map is not taken",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 3
       }
     },
@@ -1458,7 +1485,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1470,7 +1497,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1482,7 +1509,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1494,7 +1521,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1506,7 +1533,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1518,7 +1545,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1530,7 +1557,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1542,7 +1569,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1554,7 +1581,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1566,7 +1593,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1578,7 +1605,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1590,7 +1617,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1602,7 +1629,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1614,7 +1641,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1626,7 +1653,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1638,7 +1665,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1650,7 +1677,7 @@
       "reason": "Commands, project structure, code style and the boundaries tiers are a workspace's own conventions, and the template is to-spec's.",
       "gist": "Commands, structure, style and boundaries are the workspace's; the template is to-spec's",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 9
       }
     },
@@ -1770,7 +1797,7 @@
       "reason": "The plan phase restates the tickets part's dependencies, order and checkpoints.",
       "gist": "The plan phase repeats the tickets part's order and checkpoints",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 17
       }
     },
@@ -1782,7 +1809,7 @@
       "reason": "The plan phase restates the tickets part's dependencies, order and checkpoints.",
       "gist": "The plan phase repeats the tickets part's order and checkpoints",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 17
       }
     },
@@ -1794,7 +1821,7 @@
       "reason": "The plan phase restates the tickets part's dependencies, order and checkpoints.",
       "gist": "The plan phase repeats the tickets part's order and checkpoints",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 17
       }
     },
@@ -1806,7 +1833,7 @@
       "reason": "The plan phase restates the tickets part's dependencies, order and checkpoints.",
       "gist": "The plan phase repeats the tickets part's order and checkpoints",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 17
       }
     },
@@ -1818,7 +1845,7 @@
       "reason": "The plan phase restates the tickets part's dependencies, order and checkpoints.",
       "gist": "The plan phase repeats the tickets part's order and checkpoints",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 17
       }
     },
@@ -2547,7 +2574,7 @@
       "reason": "The dependency graph duplicates to-tickets' blocking edges.",
       "gist": "The dependency graph repeats to-tickets' blocking edges",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2559,7 +2586,7 @@
       "reason": "The dependency graph duplicates to-tickets' blocking edges.",
       "gist": "The dependency graph repeats to-tickets' blocking edges",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2571,7 +2598,7 @@
       "reason": "The dependency graph duplicates to-tickets' blocking edges.",
       "gist": "The dependency graph repeats to-tickets' blocking edges",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2583,7 +2610,7 @@
       "reason": "The dependency graph duplicates to-tickets' blocking edges.",
       "gist": "The dependency graph repeats to-tickets' blocking edges",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2595,7 +2622,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2607,7 +2634,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2619,7 +2646,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2631,7 +2658,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2643,7 +2670,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2655,7 +2682,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2667,7 +2694,7 @@
       "reason": "Its vertical slicing duplicates to-tickets' tracer-bullet slices, the spine's.",
       "gist": "Its vertical slicing repeats to-tickets' tracer-bullet slices",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 15
       }
     },
@@ -2679,7 +2706,7 @@
       "reason": "The task template becomes the tickets file's entry.",
       "gist": "The task template becomes the tickets file's entry",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2691,7 +2718,7 @@
       "reason": "The task template becomes the tickets file's entry.",
       "gist": "The task template becomes the tickets file's entry",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2703,7 +2730,7 @@
       "reason": "The task template becomes the tickets file's entry.",
       "gist": "The task template becomes the tickets file's entry",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2715,7 +2742,7 @@
       "reason": "Step 5's numbered heading gives way to the bridge into its rules.",
       "gist": "Step 5's heading gives way to the bridge into its rules",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 16
       }
     },
@@ -2743,7 +2770,7 @@
       "reason": "The sizing heading gives way to the bridge into its rules.",
       "gist": "The sizing heading gives way to the bridge into its rules",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 16
       }
     },
@@ -2755,7 +2782,7 @@
       "reason": "tasks/plan.md and the task list target are the plan section or the plan directory's spec.md and tickets.md.",
       "gist": "tasks/plan.md becomes the plan section, or spec.md and tickets.md",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2767,7 +2794,7 @@
       "reason": "tasks/plan.md and the task list target are the plan section or the plan directory's spec.md and tickets.md.",
       "gist": "tasks/plan.md becomes the plan section, or spec.md and tickets.md",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2779,7 +2806,7 @@
       "reason": "tasks/plan.md and the task list target are the plan section or the plan directory's spec.md and tickets.md.",
       "gist": "tasks/plan.md becomes the plan section, or spec.md and tickets.md",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2791,7 +2818,7 @@
       "reason": "tasks/plan.md and the task list target are the plan section or the plan directory's spec.md and tickets.md.",
       "gist": "tasks/plan.md becomes the plan section, or spec.md and tickets.md",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2803,7 +2830,7 @@
       "reason": "tasks/plan.md and the task list target are the plan section or the plan directory's spec.md and tickets.md.",
       "gist": "tasks/plan.md becomes the plan section, or spec.md and tickets.md",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2815,7 +2842,7 @@
       "reason": "tasks/plan.md and tasks/todo.md are the plan directory's spec.md and tickets.md.",
       "gist": "tasks/plan.md and tasks/todo.md become the plan directory's spec.md and tickets.md",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 31
       }
     },
@@ -2827,7 +2854,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2839,7 +2866,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2851,7 +2878,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2863,7 +2890,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2875,7 +2902,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2887,7 +2914,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2899,7 +2926,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2911,7 +2938,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2923,7 +2950,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2935,7 +2962,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2947,7 +2974,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2959,7 +2986,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2971,7 +2998,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -2983,7 +3010,7 @@
       "reason": "An external tracker, the task list target and the plan template give way to the plan directory's documents.",
       "gist": "Trackers and task-list targets give way to the plan directory's documents",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 32
       }
     },
@@ -3288,7 +3315,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3300,7 +3327,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3312,7 +3339,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3324,7 +3351,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3336,7 +3363,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3348,7 +3375,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3360,7 +3387,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3372,7 +3399,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3384,7 +3411,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3396,7 +3423,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3408,7 +3435,7 @@
       "reason": "The overview: what the implementer cannot decide alone is stated by the passage taken from the same skill.",
       "gist": "The overview goes; a taken passage states what the implementer cannot decide",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 19
       }
     },
@@ -3597,7 +3624,7 @@
       "reason": "Task right-sizing duplicates planning-and-task-breakdown's sizing rules, which this skill takes.",
       "gist": "Its task sizing repeats the breakdown rules plan already takes",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 18
       }
     },
@@ -3609,7 +3636,7 @@
       "reason": "Task right-sizing duplicates planning-and-task-breakdown's sizing rules, which this skill takes.",
       "gist": "Its task sizing repeats the breakdown rules plan already takes",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 18
       }
     },
@@ -3621,7 +3648,7 @@
       "reason": "Task right-sizing duplicates planning-and-task-breakdown's sizing rules, which this skill takes.",
       "gist": "Its task sizing repeats the breakdown rules plan already takes",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 18
       }
     },
@@ -3633,7 +3660,7 @@
       "reason": "Task right-sizing duplicates planning-and-task-breakdown's sizing rules, which this skill takes.",
       "gist": "Its task sizing repeats the breakdown rules plan already takes",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 18
       }
     },
@@ -3645,7 +3672,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3657,7 +3684,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3669,7 +3696,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3681,7 +3708,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3693,7 +3720,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3705,7 +3732,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3717,7 +3744,7 @@
       "reason": "Step granularity is stated in one line where a standalone change's tasks list their steps.",
       "gist": "Step granularity becomes one line on a standalone change's task steps",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 36
       }
     },
@@ -3729,7 +3756,7 @@
       "reason": "The plan header carries its own harness's execution note; its global constraints are written for the planning change's plan section.",
       "gist": "One tool's execution header goes; global constraints move to the plan section",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 20
       }
     },
@@ -3741,7 +3768,7 @@
       "reason": "The plan header carries its own harness's execution note; its global constraints are written for the planning change's plan section.",
       "gist": "One tool's execution header goes; global constraints move to the plan section",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 20
       }
     },
@@ -3753,7 +3780,7 @@
       "reason": "The plan header carries its own harness's execution note; its global constraints are written for the planning change's plan section.",
       "gist": "One tool's execution header goes; global constraints move to the plan section",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 20
       }
     },
@@ -3765,7 +3792,7 @@
       "reason": "The task template carries file paths and its own steps; its interfaces block is written for each ticket.",
       "gist": "The task template's paths and steps go; each ticket states its interfaces",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 20
       }
     },
@@ -3777,7 +3804,7 @@
       "reason": "The task template carries file paths and its own steps; its interfaces block is written for each ticket.",
       "gist": "The task template's paths and steps go; each ticket states its interfaces",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 20
       }
     },
@@ -3935,7 +3962,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -3948,7 +3975,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -3961,7 +3988,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -3974,7 +4001,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -3987,7 +4014,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4000,7 +4027,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4013,7 +4040,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4026,7 +4053,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4039,7 +4066,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4052,7 +4079,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4065,7 +4092,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4078,7 +4105,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4091,7 +4118,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4104,7 +4131,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4117,7 +4144,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4130,7 +4157,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4143,7 +4170,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4156,7 +4183,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4169,7 +4196,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4182,7 +4209,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4195,7 +4222,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4208,7 +4235,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4221,7 +4248,7 @@
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
         "path": "SKILL.md",
-        "passage": 39
+        "passage": 2
       }
     },
     {
@@ -4232,7 +4259,7 @@
       "reason": "The title gives way to the bridge into the design passage.",
       "gist": "The title gives way to the bridge into the design passage",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 21
       }
     },
@@ -4245,7 +4272,7 @@
       "gist": "One agent designs the candidates in turn, not several models",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4254,8 +4281,8 @@
       "file": "architect/SKILL.md",
       "segment": "d10d04604fdb",
       "kind": "scope",
-      "reason": "Throwing out a sketch the implementation proves wrong is the build's, whose scrap signals S14 re-cuts.",
-      "gist": "Scrapping a sketch the code proves wrong is the build's"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
@@ -4348,7 +4375,7 @@
     {
       "source": "pstack",
       "file": "architect/SKILL.md",
-      "segment": "0da2b181b46d",
+      "segment": "68fee420260e",
       "kind": "pointer",
       "reason": "The how and why skills are not installed; the written frame and the spec's exploration of the repository ground the design.",
       "gist": "The how and why skills are absent; frame and spec ground design"
@@ -4378,7 +4405,7 @@
       "gist": "No arena of parallel runners: one agent designs the candidates in turn",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4391,7 +4418,7 @@
       "gist": "No arena of parallel runners: one agent designs the candidates in turn",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4404,7 +4431,7 @@
       "gist": "No arena of parallel runners: one agent designs the candidates in turn",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4412,12 +4439,11 @@
       "source": "pstack",
       "file": "architect/SKILL.md",
       "segment": "3a8f35a9fce0",
-      "kind": "method",
-      "reason": "The arena's parallel runners, each on a model the pstack rule names, are dropped: one agent designs the candidates in turn.",
-      "gist": "No arena of parallel runners: one agent designs the candidates in turn",
-      "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4430,7 +4456,7 @@
       "gist": "No arena of parallel runners: one agent designs the candidates in turn",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4443,7 +4469,7 @@
       "gist": "No arena of parallel runners: one agent designs the candidates in turn",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4456,7 +4482,7 @@
       "gist": "No arena of parallel runners: one agent designs the candidates in turn",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4525,20 +4551,20 @@
       "gist": "The arena's package goes with it; the one agent compares its candidates",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
     {
       "source": "pstack",
       "file": "architect/SKILL.md",
-      "segment": "1b5b76504a08",
+      "segment": "b2ffe070be9d",
       "kind": "method",
       "reason": "The arena's synthesized package is dropped with the arena: the one agent compares its candidates itself.",
       "gist": "The arena's package goes with it; the one agent compares its candidates",
       "ruling": "The operator's ruling R21 of 2026-10-08 on orchestration (\"orchestration related skills ... have be re thought in to being usable on all harnesses\") and the second R3 ruling of that day, \"yes go ahead\", on the portable forms: grilling looks a fact up itself before the next round, research reads itself or through one delegated agent the step waits for, and no agent runs beside the conversation",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 25
       }
     },
@@ -4674,7 +4700,7 @@
     {
       "source": "pstack",
       "file": "architect/SKILL.md",
-      "segment": "fec327538965",
+      "segment": "7ca9a39c021d",
       "kind": "scope",
       "reason": "Implementing against the sketch and scrapping it are the build step's, which S14 re-cuts.",
       "gist": "Implementing against the sketch and scrapping it are the build's"
@@ -4871,9 +4897,130 @@
       "reason": "The rationale template is not carried; the plan section holds the sketch with each loser and why it lost.",
       "gist": "The rationale template is not carried; the plan section holds the sketch",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 27
       }
+    },
+    {
+      "source": "pstack",
+      "file": "architect/SKILL.md",
+      "segment": "0b75a39c6dad",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Plan settles nothing the frame left open. A consequential gap in its inputs, or an unresolved seam choice, goes back to the owner rather than being invented.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Which question the frame left open is judgment that no file states. No run in the sources observed the plan settling one alone."
+    },
+    {
+      "promise": "Work that splits writes spec.md and tickets.md in the plan directory, each marked draft or complete. tickets.md holds one entry per ticket with intent, scope, acceptance, after and mode, in dependency order, and no ticket's progress is written there.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0401",
+      "cost": "free",
+      "oracle": "Planned work"
+    },
+    {
+      "promise": "A choice settled in the plan that outlives the work goes into the repository's decision home, with a reference back.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "the status nudge 'the planning change is done and .greenline/DECISIONS.md does not name it'",
+      "cost": "free"
+    },
+    {
+      "promise": "Each ticket states the interfaces it consumes and produces by their exact names and types. The project-wide constraints are written once, in the planning change's plan section.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "A ticket's interfaces are prose that no reader parses, and no run in the sources observed a ticket missing them."
+    },
+    {
+      "promise": "Where the code's shape is not settled, at least two structurally distinct candidates are written one after another by the agent itself, with no agent beside it. The chosen sketch and each losing candidate, with one line on why it lost, stand in the plan section.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Whether two candidates are structurally distinct is judgment, and a model call is never a keeper. No run in the sources observed the losing candidates missing."
+    },
+    {
+      "promise": "The breakdown goes to the owner as a numbered list (title, blocked by, what it delivers), with the granularity, the blocking edges and any merges or splits asked about. It is revised until the owner approves, and no ticket opens before that.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "Planned work",
+      "cost": "free"
+    },
+    {
+      "promise": "An incomplete plan is never overwritten. For different work the agent stops and asks, and never deletes, overwrites or renames the existing files on its own.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Overwriting an unfinished plan loses work the owner relies on. But no run in the sources observed it, so the keeper test's second condition fails."
+    },
+    {
+      "promise": "The plan section takes the mode's depth: one line at quick (an acceptance a check could fail, and its check); at regular and careful, acceptance criteria that can fail and ordered tasks, each with its check.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0402",
+      "cost": "free",
+      "oracle": "The line at each depth"
+    },
+    {
+      "promise": "The plan names the change's checks and declares any check the change adds with greenline check --declare, and declares at plan each command it names that the manifest does not hold yet, the project's own runner among them, before the build runs any.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "no checks declared:",
+      "cost": "free",
+      "oracle": "The setup, greenfield"
+    },
+    {
+      "promise": "Where the manifest sets fileTokens, the plan declares the file token cap once as the file-tokens check, and declares none where it is absent.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The guardrails and the token cap",
+      "cost": "free"
+    },
+    {
+      "promise": "Work that will split waits first for the planning change's mode, careful unless the request names it.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0407",
+      "cost": "free",
+      "oracle": "Planned work"
+    },
+    {
+      "promise": "A ticket opens under its approved mode. A mode the owner names at the open overrides that ticket alone, recorded as choice: owner with proposed naming the entry's mode, and the entry is left as approved.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0406",
+      "cost": "free",
+      "oracle": "Planned work"
+    },
+    {
+      "promise": "The tickets share the planning change's branch, and each ticket's commits carry its own trailer, never two tickets'.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "one-trailer",
+      "cost": "cheap",
+      "oracle": "Planned work"
+    },
+    {
+      "promise": "Furniture the repository lacks is proposed in the reply, not added. A new toolchain, a paid service, a consequential exception or an unrelated migration waits for authority.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Added furniture reaches the owner's repository, but no run in the sources observed it, and telling furniture from the change's own files is judgment."
+    },
+    {
+      "promise": "The plan's diagram and the map's first pages are made only on the owner's ask; nothing is offered.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The map's first pages and the documents' drift",
+      "cost": "free"
     }
   ]
 }

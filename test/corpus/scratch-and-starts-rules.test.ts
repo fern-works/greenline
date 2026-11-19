@@ -1,13 +1,13 @@
 /** The fresh agent's scratch folder and the count of every agent started (J-89 S3): the sentences the ledger guide and the review, verify and close pages give an agent, read from the corpus as it ships. */
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { corpusPage } from "./skill-text.ts";
 
 const repository = join(import.meta.dirname, "..", "..");
 
 /** A corpus page's text with its line breaks and runs of spaces read as one space, as an agent reads the prose. */
 function page(path: string): string {
-  return readFileSync(join(repository, "corpus", path), "utf8").replace(/\s+/g, " ");
+  return corpusPage(repository, path);
 }
 
 const block = page("runtime/agent.md");
@@ -61,8 +61,12 @@ describe("J-89 S3 a fresh agent works in its own scratch folder", () => {
     expect(page("skills/build/references/greenline.md")).toContain(
       "yours or a fresh agent's, goes under `.greenline/tmp/<id>/`, never the host's temporary directory",
     );
+    // J-174: its own change's folder, never another's.
     expect(block).toContain(
-      "Every scratch file goes under `.greenline/tmp/<id>/`, never the host's temporary directory.",
+      "Every scratch file goes under its own change's `.greenline/tmp/<id>/`, never the host's temporary directory.",
+    );
+    expect(page("skills/build/references/greenline.md")).toContain(
+      "That folder is this change's own, under its own id:",
     );
     expect(block).not.toContain("TMPDIR");
   });
@@ -71,7 +75,7 @@ describe("J-89 S3 a fresh agent works in its own scratch folder", () => {
 describe("J-89 S3 the record counts every agent started", () => {
   it("the ledger guide states the starts row's form and says the cost counts every start in one sentence", () => {
     expect(ledger).toContain(
-      '| `starts` | each fresh agent the line\'s depths started, stated with the cost: one item per start, `"<step> <n>"`, or `"<step> <n> restarted"` for a restart |',
+      "| `starts` | each fresh agent the line's depths started, stated with the cost: one item per start, `\"<step> <n>\"`, or `\"<step> <n> restarted\"` for a restart; a method's agent, a picture's helper among them, is listed nowhere here, and git's hooks refuse a commit of a record whose start names no step |",
     );
     expect(ledger).toContain(
       "`agents` counts every start, a restarted agent one more line in `starts` and one more count, and `greenline status` reports an `agents` below the builder and the starts the record names, in `starts` or by a fresh agent's report in its folder, as GL0409, which the close clears before `done`.",
@@ -81,9 +85,10 @@ describe("J-89 S3 the record counts every agent started", () => {
     );
   });
 
-  it("the close names each start and sets done only once status reports no cost below them", () => {
+  it("the close names each start of the line's steps and sets done only once status reports no cost below them", () => {
+    // J-209 S1: the starts of the line's steps alone, a method's agent named in its section and listed nowhere.
     expect(close).toContain(
-      "and the cost, the agents and the rounds the change used, with `starts` naming each fresh agent started, such as `review 1`, a restart one more line, `review 1 restarted`, and one more agent.",
+      "and the cost, the agents and the rounds the change used, with `starts` naming the starts of the line's steps alone, such as `review 1`, a restart one more line, `review 1 restarted`, and one more agent; a method's agent, a picture's helper among them, is named in the section it serves and listed nowhere.",
     );
     expect(close).toContain(
       "Set `done` only once `greenline status --change <id>` reports no cost below the starts the record names (GL0409).",

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-hallmark-photos",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-compact-landing-families",
+    "sha256": "4ae9b5c6515a704fee66c433bd3a73d75654a62ff07135958bf11db66a7852a0"
+  },
+  "source": {
+    "repository": "https://github.com/Nutlope/hallmark",
+    "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+    "path": "skills/hallmark/scripts/photos.json"
+  },
+  "pin": "hallmark",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "A photo library held until each photo's licence is verified",
+  "reason": "Its photographs carry their own licences, unverified; the list is kept in the staged scripts and never drawn from.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's photo library is held until each photo's licence is verified"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's photo library is held until each photo's licence is verified"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "commit": "c9b22fa42b25757852d7c3aa621344d13882a519",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "0b907723198ce0e37b35641967596be48bb6c32a790fa7248e30520511d70502"
+    },
+    {
+      "path": "references/models.md",
+      "sha256": "789f2aae44e11086ff8029c4eada1d7111de1635033d8e84eac6d21107727b53"
+    },
+    {
+      "path": "references/verify.md",
+      "sha256": "48b119be22797fed2676a2282b8bee8ac7e604099d6fca001016df58ee2fac3b"
+    },
+    {
+      "path": "references/vocabulary.md",
+      "sha256": "6b9bd859f183600106ece9cc72ec853fa127a60a600e876228197fc84da83b41"
+    }
+  ],
+  "entries": [
+    {
+      "name": "references",
+      "path": "references"
+    }
+  ]
+}

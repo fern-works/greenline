@@ -1,0 +1,328 @@
+{
+  "schema": "greenline.interface-catalog-recipe/v1",
+  "owner": "workshop/components/interface-catalog.md",
+  "entries": "corpus/interface/catalog/entries.json",
+  "schemaFields": [
+    "id",
+    "kind",
+    "register",
+    "platform",
+    "facets",
+    "tokens",
+    "sketch",
+    "words",
+    "provenance"
+  ],
+  "tokenGroups": "DESIGN.md's colors, typography, spacing, rounded and components, plus motion for durations and easing, which DESIGN.md's groups do not hold",
+  "contrast": "a palette, app style or material with colours names its ink-on-ground pairs; each pair meets 4.5:1 for text or 3:1 where marked large, and the ratio is recorded beside it",
+  "nearDuplicate": {
+    "palette": "two entries of one kind and register whose colour roles match and every role differs by under deltaE OK 0.02",
+    "type": "two type entries whose sizes differ by 1px or less per role and whose families share a class",
+    "sketch": "two entries whose rows, columns and slots match",
+    "rule": "a flagged pair is reported before it enters; the operator rules whether the two merge, and a merged entry keeps both provenances"
+  },
+  "families": [
+    {
+      "repository": "https://github.com/Nutlope/hallmark",
+      "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+      "licence": "mit",
+      "pin": "hallmark",
+      "paths": ["skills/hallmark/references/anatomy.md", "skills/hallmark/references/layout.md"],
+      "entries": [
+        "job-subscribe",
+        "job-book",
+        "job-visit",
+        "job-attend",
+        "job-buy",
+        "job-try",
+        "job-sign-up",
+        "job-hire",
+        "job-join",
+        "job-listen",
+        "hero-even-split",
+        "hero-wide-visual",
+        "hero-short-band",
+        "hero-headline-at-base",
+        "hero-single-column",
+        "hero-full-bleed",
+        "hero-action-as-visual",
+        "hero-content-as-visual"
+      ]
+    },
+    {
+      "repository": "https://github.com/Leonxlnx/taste-skill",
+      "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+      "licence": "mit",
+      "pin": "taste-skill",
+      "paths": ["skills/taste-skill/library/app.json"],
+      "entries": [
+        "white-teal-greeting",
+        "cobalt-on-mist",
+        "open-plane-shell",
+        "centred-column-shell"
+      ]
+    },
+    {
+      "repository": "https://github.com/arla6ka/skills",
+      "commit": "840a386938a616bff48342dc94a966ebe7d91a97",
+      "licence": "mit",
+      "pin": "arla6ka-skills",
+      "paths": ["systems/quartz/tokens.css", "systems/lime/tokens.css", "systems/glaze/tokens.css"],
+      "entries": ["cold-kind-hues", "warm-lime-action", "flat-glass-press"]
+    },
+    {
+      "repository": "https://github.com/mickadesign/fluid-functionalism",
+      "commit": "7387f361c07edee7b6447cc2d52301fef13ab180",
+      "licence": "mit",
+      "pin": "fluid-functionalism",
+      "paths": ["skills/fluid-functionalism/references/craft.md"],
+      "entries": ["spring-tier-compact"]
+    },
+    {
+      "repository": "https://github.com/emilkowalski/skills",
+      "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+      "licence": "mit",
+      "pin": "emilkowalski-skills",
+      "paths": ["skills/animate/SKILL.md", "skills/animate-expo/SKILL.md"],
+      "entries": ["strong-ease-out-ui", "duration-ratio-springs-native"]
+    },
+    {
+      "repository": "https://github.com/iart-ai/web-animation-skills",
+      "commit": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
+      "licence": "mit",
+      "pin": "web-animation-skills",
+      "paths": ["skills/micro-interaction/SKILL.md"],
+      "entries": ["micro-band-100-250"]
+    },
+    {
+      "repository": "https://github.com/PrototyperAI/prototyper-ui",
+      "commit": "eff1e06fa43a1fc3ba4e940b43b7ba0fa5b72339",
+      "licence": "mit",
+      "pin": "prototyper-ui",
+      "paths": ["apps/docs/skill/animate-ui/SKILL.md"],
+      "entries": ["tiered-overlay-motion"]
+    },
+    {
+      "repository": "https://github.com/jakubkrehel/skills",
+      "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+      "licence": "mit",
+      "pin": "jakubkrehel-skills",
+      "paths": ["skills/better-ui/surfaces.md", "skills/better-typography/spacing-and-sizing.md"],
+      "entries": ["hairline-shadow-border", "five-role-scale"]
+    },
+    {
+      "repository": "https://github.com/flornkm/shadow-plugin",
+      "commit": "da27869da759283fa0e9dc1353449aa474b8bad0",
+      "licence": "mit",
+      "pin": "shadow-plugin",
+      "paths": ["src/shadows.css"],
+      "entries": ["layered-shadow-ring"]
+    },
+    {
+      "repository": "https://github.com/antfu/design",
+      "commit": "2df66b0830c6e51f0087caeee6ee3de401172199",
+      "licence": "mit",
+      "pin": "antfu-design",
+      "paths": ["skills/antfu-design/references/core-tokens.md"],
+      "entries": ["devtools-semantic"]
+    },
+    {
+      "repository": "https://github.com/zeke/swiss-design-skill",
+      "commit": "285009f3dc4ba311f59bb757973274de2c9446c3",
+      "licence": "mit",
+      "pin": "swiss-design",
+      "paths": ["swiss-design/SKILL.md", "swiss-design/references/components.md"],
+      "entries": [
+        "stone-one-accent",
+        "light-plex-display",
+        "eight-four-grid",
+        "numeral-backed-claim"
+      ]
+    },
+    {
+      "repository": "https://github.com/elithrar/dotfiles",
+      "commit": "eb4f994e0c1ebe1199f032f4e5fe1633d1b8067c",
+      "licence": "mit",
+      "pin": "elithrar-dotfiles",
+      "paths": [".agents/skills/neo-industrial-design/references/visual-system.md"],
+      "entries": ["near-black-cream-orange"]
+    },
+    {
+      "repository": "https://github.com/filipwojda/regards-skill",
+      "commit": "61b565be93ef436330967e4d06fcf08f55090210",
+      "licence": "mit",
+      "pin": "regards-skill",
+      "paths": ["skills/regards-art-direction/references/type.md"],
+      "entries": ["measured-fluid-site-scale"]
+    },
+    {
+      "repository": "https://github.com/dimillian/skills",
+      "commit": "05ba982bfeb0d77d3c97d4542b0ee15034d05f84",
+      "licence": "mit",
+      "pin": "dimillian-skills",
+      "paths": [
+        "swiftui-ui-patterns/references/tabview.md",
+        "swiftui-ui-patterns/references/input-toolbar.md"
+      ],
+      "entries": ["sectioned-tab-sidebar", "pinned-input-bar"]
+    },
+    {
+      "repository": "https://github.com/callstackincubator/agent-skills",
+      "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+      "licence": "mit",
+      "pin": "callstack-agent-skills",
+      "paths": ["skills/react-navigation/references/bottom-tabs.md"],
+      "entries": ["tabs-become-sidebar"]
+    },
+    {
+      "repository": "https://github.com/joe-bell/skills",
+      "commit": "6e79fd26ab3849f214b9a9ba2ac7cd6b6223e98a",
+      "licence": "mit",
+      "pin": "joe-bell-skills",
+      "paths": ["skills/apple-web-app/references/layout-and-touch.md"],
+      "entries": ["standalone-web-root"]
+    }
+  ],
+  "sites": [
+    {
+      "site": "https://linear.app/",
+      "seen": "2026-10-24",
+      "capture": "corpus/upstream/linear.app/2026-10-24/capture.json",
+      "sha256": "0040cbec17316ece030693153aff5fedbd8500af08c32e51c8394a695d1ea037",
+      "licence": "ideas-only",
+      "entries": [
+        "graphite-night",
+        "tight-grotesk-dark",
+        "chaptered-product-tour",
+        "pill-compact-controls",
+        "quick-hover-slow-reveal"
+      ]
+    },
+    {
+      "site": "https://stripe.com/",
+      "seen": "2026-10-24",
+      "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+      "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+      "licence": "ideas-only",
+      "entries": [
+        "white-navy-violet",
+        "light-weight-grotesk",
+        "split-hero-capability-grid",
+        "banded-platform-page",
+        "layered-soft-elevation",
+        "settled-ease-out-site"
+      ]
+    },
+    {
+      "site": "https://vercel.com/",
+      "seen": "2026-10-24",
+      "capture": "corpus/upstream/vercel.com/2026-10-24/capture.json",
+      "sha256": "27859eb74bca3eb4aa4c1189db0562268898437a844c7681532feb167fa25af1",
+      "licence": "ideas-only",
+      "entries": [
+        "monochrome-near-white",
+        "geometric-grotesk-tight",
+        "split-hero-three-column",
+        "alternating-proof-chapters",
+        "hairline-flat"
+      ]
+    }
+  ],
+  "staged": [
+    {
+      "source": "taste-skill",
+      "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+      "path": "skills/taste-skill/scripts",
+      "snapshot": "corpus/upstream/taste-skill/6010f91a9935f1c167dfc500fb1a475681892e6b/scripts",
+      "licence": "mit",
+      "what": "the CDP client, inspector, probe, rules, lint and draw",
+      "for": "J-123 S4, S5, S6",
+      "neverDrawnFrom": [
+        "scripts/assets.mjs (held: it calls outside services)",
+        "scripts/scenes.mjs (held)"
+      ]
+    },
+    {
+      "source": "hallmark",
+      "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+      "path": "skills/hallmark/scripts",
+      "snapshot": "corpus/upstream/hallmark/7ec868225c6caa040558c321ee0fefa0e73f83a8/scripts",
+      "licence": "mit",
+      "what": "the waiver engine, kept-list inventory, render tier and capture",
+      "for": "J-123 S4, S5",
+      "neverDrawnFrom": [
+        "scripts/imagegen.mjs (declined: a paid image key)",
+        "scripts/picture.mjs (declined)",
+        "scripts/install-hook.mjs (declined: it writes harness settings)",
+        "scripts/lint-hook.mjs (declined: it writes harness settings)",
+        "scripts/photos.json (held until each photo's licence is verified)"
+      ]
+    },
+    {
+      "source": "arla6ka-skills",
+      "commit": "840a386938a616bff48342dc94a966ebe7d91a97",
+      "path": "skills/build-design-system",
+      "snapshot": "corpus/upstream/arla6ka-skills/840a386938a616bff48342dc94a966ebe7d91a97/build-design-system",
+      "licence": "mit",
+      "what": "check-system's ratchet, capture-guard, the OKLCH helpers and token-mapping's tolerances",
+      "for": "J-123 S4, S5"
+    },
+    {
+      "source": "ui-ux-pro-max",
+      "commit": "d14efff8ed1faa4187f004f79926f428c8074ec7",
+      "path": ".claude/skills/ui-ux-pro-max/scripts",
+      "snapshot": "corpus/upstream/ui-ux-pro-max/d14efff8ed1faa4187f004f79926f428c8074ec7/scripts",
+      "licence": "mit",
+      "what": "the BM25 search and the generator's contract",
+      "for": "J-123 S6"
+    },
+    {
+      "source": "antfu-design",
+      "commit": "2df66b0830c6e51f0087caeee6ee3de401172199",
+      "path": "packages/design/unocss",
+      "snapshot": "corpus/upstream/antfu-design/2df66b0830c6e51f0087caeee6ee3de401172199/unocss",
+      "licence": "mit",
+      "what": "the build-time blocklist",
+      "for": "J-123 S4"
+    },
+    {
+      "source": "antfu-design",
+      "commit": "2df66b0830c6e51f0087caeee6ee3de401172199",
+      "path": "packages/design/a11y",
+      "snapshot": "corpus/upstream/antfu-design/2df66b0830c6e51f0087caeee6ee3de401172199/a11y",
+      "licence": "mit",
+      "what": "the dual-scheme contrast scan",
+      "for": "J-123 S4"
+    },
+    {
+      "source": "antfu-design",
+      "commit": "2df66b0830c6e51f0087caeee6ee3de401172199",
+      "path": "packages/design/utils",
+      "snapshot": "corpus/upstream/antfu-design/2df66b0830c6e51f0087caeee6ee3de401172199/utils",
+      "licence": "mit",
+      "what": "the colour and contrast helpers the scan imports",
+      "for": "J-123 S4"
+    }
+  ],
+  "held": [
+    "Hallmark's 48 themes and 4 genres (Nutlope/hallmark at 7ec86822)",
+    "ConardLi's 25 style recipes (ConardLi/garden-skills at 7a6d5a72)",
+    "ui-ux-pro-max's palettes, pairings, industry tables and unsourced styles, landings and motions",
+    "transitions.dev's token scale and recipe defaults (54fbee8e)",
+    "MengTo's six skills synced from another provider",
+    "the Dammyjay93 examples",
+    "ibelick's site palette, which fails contrast",
+    "iart's glass material",
+    "callstack's TV type and palette",
+    "every Apple-derived value: the HIG distillation, dickwu, dimillian's glass, emilkowalski's apple-design",
+    "ericzakariasson/scandinavian-design (no licence)",
+    "s0xDk/refactoring-ui-skill (a book's derivative)",
+    "larashero3-dotcom/lieflat-charts (noncommercial)",
+    "bencium typography (a book's distillation)",
+    "Superfuture/design-review (no licence)",
+    "compact-landing's six style families (Danilaa1/compact-landing-skill at 1d79ea78, references/style-dna.md): ranges and words with no tokens; its axes are lifted",
+    "feel's spring vocabulary (diip3sh/feel at c9b22fa4, references/vocabulary.md): a vocabulary's value is the source's own words, which the provenance rule keeps out of an entry; the why behind the words is garden's"
+  ],
+  "pendingRuling": [],
+  "waiting": "the families' remaining units (Taste's library of directions, heroes, sections, pairings and palettes; Hallmark's shapes, compositions and section deck; the patterns of Taste's app library) enter with J-123 S6, which builds the extra skill from this recipe"
+}

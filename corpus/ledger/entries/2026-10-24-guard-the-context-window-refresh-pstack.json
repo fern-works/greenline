@@ -1,0 +1,67 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-guard-the-context-window-refresh-pstack",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-frame-refresh-pstack",
+    "sha256": "6f4333254e9d1b3a7c82713588dbffe23a3d36d616c1b393f343b5a5225aaa65"
+  },
+  "subject": "skill:guard-the-context-window",
+  "recipe": "0b7ea4c27866d44814d1ce7e4cf96fa9dad9bf588cf75d73ea0b5444d54df32e",
+  "result": "9003c6295808629e17b9350f2b31c1a6254183ec0cf5577d114aac29a3a379cd",
+  "pages": [],
+  "gist": "Keeps the opening and patterns upstream cut; the rest is taken",
+  "reason": "Refreshes guard-the-context-window to pstack eb4db2b55b2b: the principle's opening and two patterns cut upstream stay as greenline's text crediting pstack, the rest is taken, and the body stays not a stub.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, a copy in its portable form and not a stub, and context-engineering a combine whose context budget joins it, under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-08",
+      "words": "under R22 of 2026-10-08, the re-cut brief accepted as recommended (\"yes amend, with one change\"): the names of the roster table and the trial names stand, and show-me stays implicit"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112 S2, under the operator's words \"for smaller decisions go with your recommended suggestions\": the seven stub flags are not stubs and keep their text; the method upstream's edit pass at eb4db2b5 cut stays as written passages crediting pstack; elsewhere upstream's change is taken"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 172,
+        "taken": 31,
+        "exact": 31,
+        "retention": 1,
+        "coverage": 0.18023255813953487,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 5,
+        "taken": 5,
+        "exact": 5,
+        "retention": 1,
+        "coverage": 1,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 237
+  }
+}

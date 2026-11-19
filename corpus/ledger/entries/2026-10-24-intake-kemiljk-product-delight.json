@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-kemiljk-product-delight",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-kemiljk-intentional-craft",
+    "sha256": "0dd8609d751bd26734144736bbff540c524f26e851a57523aac519c5d9b29d50"
+  },
+  "source": {
+    "repository": "https://github.com/kemiljk/skills",
+    "commit": "87129c9747468e380adc28a98226fdffcd55ce9b",
+    "path": "skills/product-delight"
+  },
+  "pin": "kemiljk-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Ten delight principles, handed to garden",
+  "reason": "Principles of delight as reliability are theory consulted to choose, garden's.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's humane-functionalism, intentional-craft and product-delight hand off to garden"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's humane-functionalism, intentional-craft and product-delight hand off to garden"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "ten principles of delight",
+        "locator": "skills/product-delight/SKILL.md"
+      }
+    ]
+  }
+}

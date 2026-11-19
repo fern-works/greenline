@@ -169,6 +169,7 @@ export function wholeMeasure(source: string, candidate: readonly ProseText[]): S
     source,
     segments,
     taken: segments,
+    passages: candidate.filter((file) => sideOf([file]).segments.length > 0).length,
     exact: segments,
     retention: whole,
     coverage: whole,

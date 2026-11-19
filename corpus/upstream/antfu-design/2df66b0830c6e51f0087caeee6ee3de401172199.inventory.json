@@ -1,0 +1,159 @@
+{
+  "commit": "2df66b0830c6e51f0087caeee6ee3de401172199",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "28c03bce7be694cde1bb4650cc9323199848514885091294b621789356ae5198"
+    },
+    {
+      "path": "a11y/cli.ts",
+      "sha256": "cfb72cc0d5f5828eb74cceeddf2bb7f2944ad75948cf3c5c6ad1741bdf9eb912"
+    },
+    {
+      "path": "a11y/index.ts",
+      "sha256": "7e362b291d6c3e890f63b8cabbfa11aeeb8532aa5f07d5473f769ca11ceba8c6"
+    },
+    {
+      "path": "a11y/scan.ts",
+      "sha256": "143f7bb775b4309e5ed8536e03c0ff2154fcab6be9b994031618b95678d4495b"
+    },
+    {
+      "path": "antfu-design/SKILL.md",
+      "sha256": "0999524c0f945b71920c2c3cc47c6b0218b175db53838db44fd6993a51ecfbc5"
+    },
+    {
+      "path": "antfu-design/references/advanced-patterns.md",
+      "sha256": "27eb7b64392a636a0f38d49f715af4139583bc387716beace7405f08a4d1a9b6"
+    },
+    {
+      "path": "antfu-design/references/best-practices.md",
+      "sha256": "5a38d2c89c5995b9851f32301a3acc5e5bcacef245b6992ce62b6e8cef7e8547"
+    },
+    {
+      "path": "antfu-design/references/core-components.md",
+      "sha256": "28d12f7b385c622b90e3319f469a18253628850f048bdfb678c32625c37abfb3"
+    },
+    {
+      "path": "antfu-design/references/core-setup.md",
+      "sha256": "f47ca8ac692e048dc592e05dd02625a91602be853f3d69a8196939cedc37356c"
+    },
+    {
+      "path": "antfu-design/references/core-tokens.md",
+      "sha256": "5e5659ff24d38f68954b08a146f63a7bfe294023ab8e57293263759dcd615b3e"
+    },
+    {
+      "path": "antfu-design/references/features-data-presentation.md",
+      "sha256": "3b9b7a99e1fc8348ddbfc7e8b5c6842456ff5d7111506f76735c4ddc768cb8b7"
+    },
+    {
+      "path": "antfu-design/references/recipes.md",
+      "sha256": "cda5121b40f9de49f07a568808856dd808ac83ba164ba9ea012bdcfe5100b2be"
+    },
+    {
+      "path": "antfu-design/references/storybook.md",
+      "sha256": "6610cffeacd3e952c6cd704ae38e563336de2619a4321629de0ea153212d45a5"
+    },
+    {
+      "path": "unocss/blocklist.ts",
+      "sha256": "6d184b018216e0c2f07d56f6c5f708e29a633e025f969f4a48f12c9adff2c509"
+    },
+    {
+      "path": "unocss/colors.ts",
+      "sha256": "7019ffce31371a1f176763210be3b79346de2c6b2af671e315b5d7b4dba50aa3"
+    },
+    {
+      "path": "unocss/index.ts",
+      "sha256": "ce2068ab25cdb0c96c8a62739d79184ebaaa9957da9d17ca1a737a388ed9a0ba"
+    },
+    {
+      "path": "unocss/options.ts",
+      "sha256": "6a63230972ceddeb43c89814d41a7c046b40d407933f6b62d60065435c9c3709"
+    },
+    {
+      "path": "unocss/patterns.ts",
+      "sha256": "f308e05235a6b2c08f1e5733eab5427460c1422bcd2534082fdaf83fd86f4a66"
+    },
+    {
+      "path": "unocss/rules.ts",
+      "sha256": "bd5e380702a660c048aab6c8cb414f29fa98c69f3cd45ce8ee35b1a6bb74dafa"
+    },
+    {
+      "path": "unocss/scroll-fade.ts",
+      "sha256": "e3239d49e9a2c6bb3888a592c05f1904eb330457c112e03b47dc91313b419543"
+    },
+    {
+      "path": "unocss/severity.ts",
+      "sha256": "d800e60dc1e8ca97f1628ac26f672a9920f36500f0938293de299bfb910df878"
+    },
+    {
+      "path": "unocss/shimmer.ts",
+      "sha256": "684a559bae768f3858ecf6382570a782bbc193514573c1785c223aeae8b51f09"
+    },
+    {
+      "path": "unocss/shortcuts.ts",
+      "sha256": "4182752159dd202644876faaeec63a011f9932e3b8e8f227e6d5c1079cdb943d"
+    },
+    {
+      "path": "utils/color.ts",
+      "sha256": "75fd39dac133cb1b7a280b99a22468a10b47c9a051463628ae8ba83fd38b8092"
+    },
+    {
+      "path": "utils/contrast.ts",
+      "sha256": "ff4a5ee7194a17edd46dceaae1b298d081a393823f7a08d74875bd44c8732289"
+    },
+    {
+      "path": "utils/format.ts",
+      "sha256": "2d285a462485efe337112e586123c2eb8f3f01c7341f42f4f9bcb9867a87565d"
+    },
+    {
+      "path": "utils/icon.ts",
+      "sha256": "9d4bbb673ccb89f58a6b37655a0ccefa198ec9061fbbcd305ab0b15fa6969eda"
+    },
+    {
+      "path": "utils/iconify.ts",
+      "sha256": "a451eb742ddbdd0449b84ea2252d985f32c1f8ad76adec58ccd746ed4ce61b5f"
+    },
+    {
+      "path": "utils/index.ts",
+      "sha256": "e04d0dd2c0a75f49c8c2dc01b1690cd10c51475ec5d47de02ab9e2592ff6ef24"
+    },
+    {
+      "path": "utils/keybinding.ts",
+      "sha256": "93ad8bf21b568543bf349e275bf8184bb3e0631845687f64675377576392f636"
+    },
+    {
+      "path": "utils/misc.ts",
+      "sha256": "b5759b6d01378a1b69abcedf5b63b2ab5edbd2f816416b917e72a22c5d5311fb"
+    },
+    {
+      "path": "utils/path.ts",
+      "sha256": "49fd0c4a5cad186e38285fec35fae77fb939f9721d987356c990a59a443f2bcc"
+    },
+    {
+      "path": "utils/semver.ts",
+      "sha256": "b45708b79d6a975cbe4b33221f55168675d51a4306c3d02cef4ae0ad7b2a1052"
+    },
+    {
+      "path": "utils/tree.ts",
+      "sha256": "155d4393c01a447de8d3c7a8e28091681ec464887aae11b86219070b99c6e787"
+    }
+  ],
+  "entries": [
+    {
+      "name": "a11y",
+      "path": "packages/design/a11y"
+    },
+    {
+      "name": "antfu-design",
+      "path": "skills/antfu-design"
+    },
+    {
+      "name": "unocss",
+      "path": "packages/design/unocss"
+    },
+    {
+      "name": "utils",
+      "path": "packages/design/utils"
+    }
+  ]
+}

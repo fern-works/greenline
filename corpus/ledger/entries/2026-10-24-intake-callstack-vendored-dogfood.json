@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-callstack-vendored-dogfood",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-callstack-vendored-agent-device",
+    "sha256": "2e82a5dec8ba59a2b13056b1a2de2f12df2fcf3cd19f9b78f0e0aacf5a66621c"
+  },
+  "source": {
+    "repository": "https://github.com/callstackincubator/agent-skills",
+    "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+    "path": "plugins/vendored/.agents/skills/dogfood"
+  },
+  "pin": "callstack-agent-skills",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Vendored skill held: no licence file in its path",
+  "reason": "It is vendored from another repository and declares no licence; it waits for its upstream's licence file.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': callstack's vendored skills are held until their upstreams' licence files confirm them"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': callstack's vendored skills are held until their upstreams' licence files confirm them"
+    }
+  ]
+}

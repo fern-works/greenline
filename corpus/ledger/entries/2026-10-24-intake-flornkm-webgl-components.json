@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-flornkm-webgl-components",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-gsap-gsap-utils",
+    "sha256": "d45abf901a2fbfa32f9a622f41fe739354cde7c635f7e417adf60f709ae517e2"
+  },
+  "source": {
+    "repository": "https://github.com/flornkm/skills",
+    "commit": "cf1c0094e1826230623ecdb6e7b3c44bdfc593c3",
+    "path": "skills/webgl-components"
+  },
+  "pin": "flornkm-skills",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "WebGL widgets held for a facet value",
+  "reason": "Its widgets need a webgl value the facet list does not hold; its fallback and reduced-motion rules enter now.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': flornkm's WebGL widgets are held for a facet value"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': flornkm's WebGL widgets are held for a facet value"
+    }
+  ]
+}

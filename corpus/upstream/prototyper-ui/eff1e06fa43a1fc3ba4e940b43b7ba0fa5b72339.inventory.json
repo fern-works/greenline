@@ -1,0 +1,27 @@
+{
+  "commit": "eff1e06fa43a1fc3ba4e940b43b7ba0fa5b72339",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "2b405424c82d1eee4a57880b32988f2a0b595aedf26b9e201c67c5390790a3b6"
+    },
+    {
+      "path": "animate-ui/SKILL.md",
+      "sha256": "6c3a03caa29e6075c6b92e31211c11535bed89d9755e722071bff7cbcb0e4bf6"
+    },
+    {
+      "path": "build-primitive/SKILL.md",
+      "sha256": "c9dfd37d61e476520fe77b6014d8ec229c1e3eb2a067bb58f514d32fb0792016"
+    }
+  ],
+  "entries": [
+    {
+      "name": "build-primitive",
+      "path": "apps/docs/skill/build-primitive"
+    },
+    {
+      "name": "animate-ui",
+      "path": "apps/docs/skill/animate-ui"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Verify Formally"
+  short_description: "Check a promise the code makes over every order of steps or every input in a stated scope, with a model checker, TLA+ by default for event order, or a verifier that fits the language: choose the strongest target from the code, show the check failing on a broken variant, report a failure as a finding in the code's words, and keep the check in step with the code through a note of what it covers and the commit it was last confirmed at. Use when a race, a retry, a state machine, a parser or an invariant needs more than tests, when a drawn state chart should be checked, when the owner wants to be sure whatever the order, not just tested, or when code a verification covers changed without a recheck."
+policy:
+  allow_implicit_invocation: false

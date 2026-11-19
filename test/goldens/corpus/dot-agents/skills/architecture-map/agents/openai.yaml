@@ -1,0 +1,3 @@
+interface:
+  display_name: "Architecture Map"
+  short_description: "Build or update an interactive isometric map of the repository's architecture, versioned in the map's folder of the workspace's visual home with a measured snapshot, staleness tiers and a manifest. Use when someone wants to see, map out, onboard into, or refresh how the codebase and its main parts fit together."

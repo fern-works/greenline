@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-mengto-no-slop-article",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-open-design-plugins",
+    "sha256": "273e6e2b1dd95d3a4db009f42973ab1ffc6c1910f18d6052a12dd47f32402ac9"
+  },
+  "source": {
+    "repository": "https://github.com/MengTo/Skills",
+    "commit": "398cd41c86ba42fbb30e944ae507f463648f08b7",
+    "path": "agent-skills/ui/no-ai-design-slop/ARTICLE.md"
+  },
+  "pin": "mengto-skills",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "An article held: it combines another source's catalog",
+  "reason": "It says it combines another source's catalog; its parts wait for that source's own reading.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': MengTo's no-slop article is held"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': MengTo's no-slop article is held"
+    }
+  ]
+}

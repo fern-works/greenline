@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-raphaelsalaja",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-accesslint",
+    "sha256": "15e08a019f48d49dfd63ecfd77af0ba988b456687f40d216017639f146015690"
+  },
+  "source": {
+    "repository": "https://github.com/raphaelsalaja/skill",
+    "commit": "dc9eef22f13635df77d9b9e67c82aa85d52a97b7",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held: MIT declared in front matter only, no licence file",
+  "reason": "Its spring-or-curve framework and motion audit rules would serve the motion page and registry, but no licence file confirms the declared MIT; it waits for one.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': raphaelsalaja's skill is held until a licence file confirms the MIT its front matter declares"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': raphaelsalaja's skill is held until a licence file confirms the MIT its front matter declares"
+    }
+  ]
+}

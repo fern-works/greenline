@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-superfuture-design-review",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-bencium-typography",
+    "sha256": "26c334eb8a457325fa708880c35ce69665fd23196ea43fac4e83d3756242d59b"
+  },
+  "source": {
+    "repository": "https://github.com/Superfuture/design-review",
+    "commit": "d4d2609b53fccb475d11490e2c6261e5eb2f0c5d",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held: no licence, and a silent external ping",
+  "reason": "It has no licence file and sends a silent external ping; its rubric waits for a licence.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Superfuture's design review is held: no licence"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Superfuture's design review is held: no licence"
+    }
+  ]
+}

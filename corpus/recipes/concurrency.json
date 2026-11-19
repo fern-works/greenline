@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Decide whether code should be concurrent, reason about a concurrent design by its timelines, separate shared state before serializing it, and make an operation converge when a crash, a restart or a retry runs it twice, an idempotency key derived from the intent and claimed atomically. Use when adding threading, async, goroutines, workers or parallelism; when a race or an ordering bug appears; when two actors may write the same file, key or branch; and when a command, a step or a loop must survive crashes, restarts and retries."
+      "value": "Decide whether code should be concurrent, reason about a concurrent design by its timelines, separate shared state before serializing it, and make an operation converge when a crash, a restart or a retry runs it twice, an idempotency key derived from the intent and claimed atomically. Use when adding threading, async, goroutines, workers or parallelism; when a race or an ordering bug appears, or the owner asks whether something can happen twice or at once; when two actors may write the same file, key or branch; and when a command, a step or a loop must survive crashes, restarts and retries."
     }
   ],
   "sources": ["addyosmani", "pstack"],
@@ -37,6 +37,25 @@
           "reason": "The title and opening: the three questions in their order, whether concurrency is warranted, how to reason about the design, and which laws hold on any runtime.",
           "gist": "Asks three questions in order: warranted, how to reason, which laws hold",
           "ruling": "No docs/DECISIONS.md row and no entry of the old chain rules this skill; the move changes no method, under the row of 2026-10-04 (modes-records-recipes, Q1): the existing roster skills move to recipes first, as they stand, and are re-cut afterwards by editing recipes, in the operator's words \"okay then lock in what you recommend\""
+        },
+        {
+          "passage": "written",
+          "text": "Before the first concurrent line, read [method.md](method.md): the decision whose default is no, the timelines, the ladder, the laws, the primitives and the operations that run twice.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Concurrency: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "written",
@@ -120,27 +139,26 @@
           "passage": "taken",
           "source": "pstack",
           "file": "principle-make-operations-idempotent/SKILL.md",
-          "segments": ["6bfc13e6fd5e", "bc64f5b348fd", "13e45d6f5334"]
-        },
-        {
-          "passage": "taken",
-          "source": "pstack",
-          "file": "principle-make-operations-idempotent/SKILL.md",
-          "segments": ["f62a241ed2b1", "eea8d720495d", "d13993ff0875"]
+          "segments": ["2083f2677916", "bc64f5b348fd", "13e45d6f5334"]
         },
         {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-make-operations-idempotent/SKILL.md",
           "segments": [
-            "26a76b4b4f28",
+            "b22fc84d1e0d",
+            "36b4bbb54c49",
+            "4e267ae92319",
+            "0223725972af",
+            "142d10cc1b11",
+            "735fa05bfd38",
+            "68014598eb95",
             "d7c72670d0ad",
             "550f65275a25",
             "48818a3b9c82",
             "621ef5479d02",
             "5cfbb987176b"
-          ],
-          "join": "\n"
+          ]
         },
         {
           "passage": "written",
@@ -220,8 +238,8 @@
       "reason": "The title becomes the rung's heading.",
       "gist": "The title becomes the rung's heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 6
+        "path": "method.md",
+        "passage": 4
       }
     },
     {
@@ -240,8 +258,8 @@
       "reason": "The title becomes the section's heading.",
       "gist": "The title becomes the section's heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 11
+        "path": "method.md",
+        "passage": 9
       }
     },
     {
@@ -264,10 +282,9 @@
       "source": "pstack",
       "file": "principle-make-operations-idempotent/SKILL.md",
       "segment": "5368a7eb1ffb",
-      "kind": "method",
-      "reason": "PID-based stale lock detection gives way to the primitive the platform ships, section 5 (contradiction 31).",
-      "gist": "PID-based stale locks give way to the platform's own primitive",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "addyosmani",
@@ -1379,6 +1396,89 @@
       "reason": "API design, Hyrum's law, versioning, error semantics, REST naming, pagination and the TypeScript interface patterns are knowledge consulted for an engineering choice, handed to garden's maintainer; only the idempotency core joins this habit.",
       "gist": "API design beyond idempotency is engineering knowledge, handed to garden's maintainer",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "f62a241ed2b1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "eea8d720495d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "d13993ff0875",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-make-operations-idempotent/SKILL.md",
+      "segment": "26a76b4b4f28",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Concurrency found before the mode is proposed raises the proposal to the mode its floor names, careful, and the record names the floor.",
+      "page": "SKILL.md",
+      "kind": "record",
+      "where": "the change record's floors line, which GL0403 judges where the choice is standing",
+      "cost": "free",
+      "oracle": "Mode choice, a floor"
+    },
+    {
+      "promise": "Concurrency found after the proposal is reported to the owner.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "Mode choice, a raise mid-work",
+      "cost": "free"
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "concurrent",
+        "concurrency",
+        "in parallel",
+        "race condition",
+        "at once",
+        "idempotent",
+        "retries",
+        "survive a crash",
+        "two writers"
+      ],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "words": [
+        "concurrent",
+        "concurrency",
+        "in parallel",
+        "race condition",
+        "at once",
+        "idempotent",
+        "retries",
+        "survive a crash",
+        "two writers"
+      ],
+      "steps": ["build"],
+      "modes": ["regular", "careful"],
+      "weight": 2,
+      "read": "whole"
     }
   ]
 }

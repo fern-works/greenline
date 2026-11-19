@@ -19,7 +19,7 @@ function pieces(text: string): readonly (readonly [string, string, string])[] {
 }
 
 describe("the round trip", () => {
-  it("re-joins all 465 frozen prose files under corpus/upstream/ and corpus/skills/ exactly", () => {
+  it("re-joins all 910 frozen prose files under corpus/upstream/ and corpus/skills/ exactly", () => {
     const files = [...proseFiles("upstream"), ...proseFiles("skills")];
     // 288 snapshot pages and 130 roster pages. S21 left 115 and 124 (158 when
     // the segmenter landed, less the 34 provenance pages S21 removed); R2's
@@ -40,7 +40,19 @@ describe("the round trip", () => {
     // reviewer's brief page, references/brief.md. J-93 S1 added each of the
     // seven steps' references page, references/greenline.md.
     // J-93 S2 added 22 references pages, one per start and habit that carries a mechanic.
-    expect(files.length).toBe(465);
+    // J-112 replaces five snapshots with their refreshed ones, the old ones removed once no recipe was anchored there.
+    // J-111 S1 pins three new sources: anatomy's eleven pages, diagramming-expert's five and plantuml-ascii's one.
+    // J-111 S2 adds verify-formally's three pages, anatomy's eleven and show-me's drawing page.
+    // J-115 adds mattpocock's git-guardrails-claude-code page at its pin and caveman's two pages at v2.7.0.
+    // J-119 pins two new sources: ai-skill-arxiv's arxiv-search and arxiv-analyze pages and claude-night-market's papers page.
+    // J-122 pins 31 interface sources with the directories their entering units sit in (272 pages) and adds the staged code paths of four of them at their pins (6 more).
+    // J-110 S7 adds explain's two pages.
+    // J-117 S3 adds research's five pages.
+    // J-123 adds design's forty-nine pages, frame's UI prototype page moving among them, and the two pages of each of design-survey and redesign, and interface-catalog's two (S6).
+    // J-124 S4 adds design's marks page.
+    // J-180 S1 adds each roster skill's method page, the 45 pages its front points to.
+    // J-195 S1 adds state-machines' two pages and invariants' three.
+    expect(files.length).toBe(910);
     const broken = files.filter((path) => {
       const text = readFileSync(join(corpus, path), "utf8");
       return joinSegments(segmentProse(text)) !== text;

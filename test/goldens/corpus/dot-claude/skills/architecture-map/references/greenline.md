@@ -1,0 +1,7 @@
+# Architecture map: the practice's mechanics
+
+This page holds where architecture-map's work lands in the workspace and the commands it runs, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the work lands in the workspace.
+
+## Where its work lands
+
+The map's folder is `.greenline/visuals/map/`, in the visual home: `map.md`, the authored half; `snapshot.json`, the measured half with the snapshot commit; `architecture.html`, the generated viewer; and `architecture.visual.json`, its manifest in the form `.greenline/WORK.md` gives ("Durable visuals"), its `skill` `architecture-map`, its `form` `map`, its `commit` the snapshot commit, its `files` the roots of the coverage globs, and its `change` the change that wrote it; its `brief`, the six fields of the brief written first at `.greenline/tmp/<id>/pictures/architecture.brief.md`, which the fresh agent copies into the manifest, since the map is written to its own folder and not kept through `greenline picture keep`. Nothing of the map lives anywhere else. Its tier is the product's, which `greenline status` reads by the commits that touched its `files` since its `commit`; the status line's `atlas:` line says how many commits behind the map stands. A first build waits for the owner's ask; the close's refresh, made with the pages its change touched, names the map in the record's `refreshes` line with the agent's cost.

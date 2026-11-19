@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-design-md-agents-skills",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-emilkowalski-write-swift",
+    "sha256": "c957b2ffab14df1eea947384f4566465f1348d7998be318d70502ba65f324908"
+  },
+  "source": {
+    "repository": "https://github.com/google-labs-code/design.md",
+    "commit": "6e5da5382f41edbba9d73b2c62f33f32e9971f15",
+    "path": ".agents/skills"
+  },
+  "licence": "permissive-other",
+  "verdict": "decline",
+  "gist": "The repository's own development skills, declined",
+  "reason": "They are the repository's own development skills, not interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': the DESIGN.md repository's development skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': the DESIGN.md repository's development skills are declined"
+    }
+  ]
+}

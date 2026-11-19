@@ -1,0 +1,38 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-kemiljk-humane-functionalism",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-kemiljk-hiring-manager-bar",
+    "sha256": "90f5f36c466c0d99de6cabf931358891b22ee9b417c9ea144ee8d2e5df896899"
+  },
+  "source": {
+    "repository": "https://github.com/kemiljk/skills",
+    "commit": "87129c9747468e380adc28a98226fdffcd55ce9b",
+    "path": "skills/humane-functionalism"
+  },
+  "pin": "kemiljk-skills",
+  "licence": "mit",
+  "verdict": "hand-off",
+  "gist": "Design lenses from Danish designers, handed to garden",
+  "reason": "Lenses drawn from designers' work are theory consulted to choose, garden's.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's humane-functionalism, intentional-craft and product-delight hand off to garden"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': kemiljk's humane-functionalism, intentional-craft and product-delight hand off to garden"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "designers' work as lenses on interface choices",
+        "locator": "skills/humane-functionalism/SKILL.md"
+      }
+    ]
+  }
+}

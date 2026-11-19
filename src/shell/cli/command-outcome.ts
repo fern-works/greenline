@@ -5,6 +5,8 @@ import { diagnostic, type Diagnostic, type EffectJson, type TidyJson } from "./o
 import type { Situation } from "../../core/situation.ts";
 import type { ChangesReport } from "../../core/status.ts";
 import type { HooksReport } from "../../core/adapters.ts";
+import type { DiscussionsReport } from "../../core/discussion.ts";
+import type { FactRow } from "../../core/facts-table.ts";
 
 /** The factual result returned by a workspace command. */
 export interface CommandOutcome {
@@ -25,6 +27,10 @@ export interface CommandOutcome {
   readonly tidy?: TidyJson;
   /** The git hooks, the declared checks and the adapters; set by init, sync and status. */
   readonly hooks?: HooksReport;
+  /** The discussions beside the changes; set only by status's default view (J-118 S2). */
+  readonly discussions?: DiscussionsReport;
+  /** The open change's facts table, the rows the mirror prints; set only by status's default view while a change is open (J-144 S1). */
+  readonly facts?: readonly FactRow[];
 }
 
 function isClean(diagnostics: readonly Diagnostic[]): boolean {

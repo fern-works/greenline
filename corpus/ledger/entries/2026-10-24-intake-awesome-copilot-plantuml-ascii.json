@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-awesome-copilot-plantuml-ascii",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-curiositech-diagramming-expert",
+    "sha256": "69a14011c7a4d9410f0e82cbf05cee1a1bbb4a9f78c66fdf2716fff850f4f58e"
+  },
+  "source": {
+    "repository": "https://github.com/github/awesome-copilot",
+    "commit": "d85f762d6e521abf5fe16703946e9b38adc42da7",
+    "path": "skills/plantuml-ascii"
+  },
+  "pin": "awesome-copilot",
+  "licence": "mit",
+  "verdict": "lift",
+  "gist": "Its four text forms lift into show-me's drawing page; its binary declined",
+  "reason": "Its class, component, deployment and use-case forms and its labels rule enter show-me's drawing page drawn by hand; the PlantUML binary and its install are declined.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': diagramming-expert and plantuml-ascii lift into one drawing page for show-me, its eight rules method items, the psychology pages, the Mermaid section and the PlantUML program left out; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "show-me",
+    "catches": "A class, a component wiring, a deployment or a use case explained in prose because the drawing page has no form for it",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run where show-me's situation and the inline drawing's diverge, making the drawing a habit of its own"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-29-interface-catalog-holds-the-deal-to-the-owners-words",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-29-pr-writing-agent-trailer-from-the-payload",
+    "sha256": "38cc845940a18ff85bf74e632bfa50011e63f34bb1872b0133660acbf17358a0"
+  },
+  "subject": "skill:interface-catalog",
+  "recipe": "e0fd824a014e40003d78193e7732a5213c7b27d8f87b7530d54805f2ab0f44c8",
+  "result": "517d7d1c6539017d0e7ad5ac07775a0aea963aeffcf5358b0cac621711be6da2",
+  "pages": [
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The deal's seed and reroll held to the owner's words",
+  "reason": "A seed the owner's words did not name and an unasked reroll are refused by the deal-words hold, which now keeps the deal's first promise.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the catalog ships as the extra skill interface-catalog, installed on the owner's request, whose short page says how the deal is drawn and nothing else; every catalog entry carries the facets register and platform and the deal draws only the entries whose facets match the workspace's; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "taste-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "arla6ka-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "emilkowalski-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "web-animation-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "prototyper-ui",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "jakubkrehel-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "shadow-plugin",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "antfu-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "swiss-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "elithrar-dotfiles",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "regards-skill",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "dimillian-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "callstack-agent-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "joe-bell-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 576
+  }
+}

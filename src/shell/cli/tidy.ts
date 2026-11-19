@@ -2,17 +2,25 @@ import { join } from "node:path";
 import { tidyReasonSentence, type TidyReason } from "../../core/tidy.ts";
 import { createNodeFileIo } from "../fs/io.ts";
 import { findGitRoot } from "../git.ts";
-import { redirection, tidyWorkingFolders, type TidyReport } from "../tidy.ts";
+import { redirection, tidyDiscussionFolder, tidyWorkingFolders, type TidyReport } from "../tidy.ts";
+import { stopStarted, type StoppedProcess } from "../processes.ts";
+import { removeChangeWorktree } from "../worktree.ts";
 import { envRead, type RepositoryEnvironment } from "./command-environment.ts";
 import { fail, succeed, type CommandOutcome } from "./command-outcome.ts";
 import { GL, diagnostic, type Diagnostic, type TidyJson } from "./output.ts";
 
 /**
- * `greenline tidy [--change <id>]` (`workshop/components/cli-contracts.md`,
- * "tidy"): remove the working files of done and dropped changes, the one
- * named or every one, and report what it removed and what it kept. The
- * runner holds the writer lock around it, as it does for every write; it
- * runs no git; like every write, it refuses with GL0140 when the installation
+ * `greenline tidy [--change <id> [--worktree] | --discussion <id>]`
+ * (`workshop/components/cli-contracts.md`, "tidy"): remove the working
+ * files of done and dropped changes, the one named or every one, or of the
+ * one discussion named once it is declined, promoted or merged (J-118 S1),
+ * and report what it removed and what it kept; with
+ * `--worktree`, on the owner's word, the named change's own worktree too,
+ * never one with uncommitted work (J-114 S3). The runner holds the writer
+ * lock around it, as it does for every write; it runs no git but the
+ * worktree's removal; with `--change`, it stops the processes that
+ * change's sessions started and that still run, the inspector its address
+ * file names first, and never a process no session started (J-148 S1); like every write, it refuses with GL0140 when the installation
  * payload is unavailable. A folder it keeps when the
  * change was named, or a finished change's folder it cannot remove safely,
  * is a GL0470 error; an open or stopped change's folder kept while sweeping
@@ -37,6 +45,13 @@ function text(report: TidyReport): string {
     ...report.kept.map((entry) => `  kept ${entry.path}/: ${tidyReasonSentence(entry.reason)}`),
   ];
   return `${(lines.length === 0 ? ["  nothing to remove"] : lines).join("\n")}\n`;
+}
+
+/** A stopped process as the close's text names it. */
+function stoppedLine(one: StoppedProcess): string {
+  return one.inspector
+    ? `stopped the inspector the session started, pid ${String(one.pid)}`
+    : `stopped pid ${String(one.pid)}, ${one.command}, which the session started`;
 }
 
 /** The manifest a workspace needs, or GL0101. */
@@ -81,13 +96,22 @@ export function tidyBeforeLock(root: string): CommandOutcome | undefined {
  * @param change the change `--change` named, or undefined for every finished change
  * @returns what was removed, as remove effects, and each refusal as an error
  */
-export function runTidy(env: RepositoryEnvironment, change: string | undefined): CommandOutcome {
+export function runTidy(
+  env: RepositoryEnvironment,
+  change: string | undefined,
+  worktree = false,
+  discussion: string | undefined = undefined,
+): CommandOutcome {
   const root = findGitRoot(env.cwd);
   if (root === undefined)
     return fail([diagnostic(GL.notGitRepository, "error", "tidy requires a Git repository root")]);
   const missing = workspaceMissing(root);
   if (missing !== undefined) return missing;
-  const outcome = tidyWorkingFolders(root, change);
+  // A discussion's working files go on --discussion alone, once it is declined, promoted or merged (J-118 S1).
+  const outcome =
+    discussion === undefined
+      ? tidyWorkingFolders(root, change)
+      : tidyDiscussionFolder(root, discussion);
   if (outcome._tag === "err") {
     const removed = outcome.error.removed;
     return {
@@ -99,6 +123,22 @@ export function runTidy(env: RepositoryEnvironment, change: string | undefined):
     };
   }
   const report = outcome.value;
+  // What the change's sessions started stops with its close, never a process they did not start (J-148 S1).
+  const stopped = change === undefined || discussion !== undefined ? [] : stopStarted(root, change);
+  const stoppedText = stopped.map((one) => `  ${stoppedLine(one)}\n`).join("");
+  // On the owner's word, the change's own worktree goes too, never one holding uncommitted work (J-114 S3).
+  const removal = worktree && change !== undefined ? removeChangeWorktree(root, change) : undefined;
+  const worktreeRefusals: readonly Diagnostic[] =
+    removal?.kind === "kept"
+      ? [
+          diagnostic(
+            GL.tidyKept,
+            "error",
+            `kept the worktree${removal.path === undefined ? "" : ` ${removal.path}`}: ${removal.reason}`,
+            removal.path,
+          ),
+        ]
+      : [];
   const refusals: readonly Diagnostic[] = report.kept
     .filter((entry) => entry.refused)
     .map((entry) =>
@@ -109,12 +149,33 @@ export function runTidy(env: RepositoryEnvironment, change: string | undefined):
         entry.path,
       ),
     );
+  const removedWorktree: readonly string[] = removal?.kind === "removed" ? [removal.path] : [];
+  const worktreeLine =
+    removal === undefined
+      ? ""
+      : removal.kind === "removed"
+        ? `  removed the worktree ${removal.path}\n`
+        : removal.kind === "absent"
+          ? `  ${removal.reason}\n`
+          : `  kept the worktree${removal.path === undefined ? "" : ` ${removal.path}`}: ${removal.reason}\n`;
+  const base = stopped.length === 0 ? json(report) : { ...json(report), stopped };
   return {
     ...succeed(
-      report.removed.map((path) => ({ kind: "remove", path })),
-      refusals,
+      [...report.removed, ...removedWorktree].map((path) => ({ kind: "remove", path })),
+      [...refusals, ...worktreeRefusals],
     ),
-    text: text(report),
-    tidy: json(report),
+    text: `${text(report)}${stoppedText}${removal === undefined ? "" : worktreeLine}`,
+    tidy:
+      removal === undefined
+        ? base
+        : {
+            ...base,
+            worktree:
+              removal.kind === "removed"
+                ? { path: removal.path, removed: true }
+                : removal.kind === "absent"
+                  ? { path: null, removed: false, reason: removal.reason }
+                  : { path: removal.path ?? null, removed: false, reason: removal.reason },
+          },
   };
 }

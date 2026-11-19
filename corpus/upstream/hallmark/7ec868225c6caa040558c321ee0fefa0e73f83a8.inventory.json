@@ -1,0 +1,215 @@
+{
+  "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+    },
+    {
+      "path": "macrostructures/01-bento-grid.md",
+      "sha256": "1efd7da3e1857d22da50307af0effa92200198b59c26f0e429b8ffcaa9cd96ae"
+    },
+    {
+      "path": "macrostructures/02-long-document.md",
+      "sha256": "4d7524c16b764daef6fd8bc5e6757dcc4d886addf33f324b32f024c64bcbc573"
+    },
+    {
+      "path": "macrostructures/03-marquee-hero.md",
+      "sha256": "cb379a2eb56d8503265ab541ef9711e59bb2d51dadedfe3e47ccb697b3948e79"
+    },
+    {
+      "path": "macrostructures/04-stat-led.md",
+      "sha256": "2a065807340244d188de455fdb21c7ff8906bb95240873d0993f734c85c8f4a1"
+    },
+    {
+      "path": "macrostructures/05-workbench.md",
+      "sha256": "6bc0ccd0604afef8c749706189cf91b35078bcc52738eb29603840db0db151c6"
+    },
+    {
+      "path": "macrostructures/06-conversational-faq.md",
+      "sha256": "000a182731d543eaa9e2fda2be50fd4032ff25ed83a6befbbb0cd03567dbe15b"
+    },
+    {
+      "path": "macrostructures/07-manifesto.md",
+      "sha256": "3ac47d67fa8e0ee8db2fba2fd329c5ffcbf981a0b760e482748935f6e3411c46"
+    },
+    {
+      "path": "macrostructures/08-photographic.md",
+      "sha256": "d07d2508845277b68cb8cacc8f82d8fac84b69063277ec277d19a7f59fe43992"
+    },
+    {
+      "path": "macrostructures/09-quote-led.md",
+      "sha256": "1609ddc34d842c730e4d18bacc010b1b43cfa59892043c523b51bdffead0fb56"
+    },
+    {
+      "path": "macrostructures/10-specimen.md",
+      "sha256": "18313a17c6512afda417c8c19f4e0bea1549ecd5fc43e87ba89fb4e526b56eea"
+    },
+    {
+      "path": "macrostructures/11-catalogue.md",
+      "sha256": "20708e7e61ed610506971f48d36eec88512423b77855f78cc8c65b75ba90e0ae"
+    },
+    {
+      "path": "macrostructures/12-letter.md",
+      "sha256": "0d6779b5da3e3a44b573b3665daefe489fbd4857c1124ca4b8ff0fe6fc17a34f"
+    },
+    {
+      "path": "macrostructures/13-index-first.md",
+      "sha256": "ba7b085f91a8c2eb0baf376b88e4307b38250a2d4dd707fb22f2e5faeb32a7e2"
+    },
+    {
+      "path": "macrostructures/14-narrative-workflow.md",
+      "sha256": "4e120a5cb04a54aa172a5d2b5e727c27603ccddf37a2f8c9a15756993a9337fc"
+    },
+    {
+      "path": "macrostructures/15-split-studio.md",
+      "sha256": "49c758082ce6d4a6e541bb8706412fe4eb92ffd9dd772208b6a21142aa4bf3c6"
+    },
+    {
+      "path": "macrostructures/16-feature-stack.md",
+      "sha256": "df26d2d4094b3059c0a35db94389524b0ba76f8fe64e89d4e6ba3def7eed1ece"
+    },
+    {
+      "path": "macrostructures/17-type-specimen.md",
+      "sha256": "4ff06c001a10f973b9c70b1a0fa21ea1ce54ac0e3727cf8b5ec2e0a1b6bf568d"
+    },
+    {
+      "path": "macrostructures/18-portfolio-grid.md",
+      "sha256": "d035dee299e329efeea7dd3b4b897b11f0547f03ac4c2f0c62a3fd422d30f618"
+    },
+    {
+      "path": "macrostructures/19-map-diagram.md",
+      "sha256": "b8c0021c01fb8a970907caefa74a8c462cb573a2666fc4b223082812f9b19399"
+    },
+    {
+      "path": "macrostructures/20-ecosystem-index.md",
+      "sha256": "27b1909d028f553efbc112ecd5a8c843e191e97a286bf2bd258daad86bfa64c4"
+    },
+    {
+      "path": "macrostructures/21-component-playground.md",
+      "sha256": "830b52f62bdb722f3bd954f4f9ce60fc8c6e521ba2cc1f173e6c0fc3b5611413"
+    },
+    {
+      "path": "scripts/capture.mjs",
+      "sha256": "17c36f7400c2633ac37d87b236894385f6e72c3026ab916deed27b5e17e1cc2a"
+    },
+    {
+      "path": "scripts/fixtures/exemplars/atmospheric.html",
+      "sha256": "10a6bc8f44a8ad3e3874dddaf2444888d95efb4b3e72c6d403cd258259202f8d"
+    },
+    {
+      "path": "scripts/fixtures/exemplars/editorial.html",
+      "sha256": "51c9177037da9ec810d81ce809df358c48b33c19c88dbda5192c2d1508ee5c50"
+    },
+    {
+      "path": "scripts/fixtures/exemplars/modern-minimal.html",
+      "sha256": "48ac41ca0235a29b613a736e989864e845497d348fc2183156e0790785adac6a"
+    },
+    {
+      "path": "scripts/fixtures/exemplars/playful.html",
+      "sha256": "810cddd441d619cfceb6815177c60412d7f91a1e30971141830f77f29a1c6615"
+    },
+    {
+      "path": "scripts/fixtures/eyebrow-fail/index.html",
+      "sha256": "777a97f5c636bdd32623ab92f53b003a48e21b0ccda33166a0ddcedad41074b8"
+    },
+    {
+      "path": "scripts/fixtures/eyebrow-pass/index.html",
+      "sha256": "e79cc0979f3d47295812d1f373f4ea8e95c94f2a18624ae2c064e3fdbc4476f8"
+    },
+    {
+      "path": "scripts/fixtures/kept/after.html",
+      "sha256": "3943056c96c322c2bd55fbd19170de48f01815981d0430a094538737dae1a204"
+    },
+    {
+      "path": "scripts/fixtures/kept/before.html",
+      "sha256": "6e9ad44ebca1d553b0f6a0096f613e3bd9800dbb222b42c4996a247dee08b72f"
+    },
+    {
+      "path": "scripts/fixtures/slopped.html",
+      "sha256": "f324387e624f20e10bea32fd4c29d53865c3b4c261e723dc7965ef48ea39466e"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-fail/Feature.vue",
+      "sha256": "a0b1f3810f0b3621459d52921795a6c99f0dba53a9b0445cbf53e8529b801cf2"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-fail/Hero.tsx",
+      "sha256": "4b0a2d0996d44173178d3f3ad4313836a3464993658798a491e92e4adbe9a576"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-fail/index.html",
+      "sha256": "668e6026f6517b456d8b10d07f21e33f32476cbedef86e90bdf6bcc3785c120c"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-fail/style.css",
+      "sha256": "520dac1bf1b9ac4c3c4e05506a91a804849413172ec500f9e21a01c94542c5fc"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-pass/Hero.tsx",
+      "sha256": "c81aed17aaba4936fc51fcbc07b642481c7dad6cbbd87ac8dd56384290b6edf3"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-pass/index.html",
+      "sha256": "7d7fb9c531b872458c049fc9bbed93edf8bf506f5f2fbff8d4a66ffc1f7e6cc2"
+    },
+    {
+      "path": "scripts/fixtures/tailwind-pass/style.css",
+      "sha256": "b3d42d5cd53476942b34253a2dcad284548302ce551bef56fb1af6f9d4c8ebbb"
+    },
+    {
+      "path": "scripts/fixtures/waiver/index.html",
+      "sha256": "9ac592d4ea4fef4f33551b678ed9ce03570d8c3c8afaa23717446d41dbc106bc"
+    },
+    {
+      "path": "scripts/imagegen.mjs",
+      "sha256": "0e9e2dde64a0b1a7d45085b3d9ec51f49f2927e544400bfa33207fb2c9b579cc"
+    },
+    {
+      "path": "scripts/install-hook.mjs",
+      "sha256": "f0ce8b6e834652bcc560438952701ef467f4b29ee5d577e917632cb7d92ddc76"
+    },
+    {
+      "path": "scripts/install.mjs",
+      "sha256": "f4d6959d35f5e01efb94f2f88b43f10e8d296e9bd2ff06e5c002c7f87aeeb488"
+    },
+    {
+      "path": "scripts/lint-hook.mjs",
+      "sha256": "04fd40ab9dfaffb049da6b8b69811e306a5dee8c9acfc4d6817987d8a4671738"
+    },
+    {
+      "path": "scripts/photos.json",
+      "sha256": "1ee6836583e8048400876351c0605bc3f08515fecfe68aca3712b9e75498bc65"
+    },
+    {
+      "path": "scripts/picture.mjs",
+      "sha256": "21db01db66d393d58d2dd799e7614a6033d1a56891d9d9d8cae0c42ed42592c1"
+    },
+    {
+      "path": "scripts/refcheck.mjs",
+      "sha256": "8b48c542f114e7da5e1ff9434075527f911f31c4c106cc09fd01df599fb5465d"
+    },
+    {
+      "path": "scripts/sloplint-render.mjs",
+      "sha256": "3af79afa100a9804f248ade24d5128cea4fde1ef6d1a279f1dd935bfe6dc41cd"
+    },
+    {
+      "path": "scripts/sloplint.mjs",
+      "sha256": "f8ada364c68a9db4b3dd5784bd416a7c412125e887aeae87d627e072d3848289"
+    },
+    {
+      "path": "scripts/theme.mjs",
+      "sha256": "802b0121b570d908533c35d6feded556fed9937b9200baa4cf16f3d575de6017"
+    }
+  ],
+  "entries": [
+    {
+      "name": "macrostructures",
+      "path": "skills/hallmark/references/macrostructures"
+    },
+    {
+      "name": "scripts",
+      "path": "skills/hallmark/scripts"
+    }
+  ]
+}

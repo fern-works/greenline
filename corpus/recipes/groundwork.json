@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Establish the missing engineering baseline for a repository's purpose and prove first green. Use for a request to set a repo up properly or bring it to a working baseline; preserve established components and avoid unnecessary infrastructure."
+      "value": "Establish the missing engineering baseline for a repository's purpose and prove first green. Use when the owner says \"set this repo up properly\", asks for a working baseline or a first green, or starts a project from scratch; preserve established components and avoid unnecessary infrastructure."
     },
     {
       "field": "source",
@@ -22,11 +22,29 @@
       "passages": [
         {
           "passage": "written",
-          "text": "# Groundwork\n\nGroundwork is the start for a setup request: set this repository up properly,\nor bring it to a working baseline. Read the existing repository and settled\ndecisions first, and establish the purpose and the choices before any edit.\nThen hand the work to a mode: propose it and wait, as AGENTS.md says, open the\nchange record with a `## start` section naming groundwork and the combination\nit recommends, and run the line from `frame`. Compare choices only where this\ncomponent lacks an established answer. The setup request authorizes ordinary\nreversible work in its scope; clarify only consequential choices the request\nand evidence leave open.\n\nOn an empty tree groundwork is also the orientation AGENTS.md names: its\nown change, proposed before the feature a first request asks for, or that\nrequest's own change when it asks to set the repository up.",
+          "text": "# Groundwork\n\nGroundwork is the start for a setup request: set this repository up properly,\nor bring it to a working baseline. Read the existing repository and settled\ndecisions first, and establish the purpose and the choices before any edit.\nThen hand the work to a mode: propose it and wait, as AGENTS.md says, open the\nchange record with a `## start` section naming groundwork and the combination\nit recommends, and run the line from `frame`.",
           "kind": "method",
-          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup.",
+          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): groundwork on an empty tree is a habit inside the first change's frame, never a change proposed before it (the seven cuts: the orientation folded into the first change's frame); outside a repository git init is offered and the turn ends (j109t-situation-no-repository).",
           "gist": "Opens groundwork: read the repository first, then run setup as a change",
-          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request"
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
+        },
+        {
+          "passage": "written",
+          "text": "The setup request authorizes ordinary\nreversible work in its scope; clarify only consequential choices the request\nand evidence leave open.",
+          "kind": "method",
+          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): groundwork on an empty tree is a habit inside the first change's frame, never a change proposed before it (the seven cuts: the orientation folded into the first change's frame); outside a repository git init is offered and the turn ends (j109t-situation-no-repository).",
+          "gist": "Opens groundwork: read the repository first, then run setup as a change",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave",
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Outside a Git repository,\noffer `git init` in one line and end the turn: nothing is initialized or\ninstalled before the owner's yes.",
+          "kind": "method",
+          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): groundwork on an empty tree is a habit inside the first change's frame, never a change proposed before it (the seven cuts: the orientation folded into the first change's frame); outside a repository git init is offered and the turn ends (j109t-situation-no-repository).",
+          "gist": "Opens groundwork: read the repository first, then run setup as a change",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave",
+          "join": " "
         },
         {
           "passage": "written",
@@ -34,6 +52,49 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first edit, read [method.md](method.md): the empty tree's orientation, the configuration, the purpose and constraints, the missing baseline and the first green.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the repository as found and its settled decisions\nProduces: the recommended combination and the owner's open choices, in the reply and the change record's start section; through the change, the toolchain, check, ignore and README baseline, a rationale row and an explicit greenline-roots root statement in .greenline/DECISIONS.md\nNext: frame, under the mode the owner approves",
+          "kind": "method",
+          "reason": "The handoff: what the skill consumes, what it produces and what follows it; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named.",
+          "gist": "Hands over the recommended combination and open choices; next is frame",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Groundwork: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "Compare choices only where this\ncomponent lacks an established answer.",
+          "kind": "method",
+          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): groundwork on an empty tree is a habit inside the first change's frame, never a change proposed before it (the seven cuts: the orientation folded into the first change's frame); outside a repository git init is offered and the turn ends (j109t-situation-no-repository).",
+          "gist": "Opens groundwork: read the repository first, then run setup as a change",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
+        },
+        {
+          "passage": "written",
+          "text": "On an empty tree groundwork is also the orientation AGENTS.md names, the\nstatus line prints as `orientation: groundwork (empty tree)`: no\ncommit, and no code or document found. It is then a habit inside the first\nchange's frame, its setup that change's own work before the feature it asks\nfor, with no record, proposal or wait of its own.",
+          "kind": "method",
+          "reason": "The title and opening: carry a setup request through a usable, verified baseline after reading the repository and its settled decisions; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named; on an empty tree it is the orientation, its own change before a feature request or the request's own when it asks for setup. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): groundwork on an empty tree is a habit inside the first change's frame, never a change proposed before it (the seven cuts: the orientation folded into the first change's frame); outside a repository git init is offered and the turn ends (j109t-situation-no-repository).",
+          "gist": "Opens groundwork: read the repository first, then run setup as a change",
+          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
         },
         {
           "passage": "written",
@@ -66,14 +127,6 @@
           "reason": "Prove first green: run the pinned tools as the check will, fix failures at their cause, and commit a coherent verified baseline; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
           "gist": "Runs the pinned tools through greenline check, fixing failures at their cause",
           "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the repository as found and its settled decisions\nProduces: the recommended combination and the owner's open choices, in the reply and the change record's start section; through the change, the toolchain, check, ignore and README baseline, a rationale row and an explicit greenline-roots root statement in .greenline/DECISIONS.md\nNext: frame, under the mode the owner approves",
-          "kind": "method",
-          "reason": "The handoff: what the skill consumes, what it produces and what follows it; re-cut at S17: the start establishes the purpose and the choices, then the setup runs as a change on the line, its checks through greenline check, with no ticket lifecycle, execution account or harness named.",
-          "gist": "Hands over the recommended combination and open choices; next is frame",
-          "ruling": "docs/DECISIONS.md, the row of 2026-08-30: \"Groundwork owns repository setup as one compressed decision round followed by an authorized setup arc to first green\"; and practice-without-guidance-2026-09-26, the old chain's native entry written for the split of 2026-09-26, under docs/DECISIONS.md's row of 2026-09-26, the operator's word of the decoupling: the guidance and its publication are garden's, reached only through the optional garden connector; The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record and runs the steps its mode gives, the checks run through greenline check, the execution account goes, and a plan directory exists only where the plan step splits the work into tickets; R16 of 2026-10-07, a start chosen from the situation a request begins in and handing the job to a mode; R21 of 2026-10-08, no harness named (\"greenline is supposed to work in any harness cli\"); and the contradiction 29 of R3, ruled that day (\"yes go ahead\"), groundwork's side: an option is not an obligation to install"
         }
       ]
     },
@@ -101,11 +154,166 @@
           "reason": "The setup change commits the files init wrote; the comparison J-60 S3b saw the records committed and the practice left untracked through seven changes, so a clone held the records without AGENTS.md, the skills, the ledger guide, the lock or the hooks. J-102 S2: the setup record opens before the setup commit, so that commit carries the record and its trailer.",
           "gist": "The setup change commits every file init wrote, named",
           "ruling": "The operator's card of 2026-10-20 that opened J-98, \"All of it: a two-slice fast job before 0.1.0 (Recommended)\" (docs/DECISIONS.md, the rows of 2026-10-20): the cold review REV-lean-design and the comparison J-60 S3b found the installed practice never committed, so a clone held the records without it; the setup change commits it; The operator's cards of 2026-10-21, \"Fix first, then ship (Recommended)\" and the scope card naming 1 to 7 (docs/DECISIONS.md, the rows of 2026-10-21): 0.1.0 ships with its hooks whole, and frame, groundwork and build say what the owner's yes is, that the setup record precedes the setup commit, that a trailer-shaped line of another key after a refusal is no answer to it, and that scratch goes under the change's own id"
+        },
+        {
+          "passage": "written",
+          "text": "## The interface\n\nWhere `.greenline/manifest.json` names interface roots and no DESIGN.md stands, offer the start `design-survey` in one sentence, to write the home with the owner; take it only on the owner's yes.",
+          "kind": "home",
+          "reason": "groundwork offers the design survey where the workspace has an interface and no DESIGN.md, taken only on the owner's yes (J-123 S3).",
+          "gist": "Offers the design survey where an interface lacks its DESIGN.md"
+        },
+        {
+          "passage": "written",
+          "text": "## The map\n\nThe map's first pages are made only on the owner's ask, by the `explain` start's discovery: a fresh agent reads the repository and writes a page per subsystem with the map over them. Nothing is offered.",
+          "kind": "home",
+          "reason": "The map's first offer at first contact, on the fact atlas: none, with its minutes and its maker (J-147 S2; the register's row of 2026-10-28 on the visual system's flow). J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the map's offer leaves (the seven cuts: the offer ritual gone); the map is made on the owner's ask.",
+          "gist": "Ends the start with the map's first offer on atlas: none"
         }
       ],
       "part": "references"
     }
   ],
   "copies": [],
-  "drops": []
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "Propose the change's mode and wait for the owner's yes before any edit.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap",
+      "oracle": "The wait, the proposal"
+    },
+    {
+      "promise": "Open the change record with a ## start section naming groundwork and the combination it recommends.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "Starts and habits",
+      "cost": "free"
+    },
+    {
+      "promise": "On an empty tree groundwork is the orientation, a habit inside the first change's frame with no record, proposal or wait of its own; outside a Git repository git init is offered, the turn ends, and nothing is installed before the owner's yes.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The situation line and the setup",
+      "cost": "free"
+    },
+    {
+      "promise": "An existing initialized repository is not reset.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0124",
+      "cost": "free"
+    },
+    {
+      "promise": "Ask about an unresolved license or consequential platform choice before choosing it, leave an unanswered choice open, and never infer publication or paid services from a request for local setup.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks these asks. The replay's groundwork (part 001) has no finding here, so the second condition fails."
+    },
+    {
+      "promise": "On an empty repository, record the toolchain decision in the decisions book with its rationale row, and name it in the reply in one line.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "GL0123 reads only the book's form, not whether a toolchain row exists. No run observed the row missing, so the second condition fails."
+    },
+    {
+      "promise": "Write the root statement in the exact greenline-roots format.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0123",
+      "cost": "free"
+    },
+    {
+      "promise": "Record each pinned tool's run as a check through greenline check, so the record keeps every run's facts.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap",
+      "oracle": "The setup, greenfield"
+    },
+    {
+      "promise": "Preserve failed runs.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0459",
+      "cost": "free"
+    },
+    {
+      "promise": "Each commit carries the change's trailer.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "message-trailer",
+      "cost": "cheap",
+      "oracle": "The commits and the landing"
+    },
+    {
+      "promise": "Report what is usable, the important choices and evidence, and any open owner decision.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is a reply's content that no fact reads, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Publication requires its own authority, and a push goes only on the owner's word.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "landing-words",
+      "cost": "cheap",
+      "oracle": "The landing at close"
+    },
+    {
+      "promise": "The setup change commits every file greenline init wrote, staged by name, so that after the commit git status shows none of them untracked.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No status line reads installed files left untracked. In the replay, only the viewer's capture stayed uncommitted, so no run observed this fail and the second condition fails."
+    },
+    {
+      "promise": "Open the setup change's record before the commit that records the practice, never after.",
+      "page": "references/greenline.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap",
+      "oracle": "The git hooks"
+    },
+    {
+      "promise": "Where the manifest names interface roots and no DESIGN.md stands, offer design-survey in one sentence and take it only on the owner's yes.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "interface:",
+      "cost": "free",
+      "oracle": "The survey of an existing interface"
+    },
+    {
+      "promise": "The map's first pages are made only on the owner's ask; nothing is offered.",
+      "page": "references/greenline.md",
+      "kind": "oracle",
+      "where": "The map's first pages and the documents' drift",
+      "cost": "free"
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "set this repo up",
+        "set the repo up",
+        "set it up properly",
+        "set up properly",
+        "working baseline",
+        "first green",
+        "scaffold"
+      ],
+      "weight": 3,
+      "read": "whole"
+    },
+    {
+      "words": ["let's build", "let's start", "start building", "from scratch", "new project"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
+    }
+  ]
 }

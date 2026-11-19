@@ -21,10 +21,16 @@ export interface RunRequest {
   readonly forceManaged: readonly string[];
   /** The inspector's port; undefined takes the default. */
   readonly port: number | undefined;
+  /** Whether the inspector prints each document read's time (`greenline inspect --timing`). */
+  readonly timing?: boolean;
   /** Which view status shows: the default list, every change with `--all`, or one change with `--change`; absent, the default list. */
   readonly status?: ChangesRequest;
-  /** Which working folders tidy removes: the one change `--change` names, or every finished change's when it names none. */
-  readonly tidy?: { readonly change: string | undefined };
+  /** Which working folders tidy removes: the one change `--change` names, the one discussion `--discussion` names, or every finished change's when it names neither. */
+  readonly tidy?: {
+    readonly change: string | undefined;
+    readonly worktree?: boolean;
+    readonly discussion?: string;
+  };
 }
 
 /** A request one of the workspace verbs runs; the inspector is served by the runner. */
@@ -313,14 +319,41 @@ function buildProgram(
     )
     .option("--json", "emit the versioned JSON automation envelope")
     .option("--change <id>", "remove only this change's working files")
+    .option(
+      "--discussion <id>",
+      "remove only this discussion's working files, once it is declined, promoted or merged",
+    )
+    .option(
+      "--worktree",
+      "with --change, on the owner's word: also remove the change's own worktree once it is done, never one with uncommitted work",
+    )
     .action((options: OptionValues): void => {
       const change: unknown = options["change"];
       if (change !== undefined && !isChangeId(String(change))) {
         setRefusal(`'${String(change)}' is not a change id: a real date and a slug`);
         return;
       }
+      const worktree = options["worktree"] === true;
+      if (worktree && change === undefined) {
+        setRefusal("--worktree names the change whose worktree goes: give it with --change <id>");
+        return;
+      }
+      const discussion: unknown = options["discussion"];
+      if (discussion !== undefined && !isChangeId(String(discussion))) {
+        setRefusal(`'${String(discussion)}' is not a discussion id: a real date and a slug`);
+        return;
+      }
+      if (discussion !== undefined && change !== undefined) {
+        setRefusal("tidy takes --change or --discussion, never both");
+        return;
+      }
+      const named = change === undefined ? undefined : String(change);
+      const folders =
+        discussion === undefined
+          ? { change: named, worktree }
+          : { change: named, worktree, discussion: String(discussion) };
       setRequest({
-        tidy: { change: change === undefined ? undefined : String(change) },
+        tidy: folders,
         command: "tidy",
         json: options["json"] === true,
         dryRun: false,
@@ -334,6 +367,7 @@ function buildProgram(
     .command("inspect")
     .description("Read diagnostics and receipts; edit local policy in the localhost inspector")
     .option("--port <port>", "the port to listen on (default 7433)")
+    .option("--timing", "print each document read's time and whether the cache answered it")
     .action((options: OptionValues): void => {
       const portRaw: unknown = options["port"];
       const base: RunRequest = {
@@ -344,6 +378,7 @@ function buildProgram(
         targets: undefined,
         forceManaged: [],
         port: portRaw === undefined ? undefined : Number(portRaw),
+        timing: options["timing"] === true,
       };
       setRequest(base);
     });
@@ -353,6 +388,42 @@ function buildProgram(
     .command("check")
     .description(
       "Run one repository command for a change and record its facts: check -- <command> for the open change at its step; use check --help",
+    );
+  // The entrypoint dispatches deal to its own parser too (J-123 S6).
+  program
+    .command("deal")
+    .description(
+      "Deal three interface directions from the installed catalog by the register, the job, the tone and the material; use deal --help",
+    );
+  // The entrypoint dispatches mark to its own parser too (J-124 S2).
+  program
+    .command("mark")
+    .description(
+      "List the marks on captures, record one the owner said, propose one closed with its evidence, or close one on the owner's word; use mark --help",
+    );
+  // The entrypoint dispatches view to its own parser too (J-142 S1).
+  program
+    .command("view")
+    .description(
+      "Print the viewer's address of one artefact, starting greenline inspect where none serves: view <artefact> [<argument>...]; use view --help",
+    );
+  // The entrypoint dispatches open to its own parser too (J-176 S1).
+  program
+    .command("open")
+    .description(
+      "Write a change's record from its mode's skeleton, every owed line a placeholder for your own words; use open --help",
+    );
+  // The entrypoint dispatches picture to its own parser too (J-176 S1).
+  program
+    .command("picture")
+    .description(
+      "Keep a picture the owner asked for in the change's folder of the visual home, with its manifest: picture keep <file> --change <id> ...; use picture --help",
+    );
+  // The entrypoint dispatches research to its own parser too (J-176 S1).
+  program
+    .command("research")
+    .description(
+      "File the research agent's report for an accepted frame topic into the change's folder: research report <file> --change <id> --topic R<n>; use research --help",
     );
   // The entrypoint dispatches brief to its own parser too.
   program

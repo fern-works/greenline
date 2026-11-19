@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { Harness } from "./adapters.ts";
 import { parseJson, type JsonValue } from "./contract.ts";
+import { DESIGN_FILE } from "./design-file.ts";
 
 /**
  * `greenline event` (`docs/SPEC.md` §4; the research page
@@ -14,6 +15,8 @@ import { parseJson, type JsonValue } from "./contract.ts";
  * vocabulary, a path it passes as a field, the exit code it reports. The one
  * refusal the harness layer makes is a write-class tool's path outside the
  * homes while the record lacks the owner's yes; the git hooks hold the rest.
+ * A reading tool's paths and range, and the Skill tool's skill, are kept for
+ * the skill loads the caller derives (J-116 S2, `./skill-loads.ts`).
  */
 
 /** The kinds greenline reads, each mapped from a harness's native event. */
@@ -54,6 +57,14 @@ export interface CommandFacts {
   readonly durationMs: number | null;
 }
 
+/** The line range a reading tool was given, each bound null where the harness gave none. */
+export interface ReadRange {
+  /** The first line read, 1 for the file's first. */
+  readonly offset: number | null;
+  /** How many lines it read at most. */
+  readonly limit: number | null;
+}
+
 /** The one record greenline writes for every event, one JSON object per line of the change's raw log. */
 export interface NormalisedEvent {
   readonly v: 1;
@@ -70,8 +81,100 @@ export interface NormalisedEvent {
   readonly tool: { readonly name: string | null; readonly class: ToolClass } | null;
   readonly command: CommandFacts | null;
   readonly write: { readonly paths: readonly string[] } | null;
+  /** A reading tool's paths and the range it was given, null for a whole read; null for any other tool. */
+  readonly read: { readonly paths: readonly string[]; readonly range: ReadRange | null } | null;
+  /** The skill the harness's Skill tool loads, by name; null for any other tool. */
+  readonly skill: string | null;
   /** The declared check's name the command matched, filled in by the caller. */
   readonly check: string | null;
+  /**
+   * Whether the tool's result the harness handed the hook carries its
+   * truncation marker, so the agent saw it cut (J-203 S1); false at any
+   * other event and where the harness hands no result.
+   */
+  readonly cut: boolean;
+  /**
+   * The words the shell's error in the tool's result says it refused to
+   * expand, zsh's `(eval):1: ==== not found` naming the word `=====`
+   * (J-207 S1): the reads after the first of them were never made. Empty at
+   * any other event and where the harness hands no result.
+   */
+  readonly refused: readonly string[];
+}
+
+/** The harness's marks of a result it cut: Claude Code's middle cut and its output kept in a file (J-203 S1). */
+const CUT_MARKERS = [/\.\.\. \[\d+ characters truncated\] \.\.\./, /<persisted-output>/];
+
+/**
+ * Whether a tool's result text carries the harness's truncation marker
+ * (J-203 S1): Claude Code's `... [N characters truncated] ...`, the mark the
+ * run j196c-merged-skills's cut `cat` carried in its result, and its
+ * `<persisted-output>` preview of an output kept in a file.
+ * @param text the result's text, as the harness hands the hook it
+ * @returns true where the harness cut it
+ */
+export function carriesCut(text: string): boolean {
+  return CUT_MARKERS.some((marker) => marker.test(text));
+}
+
+/**
+ * The texts of a tool's result as the payload hands it (J-203 S1): Codex's
+ * output text, or Claude Code's `stdout` and `stderr`; none for any other
+ * shape.
+ */
+const toolResponseTexts = z
+  .union([
+    z.string().transform((output) => [output]),
+    z
+      .object({ stdout: z.string().optional(), stderr: z.string().optional() })
+      .transform((streams) => [streams.stdout ?? "", streams.stderr ?? ""]),
+  ])
+  .optional()
+  .catch(undefined);
+
+/**
+ * Whether a tool's result, as the payload gives it, carries the harness's
+ * cut: its texts, or the failure's `error`.
+ * @param texts the texts of the payload's `tool_response`
+ * @param error the payload's `error`
+ * @returns true where a text of it carries the marker
+ */
+function resultCut(texts: readonly string[] | undefined, error: string | undefined): boolean {
+  return [...(texts ?? []), error ?? ""].some(carriesCut);
+}
+
+/** zsh's error for an equals word it cannot expand, a line of its own: the script's name or `zsh`, the line, and the word after its `=`. */
+const EQUALS_REFUSED = /^(?:\(eval\)|zsh|[^\s:]+):\d+: (\S+) not found$/gm;
+
+/**
+ * The words a shell's error in a tool's result says it refused to expand
+ * (J-207 S1; the run j196c-roster-usec, whose results ended on
+ * `(eval):1: ===== not found`): each line in zsh's form for an equals
+ * word, read back to the word with its `=`, in the order the lines stand.
+ * A command zsh cannot find, `zsh: command not found: X`, refuses no
+ * expansion and is not read.
+ * @param text the result's text, as the harness hands the hook it
+ * @returns the words, each once
+ */
+export function refusedWords(text: string): readonly string[] {
+  const words = [...text.matchAll(EQUALS_REFUSED)].flatMap((match) =>
+    match[1] === undefined ? [] : [`=${match[1]}`],
+  );
+  return [...new Set(words)];
+}
+
+/**
+ * The words a tool's result, as the payload gives it, says the shell
+ * refused: its texts and the failure's `error`.
+ * @param texts the texts of the payload's `tool_response`
+ * @param error the payload's `error`
+ * @returns the words, each once
+ */
+function resultRefused(
+  texts: readonly string[] | undefined,
+  error: string | undefined,
+): readonly string[] {
+  return [...new Set([...(texts ?? []), error ?? ""].flatMap(refusedWords))];
 }
 
 /** Where a harness takes the mirror at a session's or a turn's start. */
@@ -94,6 +197,14 @@ interface Fields {
   readonly ended?: "ok" | "failed" | undefined;
   readonly durationMs?: number | undefined;
   readonly paths: readonly string[];
+  /** A reading tool's range, where the harness passes one. */
+  readonly range?: ReadRange | undefined;
+  /** The skill the Skill tool names. */
+  readonly skillName?: string | undefined;
+  /** Whether the tool's result the payload carries holds the harness's truncation marker (J-203 S1). */
+  readonly cut?: boolean | undefined;
+  /** The words the shell's error in the tool's result says it refused (J-207 S1). */
+  readonly refused?: readonly string[] | undefined;
 }
 
 /** One harness's dialect: its native events, its tool names, its context and the reading of its payload. */
@@ -101,6 +212,10 @@ interface Dialect {
   readonly kinds: Readonly<Partial<Record<string, EventKind>>>;
   readonly shell: readonly string[];
   readonly write: readonly string[];
+  /** The reading tools whose path and range the payload carries, by the harness's own names. */
+  readonly reading: readonly string[];
+  /** The tool that loads a skill by name, where the harness has one. */
+  readonly skillTool: readonly string[];
   readonly context: ContextField;
   /** The kinds the context is printed at, of session-start and turn-start. */
   readonly contextAt: readonly EventKind[];
@@ -148,12 +263,25 @@ const claudePayload = z
         dir_path: text,
         patch: text,
         input: text,
+        skill: text,
+        absolute_path: text,
+        offset: whole,
+        limit: whole,
       })
       .catch({}),
+    // The tool's result an after-tool event hands, read only for the harness's cut (J-203 S1).
+    tool_response: toolResponseTexts,
     error: text,
     duration_ms: whole,
   })
   .catch({ tool_input: {} });
+
+/** The range a reading tool was given, undefined where it names neither bound. */
+function rangeOf(offset: number | undefined, limit: number | undefined): ReadRange | undefined {
+  return offset === undefined && limit === undefined
+    ? undefined
+    : { offset: offset ?? null, limit: limit ?? null };
+}
 
 /**
  * Claude Code's reading, which dsh's bridge shares under its own tool names:
@@ -188,6 +316,10 @@ function claudeReading(splitsByExit: boolean, dirOf: "none" | "workdir") {
       exit: exit?.[1] === undefined ? undefined : Number(exit[1]),
       durationMs: payload.duration_ms,
       paths: present(input.file_path ?? input.notebook_path ?? input.path),
+      range: rangeOf(input.offset, input.limit),
+      skillName: input.skill,
+      cut: resultCut(payload.tool_response, payload.error),
+      refused: resultRefused(payload.tool_response, payload.error),
     };
   };
 }
@@ -283,7 +415,16 @@ const opencodePayload = z
     tool: text,
     sessionID: text,
     callID: text,
-    args: z.object({ command: text, workdir: text, filePath: text, path: text }).catch({}),
+    args: z
+      .object({
+        command: text,
+        workdir: text,
+        filePath: text,
+        path: text,
+        offset: whole,
+        limit: whole,
+      })
+      .catch({}),
     exit: whole,
     directory: text,
   })
@@ -322,6 +463,8 @@ const DIALECTS = {
     contextAt: ["session-start", "turn-start"],
     shell: ["Bash"],
     write: ["Write", "Edit", "MultiEdit", "NotebookEdit"],
+    reading: ["Read"],
+    skillTool: ["Skill"],
     read: claudeReading(true, "none"),
   },
   codex: {
@@ -330,6 +473,9 @@ const DIALECTS = {
     contextAt: ["session-start", "turn-start"],
     shell: ["Bash"],
     write: ["apply_patch"],
+    // Codex reads a skill through its shell, or injects it natively, which fires no hook.
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = claudePayload.parse(raw);
       const command = payload.tool_input.command;
@@ -344,6 +490,9 @@ const DIALECTS = {
         toolName: payload.tool_name,
         commandText: patch ? undefined : command,
         paths: patch && command !== undefined ? patchPaths(command) : [],
+        // Codex's PostToolUse hands the output's text; a cut is read where its text carries the mark.
+        cut: resultCut(payload.tool_response, payload.error),
+        refused: resultRefused(payload.tool_response, payload.error),
       };
     },
   },
@@ -353,6 +502,8 @@ const DIALECTS = {
     contextAt: ["session-start", "turn-start"],
     shell: ["Execute"],
     write: ["Create", "Edit", "ApplyPatch"],
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = claudePayload.parse(raw);
       const input = payload.tool_input;
@@ -376,6 +527,8 @@ const DIALECTS = {
     contextAt: ["session-start", "turn-start"],
     shell: ["bash"],
     write: ["write", "edit", "str_replace_editor"],
+    reading: [],
+    skillTool: [],
     read: claudeReading(false, "workdir"),
   },
   gemini: {
@@ -392,6 +545,8 @@ const DIALECTS = {
     contextAt: ["session-start", "turn-start"],
     shell: ["run_shell_command"],
     write: ["write_file", "replace"],
+    reading: ["read_file"],
+    skillTool: [],
     read: (raw) => {
       const payload = claudePayload.parse(raw);
       const input = payload.tool_input;
@@ -402,7 +557,9 @@ const DIALECTS = {
         toolName: payload.tool_name,
         commandText: input.command,
         commandDir: input.dir_path,
-        paths: present(input.file_path),
+        paths: present(input.file_path ?? input.absolute_path),
+        // Gemini's read_file counts its offset from 0; the range counts lines from 1.
+        range: rangeOf(input.offset === undefined ? undefined : input.offset + 1, input.limit),
       };
     },
   },
@@ -425,6 +582,8 @@ const DIALECTS = {
     contextAt: ["session-start"],
     shell: [],
     write: [],
+    reading: [],
+    skillTool: [],
     read: (raw, native) => {
       const payload = cursorPayload.parse(raw);
       const shellEvent = native === "beforeShellExecution" || native === "afterShellExecution";
@@ -453,6 +612,8 @@ const DIALECTS = {
     contextAt: [],
     shell: ["bash", "shell"],
     write: ["edit", "create", "write"],
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = copilotPayload.parse(raw);
       const args = payload.toolArgs;
@@ -471,6 +632,8 @@ const DIALECTS = {
     contextAt: [],
     shell: ["shell", "execute_bash"],
     write: ["write", "fs_write"],
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = kiroPayload.parse(raw);
       const input = payload.tool_input ?? payload.toolInput;
@@ -499,6 +662,8 @@ const DIALECTS = {
     contextAt: ["turn-start"],
     shell: ["terminal"],
     write: ["write_file", "patch"],
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = hermesPayload.parse(raw);
       const input = payload.tool_input;
@@ -524,6 +689,8 @@ const DIALECTS = {
     contextAt: [],
     shell: ["bash"],
     write: ["write", "edit", "patch", "multiedit"],
+    reading: ["read"],
+    skillTool: [],
     read: (raw) => {
       const payload = opencodePayload.parse(raw);
       return {
@@ -537,6 +704,11 @@ const DIALECTS = {
         exit: payload.exit,
         ended: endedBy(payload.exit),
         paths: present(payload.args.filePath ?? payload.args.path),
+        // OpenCode's read counts its offset from 0; the range counts lines from 1.
+        range: rangeOf(
+          payload.args.offset === undefined ? undefined : payload.args.offset + 1,
+          payload.args.limit,
+        ),
       };
     },
   },
@@ -546,6 +718,8 @@ const DIALECTS = {
     contextAt: [],
     shell: [],
     write: ["edit_file", "create_file"],
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = ampPayload.parse(raw);
       // Amp's own helper names a shell call's command and directory; its result carries no exit code.
@@ -566,6 +740,8 @@ const DIALECTS = {
     contextAt: [],
     shell: ["bash"],
     write: ["write", "edit"],
+    reading: [],
+    skillTool: [],
     read: (raw) => {
       const payload = piPayload.parse(raw);
       return {
@@ -610,6 +786,9 @@ export function normaliseEvent(input: EventInput): NormalisedEvent | undefined {
   const fields = dialect.read(input.payload, named);
   const tooled = kind === "before-tool" || kind === "after-tool";
   const toolClass = classOf(dialect, fields);
+  const name = fields.toolName;
+  const reading = tooled && name !== undefined && dialect.reading.includes(name);
+  const skilled = tooled && name !== undefined && dialect.skillTool.includes(name);
   return {
     v: 1,
     at: input.at,
@@ -632,8 +811,74 @@ export function normaliseEvent(input: EventInput): NormalisedEvent | undefined {
           }
         : null,
     write: tooled && toolClass === "write" ? { paths: fields.paths } : null,
+    read: reading ? { paths: fields.paths, range: fields.range ?? null } : null,
+    skill: skilled ? (fields.skillName ?? null) : null,
     check: null,
+    cut: kind === "after-tool" && fields.cut === true,
+    refused: kind === "after-tool" ? (fields.refused ?? []) : [],
   };
+}
+
+/**
+ * Whether a harness's tool events name the fresh agent that made them, its
+ * `agent_id`, so a write with none is the root session's (J-129 S6): Claude
+ * Code and Codex. Elsewhere the hooks cannot tell who wrote a file.
+ * @param harness the harness the adapter names
+ * @returns true where an absent agent id means the session
+ */
+export function namesItsAgents(harness: Harness): boolean {
+  return harness === "claude-code" || harness === "codex";
+}
+
+/** The harnesses whose after-tool event documents context returned to the agent: Claude Code's PostToolUse `additionalContext`. */
+const AFTER_TOOL_CONTEXT: ReadonlySet<Harness> = new Set<Harness>(["claude-code"]);
+
+/**
+ * Whether a harness takes context back from its after-tool event, so a
+ * line the hook owes the agent there reaches it at once; elsewhere the
+ * next turn's mirror carries it (J-149 S2).
+ * @param harness the harness
+ * @returns true for Claude Code
+ */
+export function takesAfterToolContext(harness: Harness): boolean {
+  return AFTER_TOOL_CONTEXT.has(harness);
+}
+
+/**
+ * Whether the harness takes the hook's context at an event of the kind, as
+ * {@link contextOutput} prints it (J-225 S1): where it takes none at a
+ * turn's start, no mirror is delivered there and none is owed.
+ * @param harness the harness
+ * @param kind the event's kind
+ * @returns true where a mirror printed at that kind reaches the agent
+ */
+export function takesContextAt(harness: Harness, kind: EventKind): boolean {
+  const dialect: Dialect = DIALECTS[harness];
+  return dialect.context !== "none" && dialect.contextAt.includes(kind);
+}
+
+/**
+ * What the entry point prints after a write the interface rules found
+ * failing (J-123 S4): the findings as the harness's after-tool context,
+ * where the harness documents one, else nothing, the findings then reaching
+ * the agent through the check and the mirror.
+ * @param harness the harness
+ * @param event the after-tool event
+ * @param findings the findings' text
+ * @returns the bytes for stdout, empty for none
+ */
+export function afterToolOutput(
+  harness: Harness,
+  event: NormalisedEvent,
+  findings: string,
+): string {
+  if (event.kind !== "after-tool" || findings === "" || !AFTER_TOOL_CONTEXT.has(harness)) return "";
+  return `${JSON.stringify({
+    hookSpecificOutput: {
+      hookEventName: event.native ?? "PostToolUse",
+      additionalContext: findings,
+    },
+  })}\n`;
 }
 
 /**
@@ -664,16 +909,21 @@ export function contextOutput(harness: Harness, event: NormalisedEvent, mirror: 
 
 /**
  * Whether a path lies in one of the homes a change may write before the
- * owner's yes: the ledger, `.greenline/ledger/`, and the change's own working
- * folder, `.greenline/tmp/<id>/`; while no change is open, the working
- * folders' home `.greenline/tmp/` whole, so a record can still be opened.
+ * owner's yes: the ledger, `.greenline/ledger/`, and the change's own
+ * working folder, `.greenline/tmp/<id>/`; while no change is open, the
+ * working folders' home `.greenline/tmp/` whole, so a record can still be
+ * opened. The visual home is written by `greenline picture keep` alone,
+ * never by a write tool (J-176 S1). DESIGN.md, the interface's home, is
+ * admitted in every state as the ledger is (J-123 S1), at the root and at
+ * a root that holds its own.
  * @param fromRoot the path relative to the repository root, `/`-separated
  * @param change the change's id, or undefined while no change is open
  * @returns true inside a home
  */
 export function inHomes(fromRoot: string, change: string | undefined): boolean {
-  return (
-    fromRoot.startsWith(".greenline/ledger/") ||
-    fromRoot.startsWith(change === undefined ? ".greenline/tmp/" : `.greenline/tmp/${change}/`)
-  );
+  if (fromRoot.startsWith(".greenline/ledger/")) return true;
+  // The interface's home is the record's own write too (J-123 S1): a DESIGN.md at the root or in any folder, as a root of its own may sit at any depth.
+  if (fromRoot === DESIGN_FILE || fromRoot.endsWith(`/${DESIGN_FILE}`)) return true;
+  if (change === undefined) return fromRoot.startsWith(".greenline/tmp/");
+  return fromRoot.startsWith(`.greenline/tmp/${change}/`);
 }

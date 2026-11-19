@@ -86,7 +86,7 @@ describe("projection closure", () => {
           expect(markerHolds(file.content, name, "extra"), `${file.path} names ${name}`).toBe(true);
         }
   });
-  it("S18b the roster carries the four trial starts and the five trial habits, installed only where trials name them", () => {
+  it("S18b the roster carries the four trial starts and the four trial habits, installed only where trials name them", () => {
     expect([...trials].sort()).toEqual([
       "benchmark-checklist",
       "build-the-lever",
@@ -95,7 +95,6 @@ describe("projection closure", () => {
       "guard-the-context-window",
       "idea-refine",
       "improve-instructions",
-      "pr-writing",
       "to-questionnaire",
     ]);
   });

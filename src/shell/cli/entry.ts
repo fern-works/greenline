@@ -1,8 +1,15 @@
 #!/usr/bin/env node
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { isMainThread } from "node:worker_threads";
 import { runBriefCli } from "./brief.ts";
+import { runOpenCli } from "./open.ts";
+import { runPictureCli } from "./picture.ts";
+import { runResearchCli } from "./research.ts";
 import { runCheckCli } from "./check.ts";
+import { runDealCli } from "./deal.ts";
+import { runMarkCli } from "./mark.ts";
+import { detachedStarter, runViewCli } from "../inspect/view.ts";
 import { runEventCli } from "./event.ts";
 import { runHookCli } from "./hook.ts";
 import { runConnectorsCallCli } from "./connectors-call.ts";
@@ -13,6 +20,9 @@ import { CLI_VERSION } from "../version.ts";
 import { loadInstallation } from "../installation.ts";
 import { createTtyPrompt } from "./prompt.ts";
 import type { ContractParseFailed } from "../../core/contract.ts";
+import type { Installation } from "../../core/installation.ts";
+import type { ModesDefinition } from "../../core/modes.ts";
+import { readsAsZsh } from "../../core/skill-loads.ts";
 
 const writer = { stdout: process.stdout, stderr: process.stderr };
 const bundleDirectory = fileURLToPath(new URL("../corpus/", import.meta.url));
@@ -35,7 +45,15 @@ async function main(): Promise<number> {
   const input = process.argv.slice(2);
   // These verbs own their parser; dispatch the advertised top-level help form to it.
   const argv =
-    input[0] === "help" && (input[1] === "check" || input[1] === "brief")
+    input[0] === "help" &&
+    (input[1] === "check" ||
+      input[1] === "brief" ||
+      input[1] === "open" ||
+      input[1] === "picture" ||
+      input[1] === "research" ||
+      input[1] === "deal" ||
+      input[1] === "mark" ||
+      input[1] === "view")
       ? [input[1], "--help"]
       : input[0] === "help" && input[1] === "connectors" && input[2] === "call"
         ? ["connectors", "call", ...input.slice(3), "--help"]
@@ -43,7 +61,8 @@ async function main(): Promise<number> {
   const cwd = process.cwd();
   // The hooks run on every commit and every tool call, so they load the installation
   // only for the modes' order, which a standing choice under another mode than the
-  // one proceed names needs; stdin is read only by the hooks and events that take one.
+  // one proceed names needs, and for the modes definition at a turn's start with a
+  // change open; stdin is read only by the hooks and events that take one.
   const stdin = (): string => {
     try {
       return readFileSync(0, "utf8");
@@ -57,13 +76,54 @@ async function main(): Promise<number> {
       ? installation.value.modes.modes.map((mode) => mode.name)
       : undefined;
   };
-  if (argv[0] === "hook") return runHookCli(argv.slice(1), writer, { cwd, stdin, modes });
-  if (argv[0] === "event") return runEventCli(argv.slice(1), writer, { cwd, stdin, modes });
+  // The modes definition, for the mirror's progress line, read only when a turn's start finds an open change.
+  const line = (): ModesDefinition | undefined => {
+    const installation = loadInstallation(bundleDirectory);
+    return installation._tag === "ok" ? installation.value.modes : undefined;
+  };
+  if (argv[0] === "deal") return runDealCli(argv.slice(1), writer, cwd);
+  if (argv[0] === "mark") return runMarkCli(argv.slice(1), writer, cwd);
+  // The viewer's address of one artefact, starting this same CLI's inspector detached where none serves (J-142 S1).
+  if (argv[0] === "view")
+    return runViewCli(argv.slice(1), writer, {
+      cwd,
+      start: detachedStarter(fileURLToPath(import.meta.url)),
+    });
+  // The installation whole, for the situation and the skills a change owes (J-176 S1), read only where one is asked for.
+  const installed = (): Installation | undefined => {
+    const installation = loadInstallation(bundleDirectory);
+    return installation._tag === "ok" ? installation.value : undefined;
+  };
+  if (argv[0] === "hook")
+    return runHookCli(argv.slice(1), writer, {
+      cwd,
+      stdin,
+      modes,
+      line,
+      installation: installed,
+    });
+  if (argv[0] === "event")
+    return runEventCli(argv.slice(1), writer, {
+      cwd,
+      stdin,
+      modes,
+      line,
+      installation: installed,
+      // The shell the harness runs its lines in, as the hook's environment names it (J-207 S1).
+      zsh: readsAsZsh(process.env["SHELL"], process.platform),
+    });
   if (argv[0] === "brief")
     return runBriefCli(argv.slice(1), writer, {
       cwd,
       installation: () => loadInstallation(bundleDirectory),
     });
+  if (argv[0] === "open")
+    return runOpenCli(argv.slice(1), writer, {
+      cwd,
+      installation: () => loadInstallation(bundleDirectory),
+    });
+  if (argv[0] === "picture") return runPictureCli(argv.slice(1), writer, { cwd });
+  if (argv[0] === "research") return runResearchCli(argv.slice(1), writer, cwd);
   if (argv[0] === "check") {
     // The command shares the terminal, so a Ctrl-C reaches it directly; greenline
     // stays alive to complete the facts, and a Ctrl-C before the command starts
@@ -148,4 +208,5 @@ async function main(): Promise<number> {
   );
 }
 
-process.exitCode = await main();
+// The bundle is also the inspector's builder threads' one file (src/shell/inspect/builder.ts); the CLI runs on the main thread alone.
+if (isMainThread) process.exitCode = await main();

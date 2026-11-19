@@ -1,0 +1,27 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-invariants-pointer-gist",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-state-machines-pointer-gist",
+    "sha256": "17f3ba32efa15c6f08aafb70af647e35090d2e0f7a59bc337a55970c061bf42e"
+  },
+  "subject": "skill:invariants",
+  "recipe": "21526137231040ff7db2aa8961753408d2231249cfa7337b7c37d5bf61ff8fcd",
+  "result": "0d85d7cb3508389efc13f554da7fd5af3fecdf101cee8f579d7ae6af99addd67",
+  "pages": [],
+  "gist": "The pointer's gist names the page read first",
+  "reason": "The pointer passage's gist names the method page as the page read first, since a gist does not repeat its kind word.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 776
+  }
+}

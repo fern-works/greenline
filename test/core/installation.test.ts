@@ -83,7 +83,10 @@ it("S16a the payload carries each skill's kind, slot and flags, and no class", (
   // J-93 S1: no step is a trial; a trial start keeps its flag.
   expect(byName.get("anticipate")).not.toHaveProperty("trial");
   expect(byName.get("idea-refine")).toMatchObject({ kind: "start", trial: true });
-  expect(byName.get("diagram-design")).toMatchObject({ kind: "habit", extra: true });
+  // J-110 S4: the visual habits are defaults; product-description stays the one extra.
+  expect(byName.get("diagram-design")).toMatchObject({ kind: "habit" });
+  expect(byName.get("diagram-design")?.extra).toBeUndefined();
+  expect(byName.get("product-description")).toMatchObject({ kind: "start", extra: true });
   expect(compiled.value.skills.some((skill) => "class" in skill || "optIn" in skill)).toBe(false);
   const installation = fixtureInstallation();
   const [first, ...rest] = installation.skills;
@@ -176,4 +179,38 @@ it("S16b refuses a ledger guide that does not hold the skeletons line exactly on
       ledgerGuide: `# Ledger\n${SKELETONS_LINE}\n${SKELETONS_LINE}\n`,
     }),
   ).toEqual(refusal);
+});
+
+it("J-176 S1 the compiled payload carries the recipes' trigger rows, and refuses a row naming no skill of its kind beside the line", () => {
+  const compiled = compileInstallation("corpus");
+  if (compiled._tag === "err") throw compiled.error;
+  expect(compiled.value.triggers).toEqual(
+    JSON.parse(readFileSync("corpus/runtime/triggers.json", "utf8")),
+  );
+  const row = { steps: ["build"], weight: 1, read: "part" as const };
+  const triggers = (name: string, kind: string) => ({
+    schema: "greenline.triggers/v1" as const,
+    skills: [{ name, kind, rows: [row] }],
+  });
+  // The fixture's habit, grilling, may carry rows; a step, a skill of another kind or no skill may not.
+  expect(
+    buildInstallation({ ...fixtureInput(), triggers: triggers("grilling", "habit") })._tag,
+  ).toBe("ok");
+  for (const [name, kind] of [
+    ["grilling", "start"],
+    ["delivery-review", "step"],
+    ["nobody", "habit"],
+  ] as const)
+    expect(buildInstallation({ ...fixtureInput(), triggers: triggers(name, kind) })).toEqual({
+      _tag: "err",
+      error: expect.objectContaining({
+        issues: [
+          {
+            path: `triggers.${name}`,
+            message:
+              "A trigger row names a skill of the payload, of its kind, placed beside the line.",
+          },
+        ],
+      }),
+    });
 });

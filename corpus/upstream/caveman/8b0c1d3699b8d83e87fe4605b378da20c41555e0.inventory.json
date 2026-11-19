@@ -1,0 +1,23 @@
+{
+  "commit": "8b0c1d3699b8d83e87fe4605b378da20c41555e0",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "94fe75d355887f84ee7eefca68e06d8d082a23dad47a8e1f58a94d98900edf5b"
+    },
+    {
+      "path": "caveman-commit/README.md",
+      "sha256": "a2e82924b487fc1845114c247b47c2d3c2d1bd60f90bbfa60e9831319eb964fa"
+    },
+    {
+      "path": "caveman-commit/SKILL.md",
+      "sha256": "c788a282fc75b981b421dfdad5d84ea7f83f946c126daa39cfc7d3f97845e193"
+    }
+  ],
+  "entries": [
+    {
+      "name": "caveman-commit",
+      "path": "skills/caveman-commit"
+    }
+  ]
+}

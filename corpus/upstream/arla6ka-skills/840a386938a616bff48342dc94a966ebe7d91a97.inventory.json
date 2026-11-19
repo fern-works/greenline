@@ -1,0 +1,99 @@
+{
+  "commit": "840a386938a616bff48342dc94a966ebe7d91a97",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "82c0ced1b0886e6727c7d3a6e1228b60bf705f73008460d99292c894f271599b"
+    },
+    {
+      "path": "build-design-system/SKILL.md",
+      "sha256": "7ae774f249aa710b61077001ce86514608ca757cf1d79af1ce03b2bff78bf309"
+    },
+    {
+      "path": "build-design-system/references/components.md",
+      "sha256": "5a6c7a03cd7de8b83ca19e4601ef0195864ff67f41a59a2414c6dc16a722a12e"
+    },
+    {
+      "path": "build-design-system/references/glossary.md",
+      "sha256": "63817a73966761fac1182cadbf2ebf62225dd41dd401857f5f6101f1870e8eb1"
+    },
+    {
+      "path": "build-design-system/references/taste.md",
+      "sha256": "2f0cdab170d2d4a8f697f54b788c77149433cbdcadee8a0c7a20f7a93d3b19b4"
+    },
+    {
+      "path": "build-design-system/references/tokens.md",
+      "sha256": "3a529dcce85dc3d5e8953a028b4440450f32bd5a382c550990d785d01c002f8b"
+    },
+    {
+      "path": "build-design-system/references/traps.md",
+      "sha256": "b2792ba7d7ea994520236730162f44ba60827a8919868d91763b11c9a4fe2b72"
+    },
+    {
+      "path": "build-design-system/scripts/capture-guard.mjs",
+      "sha256": "64701d7eb1b17d455141383d84166da4ca20b912b1a5e91f3c23474083087de8"
+    },
+    {
+      "path": "build-design-system/scripts/capture.mjs",
+      "sha256": "73fcfffc81fa2989d7b9feda34454f121131bcbc3d1c972203e96976a9be1ef5"
+    },
+    {
+      "path": "build-design-system/scripts/check-system.mjs",
+      "sha256": "14074c29820491376e39bc062c48fdff7fff00c2102e82d22af194d90e72fe6c"
+    },
+    {
+      "path": "build-design-system/scripts/find-chromium.mjs",
+      "sha256": "15fa7b2a9f216e62e8bb5084976101cfe4bc629bdfbab5890b10bb92e58a9084"
+    },
+    {
+      "path": "build-design-system/scripts/oklch.mjs",
+      "sha256": "6a4d45d28dd0aba833a56ac43e9ab38d6cece263bd98b142470a82ff4b795d13"
+    },
+    {
+      "path": "build-design-system/scripts/pixdiff.mjs",
+      "sha256": "3e072ef4d0cb1bfc48706ad0124a1e515080197733eb7f17c2bfff2471674c35"
+    },
+    {
+      "path": "component-docs/SKILL.md",
+      "sha256": "bb239f54c5c08310e015dcbf0f72205163efd23e4151758659c14bdff383341b"
+    },
+    {
+      "path": "component-docs/references/doc-format.md",
+      "sha256": "c8478396b150b2af7d53d1c6d189f892ad1bfece8b1e796ee9b2bc2c3cabeace"
+    },
+    {
+      "path": "token-mapping/SKILL.md",
+      "sha256": "c65eb18bcbe34d6e33b3f6998684dd7b11f87b2e98db6f343a20cefa56151a06"
+    },
+    {
+      "path": "token-mapping/references/mapping-rules.md",
+      "sha256": "bf99bacef25b686baac38cfdfe5eb867efbbdaa32e318cd82fbb1e80e5079303"
+    },
+    {
+      "path": "ui-review/SKILL.md",
+      "sha256": "ace7e5456bc4b60146183b1b888d331d4d1ebe465e3bcaa6b69343fc6f2a9775"
+    },
+    {
+      "path": "ui-review/references/criteria.md",
+      "sha256": "965fd2ea430a5a470d119daa416021ad13f8f4de34350d827d765627800ff359"
+    }
+  ],
+  "entries": [
+    {
+      "name": "component-docs",
+      "path": "skills/component-docs"
+    },
+    {
+      "name": "token-mapping",
+      "path": "skills/token-mapping"
+    },
+    {
+      "name": "ui-review",
+      "path": "skills/ui-review"
+    },
+    {
+      "name": "build-design-system",
+      "path": "skills/build-design-system"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-prose-recut-for-the-reply-shape",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-modes-ceilings-for-the-reply-shape",
+    "sha256": "3f27b15c0e87c391b8b62c7767f6c2688a6b5478c24d38cb6e0b9c77278a9956"
+  },
+  "subject": "skill:prose",
+  "recipe": "3c30dbef76cdb0949dc8c2cdf28611488aa19665ac559e913dda5e89b0bc531d",
+  "result": "d4815cc34f234be3698dc40e6abe0ea78b5dc71e61f03773209e6eb764aaffb3",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The answer's rules move into the block's reply section",
+  "reason": "prose is re-cut for the reply shape: answer-plainly's four answers and its measurement move into the block's reply section; the habit keeps documents, the tells, the contradicted answer and the re-pitch, answer-plainly now a credit line.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R23 of 2026-10-08, \"change context md to glossary md\", the glossary home being GLOSSARY.md"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "freddie-northam",
+        "segments": 26,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "mattpocock-skills",
+        "segments": 2,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": 0,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "pstack",
+        "segments": 273,
+        "taken": 270,
+        "exact": 266,
+        "retention": 0.9851851851851852,
+        "coverage": 0.989010989010989,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 431
+  }
+}

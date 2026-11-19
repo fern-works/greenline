@@ -1,0 +1,19 @@
+{
+  "commit": "1c1e97cb9878e236552c772092dda7adcdddbcb2",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "5f9af6ce7083838497676a8dfa651ad8e2559fdabd4586afc73587beec476b0e"
+    },
+    {
+      "path": "landing-page-design/SKILL.md",
+      "sha256": "3aae79f3d33ea293491fe6251f9fee56ee0cbb7aa66d41b3f29cfc662e4bbdd6"
+    }
+  ],
+  "entries": [
+    {
+      "name": "landing-page-design",
+      "path": "skills/landing-page-design"
+    }
+  ]
+}

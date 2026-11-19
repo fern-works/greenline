@@ -24,22 +24,62 @@
         },
         {
           "passage": "written",
-          "text": "guard-the-context-window is a trial habit, installed only where the workspace's `trials` names it, for the moment a large output, a long file or a long stretch of exploration is about to fill the thread, at whatever step the work is in, and for a thread already long mid-task. It writes no record of its own and starts no agent: a read delegated to a fresh agent is one of the mode's agents, spent by the step that owns it, never by this habit. What a step relies on goes into its section of the change record or the change's folder, never only into the thread, since the record is what a fresh session resumes from. A skill, a guide and the file you are changing are still read whole: a summary is not a full read, as AGENTS.md says. Where the harness cannot remove text from the thread, cutting means not quoting it again and carrying its one-sentence summary forward, and putting material last means restating it at the end of the work in hand. Reporting progress to the owner is progress-check's concern.",
+          "text": "guard-the-context-window is a trial habit, installed only where the workspace's `trials` names it, for the moment a large output, a long file or a long stretch of exploration is about to fill the thread, at whatever step the work is in, and for a thread already long mid-task. It writes no record of its own and starts no agent: a read delegated to a fresh agent is one of the mode's agents, spent by the step that owns it, never by this habit. What a step relies on goes into its section of the change record or the change's folder, never only into the thread, since the record is what a fresh session resumes from. A skill, a guide and the file you are changing are still read whole: a summary is not a full read, as AGENTS.md says.",
           "kind": "scope",
           "reason": "One opening paragraph in the habit's own voice: the situations its block row keys it by, that it is a trial installed only where trials names it, that it writes no record and spends no agent of the mode's, that the record and not the thread carries what a step relies on, that the block's full read of a skill stands, and the habit beside it.",
           "gist": "Opens the trial habit: large outputs stay out of the thread"
         },
         {
+          "passage": "written",
+          "text": "Before a large output enters the thread, read [method.md](method.md): what cutting means where the harness cannot remove text, the pattern, and the context budget.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Guard the Context Window: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "Where the harness cannot remove text from the thread, cutting means not quoting it again and carrying its one-sentence summary forward, and putting material last means restating it at the end of the work in hand. Reporting progress to the owner is progress-check's concern.",
+          "kind": "scope",
+          "reason": "One opening paragraph in the habit's own voice: the situations its block row keys it by, that it is a trial installed only where trials names it, that it writes no record and spends no agent of the mode's, that the record and not the thread carries what a step relies on, that the block's full read of a skill stands, and the habit beside it.",
+          "gist": "Opens the trial habit: large outputs stay out of the thread"
+        },
+        {
+          "passage": "written",
+          "text": "The context window is finite and non-renewable within a session. Every token should be worth its cost.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
+        },
+        {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-guard-the-context-window/SKILL.md",
-          "segments": [
-            "72437e695354",
-            "e7011d260bbb",
-            "2e4f90b5a7a6",
-            "8261c007be0b",
-            "e20abbdf1e44"
-          ]
+          "segments": ["2e4f90b5a7a6", "8261c007be0b"],
+          "join": "\n\n"
+        },
+        {
+          "passage": "written",
+          "text": "- **Isolate large payloads.**",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"],
+          "join": "\n"
         },
         {
           "passage": "written",
@@ -105,26 +145,24 @@
       "source": "pstack",
       "file": "principle-guard-the-context-window/SKILL.md",
       "segment": "f36cdd127b83",
-      "kind": "method",
-      "reason": "Routing verbose output to subagents spends an agent of the mode's from a habit; the portable form keeps the payload out of the thread by excerpt and summary (R21).",
-      "gist": "Excerpt and summary replace routing verbose output to subagents",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, is a copy in its portable form, a new trial habit guard-the-context-window: raw payloads kept out of the thread by excerpt and summary, with no agent of its own; context-engineering is a combine whose context budget joins it; under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
       "source": "pstack",
       "file": "principle-guard-the-context-window/SKILL.md",
       "segment": "d0d920b23866",
-      "kind": "method",
-      "reason": "Routing verbose output to subagents spends an agent of the mode's from a habit; the portable form keeps the payload out of the thread by excerpt and summary (R21).",
-      "gist": "Excerpt and summary replace routing verbose output to subagents",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended; principle-guard-the-context-window, no longer held, is a copy in its portable form, a new trial habit guard-the-context-window: raw payloads kept out of the thread by excerpt and summary, with no agent of its own; context-engineering is a combine whose context budget joins it; under R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\"",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
@@ -132,16 +170,16 @@
       "file": "principle-guard-the-context-window/SKILL.md",
       "segment": "3f8d9ae9092e",
       "kind": "scope",
-      "reason": "Keeping frequently used content inline in a skill file is a rule for writing skills, handed to the workshop's craft-writing-for-agents.",
-      "gist": "Keeping content inline is skill-writing advice, handed to craft-writing-for-agents"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-guard-the-context-window/SKILL.md",
       "segment": "bc09456a82d5",
       "kind": "scope",
-      "reason": "Keeping frequently used content inline in a skill file is a rule for writing skills, handed to the workshop's craft-writing-for-agents.",
-      "gist": "Keeping content inline is skill-writing advice, handed to craft-writing-for-agents"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "addyosmani",
@@ -1334,13 +1372,79 @@
       "kind": "scope",
       "reason": "The anti-patterns, rationalizations, red flags and checklist restate the hierarchy and the budget; the budget's own anti-pattern, the context cliff, is the threshold the taken section states.",
       "gist": "Anti-patterns and checklists repeat the budget, whose cliff is already stated"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "72437e695354",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "e7011d260bbb",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-guard-the-context-window/SKILL.md",
+      "segment": "e20abbdf1e44",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
     }
   ],
   "notStub": [
     {
       "source": "pstack",
       "file": "principle-guard-the-context-window/SKILL.md",
-      "ruling": "Not a stub: its upstream body, 98 words under the stub trigger, states a method of its own, three patterns with no delegation (isolate large payloads, keep frequently used content inline, size phases and cap scope), so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-08 on the intake R3, \"yes go ahead\", on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-08 on the roster made whole)"
+      "ruling": "Not a stub: its upstream body, 98 words under the stub trigger, states a method of its own, three patterns with no delegation (isolate large payloads, keep frequently used content inline, size phases and cap scope), so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-08 on the intake R3, \"yes go ahead\", on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-08 on the roster made whole); rechecked at eb4db2b5, where upstream's edit pass cut the body to 33 words; greenline keeps the cut patterns as written passages and takes the sentences that remain: the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': not a stub, keep the text"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "A read it delegates to a fresh agent counts as one of the mode's agents, spent by the step that owns it; the habit starts no agent of its own.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0402",
+      "cost": "free"
+    },
+    {
+      "promise": "What a step relies on goes into its section of the change record or the change's folder, never only into the thread.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading compares the thread with the record. The Linear replay's F7 (frame answers held only in replies) is frame's prose, not this trial habit's, so no run observed this prose fail."
+    },
+    {
+      "promise": "A skill, a guide and the file being changed are still read whole; a summary is not a full read.",
+      "page": "SKILL.md",
+      "kind": "fact",
+      "where": "skills loaded:",
+      "cost": "free"
+    }
+  ],
+  "triggers": [
+    {
+      "words": ["large output", "long log", "whole log", "huge file", "the full output"],
+      "weight": 1,
+      "read": "part"
     }
   ]
 }

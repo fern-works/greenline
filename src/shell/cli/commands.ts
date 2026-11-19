@@ -98,6 +98,11 @@ function executeCommand(request: WorkspaceRequest, env: CliEnvironment): Command
     case "status":
       return runStatus(env, request.status ?? { view: "list", all: false });
     case "tidy":
-      return runTidy(env, request.tidy?.change);
+      return runTidy(
+        env,
+        request.tidy?.change,
+        request.tidy?.worktree === true,
+        request.tidy?.discussion,
+      );
   }
 }

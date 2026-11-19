@@ -1,0 +1,5 @@
+interface:
+  display_name: "Research"
+  short_description: "Answer one question the code does not answer from the sources that own the answer, in papers, on the web or in other projects' code, and write one cited report, deciding nothing. Use when frame's accepted research topic starts you as its fresh agent, or when the owner asks you to research or look into a question the repository's own files cannot answer, such as prior art or how other projects do it."
+policy:
+  allow_implicit_invocation: false

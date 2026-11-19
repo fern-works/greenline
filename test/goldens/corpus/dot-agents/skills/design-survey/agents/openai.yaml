@@ -1,0 +1,5 @@
+interface:
+  display_name: "Design Survey"
+  short_description: "Read an interface a repository already has into its home: trace its code and rendered pages, measure with an instrument declared as a check, confirm the hypotheses with the owner, and write DESIGN.md and the interface rulings. Use where the workspace names interface roots and holds no DESIGN.md, or when the owner asks for the interface's system, its design side or how it should look, to be written down."
+policy:
+  allow_implicit_invocation: false

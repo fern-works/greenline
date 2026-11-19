@@ -1,0 +1,87 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-concurrency-trigger-rows-widened",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-redesign-trigger-rows-widened",
+    "sha256": "b0601f82567c464cb871b49f0592b23e014b6e1520365c34933814257f55bfc5"
+  },
+  "subject": "skill:concurrency",
+  "recipe": "e93a7d4f40e9356244f52390cc431d1d965a2f68705634e13baf4bc185d90de4",
+  "result": "1425819a3355534a99f0fd97bc63a89e8a27dacdbc13b5ced2104b99de09ff45",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Trigger rows widened by mode; the description names the same cases",
+  "reason": "The 0.2.0 series loaded few starts and habits; the skill's invocation cases widen as trigger rows loosened by mode within the reading budget, and its description names the same cases in the owner's words.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-make-operations-idempotent is the spine of an idempotency section, its PID lock line dropped for the primitive the platform ships (contradiction 31); the idempotency core of api-and-interface-design joins it, its API design, versioning and HTTP rules garden's; and principle-separate-before-serializing-shared-state strengthens the ladder's third rung"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, deep-modules, domain-and-types, boundaries, concurrency, secrets and prose among them, tdd and ponytail keeping theirs"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record its steps write, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a habit loaded when its situation arises at any step (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the sections taken from concurrency-method change no method, under the row of 2026-10-04 (Q1), in the operator's words \"okay then lock in what you recommend\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "addyosmani",
+        "segments": 152,
+        "taken": 29,
+        "exact": 29,
+        "retention": 1,
+        "coverage": 0.19078947368421054,
+        "meetsMinimum": true,
+        "creditLine": false
+      },
+      {
+        "source": "pstack",
+        "segments": 33,
+        "taken": 28,
+        "exact": 28,
+        "retention": 1,
+        "coverage": 0.8484848484848485,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 1178
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-anatomy-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-verify-formally-enters",
+    "sha256": "defb1371bd3f4628fe477fe85203906fb47af0706b8cba6b044a8c20d47fe505"
+  },
+  "subject": "skill:anatomy",
+  "recipe": "64d75f020519cb3abc9602c09bb43b32c10781db838569b3717ea6b3a1945b1d",
+  "result": "b6615253941431eb291f9a59288b1bcff80a5d9d7eb7c54a32430d12f1e33eb6",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/3d.md"
+    },
+    {
+      "path": "references/craft.md"
+    },
+    {
+      "path": "references/greenline.md"
+    },
+    {
+      "path": "references/kit.md"
+    },
+    {
+      "path": "references/motion.md"
+    },
+    {
+      "path": "references/print.md"
+    },
+    {
+      "path": "references/react.md"
+    },
+    {
+      "path": "references/verify.md"
+    },
+    {
+      "path": "references/walkthrough.md"
+    },
+    {
+      "path": "references/webgl.md"
+    }
+  ],
+  "gist": "Adds the habit anatomy, the explanatory figure of a concept",
+  "reason": "Adds anatomy as a copy, a default habit flagged extra under the asset rule, with its kit and scripts and no worked examples; its gallery publication, session reader, tests, evals and harness file are left out.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; the kit and the scripts taken, the tests, evals/ and agents/openai.yaml left out; the worked examples left out of the snapshot, since the refresh holds a directory by its last name and the corpus and the public export carry every snapshot byte; publish.mjs and session.mjs left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; the kit and the scripts taken, the tests, evals/ and agents/openai.yaml left out; the worked examples left out of the snapshot, since the refresh holds a directory by its last name and the corpus and the public export carry every snapshot byte; publish.mjs and session.mjs left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "anatomy",
+        "segments": 2845,
+        "taken": 2811,
+        "exact": 2809,
+        "retention": 0.9992885094272501,
+        "coverage": 0.9880492091388401,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 460
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-balise-ohada",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-kemiljk-product-delight",
+    "sha256": "3deb6f9407531e3adf9eb830d69dc7768445cd0a885da0b83b50260bd6abefdc"
+  },
+  "source": {
+    "repository": "https://github.com/mrstev3n/balise-skills",
+    "commit": "f596a61fa8f4471054b1ed75d17bc6699db4572d",
+    "path": "skills/balise-ohada"
+  },
+  "licence": "permissive-other",
+  "verdict": "decline",
+  "gist": "Outside the interface practice, declined",
+  "reason": "Its subject lies outside greenline's interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': balise's off-practice skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': balise's off-practice skills are declined"
+    }
+  ]
+}

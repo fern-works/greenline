@@ -1,7 +1,18 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import type { ContractParseFailed } from "../../core/contract.ts";
-import { parseDecisionDocument, type RootStatement } from "../../core/root-statements.ts";
+import { parseDecisionDocument } from "../../core/root-statements.ts";
+import type {
+  DecisionRecord,
+  HomeId,
+  HomeSummary,
+  KnowledgeHome,
+  KnowledgeList,
+  RenderedText,
+} from "../../core/inspector/documents.ts";
+import { readGit } from "../code-tree.ts";
+import { repositoryResolver } from "./links.ts";
+import { renderDocument, type FenceComponents } from "./markdown.ts";
 import { listMarkdownFiles, readShownFile } from "./repository-read.ts";
 
 /*
@@ -12,9 +23,6 @@ import { listMarkdownFiles, readShownFile } from "./repository-read.ts";
  * named and never created. Nothing here writes; the decisions book is
  * edited in the repository policy view, which owns that write.
  */
-
-/** A knowledge home by its page name. */
-export type HomeId = "work" | "decisions" | "adr" | "glossary";
 
 interface HomeDefinition {
   readonly id: HomeId;
@@ -52,56 +60,23 @@ const HOMES: readonly HomeDefinition[] = [
   },
 ];
 
-/** One home as the list shows it. */
-export interface HomeSummary {
-  readonly id: HomeId;
-  readonly title: string;
-  readonly path: string;
-  readonly role: string;
-  readonly present: boolean;
-  /** What it holds, counted, such as `3 records`; null when it is absent or cannot be read. */
-  readonly holds: string | null;
-}
+/** The fence of the decisions book that holds its root statements. */
+const ROOTS_FENCE = "greenline-roots";
 
-/** The knowledge view's list: every home, present or not. */
-export interface KnowledgeList {
-  readonly homes: readonly HomeSummary[];
+/** A home's document rendered at its page address, its links resolved from where it stands. */
+function renderedHome(
+  id: string,
+  path: string,
+  text: string | null,
+  fences: FenceComponents,
+): RenderedText | null {
+  if (text === null) return null;
+  const directory = path.includes("/") ? path.slice(0, path.lastIndexOf("/")) : "";
+  const document = renderDocument(text, repositoryResolver(directory), `/atlas/homes/${id}`, {
+    fences,
+  });
+  return { heading: document.title, html: document.html, outline: document.outline };
 }
-
-/** One ADR of the ADR home. */
-export interface DecisionRecord {
-  readonly file: string;
-  readonly title: string;
-  /** The status the record states, as written; null when it states none. */
-  readonly status: string | null;
-  readonly date: string | null;
-  /** The record's text without its front matter; null when it cannot be shown. */
-  readonly body: string | null;
-  readonly problem: string | null;
-}
-
-/** One home as its page shows it. */
-export type KnowledgeHome =
-  | (HomeSummary & {
-      readonly kind: "document";
-      readonly id: "work" | "glossary";
-      readonly text: string | null;
-      readonly problem: string | null;
-    })
-  | (HomeSummary & {
-      readonly kind: "decisions";
-      readonly id: "decisions";
-      readonly text: string | null;
-      /** The root statements of the book's fence; null when the fence does not parse. */
-      readonly roots: readonly RootStatement[] | null;
-      readonly problem: string | null;
-    })
-  | (HomeSummary & {
-      readonly kind: "records";
-      readonly id: "adr";
-      readonly records: readonly DecisionRecord[];
-      readonly problem: string | null;
-    });
 
 function issuesText(error: ContractParseFailed): string {
   return error.issues
@@ -133,7 +108,8 @@ function frontMatter(text: string): FrontMatterSplit {
  * `Status:` or `Date:` line, or a `## Status` section's first line.
  */
 function recordOf(file: string, text: string | null, problem: string | null): DecisionRecord {
-  if (text === null) return { file, title: file, status: null, date: null, body: null, problem };
+  if (text === null)
+    return { file, title: file, status: null, date: null, body: null, html: null, problem };
   const { fields, body } = frontMatter(text);
   const line = (name: string): string | null => {
     const stated = new RegExp(`^\\s*\\**${name}\\**\\s*:\\s*\\**\\s*(.+?)\\s*$`, "im").exec(body);
@@ -148,6 +124,11 @@ function recordOf(file: string, text: string | null, problem: string | null): De
     status: fields.get("status") ?? line("status"),
     date: fields.get("date") ?? line("date"),
     body,
+    html: renderDocument(
+      body,
+      repositoryResolver("docs/adr"),
+      `/atlas/homes/adr/${encodeURIComponent(file)}`,
+    ).html,
     problem,
   };
 }
@@ -156,26 +137,59 @@ function definition(id: string): HomeDefinition | undefined {
   return HOMES.find((home) => home.id === id);
 }
 
+/** When a home was last written, the time of the last commit that touched it; null while none has or git cannot say (J-166 S1). */
+function writtenAt(root: string, path: string): string | null {
+  const read = readGit(root, ["log", "-1", "--format=%cI", "--", path]);
+  if (read._tag === "err") return null;
+  const at = read.value.trim();
+  return at === "" ? null : at;
+}
+
+/** A count with its noun, or null for none. */
+function counted(count: number, noun: string): string | null {
+  return count === 0 ? null : `${String(count)} ${noun}${count === 1 ? "" : "s"}`;
+}
+
+/** What a document home holds, counted: the glossary's terms, the work guide's sections (J-166 S1). */
+function documentHolds(id: HomeId, text: string | null): string | null {
+  if (text === null) return null;
+  if (id === "glossary") {
+    const terms = text
+      .split("\n")
+      .filter((line) =>
+        /^\s*(?:[-*]\s+\*\*[^*]+\*\*|#{2,3}\s+\S|\*\*[^*]+\*\*\s*[:.]?)/.test(line),
+      ).length;
+    return counted(terms, "term");
+  }
+  return counted(text.split("\n").filter((line) => /^##\s+\S/.test(line)).length, "section");
+}
+
 function summaryOf(root: string, home: HomeDefinition): HomeSummary {
   if (home.id === "adr") {
     const listed = listMarkdownFiles(root, home.path);
     const count = listed.files.length;
+    const present = count > 0 || listed.problem !== null;
     return {
       ...home,
-      present: count > 0 || listed.problem !== null,
-      holds: count === 0 ? null : `${count} record${count === 1 ? "" : "s"}`,
+      present,
+      holds: counted(count, "record"),
+      written: present ? writtenAt(root, home.path) : null,
     };
   }
   const present = existsSync(join(root, home.path));
-  if (!present || home.id !== "decisions") return { ...home, present, holds: null };
+  if (!present) return { ...home, present, holds: null, written: null };
+  const written = writtenAt(root, home.path);
   const shown = readShownFile(root, home.path);
+  if (home.id !== "decisions")
+    return { ...home, present, holds: documentHolds(home.id, shown.text), written };
   const parsed = shown.text === null ? undefined : parseDecisionDocument(shown.text, home.path);
   const count = parsed?._tag === "ok" ? parsed.value.roots.length : 0;
-  return {
-    ...home,
-    present,
-    holds: count === 0 ? null : `${count} root statement${count === 1 ? "" : "s"}`,
-  };
+  const sections =
+    shown.text === null ? 0 : shown.text.split("\n").filter((line) => /^##\s+\S/.test(line)).length;
+  const holds = [counted(sections, "section"), counted(count, "root statement")].filter(
+    (part) => part !== null,
+  );
+  return { ...home, present, holds: holds.length === 0 ? null : holds.join(", "), written };
 }
 
 /**
@@ -219,6 +233,17 @@ export function knowledgeHome(root: string, id: string): KnowledgeHome | undefin
       kind: "decisions",
       id: "decisions",
       text: shown.text,
+      rendered: renderedHome(
+        "decisions",
+        home.path,
+        shown.text,
+        parsed?._tag === "ok"
+          ? {
+              [ROOTS_FENCE]: () =>
+                '<p class="roots-note">The root statements block stands here; its roots are the cards above.</p>',
+            }
+          : {},
+      ),
       roots: parsed?._tag === "ok" ? parsed.value.roots : null,
       problem:
         shown.problem ??
@@ -232,6 +257,7 @@ export function knowledgeHome(root: string, id: string): KnowledgeHome | undefin
     kind: "document",
     id: summary.id === "work" ? "work" : "glossary",
     text: shown.text,
+    rendered: renderedHome(summary.id, home.path, shown.text, {}),
     problem: shown.problem,
   };
 }

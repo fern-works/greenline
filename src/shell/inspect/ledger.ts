@@ -1,14 +1,71 @@
-import { isBriefFile } from "../../core/brief.ts";
-import { isChangeId, parseRecordForm, type RecordForm } from "../../core/change.ts";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
+import { isBriefFile, readBrief } from "../../core/brief.ts";
+import {
+  currentStep,
+  isChangeId,
+  parseChangeRecord,
+  parseRecordForm,
+  type Position,
+  type RecordForm,
+} from "../../core/change.ts";
+import { contractFailure, contractOk } from "../../core/contract.ts";
+import { FRAME_MAP_FILE } from "../../core/frame-map.ts";
+import { parseChecksFile, type HookRun } from "../../core/facts.ts";
+import type { ParsedFile } from "../../core/status.ts";
+import { recordFacts } from "../../core/git-hooks.ts";
 import type { ContractParseFailed } from "../../core/contract.ts";
 import type { CheckFacts } from "../../core/facts.ts";
-import { depthOf, kindNamed, type Depth, type ModesDefinition } from "../../core/modes.ts";
-import type { ChangeOnDisk, ChangeView, CheckView } from "../../core/status.ts";
-import { readChangesOnDisk } from "../changes.ts";
-import { commitTreeId, workingTreeId } from "../code-tree.ts";
+import {
+  depthOf,
+  inapplicableLine,
+  kindNamed,
+  stepApplies,
+  type Depth,
+  type ModesDefinition,
+} from "../../core/modes.ts";
+import {
+  lineStations,
+  recordPart,
+  sectionStateOf,
+  type RecordPart,
+  type SectionState,
+} from "../../core/progress.ts";
+import type { ChangeOnDisk, ChangeView, CheckView, PlanOnDisk } from "../../core/status.ts";
+import { planHasTickets, readChangesOnDisk } from "../changes.ts";
+import { commitTreeId, OncePerState, pinnedHead, workingTreeId } from "../code-tree.ts";
+import { listFilesRecursive } from "../fs/walk.ts";
 import { runStatus } from "../cli/status.ts";
 import type { CliEnvironment } from "../cli/command-environment.ts";
+import type {
+  BriefEntry,
+  CommitsDocument,
+  ChangeDetail,
+  ChangeSize,
+  ChangeSummary,
+  CheckFactsDocument,
+  ChangeListEntry,
+  ChangeState,
+  ChangesList,
+  ChecksView,
+  CodeTargetView,
+  FolderFile,
+  RecordCard,
+  RunView,
+  SectionView,
+  StepState,
+  StepSummary,
+  StripStep,
+  Trailer,
+  WaitingOn,
+} from "../../core/inspector/documents.ts";
+import { posix } from "node:path";
+import { changedFilesOf, commitFiles, installedTest } from "./changed-files.ts";
+import { changeResolver } from "./links.ts";
+import { renderMarkdown, type LinkResolver } from "./markdown.ts";
+import { changeRef } from "./refs.ts";
 import { readShownFile } from "./repository-read.ts";
+import { waitingOn } from "./waiting.ts";
 
 /*
  * The changes view's data: the change records, their folders and their
@@ -20,7 +77,6 @@ import { readShownFile } from "./repository-read.ts";
  */
 
 const LEDGER = ".greenline/ledger";
-const NONE_LINE = /^none at [a-z][a-z0-9-]*$/;
 
 /**
  * The subject and date of each commit asked, read from git by the server,
@@ -29,182 +85,10 @@ const NONE_LINE = /^none at [a-z][a-z0-9-]*$/;
  */
 export type CommitLog = (
   hashes: readonly string[],
-) => ReadonlyMap<string, { readonly subject: string; readonly date: string }>;
-
-/** A change's state as the record states it; where a field holds it, null stands for a record whose form does not parse. */
-export type ChangeState = "open" | "stopped" | "done" | "dropped";
-
-/** One change as the list shows it. */
-export interface ChangeListEntry {
-  readonly id: string;
-  readonly path: string;
-  readonly state: ChangeState | null;
-  readonly mode: string | null;
-  readonly why: string | null;
-  /** The "next" line of an open or stopped change; null when it states none. */
-  readonly next: string | null;
-  readonly plan: string | null;
-  readonly ticket: string | null;
-  /** The date the id names, when the change was opened. */
-  readonly opened: string;
-  /** Whole days from that date to today; 0 for today. */
-  readonly ageDays: number;
-  /** Why the record does not parse; null when it does. */
-  readonly problem: string | null;
-}
-
-/** The changes view's list, or why the ledger cannot be read. */
-export interface ChangesList {
-  readonly changes: readonly ChangeListEntry[];
-  readonly unavailable: string | null;
-}
-
-/** The front matter as the record card shows it, every field present, null where the record states none. */
-export interface RecordCard {
-  readonly mode: string | null;
-  readonly choice: "owner" | "accepted" | "standing" | null;
-  readonly proposed: string | null;
-  readonly why: string | null;
-  readonly state: ChangeState | null;
-  readonly next: string | null;
-  /** The step the status derivations read as reached; null when the record is not judged. */
-  readonly step: string | null;
-  readonly floors: readonly string[];
-  readonly raises: readonly { readonly from: string; readonly reason: string }[];
-  readonly reviewed: string | null;
-  readonly plan: string | null;
-  readonly ticket: string | null;
-  readonly agents: number | null;
-  readonly rounds: number | null;
-  /** Each start as the record names it, `review 1` or `review 2 restarted`; null when it names none or cannot be read for it. */
-  readonly starts: readonly string[] | null;
-  /** The front-matter lines of the kinds whose record is a line. */
-  readonly lines: readonly { readonly field: string; readonly text: string }[];
-  /** The owner's words for a push, a pull request or a merge; null when the record holds none. */
-  readonly landing: string | null;
-  /** The owner's words for rewriting the change's branch; null when the record holds none. */
-  readonly rebase: string | null;
-}
-
-/**
- * How a section stands: written, the skipped step's one line, present but
- * empty, absent, or absent because the other record of a split holds it.
- */
-export type SectionState = "written" | "skipped" | "empty" | "missing" | "elsewhere";
-
-/** One section of the body, in the line's order. */
-export interface SectionView {
-  readonly heading: string;
-  /** A step of the line, a kind's own section (a start's), or a heading the modes do not name. */
-  readonly kind: "step" | "kind" | "other";
-  readonly state: SectionState;
-  /** The depth the record's mode gives the step, in words; null outside the steps or when the mode is unknown. */
-  readonly depth: string | null;
-  readonly text: string;
-  /** The third-level headings it holds, which count a looped step's rounds. */
-  readonly rounds: number;
-  /** Whether this is the step the change has reached. */
-  readonly current: boolean;
-  /** For a step the work's split gives the other record, which one holds it: the planning record or the tickets' records; null otherwise. */
-  readonly heldBy: "plan" | "ticket" | null;
-}
-
-/** One file of the change's folder, its text when it can be shown. */
-export interface FolderFile {
-  readonly file: string;
-  /** The text, null when it is too large or cannot be read, and `problem` says which. */
-  readonly text: string | null;
-  readonly problem: string | null;
-}
-
-/** A brief in the change's folder, with the step and number `greenline brief` wrote it for. */
-export interface BriefFile extends FolderFile {
-  readonly step: string | null;
-  readonly round: number | null;
-  /** Whether the status derivations read it as one the command wrote. */
-  readonly written: boolean;
-}
-
-/** One recorded run of a check. */
-export interface RunView {
-  readonly file: string;
-  readonly command: readonly string[];
-  readonly step: string | null;
-  readonly outcome: "passed" | "failed" | "unfinished";
-  /** How the run ended, in words: `exit 0`, `exit 1`, a signal or why it never started; null while it is unfinished. */
-  readonly ended: string | null;
-  readonly startedAt: string;
-  readonly durationMs: number | null;
-  readonly commit: string | null;
-  readonly tree: string | null;
-  readonly probe: boolean;
-  /** Whether it is the latest run of its command, the one the status derivations judge. */
-  readonly latest: boolean;
-  /** For the latest run, whether it saw the final code, in words; null for the others. */
-  readonly verdict: string | null;
-}
-
-/** Code the change's checks can be held against: a commit of the change, or the working tree. */
-export interface CodeTargetView {
-  readonly kind: "commit" | "working-tree";
-  /** The commit; null for the working tree. */
-  readonly hash: string | null;
-  readonly subject: string | null;
-  readonly date: string | null;
-  /** Whether another change claims the commit too. */
-  readonly shared: boolean;
-  /** The code's tree id, `.greenline/` left out, as `greenline check` records it; null when git cannot say. */
-  readonly tree: string | null;
-  /** The runs that ran on exactly this code. */
-  readonly runs: readonly RunView[];
-}
-
-/** The check facts held against the commits. */
-export interface ChecksView {
-  /** The change's commits, the working tree first for a change still in progress, each with the runs on its code. */
-  readonly targets: readonly CodeTargetView[];
-  /** Why the change's commits cannot be listed; null when they can. */
-  readonly commitsUnknown: string | null;
-  /** The runs whose code is none of the targets', such as uncommitted work later changed. */
-  readonly elsewhere: readonly RunView[];
-  /** The facts files that cannot be read, each with why. */
-  readonly problems: readonly { readonly file: string; readonly message: string }[];
-  /** How many runs are recorded, probes included. */
-  readonly runs: number;
-}
-
-/** One change as its page shows it. */
-export interface ChangeDetail {
-  readonly id: string;
-  readonly path: string;
-  /** How the status derivations read the record: judged, read as history for its form, or not parsed. */
-  readonly reading: "judged" | "history" | "unparsed";
-  readonly problem: string | null;
-  /** The record's text, shown whole when it does not parse. */
-  readonly text: string | null;
-  readonly opened: string;
-  readonly ageDays: number;
-  readonly card: RecordCard;
-  readonly sections: readonly SectionView[];
-  readonly reports: readonly FolderFile[];
-  readonly briefs: readonly BriefFile[];
-  readonly checks: ChecksView;
-  /** The findings and notices `greenline status --change` gives for it. */
-  readonly notes: readonly {
-    readonly code: string;
-    readonly severity: string;
-    readonly message: string;
-  }[];
-  /** For an open change, its commits of code since its last recorded check, in words; null otherwise. */
-  readonly sinceCheck: string | null;
-  readonly consultations: readonly {
-    readonly request: string;
-    readonly binding: string;
-    readonly calls: number;
-  }[];
-  /** Every file of the folder by name, which the page's links resolve against. */
-  readonly folder: readonly string[];
-}
+) => ReadonlyMap<
+  string,
+  { readonly subject: string; readonly date: string; readonly trailers: readonly Trailer[] }
+>;
 
 function openedOf(id: string, today: Date): Pick<ChangeListEntry, "opened" | "ageDays"> {
   const opened = id.slice(0, 10);
@@ -241,6 +125,46 @@ export function formOf(entry: ChangeOnDisk): FormReading {
   return { form: form.value, problem: null };
 }
 
+/**
+ * A change's state in the contract's vocabulary: an open record waits
+ * where its next word is the owner's, a record with no choice line is
+ * proposed, and the rest are as the record states them.
+ * @param form the record's form, undefined where it does not parse
+ * @param text the record's text
+ * @param waiting what it waits on
+ * @returns the state, or null for a record that does not read
+ */
+function stateOf(
+  form: RecordForm | undefined,
+  text: string | undefined,
+  waiting: WaitingOn | null,
+): ChangeState | null {
+  if (form === undefined) {
+    const facts = text === undefined ? undefined : recordFacts(text);
+    return facts?.readable === true &&
+      facts.choice === undefined &&
+      (facts.state === undefined || facts.state === "open")
+      ? "proposed"
+      : null;
+  }
+  const state = form.position.state;
+  if (state !== "open") return state;
+  return waiting === null ? "in-progress" : "waiting";
+}
+
+/** What a record waits on from the owner, read from its form and its step. */
+function waitingOf(root: string, form: RecordForm | undefined, step: string | null, id: string) {
+  if (form === undefined) return null;
+  const position = form.position;
+  return waitingOn(root, {
+    id,
+    state: position.state,
+    next: position.state === "open" || position.state === "stopped" ? position.next : undefined,
+    step,
+    touchesInterface: form.interface?.touches === true,
+  });
+}
+
 function nextOf(form: RecordForm): string | null {
   const position = form.position;
   if (position.state !== "open" && position.state !== "stopped") return null;
@@ -256,25 +180,74 @@ function nextOf(form: RecordForm): string | null {
  * @returns the list, or why the ledger cannot be read
  */
 export function changesList(root: string, env: CliEnvironment, today: Date): ChangesList {
-  const disk = readChangesOnDisk(root, env.installation.modes);
+  return readChanges(root, env, today).list;
+}
+
+/** The list with what the status derivations hold of each change, which the desk reads too. */
+export interface ChangesReading {
+  readonly list: ChangesList;
+  /** Each change's view by id, from the status derivations' list. */
+  readonly views: ReadonlyMap<string, ChangeView>;
+  /** The finished changes, the most recently closed first, as status orders them. */
+  readonly closed: readonly string[];
+}
+
+/** Status's list of every change, run once for the state a build reads. */
+const listed = new OncePerState<ReturnType<typeof runStatus>>();
+
+/**
+ * Status's list of every change, the changes' views and the plans', run once
+ * for the state a build reads (J-154 S2) and shared by the list, Now and the
+ * plans.
+ * @param root the repository root
+ * @param env the environment it reads under
+ * @returns status's answer
+ */
+export function listedStatus(root: string, env: CliEnvironment): ReturnType<typeof runStatus> {
+  return listed.answer(root, () => runStatus({ ...env, cwd: root }, { view: "list", all: true }));
+}
+
+/**
+ * Every change on disk with its status derivations: the list, each
+ * change's view and the order the finished closed in.
+ * @param root the repository root
+ * @param env the CLI environment, for the installation's modes and the status derivations
+ * @param today the date ages are counted to
+ * @returns the reading
+ */
+export function readChanges(root: string, env: CliEnvironment, today: Date): ChangesReading {
+  const definition = env.installation.modes;
+  const disk = readChangesOnDisk(root, definition);
   if (disk._tag === "err")
     return {
-      changes: [],
-      unavailable: disk.error.issues.map((issue) => issue.message).join("; "),
+      list: {
+        changes: [],
+        unavailable: disk.error.issues.map((issue) => issue.message).join("; "),
+      },
+      views: new Map(),
+      closed: [],
     };
+  const status = listedStatus(root, env).changes;
+  const listed = status?.view === "list" ? [...status.current, ...status.finished] : [];
+  const views = new Map(listed.map((view) => [view.id, view]));
+  const plans = disk.value.plans;
+  const facts = listFacts(root, views);
   const entries = disk.value.changes.map((entry): ChangeListEntry => {
     const { form, problem: formProblem } = formOf(entry);
-    const state = form?.position.state ?? null;
+    const recorded = form?.position.state ?? null;
     // An open or stopped record is read against the modes too; one that fails there names why, as status does.
     const problem =
       formProblem ??
-      ((state === "open" || state === "stopped") && entry.record._tag === "err"
+      ((recorded === "open" || recorded === "stopped") && entry.record._tag === "err"
         ? issuesText(entry.record.error)
         : null);
+    const waiting = waitingOf(root, form, views.get(entry.id)?.step ?? null, entry.id);
     return {
       id: entry.id,
+      ref: changeRef(entry.id),
       path: `${LEDGER}/${entry.id}.md`,
-      state,
+      state: stateOf(form, entry.text, waiting),
+      waitingOn: waiting,
       mode: form?.mode ?? null,
       why: form?.why ?? null,
       next: form === undefined ? null : nextOf(form),
@@ -282,20 +255,131 @@ export function changesList(root: string, env: CliEnvironment, today: Date): Cha
       ticket: form?.belongs?.ticket ?? null,
       ...openedOf(entry.id, today),
       problem,
+      step: views.get(entry.id)?.step ?? null,
+      strip:
+        form === undefined
+          ? []
+          : stripOf(
+              sectionsOf(definition, form, views.get(entry.id)?.step ?? null, partOf(form, plans)),
+            ),
+      ...(facts.get(entry.id) ?? NO_FACTS),
     };
   });
+  // A finished change's close is its last commit's time; an open change has none yet.
+  const closed = (entry: ChangeListEntry): ChangeListEntry =>
+    entry.state === "done" || entry.state === "dropped" ? entry : { ...entry, closedAt: null };
   // A record that does not parse stands with the work in progress, where the owner looks first.
   const current = (entry: ChangeListEntry): boolean =>
-    entry.state === null || entry.state === "open" || entry.state === "stopped";
+    entry.state !== "done" && entry.state !== "dropped";
   const newest = (a: ChangeListEntry, b: ChangeListEntry): number =>
     a.id < b.id ? 1 : a.id > b.id ? -1 : 0;
   return {
-    changes: [
-      ...entries.filter(current).sort(newest),
-      ...entries.filter((entry) => !current(entry)).sort(newest),
-    ],
-    unavailable: null,
+    list: {
+      changes: [
+        ...entries.filter(current).sort(newest),
+        ...entries.filter((entry) => !current(entry)).sort(newest),
+      ].map(closed),
+      unavailable: null,
+    },
+    views,
+    closed: status?.view === "list" ? status.finished.map((view) => view.id) : [],
   };
+}
+
+/** A change's commits counted and timed, as the list carries them (J-165 S1). */
+type ListFacts = Pick<ChangeListEntry, "closedAt" | "lastAt" | "size" | "commits">;
+
+/** The facts of a change whose commits cannot be listed. */
+const NO_FACTS: ListFacts = { closedAt: null, lastAt: null, size: null, commits: null };
+
+/** The list's facts kept for the commit HEAD names, each change's by its commits: a new HEAD reads them again. */
+let keptFacts: { root: string; head: string; facts: Map<string, ListFacts> } | undefined;
+
+/**
+ * Each change's last commit's time, its size and its commits, read from git
+ * once for the commits the change holds and kept on HEAD, so a write to the
+ * ledger that moves no commit reads none of them again (J-165 S1). The
+ * close time is the last commit's; the caller keeps it for a finished change.
+ * @param root the repository root
+ * @param views each change's view by id, from the status derivations
+ * @returns the facts by change id
+ */
+function listFacts(root: string, views: ReadonlyMap<string, ChangeView>): Map<string, ListFacts> {
+  const head = pinnedHead(root) ?? "";
+  if (keptFacts?.root !== root || keptFacts.head !== head || head === "")
+    keptFacts = { root, head, facts: new Map() };
+  const kept = keptFacts.facts;
+  const hashes = (view: ChangeView): readonly string[] | undefined =>
+    view.commits.kind === "known" ? view.commits.commits.map((commit) => commit.hash) : undefined;
+  const keyOf = (id: string, held: readonly string[]): string => `${id}\0${held.join(",")}`;
+  const asked = [...views.values()].flatMap((view) => {
+    const held = hashes(view);
+    return held === undefined || kept.has(keyOf(view.id, held)) ? [] : held;
+  });
+  const read = asked.length === 0 ? new Map() : commitFiles(root, asked);
+  const installed = asked.length === 0 ? () => false : installedTest(root);
+  const facts = new Map<string, ListFacts>();
+  for (const view of views.values()) {
+    const held = hashes(view);
+    if (held === undefined) continue;
+    const key = keyOf(view.id, held);
+    const known = kept.get(key);
+    if (known !== undefined) {
+      facts.set(view.id, known);
+      continue;
+    }
+    if ("unknown" in read) continue;
+    const commits = held.flatMap((hash) => {
+      const found = read.get(hash);
+      return found === undefined ? [] : [found];
+    });
+    const last = commits
+      .map((commit) => commit.date)
+      .sort((a, b) => Date.parse(a) - Date.parse(b))
+      .at(-1);
+    const files = changedFilesOf(commits, installed);
+    const size: ChangeSize = { ...files.totals, installed: files.installed };
+    const fact: ListFacts = {
+      closedAt: last ?? null,
+      lastAt: last ?? null,
+      size,
+      commits: held.length,
+    };
+    kept.set(key, fact);
+    facts.set(view.id, fact);
+  }
+  return facts;
+}
+
+/**
+ * Which part of a split the record is: a ticket's, the planning record of a
+ * plan with tickets, or the whole work (`recordPart`, which the mirror's
+ * progress line reads too).
+ */
+function partOf(form: RecordForm | undefined, plans: readonly PlanOnDisk[]): RecordPart {
+  if (form === undefined) return "whole";
+  const plan = plans.find((candidate) => candidate.name === form.belongs?.plan);
+  return recordPart(
+    form,
+    plan?.contents._tag === "ok" && plan.contents.value.tickets !== undefined,
+  );
+}
+
+/**
+ * The step strip's words: each step of the line with its section's state,
+ * whether it is the step reached and its depth.
+ * @param sections the record's sections in the line's order
+ * @returns one station per step
+ */
+function stripOf(sections: readonly SectionView[]): readonly StripStep[] {
+  return sections
+    .filter((section) => section.kind === "step")
+    .map((section) => ({
+      step: section.heading,
+      state: section.state,
+      current: section.current,
+      depth: section.depth,
+    }));
 }
 
 function depthWords(depth: Depth, mode: string): string {
@@ -313,10 +397,19 @@ function depthWords(depth: Depth, mode: string): string {
   }
 }
 
-function sectionState(text: string | undefined): SectionState {
-  if (text === undefined) return "missing";
-  if (text.trim() === "") return "empty";
-  return NONE_LINE.test(text.trim()) ? "skipped" : "written";
+/**
+ * A section's state in the contract's vocabulary: held by the other record
+ * of a split, skipped by the mode, the step the change is at now, written,
+ * or not yet written.
+ * @param state the section's state in the record
+ * @param current whether it is the step the change is at
+ * @returns the step's state
+ */
+function stepStateOf(state: SectionState, current: boolean): StepState {
+  if (state === "elsewhere") return "in-plan";
+  if (state === "skipped") return "skipped";
+  if (current) return "now";
+  return state === "written" ? "written" : "not-yet";
 }
 
 /**
@@ -336,12 +429,18 @@ function sectionsOf(
   const steps = new Set<string>(definition.steps.map((entry) => entry.name));
   const kindOf = (heading: string) =>
     steps.has(heading) ? undefined : kindNamed(definition, heading);
-  const plain = (heading: string, text: string, rounds: number, kind: "kind" | "other") => ({
+  const plain = (
+    heading: string,
+    text: string,
+    rounds: number,
+    kind: "kind" | "other",
+  ): SectionView => ({
     heading,
     kind,
-    state: sectionState(text),
+    state: stepStateOf(sectionStateOf(text), false),
     depth: null,
     text,
+    html: "",
     rounds,
     current: false,
     heldBy: null,
@@ -349,15 +448,30 @@ function sectionsOf(
   const before = form.sections
     .filter((section) => kindOf(section.heading)?.mechanism === "open")
     .map((section) => plain(section.heading, section.text, section.rounds, "kind"));
-  const line = definition.steps.map((entry): SectionView => {
+  // The stations are the mirror's progress line's too (`src/core/progress.ts`), so the strip and the line never disagree.
+  const stations = lineStations(definition, form, part);
+  const line = definition.steps.map((entry, index): SectionView => {
     const found = form.sections.find((section) => section.heading === entry.name);
     const heldBy = holder !== null && entry.whenSplit === holder ? holder : null;
+    // A step that applies by a fact the record does not state shows the line it holds there (J-123 S2).
+    const inapplicable =
+      entry.appliesWhen === undefined ||
+      stepApplies(entry, { interface: form.interface?.touches === true })
+        ? undefined
+        : inapplicableLine(entry.appliesWhen);
     return {
       heading: entry.name,
       kind: "step",
-      state: found === undefined && heldBy !== null ? "elsewhere" : sectionState(found?.text),
-      depth: mode === undefined ? null : depthWords(depthOf(mode, entry.name), mode.name),
+      state: stepStateOf(
+        stations[index]?.state ?? sectionStateOf(found?.text),
+        step === entry.name,
+      ),
+      depth:
+        mode === undefined
+          ? null
+          : (inapplicable ?? depthWords(depthOf(mode, entry.name), mode.name)),
       text: found?.text ?? "",
+      html: "",
       rounds: found?.rounds ?? 0,
       current: step === entry.name,
       heldBy,
@@ -378,8 +492,22 @@ function sectionsOf(
   return [...before, ...line, ...after];
 }
 
-function folderText(root: string, path: string): Pick<FolderFile, "text" | "problem"> {
-  return readShownFile(root, path);
+/**
+ * One file of a change's folder with its text rendered when it is Markdown:
+ * a brief's first line, the command's mark, is left out, since the page
+ * names the brief's step and round instead.
+ */
+function folderFile(root: string, id: string, folder: readonly string[], file: string): FolderFile {
+  const path = `${LEDGER}/${id}/${file}`;
+  const shown = readShownFile(root, path);
+  const html =
+    shown.text === null || !file.endsWith(".md")
+      ? null
+      : renderMarkdown(
+          shown.text.replace(/^<!-- greenline brief [^\n]*-->\n?/, ""),
+          changeResolver(id, folder, posix.dirname(path)),
+        );
+  return { file, text: shown.text, html, problem: shown.problem };
 }
 
 function endedOf(run: CheckFacts): string | null {
@@ -419,7 +547,7 @@ function checksOf(
   root: string,
   entry: ChangeOnDisk,
   view: ChangeView | undefined,
-  state: ChangeState | null,
+  state: Position["state"] | null,
   log: CommitLog,
 ): ChecksView {
   const folder = entry.folder?._tag === "ok" ? entry.folder.value : undefined;
@@ -470,6 +598,7 @@ function checksOf(
       hash: commit.hash,
       subject: logged?.subject ?? null,
       date: logged?.date ?? null,
+      trailers: logged?.trailers ?? [],
       shared: commit.shared,
       tree,
       runs: on(tree),
@@ -485,6 +614,7 @@ function checksOf(
         hash: null,
         subject: null,
         date: null,
+        trailers: [],
         shared: false,
         tree,
         runs: on(tree),
@@ -517,7 +647,8 @@ function bindingWords(binding: ChangeView["consultations"][number]["binding"]): 
 function cardOf(
   form: RecordForm | undefined,
   entry: ChangeOnDisk,
-  view: ChangeView | undefined,
+  step: string | null,
+  state: ChangeState | null,
 ): RecordCard {
   const starts =
     entry.record._tag === "ok" && entry.record.value.starts !== undefined
@@ -531,9 +662,9 @@ function cardOf(
     choice: choice?.by ?? null,
     proposed: choice?.by === "owner" ? (choice.proposed ?? null) : null,
     why: form?.why ?? null,
-    state: form?.position.state ?? null,
+    state,
     next: form === undefined ? null : nextOf(form),
-    step: view?.step ?? null,
+    step,
     floors: form?.floors ?? [],
     raises: form?.raises ?? [],
     reviewed: form?.reviewed ?? null,
@@ -545,74 +676,348 @@ function cardOf(
     lines: form?.lines ?? [],
     landing: form?.landing ?? null,
     rebase: form?.rebase ?? null,
+    discard: form?.discard ?? null,
+    stopped: form?.stopped ?? null,
+    ground: form?.ground ?? null,
+    agent: form?.agent ?? null,
+    from: form?.from ?? [],
+    refreshes: form?.refreshes ?? [],
   };
 }
 
 /**
- * One change for its page, or undefined when no record of that id is on disk.
+ * One change's record and its own folder, read alone (J-165 S1): the record
+ * parsed for its form and against the modes, and the folder's files by name
+ * with its briefs and its check facts, as `readChangesOnDisk` reads each
+ * change, and no other change's record read. Undefined where no record of
+ * that id stands directly under the ledger.
  * @param root the repository root
- * @param env the CLI environment, for the installation's modes and the status derivations
+ * @param definition the installation's modes
+ * @param id the change's id
+ * @returns the change on disk, or undefined
+ */
+function changeOnDisk(
+  root: string,
+  definition: CliEnvironment["installation"]["modes"],
+  id: string,
+): ChangeOnDisk | undefined {
+  if (!isChangeId(id)) return undefined;
+  const name = `${id}.md`;
+  const path = join(root, LEDGER, name);
+  let text: string | undefined;
+  try {
+    if (!statSync(path).isFile()) return undefined;
+    text = readFileSync(path, "utf8");
+  } catch (error) {
+    if (error instanceof Error && "code" in error && error.code === "ENOENT") return undefined;
+    text = undefined;
+  }
+  const record =
+    text === undefined
+      ? contractFailure(name, [{ path: "", message: "unreadable" }])
+      : parseChangeRecord(definition, name, text);
+  return { id, text, record, folder: folderOf(root, id) };
+}
+
+/** A change's folder read as `readChangesOnDisk` reads it: its files by name, its briefs and its check facts. */
+function folderOf(root: string, id: string): ChangeOnDisk["folder"] {
+  const folder = join(root, LEDGER, id);
+  let files: readonly string[];
+  try {
+    if (!existsSync(folder) || !statSync(folder).isDirectory()) return undefined;
+    files = listFilesRecursive(folder);
+  } catch (error) {
+    return contractFailure(`${LEDGER}/${id}`, [
+      { path: "", message: `unreadable: ${String(error)}` },
+    ]);
+  }
+  const isFacts = (file: string): boolean => file.startsWith("checks/") && file.endsWith(".json");
+  const isLoads = (file: string): boolean => /^skills\/[^/]+\.jsonl$/.test(file);
+  const checks: ParsedFile<CheckFacts>[] = [];
+  const hookRuns: ParsedFile<HookRun>[] = [];
+  for (const file of files.filter(isFacts)) {
+    let facts: string;
+    try {
+      facts = readFileSync(join(folder, file), "utf8");
+    } catch (error) {
+      checks.push({
+        file,
+        parsed: contractFailure(file, [{ path: "", message: `unreadable: ${String(error)}` }]),
+      });
+      continue;
+    }
+    const parsed = parseChecksFile(facts, file);
+    if (parsed.kind === "hook") hookRuns.push({ file, parsed: parsed.parsed });
+    else checks.push({ file, parsed: parsed.parsed });
+  }
+  return contractOk({
+    reports: files.filter((file) => !isFacts(file) && !isLoads(file) && file !== FRAME_MAP_FILE),
+    loads: [],
+    briefs: files.filter(isBriefFile).map((file) => {
+      try {
+        return { file, text: readFileSync(join(folder, file), "utf8") };
+      } catch {
+        return { file, text: undefined };
+      }
+    }),
+    checks,
+    hookRuns,
+  });
+}
+
+/** A record's reading as the status derivations read it, and the step a judged record reached (J-165 S1). */
+interface RecordStanding {
+  readonly reading: ChangeDetail["reading"];
+  readonly step: string | null;
+}
+
+/**
+ * How the status derivations read a record, with no git read and no other
+ * record read (J-165 S1): unparsed where it does not parse; read as history
+ * where it was dropped, or done and its latest check ran under another
+ * installation; else judged, with the step it reached, the one its "next"
+ * line names or the one its sections reach, as `greenline status` reads it.
+ * @param root the repository root
+ * @param env the environment, for the modes and the installation's revision
+ * @param entry the change on disk
+ * @param form its form, undefined where it does not parse
+ * @returns its reading and the step a judged record reached
+ */
+function standingOf(
+  root: string,
+  env: CliEnvironment,
+  entry: ChangeOnDisk,
+  form: RecordForm | undefined,
+): RecordStanding {
+  if (form === undefined) return { reading: "unparsed", step: null };
+  const state = form.position.state;
+  const runs =
+    entry.folder?._tag === "ok"
+      ? entry.folder.value.checks.flatMap((file) =>
+          file.parsed._tag === "ok" && file.parsed.value.probe !== true ? [file.parsed.value] : [],
+        )
+      : [];
+  const latest = [...runs].sort((a, b) =>
+    a.startedAt < b.startedAt ? 1 : a.startedAt > b.startedAt ? -1 : 0,
+  )[0];
+  const current = state === "done" && latest?.installation === env.installation.revision;
+  if (state === "dropped" || (state === "done" && !current))
+    return { reading: "history", step: null };
+  if (entry.record._tag === "err") return { reading: "unparsed", step: null };
+  const record = entry.record.value;
+  const plan = record.belongs?.plan;
+  const tickets =
+    plan !== undefined && planHasTickets(root, plan, env.installation.modes) ? "present" : "absent";
+  return {
+    reading: "judged",
+    step: currentStep(env.installation.modes, record, { ticketsFile: tickets }) ?? "none",
+  };
+}
+
+/** One change read for its head: its detail, its state, what it waits on and its strip, and its pieces on demand (J-165 S1). */
+export interface ChangeHead {
+  readonly detail: ChangeDetail;
+  readonly state: ChangeState | null;
+  readonly waitingOn: WaitingOn | null;
+  readonly strip: readonly StripStep[];
+  /** One section with its text rendered, which the step document serves; undefined for a heading the record does not hold. */
+  readonly section: (heading: string) => SectionView | undefined;
+  /** One file of the change's folder with its text, by its name; undefined for a name the folder does not hold. */
+  readonly file: (name: string) => FolderFile | undefined;
+}
+
+/**
+ * One change's head (J-165 S1), read from its record and its folder alone,
+ * with no git read and no run of the status: its record card, its summary,
+ * its sections folded, its folder by name, its state, what it waits on and
+ * its strip. Undefined when no record of that id is on disk.
+ * @param root the repository root
+ * @param env the CLI environment, for the installation's modes
  * @param id the change's id
  * @param today the date its age is counted to
- * @param log the subject and date of the change's commits
- * @returns the change, or undefined
+ * @returns the head, or undefined
  */
-export function changeDetail(
+export function changeHead(
   root: string,
   env: CliEnvironment,
   id: string,
   today: Date,
-  log: CommitLog,
-): ChangeDetail | undefined {
-  if (!isChangeId(id)) return undefined;
+): ChangeHead | undefined {
   const definition = env.installation.modes;
-  const disk = readChangesOnDisk(root, definition);
-  if (disk._tag === "err") return undefined;
-  const entry = disk.value.changes.find((change) => change.id === id);
+  const entry = changeOnDisk(root, definition, id);
   if (entry === undefined) return undefined;
-  const status = runStatus({ ...env, cwd: root }, { view: "resume", change: id });
-  const view = status.changes?.view === "resume" ? status.changes.change : undefined;
   const { form, problem: formProblem } = formOf(entry);
-  const reading = view?.reading ?? (form === undefined ? "unparsed" : "history");
+  const { reading, step } = standingOf(root, env, entry, form);
   // A record can parse for its form and still fail against the modes; status reads it unparsed, and the page says why.
   const problem =
     formProblem ??
     (reading === "unparsed" && entry.record._tag === "err" ? issuesText(entry.record.error) : null);
-  const card = cardOf(form, entry, view);
-  const plan = disk.value.plans.find((candidate) => candidate.name === form?.belongs?.plan);
-  const hasTickets = plan?.contents._tag === "ok" && plan.contents.value.tickets !== undefined;
-  const part =
-    form?.belongs?.ticket !== undefined
-      ? "ticket"
-      : form?.belongs !== undefined && hasTickets
-        ? "plan"
-        : "whole";
+  const waiting = waitingOf(root, form, step, id);
+  const state = stateOf(form, entry.text, waiting);
+  const card = cardOf(form, entry, step, state);
+  const plan = form?.belongs?.plan;
+  const part: RecordPart =
+    form === undefined
+      ? "whole"
+      : recordPart(form, plan !== undefined && planHasTickets(root, plan, definition));
   const folder = entry.folder?._tag === "ok" ? entry.folder.value : undefined;
-  const base = `${LEDGER}/${id}`;
-  const briefs = (folder?.briefs ?? []).map((brief): BriefFile => {
-    const known = view?.briefs.find((written) => written.file === brief.file);
+  const names = folder === undefined ? [] : [...folder.reports];
+  const resolve = changeResolver(id, names, LEDGER);
+  const briefs = (folder?.briefs ?? []).map((brief): BriefEntry => {
+    const read = brief.text === undefined ? undefined : readBrief(id, brief.file, brief.text);
+    const written = read?.kind === "written" ? read : undefined;
     return {
       file: brief.file,
-      ...folderText(root, `${base}/${brief.file}`),
-      step: known?.step ?? null,
-      round: known?.round ?? null,
-      written: known !== undefined,
+      problem: null,
+      step: written?.step ?? null,
+      round: written?.round ?? null,
+      written: written !== undefined,
     };
   });
-  return {
+  const sections = form === undefined ? [] : sectionsOf(definition, form, card.step, part);
+  const held = new Set([
+    ...(folder?.reports ?? []),
+    ...(folder?.briefs ?? []).map((brief) => brief.file),
+  ]);
+  const detail: ChangeDetail = {
     id,
     path: `${LEDGER}/${id}.md`,
     reading,
     problem,
-    text: entry.text ?? null,
+    // The whole text only where the record does not parse and the page has no section to show (J-155 S2).
+    text: form === undefined ? (entry.text ?? null) : null,
     ...openedOf(id, today),
     card,
-    sections: form === undefined ? [] : sectionsOf(definition, form, card.step, part),
+    summary: summaryOf(form, card.why, resolve),
+    sections: sections.map(summaryOfSection),
     reports: (folder?.reports ?? [])
       .filter((file) => !isBriefFile(file))
-      .map((file) => ({ file, ...folderText(root, `${base}/${file}`) })),
+      .map((file) => ({ file, problem: null })),
     briefs,
-    checks: checksOf(root, entry, view, card.state, log),
+    folder: names,
+  };
+  return {
+    detail,
+    state,
+    waitingOn: waiting,
+    strip: stripOf(sections),
+    section: (heading) => {
+      const found = sections.find((each) => each.heading === heading);
+      if (found === undefined) return undefined;
+      return found.state === "written" || (found.state === "now" && found.text.trim() !== "")
+        ? { ...found, html: renderMarkdown(found.text, resolve) }
+        : found;
+    },
+    file: (name) => (held.has(name) ? folderFile(root, id, names, name) : undefined),
+  };
+}
+
+/** The status's resume view of each change, run once for the state a build reads, by change (J-165 S1). */
+const resumed = new OncePerState<Map<string, ReturnType<typeof runStatus>>>();
+
+/**
+ * `greenline status --change` for one change, run once for the state a
+ * build reads, so its checks, its commits, its changed files and its
+ * lines share one run (J-165 S1).
+ * @param root the repository root
+ * @param env the CLI environment
+ * @param id the change's id
+ * @returns the status's outcome
+ */
+function resumeStatus(root: string, env: CliEnvironment, id: string): ReturnType<typeof runStatus> {
+  const kept = resumed.answer(root, () => new Map());
+  const known = kept.get(id);
+  if (known !== undefined) return known;
+  const outcome = runStatus({ ...env, cwd: root }, { view: "resume", change: id });
+  kept.set(id, outcome);
+  return outcome;
+}
+
+/** The change's view as the status derivations read it; undefined where they did not read it. */
+function resumeView(root: string, env: CliEnvironment, id: string): ChangeView | undefined {
+  const status = resumeStatus(root, env, id).changes;
+  return status?.view === "resume" ? status.change : undefined;
+}
+
+/**
+ * A change's commits by their ids, as the status derivations list them, or
+ * why they cannot be listed (J-165 S1).
+ * @param root the repository root
+ * @param env the CLI environment
+ * @param id the change's id
+ * @returns the commits, or why there are none to read
+ */
+export function changeCommits(
+  root: string,
+  env: CliEnvironment,
+  id: string,
+): readonly string[] | { readonly unknown: string } {
+  const commits = resumeView(root, env, id)?.commits;
+  if (commits === undefined) return { unknown: "the status derivations did not read the change" };
+  return commits.kind === "known"
+    ? commits.commits.map((commit) => commit.hash)
+    : { unknown: commits.why };
+}
+
+/**
+ * A change's commits with their subjects, dates and trailers, in the order
+ * the status derivations list them, or why they cannot be listed (J-165 S1).
+ * @param root the repository root
+ * @param env the CLI environment
+ * @param id the change's id
+ * @param log the subject and date of the change's commits
+ * @returns the commits and why none can be listed
+ */
+export function changeCommitViews(
+  root: string,
+  env: CliEnvironment,
+  id: string,
+  log: CommitLog,
+): Pick<CommitsDocument, "commits" | "unknown"> {
+  const commits = resumeView(root, env, id)?.commits;
+  if (commits === undefined)
+    return { commits: [], unknown: "the status derivations did not read the change" };
+  if (commits.kind !== "known") return { commits: [], unknown: commits.why };
+  const logged = log(commits.commits.map((commit) => commit.hash));
+  return {
+    commits: commits.commits.map((commit) => {
+      const found = logged.get(commit.hash);
+      return {
+        hash: commit.hash,
+        subject: found?.subject ?? null,
+        date: found?.date ?? null,
+        shared: commit.shared,
+        trailers: found?.trailers ?? [],
+      };
+    }),
+    unknown: null,
+  };
+}
+
+/**
+ * A change's checks against its commits with what the status says of it
+ * (J-165 S1): the runs its folder holds placed on the code they ran on, the
+ * findings, the commits of code since its last check and its consultations.
+ * Undefined when no record of that id is on disk.
+ * @param root the repository root
+ * @param env the CLI environment
+ * @param id the change's id
+ * @param log the subject and date of the change's commits
+ * @returns the part's fields, or undefined
+ */
+export function changeChecks(
+  root: string,
+  env: CliEnvironment,
+  id: string,
+  log: CommitLog,
+): Pick<CheckFactsDocument, "checks" | "notes" | "sinceCheck" | "consultations"> | undefined {
+  const entry = changeOnDisk(root, env.installation.modes, id);
+  if (entry === undefined) return undefined;
+  const status = resumeStatus(root, env, id);
+  const view = resumeView(root, env, id);
+  const { form } = formOf(entry);
+  return {
+    checks: checksOf(root, entry, view, form?.position.state ?? null, log),
     notes: status.diagnostics.map((note) => ({
       code: note.code,
       severity: note.severity,
@@ -624,6 +1029,39 @@ export function changeDetail(
       binding: bindingWords(consultation.binding),
       calls: consultation.calls,
     })),
-    folder: folder === undefined ? [] : [...folder.reports],
   };
+}
+
+/** A section as the page folds it: no text, a skipped step's one line, whether it holds words. */
+function summaryOfSection(section: SectionView): StepSummary {
+  return {
+    heading: section.heading,
+    kind: section.kind,
+    state: section.state,
+    depth: section.depth,
+    rounds: section.rounds,
+    current: section.current,
+    heldBy: section.heldBy,
+    line: section.state === "skipped" ? section.text.trim() : null,
+    written: section.text.trim() !== "",
+  };
+}
+
+/**
+ * What the change page opens on (J-168 S1): the record's outcome line, the
+ * one sentence of what landed the close writes, else the why line; never
+ * the close's prose.
+ * @param form the record's form
+ * @param why the record's why line
+ * @param resolve how the summary's links resolve to a page
+ * @returns the summary, with its words rendered (J-165 S1), or null where the record holds neither
+ */
+function summaryOf(
+  form: RecordForm | undefined,
+  why: string | null,
+  resolve: LinkResolver,
+): ChangeSummary | null {
+  if (form?.outcome !== undefined)
+    return { text: form.outcome, html: renderMarkdown(form.outcome, resolve), from: "outcome" };
+  return why === null ? null : { text: why, html: renderMarkdown(why, resolve), from: "why" };
 }

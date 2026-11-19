@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Find the mistakes agents keep repeating in this repository and make each one impossible: architecture first, then types, then a lint whose error names the fix, then a test, and written rules last, each check proved on a real past mistake. Use when the owner corrects an agent for a mistake made before, or asks to stop a repeated one."
+      "value": "Find the mistakes agents keep repeating in this repository and make each one impossible: architecture first, then types, then a lint whose error names the fix, then a test, and written rules last, each check proved on a real past mistake. Use when the owner corrects an agent for a mistake made before (\"the same mistake\", \"you keep doing that\"), or asks to stop a repeated one."
     }
   ],
   "sources": ["pstack"],
@@ -29,6 +29,32 @@
           "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the finding of classes that edits no file, and the fixes run as one change on the line, a commit per class.",
           "gist": "Opens correct: finding mistake classes edits nothing; fixes run as one change",
           "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): correct enters as a trial start, correct as spine with principle-encode-lessons-in-structure grafted, and the contradictions stand as recommended: a test is deleted only through sweep-tests and its mutation proof (contradiction 23), and an instruction that can be encoded is encoded and deleted while the rule table lives in the decision home, since greenline's block lives in the instructions file (30); The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, and every commit of a change carries its trailer; R16 of 2026-10-07, a start chosen from the situation a request begins in"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first class is named, read [method.md](method.md): finding the classes, the levels a fix takes, the proof and the rule table.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the owner's repeated corrections; recent commits, reverts, review comments, the change records and the agent instructions file\nProduces: the mistake classes with their evidence, in the reply; through the change, each class fixed at the highest level that works, one commit each with its check proved on a real past mistake, and the rule table in the decision home\nNext: frame, under the mode the owner approves",
+          "kind": "pointer",
+          "reason": "A start's handoff: the classes in the reply and the fixes through the change, and the step its hand reaches, frame under the approved mode.",
+          "gist": "Hands over the mistake classes and their fixes; next is frame"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Correct: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "taken",
@@ -67,7 +93,7 @@
         },
         {
           "passage": "written",
-          "text": "Fix any test that would still pass if every function it calls returned nothing; a test that should go is deleted only through sweep-tests and its mutation proof.",
+          "text": "Fix any test that still passes when the behavior it checks breaks, or that fails when only the internals change; a test that should go is deleted only through sweep-tests and its mutation proof.",
           "kind": "method",
           "reason": "Deleting a weak test goes through sweep-tests and its mutation proof, the roster's side of contradiction 23.",
           "gist": "A weak test is deleted only through sweep-tests and its mutation proof",
@@ -83,33 +109,20 @@
           "join": "\n"
         },
         {
+          "passage": "written",
+          "text": "**Why:** Textual instructions are easy to miss. They require the reader to notice, remember, and comply. Structural mechanisms (lint rules, metadata flags, runtime checks, automation scripts) enforce the rule without cooperation.\n\nWhen you catch yourself writing the same instruction a second time:\n1. Ask: can this be a lint rule, a metadata flag, a runtime check, or a script?\n2. If yes, encode it. Delete the instruction\n3. If no (requires judgment), make the instruction more prominent and add an example of the failure mode\n\n**Pick the strongest mechanism.** When more than one mechanism would work, choose the strongest the situation allows (an unrepresentable state that cannot compile, then a lint or banned API that fails CI, then a canonical helper, then a runtime check), because agents copy whatever the surrounding code already does and a weaker guard becomes the next template.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
+        },
+        {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-encode-lessons-in-structure/SKILL.md",
-          "segments": [
-            "72bd691e76e4",
-            "2cdd3225efc1",
-            "24efcc81aaa1",
-            "0150a83bb9b0",
-            "859d03ceb39e",
-            "e291a4efb457",
-            "2d0fbf56d5b1",
-            "7a9209da0e0c",
-            "12ca72c7386f",
-            "22cae3f0567d",
-            "7c61bcf69de0",
-            "06c4ec39d0ed"
-          ],
-          "edits": [
-            {
-              "segment": "0150a83bb9b0",
-              "find": "**Pattern:**\nWhen",
-              "replace": "When",
-              "kind": "scope",
-              "reason": "The principle's pattern label gives way to the sentence it introduced, inside correct's fix step.",
-              "gist": "The Pattern label gives way to the sentence it introduced"
-            }
-          ]
+          "segments": ["7c61bcf69de0", "06c4ec39d0ed"],
+          "join": "\n\n"
         },
         {
           "passage": "taken",
@@ -159,13 +172,6 @@
             }
           ],
           "join": " "
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the owner's repeated corrections; recent commits, reverts, review comments, the change records and the agent instructions file\nProduces: the mistake classes with their evidence, in the reply; through the change, each class fixed at the highest level that works, one commit each with its check proved on a real past mistake, and the rule table in the decision home\nNext: frame, under the mode the owner approves",
-          "kind": "pointer",
-          "reason": "A start's handoff: the classes in the reply and the fixes through the change, and the step its hand reaches, frame under the approved mode.",
-          "gist": "Hands over the mistake classes and their fixes; next is frame"
         }
       ]
     }
@@ -176,13 +182,12 @@
       "source": "pstack",
       "file": "correct/SKILL.md",
       "segment": "e3c495fd5468",
-      "kind": "method",
-      "reason": "Deleting a test outside sweep-tests' mutation proof loses to the roster (contradiction 23).",
-      "gist": "Deleting a test outside sweep-tests' mutation proof is dropped",
-      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): correct enters as a trial start, correct as spine with principle-encode-lessons-in-structure grafted, and the contradictions stand as recommended: a test is deleted only through sweep-tests and its mutation proof (contradiction 23), and an instruction that can be encoded is encoded and deleted while the rule table lives in the decision home, since greenline's block lives in the instructions file (30)",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 2
       }
     },
     {
@@ -198,136 +203,363 @@
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "dd3a1c488725",
       "kind": "scope",
-      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
-      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "703a33a10e02",
       "kind": "scope",
-      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
-      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "e0cde67e8844",
       "kind": "scope",
-      "reason": "The principle's title and opening restate correct's aim, encoding a repeated mistake so the next agent cannot make it.",
-      "gist": "The principle's opening repeats correct's aim of encoding repeated mistakes"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "93f8d81f5c2d",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "25bc9c1f28ff",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "e02f1445ab73",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "88934be64d3d",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "446a19fe9b0c",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "6febdfe3c529",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "b63eb0aebeba",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "49871ff14989",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "0bea5eaae980",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "37f9ab6de18f",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "c949eb38411a",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "32778924f4d2",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "efcdec06ed97",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-encode-lessons-in-structure/SKILL.md",
       "segment": "60b7c2eed9aa",
-      "kind": "pointer",
-      "reason": "The feedback loop and its anti-patterns route lessons through pstack's own notes, skills and principles, which the roster does not carry; correct's rule table is the route here.",
-      "gist": "The feedback loop routes through pstack's notes; correct's rule table replaces it"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "72bd691e76e4",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "2cdd3225efc1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "24efcc81aaa1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "0150a83bb9b0",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "859d03ceb39e",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "e291a4efb457",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "2d0fbf56d5b1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "7a9209da0e0c",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "12ca72c7386f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "22cae3f0567d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "correct/SKILL.md",
+      "segment": "627442a607d1",
+      "kind": "method",
+      "reason": "Deleting a test outside sweep-tests' mutation proof loses to the roster (contradiction 23).",
+      "gist": "Deleting a test outside sweep-tests' mutation proof is dropped",
+      "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): correct enters as a trial start, correct as spine with principle-encode-lessons-in-structure grafted, and the contradictions stand as recommended: a test is deleted only through sweep-tests and its mutation proof (contradiction 23), and an instruction that can be encoded is encoded and deleted while the rule table lives in the decision home, since greenline's block lives in the instructions file (30)",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "segment": "32d9de7102d2",
+      "kind": "scope",
+      "reason": "The rewritten sentence restates the rule greenline keeps beside it as a written passage, so it is not taken twice.",
+      "gist": "Restates the rule kept beside it, so it is not taken twice"
+    }
+  ],
+  "notStub": [
+    {
+      "source": "pstack",
+      "file": "principle-encode-lessons-in-structure/SKILL.md",
+      "ruling": "Not a stub: rechecked at eb4db2b5, where upstream's edit pass cut the body to 42 words; greenline keeps the cut rules as written passages and takes the sentences that remain, so the source stays measured; the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': not a stub, keep the text"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Finding the mistake classes edits no file; fixing them is a change, proposed with its mode, and nothing is edited before the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "The change's record opens with a ## start section naming correct and the classes it found.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks start sections. No observed failure."
+    },
+    {
+      "promise": "Each class is fixed as one commit of that change.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "change-trailer and one-trailer keep commits to one change but do not count commits per class. No observed failure."
+    },
+    {
+      "promise": "A lint, CI check or script the repository lacks is proposed in the reply and added only on the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Inside an accepted change no rule reads this second yes. No observed failure."
+    },
+    {
+      "promise": "Each new check is proved failing on a real past mistake and runs as the same command locally and in CI.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing reads the proof. No observed failure."
+    },
+    {
+      "promise": "An exception goes on the offending line with a reason, an expiry date and a person's approval.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks exceptions. No observed failure."
+    },
+    {
+      "promise": "A test that should go is deleted only through sweep-tests and its mutation proof.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No rule reads a test deletion. No observed failure."
+    },
+    {
+      "promise": "A rule table in the decision home pairs each rule with what enforces it, and a correction from the owner within the change is fixed and added as a rule.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks the table. No observed failure."
+    },
+    {
+      "promise": "The reply gives each class with its evidence, the level picked and why a higher level did not work.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Reply content with no observed failure."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "same mistake",
+        "keeps making",
+        "keeps doing",
+        "told you before",
+        "stop doing that",
+        "repeated mistake"
+      ],
+      "weight": 3,
+      "read": "whole"
     }
   ]
 }

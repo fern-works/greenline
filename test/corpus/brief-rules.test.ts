@@ -1,13 +1,13 @@
 /** The reviewer's brief kept from the builder (J-89 S1): the sentences the ledger guide, the work guide and the review, verify and close skills give an agent, read from the corpus as it ships. */
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { corpusPage } from "./skill-text.ts";
 
 const repository = join(import.meta.dirname, "..", "..");
 
 /** A corpus page's text with its line breaks and runs of spaces read as one space, as an agent reads the prose. */
 function page(path: string): string {
-  return readFileSync(join(repository, "corpus", path), "utf8").replace(/\s+/g, " ");
+  return corpusPage(repository, path);
 }
 
 const ledger = page("runtime/ledger.md");
@@ -21,9 +21,10 @@ const close = page("skills/close/SKILL.md");
 const references = (step: string): string => page(`skills/${step}/references/greenline.md`);
 
 describe("J-89 S1 the builder never handles a brief file", () => {
-  it("the ledger guide has greenline brief write the reviewer's and the verifier's brief into the change's folder, and the builder never open one", () => {
+  it("the ledger guide has greenline brief write the brief of every step that starts a fresh agent into the change's folder, and the builder never open one", () => {
+    // J-192 S1: anticipate's brief and design's are the command's too, each carrying the nonce its report cites.
     expect(ledger).toContain(
-      "A reviewer's and a verifier's brief is a file the builder never writes: `greenline brief --change <id> --step <step> --round <n>`",
+      "The brief of every step that starts a fresh agent, design's, anticipate's, review's and verify's, is a file the builder never writes: `greenline brief --change <id> --step <step> --round <n>`",
     );
     expect(ledger).toContain("`.greenline/ledger/<id>/brief-<step>-<n>.md`");
     expect(ledger).toContain("Start the agent with that path and nothing else.");
@@ -31,9 +32,8 @@ describe("J-89 S1 the builder never handles a brief file", () => {
       "The builder never opens, copies, diffs or derives a brief file, one the command wrote included: a read of one is a finding for the next review",
     );
     expect(ledger).toContain("(GL0408)");
-    expect(ledger).toContain(
-      "Anticipate's brief is the builder's file, `.greenline/tmp/<id>/brief-anticipate-<n>.md`",
-    );
+    expect(ledger).toContain("anticipate's `--artifact` and `--contract`");
+    expect(ledger).not.toContain("Anticipate's brief is the builder's file");
     expect(ledger).not.toContain("`.greenline/tmp/<id>/brief-<step>-<n>.md`");
     expect(work).not.toContain("`.greenline/tmp/<id>/brief-<step>-<n>.md`");
   });

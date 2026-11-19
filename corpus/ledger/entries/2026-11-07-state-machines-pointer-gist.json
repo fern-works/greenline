@@ -1,0 +1,27 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-state-machines-pointer-gist",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-build-four-lines-edit-bytes",
+    "sha256": "fa119c9e3a4f9cbb63fe5259ca3cdfc8b45fbceb4ce50635b865fa301c183e43"
+  },
+  "subject": "skill:state-machines",
+  "recipe": "12d7caae18f0b35c1e37a2cc8e107ee85a658c5d956fccf665d4ade7f10eb3b2",
+  "result": "891ee39a4fe9d9240c3172bb05f8f55ffcaeacfa36e0a89d59a7cfdab8288597",
+  "pages": [],
+  "gist": "The pointer's gist names the page read first",
+  "reason": "The pointer passage's gist names the method page as the page read first, since a gist does not repeat its kind word.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 702
+  }
+}

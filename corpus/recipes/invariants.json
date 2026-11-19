@@ -1,0 +1,175 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "invariants",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "invariants"
+    },
+    {
+      "field": "description",
+      "value": "List every invariant the app relies on but does not enforce: each with where it is relied on and the door that would hold it. Use for \"find every invariant my app relies on but doesn't explicitly enforce\", for what a part of the code relies on or assumes, or beside a floor on a public contract or a security boundary."
+    }
+  ],
+  "sources": ["phrasebook"],
+  "triggers": [
+    {
+      "words": [
+        "find every invariant my app relies on but doesn't explicitly enforce",
+        "invariant",
+        "invariants",
+        "relies on",
+        "rely on",
+        "nothing enforces",
+        "does not enforce",
+        "doesn't enforce"
+      ],
+      "weight": 3,
+      "read": "whole"
+    },
+    {
+      "files": ["contract", "secret"],
+      "steps": ["frame"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
+    }
+  ],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Invariants",
+          "kind": "name",
+          "reason": "The skill's title, its name.",
+          "gist": "The skill's title"
+        },
+        {
+          "passage": "written",
+          "text": "invariants is the start for these words of the owner's, or a request that means them:",
+          "kind": "method",
+          "reason": "The start's opening: what an invariant is, the three-part list, the marked entries as floors, and that it changes no code.",
+          "gist": "Opens the start: the three-part list and its marked floors",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact"
+        },
+        {
+          "passage": "written",
+          "text": "find every invariant my app relies on but doesn't explicitly enforce",
+          "kind": "method",
+          "reason": "The owner's phrase, lifted as written: the words that open the start.",
+          "gist": "The owner's phrase, lifted as written",
+          "ruling": "the operator's words of 2026-11-07: we should lift phrases as they are with minimal changes",
+          "credits": ["phrasebook"],
+          "phrase": "invariants"
+        },
+        {
+          "passage": "written",
+          "text": "An invariant is a fact the code needs to stay true and assumes rather than checks: an amount never negative, a record written once, a caller always signed in. The start lists each one in three parts, the invariant, where the code relies on it and the door that would hold it, and marks each entry that sits on a public contract or a security boundary, since each of those is a floor the proposal names. It changes no code; each door is a change of its own.\n\nGreenline's paths for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the list is written.\n\nBefore the first file is read, read [method.md](method.md): where invariants hide, the three parts, the doors and the boundary.",
+          "kind": "method",
+          "reason": "Points at the references page for where the list lands and at the method page before the first file is read.",
+          "gist": "Points at the references page and the page read first",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the request, and the code it names or the whole application\nProduces: the three-part list, its entries on a public contract or a security boundary marked, in the reply and in the change's folder\nNext: frame, whose proposal names each marked entry as a floor; each door offered as a change of its own",
+          "kind": "method",
+          "reason": "The start's handoff: what it consumes, what it produces and where the work goes next.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "What the start consumes, produces and hands on"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Invariants: the method",
+          "kind": "name",
+          "reason": "The method page's title.",
+          "gist": "The method page's title"
+        },
+        {
+          "passage": "written",
+          "text": "## Where they hide\n\n- A value the code reads without checking: an id assumed present, a list assumed not empty, an amount assumed positive.\n- A uniqueness the data needs and no constraint holds: one active subscription per account, one fee per day.\n- An order the code assumes between writes, or a group of writes assumed to land together.\n- A caller assumed allowed because the route that reaches the code checked once, somewhere else.\n- Units, time zones, currencies and precision assumed the same across modules.\n- A shape assumed of outside data: a webhook's body, a file, a setting.\n\nRead for the places where the code would go wrong in silence if the fact failed: a division, an index, a sum, a write with no condition, a branch with no else.",
+          "kind": "method",
+          "reason": "Where unenforced invariants hide in code, and what to read for.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "Where unenforced invariants hide and what to read for"
+        },
+        {
+          "passage": "written",
+          "text": "## The three parts\n\nEach entry has three parts:\n\n1. **The invariant**, one sentence that is true or false of the data or the calls.\n2. **Where the code relies on it**: each place, by file and function, since two places that rely on it differently are a finding of their own.\n3. **The door that would hold it**: the cheapest one that holds it where it can first fail, a type that cannot hold the bad value, an assertion at the boundary, a check that refuses, a schema or a constraint in the store, or a test that fails when it breaks.\n\nThen mark its boundary: `public contract` where callers outside the module rely on it, such as an interface, a file format, a command's output or a published package; `security` where it guards who may read or write; `none` otherwise.",
+          "kind": "method",
+          "reason": "The three parts of an entry and the boundary each entry is marked with.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "An entry's three parts and its boundary"
+        },
+        {
+          "passage": "written",
+          "text": "## The list\n\nThe list is one table, the invariant, where it is relied on, the door and the boundary, its entries on a public contract or a security boundary first. Each marked entry is a floor, named in the proposal by its entry. Offer each door as a change of its own: a test that fails first, then the door that turns it green.",
+          "kind": "method",
+          "reason": "The list's form, its marked entries first as floors, and each door offered as its own change.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "The list's form, marked entries first, each door offered apart"
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "part": "references",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# invariants: the practice's mechanics\n\nThis page holds where the list lands in the workspace and the line that reads it, which `SKILL.md` names by their nouns. Read it with `SKILL.md` when the list is written.",
+          "kind": "scope",
+          "reason": "Opens invariants's references page and says when to read it.",
+          "gist": "Opens invariants's references page and says when to read it"
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe list is `.greenline/ledger/<id>/invariants.md`, under the id the change's proposal will name, written before the proposal so the proposal can name its floors; the record cites it as `[invariants](<id>/invariants.md)` and its `## start` section names `invariants`. Asked for in a question with no change to come, the list stands in the reply alone. The file holds one table with these four columns, in this order:\n\n```markdown\n| Invariant | Relied on at | Door | Boundary |\n| --- | --- | --- | --- |\n| An overdue fee is charged once per day | `src/fees.ts` chargeOverdue | a unique key on the account and the day | public contract |\n```\n\nThe `Boundary` cell is `public contract`, `security` or `none`.",
+          "kind": "home",
+          "reason": "Where the list lands, the change's folder under the proposal's id, and the table's four columns.",
+          "gist": "Where the list lands and its four columns"
+        },
+        {
+          "passage": "written",
+          "text": "## The floor it raises\n\n`greenline status` and the line printed at each turn's start read the list the session wrote, and the open change's, and name each entry marked `public contract` or `security` as a floor seen on the `situation:` line, `public-contract (an invariant: <the entry>)` or `security (an invariant: <the entry>)`. The proposal names each such floor, and the record's `floors` line, owed from the open, holds it, as for any floor found; while the line leaves one out, the `situation:` line names it with the cure, and nothing is refused for it.",
+          "kind": "home",
+          "reason": "The floor a marked entry raises on the situation line, which the proposal and the record's floors line name. J-226 S1: the situation line names an invariant's floor the record's line leaves out.",
+          "gist": "The floor a marked entry raises on the situation line"
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "Each entry names the invariant, where the code relies on it and the door that would hold it.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The invariants",
+      "cost": "free"
+    },
+    {
+      "promise": "An entry marked public contract or security is a floor the situation line names, and the proposal names it.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "situation:",
+      "cost": "free",
+      "oracle": "The invariants"
+    },
+    {
+      "promise": "Each door is offered as a change of its own and waits for the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    }
+  ]
+}

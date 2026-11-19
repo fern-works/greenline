@@ -1,0 +1,57 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-anatomy-figure-offered-never-remade-unasked",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-explain-refreshes-at-close-and-seeds-the-documents",
+    "sha256": "997c46fd870a71c9f5d0c7666c1ab8b518b07e1559a334372c12e126950b795d"
+  },
+  "subject": "skill:anatomy",
+  "recipe": "13690c405305ee96b48f66e038637fdc41b12ff8b2ed1b4be4f2d883ee77a2d3",
+  "result": "bc1d2a62a0ac745d6a7c649ff0092090ff5b232f0eb950f4282a27b16995bcae",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "The figure offered, never remade unasked",
+  "reason": "anatomy's figure is offered and never made or remade unasked, a fresh agent builds it on the yes, and show-me's table of kinds says when it fits (J-147 S4).",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; the kit and the scripts taken, the tests, evals/ and agents/openai.yaml left out; the worked examples left out of the snapshot, since the refresh holds a directory by its last name and the corpus and the public export carry every snapshot byte; publish.mjs and session.mjs left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; the pointer-before-use reading of J-140 S4 routed to it: a skill's reference page is pointed at where the method that needs it starts"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "anatomy",
+        "segments": 2845,
+        "taken": 2811,
+        "exact": 2809,
+        "retention": 0.9992885094272501,
+        "coverage": 0.9880492091388401,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 619
+  }
+}

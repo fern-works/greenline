@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-regards-scripts",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-web-quality-best-practices",
+    "sha256": "30234f78159d1373fafdb30e14223a76373c97ca15ce52d9044650793fa6dfa1"
+  },
+  "source": {
+    "repository": "https://github.com/filipwojda/regards-skill",
+    "commit": "61b565be93ef436330967e4d06fcf08f55090210",
+    "path": "skills/regards-art-direction/scripts"
+  },
+  "pin": "regards-skill",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "An inspector Taste's later version supersedes, declined",
+  "reason": "Its inspector is an earlier fork of Taste's, whose staged scripts are the superset.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': regards' scripts are declined as superseded by Taste's"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': regards' scripts are declined as superseded by Taste's"
+    }
+  ]
+}

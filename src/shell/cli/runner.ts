@@ -34,7 +34,11 @@ function envelopeOf(command: string, outcome: CommandOutcome): Envelope {
     outcome.situation === undefined ? connected : { ...connected, situation: outcome.situation };
   const tidied: Envelope =
     outcome.tidy === undefined ? situated : { ...situated, tidy: outcome.tidy };
-  return outcome.hooks === undefined ? tidied : { ...tidied, hooks: outcome.hooks };
+  const hooked: Envelope =
+    outcome.hooks === undefined ? tidied : { ...tidied, hooks: outcome.hooks };
+  const discussed: Envelope =
+    outcome.discussions === undefined ? hooked : { ...hooked, discussions: outcome.discussions };
+  return outcome.facts === undefined ? discussed : { ...discussed, facts: outcome.facts };
 }
 
 /** Render one outcome as the request asked and return its exit code. */
@@ -101,7 +105,12 @@ export function runCli(
         return EXIT_FAILURE;
       }
       if (invocation.request.command === "inspect") {
-        return serveInspector(invocation.request.port, writer, env);
+        return serveInspector(
+          invocation.request.port,
+          writer,
+          env,
+          invocation.request.timing === true,
+        );
       }
       const request: WorkspaceRequest = {
         ...invocation.request,

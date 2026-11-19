@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
-// @ts-expect-error plain-mjs gate helper of the corpus-optin-assets row
-import { ASSET_TREE_MIN, assetTreeIssues } from "../../scripts/lib/asset-tree.mjs";
+import {
+  ASSET_TREE_DEFAULTS,
+  ASSET_TREE_MIN,
+  assetTreeIssues,
+  // @ts-expect-error plain-mjs gate helper of the corpus-optin-assets row
+} from "../../scripts/lib/asset-tree.mjs";
 
 const directory =
   (assets: readonly string[], onlySkill = false) =>
@@ -27,6 +31,16 @@ describe("S17 the asset-tree rule of the corpus-optin-assets row", () => {
     expect(assetTreeIssues([{ name: "map", extra: true }], directory(["a", "b", "c"]))).toEqual([]);
     expect(assetTreeIssues([{ name: "map", extra: true }], directory([], true))).toEqual([
       "map is extra but carries no file beside its SKILL.md",
+    ]);
+  });
+
+  it("J-110 S4 lets the three visual defaults ship their trees, and still refuses any other default", () => {
+    const tree = directory(["a.js", "b.js", "c.css"]);
+    for (const name of ["diagram-design", "architecture-map", "anatomy"])
+      expect(assetTreeIssues([{ name }], tree), name).toEqual([]);
+    expect(ASSET_TREE_DEFAULTS).toEqual(["diagram-design", "architecture-map", "anatomy"]);
+    expect(assetTreeIssues([{ name: "show-me" }], tree)).toEqual([
+      "show-me ships an asset tree (3 files) without extra",
     ]);
   });
 });

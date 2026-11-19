@@ -1,4 +1,6 @@
 import { posix } from "node:path";
+import { MANIFEST_SUFFIX, placeOfManifest, visualId, VISUALS_HOME } from "../../core/visuals.ts";
+import { pathOf } from "./app/addresses.ts";
 import type { LinkResolver, LinkTarget } from "./markdown.ts";
 
 /*
@@ -14,34 +16,58 @@ const CHANGE_RECORD = new RegExp(`^\\.greenline/ledger/(${CHANGE_ID})\\.md$`);
 const CHANGE_FILE = new RegExp(`^\\.greenline/ledger/(${CHANGE_ID})/(.+)$`);
 const PLAN = /^\.greenline\/plans\/([^/]+)\/?(?:([^/]+\.md))?$/;
 const ADR = /^docs\/adr\/?(?:([^/]+\.md))?$/;
+/** A visual's file, or its manifest, in the visual home: its path under the home without the extension. */
+const VISUAL_FILE = /^\.greenline\/visuals\/(.+?)(?:\.visual\.json|\.svg|\.html|\.md)$/;
+/** A subsystem's page in the atlas. */
+const SUBSYSTEM_PAGE = /^\.greenline\/visuals\/subsystems\/([a-z0-9]+(?:-[a-z0-9]+)*)\.md$/;
 /** A heading's anchor as the document renderer writes it. */
 const ANCHOR = /^[a-z0-9-]+$/;
 
 /** The page addresses of the knowledge homes, by their repository path. */
 const HOMES = new Map([
-  [".greenline/WORK.md", "#knowledge/work"],
-  [".greenline/DECISIONS.md", "#knowledge/decisions"],
-  ["GLOSSARY.md", "#knowledge/glossary"],
+  [".greenline/WORK.md", "work"],
+  [".greenline/DECISIONS.md", "decisions"],
+  ["GLOSSARY.md", "glossary"],
 ]);
 
 /**
  * The page address of a change, or of one file of its folder.
  * @param id the change's id
  * @param file a file of its folder, relative to it
- * @returns the address, hash mark included
+ * @returns the address, a path of the app
  */
-export function changeHref(id: string, file?: string): string {
-  return `#change/${encodeURIComponent(id)}${file === undefined ? "" : `/${encodeURIComponent(file)}`}`;
+function changeHref(id: string, file?: string): string {
+  return file === undefined
+    ? pathOf({ page: "change", id, part: null })
+    : pathOf({ page: "change", id, part: null, file });
+}
+
+/**
+ * The page address of a visual, each segment of its id escaped.
+ * @param id the visual's id, its path under the home without the extension
+ * @returns the address, a path of the app
+ */
+function visualHref(id: string): string {
+  return pathOf({ page: "picture", id });
+}
+
+/** The page address a path in the visual home opens: a subsystem's page, or a visual the home's layout holds. */
+function visualAddress(path: string): string | undefined {
+  const page = SUBSYSTEM_PAGE.exec(path);
+  if (page?.[1] !== undefined) return pathOf({ page: "subsystem", name: page[1] });
+  const stem = VISUAL_FILE.exec(path)?.[1];
+  const place = stem === undefined ? undefined : placeOfManifest(`${stem}${MANIFEST_SUFFIX}`);
+  return place === undefined ? undefined : visualHref(visualId(place));
 }
 
 /**
  * The page address of a plan, or of one of its documents.
  * @param name the plan directory's name
  * @param file one of its documents
- * @returns the address, hash mark included
+ * @returns the address, a path of the app
  */
 export function planHref(name: string, file?: string): string {
-  return `#plan/${encodeURIComponent(name)}${file === undefined ? "" : `/${encodeURIComponent(file)}`}`;
+  return pathOf({ page: "plan", name, part: file ?? null });
 }
 
 /**
@@ -51,8 +77,8 @@ export function planHref(name: string, file?: string): string {
  * @param fragment the link's fragment, kept only where it names a heading of a whole document
  * @returns the address, or undefined
  */
-export function pageAddress(path: string, fragment = ""): string | undefined {
-  const anchor = ANCHOR.test(fragment) ? `/${fragment}` : "";
+function pageAddress(path: string, fragment = ""): string | undefined {
+  const anchor = ANCHOR.test(fragment) ? fragment : undefined;
   const record = CHANGE_RECORD.exec(path);
   if (record?.[1] !== undefined) return changeHref(record[1]);
   const inFolder = CHANGE_FILE.exec(path);
@@ -64,10 +90,12 @@ export function pageAddress(path: string, fragment = ""): string | undefined {
       ? planHref(plan[1])
       : planHref(plan[1], plan[2]);
   const adr = ADR.exec(path);
-  if (adr !== null)
-    return adr[1] === undefined ? "#knowledge/adr" : `#knowledge/adr/${encodeURIComponent(adr[1])}`;
+  if (adr !== null) return pathOf({ page: "home", home: "adr", part: adr[1] ?? null });
+  if (path.startsWith(`${VISUALS_HOME}/`)) return visualAddress(path);
   const home = HOMES.get(path);
-  return home === undefined ? undefined : home + anchor;
+  if (home === undefined) return undefined;
+  // A whole document's heading is its home's part.
+  return pathOf({ page: "home", home, part: anchor ?? null });
 }
 
 /**
@@ -95,5 +123,46 @@ export function repositoryResolver(directory: string): LinkResolver {
     }
     const href = pageAddress(path, fragment);
     return href === undefined ? { kind: "text" } : { kind: "page", href };
+  };
+}
+
+const LEDGER = ".greenline/ledger";
+
+/**
+ * Where a link in a change's documents leads: a file of its folder or
+ * another change opens in the page, and so does a plan or a knowledge home
+ * the page renders; a web address opens in a new tab; anything else is
+ * shown, never followed.
+ * @param id the change's id
+ * @param folder every file of its folder, by name
+ * @param directory the repository-relative directory the document sits in
+ * @returns the resolver
+ */
+export function changeResolver(
+  id: string,
+  folder: readonly string[],
+  directory: string,
+): LinkResolver {
+  const files = new Set(folder);
+  const elsewhere = repositoryResolver(directory);
+  return (target): LinkTarget => {
+    if (/^[a-z][a-z0-9+.-]*:/i.test(target) || target.startsWith("#") || target.startsWith("/"))
+      return elsewhere(target);
+    let path: string;
+    try {
+      path = posix.normalize(
+        posix.join(directory, decodeURIComponent(target.split(/[?#]/)[0] ?? "")),
+      );
+    } catch {
+      return { kind: "text" };
+    }
+    const own = `${LEDGER}/${id}/`;
+    if (path.startsWith(own))
+      return files.has(path.slice(own.length))
+        ? { kind: "page", href: changeHref(id, path.slice(own.length)) }
+        : { kind: "text" };
+    // Another change's folder is left to its own page, which knows its files.
+    if (path.startsWith(`${LEDGER}/`) && !CHANGE_RECORD.test(path)) return { kind: "text" };
+    return elsewhere(target);
   };
 }

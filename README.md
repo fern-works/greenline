@@ -4,9 +4,9 @@ greenline gives a coding agent an engineering practice and carries work
 across sessions with one record per change. It supports Codex and Claude
 Code.
 
-Before any edit the agent proposes one of four modes, fast, medium, high or
-max, and waits for your answer; your choice is final. Each mode runs the
-same seven steps at its own depth, and every change, in every mode, leaves
+Before any edit the agent proposes one of three modes, quick, regular or
+careful, and waits for your answer; your choice is final. Each mode runs the
+same eight steps at its own depth, and every change, in every mode, leaves
 one change record under `.greenline/ledger/`. Skills supply the steps, the
 starts and the habits, and the agent works within your decisions. greenline
 works offline, with no account, no key and no service, and every part of it
@@ -45,7 +45,9 @@ package.
 
 The code and the skills in this repository are under the [MIT License](LICENSE);
 the Geist fonts the inspector embeds are under the SIL Open Font License,
-whose text is `assets/inspect-fonts/OFL.txt`.
+whose text is `assets/inspect-fonts/OFL.txt`; the inspector's client app
+bundles Preact, under the MIT License, whose text ships beside it as
+`dist/bin/inspector-preact-LICENSE.txt`.
 Every skill is defined by its recipe in this repository, which names each
 source by its pinned repository and commit and states every difference from
 it with its reason; every change to a recipe is an entry of the ledger in

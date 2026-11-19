@@ -25,7 +25,7 @@
         },
         {
           "passage": "written",
-          "text": "improve-instructions is a trial start for an owner who asks to tidy the agent instructions file, AGENTS.md or CLAUDE.md. Tidying the file is a change: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming improve-instructions, and run the line from `frame`; the rewrite is its build. The file holds greenline's managed block between `<!-- greenline:managed begin policy -->` and its end marker. Edit only outside those markers: never move, rewrite or wrap the block, and keep the owner's `## House rulings` stanza as the work guide describes it.",
+          "text": "improve-instructions is a trial start for an owner who asks to tidy the agent instructions file, AGENTS.md or CLAUDE.md. Tidying the file is a change: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming improve-instructions, and run the line from `frame`; the rewrite is its build.",
           "kind": "method",
           "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the rewrite run as a change on the line, and the managed block left as it is, outside which alone the file is the owner's (R21). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
           "gist": "Opens improve-instructions: tidy the instructions file as a change, outside the block",
@@ -33,10 +33,53 @@
         },
         {
           "passage": "written",
+          "text": "Edit only outside those markers: never move, rewrite or wrap the block, and keep the owner's `## House rulings` stanza as the work guide describes it.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the rewrite run as a change on the line, and the managed block left as it is, outside which alone the file is the owner's (R21). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens improve-instructions: tidy the instructions file as a change, outside the block",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)",
+          "join": " "
+        },
+        {
+          "passage": "written",
           "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the rewrite, read [method.md](method.md): the managed block, the core problem, the principles, the output's structure and how to apply them.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers; the repository's linters, hooks and code patterns\nProduces: through the change, the file rewritten outside the markers: the identity, the map and the boundaries bare, every command kept, each conditional rule under a heading naming its situation, the managed block untouched\nNext: frame, under the mode the owner approves",
+          "kind": "pointer",
+          "reason": "A start's handoff: the rewritten file through the change, and the step its hand reaches, frame under the approved mode.",
+          "gist": "Hands over the rewritten file through the change; next is frame"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Improve instructions: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "The file holds greenline's managed block between `<!-- greenline:managed begin policy -->` and its end marker.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the rewrite run as a change on the line, and the managed block left as it is, outside which alone the file is the owner's (R21). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens improve-instructions: tidy the instructions file as a change, outside the block",
+          "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
         },
         {
           "passage": "taken",
@@ -380,13 +423,6 @@
               "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block"
             }
           ]
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers; the repository's linters, hooks and code patterns\nProduces: through the change, the file rewritten outside the markers: the identity, the map and the boundaries bare, every command kept, each conditional rule under a heading naming its situation, the managed block untouched\nNext: frame, under the mode the owner approves",
-          "kind": "pointer",
-          "reason": "A start's handoff: the rewritten file through the change, and the step its hand reaches, frame under the approved mode.",
-          "gist": "Hands over the rewritten file through the change; next is frame"
         }
       ]
     },
@@ -422,8 +458,8 @@
       "gist": "The quoted Claude Code reminder gives way to one for any agent",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 3
       }
     },
     {
@@ -435,8 +471,8 @@
       "gist": "The quoted Claude Code reminder gives way to one for any agent",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 3
       }
     },
     {
@@ -448,8 +484,8 @@
       "gist": "The quoted Claude Code reminder gives way to one for any agent",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 3
       }
     },
     {
@@ -461,8 +497,8 @@
       "gist": "The quoted Claude Code reminder gives way to one for any agent",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 3
       }
     },
     {
@@ -474,8 +510,8 @@
       "gist": "The quoted Claude Code reminder gives way to one for any agent",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 3
       }
     },
     {
@@ -487,8 +523,8 @@
       "gist": "The important-if wrapper solution gives way to a heading per situation",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 5
+        "path": "method.md",
+        "passage": 4
       }
     },
     {
@@ -500,8 +536,8 @@
       "gist": "The important-if wrapper solution gives way to a heading per situation",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 5
+        "path": "method.md",
+        "passage": 4
       }
     },
     {
@@ -513,8 +549,8 @@
       "gist": "The important-if wrapper solution gives way to a heading per situation",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 5
+        "path": "method.md",
+        "passage": 4
       }
     },
     {
@@ -526,8 +562,8 @@
       "gist": "A heading per situation replaces the wrapper tag throughout",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 7
+        "path": "method.md",
+        "passage": 6
       }
     },
     {
@@ -539,8 +575,8 @@
       "gist": "The bad example's wrapper becomes a heading",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 9
+        "path": "method.md",
+        "passage": 8
       }
     },
     {
@@ -552,8 +588,8 @@
       "gist": "The good example's wrappers become headings",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 11
+        "path": "method.md",
+        "passage": 10
       }
     },
     {
@@ -565,8 +601,8 @@
       "gist": "The output structure's wrappers become headings, greenline's block first",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 17
+        "path": "method.md",
+        "passage": 16
       }
     },
     {
@@ -578,8 +614,8 @@
       "gist": "A heading per situation replaces the wrapper tag throughout",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 19
+        "path": "method.md",
+        "passage": 18
       }
     },
     {
@@ -591,8 +627,8 @@
       "gist": "A heading per situation replaces the wrapper tag throughout",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 21
+        "path": "method.md",
+        "passage": 20
       }
     },
     {
@@ -604,8 +640,8 @@
       "gist": "The example output's wrappers become headings, greenline's block first",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses ... greenline is supposed to work in any harness cli\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: improve-instructions tidies the agent instructions file, AGENTS.md or CLAUDE.md, outside greenline's managed markers, keying each conditional rule to its situation under a heading of its own in place of one harness's wrapper tag, and never moves or rewrites the generated block",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 23
+        "path": "method.md",
+        "passage": 22
       }
     },
     {
@@ -743,8 +779,8 @@
       "gist": "The Level 1 heading gives way to the sixth principle",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): improve-claude-md enters as a copy under the portable name improve-instructions, a trial start, with context-engineering's rules-file packing restated against the agent instructions file and grafted; the rest of context-engineering is a later slice's or garden's",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 13
+        "path": "method.md",
+        "passage": 12
       }
     },
     {
@@ -755,8 +791,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -767,8 +803,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -779,8 +815,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -791,8 +827,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -803,8 +839,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -815,8 +851,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -827,8 +863,8 @@
       "reason": "One harness's rules file and the list of other harnesses' files give way to the agent instructions file of any harness, whose boundaries the sixth principle restates (R21).",
       "gist": "Tool-specific rules files give way to any agent's instructions file",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 15
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -2172,8 +2208,8 @@
       "gist": "Creating a rules file gives way to tidying the instructions file",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): improve-claude-md enters as a copy under the portable name improve-instructions, a trial start, with context-engineering's rules-file packing restated against the agent instructions file and grafted; the rest of context-engineering is a later slice's or garden's",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 14
+        "path": "method.md",
+        "passage": 13
       }
     },
     {
@@ -2185,9 +2221,73 @@
       "gist": "Creating a rules file gives way to tidying the instructions file",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): improve-claude-md enters as a copy under the portable name improve-instructions, a trial start, with context-engineering's rules-file packing restated against the agent instructions file and grafted; the rest of context-engineering is a later slice's or garden's",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 14
+        "path": "method.md",
+        "passage": 13
       }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Tidying the instructions file is a change, proposed with its mode, and nothing is edited before the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "The change's record opens with a ## start section naming improve-instructions.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks start sections. No observed failure."
+    },
+    {
+      "promise": "Only the text outside the managed markers is edited; the block is never moved, rewritten or wrapped.",
+      "page": "SKILL.md",
+      "kind": "fact",
+      "where": "GL0111",
+      "cost": "free"
+    },
+    {
+      "promise": "The owner's ## House rulings stanza is kept.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The stanza sits outside the managed block, so no installed-file check reads it. No observed failure."
+    },
+    {
+      "promise": "Every command of the original file is kept.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing compares the old commands with the new file. No observed failure."
+    },
+    {
+      "promise": "The rewrite keeps the identity, the map and the boundaries bare at the top and puts each conditional rule under a heading naming its situation, never grouping unrelated rules under one broad condition.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Output shape in the owner's file that no reading checks. No observed failure."
+    },
+    {
+      "promise": "Linter territory and code snippets are removed, the snippets replaced with file paths, and pre-commit or pre-push hooks suggested in their place.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "A judgment of content plus an offer. No observed failure."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "agents.md",
+        "claude.md",
+        "instructions file",
+        "tidy the instructions",
+        "shorten the instructions"
+      ],
+      "weight": 3,
+      "read": "whole"
     }
   ]
 }

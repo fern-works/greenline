@@ -1,11 +1,13 @@
 import { sha256Hex } from "../commons/hash.ts";
 import type { ChangeRecord } from "./change.ts";
+import { CAPTURE_COMMAND } from "./interface-pages.ts";
 import { depthOf, type Mode, type ModesDefinition, type StepName } from "./modes.ts";
 import type { TicketsFile } from "./plan-documents.ts";
 
 /**
- * The brief a fresh agent of the review or the verify step is started with,
- * written by `greenline brief` and never by the builder
+ * The brief a fresh agent of any step is started with, design's, anticipate's,
+ * review's and verify's (J-192 S1), written by `greenline brief` and never by
+ * the builder
  * (`workshop/components/cli-contracts.md`, "The brief command"): the one
  * brief the ledger guide states, composed from the change record, its
  * acceptance and the step's template, with the command's mark on its first
@@ -15,8 +17,12 @@ import type { TicketsFile } from "./plan-documents.ts";
  * reads the record and the tickets file and writes the file.
  */
 
-/** The steps whose fresh agents the command briefs; anticipate's brief stays the builder's. */
-export const BRIEF_STEPS = ["review", "verify"] as const;
+/**
+ * The steps whose fresh agents the command briefs (J-192 S1): every step of
+ * the line some mode runs at the independent or the looped depth, in the
+ * line's order, so no fresh agent starts from a brief the builder wrote.
+ */
+export const BRIEF_STEPS = ["design", "anticipate", "review", "verify"] as const;
 export type BriefStep = (typeof BRIEF_STEPS)[number];
 
 /** The review's two axes, where two agents review one after another. */
@@ -32,6 +38,11 @@ export interface BriefRequest {
   readonly axis: Axis | undefined;
   /** Review's extra: the builder's one paragraph of intent. */
   readonly intent: string | undefined;
+  /** Anticipate's extras (J-192 S1): the artifact the claims rest on, and its contract; never the claim. */
+  readonly artifact?: string | undefined;
+  readonly contract?: string | undefined;
+  /** Design's extras, the ask's answers and the lock its page names (J-192 S1). */
+  readonly extras?: string | undefined;
 }
 
 /** What the brief is composed from. */
@@ -46,12 +57,64 @@ export interface BriefSources {
   readonly skillPages: readonly string[];
   /** The agent's own scratch folder, `.greenline/tmp/<id>/<step>-<n>/`, by its absolute path, as `greenline check --round` sets `TMPDIR` to it. */
   readonly scratch: string;
+  /**
+   * The installed paths of design's page for the step, its critique page for
+   * review and its capture page for verify, read on an interface change
+   * (J-133 S1); none when no harness tree holds it.
+   */
+  readonly designPages?: readonly string[] | undefined;
+  /**
+   * The brief's nonce (J-176 S1): a few hex characters the agent's report
+   * cites on its first line, so status reads that the report's writer read
+   * this brief, where the harness shows no spawn of a fresh agent.
+   */
+  readonly nonce: string;
+}
+
+/**
+ * The brief's section on an interface change (J-133 S1): the record's design
+ * section, the direction the owner picked, which a fresh agent reads before
+ * the diff, and design's page for the step, the critique page for review and
+ * the capture page for verify; nothing where the record does not say the
+ * change touches an interface.
+ */
+function interfaceSection(step: BriefStep, sources: BriefSources): readonly string[] {
+  if (sources.record.interface?.touches !== true || (step !== "review" && step !== "verify"))
+    return [];
+  const design = sources.record.sections.find((section) => section.step === "design")?.text ?? "";
+  const page = step === "review" ? "critique" : "capture";
+  const pages =
+    sources.designPages === undefined || sources.designPages.length === 0
+      ? `the installed design skill's \`references/${page}.md\``
+      : sources.designPages.map((path) => `\`${path}\``).join(" or ");
+  const work =
+    step === "review"
+      ? `Read design's critique page, ${pages}, and review the interface by it.`
+      : `Read design's capture page, ${pages}, and capture each page the change touched with \`${CAPTURE_COMMAND}\`; where no browser runs, the command names the limit in its fact.`;
+  return [
+    "## The interface",
+    "",
+    "The record says the change touches an interface. Its design section, the direction the owner picked, is the one other section this brief carries; read it before the diff:",
+    "",
+    design.trim() === "" ? "The record's design section is not written." : design.trim(),
+    "",
+    work,
+    "",
+  ];
 }
 
 /** The brief to write, or why the command refuses it. */
 export type BriefOutcome =
   | { readonly _tag: "brief"; readonly file: string; readonly text: string }
   | { readonly _tag: "refused"; readonly message: string };
+
+/**
+ * The standard every brief opens on, after its mark (J-195 S3): the
+ * operator's phrase of 2026-11-07 from the phrasebook (`corpus/manifest.json`),
+ * lifted as written, so every fresh agent greenline briefs carries it.
+ */
+const BRIEF_STANDARD =
+  "You are responsible for maintaining a high standard of excellence and demanding the same of any subagents";
 
 /** How `status` reads one brief file of a change's folder. */
 export type BriefReading =
@@ -63,8 +126,20 @@ const LEDGER = ".greenline/ledger";
 const INTENT_PLACE = '<the paragraph under "Intent">';
 const MARK_TAIL =
   "written by the command: the builder never opens, copies, diffs, edits or derives this file";
+const ARTIFACT_PLACE = "<the artifact>";
+const CONTRACT_PLACE = "<the contract>";
+const EXTRAS_PLACE = "<the extras>";
 const MARK =
-  /^<!-- (greenline brief --change (\S+) --step (review|verify) --round ([1-9]\d*)(?: --axis (standards|spec))?(?: --intent <the paragraph under "Intent">)?) sha256:([0-9a-f]{64}); .* -->$/;
+  /^<!-- (greenline brief --change (\S+) --step ([a-z][a-z0-9-]*) --round ([1-9]\d*)(?: --axis (standards|spec))?(?: --intent <the paragraph under "Intent">)?(?: --artifact <the artifact> --contract <the contract>)?(?: --extras <the extras>)?) sha256:([0-9a-f]{64}); .* -->$/;
+
+/**
+ * Whether a step's fresh agents are the command's to brief.
+ * @param step a step's name
+ * @returns true for a step of {@link BRIEF_STEPS}
+ */
+export function isBriefStep(step: string): step is BriefStep {
+  return BRIEF_STEPS.some((each) => each === step);
+}
 /** A brief file's name: a top-level file of the folder named for a step and a number, or any `brief-*.md` written by hand. */
 const BRIEF_FILE = /^brief-[^/]*\.md$/;
 
@@ -93,20 +168,41 @@ function commandWords(request: BriefRequest): string {
     `greenline brief --change ${request.change} --step ${request.step} --round ${String(request.round)}`,
     request.axis === undefined ? "" : ` --axis ${request.axis}`,
     request.intent === undefined ? "" : ` --intent ${INTENT_PLACE}`,
+    request.artifact === undefined && request.contract === undefined
+      ? ""
+      : ` --artifact ${ARTIFACT_PLACE} --contract ${CONTRACT_PLACE}`,
+    request.extras === undefined ? "" : ` --extras ${EXTRAS_PLACE}`,
   ].join("");
 }
 
-/** The record's front matter as it stands, between its two `---` lines. */
+/**
+ * The record's front matter as it stands, between its two `---` lines, less
+ * its `agent` line (J-176 S1): the builder's harness and model are no part
+ * of a fresh agent's brief, which carries no model to copy.
+ */
 function frontMatterOf(text: string): string {
   const lines = text.split(/\r?\n/);
   const end = lines.indexOf("---", 1);
-  return lines.slice(1, end === -1 ? 1 : end).join("\n");
+  return lines
+    .slice(1, end === -1 ? 1 : end)
+    .filter((line) => !/^agent:/.test(line))
+    .join("\n");
+}
+
+/**
+ * The first line a report cites its brief's nonce on.
+ * @param nonce the brief's nonce
+ * @returns the line
+ */
+function nonceLine(nonce: string): string {
+  return `<!-- brief nonce ${nonce} -->`;
 }
 
 /** Where the acceptance comes from and its text, or the refusal when the record lacks it. */
 function acceptanceOf(
   sources: BriefSources,
   mode: Mode,
+  briefed: BriefStep,
 ): { readonly from: string; readonly text: string } | { readonly refused: string } {
   const { record } = sources;
   const ticket = record.belongs?.ticket;
@@ -123,20 +219,26 @@ function acceptanceOf(
     };
   }
   // SAFETY: "plan" is a step of every definition the parse accepts.
-  const step = depthOf(mode, "plan" as StepName).depth === "none" ? "frame" : "plan";
+  const planned = depthOf(mode, "plan" as StepName).depth !== "none";
+  // A step that runs before the plan, design's, takes the frame's acceptance (J-192 S1).
+  const order: readonly string[] = sources.definition.steps.map((each) => each.name);
+  const early = order.indexOf(briefed) !== -1 && order.indexOf(briefed) < order.indexOf("plan");
+  const step = planned && !early ? "plan" : "frame";
   const section = record.sections.find((candidate) => candidate.step === step);
   if (section === undefined || section.text === "")
     return {
       refused:
         step === "plan"
           ? `the record's plan section, which holds the acceptance, is not written yet; write it before the step starts its agent`
-          : "the record's frame section, which holds the acceptance where the mode skips the plan, is not written yet; write it first",
+          : "the record's frame section, which holds the acceptance where the step runs before the plan or the mode skips it, is not written yet; write it first",
     };
   return {
     from:
       step === "plan"
         ? "the record's plan section, whole"
-        : "the record's frame section, whole, since the mode skips the plan",
+        : early
+          ? `the record's frame section, whole, since ${briefed} runs before the plan`
+          : "the record's frame section, whole, since the mode skips the plan",
     text: section.text,
   };
 }
@@ -152,7 +254,7 @@ function axisOf(
       refused:
         request.step === "review"
           ? "--axis names the one axis an agent reads where two review one after another; here one agent reads both"
-          : "--axis is review's; verify adds nothing to the brief",
+          : `--axis is review's; ${request.step} takes none`,
     };
   }
   const derived: Axis = request.round === 1 ? "standards" : "spec";
@@ -163,12 +265,93 @@ function axisOf(
   return { axis: derived };
 }
 
+/** Why the request's extras are out of place for its step, or undefined where they fit (J-192 S1). */
+function extrasRefusal(request: BriefRequest): string | undefined {
+  const step = request.step;
+  if (step === "review" && (request.intent === undefined || request.intent.trim() === ""))
+    return "review's brief carries the builder's paragraph of intent: give it with --intent";
+  if (step !== "review" && request.intent !== undefined)
+    return `--intent is review's; ${step} takes none`;
+  const anticipating = request.artifact !== undefined || request.contract !== undefined;
+  if (step !== "anticipate" && anticipating)
+    return `--artifact and --contract are anticipate's; ${step} takes none`;
+  if (step === "anticipate") {
+    if (request.artifact === undefined || request.artifact.trim() === "")
+      return "anticipate's brief carries the artifact the claims rest on: give it with --artifact, and its contract with --contract, never the claim";
+    if (request.contract === undefined || request.contract.trim() === "")
+      return "anticipate's brief carries the artifact's contract: give it with --contract, never the claim";
+  }
+  if (step !== "design" && request.extras !== undefined)
+    return `--extras is design's, the ask's answers and the lock; ${step} takes none`;
+  return undefined;
+}
+
+/** The skill line of a step's brief: the page its agent reads whole and works by. */
+function skillLine(step: BriefStep, pages: string): string {
+  switch (step) {
+    case "review":
+      return `Read the reviewer's brief whole, ${pages}, the review skill's page for its reviewer, with the reference files it names, and review the change's commits by it.`;
+    case "verify":
+      // Since J-93 S2 verify's recorder and its paths stand on its references page, not its front.
+      return `Read the verify skill whole, ${pages}, with its references page, \`references/greenline.md\` beside it, and verify every item of the acceptance by them.`;
+    case "anticipate":
+      return `Read the anticipate skill whole, ${pages}, with its references page, \`references/greenline.md\` beside it, and run its adversarial prompt on each claim the artifact rests on against the contract below.`;
+    case "design":
+      return `Read the design skill whole, ${pages}, with its references page, \`references/greenline.md\` beside it, and do the step's work by it.`;
+  }
+}
+
+/** The page of a step's skill its agent reads whole, as a brief names it where no harness tree holds it. */
+export function skillPageOf(step: BriefStep): string {
+  return step === "review" ? "review/references/brief.md" : `${step}/SKILL.md`;
+}
+
+/** A step's extras section. */
+function extrasOf(request: BriefRequest, axis: Axis | undefined): readonly string[] {
+  switch (request.step) {
+    case "review":
+      return [
+        "## Review's extras",
+        "",
+        "### Intent",
+        "",
+        (request.intent ?? "").trim(),
+        "",
+        "### The axis",
+        "",
+        axis === undefined
+          ? "You read both axes, Standards and Spec, in one pass, each under its own heading."
+          : `You read the ${axis === "standards" ? "Standards" : "Spec"} axis alone; another agent reads the other.`,
+      ];
+    case "anticipate":
+      return [
+        "## Anticipate's extras",
+        "",
+        "### The artifact",
+        "",
+        (request.artifact ?? "").trim(),
+        "",
+        "### The contract",
+        "",
+        (request.contract ?? "").trim(),
+        "",
+        "The builder names the artifact and its contract, never the claim: find the claims the artifact rests on yourself.",
+      ];
+    case "design":
+      return request.extras === undefined
+        ? ["## The step's extras", "", "Design adds nothing more to this brief."]
+        : ["## Design's extras", "", request.extras.trim()];
+    case "verify":
+      return ["## The step's extras", "", "Verify adds nothing to this brief."];
+  }
+}
+
 /**
- * Compose the brief for one fresh agent of the review or the verify step.
- * It refuses a record that is not open, a step the record's mode runs below
- * the independent depth, a number past the agents or rounds the depth gives,
- * a review without its intent and the extras out of place, and a record
- * whose acceptance is not written.
+ * Compose the brief for one fresh agent of a step that starts one: design,
+ * anticipate, review or verify (J-192 S1). It refuses a record that is not
+ * open, a step the record's mode runs below the independent depth, a number
+ * past the agents or rounds the depth gives, a step's extras missing or out
+ * of place, and a record whose acceptance is not written.
  * @param request what the builder asked for
  * @param sources the record, its acceptance's sources and the installed skill page
  * @returns the file's path from the repository root and its text, or the refusal
@@ -193,45 +376,25 @@ export function composeBrief(request: BriefRequest, sources: BriefSources): Brie
     return refused(
       `${request.step} under ${mode.name} gives ${String(most)} ${depth.depth === "independent" ? (most === 1 ? "agent" : "agents") : most === 1 ? "round" : "rounds"}, so --round is 1 to ${String(most)}`,
     );
-  if (request.step === "review" && (request.intent === undefined || request.intent.trim() === ""))
-    return refused(
-      "review's brief carries the builder's paragraph of intent: give it with --intent",
-    );
-  if (request.step === "verify" && request.intent !== undefined)
-    return refused("--intent is review's; verify adds nothing to the brief");
+  const misplaced = extrasRefusal(request);
+  if (misplaced !== undefined) return refused(misplaced);
   const axis = axisOf(request, depth.depth === "independent" ? depth.agents : undefined);
   if ("refused" in axis) return refused(axis.refused);
-  const acceptance = acceptanceOf(sources, mode);
+  const acceptance = acceptanceOf(sources, mode, request.step);
   if ("refused" in acceptance) return refused(acceptance.refused);
 
   const id = request.change;
   const report = `${LEDGER}/${id}/${request.step}-${String(request.round)}.md`;
   const pages =
     sources.skillPages.length === 0
-      ? `the installed ${request.step} skill's ${request.step === "review" ? "`references/brief.md`" : "`SKILL.md`"}`
+      ? `the installed ${request.step} skill's \`${skillPageOf(request.step).slice(request.step.length + 1)}\``
       : sources.skillPages.map((page) => `\`${page}\``).join(" or ");
-  const skill =
-    request.step === "review"
-      ? `Read the reviewer's brief whole, ${pages}, the review skill's page for its reviewer, with the reference files it names, and review the change's commits by it.`
-      : // Since J-93 S2 verify's recorder and its paths stand on its references page, not its front.
-        `Read the verify skill whole, ${pages}, with its references page, \`references/greenline.md\` beside it, and verify every item of the acceptance by them.`;
-  const extras =
-    request.step === "review"
-      ? [
-          "## Review's extras",
-          "",
-          "### Intent",
-          "",
-          (request.intent ?? "").trim(),
-          "",
-          "### The axis",
-          "",
-          axis.axis === undefined
-            ? "You read both axes, Standards and Spec, in one pass, each under its own heading."
-            : `You read the ${axis.axis === "standards" ? "Standards" : "Spec"} axis alone; another agent reads the other.`,
-        ]
-      : ["## The step's extras", "", "Verify adds nothing to this brief."];
+  const skill = skillLine(request.step, pages);
+  const extras = extrasOf(request, axis.axis);
   const body = [
+    "",
+    // The operator's phrase of 2026-11-07, lifted as written: the standard every fresh agent carries (J-195 S3).
+    BRIEF_STANDARD,
     "",
     `# The brief for ${request.step} ${String(request.round)} of ${id}`,
     "",
@@ -251,9 +414,10 @@ export function composeBrief(request: BriefRequest, sources: BriefSources): Brie
     "",
     acceptance.text,
     "",
+    ...interfaceSection(request.step, sources),
     "## Your report",
     "",
-    `Write your report to \`${report}\`, and only there.`,
+    `Write your report to \`${report}\`, and only there. Its first line is \`${nonceLine(sources.nonce)}\`, which tells the record you read this brief.`,
     "",
     "## Your scratch folder",
     "",
@@ -276,7 +440,7 @@ export function composeBrief(request: BriefRequest, sources: BriefSources): Brie
     "",
   ]
     .join("\n")
-    // A carriage return the intent brought is written as `readBrief` reads it, so the digest holds.
+    // A carriage return the extras brought is written as `readBrief` reads it, so the digest holds.
     .replace(/\r\n/g, "\n");
   const words = commandWords(request);
   const mark = `<!-- ${words} sha256:${digestOf(words, body)}; ${MARK_TAIL} -->`;
@@ -316,7 +480,8 @@ export function readBrief(change: string, file: string, given: string): BriefRea
   if (
     words === undefined ||
     named !== change ||
-    (step !== "review" && step !== "verify") ||
+    step === undefined ||
+    !isBriefStep(step) ||
     file !== briefFileName(step, Number(round)) ||
     digestOf(words, rest) !== digest
   )

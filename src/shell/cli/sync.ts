@@ -5,7 +5,8 @@ import { planManagedFiles } from "../../core/managed-file.ts";
 import { splitManagedBlock } from "../../core/managed-block.ts";
 import { LOCK_SCHEMA_VERSION, parseLock, serializeLock, type LockFile } from "../../core/lock.ts";
 import type { ContractParseFailed } from "../../core/contract.ts";
-import type { Manifest } from "../../core/manifest.ts";
+import { serializeManifest, type Manifest } from "../../core/manifest.ts";
+import { detectWorkspaceInterface, interfaceOfferText, syncedSetting } from "../interface.ts";
 import { renderProjection, POLICY_BLOCK_KEY } from "../../core/render.ts";
 import { readRepositoryManifest, rosterOf } from "../repository-state.ts";
 import { findGitRoot } from "../git.ts";
@@ -17,6 +18,7 @@ import { gitHooksState, hooksReport, presentHarnesses, registerGitHooks } from "
 import type { RunRequest } from "./args.ts";
 import { GL, diagnostic, noRepositoryMessage, type EffectJson } from "./output.ts";
 import { type CliEnvironment, envRead } from "./command-environment.ts";
+import { uncommittedInstallationWarning } from "./diagnosis.ts";
 import { type CommandOutcome, fail, contractDiagnostics, succeed } from "./command-outcome.ts";
 import {
   withBrokenBlockConflicts,
@@ -57,7 +59,20 @@ export function runSync(request: RunRequest, env: CliEnvironment): CommandOutcom
       ),
     );
   }
-  return reconcileWorkspace(root, io, env, request, { manifest: manifestResult.value });
+  // The interface block follows the detection until the owner confirms it (J-123 S1).
+  const current = manifestResult.value;
+  const detected = syncedSetting(current.interface, detectWorkspaceInterface(root));
+  if (JSON.stringify(detected) === JSON.stringify(current.interface))
+    return reconcileWorkspace(root, io, env, request, { manifest: current });
+  const manifest: Manifest = { ...current, interface: detected };
+  const outcome = reconcileWorkspace(root, io, env, request, {
+    manifest,
+    manifestChange: { next: serializeManifest(manifest), current: manifestText },
+  });
+  const offer = interfaceOfferText(root, detected);
+  return outcome.ok && offer !== ""
+    ? { ...outcome, text: `${outcome.text ?? ""}${offer}` }
+    : outcome;
 }
 
 /** What one reconciliation changes beyond rendering the installed choices. */
@@ -273,7 +288,11 @@ export function reconcileWorkspace(
   removeEmptiedSkillDirectories(root, removedFiles);
   // The scripts stand now, so git can be told to run them; a clone carries no registration.
   const git = registerGitHooks(root, change.manifest.hooks);
-  return { ...succeed(effects, diagnostics), hooks: hooksReport(change.manifest, desired, git) };
+  // What it wrote and git does not hold, named with the act that settles it; greenline never commits (J-229 S1).
+  return {
+    ...succeed(effects, [...diagnostics, ...uncommittedInstallationWarning(root)]),
+    hooks: hooksReport(change.manifest, desired, git),
+  };
 }
 
 /** The harness directories whose per-skill directories greenline creates. */

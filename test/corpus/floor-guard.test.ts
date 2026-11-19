@@ -1,4 +1,4 @@
-/** The trial start constraint-driven-development as it renders: its floor guard, run from the fenced block of `references/floor-guard.md` on fixture repositories, and the sentences its `SKILL.md` carries for frame and CI (J-65 S1). */
+/** The trial start constraint-driven-development as it renders: its floor guard, run from the fenced block of `references/floor-guard.md` on fixture repositories, and the sentences its method page carries for frame and CI (J-65 S1; the page since J-180 S1). */
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -15,7 +15,8 @@ const start = join(
   "skills",
   "constraint-driven-development",
 );
-const skill = readFileSync(join(start, "SKILL.md"), "utf8");
+// J-180 S1 moved the start's method past its front to its method page, which its SKILL.md points to.
+const skill = readFileSync(join(start, "method.md"), "utf8");
 const guardPage = readFileSync(join(start, "references", "floor-guard.md"), "utf8");
 
 // The repository's own sweep refuses these tokens in a test file's text, so the

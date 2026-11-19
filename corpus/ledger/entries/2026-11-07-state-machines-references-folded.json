@@ -1,0 +1,34 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-state-machines-references-folded",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-invariants-description-shortened",
+    "sha256": "bb744e4cb82a4e33e1348e3fffff807c079efd0869b44a89e81b23d82869bff2"
+  },
+  "subject": "skill:state-machines",
+  "recipe": "ace3431597abcd9e60a5addebfc1f21a256e6483429aec031b1966c533f48982",
+  "result": "ffff743d532434a37c777217111f684bec6b95a54a8c99c499ebabcd4500c5de",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The map's path folded into the handoff, the references page gone",
+  "reason": "The references page, which held only where the map lands, folds into the handoff's produces line, so the start installs one page fewer and the viewer's settings stay under their cap.",
+  "authorisedBy": null,
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 578
+  }
+}

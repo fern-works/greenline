@@ -4,6 +4,8 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { runCli } from "../../../src/shell/cli/runner.ts";
 import { commitTreeId } from "../../../src/shell/code-tree.ts";
+import type { SkillLoadFact } from "../../../src/core/skill-loads.ts";
+import { frameMapOf, frameMapText } from "../../../src/core/frame-map.ts";
 import { fixtureInstallation } from "../../fixtures/corpus.ts";
 import { RecordingWriter } from "../../helpers/writer.ts";
 
@@ -115,6 +117,9 @@ const records = {
     "raises:",
     '  - { from: regular, reason: "the change migrates stored sessions" }',
     "reviewed: independent",
+    'ground: "worktree: .worktrees/2026-10-08-sessions"',
+    "agent: claude-code/opus",
+    'confirmed: "Yes, move them to schema 2."',
     "---",
     "",
     "## frame",
@@ -226,6 +231,64 @@ function facts(startedAt: string, tree: string, commit: string, code: number): s
   });
 }
 
+/** One load as the hooks write it. */
+function load(
+  skill: string,
+  file: string,
+  whole: boolean,
+  at: string,
+  step: string | null,
+  agent: string | null,
+): SkillLoadFact {
+  return {
+    skill,
+    file,
+    whole,
+    via: whole ? "cat" : "sed",
+    at,
+    step,
+    agent,
+    session: "s1",
+    turn: 1,
+  };
+}
+
+/** The careful change's loads, in the order the file holds them. */
+/** The careful change's frame in the list form, the map its folder's file holds (J-117 S4). */
+export const CAREFUL_FRAME: string = [
+  "### Round 1",
+  "",
+  "- Q1 [scope] Do the old sessions move too?",
+  "  - proposed: yes, every stored session",
+  "  - answer: yes",
+  "  - decided: owner",
+  "- closed [security]: the schema holds no secret",
+  "",
+  "### Round 2",
+  "",
+  "- Q2 [data] Which field marks a moved session?",
+  "  - proposed: a schema number",
+  "  - answer: a schema number",
+  "  - decided: agent",
+  `  - research: [the store's notes](${CAREFUL}/frame-research-1.md)`,
+  "",
+  "Sessions move to schema 2.",
+].join("\n");
+
+export const CAREFUL_LOADS: readonly SkillLoadFact[] = [
+  load("grilling", "SKILL.md", false, "2026-10-08T08:00:00.000Z", null, null),
+  load("delivery-review", "SKILL.md", true, "2026-10-08T09:30:00.000Z", "review", "r1"),
+  load("delivery-review", "SKILL.md", true, "2026-10-08T09:00:00.000Z", "build", null),
+];
+
+const REGULAR_LOADS: readonly SkillLoadFact[] = [
+  load("delivery-review", "SKILL.md", false, "2026-10-05T10:00:00.000Z", "review", "r2"),
+];
+
+function loadsText(loads: readonly object[]): string {
+  return `${loads.map((entry) => JSON.stringify(entry)).join("\n")}\n`;
+}
+
 /**
  * Build the workspace in a new temporary directory, which the caller removes.
  * @returns the workspace
@@ -281,6 +344,14 @@ export function changesWorkspace(): ChangesWorkspace {
   );
   write(`.greenline/ledger/${CAREFUL}/review-2.md`, "# Review 2\n\n<script>alert(1)</script>\n");
   write(`.greenline/ledger/${CAREFUL}/brief-review-1.md`, "A brief written by hand.\n");
+  // The skill loads the hooks noted (J-116 S2): one before the record, one at the skill's own step by a fresh agent, one off it.
+  write(`.greenline/ledger/${CAREFUL}/skills/2026-10-08.jsonl`, loadsText(CAREFUL_LOADS));
+  write(`.greenline/ledger/${REGULAR}/skills/2026-10-05.jsonl`, loadsText(REGULAR_LOADS));
+  // The careful change's frame map, as the event hook derives it (J-117 S1); the others have none.
+  write(
+    `.greenline/ledger/${CAREFUL}/frame-map.json`,
+    frameMapText(CAREFUL, frameMapOf(CAREFUL_FRAME), "greenline event"),
+  );
   git("add", "--all");
   git("commit", "--quiet", "-m", `the migration\n\nGreenline-Change: ${CAREFUL}`);
   const finalCommit = git("rev-parse", "HEAD");

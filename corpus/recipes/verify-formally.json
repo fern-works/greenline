@@ -1,0 +1,733 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "verify-formally",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "verify-formally"
+    },
+    {
+      "field": "description",
+      "value": "Check a promise the code makes over every order of steps or every input in a stated scope, with a model checker, TLA+ by default for event order, or a verifier that fits the language: choose the strongest target from the code, show the check failing on a broken variant, report a failure as a finding in the code's words, and keep the check in step with the code through a note of what it covers and the commit it was last confirmed at. Use when a race, a retry, a state machine, a parser or an invariant needs more than tests, when a drawn state chart should be checked, when the owner wants to be sure whatever the order, not just tested, or when code a verification covers changed without a recheck."
+    }
+  ],
+  "sources": ["pstack"],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Verify formally",
+          "kind": "name",
+          "reason": "The start's own name heads its page.",
+          "gist": "Heads the page with the start's own title",
+          "credits": []
+        },
+        {
+          "passage": "written",
+          "text": "It finds the target and the tool without editing a file and reports them in the reply.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: its situation, the finding that edits nothing, the verification as a change on the line, and the upkeep page for a stale check.",
+          "gist": "Opens verify-formally: finding edits nothing, the verification is a change",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": []
+        },
+        {
+          "passage": "written",
+          "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
+          "kind": "pointer",
+          "reason": "The one line that sends the reader to the skill's references page, where its paths and commands stand.",
+          "gist": "Points to the references page for greenline's paths and commands",
+          "credits": []
+        },
+        {
+          "passage": "written",
+          "text": "Before the target is chosen, read [method.md](method.md): the promise it serves, the change, the upkeep, the target, the tool, what makes it good, the note, the proof and the hand-off.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the request's promise and the code that keeps it, a state chart a reply or a diagram drew, and for the upkeep a verification's note and the commits since its sync commit\nProduces: the target, the tool and the property in the reply; through the change, the verification's files and its note in the repository, and its run recorded as a check\nNext: frame, under the mode the owner approves, with the target in the record's start section",
+          "kind": "method",
+          "reason": "A start's handoff: what it consumes, what it produces in the reply and through the change, and frame as the step its handoff reaches. J-180 S1 cut the front under 300 words: who writes the verification and who cites its run, which the method page states, leaves the handoff's next line.",
+          "gist": "The next line leaves what the page it points to states",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": []
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Verify formally: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "verify-formally is the start for a promise the code makes that an order of events or an input no test reached could break: a state machine, a retry, a race, a parser, an invariant, often one a reply or a diagram has just drawn as a state chart.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: its situation, the finding that edits nothing, the verification as a change on the line, and the upkeep page for a stale check.",
+          "gist": "Opens verify-formally: finding edits nothing, the verification is a change",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": []
+        },
+        {
+          "passage": "written",
+          "text": "The model, the harness, the property files, the one command and the note beside them are edits: propose the mode and wait, as AGENTS.md says, open the change's record with a `## start` section naming verify-formally and the target it chose, and run the line from `frame`; the build step writes the verification and verify cites its run. A verification that already exists, and whose covered code changed after its sync commit, is brought back in line by the upkeep page, [upkeep.md](upkeep.md), in a change of its own.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: its situation, the finding that edits nothing, the verification as a change on the line, and the upkeep page for a stale check.",
+          "gist": "Opens verify-formally: finding edits nothing, the verification is a change",
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "credits": []
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "create-formal-verification-skill/SKILL.md",
+          "segments": [
+            "5378c3bbd0a5",
+            "0534ee75a998",
+            "5b506eff70dd",
+            "435eee6a5954",
+            "8318e89a8a44",
+            "b9b6afbb3599",
+            "194b50b743d6",
+            "02998de116d1",
+            "5a46bc2b044a",
+            "f6a27263910d",
+            "727d8546639c",
+            "ed3d1ce328f9",
+            "c9b444195e78",
+            "5a400af79472",
+            "ddb9283d55d6",
+            "3d18164d254e",
+            "d33f514b9ec4"
+          ],
+          "edits": [
+            {
+              "segment": "5b506eff70dd",
+              "find": "leaves a project-local skill that",
+              "replace": "leaves a note beside the verification that",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "435eee6a5954",
+              "find": "Write that skill for",
+              "replace": "Write that note for",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "A state chart the change or a reply drew is the model's first draft: its states, its transitions and the events between them, each pointed at the code that makes it, are where the model starts. The chart is not the property, and the model is checked against the code, never against the drawing.",
+          "kind": "method",
+          "reason": "Greenline's bridge from the visual system: the state chart the agent drew is where the model starts, and the code, not the drawing, is what it is checked against.",
+          "gist": "Starts the model from the drawn state chart, checked against the code",
+          "credits": ["pstack"],
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "create-formal-verification-skill/SKILL.md",
+          "segments": [
+            "81bb0f409774",
+            "70a065a54f0d",
+            "5736eae4f144",
+            "2baa2a5c27ba",
+            "5fc34ad2046b",
+            "e70ea8d80c4d",
+            "28a7a70fd662",
+            "98b05b7cc3fc",
+            "a1c9586e9f86",
+            "86362b44e370",
+            "c3cdd36dd9ad",
+            "13d1cda2575a",
+            "36f48fc69d51",
+            "78a460606fa6",
+            "a3cdd63b4e88",
+            "bc344623d569",
+            "223a7570c82c",
+            "74df1bc7ec38",
+            "06068309eebb",
+            "9ece10e2c4fa",
+            "d7c5c735df93",
+            "1938ab3d5987"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Write the verification's note\n\nWrite the note beside the verification's files, named for the area it covers and saying when a change needs it.",
+          "kind": "method",
+          "reason": "The generated project-local skill becomes a note beside the verification, read as a file in every harness.",
+          "gist": "Writes the note beside the verification in place of a generated skill",
+          "credits": ["pstack"],
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "create-formal-verification-skill/SKILL.md",
+          "segments": [
+            "53c7b991a966",
+            "c23a7bf46a49",
+            "80f23be11c66",
+            "bffcfdf41699",
+            "8fb563ff3abd",
+            "38ab21a587a6",
+            "b1cfab0a38ff"
+          ],
+          "edits": [
+            {
+              "segment": "53c7b991a966",
+              "find": "From the skill alone",
+              "replace": "From the note alone",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "c23a7bf46a49",
+              "find": "in the skill,",
+              "replace": "in the note,",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "8fb563ff3abd",
+              "find": "Follow the generated skill once",
+              "replace": "Follow the note once",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            }
+          ],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "A note that was never followed is a draft.",
+          "kind": "method",
+          "reason": "The draft rule kept for the note that replaces the generated skill.",
+          "gist": "Keeps the draft rule for a note never followed",
+          "credits": ["pstack"],
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "create-formal-verification-skill/SKILL.md",
+          "segments": [
+            "5f645aff04c6",
+            "a6fdc912363e",
+            "2e59e5305779",
+            "3842f6d836de",
+            "cb2a96716b18"
+          ],
+          "edits": [
+            {
+              "segment": "5f645aff04c6",
+              "find": "If the skill misses",
+              "replace": "If the note misses",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "5f645aff04c6",
+              "find": "fix the skill or",
+              "replace": "fix the note or",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "cb2a96716b18",
+              "find": "`/maintain-formal-verification-skill`",
+              "replace": "the upkeep page, [upkeep.md](upkeep.md),",
+              "kind": "harness",
+              "reason": "The slash command becomes the start's own upkeep page, read as a file in any harness.",
+              "gist": "Points at the upkeep page in place of a slash command"
+            }
+          ],
+          "join": " "
+        }
+      ]
+    },
+    {
+      "path": "upkeep.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Keep a verification in step with the code",
+          "kind": "name",
+          "reason": "The page's title names its job inside the start, the upkeep of a verification.",
+          "gist": "Heads the upkeep page with its job",
+          "credits": []
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "maintain-formal-verification-skill/SKILL.md",
+          "segments": ["4c435cb096cd", "cbf1fbd7b68a", "36be3dc02102"]
+        },
+        {
+          "passage": "written",
+          "text": "This page is the upkeep loop for a verification verify-formally made, or for any verification in the repository that runs a model checker, prover, or code-level verifier against named code. The verification's note handles a change that an agent makes while it follows that note.",
+          "kind": "method",
+          "reason": "The upkeep reads a verification and its note in the repository, not a generated project-local skill.",
+          "gist": "Keeps verifications and their notes, not generated project skills",
+          "credits": ["pstack"],
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "maintain-formal-verification-skill/SKILL.md",
+          "segments": [
+            "33b19d52375d",
+            "62fb4d7f7fe8",
+            "745b97affcac",
+            "c5a2f590f9bc",
+            "dec6d08f6b32",
+            "b899ec0b492c",
+            "0a793f923231",
+            "2cff9b722c0e",
+            "915e887a1a80",
+            "bf562afe9adf",
+            "91244f066e07",
+            "3959682866ad",
+            "9bd3f0c9b7b7",
+            "e45e25015243",
+            "ea0d7f1d78e4",
+            "2cb4e11743f0",
+            "4b79ba0ae64c",
+            "758ab51aea03"
+          ],
+          "join": " ",
+          "edits": [
+            {
+              "segment": "33b19d52375d",
+              "find": "This skill handles",
+              "replace": "This page handles",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "33b19d52375d",
+              "find": "without the skill,",
+              "replace": "without the note,",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "9bd3f0c9b7b7",
+              "find": "the verify skill itself",
+              "replace": "the note beside them",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            }
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Find each verification by its note, and one with no note by what it does: files that run a model checker, a prover, or another verifier against named code.",
+          "kind": "method",
+          "reason": "Checks are found by their note, and a verification without one by what its files do.",
+          "gist": "Finds each check by its note, or by what its files do",
+          "credits": ["pstack"],
+          "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "maintain-formal-verification-skill/SKILL.md",
+          "segments": ["3c7a78c23931", "ad0f82adb443"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "If no verification exists, stop and make one by verify-formally's own method first.",
+          "kind": "harness",
+          "reason": "The slash command for the create skill becomes the start's own method.",
+          "gist": "Sends a repository with no verification to the start's own method",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "maintain-formal-verification-skill/SKILL.md",
+          "segments": [
+            "e28a875b94de",
+            "3bb27c221e27",
+            "f418c86c8d34",
+            "07048ef65f47",
+            "774b7cf71fc2",
+            "2a4c8b5da6c5",
+            "966d0cf7f6bc",
+            "610da300b020",
+            "523050115288",
+            "e6f1ac0327ed",
+            "f0540cb3d467",
+            "dfb864112bdb",
+            "51b145897dcd",
+            "8e7fd643b6ef",
+            "bca97fc4d5a2",
+            "ed144e2c3c2b",
+            "da1005da83f7",
+            "99aeea054a40",
+            "4c8a9d73f9de",
+            "4e50a3d93989",
+            "b0b887d9e707",
+            "72efef629f8b",
+            "64867f2fd451",
+            "c43a05e8fd37",
+            "90935c3c76ce",
+            "e7e69a9156ed",
+            "daea9b3a48fc",
+            "29fa9c0e2639",
+            "eabc3e78280a",
+            "3518bb002c07",
+            "760747108399",
+            "8aa2d978e447",
+            "8921e8c63a24",
+            "88637242e91c",
+            "47299714ecb1",
+            "0044d3ddb4b7",
+            "b7537dcf8e44",
+            "ee3e3ac7be96",
+            "b0c4208814d7",
+            "85b05187dc73",
+            "785ba4cca6e7",
+            "9dc008448ee0",
+            "d27317b7cab0",
+            "e2d36a418ec2",
+            "12bb9875dbad",
+            "9aae266e7563",
+            "f17bf2ba31fe",
+            "355a41a8b410",
+            "c942649a5f45",
+            "d8fe28b8bb91",
+            "6076c079fe25",
+            "48d2bc6f839a",
+            "13989589ca40",
+            "1a5ef7df7f30",
+            "7314adba9e24",
+            "b022de3cf0be",
+            "4c654b9e809a"
+          ],
+          "join": " ",
+          "edits": [
+            {
+              "segment": "e28a875b94de",
+              "find": "If the skill does not",
+              "replace": "If the note does not",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "d27317b7cab0",
+              "find": "**Update the verify skill.**",
+              "replace": "**Update the note.**",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            },
+            {
+              "segment": "f17bf2ba31fe",
+              "find": "follow the verify skill once",
+              "replace": "follow the note once",
+              "kind": "method",
+              "reason": "The coverage record lives in the verification's note in the repository, not in a generated project-local skill.",
+              "gist": "Keeps the coverage record in the verification's note, not a skill",
+              "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "references/greenline.md",
+      "part": "references",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# verify-formally: the practice's mechanics\n\nThis page holds where verify-formally's work lands in the workspace and the command that records its run, which `SKILL.md` and `upkeep.md` name by their nouns. Read it with them when the work lands in the workspace.",
+          "kind": "scope",
+          "reason": "Opens verify-formally's references page and says when to read it.",
+          "gist": "Opens verify-formally's references page and says when to read it",
+          "credits": []
+        },
+        {
+          "passage": "written",
+          "text": "## Where its work lands\n\nThe change that writes or updates a verification has its record at `.greenline/ledger/<id>.md`, its `## start` section naming verify-formally and the target. The verification's files, the model, the harness or the property files, stand in the repository as its own code, in the directory the repository keeps such code in or beside its tests, and the note stands beside them as a Markdown file of the repository: the property and the harm, the covered files and functions, the bounds and the assumptions, the one command, and the sync commit. A scratch change that breaks the property and a counterexample's trace live in the change's working files, `.greenline/tmp/<id>/verify-formally/`, and the scratch change is dropped before the close.",
+          "kind": "home",
+          "reason": "Where the record, the verification, its note and the scratch break land.",
+          "gist": "Lands the verification and its note in the repository",
+          "credits": []
+        },
+        {
+          "passage": "written",
+          "text": "## Recording the run\n\nRun the check through `greenline check -- <command>`, so the change's checks record it with the commit and the tree it ran on. The sync commit the note records is a commit the check passed on, or, for a bug, the commit whose failure the report names.",
+          "kind": "home",
+          "reason": "The check's run is recorded as a check of the change, and the note's sync commit is one a recorded run covers.",
+          "gist": "Records the check's run as a check of the change",
+          "credits": []
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [
+    {
+      "source": "pstack",
+      "file": "create-formal-verification-skill/SKILL.md",
+      "segment": "9f777db36277",
+      "kind": "name",
+      "reason": "The upstream title names a skill that generates another; the start's page is headed by its own name.",
+      "gist": "Replaces the upstream title with the start's own title",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "create-formal-verification-skill/SKILL.md",
+      "segment": "a03d155331ee",
+      "kind": "method",
+      "reason": "The generated project-local skill becomes the verification's note.",
+      "gist": "Replaces the generate-a-skill heading with the note's",
+      "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "create-formal-verification-skill/SKILL.md",
+      "segment": "2b77cfb7b59d",
+      "kind": "method",
+      "reason": "The generated project-local skill becomes the verification's note.",
+      "gist": "Replaces the generate-a-skill heading with the note's",
+      "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "create-formal-verification-skill/SKILL.md",
+      "segment": "16a8772e2439",
+      "kind": "harness",
+      "reason": "Registering a skill by its front matter is one harness's mechanism; the note is a plain file.",
+      "gist": "Leaves out registering a generated skill by its front matter"
+    },
+    {
+      "source": "pstack",
+      "file": "create-formal-verification-skill/SKILL.md",
+      "segment": "8e518b4bd902",
+      "kind": "method",
+      "reason": "The draft rule is kept for the note in place of the generated skill.",
+      "gist": "Keeps the draft rule for the note",
+      "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "maintain-formal-verification-skill/SKILL.md",
+      "segment": "8ba903d6152e",
+      "kind": "name",
+      "reason": "The upstream title names the upkeep of a skill; the page keeps a verification in step.",
+      "gist": "Replaces the upstream title with the page's job",
+      "replacedBy": {
+        "path": "upkeep.md",
+        "passage": 0
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "maintain-formal-verification-skill/SKILL.md",
+      "segment": "ec6308ca75b9",
+      "kind": "method",
+      "reason": "The upkeep reads a verification and its note, not a generated project-local skill.",
+      "gist": "Keeps verifications and their notes, not generated project skills",
+      "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+      "replacedBy": {
+        "path": "upkeep.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "maintain-formal-verification-skill/SKILL.md",
+      "segment": "a2499cfd27ac",
+      "kind": "method",
+      "reason": "The upkeep reads a verification and its note, not a generated project-local skill.",
+      "gist": "Keeps verifications and their notes, not generated project skills",
+      "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+      "replacedBy": {
+        "path": "upkeep.md",
+        "passage": 2
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "maintain-formal-verification-skill/SKILL.md",
+      "segment": "a01f0dd7e497",
+      "kind": "method",
+      "reason": "Checks are found by their note, not as a project skill.",
+      "gist": "Finds each check by its note, or by what its files do",
+      "ruling": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verification's coverage record is a short note beside the verification files in the repository, in place of the generated project-local skill; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"",
+      "replacedBy": {
+        "path": "upkeep.md",
+        "passage": 4
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "maintain-formal-verification-skill/SKILL.md",
+      "segment": "163aa7a023ad",
+      "kind": "harness",
+      "reason": "The slash command for the create skill becomes the start's own method.",
+      "gist": "Sends a repository with no verification to the start's own method",
+      "replacedBy": {
+        "path": "upkeep.md",
+        "passage": 6
+      }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "The target and the tool are found without editing a file and reported in the reply; the model, the harness, the property files and the note are edits made only under a change after the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap",
+      "oracle": "The wait, the proposal"
+    },
+    {
+      "promise": "The change's record opens with a ## start section naming verify-formally and the target it chose.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks the start section's contents, and no run of this start is recorded."
+    },
+    {
+      "promise": "Each property is shown failing on a broken variant of the code it guards, and again after an upkeep update.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Shown in the report only. No run observed this fail."
+    },
+    {
+      "promise": "A break of the property is reported as a finding with its counterexample in the code's words; the property and the model are never weakened to pass, and product code is not changed unless the owner asks.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing reads a weakened model. No run of this start is cited."
+    },
+    {
+      "promise": "A note beside the verification records the property and the harm, the covered files and functions, the bounds and assumptions, the one command and the sync commit, with no placeholders.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "A file in the owner's repository that no reading checks. No observed failure."
+    },
+    {
+      "promise": "The note is followed once on a scratch change under .greenline/tmp/<id>/verify-formally/, which is dropped before the close.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing reads that the scratch break was made or reverted. No observed failure."
+    },
+    {
+      "promise": "The check runs through greenline check -- <command>, so the change records it, and the sync commit is a commit the check passed on or, for a bug, the commit whose failure the report names.",
+      "page": "references/greenline.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "GL0456 fires only on a done change with no check facts at all, so a missing run of this check is not named. No observed failure."
+    },
+    {
+      "promise": "The handoff tells the owner what was verified, the tool and why, the bounds, what was found, how to run it and what it does not cover, and points to the upkeep page.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "A reply's content with no observed failure."
+    },
+    {
+      "promise": "An upkeep reports per check its outcome (in sync, updated, bug or blocked), the commits read, each verification change with its reason, the rerun and the break, each bug with its introducing commit, and what stays uncovered, naming drift apart from bugs.",
+      "page": "upkeep.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "A reply's content with no observed failure."
+    },
+    {
+      "promise": "An upkeep does not move the sync commit for a blocked check, and puts the verification updates in a change of their own, apart from any product fix.",
+      "page": "upkeep.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "one-trailer refuses a commit naming two changes but does not separate the verification from a fix. No observed failure."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "formally",
+        "model checker",
+        "tla+",
+        "not just tested",
+        "whatever order",
+        "every order",
+        "invariant",
+        "prove it"
+      ],
+      "weight": 3,
+      "read": "whole"
+    },
+    {
+      "words": ["race", "at once", "state machine", "every input"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
+    }
+  ]
+}

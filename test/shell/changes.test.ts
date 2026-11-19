@@ -114,6 +114,8 @@ describe("the changes on disk", () => {
       ".greenline/ledger/2026-10-04-a/checks/20261004T120000000Z-a1b2c3.json": facts,
       ".greenline/ledger/2026-10-04-a/checks/20261004T120001000Z-d4e5f6.json": "{ half",
       ".greenline/ledger/2026-10-04-a/checks/stray.txt": "not facts\n",
+      // The frame map is generated from the record (J-117 S1), never a report it cites.
+      ".greenline/ledger/2026-10-04-a/frame-map.json": '{ "generatedBy": "greenline event" }\n',
       ".greenline/ledger/2026-10-04-b.md": open,
     });
     const [a, b] = read(root).changes;

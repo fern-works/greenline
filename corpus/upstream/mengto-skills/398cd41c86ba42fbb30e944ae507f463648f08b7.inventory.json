@@ -1,0 +1,47 @@
+{
+  "commit": "398cd41c86ba42fbb30e944ae507f463648f08b7",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+    },
+    {
+      "path": "audit-ai-design-slop/REFERENCES.md",
+      "sha256": "0a880d009eed16c04491f3a1333e5e3c093e73fa4029923633ab1c3e7fbcbe2f"
+    },
+    {
+      "path": "audit-ai-design-slop/SKILL.md",
+      "sha256": "91e1e68e624d911fd66f672db5930484c6d024ba1834bb837acc3af4e14601ca"
+    },
+    {
+      "path": "audit-ai-design-slop/agents/openai.yaml",
+      "sha256": "34c1cc53b63d97cbe33019728d946e53a8c54b32e2046921da10aa91ab18fffa"
+    },
+    {
+      "path": "no-ai-design-slop/ARTICLE.md",
+      "sha256": "e53853cf0eadba1cac1e3095d942cfaa07eee133884f8028159bc650833beec7"
+    },
+    {
+      "path": "no-ai-design-slop/REFERENCES.md",
+      "sha256": "0a880d009eed16c04491f3a1333e5e3c093e73fa4029923633ab1c3e7fbcbe2f"
+    },
+    {
+      "path": "no-ai-design-slop/SKILL.md",
+      "sha256": "a433154b01f99eed1f0c0744cee557451c898253dd7abc5f1921f234ff592998"
+    },
+    {
+      "path": "no-ai-design-slop/agents/openai.yaml",
+      "sha256": "40394daa3862cf7992c800166e4eda70bc1297e274708a96f689a99b1aaa5a9e"
+    }
+  ],
+  "entries": [
+    {
+      "name": "no-ai-design-slop",
+      "path": "agent-skills/ui/no-ai-design-slop"
+    },
+    {
+      "name": "audit-ai-design-slop",
+      "path": "agent-skills/ui/audit-ai-design-slop"
+    }
+  ]
+}

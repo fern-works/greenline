@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Find where a request stands on the line when the next step is unclear: resume an open or stopped change at the step its \"next\" line names, choose the start the request's situation calls for, or send a new change to its proposal. Use for continuity (\"what were we doing?\"), for a request no start fits, and for doubt about the next step."
+      "value": "Find where a request stands on the line when the next step is unclear: resume an open or stopped change at the step its \"next\" line names, choose the start the request's situation calls for, or send a new change to its proposal. Use for continuity (\"what were we doing?\", \"where were we?\", \"what should we work on?\", \"carry on with that change\"), for a request no start fits, and for doubt about the next step."
     }
   ],
   "sources": [],
@@ -33,6 +33,33 @@
         },
         {
           "passage": "written",
+          "text": "Before you resume, choose or propose, read [method.md](method.md): resuming a change, what to work on, choosing the start and watching the habits.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the request, the open or stopped change records under .greenline/ledger/ and the open or parked discussions under .greenline/ledger/discussions/\nProduces: the record's state in .greenline/ledger/<id>.md, open for the change resumed and stopped, with its \"next\" line and committed, for the change set aside; otherwise nothing durable: the start loaded, the proposal made, or, with nothing to resume, the owner asked for the request, in the reply\nNext: the step the resumed change's \"next\" line names, the start the situation calls for, or frame under the mode the owner approves",
+          "kind": "method",
+          "reason": "The handoff a start carries: the record's state when a change resumes or is set aside, otherwise nothing durable, and the step reached, the start chosen or frame under the approved mode next. With nothing to resume, the reply asks the owner for the request. J-118 S2: it reads the open and parked discussions too.",
+          "gist": "Writes only a record's state; next a step, start, frame or question",
+          "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor; The register's row of 2026-10-23 on the discussion, on the operator's words of 2026-10-23 (\"a system in which user can simply discuss new feature ideas without them outright becoming changes\") and the card \"A ledger record kind, as proposed (Recommended)\": a discussion is a record kind of the ledger, .greenline/ledger/discussions/<id>.md with a folder beside it, an idea explored with frame's engine at the written depth, with no mode, no ground, no branch and no checks, its states open, parked, declined, promoted and merged set on the owner's word, committed with the trailer Greenline-Discussion: <id>; greenline status and router list discussions beside the changes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Router: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
           "text": "## Resume a change\n\nRead the open and stopped change records in the ledger, the\nexact references in the request and the relevant files; the workspace's status\nlists each change with its state and its \"next\" line. A change stopped on\nanother branch, local or remote-tracking, is found by its record's commit,\nwhich every stop makes, and read from that branch. Read the candidates before deciding which change the\nowner means: recency alone is not ownership. A record's \"next\" line names\nthe step reached and the action that resumes it. Resume there on the\nchange's branch, the one its record's commit sits on, switching to it\nfirst when the session sits on another, and making a local branch from a\nremote-tracking one; go on under the record's mode, with\nno new proposal, and set the record's state `open` as your first write in\nit. Ask only when several changes remain plausible, and say what each would\nproduce.",
           "kind": "method",
           "reason": "Resume a change: read the open and stopped change records, one stopped on another branch, local or remote-tracking, found by its record's commit and read from that branch, resume at the step the record's next line names, on the change's branch, a local one made from a remote-tracking branch, under its mode, and set the record open as the first write. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
@@ -41,11 +68,19 @@
         },
         {
           "passage": "written",
-          "text": "## Choose the start\n\nWhen this session holds a change and the request asks for another\nchange, stop that change first, as the ledger guide says. A\nsession that resumes, or is asked \"what were we doing?\", with no open or\nstopped change on any branch says there is nothing to resume, proposes\nnothing and asks the owner for the request. When no open or stopped change\nis the request's, load the one start whose row in AGENTS.md names the\nsituation the request begins in, or at an orientation the start AGENTS.md\nnames for it, and no other; a start the owner names runs. `architecture-survey` loads at an orientation, a repository with\ndocuments and no change record on any branch, local or remote-tracking, or\nwhen the request asks for a survey or the owner names it; where a change\nrecord exists, it is never an orientation. A start that did not run is\nnever named in the record. A request that asks for a change and fits no\nstart goes straight to its proposal: the mode, then the line from `frame`.\nA step asked for by name runs alone. ROUTING.md, the map of the line,\nseparates two methods that could produce different work.",
+          "text": "## What to work on\n\nAsked what to work on, or what is up, list the stopped changes, each with its\n\"next\" line, and the open and parked discussions, each with its idea and, for\na parked one, when it said to come back to it, from the workspace's status and\nthe records in the ledger. Recommend one with why, and wait for the owner's\npick: a change picked resumes as above; a discussion picked opens again on the\nowner's word and runs as frame's references page says. Nothing is resumed,\nopened or set before the owner picks.",
           "kind": "method",
-          "reason": "Choose the start: stop the change this session holds when the request asks for another change, answer that nothing is to resume when no change is open or stopped, then match the request's situation against the starts, or send a new change to its proposal and the line from frame. With nothing to resume the session says so and asks for the request; a start loads only in its row's situation or by the owner's name, architecture-survey never as an orientation where a record exists, since QA runs loaded it so (J-60, the fourth family). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "reason": "J-118 S2: asked what to work on, router lists the stopped changes with their next lines and the open and parked discussions with their ideas, recommends one and waits for the owner's pick, a discussion picked opening again on the owner's word.",
+          "gist": "Lists stopped changes and open discussions, then waits for a pick",
+          "ruling": "The register's row of 2026-10-23 on the discussion, on the operator's words of 2026-10-23 (\"a system in which user can simply discuss new feature ideas without them outright becoming changes\") and the card \"A ledger record kind, as proposed (Recommended)\": a discussion is a record kind of the ledger, .greenline/ledger/discussions/<id>.md with a folder beside it, an idea explored with frame's engine at the written depth, with no mode, no ground, no branch and no checks, its states open, parked, declined, promoted and merged set on the owner's word, committed with the trailer Greenline-Discussion: <id>; greenline status and router list discussions beside the changes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+        },
+        {
+          "passage": "written",
+          "text": "## Choose the start\n\nWhen this session holds a change and the request asks for another\nchange, stop that change first, as the ledger guide says. A\nsession that resumes, or is asked \"what were we doing?\", with no open or\nstopped change on any branch says there is nothing to resume, proposes\nnothing and asks the owner for the request. When no open or stopped change\nis the request's, load the one start whose row in AGENTS.md names the\nsituation the request begins in, and no other; a start the owner names\nruns. The orientation is a habit of the first change's frame, never a start\nput before that change: `groundwork` runs inside it on an empty tree, and\n`architecture-survey` loads only when the request asks for a survey or the\nowner names it. A start that did not run is\nnever named in the record. A request that asks for a change and fits no\nstart goes straight to its proposal: the mode, then the line from `frame`.\nA step asked for by name runs alone. ROUTING.md, the map of the line,\nseparates two methods that could produce different work.",
+          "kind": "method",
+          "reason": "Choose the start: stop the change this session holds when the request asks for another change, answer that nothing is to resume when no change is open or stopped, then match the request's situation against the starts, or send a new change to its proposal and the line from frame. With nothing to resume the session says so and asks for the request; a start loads only in its row's situation or by the owner's name, architecture-survey never as an orientation where a record exists, since QA runs loaded it so (J-60, the fourth family). Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page. J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the orientation is a habit of the first change's frame, and the survey loads only when asked for (the seven cuts: the orientation folded into the first change's frame; j109t-wait-named-1 F1).",
           "gist": "Stops an unrelated change, then loads only the start its row names",
-          "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2)"
+          "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor; The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\": a skill's front is the upstream prose its recipe cuts, and greenline's mechanics, where the step's work lands, its section's form, its commands and its depths at each mode, stand on its references page (J-93 S2); J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\": the conduct the 0.2.0 series found missing enters as words with the conduct row or scenario that tests it, and the words a keeper now holds leave"
         },
         {
           "passage": "written",
@@ -54,14 +89,6 @@
           "reason": "Watch the habits: load a habit only when its row's situation arises in the work, secrets only with a secret in reach and ponytail only in its own rows, since QA runs loaded both ahead of their situations (J-60, the fourth family); a durable file nobody asked for is offered first.",
           "gist": "Loads a habit only on its row's situation; unasked files wait",
           "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the request and the open or stopped change records under .greenline/ledger/\nProduces: the record's state in .greenline/ledger/<id>.md, open for the change resumed and stopped, with its \"next\" line and committed, for the change set aside; otherwise nothing durable: the start loaded, the proposal made, or, with nothing to resume, the owner asked for the request, in the reply\nNext: the step the resumed change's \"next\" line names, the start the situation calls for, or frame under the mode the owner approves",
-          "kind": "method",
-          "reason": "The handoff a start carries: the record's state when a change resumes or is set aside, otherwise nothing durable, and the step reached, the start chosen or frame under the approved mode next. With nothing to resume, the reply asks the owner for the request.",
-          "gist": "Writes only a record's state; next a step, start, frame or question",
-          "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); The operator's cards of 2026-10-14 on part 2 of the-whole-change, each \"Rule as proposed\": a change is open while a session holds it and stopped when none does, set at every stop with its \"next\" line, and resuming sets it open; a new request that is not a follow-up stops the open change first; greenline status lists each open and stopped change with its \"next\" line; and a close asked for by name that writes only into the knowledge homes needs no change record; The operator's cards of 2026-10-14 on part 5 of the-whole-change, the walk's cures: \"A branch of its own\", a change's commits never going to another change's branch, the new change taking greenline/<id> from the default branch where a remote exists and the default branch itself where there is none; \"At the proposal\", the change's id chosen when the proposal is written, its branch, working folder and record taking the same id; \"Yes, every stop commits\", every stop committing the record with the change's trailer, so a stopped change is found from any branch and after a clone and resumes on the branch that commit sits on; \"Not counted\", an agent a step's method starts named in that step's section and counted nowhere; \"The one brief, the method's extras\", that agent getting the one brief with the extras the page that starts it names; and \"Settle in S6\" for the orientation's edges and the setup's, the default branch being origin/HEAD, else init.defaultBranch, else the branch HEAD names, and a remote that is no forge offering the local merge or the branch left, never a pull request; The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor"
         }
       ]
     },
@@ -94,11 +121,11 @@
         },
         {
           "passage": "written",
-          "text": "## Two methods that look alike\n\n| The situation | Choose | Not |\n| --- | --- | --- |\n| Observed behavior is wrong and its cause is unknown | `diagnose`, a start: a reproducer and the cause, then the repair as a change | `verify`, which proves a claimed outcome |\n| A design question inside one change | `frame`, at its depth | `wayfinder`, a start that maps a decision space spanning sessions |\n| Which product idea to build next | `what-to-build`, a start that proposes in the reply | `frame`, which shapes a request already chosen |\n| The structure of the code as a whole | `architecture-survey`, a start that surveys and reports | `review`, which judges one change's commits |\n| A brittle or slow test suite | `sweep-tests`, a start with its mutation proof | `review`'s excess lens, which reads one change |\n| The repository lacks its baseline | `groundwork`, a start that sets up only what the purpose needs | `build`, which works inside a baseline |\n| An idea the owner brings is still vague | `idea-refine` (trial), a start that varies it, stress-tests it and states its assumptions before any change | `what-to-build`, which proposes ideas from the repository's own evidence |\n| The repository's quality bar is unwritten, or a check was loosened to reach green | `constraint-driven-development` (trial), a start that writes the bar down and guards it | `groundwork`, which sets up the baseline a bar measures |\n\nUse evidence available locally before asking the owner a factual question.\nWhen two plausible tasks remain, explain the difference in the intended\nresult. Routine implementation choices stay with the agent inside the\nsettled scope.",
+          "text": "## Two methods that look alike\n\n| The situation | Choose | Not |\n| --- | --- | --- |\n| Observed behavior is wrong and its cause is unknown | `diagnose`, a start: a reproducer and the cause, then the repair as a change | `verify`, which proves a claimed outcome |\n| A design question inside one change | `frame`, at its depth | `wayfinder`, a start that maps a decision space spanning sessions |\n| Which product idea to build next | `what-to-build`, a start that proposes in the reply | `frame`, which shapes a request already chosen |\n| The structure of the code as a whole | `architecture-survey`, a start that surveys and reports | `review`, which judges one change's commits |\n| A brittle or slow test suite | `sweep-tests`, a start with its mutation proof | `review`'s excess lens, which reads one change |\n| The repository lacks its baseline | `groundwork`, a start that sets up only what the purpose needs | `build`, which works inside a baseline |\n| An idea the owner brings is still vague | `idea-refine` (trial), a start that varies it, stress-tests it and states its assumptions before any change | `what-to-build`, which proposes ideas from the repository's own evidence |\n| The repository's quality bar is unwritten, or a check was loosened to reach green | `constraint-driven-development` (trial), a start that writes the bar down and guards it | `groundwork`, which sets up the baseline a bar measures |\n| A promise an order of events or an input no test reached could break | `verify-formally`, a start that checks a model or a bound and keeps the check in step with the code | `verify`, which proves a change's claims on the code as it runs |\n| How a part of the code works, or the map of its subsystems | `explain`, a start that traces it from the code and keeps the atlas's pages | `architecture-survey`, which surveys the whole structure for deepenings |\n| A mechanism to explain as a figure | `anatomy`, a habit that builds an interactive figure of a real object driven by a truth model | `show-me`, which draws the reply's text views |\n\nUse evidence available locally before asking the owner a factual question.\nWhen two plausible tasks remain, explain the difference in the intended\nresult. Routine implementation choices stay with the agent inside the\nsettled scope.",
           "kind": "method",
-          "reason": "Two methods that look alike: the start or step each neighbouring situation calls for, and why not the other. The renamed starts take their names, diagnose and architecture-survey (R22), and the two trial starts that look like a kept start gain a row each, as the ingest procedure's wiring rule asks (S17's amendment of 2026-10-08).",
+          "reason": "Two methods that look alike: the start or step each neighbouring situation calls for, and why not the other. The renamed starts take their names, diagnose and architecture-survey (R22), and the two trial starts that look like a kept start gain a row each, as the ingest procedure's wiring rule asks (S17's amendment of 2026-10-08). J-111 adds two rows: verify-formally against verify, and the habit anatomy against show-me. J-110 S4 drops anatomy's extra mark, the visual habits being defaults, and S7 adds the start explain against architecture-survey.",
           "gist": "Separates look-alike situations: which start or step each needs, and why",
-          "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); and R22 of 2026-10-08, the re-cut brief accepted with the names of the roster table and the trial names (\"yes amend, with one change\")"
+          "ruling": "The cutover of the block to the modes (S16a of modes-records-recipes), under the operator's rulings R5 and R11 of 2026-10-04, four modes the agent proposes and waits on (\"agent doesn't runs any mode at default until users ask him to just implement without asking\"), and R16 of 2026-10-07, the roster by kind, a step run by the mode, a start chosen from the situation a request begins in, a habit loaded when its situation arises (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\"); and R22 of 2026-10-08, the re-cut brief accepted with the names of the roster table and the trial names (\"yes amend, with one change\"); the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': the verdicts on pstack's two formal verification skills and on anatomy, whose new skills carry the routing mention the update procedure's table gives a new skill: verify-formally beside verify and anatomy beside show-me; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"; and the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
         },
         {
           "passage": "written",
@@ -122,15 +149,187 @@
         },
         {
           "passage": "written",
-          "text": "## Where its work lands\n\nThe ledger is `.greenline/ledger/`, its guide `.greenline/ledger/README.md`, which owns the change record's format and the stop; each change's record is `.greenline/ledger/<id>.md` and its folder `.greenline/ledger/<id>/`. `greenline status` lists each change with its state and its \"next\" line. A change's checks run through `greenline check`. Working files live under `.greenline/tmp/<id>/`, and `greenline tidy` removes them when the change is done, never a cited file.",
+          "text": "## Where its work lands\n\nThe ledger is `.greenline/ledger/`, its guide `.greenline/ledger/README.md`, which owns the change record's format and the stop; each change's record is `.greenline/ledger/<id>.md` and its folder `.greenline/ledger/<id>/`. `greenline status` lists each change with its state and its \"next\" line. A change's checks run through `greenline check`. Working files live under `.greenline/tmp/<id>/`, and `greenline tidy` removes them when the change is done, never a cited file. Each discussion's record is `.greenline/ledger/discussions/<id>.md`, which `greenline status` lists with its state and its idea; the ledger guide's \"Discussions\" gives its form and its states.",
           "kind": "home",
-          "reason": "router's mechanics: the ledger and its guide, the status listing, the record's path, the recorder, the working files and tidy, and the change's folder, held apart since J-93 S2.",
+          "reason": "router's mechanics: the ledger and its guide, the status listing, the record's path, the recorder, the working files and tidy, and the change's folder, held apart since J-93 S2. J-118 S2: the discussions' records and their listing.",
           "gist": "The ledger, the status listing and the working files"
+        },
+        {
+          "passage": "written",
+          "text": "## Floor debt\n\nWhere `.greenline/ledger/interface/paths.json` gives a route floor findings, or `greenline status` reports interface drift, list them as floor debt among the next things to work on, each with its route and its rule.\n\n## Marks\n\nWhere the status line prints `marks:`, list the owner's open marks among the next things to work on, each with its id, its address and its note, from `greenline mark list`: the ones on an open change's address are that change's follow-up, and the rest are the next proposal's input.",
+          "kind": "home",
+          "reason": "router lists an interface's floor debt and its drift among the next things to work on, from the path index and the status line (J-123 S3).",
+          "gist": "Lists the interface's floor debt among the next things"
         }
       ],
       "part": "references"
     }
   ],
   "copies": [],
-  "drops": []
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "Before choosing which change the owner means, read the open and stopped changes, including one stopped on another local or remote-tracking branch, which is found by its record's commit.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "stopped on other branches:",
+      "cost": "free",
+      "oracle": "The states and the stop"
+    },
+    {
+      "promise": "Resume a change at the step its \"next\" line names, on the branch its record's commit sits on and under the record's mode, with no new proposal.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "next:",
+      "cost": "free",
+      "oracle": "Handoff"
+    },
+    {
+      "promise": "The resuming session's first write to the record sets its state to open.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "resume-open",
+      "cost": "cheap",
+      "oracle": "The states and the stop"
+    },
+    {
+      "promise": "Ask the owner only when several changes remain plausible, and say what each would produce.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Neither the Linear replay's verdict nor the fix round's plans name a failure here, so the second condition fails."
+    },
+    {
+      "promise": "Asked what to work on, list the stopped changes with their \"next\" lines and the open and parked discussions with their ideas, and when each parked one said to come back to it.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "discussions:",
+      "cost": "free",
+      "oracle": "Discussions"
+    },
+    {
+      "promise": "Recommend one item with a reason, and resume, open or set nothing before the owner picks.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No hold stops a change being resumed before the owner picks, and no run observed this fail, so the second condition fails."
+    },
+    {
+      "promise": "A discussion the owner picks opens again only on the owner's word.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "discussion-words",
+      "cost": "cheap",
+      "oracle": "Discussions"
+    },
+    {
+      "promise": "When the session holds a change and the request asks for another, stop the held change first.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "A new request mid-change",
+      "cost": "free"
+    },
+    {
+      "promise": "With no open or stopped change on any branch, say there is nothing to resume, propose nothing, and ask the owner for the request.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "Starts and habits",
+      "cost": "free"
+    },
+    {
+      "promise": "Load only the one start or habit whose situation the work is in, and never name in the record a start that did not run.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "Starts and habits",
+      "cost": "free"
+    },
+    {
+      "promise": "The orientation is a habit of the first change's frame; architecture-survey loads only when the request asks for a survey or the owner names it, never as a start put before that change.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The situation line and the setup",
+      "cost": "free"
+    },
+    {
+      "promise": "A request that fits no start, or a step asked for by name, changes no file until a change is proposed and opened.",
+      "page": "ROUTING.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap",
+      "oracle": "The wait, no mode"
+    },
+    {
+      "promise": "A habit whose output is a durable file the owner did not ask for is offered in one line and made only on the owner's yes.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Only the visual habits' offer has a hold (picture-offer). No run observed a habit's other durable file made unasked, so the second condition fails."
+    },
+    {
+      "promise": "Each step's skill writes its section of the change record when the step ends.",
+      "page": "ROUTING.md",
+      "kind": "fact",
+      "where": "GL0402",
+      "cost": "free",
+      "oracle": "The line at each depth"
+    },
+    {
+      "promise": "A ticket of a plan directory opens its own change record under the mode beside it in the tickets file.",
+      "page": "ROUTING.md",
+      "kind": "fact",
+      "where": "GL0406",
+      "cost": "free",
+      "oracle": "Planned work"
+    },
+    {
+      "promise": "Working files are removed when the change is done, and a cited file is never removed.",
+      "page": "ROUTING.md",
+      "kind": "fact",
+      "where": "the working files nudge, \"its working files remain in .greenline/tmp/ID/\" (GL0470 keeps a cited file)",
+      "cost": "free",
+      "oracle": "The situation line and the setup"
+    },
+    {
+      "promise": "Lasting choices go to the repository's decision home, and settled terms to its glossary, or GLOSSARY.md when it has none.",
+      "page": "ROUTING.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks where a choice or a term lands, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "List route floor findings or interface drift as floor debt among the next things to work on, each with its route and rule.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "interface drift:",
+      "cost": "free"
+    },
+    {
+      "promise": "Where the status prints marks:, list the owner's open marks among the next things to work on, each with its id, address and note.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "marks:",
+      "cost": "free",
+      "oracle": "Marks on a capture"
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "what were we doing",
+        "where were we",
+        "pick up where",
+        "what should we work on",
+        "carry on with that change",
+        "resume the change"
+      ],
+      "weight": 3,
+      "read": "whole"
+    },
+    {
+      "words": ["carry on", "go on with", "continue", "next step"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
+    }
+  ]
 }

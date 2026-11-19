@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Encode the domain in a structure instead of scattered conditionals, redesign around a new requirement instead of bolting it on, and let the type checker rule out impossible states: state machines, discriminated unions, branded primitives, parsing at the boundary, exhaustive matching. Use when writing stateful logic or a branch that grows by one more case, when a new requirement meets an existing design, and when designing a type or a function signature in any typed language."
+      "value": "Encode the domain in a structure instead of scattered conditionals, redesign around a new requirement instead of bolting it on, and let the type checker rule out impossible states: state machines, discriminated unions, branded primitives, parsing at the boundary, exhaustive matching. Use when writing stateful logic or a branch that grows by one more case, when a new requirement meets an existing design, when a schema file is touched, and when designing a type or a function signature in any typed language."
     }
   ],
   "sources": ["pstack"],
@@ -31,24 +31,42 @@
           "gist": "Opens the habit: when it applies; boundaries handles parsing outside data"
         },
         {
+          "passage": "written",
+          "text": "Before the first type or branch is written, read [method.md](method.md): modelling the domain, redesigning from first principles, and the types.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Domain and types: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-model-the-domain/SKILL.md",
           "segments": [
             "dbf92448f219",
-            "e59f57dcea36",
             "16bf3a304559",
             "f6ddf2b92ca0",
             "98c41ee66470",
-            "d9bb7e70e6e9",
+            "3a6eaf588ca0",
             "68d63b6cf717",
-            "b644d74b2a6a",
+            "aa1bcd880c3a",
             "b439c6fbf143",
             "2b6da2d87712",
             "d110798d7c43",
             "66e55a764f40",
             "469a86dc658b",
-            "238892673336",
+            "8ba5da6c8b2f",
             "a8465e22cfc0",
             "459f8c110252",
             "03d5638e49b1",
@@ -73,7 +91,7 @@
           "file": "principle-redesign-from-first-principles/SKILL.md",
           "segments": [
             "6d51e4f58f2f",
-            "c0c6bef569ba",
+            "e532c0d1b227",
             "7605659f9b92",
             "0bdd5bfb1348",
             "cdc0cebfec8e",
@@ -98,92 +116,96 @@
           "gist": "type-system-discipline's title becomes the Types section heading"
         },
         {
-          "passage": "taken",
-          "source": "pstack",
-          "file": "principle-type-system-discipline/SKILL.md",
-          "segments": [
-            "f751d9012a3d",
-            "5eaf87d4172f",
-            "72fb7069b1ea",
-            "b4863e926d93",
-            "401156c2d746"
-          ]
+          "passage": "written",
+          "text": "The type checker is a proof assistant. Use it to eliminate impossible states, mismatched primitives, and unhandled variants at compile time. A case the types let you ignore becomes a runtime failure the compiler could have stopped.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
         },
         {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-type-system-discipline/SKILL.md",
-          "segments": [
-            "9ca81ea69117",
-            "7d56b6278563",
-            "cf6e99d6129e",
-            "c74a0aeaa70f",
-            "3878f8f96a42",
-            "67eef4bbdf6d",
-            "f8bb668cac36",
-            "ffcfa21d4ada",
-            "e3758bab328d",
-            "3be5b0149c21",
-            "8dd23e95585f",
-            "cabb1eb1622d",
-            "b2aabffde598",
-            "776505402ac8",
-            "5c156107919c",
-            "1a1171149c84",
-            "d9fd6e49fdac",
-            "c6e0013a509a",
-            "6d087bf60368",
-            "4ceea8e54a71",
-            "307cfebd1849",
-            "609a2a3af2ed",
-            "c4139d35fe07",
-            "999cb845918b",
-            "29c0a0845a50",
-            "00e19060e845",
-            "7c7212887f96",
-            "1c5638fa9764",
-            "449039e717b5",
-            "244304b7b118"
-          ],
-          "edits": [
-            {
-              "segment": "609a2a3af2ed",
-              "find": "**boundary-discipline** principle skill",
-              "replace": "**boundaries** habit",
-              "kind": "name",
-              "reason": "boundary-discipline is the habit boundaries now (R22).",
-              "gist": "boundary-discipline is now the boundaries habit"
-            }
-          ]
+          "segments": ["b4863e926d93"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "Unrepresentable states, total functions, and interface redesign (the patterns below) are the tools.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "written",
+          "text": "**The patterns:**\n\n- **Make illegal states unrepresentable.** Model variants as sum types: discriminated unions in TypeScript, enums with payloads in Rust/Swift/Kotlin, sealed classes in Scala, ADTs in Haskell/OCaml. Don't model state as a bag of optional fields where contradictory combinations compile. A subtle anti-pattern: `{ completed: boolean; completedAt?: Date }` admits `completed: true; completedAt: undefined`, which is meaningless. Derive the boolean from a single source like `completedAt !== null`, or model the variants explicitly as `{ kind: 'open' } | { kind: 'done'; at: Date }`. If a bug forces the question \"wait, can this combination actually happen?\", the type is too loose.\n- **Types are constructions, not restrictions.** Build the type up from the values you want instead of carving them out of a looser type with checks. The invariant that seems to need a refinement type is usually a construction away. A non-empty list is a head plus a rest, not a list with a length check. A valid time range is a start plus a duration, not two timestamps you must keep ordered. No representation is privileged. A list of pairs is an even-length list if you interpret it that way, so choose the shape that cannot build the illegal value and expose the interface callers need on top.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
         },
         {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-type-system-discipline/SKILL.md",
-          "segments": [
-            "e0e61160b070",
-            "f8973b504be2",
-            "bfbb7035c58a",
-            "061cf6b7e510",
-            "66d1e333531d",
-            "c516e924c99b",
-            "57694c6a4187",
-            "76faefcea701",
-            "20df89023a58",
-            "dee0458683c7",
-            "54441b20796b",
-            "e953c6670748",
-            "6e75bf6067f7",
-            "40dc7b93b135",
-            "415bcb194210",
-            "6bdd9d13d1d9",
-            "f5c4bf4149ed",
-            "01daef87afe1",
-            "d9451092e470",
-            "260af12722ec",
-            "16426248f7f9",
-            "cdb7055458ff"
-          ],
+          "segments": ["5c156107919c", "1a1171149c84"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "Newtypes in Rust, opaque types in Swift, value classes in Kotlin, phantom types in Haskell, branded intersections in TypeScript.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-type-system-discipline/SKILL.md",
+          "segments": ["c6e0013a509a"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-type-system-discipline/SKILL.md",
+          "segments": ["6d087bf60368", "4ceea8e54a71", "307cfebd1849"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "See the **boundaries** habit for where to put validation.\n- **Don't lie to the type system.** Casts, unsafe coercions, and assertion functions that bypass the compiler are latent runtime crashes. If the compiler can't prove a fact, prove it (validate, narrow, refine the model) or accept that the cast is a hazard.\n- **Exhaustive matching is the compiler's job.** When you match on a sum type, the compiler must fail compilation if a new variant is added without handling. Use the idiom your language provides: `never`-typed binding in TypeScript, unannotated `match` in Rust, `-Wincomplete-patterns` in Haskell, sealed-class match exhaustiveness in Kotlin.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"],
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "pstack",
+          "file": "principle-type-system-discipline/SKILL.md",
+          "segments": ["449039e717b5", "fe2f1f129c2e"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "- **Strengthen a type only where partiality appears.** A runtime assertion, null check, or \"this should never happen\" throw marks the place a type is too weak. Push that check up into the type. Then stop. The type system's job is to track the cases each use site must handle, not to describe the data as precisely as possible. Prefer total functions. `sum` of an empty list is 0, so it takes the plain list. `head` of an empty list has no answer, so it demands the non-empty one.\n\n**The tests:**\n\n- \"Can I write a comment explaining when this combination of fields is valid?\" If yes, the type is too loose. Split it into a sum type.\n- \"Do two of my function arguments share a primitive type but mean different things?\" Brand them.\n- \"Where did this `any`, this `as`, this `assertNotNull` come from?\" Trace it to the boundary and validate there instead.\n- \"If a new variant is added next month, will the compiler tell the next agent where to add a case?\" If no, the match isn't exhaustive.\n- \"Is this type duplicating a shape another file owns?\" Derive instead.\n- \"Am I strengthening this type to keep an operation total, or just to be more precise?\" If nothing would otherwise panic, keep the plain type.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"],
           "join": "\n"
         }
       ]
@@ -211,8 +233,8 @@
       "reason": "The title becomes the section's heading.",
       "gist": "The title becomes the section's heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 2
       }
     },
     {
@@ -223,25 +245,25 @@
       "reason": "The title becomes the section's heading.",
       "gist": "The title becomes the section's heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 6
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
       "source": "pstack",
       "file": "principle-type-system-discipline/SKILL.md",
       "segment": "5a6d6d3f39bc",
-      "kind": "pointer",
-      "reason": "The typescript-best-practices skill is not vendored, so the body pointed the agent at a skill the install does not carry.",
-      "gist": "The typescript-best-practices skill it cites is not installed here"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-type-system-discipline/SKILL.md",
       "segment": "2afd2e45f178",
-      "kind": "pointer",
-      "reason": "The typescript-best-practices skill is not vendored, so the body pointed the agent at a skill the install does not carry.",
-      "gist": "The typescript-best-practices skill it cites is not installed here"
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
@@ -250,13 +272,701 @@
       "kind": "pointer",
       "reason": "the encode-lessons-in-structure principle skill is not vendored; the pointer stays out of the derive-types bullet",
       "gist": "encode-lessons-in-structure is not installed, so its mention goes"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "f751d9012a3d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "5eaf87d4172f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "72fb7069b1ea",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 6
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "401156c2d746",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 8
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "9ca81ea69117",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "7d56b6278563",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "cf6e99d6129e",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "c74a0aeaa70f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "3878f8f96a42",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "67eef4bbdf6d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "f8bb668cac36",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "ffcfa21d4ada",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "e3758bab328d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "3be5b0149c21",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "8dd23e95585f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "cabb1eb1622d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "b2aabffde598",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "776505402ac8",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "d9fd6e49fdac",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "609a2a3af2ed",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "c4139d35fe07",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "999cb845918b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "29c0a0845a50",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "00e19060e845",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "7c7212887f96",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "1c5638fa9764",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 14
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "e0e61160b070",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "f8973b504be2",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "bfbb7035c58a",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "061cf6b7e510",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "66d1e333531d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "c516e924c99b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "57694c6a4187",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "76faefcea701",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "20df89023a58",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "dee0458683c7",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "54441b20796b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "e953c6670748",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "6e75bf6067f7",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "40dc7b93b135",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "415bcb194210",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "6bdd9d13d1d9",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "f5c4bf4149ed",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "01daef87afe1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "d9451092e470",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "260af12722ec",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "16426248f7f9",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "cdb7055458ff",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 16
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "401605dbd261",
+      "kind": "scope",
+      "reason": "The rewritten sentence restates the rule greenline keeps beside it as a written passage, so it is not taken twice.",
+      "gist": "Restates the rule kept beside it, so it is not taken twice"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "98facf98acfa",
+      "kind": "pointer",
+      "reason": "The typescript-best-practices skill is not vendored, so the body pointed the agent at a skill the install does not carry.",
+      "gist": "The typescript-best-practices skill it cites is not installed here"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "68d83ae5472e",
+      "kind": "scope",
+      "reason": "The rewritten sentence restates the rule greenline keeps beside it as a written passage, so it is not taken twice.",
+      "gist": "Restates the rule kept beside it, so it is not taken twice"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "895208dc9520",
+      "kind": "scope",
+      "reason": "The rewritten sentence restates the rule greenline keeps beside it as a written passage, so it is not taken twice.",
+      "gist": "Restates the rule kept beside it, so it is not taken twice"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-type-system-discipline/SKILL.md",
+      "segment": "cfe6bb4b709e",
+      "kind": "scope",
+      "reason": "The rewritten sentence restates the rule greenline keeps beside it as a written passage, so it is not taken twice.",
+      "gist": "Restates the rule kept beside it, so it is not taken twice"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-model-the-domain/SKILL.md",
+      "segment": "e59f57dcea36",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-model-the-domain/SKILL.md",
+      "segment": "d9bb7e70e6e9",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     }
   ],
   "notStub": [
     {
       "source": "pstack",
       "file": "principle-redesign-from-first-principles/SKILL.md",
-      "ruling": "Not a stub: its upstream body, under the stub trigger, states a method of its own, four ordered moves with a criterion (read every affected file, ask what would be built from scratch with the requirement, carry the change through every reference, then deliver the whole redesign incrementally), so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-08 on the intake R3, \"everything is good\", on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-08 on the merged habits)"
+      "ruling": "Not a stub: its upstream body, under the stub trigger, states a method of its own, four ordered moves with a criterion (read every affected file, ask what would be built from scratch with the requirement, carry the change through every reference, then deliver the whole redesign incrementally), so it moves as a taken source with its retention measured; the operator's ruling of 2026-10-08 on the intake R3, \"everything is good\", on the recommendation put to the operator (docs/DECISIONS.md, the row of 2026-10-08 on the merged habits); rechecked at eb4db2b5, where its body changed to 88 words with the four ordered moves kept: the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': not a stub, keep the text"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "A new requirement that changes the design's shape is carried through every reference: types, docs, examples and rationale sections.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks references against a redesign, and no run or fix-round job names a stale one. The rest of the page is method that commits to nothing observable."
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["schema"],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "files": ["schema"],
+      "steps": ["build"],
+      "modes": ["regular", "careful"],
+      "weight": 2,
+      "read": "whole"
+    },
+    {
+      "words": [
+        "state machine",
+        "stateful",
+        "new requirement",
+        "domain model",
+        "their states",
+        "statuses"
+      ],
+      "weight": 1,
+      "read": "part"
+    },
+    {
+      "words": [
+        "keep my choice",
+        "keep the choice",
+        "keeps the choice",
+        "keep their choice",
+        "remember my",
+        "remember the choice",
+        "persist",
+        "persists",
+        "persisted",
+        "a new type",
+        "an enum",
+        "a union type",
+        "a signature"
+      ],
+      "steps": ["build"],
+      "modes": ["regular", "careful"],
+      "weight": 2,
+      "read": "whole"
     }
   ]
 }

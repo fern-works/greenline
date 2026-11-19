@@ -1,3 +1,4 @@
+import type { TriggerRow } from "../core/habits-owed.ts";
 import { join } from "node:path";
 import { err, ok, type Result } from "../commons/result.ts";
 import { parseCorpusManifest, type CorpusManifest, type CorpusSource } from "../core/corpus.ts";
@@ -34,10 +35,13 @@ import {
   type StubCount,
 } from "./intake.ts";
 import { frontFindings, hasReferences, type FrontFinding } from "./fronts.ts";
+import type { SkillDrops } from "./dismissals.ts";
+import { tallyKeepers, type KeeperTally, type SkillKeepers } from "./keepers.ts";
 import { kindIssues, lineOf, placementSlotIssues } from "./line.ts";
 import { measureRecipe, type RecipeMeasure, type SourceMeasure } from "./measure.ts";
 import {
   checkRecipe,
+  homeOf,
   parseRecipe,
   RecipeRefused,
   type CheckedRecipe,
@@ -221,8 +225,9 @@ export interface SkillFrontFinding extends FrontFinding {
 
 /**
  * `fronts`'s report (`workshop/components/recipes.md`, "The front and the
- * references"): the recipes read, every mechanic a front holds, every skill
- * on the line whose recipe names no references page, and every refusal.
+ * references"): the recipes read, every mechanic a front holds and every
+ * `SKILL.md` of 300 words or more, every skill on the line whose recipe
+ * names no references page, and every refusal.
  */
 export interface FrontsOutput {
   readonly verb: "fronts";
@@ -489,6 +494,54 @@ function verifyModes(corpus: string, chain: Chain | undefined): ModesVerified {
 }
 
 /**
+ * Each home a phrase names on a roster skill's page that no phrase passage of
+ * that skill's recipe takes there, and each such home naming no recipe
+ * (J-194 S1), one refusal per words source; the passage's own checks are
+ * `checkRecipe`'s. A home outside `corpus/skills/` is the phrase's record alone.
+ * @param corpus the corpus directory
+ * @returns one refusal per words source with a home its recipe does not hold
+ */
+function phraseHomeRefusals(corpus: string): readonly Refusal[] {
+  const manifest = readManifest(corpus);
+  if (manifest._tag === "err") return [];
+  const recipes = new Set(recipeNames(corpus));
+  const refusals: Refusal[] = [];
+  for (const source of manifest.value.words) {
+    const issues: { message: string }[] = [];
+    for (const phrase of source.phrases)
+      for (const home of phrase.where ?? []) {
+        const named = homeOf(home);
+        if (named === undefined) continue;
+        const at = `phrase '${phrase.id}' names its home ${home}`;
+        if (!recipes.has(named.skill)) {
+          issues.push({ message: `${at}, and no recipe '${named.skill}' stands` });
+          continue;
+        }
+        const text = readRecipe(corpus, named.skill)?.text;
+        const parsed = text === undefined ? undefined : parseRecipe(text, named.skill);
+        // A recipe that does not parse is refused by its own check.
+        if (parsed === undefined || parsed._tag === "err") continue;
+        const takes = parsed.value.files.some(
+          (file) =>
+            file.path === named.page &&
+            file.passages.some(
+              (item) =>
+                item.passage === "written" &&
+                item.phrase === phrase.id &&
+                item.credits.some((credit) => credit === source.name),
+            ),
+        );
+        if (!takes)
+          issues.push({
+            message: `${at}, and no phrase passage of '${named.skill}' takes it on ${named.page}`,
+          });
+      }
+    if (issues.length > 0) refusals.push({ skill: source.name, issues });
+  }
+  return refusals;
+}
+
+/**
  * The manifest's skills whose kind or slot the modes definition refuses,
  * each refused by name (`kindIssues`); none when the corpus holds no
  * manifest or the manifest names none of the skills.
@@ -588,13 +641,14 @@ export function verifyVerb(corpus: string, skills: readonly string[]): VerbOutco
     skills.length > 0 || (names.length === 0 && entries === 0) ? [] : viewFindings(corpus);
   const anchored = unpinnedSnapshots(corpus, refused);
   const slots = kindRefusals(corpus, skills);
+  const homes = skills.length > 0 ? [] : phraseHomeRefusals(corpus);
   return {
     output: {
       verb: "verify",
       recipes: names.length + (modes.read ? 1 : 0),
       verified,
       differences,
-      refused: [...anchored.refused, ...modes.refused, ...slots],
+      refused: [...anchored.refused, ...modes.refused, ...slots, ...homes],
       entries,
       tip: chain._tag === "ok" ? (tipOf(chain.value) ?? null) : null,
       chain: chainIssues,
@@ -607,6 +661,7 @@ export function verifyVerb(corpus: string, skills: readonly string[]): VerbOutco
       refused.length > 0 ||
       modes.refused.length > 0 ||
       slots.length > 0 ||
+      homes.length > 0 ||
       chainIssues.length > 0 ||
       ledger.length > 0 ||
       views.length > 0,
@@ -1035,6 +1090,10 @@ export function refreshVerb(corpus: string, request: RefreshRequest): VerbOutcom
   if (manifest._tag === "err") return refuse([manifest.error.message]);
   const snapshots = readSnapshots(corpus);
   if (snapshots._tag === "err") return refuse([snapshots.error.message]);
+  if (manifest.value.words.some((entry) => entry.name === source))
+    return refuse([
+      `'${source}' is a words source: it has no repository and no head to refresh, and its phrases change in the manifest by hand`,
+    ]);
   const pinned = manifest.value.sources.find((entry) => entry.name === source);
   // SAFETY: the name passed the source-name pattern above, which is the pattern a recipe's source holds.
   const name = source as SourceName;
@@ -1135,7 +1194,10 @@ export function refreshVerb(corpus: string, request: RefreshRequest): VerbOutcom
         );
   const manifestText = readManifestText(corpus);
   const nextManifest =
-    manifestText === undefined ? undefined : manifestWithSources(manifestText, sources);
+    manifestText === undefined
+      ? undefined
+      : // The words sources stand after every pinned one, as the manifest's parse requires.
+        manifestWithSources(manifestText, [...sources, ...manifest.value.words]);
   if (nextManifest === undefined)
     return refuse(["the manifest holds no sources list refresh can rewrite"], {
       ...reported,
@@ -1352,10 +1414,11 @@ export function measureVerb(corpus: string, skills: readonly string[]): VerbOutc
 }
 
 /**
- * Read every front for greenline's mechanics, and every skill on the line
- * for its references page (J-93 S2): a front holds the upstream prose
- * alone, outside `SKILL.md`'s Handoff section, and a step's skill keeps
- * its mechanics on a references page. Never writes.
+ * Read every front for greenline's mechanics and its `SKILL.md`'s words,
+ * and every skill on the line for its references page (J-93 S2, J-181 S1):
+ * a front holds the upstream prose alone, outside `SKILL.md`'s Handoff
+ * section, its `SKILL.md` under 300 words, and a step's skill keeps its
+ * mechanics on a references page. Never writes.
  * @param corpus the corpus directory
  * @param skills the skills to read; every recipe on disk when empty
  * @returns every finding, every skill on the line with no references page, and every refusal
@@ -1428,23 +1491,30 @@ function referencesPages(corpus: string): ReferencesPages {
  * @param installation the compiled installation, or why it could not be compiled
  * @param modes the modes to measure; every mode when empty
  * @returns the report; it fails on a mode over its budget without a ruling, an unknown mode, or an installation or recipe that cannot be read
+ * Beside the words, the keepers the recipes list, counted by kind and by
+ * cost, with the hook rules the holds name, which the gate's `corpus-budget`
+ * row caps (J-153 S3); a recipe that cannot be read refuses the report.
  */
 export function budgetVerb(
   corpus: string,
   installation: Result<Installation, ContractParseFailed>,
   modes: readonly string[],
-): VerbOutcome<BudgetOutput> {
-  const refused = (messages: readonly string[]): VerbOutcome<BudgetOutput> => ({
+): VerbOutcome<KeptBudgetOutput> {
+  const { recipeKeepers, issues: unread } = recipeSourcesOf(corpus);
+  const keepers = tallyKeepers(recipeKeepers);
+  const refused = (messages: readonly string[]): VerbOutcome<KeptBudgetOutput> => ({
     output: {
       verb: "budget",
       block: null,
       line: [],
       modes: [],
       skills: [],
+      keepers,
       refused: messages.map((message) => ({ mode: "*", message })),
     },
     failed: true,
   });
+  if (unread.length > 0) return refused(unread);
   if (installation._tag === "err")
     return refused(
       installation.error.issues.map(
@@ -1464,7 +1534,7 @@ export function budgetVerb(
     recipe = parsed.value;
   }
   const report = budgetReport(installation.value, recipe, modes, referencesPages(corpus));
-  return { output: report, failed: report.refused.length > 0 };
+  return { output: { ...report, keepers }, failed: report.refused.length > 0 };
 }
 
 /** Why a change entry's subject cannot be recorded against the tree, or its checks' reasons. */
@@ -1687,15 +1757,28 @@ export function draftVerb(
   };
 }
 
-/** The sources each recipe on disk lists, by skill, and why a recipe cannot be read. */
+/** The budget's report with the keepers the recipes list, counted (J-153 S3). */
+export interface KeptBudgetOutput extends BudgetOutput {
+  readonly keepers: KeeperTally;
+}
+
+/** The sources, the keepers and the drops each recipe on disk lists, by skill, and why a recipe cannot be read. */
 interface RecipeSources {
   readonly recipeSources: ReadonlyMap<string, readonly string[]>;
+  readonly recipeKeepers: readonly SkillKeepers[];
+  readonly recipeDrops: readonly SkillDrops[];
+  readonly recipeTriggers: ReadonlyMap<string, readonly TriggerRow[]>;
+  readonly recipeWholeReads: ReadonlyMap<string, readonly string[]>;
   readonly issues: readonly string[];
 }
 
 /** The sources each recipe on disk lists, by skill, and why a recipe cannot be read. */
 function recipeSourcesOf(corpus: string): RecipeSources {
   const recipeSources = new Map<string, readonly string[]>();
+  const recipeKeepers: SkillKeepers[] = [];
+  const recipeDrops: SkillDrops[] = [];
+  const recipeTriggers = new Map<string, readonly TriggerRow[]>();
+  const recipeWholeReads = new Map<string, readonly string[]>();
   const issues: string[] = [];
   for (const skill of recipeNames(corpus)) {
     const path = `corpus/recipes/${skill}.json`;
@@ -1707,9 +1790,15 @@ function recipeSourcesOf(corpus: string): RecipeSources {
     const parsed = parseRecipe(text, path);
     if (parsed._tag === "err")
       issues.push(...parsed.error.issues.map((issue) => `${path} ${issue.path}: ${issue.message}`));
-    else recipeSources.set(skill, parsed.value.sources);
+    else {
+      recipeSources.set(skill, parsed.value.sources);
+      recipeKeepers.push({ skill, keepers: parsed.value.keepers });
+      recipeDrops.push({ skill, drops: parsed.value.drops });
+      if (parsed.value.triggers !== undefined) recipeTriggers.set(skill, parsed.value.triggers);
+      if (parsed.value.wholeRead !== undefined) recipeWholeReads.set(skill, parsed.value.wholeRead);
+    }
   }
-  return { recipeSources, issues };
+  return { recipeSources, recipeKeepers, recipeDrops, recipeTriggers, recipeWholeReads, issues };
 }
 
 /** The views' input from the corpus on disk, or every reason it cannot be read. */
@@ -1728,12 +1817,17 @@ function viewsFrom(corpus: string): Result<readonly View[], RecipeRefused> {
   if (manifest._tag === "err") return fail([manifest.error.message]);
   const read = readDefinition(corpus, "the line cannot be rendered");
   if ("refused" in read) return fail(read.refused);
-  const { recipeSources, issues } = recipeSourcesOf(corpus);
+  const { recipeSources, recipeKeepers, recipeDrops, recipeTriggers, recipeWholeReads, issues } =
+    recipeSourcesOf(corpus);
   if (issues.length > 0) return fail(issues);
   const rendered = renderViews({
     chain: chain.value,
     definition: read.definition,
     recipeSources,
+    recipeKeepers,
+    recipeDrops,
+    recipeTriggers,
+    recipeWholeReads,
     sources: manifest.value.sources.map((source) => ({
       name: source.name,
       repo: source.repo,
@@ -1742,6 +1836,7 @@ function viewsFrom(corpus: string): Result<readonly View[], RecipeRefused> {
       licence: readLicence(corpus, source.snapshot),
       holder: source.holder,
     })),
+    words: manifest.value.words,
     skills: manifest.value.skills.map((skill) => ({
       name: skill.name,
       kind: skill.kind,

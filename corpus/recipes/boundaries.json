@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Concentrate validation, parsing and error handling at system boundaries (CLI, config, network, external APIs), trust internal types and keep business logic in pure functions; and let no failure become success-shaped output: no catch block returning a default, no fabricated data, a test that forces each changed integration to fail. Use when validating input or handling an error at a boundary, when writing a catch block, a default value, a retry or a fallback, when a dependency fails during the work, and when a deadline or a demonstration makes a working-looking result tempting."
+      "value": "Concentrate validation, parsing and error handling at system boundaries (CLI, config, network, external APIs), trust internal types and keep business logic in pure functions; and let no failure become success-shaped output: no catch block returning a default, no fabricated data, a test that forces each changed integration to fail. Use when validating input or handling an error at a boundary, an API contract or an import is touched, when writing a catch block, a default value, a retry or a fallback, when a dependency fails during the work, and when a deadline or a demonstration makes a working-looking result tempting."
     }
   ],
   "sources": ["freddie-northam", "pstack"],
@@ -29,6 +29,25 @@
           "kind": "scope",
           "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, that it writes no record of its own and where its tests are named, and which boundary it means, since deep-modules says seam for the place between modules.",
           "gist": "Opens the habit: when it applies; boundaries are where outside data enters"
+        },
+        {
+          "passage": "written",
+          "text": "Before input is validated or a failure handled, read [method.md](method.md): where validation stands, failing loud, what a catch block may do, fabrication and the failing dependency's test.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Boundaries: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "taken",
@@ -140,9 +159,67 @@
       "reason": "The title becomes the section's heading.",
       "gist": "The title becomes the section's heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 2
       }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "For every production integration the change touched, a test forces the dependency to fail and asserts that no success-shaped output crosses the public boundary. The test is named in the step's section and in the closing report.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing reads the section or the report for negative-path tests. The replay's F8 (002/008) shows the page read into /dev/null and claimed Followed, but no run names a missing negative-path test, and standards were graded met."
+    },
+    {
+      "promise": "No failure becomes success-shaped output. No catch block returns a default, no missing integration returns a plausible value, no absent credential falls back to a stub, and no data is fabricated.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is code shape that no hook or status reads, and no run cites a breach."
+    },
+    {
+      "promise": "Under pressure to demonstrate, it says the integration is down and shows the part that works.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is a reply's honesty with no reader. No run cites a hidden fallback."
+    },
+    {
+      "promise": "Mocks appear only under a test directory.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No file reading places mocks, and no run names one outside tests."
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["contract"],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "files": ["contract"],
+      "steps": ["build"],
+      "modes": ["regular", "careful"],
+      "weight": 2,
+      "read": "whole"
+    },
+    {
+      "words": [
+        "validate",
+        "validation",
+        "error handling",
+        "fallback",
+        "default to",
+        "import",
+        "external api",
+        "user input"
+      ],
+      "weight": 1,
+      "read": "part"
     }
   ]
 }

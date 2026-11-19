@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-humanlayer-visual-pr-outline",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-anatomy",
+    "sha256": "707cd7bb2f694cb07401ad5c099c0482cf4157516ae6a7c26e7ea2b47d5c6138"
+  },
+  "source": {
+    "repository": "https://github.com/humanlayer/skills",
+    "commit": "ca7c8088db69e315a8b2deea43820270457f8f3c",
+    "path": "plugins/visual-pr/skills/visual-pr"
+  },
+  "pin": "humanlayer",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its change outline joins pr-writing's What changed",
+  "reason": "The change outline, the views a change alters in diff or whole, joins pr-writing's PR body; the gh and task-directory workflow stays left out.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': visual-pr combines into pr-writing as the change outline, pr-writing staying a trial, the pin at ca7c8088; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': visual-pr combines into pr-writing as the change outline, pr-writing staying a trial, the pin at ca7c8088; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    }
+  ],
+  "placement": {
+    "kind": "habit",
+    "slot": "pr-writing",
+    "catches": "A PR body that lists files or narrates the diff where the change's shape would explain it",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "strengthen",
+      "needs": "an observed run here where a default workspace's PR body missed its shape, placing the outline in show-me"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "build",
+        "depth": "inline",
+        "cost": 120
+      },
+      {
+        "mode": "regular",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      },
+      {
+        "mode": "careful",
+        "step": "build",
+        "depth": "written",
+        "cost": 120
+      }
+    ],
+    "ships": "trial"
+  }
+}

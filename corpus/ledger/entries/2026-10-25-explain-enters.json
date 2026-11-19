@@ -1,0 +1,48 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-explain-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-pr-writing-links-the-visuals",
+    "sha256": "e4cda86c30d72d671f48a71af6a8c3032816ccb1bc2f415cc231d1e0ca5b3fea"
+  },
+  "subject": "skill:explain",
+  "recipe": "16ad62065af572e667972edadf6906868779215ffe392e4e505a3b79a784ede1",
+  "result": "548cf3ab1d54d8c9557955f55cede053df13d94aa354eb703128a02ee334614a",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The start explain enters, keeping the repository's atlas",
+  "reason": "explain enters as a default start lifted from the workshop's explain craft, pstack's how credited: the explanation's walk and form, and the atlas with its discovery, pages, journeys, index and offered refresh.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 1409
+  }
+}

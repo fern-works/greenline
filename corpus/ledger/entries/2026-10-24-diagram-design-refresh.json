@@ -1,0 +1,230 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-diagram-design-refresh",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-21-router-a-record-for-every-write",
+    "sha256": "a31ee027123d98373297ee671a203015a713f6a3a53a866d670119a5b03d8fc6"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "41359fe6de9579d07a38c932bd1297795e08611972eb64a5b6e02f77a4aebec4",
+  "result": "b3ea62293df43d8537f6faf64c9fe49ab93e0e1eb5efa286a3121b7771dd5359",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/animation.md"
+    },
+    {
+      "path": "references/doctor.md"
+    },
+    {
+      "path": "references/export.md"
+    },
+    {
+      "path": "references/import-drawio.md"
+    },
+    {
+      "path": "references/import-excalidraw.md"
+    },
+    {
+      "path": "references/import-mermaid.md"
+    },
+    {
+      "path": "references/layout-budget.md"
+    },
+    {
+      "path": "references/onboarding.md"
+    },
+    {
+      "path": "references/output-spec.md"
+    },
+    {
+      "path": "references/primitive-annotation.md"
+    },
+    {
+      "path": "references/primitive-icons.md"
+    },
+    {
+      "path": "references/primitives-core.md"
+    },
+    {
+      "path": "references/profiles.md"
+    },
+    {
+      "path": "references/semantic-patterns.md"
+    },
+    {
+      "path": "references/style-guide.md"
+    },
+    {
+      "path": "references/type-architecture.md"
+    },
+    {
+      "path": "references/type-axonometric-plan.md"
+    },
+    {
+      "path": "references/type-bar.md"
+    },
+    {
+      "path": "references/type-db-schema.md"
+    },
+    {
+      "path": "references/type-dependency.md"
+    },
+    {
+      "path": "references/type-deployment.md"
+    },
+    {
+      "path": "references/type-dp-integration.md"
+    },
+    {
+      "path": "references/type-er.md"
+    },
+    {
+      "path": "references/type-exploded.md"
+    },
+    {
+      "path": "references/type-fishbone.md"
+    },
+    {
+      "path": "references/type-gantt.md"
+    },
+    {
+      "path": "references/type-heatmap.md"
+    },
+    {
+      "path": "references/type-high-level.md"
+    },
+    {
+      "path": "references/type-it-state.md"
+    },
+    {
+      "path": "references/type-journey.md"
+    },
+    {
+      "path": "references/type-kanban.md"
+    },
+    {
+      "path": "references/type-layers.md"
+    },
+    {
+      "path": "references/type-line.md"
+    },
+    {
+      "path": "references/type-loop.md"
+    },
+    {
+      "path": "references/type-nested.md"
+    },
+    {
+      "path": "references/type-org-chart.md"
+    },
+    {
+      "path": "references/type-polar.md"
+    },
+    {
+      "path": "references/type-process.md"
+    },
+    {
+      "path": "references/type-pyramid.md"
+    },
+    {
+      "path": "references/type-quadrant.md"
+    },
+    {
+      "path": "references/type-radar.md"
+    },
+    {
+      "path": "references/type-sankey.md"
+    },
+    {
+      "path": "references/type-scatter.md"
+    },
+    {
+      "path": "references/type-sequence.md"
+    },
+    {
+      "path": "references/type-service-blueprint.md"
+    },
+    {
+      "path": "references/type-state.md"
+    },
+    {
+      "path": "references/type-story-map.md"
+    },
+    {
+      "path": "references/type-swimlane.md"
+    },
+    {
+      "path": "references/type-timeline.md"
+    },
+    {
+      "path": "references/type-tree.md"
+    },
+    {
+      "path": "references/type-treemap.md"
+    },
+    {
+      "path": "references/type-uml-class.md"
+    },
+    {
+      "path": "references/type-venn.md"
+    },
+    {
+      "path": "references/type-wardley.md"
+    },
+    {
+      "path": "references/type-waterfall.md"
+    }
+  ],
+  "gist": "Follows upstream to 7a12007b: service blueprint, role placeholders, contrast contract",
+  "reason": "Refreshes diagram-design to cathrynlavery 7a12007b5a42, taking upstream's service blueprint type, role placeholders, contrast contract, font source and export helpers. Greenline's show-me pointer, dark default and diagrams folder are kept.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7512,
+        "taken": 7478,
+        "exact": 7471,
+        "retention": 0.9990639208344477,
+        "coverage": 0.9954739084132055,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 821
+  }
+}

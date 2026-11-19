@@ -1,0 +1,138 @@
+{
+  "schema": "greenline.recipe/v1",
+  "name": "state-machines",
+  "frontMatter": [
+    {
+      "field": "name",
+      "value": "state-machines"
+    },
+    {
+      "field": "description",
+      "value": "Find the implicit state machines in the app: each flow whose states live in flags or status fields, drawn as a map. Use for \"find all of the implicit state machines in my app\", for states, transitions or a lifecycle the code never names, or when a record's flags contradict each other."
+    }
+  ],
+  "sources": ["phrasebook"],
+  "triggers": [
+    {
+      "words": [
+        "find all of the implicit state machines in my app",
+        "state machine",
+        "state machines",
+        "implicit states",
+        "states and transitions",
+        "state transitions"
+      ],
+      "weight": 3,
+      "read": "whole"
+    }
+  ],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# State machines",
+          "kind": "name",
+          "reason": "The skill's title, its name.",
+          "gist": "The skill's title"
+        },
+        {
+          "passage": "written",
+          "text": "state-machines is the start for these words of the owner's, or a request that means them:",
+          "kind": "method",
+          "reason": "The start's opening: what an implicit state machine is, what the start finds and marks, and that it draws the map and changes no code.",
+          "gist": "Opens the start: finds the machines, draws the map, changes nothing",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact"
+        },
+        {
+          "passage": "written",
+          "text": "find all of the implicit state machines in my app",
+          "kind": "method",
+          "reason": "The owner's phrase, lifted as written: the words that open the start.",
+          "gist": "The owner's phrase, lifted as written",
+          "ruling": "the operator's words of 2026-11-07: we should lift phrases as they are with minimal changes",
+          "credits": ["phrasebook"],
+          "phrase": "state-machines"
+        },
+        {
+          "passage": "written",
+          "text": "An implicit state machine is a flow whose states the code holds without naming them: a set of flags, a nullable field, a status string, an order the calls must come in. The start finds each one, names its states and its transitions, and marks the transitions no code names and the states no code means. It draws the map and changes no code; a fix the map suggests is a change of its own, under the mode the owner approves.\n\nBefore the first file is read, read [method.md](method.md): where the machines hide, how each one is read, and the map's form.",
+          "kind": "method",
+          "reason": "What an implicit state machine is, what the start finds and marks, that it changes no code, and the method page read before the first file.",
+          "gist": "What the start finds and marks, and the page read first",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the request, and the code it names or the whole application\nProduces: the map of the machines found, in the reply with no change open, and inside a change as .greenline/ledger/<id>/state-machines.md, which the record's start section cites\nNext: frame, under the mode the owner approves, for a fix the map names; otherwise none, the map staying in the reply",
+          "kind": "method",
+          "reason": "The start's handoff: what it consumes, what it produces and where the work goes next.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "What the start consumes, produces and hands on"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# State machines: the method",
+          "kind": "name",
+          "reason": "The method page's title.",
+          "gist": "The method page's title"
+        },
+        {
+          "passage": "written",
+          "text": "## Where they hide\n\n- Flags that travel together on one record, `paid`, `refunded`, `cancelled`, where only some combinations are meant.\n- A nullable field whose presence marks a stage, such as a shipped date or a cancellation reason.\n- A status string or an enumeration compared in more than one place, each branch listing the values it handles.\n- An order the calls must come in: a setup before a start, a callback that must run once, a close after every open.\n- A retry, a timeout, a scheduled job or a webhook that moves a record when no user acts.\n\nSearch for the fields set in more than one place, the conditions over the same fields, the branches over a status, and the comments that say \"must\", \"before\", \"after\" or \"only when\".",
+          "kind": "method",
+          "reason": "Where the implicit machines hide in code, and what to search for.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "Where implicit machines hide and what to search for"
+        },
+        {
+          "passage": "written",
+          "text": "## Reading one\n\nFor each machine:\n\n1. Name it by the thing that changes: an order, a session, a subscription, a connection.\n2. List its states as the data can hold them, every combination of its fields, and mark the ones the code means.\n3. List each transition: the event that triggers it, its guard and the code that makes it, by file and function.\n4. Mark what the map exists for: the states the data allows and no code means, the transitions two places make differently, and the transitions no code names, a state reached only because a flag was left set or a step was skipped.\n\nRead the code each transition runs; a function's name is no evidence of what it does.",
+          "kind": "method",
+          "reason": "How one machine is read: its name, its states, its transitions and the marks the map exists for.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "How one machine is read, and what the map marks"
+        },
+        {
+          "passage": "written",
+          "text": "## The map\n\nOne map for the application, one entry per machine, each drawn in the state form of the reply's pictures, within 72 columns and twelve nodes:\n\n```text\norder: draft ──▶ placed ──▶ paid ──▶ shipped\n                   │          │\n                   ▼          ▼\n               cancelled   cancelled   (paid to cancelled: no code names it)\n```\n\nUnder each picture, a table: the state or the transition, where the code holds it, whether the code names it, and what goes wrong there. Close the map with the machines in order of risk, the one whose unnamed transitions touch money, stored data, a public contract or who may act first. Offer each fix as a change of its own: a named type for the states, one function for the transitions, and a test for each unnamed transition, red first.",
+          "kind": "method",
+          "reason": "The map's form: a state picture per machine, the table under it, the risk order and each fix as its own change.",
+          "ruling": "the operator's words of 2026-11-07 on the phrasebook, \"we should lift phrases as they are with minimal changes\" and \"my idea with the phrases is that we implement them in a way into greenline that do get loaded as primitive context\": a phrase that demands an artefact enters as a start, its trigger the owner's phrase and its product the artefact",
+          "gist": "The map's form, its risk order and each fix offered apart"
+        }
+      ]
+    }
+  ],
+  "copies": [],
+  "drops": [],
+  "keepers": [
+    {
+      "promise": "Asked for in a question, the map stands in the reply and writes nothing.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap"
+    },
+    {
+      "promise": "Each machine is named, its states and transitions listed, and the transitions no code names marked on the map.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The state machines",
+      "cost": "free"
+    },
+    {
+      "promise": "A fix the map offers is proposed as a change of its own and waits for the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    }
+  ]
+}

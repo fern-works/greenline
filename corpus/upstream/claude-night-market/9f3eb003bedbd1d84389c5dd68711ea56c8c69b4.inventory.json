@@ -1,0 +1,19 @@
+{
+  "commit": "9f3eb003bedbd1d84389c5dd68711ea56c8c69b4",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "6a731404a68a75198c5fd680ce550f56f216f18c136242ef4c319e9122cb4ebf"
+    },
+    {
+      "path": "papers/SKILL.md",
+      "sha256": "9e52d68cc10d5602172eb8984765d16185f89e0ec768e9faf9f51bc38cf98004"
+    }
+  ],
+  "entries": [
+    {
+      "name": "papers",
+      "path": "plugins/tome/skills/papers"
+    }
+  ]
+}

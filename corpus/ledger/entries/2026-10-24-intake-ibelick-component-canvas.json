@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-ibelick-component-canvas",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ibelick-ui-skills-root",
+    "sha256": "873c9a7978ef314a4bd757680d6c508cd6fa833f05b2af6e32d15ffa444acccf"
+  },
+  "source": {
+    "repository": "https://github.com/ibelick/ui-skills",
+    "commit": "55363c305097d4c84487bd5f323d29b3f067bf72",
+    "path": "skills/component-canvas"
+  },
+  "pin": "ibelick-ui-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A pan and zoom canvas, declined",
+  "reason": "Its canvas duplicates greenline's prototype skill; its preview-safety rule is carried by capture.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ibelick's ui-skills-root and canvases are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ibelick's ui-skills-root and canvases are declined"
+    }
+  ]
+}

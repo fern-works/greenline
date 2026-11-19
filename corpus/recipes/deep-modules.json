@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Design deep modules at any step: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface, with the layers a reader must trace and the state a reader must hold kept small. Use when designing or improving one module's interface, placing a seam, making code testable, finding code hard to trace, or exploring alternative interfaces; a repository-wide survey belongs to architecture-survey."
+      "value": "Design deep modules at any step: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface, with the layers a reader must trace and the state a reader must hold kept small. Use when designing or improving one module's interface, moving code into a module of its own, splitting one, touching a package's entry file, placing a seam, making code testable, finding code hard to trace, or exploring alternative interfaces; a repository-wide survey belongs to architecture-survey."
     }
   ],
   "sources": ["mattpocock-skills", "pstack"],
@@ -36,6 +36,25 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the interface is designed, read [method.md](method.md): the glossary, deep and shallow modules, the principles, reader load and designing for testability.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Deep modules: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "taken",
@@ -107,14 +126,7 @@
           "passage": "taken",
           "source": "pstack",
           "file": "principle-minimize-reader-load/SKILL.md",
-          "segments": [
-            "a30a1f5a5609",
-            "3127ffa6121f",
-            "b8cd6165131b",
-            "ae511aa1624b",
-            "bfea5291f05f",
-            "f787f205d28b"
-          ]
+          "segments": ["a30a1f5a5609", "ab5c5b0714ae"]
         },
         {
           "passage": "taken",
@@ -126,18 +138,12 @@
           "passage": "taken",
           "source": "pstack",
           "file": "principle-minimize-reader-load/SKILL.md",
-          "segments": ["f62a241ed2b1"]
-        },
-        {
-          "passage": "taken",
-          "source": "pstack",
-          "file": "principle-minimize-reader-load/SKILL.md",
           "segments": [
             "e9fb93d39f95",
             "9087f8613e74",
             "b8dcb57e698e",
-            "c4ac1255f885",
-            "a89a8eb9aea6",
+            "bd3a42f326b4",
+            "1aeddd09631c",
             "c6034132c2ce",
             "4064352f3295",
             "90a4ce444c2a"
@@ -486,8 +492,8 @@
       "gist": "Alternative interfaces come one design after another, not from parallel sub-agents",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: principle-minimize-reader-load's state axis, its scope ladder and its thirty-second test graft onto codebase-design; and R21 with R20, the designs made one after another, by the one agent in turn or by delegated agents one after another where the mode spends them, never in parallel",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 10
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -498,8 +504,8 @@
       "reason": "The title becomes the section's heading.",
       "gist": "The title becomes the section's heading",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 2
       }
     },
     {
@@ -507,8 +513,8 @@
       "file": "principle-minimize-reader-load/SKILL.md",
       "segment": "b00ea02b795d",
       "kind": "scope",
-      "reason": "The why restates the section's opening sentence.",
-      "gist": "The why repeats the section's opening sentence"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
@@ -679,6 +685,135 @@
         "path": "DESIGN-IT-TWICE.md",
         "passage": 5
       }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "3127ffa6121f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "b8cd6165131b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "ae511aa1624b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "bfea5291f05f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "f787f205d28b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-minimize-reader-load/SKILL.md",
+      "segment": "f62a241ed2b1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "It never deletes a test. Existing tests are kept through a deepening, a deepening that cannot keep the protection reports that before removing it, and the rule goes into any delegated brief.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No hook or status line reads test deletions, and no run or fix-round job names one."
+    },
+    {
+      "promise": "A design agent gets the one brief every fresh agent gets, written by greenline brief.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0408",
+      "cost": "free",
+      "oracle": "A method's agent"
+    },
+    {
+      "promise": "Each design is written as a report .greenline/ledger/<id>/<step>-<n>.md, and the section of the step it serves cites it.",
+      "page": "references/greenline.md",
+      "kind": "fact",
+      "where": "GL0452",
+      "cost": "free",
+      "oracle": "A method's agent"
+    },
+    {
+      "promise": "A user-facing explanation of the problem space is shown to the owner before the first design.",
+      "page": "DESIGN-IT-TWICE.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is a reply's content, read by no hook. No run cites it."
+    },
+    {
+      "promise": "Three or more designs are made one after another, each agent started only once the previous one has returned, never in parallel, and no design agent starts an agent of its own.",
+      "page": "DESIGN-IT-TWICE.md",
+      "kind": "oracle",
+      "where": "A method's agent",
+      "cost": "free"
+    },
+    {
+      "promise": "Each design agent is named in the section it serves and counted in no cost.",
+      "page": "DESIGN-IT-TWICE.md",
+      "kind": "fact",
+      "where": "GL0402",
+      "cost": "free",
+      "oracle": "A method's agent"
+    },
+    {
+      "promise": "The designs are presented one at a time, compared in prose by depth, locality and seam placement, and followed by a recommendation of its own.",
+      "page": "DESIGN-IT-TWICE.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is reply shape on the agent's own turn, so condition 1 fails. No run cites it."
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["module"],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "words": [
+        "seam",
+        "module boundary",
+        "refactor",
+        "too many layers",
+        "hard to trace",
+        "module of their own",
+        "module of its own",
+        "split"
+      ],
+      "weight": 1,
+      "read": "part"
+    },
+    {
+      "steps": ["plan"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
     }
   ]
 }

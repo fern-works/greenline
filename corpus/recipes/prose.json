@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Plain answers and clean prose wherever prose lands: a yes, a no, a number or I do not know first, the measurement in place of the adjective, a re-pitch when a reply did not land, the catalog of AI tells cut from every surface, and a document written in its one mode, sentence by sentence. Use when answering a question or reporting a result, when the owner says a reply did not land, before any prose lands, and when writing a document, a README, a PR description or a commit message; and whenever you are about to write \"significantly\", \"much faster\", \"should work\", \"generally\" or \"nearly all\"."
+      "value": "Documents and the occasions a reply's shape leaves over: a document, a README, a PR description or a commit message written in its one mode, sentence by sentence, the catalog of AI tells cut from it, a fresh measurement when the owner contradicts an answer, and a re-pitch when a reply did not land. Use when writing or touching a document, a README, a docstring, a PR description or a commit message, when the owner contradicts an answer you gave, and when the owner says a reply did not land; every reply's own shape is the block's reply section."
     }
   ],
   "sources": ["freddie-northam", "mattpocock-skills", "pstack"],
@@ -25,11 +25,12 @@
         },
         {
           "passage": "written",
-          "text": "prose is the habit for the moment prose is about to land: a reply, a report, a review finding, a record's section, a commit message, a PR description, a document. It writes no record of its own, applies on your own judgment and is never announced. This page owns the answer: what a question gets first, the measurement in place of the adjective, and the re-pitch when a reply did not land. Before any prose lands, cut the tells [tells.md](tells.md) catalogs; a document, a README, an RFC, a PR description or a commit message is written by [documents.md](documents.md) as well.",
+          "text": "prose is the habit for the occasions the block's reply section leaves to it: a document, a README, an RFC, a PR description or a commit message, written by [documents.md](documents.md); an answer the owner contradicts; and a reply that did not land. It writes no record of its own, applies on your own judgment and is never announced. The shape of every reply, the answer first, the measurement in place of the adjective and the plain words, is the reply section of AGENTS.md, which loads on every turn. Before prose lands in a document, cut the tells [tells.md](tells.md) catalogs.",
           "kind": "method",
-          "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, that it writes no record of its own, and which of its three pages owns what, the answer here, the catalog of tells and the document standard on their pages.",
-          "gist": "Opens the habit: when it applies and what its three pages own",
-          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub"
+          "reason": "One opening paragraph in the habit's own voice, re-cut for the reply shape: the answer rules and the measurement in place of the adjective that answer-plainly gave this page now stand in the block's reply section, loaded on every turn, so the habit keeps the occasions no turn needs on its own, the document standard, the contradicted answer and the re-pitch, and names which page owns each.",
+          "gist": "Opens the habit: its occasions, the reply's shape left to the block",
+          "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub; and the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+          "credits": ["freddie-northam"]
         },
         {
           "passage": "written",
@@ -40,56 +41,29 @@
         },
         {
           "passage": "written",
-          "text": "A known name, path, definition or explanation is answered with that answer itself and the repository evidence behind it, with no yes/no prefix and no invented uncertainty; a number stays required for a quantitative claim, not for every fact. The process is not the answer: report what is true, not the tools you are about to run, unless the owner asked how you work. Answer first, then the view: show-me decides what form the answer takes, after the answer. Where a claim enters a record, the measured number goes in with it. When the owner contradicts an answer you already gave, the reply is a fresh measurement, never the same sentence again: re-run the check, recorded where a change is open, quote the new outcome, and either name the benign difference that explains their result or correct the record plainly.\n\nA yes/no, quantity or unknown-result question has four permitted answers.",
-          "kind": "scope",
-          "reason": "The opening paragraph says the discipline governs replies, reports and review findings on the agent's own judgment and is never announced, that a measured number enters an artifact with its claim, that the process is not the answer, that show-me decides the form after the answer, that dense wording goes through unslop, and that a contradicted answer is re-measured through verify-this and never repeated unchanged; the body's four-answer rule is scoped in its own sentence to yes/no, quantity and unknown-result questions, a known name, path, definition or explanation being answered directly with its evidence, so the rule stops forcing a yes/no prefix or invented uncertainty onto factual answers (a QA finding behind the baseline prelude). The verify step is where verify-this's method now lives (S15), dense wording goes through the tells page, and the owner is the person the agent works for. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
-          "gist": "A known fact is answered directly with its evidence, no yes-or-no prefix"
-        },
+          "text": "Before an answer the owner contradicts or a reply that did not land, read [method.md](method.md): the answer's evidence and the re-pitch.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
         {
-          "passage": "taken",
-          "source": "freddie-northam",
-          "file": "answer-plainly/SKILL.md",
-          "segments": [
-            "c3d78291aae5",
-            "4aa23f665693",
-            "ffb88903f2da",
-            "5487e0f33386",
-            "7f367f37111f",
-            "5e427fa440c1",
-            "008dffae675f",
-            "8cfdb0a67c03"
-          ]
+          "passage": "written",
+          "text": "# Prose: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
         },
         {
           "passage": "written",
-          "text": "A check you ran supplies the\nmeasurement, the verify step's where the change ran one: quote its recorded outcome, never an adjective in its place.",
-          "kind": "pointer",
-          "reason": "The measurement rule names the verify step, where verify-this's method lives since S15, the step that records the outcome a quantitative claim quotes, so the number has an owner in the installed roster.",
-          "gist": "A quantitative claim quotes the verify step's recorded outcome, not an adjective",
-          "join": " "
-        },
-        {
-          "passage": "taken",
-          "source": "freddie-northam",
-          "file": "answer-plainly/SKILL.md",
-          "segments": [
-            "0d4458a39def",
-            "831f11e7d702",
-            "4db46f3717a3",
-            "4b19af91f2b9",
-            "b2b241da0dd3",
-            "38add31431bb",
-            "3412eee451b7",
-            "fdffa867e40f",
-            "9e7b33ff1e2d",
-            "43dfdda29a2b",
-            "527d6b1f9605",
-            "273151be1fcb",
-            "f5816428cd29",
-            "88ac7d5823ad",
-            "95b7dd2b2b96",
-            "06d86e842230"
-          ]
+          "text": "## The answer's evidence\n\nA known name, path, definition or explanation is answered with that answer itself and the repository evidence behind it, with no yes/no prefix and no invented uncertainty. The process is not the answer: report what is true, not the tools you are about to run, unless the owner asked how you work. Where a claim enters a record, the measured number goes in with it. Never \"should work\", \"generally\" or \"in most cases\" where you have not checked. When the owner contradicts an answer you already gave, the reply is a fresh measurement, never the same sentence again: re-run the check, recorded where a change is open, quote the new outcome, and either name the benign difference that explains their result or correct the record plainly.",
+          "kind": "scope",
+          "reason": "The answer rules the block's reply section does not carry stay here, from the opening paragraph and the never list: a known fact answered with its evidence and no yes/no prefix, the process kept out of the answer, the measured number entering a record with its claim, no unchecked hedge, and a contradicted answer re-measured and never repeated. The four permitted answers and the measurement in place of the adjective moved into the block's reply section.",
+          "gist": "A known fact is answered with its evidence, a contradiction re-measured"
         },
         {
           "passage": "written",
@@ -125,10 +99,8 @@
           "file": "unslop/SKILL.md",
           "segments": [
             "97a40252ac8d",
-            "0a6ae6aec660",
-            "c000965395bc",
-            "879e38d74b2b",
-            "69c74f31c27d",
+            "c63380bf3674",
+            "f52d7bb90e93",
             "26f11840abdd",
             "d82da75361e6",
             "e57a5513b9a8",
@@ -145,11 +117,11 @@
             "271da7a57bee",
             "c05ffdbf83e2",
             "7955f3e7614a",
-            "e737605bc5fa",
+            "dece923d6ce6",
             "d7fac4590b4f",
             "afa6649e4863",
             "58c13afa27e5",
-            "a6dab9849d99",
+            "c3fe72e71b7b",
             "3217a0dbe868",
             "0a802e615253",
             "7b2e62f4d5ec",
@@ -163,8 +135,7 @@
             "7fa05c0a93e4",
             "84b57270878f",
             "f01a49da8344",
-            "2054ea368176",
-            "e1098da75aea",
+            "f49b7a02abe1",
             "6931ff4bf2f8",
             "ef5c900f1b62",
             "4a352c4eaa30",
@@ -182,7 +153,7 @@
             "70911072d6ed",
             "8dab150953c7",
             "8a7b2e935a82",
-            "042e81309b98",
+            "759268a03a02",
             "ed90570f80b3",
             "2be1cff1772e",
             "7ee5efc60bed",
@@ -195,7 +166,7 @@
             "f1c94e3952e9",
             "e8bb7bc416b0",
             "69480e4136e9",
-            "0488ac48a3c1",
+            "bdd67557208c",
             "08fc71f44b38",
             "bf8c8fb36251",
             "4b357ca17e53",
@@ -203,15 +174,8 @@
             "a84617b75250",
             "ce24799308ee",
             "52dad2489c3c",
-            "bc07da9957a5",
+            "f6acad5706db",
             "c8494d3bc232",
-            "b090887ca3aa",
-            "1be41f647bde",
-            "89c72abe3cb6",
-            "0b8fd5b214c8",
-            "4743f0bd35fc",
-            "1a38141aa50e",
-            "48fb64b8c514",
             "e37018eb50ea",
             "365287106c9c",
             "f28a222bc0c3",
@@ -229,11 +193,10 @@
             "f902838e4a39",
             "509f10db986e",
             "8b283790f7a3",
-            "4e225910ac13",
-            "fbc73adf26cb",
+            "a8b5ccb3fd9e",
             "257536af714d",
             "207e7437ec86",
-            "87a3974f5369",
+            "f5555e7202f6",
             "c7829fda2857",
             "06ea96253828",
             "6d1ef1d9bdc2",
@@ -269,9 +232,8 @@
           "source": "pstack",
           "file": "technical-writing/SKILL.md",
           "segments": [
-            "4a8cca4f2e60",
-            "a4b9b92a7406",
-            "13949f5327cf",
+            "6467fb79d22a",
+            "cff6fee78128",
             "f4c69549da22",
             "4ffc817d4cd6",
             "e1bc979b6d36",
@@ -283,7 +245,6 @@
             "84d6f3524003",
             "b1003da4ff70",
             "d244d86734c4",
-            "58813fad5de8",
             "8b0db731c71c",
             "1507de57edcb",
             "1f5f5871033c",
@@ -293,11 +254,10 @@
             "7a70fbe58733",
             "1d0d4785922b",
             "b9b50386feb8",
-            "f0e084508d58",
-            "75a48a2daf87",
+            "6b37b9ccde3f",
             "36109fdd3542",
             "dbe866644b91",
-            "064231365c08",
+            "d21657aaadad",
             "94124a070c48",
             "0d38afc99439",
             "9f83bcb38cd2",
@@ -315,33 +275,29 @@
             "b71a6509dfd7",
             "435f682f6810",
             "98bb8ec27bad",
-            "5c86f7e31348",
             "cec7ecca8a3f",
             "a8e06ac3eb36",
             "18b8f75876ea",
             "365fef551927",
             "f32ac7edee4b",
-            "342d6c098d24",
             "49b27fc9a3a1",
             "8e659294bf02",
             "03eb371925e1",
             "4bc85c549c2c",
             "fa62d442c67c",
-            "69e42bd150ac",
-            "aeb0d8472bae",
+            "de0eb3bfe2c4",
             "248d02f251a3",
             "f4b6f358c72f",
             "c3e8b54bc017",
             "664fe06b61ba",
             "e980eef1005b",
-            "f69fb6bd19ee",
             "d96393f3dd22",
             "43495cb1909c",
             "0cc8a3ae36bc",
             "bf60ae509460",
             "9d057fb4746a",
             "ce20d81a8024",
-            "18afbef7f85d",
+            "628c474c9068",
             "6dffb5a76169",
             "14c004e8b6a4",
             "684855713870",
@@ -360,7 +316,6 @@
             "8984f2cadc06",
             "3a9f4f5345f8",
             "06143e406182",
-            "cb0c772a9fb0",
             "6b04de0b7563",
             "117edcbce4c4",
             "2c09f33c0c49",
@@ -395,7 +350,6 @@
             "1e781d3ef316",
             "5914b8cfaa54",
             "87d4042d26a6",
-            "8dad04006f10",
             "53985e4666cc",
             "1dac69f69dbd",
             "4ef4fbb7a25c",
@@ -404,8 +358,7 @@
             "eaa743fe65d7",
             "1203c162aca9",
             "889d3425d6eb",
-            "a0783f02f840",
-            "baa7c8b4605e",
+            "bf346b73ed0e",
             "8b45e6f408ef",
             "a80d33f9637e",
             "79bbcee20eb4",
@@ -417,10 +370,8 @@
             "75dc02decee4",
             "912eb288038f",
             "7b2cd4c11c29",
-            "dd2e98c04eaa",
             "e406670685b9",
             "57861145734e",
-            "83ff8d7588f1",
             "84f3840aa947",
             "2dad7ea52b27",
             "0bea7250038f",
@@ -547,8 +498,8 @@
       "reason": "The opening paragraph says the discipline governs replies, reports and review findings on the agent's own judgment and is never announced, that a measured number enters an artifact with its claim, that the process is not the answer, that show-me decides the form after the answer, that dense wording goes through unslop, and that a contradicted answer is re-measured through verify-this and never repeated unchanged; the body's four-answer rule is scoped in its own sentence to yes/no, quantity and unknown-result questions, a known name, path, definition or explanation being answered directly with its evidence, so the rule stops forcing a yes/no prefix or invented uncertainty onto factual answers (a QA finding behind the baseline prelude).",
       "gist": "The four-answer rule now covers only yes-or-no, quantity and unknown results",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 3
+        "path": "method.md",
+        "passage": 1
       }
     },
     {
@@ -580,8 +531,8 @@
       "file": "technical-writing/SKILL.md",
       "segment": "d17c2bcff47d",
       "kind": "scope",
-      "reason": "Its sentence is kept in a written passage, the item's first sentence being dropped.",
-      "gist": "The sentence stays, rewritten as its own item without the tab rule",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
         "path": "documents.md",
         "passage": 3
@@ -604,6 +555,628 @@
       "reason": "wait-what is lifted in greenline's words: its body is the owner's own voice, a request to re-pitch, which as an instruction would change every sentence by more than half.",
       "gist": "wait-what is lifted in greenline's words; its body is the owner's voice",
       "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: answer-plainly is the spine of one prose habit, unslop's catalog and technical-writing's layers its two reference pages, and wait-what is lifted in greenline's words, ruled not a stub"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "8c943854026e",
+      "kind": "scope",
+      "reason": "Its sentence is kept in a written passage, the item's first sentence being dropped.",
+      "gist": "The sentence stays, rewritten as its own item without the tab rule"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "0a6ae6aec660",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "879e38d74b2b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "e1098da75aea",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "042e81309b98",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "0488ac48a3c1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "bc07da9957a5",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "b090887ca3aa",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "1be41f647bde",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "89c72abe3cb6",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "0b8fd5b214c8",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "4743f0bd35fc",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "1a38141aa50e",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "48fb64b8c514",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "unslop/SKILL.md",
+      "segment": "4e225910ac13",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "a4b9b92a7406",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "58813fad5de8",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "f0e084508d58",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "5c86f7e31348",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "342d6c098d24",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "aeb0d8472bae",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "f69fb6bd19ee",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "18afbef7f85d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "cb0c772a9fb0",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "8dad04006f10",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "a0783f02f840",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "baa7c8b4605e",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "dd2e98c04eaa",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "pstack",
+      "file": "technical-writing/SKILL.md",
+      "segment": "83ff8d7588f1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "c3d78291aae5",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "4aa23f665693",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "ffb88903f2da",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "5487e0f33386",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "7f367f37111f",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "5e427fa440c1",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "008dffae675f",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "8cfdb0a67c03",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "0d4458a39def",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "831f11e7d702",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "4db46f3717a3",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "4b19af91f2b9",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "b2b241da0dd3",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "38add31431bb",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "3412eee451b7",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "fdffa867e40f",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "9e7b33ff1e2d",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "43dfdda29a2b",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "527d6b1f9605",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "273151be1fcb",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "f5816428cd29",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "88ac7d5823ad",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "95b7dd2b2b96",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    },
+    {
+      "source": "freddie-northam",
+      "file": "answer-plainly/SKILL.md",
+      "segment": "06d86e842230",
+      "kind": "method",
+      "reason": "answer-plainly's four permitted answers, its measurement in place of the adjective and its checks of a plain answer move into the block's reply section, whose words load on every turn: the answer first, yes or no, a number or I do not know, and a measurement where an adjective would go.",
+      "gist": "The answer's rules move into the block's reply section",
+      "ruling": "the register's row of 2026-10-22, on the operator's words \"we raise the ceiling\": the block gains the reply shape, the agent's inline replies take it, with prose and progress-check folded into it and show-me kept as a habit; and J-107's picks of 2026-10-25, item 5, ruled on the worker's recommendation under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and its measurement move into the block's reply section, and documents, the tells and the re-pitch stay the habit's",
+      "replacedBy": {
+        "path": "SKILL.md",
+        "passage": 1
+      }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "The habit is applied without being announced.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "The reply shape",
+      "cost": "free"
+    },
+    {
+      "promise": "A known name, path, definition or explanation is answered with the answer itself and its repository evidence. It has no yes or no prefix, and it reports what is true, not the tools about to run.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "The reply shape",
+      "cost": "free"
+    },
+    {
+      "promise": "Where a claim enters a record, the measured number goes in with it.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No record lint reads claims for their numbers, and no run or fix-round job names this. J-149's lint reads record forms, not this."
+    },
+    {
+      "promise": "The reply never says \"should work\", \"generally\" or \"in most cases\" about something not checked.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No turn-end reader looks for these phrases, and no run cites them."
+    },
+    {
+      "promise": "When the owner contradicts an answer, the reply is a fresh measurement. The check is rerun (through greenline check where a change is open), the new outcome is quoted, and the reply either names the benign difference or corrects the record plainly.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing ties a contradiction to a new check fact, and no run observed a repeated answer in its place."
+    },
+    {
+      "promise": "When the owner says a reply did not land, the reply is re-pitched rather than repeated: context first, then simplified technical English in the glossary's words.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is a reply's shape on the agent's own turn, so it reaches the owner's understanding but not their repository. No run cites a failure."
+    },
+    {
+      "promise": "A tell or jargon replacement worth adding is proposed to the owner in the reply, with the diff, and never written into the installed tells.md.",
+      "page": "tells.md",
+      "kind": "fact",
+      "where": "GL0111",
+      "cost": "free"
+    },
+    {
+      "promise": "Every count or tree claim in a document is true at the commit that lands it, and the document includes the command that regenerates it.",
+      "page": "documents.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks a document's counts against the commit. No run names a false count."
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["readme"],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "words": [
+        "readme",
+        "docstring",
+        "doc comment",
+        "documentation",
+        "write up",
+        "reply did not land",
+        "doesn't make sense"
+      ],
+      "weight": 2,
+      "read": "part"
     }
   ]
 }

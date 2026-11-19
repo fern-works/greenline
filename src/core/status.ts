@@ -2,6 +2,7 @@ import type { Result } from "../commons/result.ts";
 import { shouldNeverHappen } from "../commons/defect.ts";
 import {
   currentStep,
+  issuesLine,
   mismatches,
   parseRecordForm,
   type ChangeRecord,
@@ -12,6 +13,22 @@ import {
   type RecordContext,
   type RecordForm,
 } from "./change.ts";
+import { groundText, parseAgent } from "./ground.ts";
+import {
+  COST_COUNTS,
+  METHOD_AGENTS_NOWHERE,
+  methodAgentsWords,
+  type MethodAgents,
+} from "./method-agents.ts";
+import {
+  declaredBesideLoaded,
+  declaredSkills,
+  rosterNamesOf,
+  summariseLoads,
+  type DeclaredBesideLoaded,
+  type SkillLoadFact,
+  type SkillUse,
+} from "./skill-loads.ts";
 import {
   commitsOfChanges,
   deletedRecords,
@@ -25,12 +42,25 @@ import {
 import type { ContractParseFailed } from "./contract.ts";
 import type { GuidanceRequest } from "./guidance-receipts.ts";
 import { readBrief } from "./brief.ts";
+import { recordBreaches, type OwedAtDone } from "./record-lint.ts";
+import type { ReportedModel } from "./record-lines.ts";
+import { ledgerFileOf } from "./ledger-files.ts";
 import { bodyLines } from "./front-matter.ts";
 import { MARKDOWN_LINK } from "./links.ts";
 import type { CheckFacts, CheckOutcome, HookRun } from "./facts.ts";
-import { depthOf, freshAgents, type ModesDefinition, type StepName } from "./modes.ts";
+import {
+  agentsAtMost,
+  depthOf,
+  freshAgents,
+  roundsAtMost,
+  type ModesDefinition,
+  type StepName,
+} from "./modes.ts";
 import type { DeclaredCheck } from "./checks.ts";
+import { checksOfChange } from "./interface-check.ts";
+import type { InterfaceSetting } from "./manifest.ts";
 import { checkStandings, standingLine, type CheckStanding } from "./mirror.ts";
+import { waitingOn } from "./progress.ts";
 import {
   readyFrontier,
   ticketProgress,
@@ -70,14 +100,18 @@ export interface ParsedFile<T> {
 
 /** A change's folder, `.greenline/ledger/<id>/`: the reports in it, its briefs and its check facts. */
 export interface ChangeFolder {
-  /** Every file in the folder except the JSON files under `checks/`, relative to the folder, sorted; the briefs among them. */
+  /** Every file in the folder except the JSON files under `checks/` and the loads under `skills/`, relative to the folder, sorted; the briefs among them. */
   readonly reports: readonly string[];
+  /** The skill loads the hooks wrote under `skills/<date>.jsonl`, oldest first (J-116 S2). */
+  readonly loads: readonly SkillLoadFact[];
   /** Each top-level `brief-*.md` of the folder with its text, undefined when it cannot be read, which `status` reads for the command's mark. */
   readonly briefs: readonly { readonly file: string; readonly text: string | undefined }[];
   /** Each JSON file under `checks/` that `check` wrote, parsed as check facts; a file that is neither kind is here too, refused as facts. */
   readonly checks: readonly ParsedFile<CheckFacts>[];
   /** Each run a hook recorded under `checks/`, which feeds the mirror and never a finding. */
   readonly hookRuns: readonly ParsedFile<HookRun>[];
+  /** How many visuals its links file, `visuals.json`, lists; none where unread (J-173 S1). */
+  readonly visuals?: number;
 }
 
 /** One record file: its change id, its text and its parse against the loaded modes, so one bad file never hides the others. */
@@ -133,8 +167,26 @@ export interface ChangesInput {
   readonly unreadableReceipts: readonly { readonly path: string; readonly issues: string }[];
   /** The checks the workspace declares, from its manifest; none when it declares none or cannot be read. */
   readonly checks: readonly DeclaredCheck[];
-  /** The fresh agents each change's harness events counted, by change; absent for a change with no events. */
+  /** The manifest's interface block, whose opt-in holds an interface change to the interface check (J-123 S4); undefined where none. */
+  readonly interfaceSetting?: InterfaceSetting | undefined;
+  /** The fresh agents each change's harness events counted against the mode's limit, by change; absent for a change with no events. */
   readonly agentsCounted: ReadonlyMap<string, number>;
+  /** The agents a method started, by change, which the limit leaves out (J-134 S2); absent for a change whose events name none. */
+  readonly methodAgents?: ReadonlyMap<string, readonly MethodAgents[]>;
+  /** The line naming the skills each open change owes by its trigger rows that no load holds (J-134 S3, J-176 S1), by change; absent where none is owed. */
+  readonly owedLines?: ReadonlyMap<string, string>;
+  /**
+   * The skills each change owed by its trigger rows over every step its
+   * mode runs, read as git's hooks read them at done (J-189 S1), by change;
+   * absent for a change whose close HEAD holds, which the door already read.
+   */
+  readonly owedAtDone?: ReadonlyMap<string, readonly OwedAtDone[]>;
+  /**
+   * The model each harness reports for its newest session here, by the
+   * harness's name, which a record's agent line names (J-192 S1); a harness
+   * absent reports none, so its agent lines stand as written.
+   */
+  readonly reported?: ReadonlyMap<string, ReportedModel>;
 }
 
 /** One garden request a change owns: its handle, what it is bound to, and how many calls it made; never a unit's text. */
@@ -229,10 +281,18 @@ export type FindingKind =
   | "ticket-mode"
   | "planning-below-careful"
   | "brief-unwritten"
-  | "cost-below-starts";
+  | "cost-below-starts"
+  | "record-form";
 
 /** A notice never fails the command. */
-export type NoticeKind = "code-moved" | "uncited" | "deleted" | "unchecked" | "fact-missing";
+export type NoticeKind =
+  | "code-moved"
+  | "uncited"
+  | "deleted"
+  | "unchecked"
+  | "fact-missing"
+  | "habit-owed"
+  | "record-form-open";
 
 /** One finding or notice: what it is, the sentence with its remedy, the file it concerns and its subject. */
 export interface Note<K extends string> {
@@ -324,6 +384,18 @@ export interface ChangeView {
   readonly plan: string | null;
   readonly ticket: string | null;
   readonly cost: Cost | null;
+  /**
+   * The owner's accepted overrun (J-174): the words the record's `overrun`
+   * line quotes and the count the cost runs past, `careful's 6 agents`;
+   * null where the record states none or its mode is not the definition's.
+   */
+  readonly overrun: { readonly words: string; readonly past: string } | null;
+  /** The record's `ground` line as it states it, `branch` or `worktree: <path>`; null where it states none (J-114 S1). */
+  readonly ground: string | null;
+  /** The record's `agent` line, `<harness>/<model>`; null where it states none. */
+  readonly agent: string | null;
+  /** The owner's words in the record's `discard` line; null where it states none. */
+  readonly discard: string | null;
   readonly commits: CommitsView;
   readonly checks: readonly CheckView[];
   /** For an open change, its commits of code since its last recorded check; null for any other. */
@@ -336,6 +408,17 @@ export interface ChangeView {
   readonly declaredChecks: readonly CheckStanding[];
   /** The nudges beside the change: lines that fail nothing (`nudgesOf`). */
   readonly nudges: readonly string[];
+  /** The skill loads the hooks noted for the change, summarised, with the skills its sections declare beside them (J-116 S3). */
+  readonly loads: LoadsView;
+  /** The record's `skills` line, the skills the close stated it loaded; null where it states none. */
+  readonly skills: readonly string[] | null;
+}
+
+/** A change's skill loads summarised: their count, each skill's use, and the declared skills beside the loaded. */
+export interface LoadsView {
+  readonly count: number;
+  readonly uses: readonly SkillUse[];
+  readonly declared: DeclaredBesideLoaded;
 }
 
 /** One brief the command wrote: its file in the change's folder, the step its agent serves and its number. */
@@ -465,11 +548,8 @@ const GAPS = {
   unreadable: "git could not read the log",
 } as const satisfies Readonly<Record<HistoryGap, string>>;
 
-function issuesText(error: ContractParseFailed): string {
-  return error.issues
-    .map((issue) => (issue.path === "" ? issue.message : `${issue.path}: ${issue.message}`))
-    .join("; ");
-}
+/** A parse's issues in one line, the one form the hooks' record-form refusal quotes (J-208 S1). */
+const issuesText = issuesLine;
 
 /** The latest run of all a change's parsed facts, by start time. */
 function latestRun(checks: readonly CheckRuns[]): CheckFacts | undefined {
@@ -541,9 +621,46 @@ function standingOf(
   return {
     kind: "judged",
     record,
-    mismatches: mismatches(input.definition, record, context),
+    mismatches: mismatches(input.definition, record, context).flatMap((mismatch) =>
+      mismatch.kind === "over-budget" ? overBudget(input, entry.id, mismatch) : [mismatch],
+    ),
     step: currentStep(input.definition, record, context),
   };
+}
+
+/** The agents each method started for a change, in all. */
+function methodTotal(input: ChangesInput, id: string): number {
+  return (input.methodAgents?.get(id) ?? []).reduce((total, entry) => total + entry.count, 0);
+}
+
+/**
+ * The agents a record's cost states beyond the builder and the agents the
+ * events counted against the limit, up to the agents its methods started:
+ * the ones the record counted that a method started, which the limit
+ * leaves out (J-134 S2; the ledger guide, "Fix passes and the cost").
+ */
+function methodAgentsOut(input: ChangesInput, id: string, stated: number): number {
+  const counted = input.agentsCounted.get(id) ?? 0;
+  return Math.min(methodTotal(input, id), Math.max(0, stated - (counted + 1)));
+}
+
+/**
+ * A cost over the mode's budget read with the methods' agents counted out
+ * (J-134 S2): none where it then keeps the budget, else the finding naming
+ * them apart.
+ */
+function overBudget(
+  input: ChangesInput,
+  id: string,
+  mismatch: Extract<Mismatch, { kind: "over-budget" }>,
+): readonly Mismatch[] {
+  const out = methodAgentsOut(input, id, mismatch.cost.agents);
+  if (out === 0) return [mismatch];
+  const agents = mismatch.cost.agents - out;
+  if (agents <= mismatch.budget.agents && mismatch.cost.rounds <= mismatch.budget.rounds) return [];
+  return [
+    { ...mismatch, methods: { out, words: methodAgentsWords(input.methodAgents?.get(id) ?? []) } },
+  ];
 }
 
 /** What a record states, judged or read as history; undefined when it does not parse. */
@@ -800,6 +917,30 @@ function consultationsOf(
     }));
 }
 
+/**
+ * The count a cost the owner accepted runs past (J-174): the mode's agents,
+ * its rounds, or both, as the definition derives them.
+ * @param definition the modes definition
+ * @param stated the record as it states itself
+ * @returns the words and the count passed, or null where none is accepted
+ */
+function overrunOf(
+  definition: ModesDefinition,
+  stated: RecordForm | ChangeRecord | undefined,
+): ChangeView["overrun"] {
+  const words = stated?.cost?.overrun;
+  if (stated?.cost === undefined || words === undefined) return null;
+  const mode = definition.modes.find((entry) => entry.name === stated.mode);
+  if (mode === undefined) return null;
+  const agents = agentsAtMost(definition, mode);
+  const rounds = roundsAtMost(definition, mode);
+  const past = [
+    ...(stated.cost.agents > agents ? [plural(agents, "agent")] : []),
+    ...(stated.cost.rounds > rounds ? [plural(rounds, "round")] : []),
+  ];
+  return past.length === 0 ? null : { words, past: `${mode.name}'s ${past.join(" and ")}` };
+}
+
 function viewOf(
   input: ChangesInput,
   change: Assessed,
@@ -834,6 +975,12 @@ function viewOf(
     plan: stated?.belongs?.plan ?? null,
     ticket: stated?.belongs?.ticket ?? null,
     cost: stated?.cost ?? null,
+    overrun: overrunOf(input.definition, stated),
+    ground: stated?.ground === undefined ? null : groundText(stated.ground),
+    agent: stated?.agent ?? null,
+    discard: stated?.discard ?? null,
+    skills: stated?.skills ?? null,
+    loads: loadsView(change, stated, input.installed),
     commits: change.commits,
     checks: checkViews(change, answers),
     sinceCheck: sinceCheckOf(change, answers),
@@ -841,10 +988,80 @@ function viewOf(
     briefs: briefsOf(change),
     declaredChecks:
       position?.state === "open" || position?.state === "stopped"
-        ? declaredStandings(input.checks, change)
+        ? declaredStandings(
+            checksOfChange(input.checks, input.interfaceSetting, stated?.interface),
+            change,
+          )
         : [],
     nudges: nudgesOf(input, change),
   };
+}
+
+/** The text of a record's sections, the steps' and the other kinds', which name the skills followed. */
+function sectionTexts(stated: RecordForm | ChangeRecord | undefined): readonly string[] {
+  if (stated === undefined) return [];
+  if ("kindSections" in stated)
+    return [
+      ...stated.sections.map((section) => section.text),
+      ...stated.kindSections.map((section) => section.text),
+    ];
+  return stated.sections.map((section) => section.text);
+}
+
+/** A change's loads summarised, the declared skills read from its sections against the installed roster. */
+function loadsView(
+  change: Assessed,
+  stated: RecordForm | ChangeRecord | undefined,
+  installed: ReadonlySet<string>,
+): LoadsView {
+  const folder = change.entry.folder;
+  const loads = folder !== undefined && folder._tag === "ok" ? folder.value.loads : [];
+  const uses = summariseLoads(loads);
+  const declared = declaredSkills(sectionTexts(stated), rosterNamesOf(installed));
+  return {
+    count: loads.length,
+    uses,
+    declared: declaredBesideLoaded(
+      declared,
+      uses.map((use) => use.skill),
+    ),
+  };
+}
+
+/** Where a skill loaded: before the record stood, at its steps, or both. */
+function placesOf(use: SkillUse): string {
+  return [
+    ...(use.beforeRecord === 0 ? [] : ["before the record"]),
+    ...(use.steps.length === 0 ? [] : [`at ${use.steps.join(", ")}`]),
+  ].join(" and ");
+}
+
+/** The resume view's lines for a change's skill loads, each skill with its count, whole or part and its steps. */
+function loadsLines(view: ChangeView): readonly string[] {
+  const { loads } = view;
+  const lines =
+    loads.count === 0
+      ? ["  skill loads: none noted"]
+      : [
+          `  skill loads (${plural(loads.count, "load")}):`,
+          ...loads.uses.map(
+            (use) =>
+              `    ${use.skill}: ${plural(use.loads, "load")}, ${[
+                ...(use.whole === 0 ? [] : [`${String(use.whole)} whole`]),
+                ...(use.part === 0 ? [] : [`${String(use.part)} part`]),
+              ].join(", ")}, ${placesOf(use)}`,
+          ),
+        ];
+  const { declared } = loads;
+  const named = (title: string, skills: readonly string[]) =>
+    skills.length === 0 ? [] : [`  ${title}: ${skills.join(", ")}`];
+  return [
+    ...lines,
+    ...named("skills declared and loaded", declared.declaredAndLoaded),
+    ...named("skills loaded and not declared", declared.loadedNotDeclared),
+    ...named("skills declared and never loaded", declared.declaredNeverLoaded),
+    ...(view.skills === null ? [] : [`  skills line: ${view.skills.join(", ")}`]),
+  ];
 }
 
 /** Each declared check's latest run for a change: the facts `check` wrote and the runs a hook recorded. */
@@ -880,9 +1097,9 @@ function briefsOf(change: Assessed): readonly BriefView[] {
 
 /** The command that writes a brief of this name: its step and number when the name gives them. */
 function briefCommand(id: string, file: string): string {
-  const named = /^brief-(review|verify)-([1-9]\d*)\.md$/.exec(file);
+  const named = /^brief-(design|anticipate|review|verify)-([1-9]\d*)\.md$/.exec(file);
   return named === null
-    ? `greenline brief --change ${id} --step <review or verify> --round <n>`
+    ? `greenline brief --change ${id} --step <design, anticipate, review or verify> --round <n>`
     : `greenline brief --change ${id} --step ${named[1] ?? ""} --round ${named[2] ?? ""}`;
 }
 
@@ -891,7 +1108,7 @@ function briefNotes(id: string, folder: ChangeFolder, findings: Note<FindingKind
   const subject: NoteSubject = { kind: "change", id };
   for (const brief of folder.briefs) {
     const path = `${LEDGER}/${id}/${brief.file}`;
-    const remedy = `a brief is written only by '${briefCommand(id, brief.file)}', and the builder never opens, copies, diffs or derives a brief file: remove this one, write the brief with the command, and name the brief written by hand as a finding in the step's section; anticipate's brief stays under ${WORKING}/${id}/`;
+    const remedy = `a brief is written only by '${briefCommand(id, brief.file)}', and the builder never opens, copies, diffs or derives a brief file: remove this one, write the brief with the command, and name the brief written by hand as a finding in the step's section`;
     if (brief.text === undefined) {
       findings.push({
         kind: "brief-unwritten",
@@ -985,6 +1202,8 @@ function nextSentence(mode: string, why: Unrequired): string {
       return why.holder === "plan"
         ? `it belongs to the plan's record when the work is split; name a step of this ticket's record`
         : `it belongs to the tickets' records when the work is split; name a step of the planning record`;
+    case "fact":
+      return `it runs only where the record says ${why.fact}: yes; name a step that runs, or state the fact`;
   }
 }
 
@@ -994,6 +1213,8 @@ function mismatchSentence(mode: string, mismatch: Mismatch): string {
       return heldSentence(mismatch.step, mismatch.holder);
     case "unrun-section":
       return `its mode '${mode}' does not run the step '${mismatch.step}', so its section holds the one line '${mismatch.line}' and nothing else: write that line, or raise the mode`;
+    case "inapplicable-section":
+      return `the step '${mismatch.step}' runs only where the record says ${mismatch.fact}: yes, and this record does not, so its section holds the one line '${mismatch.line}' and nothing else: write that line, or state the fact`;
     case "missing-section":
       return `the done record has no '${mismatch.step}' section its mode requires: write it`;
     case "missing-none-line":
@@ -1007,7 +1228,9 @@ function mismatchSentence(mode: string, mismatch: Mismatch): string {
     case "below-floor":
       return `the floor '${mismatch.floor}' was found and the mode, taken without waiting (choice: standing) under the proceed setting, does not meet it: raise the mode with a raise that says why, or have the owner choose`;
     case "over-budget":
-      return `it cost ${mismatch.cost.agents} agents and ${mismatch.cost.rounds} rounds, over the mode's ${mismatch.budget.agents} and ${mismatch.budget.rounds}: raise the mode, or correct the cost`;
+      return mismatch.methods === undefined
+        ? `it cost ${mismatch.cost.agents} agents and ${mismatch.cost.rounds} rounds, over the mode's ${mismatch.budget.agents} and ${mismatch.budget.rounds}: raise the mode, or correct the cost`
+        : `it cost ${mismatch.cost.agents} agents and ${mismatch.cost.rounds} rounds, agents: ${String(mismatch.cost.agents - mismatch.methods.out)} of ${mismatch.budget.agents}, and ${mismatch.methods.words} that a method started, ${METHOD_AGENTS_NOWHERE}; over the mode's ${mismatch.budget.agents} and ${mismatch.budget.rounds}: raise the mode, or correct the cost`;
   }
 }
 
@@ -1032,15 +1255,22 @@ function plural(count: number, word: string): string {
   return `${count} ${word}${count === 1 ? "" : "s"}`;
 }
 
+/**
+ * The files a moved check's code changed in, its practice's own files never
+ * among them (J-229 S1). Where no file of the code differs, the run's tree
+ * held files no commit of the code holds: a check recorded before this
+ * version, whose tree held the practice's files, or a run on uncommitted
+ * work since undone, and running it again settles it.
+ */
 function filesSentence(files: FilesReading, relativeTo: string | null): string {
   if (files.kind === "unknown") return `which files changed is unknown (${files.reason})`;
+  if (files.files.length === 0)
+    return `no file of the code differs${relativeTo === null ? "" : ` (counted from ${relativeTo.slice(0, 12)})`}: the run's tree held files no commit of the code holds, as a check recorded before this version or a run on uncommitted work leaves it`;
   const counted =
     relativeTo === null
       ? ""
       : ` (counted from ${relativeTo.slice(0, 12)}, since the check ran on uncommitted work)`;
-  return files.files.length === 0
-    ? `no file outside .greenline/ differs${counted}`
-    : `${files.files.join(", ")} changed${counted}`;
+  return `${files.files.join(", ")} changed${counted}`;
 }
 
 /** The findings and notices about one change. */
@@ -1071,6 +1301,7 @@ function changeNotes(
       });
     ruleNotes(input, change, standing.record, findings);
     costNotes(input.definition, change, standing.record, findings);
+    formNotes(input, change, standing.record.position.state, findings, notices);
   }
   const folder = change.entry.folder;
   if (folder !== undefined && folder._tag === "err")
@@ -1113,7 +1344,34 @@ function changeNotes(
     if (facts === 0)
       notices.push({
         kind: "unchecked",
-        message: `the done change '${id}' has no check facts, so nothing shows that a check ran: run its checks with 'greenline check --change ${id} -- <command>'`,
+        message: `run the checks of '${id}' with 'greenline check --change ${id} -- <command>': the change is done and has no check facts, so nothing shows that a check ran`,
+        path: change.path,
+        subject,
+      });
+  }
+  // The skills the open change owes by their trigger rows, named while it is open (J-134 S3, J-176 S1).
+  const owed = input.owedLines?.get(id);
+  if (owed !== undefined && standing.kind === "judged" && standing.record.position.state === "open")
+    notices.push({
+      kind: "habit-owed",
+      message: `load each skill '${id}' owes where it applies, or record the owner's waiver in the record as 'waived: <skill>: <reason>; the owner's yes: "<words>"'; a done change that loaded none of one is refused: ${owed}`,
+      path: change.path,
+      subject,
+    });
+  // Planned work's ticket list stands on disk, with its modes and the plan's association, before the wait that asks the owner to approve it (J-176 S1).
+  if (standing.kind === "judged") {
+    const position = standing.record.position;
+    const waits = waitingOn(position);
+    const plan = standing.record.belongs?.plan;
+    if (
+      position.state === "open" &&
+      waits !== undefined &&
+      /\btickets?\b/i.test(waits) &&
+      (plan === undefined || planHasTickets(input.disk, plan) === "absent")
+    )
+      notices.push({
+        kind: "record-form-open",
+        message: `write the ticket list before '${id}' waits on it: .greenline/plans/<NNN-name>/tickets.md with each ticket's mode, and the record's plan line naming that directory; the owner approves the list on disk, and the record waits on "${waits}" ${plan === undefined ? "with no plan line" : `while ${plan} holds no tickets.md`}`,
         path: change.path,
         subject,
       });
@@ -1122,12 +1380,78 @@ function changeNotes(
     if (check.code.kind === "moved")
       notices.push({
         kind: "code-moved",
-        message: `the code of '${id}' moved after the check '${checkLine(check)}' last ran: ${filesSentence(check.code.files, check.code.relativeTo)}; run the check again on the final code`,
+        message: `run the check '${checkLine(check)}' of '${id}' again on the final code: the code moved after it last ran, ${filesSentence(check.code.files, check.code.relativeTo)}`,
         path: change.path,
         subject,
       });
   if (stated !== undefined && change.entry.text !== undefined)
     citationNotes(change, citedFiles(id, change.entry.text), findings, notices);
+}
+
+/**
+ * The record lint's breaches of a judged record (J-149 S1; the ledger
+ * guide, "The sections"): a finding each for a done record, which git's
+ * hooks refuse done on, and a notice each for an open or stopped one, the
+ * forms to correct before done.
+ */
+function formNotes(
+  input: ChangesInput,
+  change: Assessed,
+  state: Position["state"],
+  findings: Note<FindingKind>[],
+  notices: Note<NoticeKind>[],
+): void {
+  const text = change.entry.text;
+  if (text === undefined || state === "dropped") return;
+  const id = change.entry.id;
+  const folder = change.entry.folder;
+  const breaches = recordBreaches({
+    id,
+    text,
+    definition: input.definition,
+    // The skills the change owed, so status names each one the done door refuses on (J-189 S1).
+    owed: input.owedAtDone?.get(id),
+    loaded:
+      folder !== undefined && folder._tag === "ok"
+        ? folder.value.loads.map((load) => load.skill)
+        : undefined,
+    // The model the harness reports, which the agent line names (J-192 S1).
+    reported: reportedFor(input.reported, id, text),
+    // The folder's links file and the interface check's runs, which a done record links (J-173 S1).
+    folder:
+      folder !== undefined && folder._tag === "ok"
+        ? { files: folder.value.reports, visuals: folder.value.visuals ?? 0 }
+        : undefined,
+  });
+  const subject: NoteSubject = { kind: "change", id };
+  for (const breach of breaches)
+    if (state === "done")
+      findings.push({
+        kind: "record-form",
+        message: `correct the done change '${id}''s record, or open a new change where its install moved on: ${breach.message}`,
+        path: change.path,
+        subject,
+      });
+    else
+      notices.push({
+        kind: "record-form-open",
+        message: `correct the ${state} change '${id}''s record before done, which git's hooks refuse while it stands: ${breach.message}`,
+        path: change.path,
+        subject,
+      });
+}
+
+/** The model the harness a record's agent line names reports, where the line names one (J-192 S1). */
+function reportedFor(
+  reported: ReadonlyMap<string, ReportedModel> | undefined,
+  id: string,
+  text: string,
+): ReportedModel | undefined {
+  if (reported === undefined) return undefined;
+  const read = parseRecordForm(`${id}.md`, text);
+  const agent = read._tag === "ok" ? read.value.agent : undefined;
+  const harness = agent === undefined ? undefined : parseAgent(agent)?.harness;
+  return harness === undefined ? undefined : reported.get(harness);
 }
 
 /** The agents a list names, the last two joined by "and". */
@@ -1209,7 +1533,7 @@ function missingFacts(id: string, folder: ChangeFolder, notices: Note<NoticeKind
     const name = file.file.slice(`${CHECKS}/`.length);
     notices.push({
       kind: "fact-missing",
-      message: `the check facts '${name}' of '${id}' follow '${previous}', which is not in its folder: a recorded fact is never removed or edited; restore it from history where it was committed, and say in the record what it held`,
+      message: `restore the check facts '${previous}' of '${id}' from history where they were committed, and say in the record what they held: '${name}' follows them and they are not in the folder, and a recorded fact is never removed or edited`,
       path: `${LEDGER}/${id}/${CHECKS}/${previous}`,
       subject: { kind: "change", id },
     });
@@ -1335,10 +1659,27 @@ function nudgesOf(input: ChangesInput, change: Assessed): readonly string[] {
     );
   const counted = input.agentsCounted.get(id) ?? 0;
   const agents = stated?.cost?.agents;
-  if (stated?.position.state === "done" && counted > 0 && agents !== counted + 1)
+  const byMethods = methodTotal(input, id);
+  // A record that counted the methods' agents too agrees with its events; the limit counts them out.
+  if (
+    stated?.position.state === "done" &&
+    counted > 0 &&
+    agents !== counted + 1 &&
+    agents !== counted + 1 + byMethods
+  )
     nudges.push(
-      `its harness's events counted ${plural(counted, "fresh agent")} and its record states agents: ${agents === undefined ? "none" : String(agents)}; the cost counts the builder and each fresh agent`,
+      `its harness's events counted ${plural(counted, "fresh agent")} and its record states agents: ${agents === undefined ? "none" : String(agents)}; ${COST_COUNTS}`,
     );
+  // The agents a method started, named apart from the mode's limit (J-134 S2).
+  if (byMethods > 0 && stated !== undefined) {
+    const out = agents === undefined ? 0 : methodAgentsOut(input, id, agents);
+    const held = agents === undefined ? counted + 1 : agents - out;
+    const mode = input.definition.modes.find((entry) => entry.name === stated.mode);
+    const limit = mode === undefined ? "" : ` of ${String(agentsAtMost(input.definition, mode))}`;
+    nudges.push(
+      `agents: ${String(held)}${limit}, and ${methodAgentsWords(input.methodAgents?.get(id) ?? [])} that a method started, ${METHOD_AGENTS_NOWHERE}`,
+    );
+  }
   return nudges;
 }
 
@@ -1387,7 +1728,11 @@ function unescaped(target: string): string {
   }
 }
 
-/** A cited file that is missing is a finding; in a finished change, a file no link cites is a notice. */
+/**
+ * A cited file that is missing is a finding; in a finished change, a file no
+ * link cites is a notice. A link to a directory of the folder cites every
+ * file under it, for both readings (J-173 S1, J-218 S1).
+ */
 function citationNotes(
   change: Assessed,
   cited: ReadonlySet<string>,
@@ -1399,10 +1744,16 @@ function citationNotes(
   const folder = change.entry.folder;
   if (folder !== undefined && folder._tag === "err") return;
   const reports = folder === undefined ? [] : folder.value.reports;
-  const present = new Set([
+  const files = [
     ...reports,
     ...(folder === undefined ? [] : folder.value.checks.map((file) => file.file)),
-  ]);
+  ];
+  // Each file of the folder and each directory above one, so a link to `interface/` finds its runs.
+  const present = new Set(
+    files.flatMap((file) =>
+      file.split("/").map((_, at, parts) => parts.slice(0, at + 1).join("/")),
+    ),
+  );
   for (const file of [...cited].sort())
     if (!present.has(file))
       findings.push({
@@ -1412,11 +1763,18 @@ function citationNotes(
         subject,
       });
   if (!isFinished(change)) return;
+  // A link to a directory of the folder cites every file under it (J-173 S1).
+  const linked = (file: string): boolean =>
+    file.split("/").some((_, at, parts) => cited.has(parts.slice(0, at + 1).join("/")));
   for (const file of reports)
-    if (!cited.has(file))
+    if (!linked(file))
       notices.push({
         kind: "uncited",
-        message: `the finished change '${id}' holds '${file}' in its folder and its record links to it nowhere: link it from the record, or remove it`,
+        // A file the CLI writes is greenline's to keep, so the cure is the link alone (J-173 S1).
+        message:
+          ledgerFileOf(`${LEDGER}/${id}/${file}`) === undefined
+            ? `link '${file}' from the record of '${id}', or remove it: the change is finished and its record links to the file nowhere`
+            : `link '${file}' from the record of '${id}': the change is finished, its record links to the file nowhere, and greenline wrote it, so it stays`,
         path: `${LEDGER}/${id}/${file}`,
         subject,
       });
@@ -1471,7 +1829,7 @@ function historyNotes(input: ChangesInput, notices: Note<NoticeKind>[]): Unclaim
       if (!onDisk.has(id))
         notices.push({
           kind: "deleted",
-          message: `history shows the change record '${id}' added and later deleted, and it is not on disk: restore it from history if the change is to be kept`,
+          message: `restore the change record '${id}' from history if the change is to be kept: history shows it added and later deleted, and it is not on disk`,
           path: `${LEDGER}/${id}.md`,
           subject,
         });
@@ -1672,8 +2030,10 @@ function resumeLines(view: ChangeView, plan: PlanView | null): readonly string[]
     lines.push(`  plan: ${view.plan}${view.ticket === null ? "" : `, ticket ${view.ticket}`}`);
   if (view.cost !== null)
     lines.push(
-      `  cost: ${plural(view.cost.agents, "agent")}, ${plural(view.cost.rounds, "round")}`,
+      `  cost: ${plural(view.cost.agents, "agent")}, ${plural(view.cost.rounds, "round")}${view.overrun === null ? "" : `, past ${view.overrun.past} on the owner's words, "${view.overrun.words}"`}`,
     );
+  lines.push(`  ground: ${view.ground ?? "not stated"}`, `  agent: ${view.agent ?? "not stated"}`);
+  if (view.discard !== null) lines.push(`  discard: ${view.discard}`);
   lines.push(`  ${commitsLine(view.commits)}`);
   if (view.commits.kind === "known") {
     for (const commit of view.commits.commits)
@@ -1709,6 +2069,7 @@ function resumeLines(view: ChangeView, plan: PlanView | null): readonly string[]
     );
   if (since?.kind === "unknown")
     lines.push(`  commits since the last recorded check: unknown (${since.why})`);
+  lines.push(...loadsLines(view));
   if (view.briefs.length > 0)
     lines.push(
       `  briefs greenline brief wrote: ${view.briefs.map((brief) => brief.file).join(", ")}; the close cites each`,

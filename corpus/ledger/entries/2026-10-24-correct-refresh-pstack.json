@@ -1,0 +1,73 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-correct-refresh-pstack",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-24-concurrency-refresh-pstack",
+    "sha256": "248c3c202604b9a61481b853262ceff26458b5f5b1ccc3941319cfcf0e98e0c5"
+  },
+  "subject": "skill:correct",
+  "recipe": "c3dd58e3d1df486cd268ca2be112a2e476e903ac97bc1743172315ab2e1c6017",
+  "result": "04fd8a8991bf6a4a6c3f56e37711d390ba446436ab19e136a624aceacacbd331",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Keeps encode-lessons' cut method; the behavior test follows upstream",
+  "reason": "Refreshes correct to pstack eb4db2b55b2b: the rules encode-lessons-in-structure lost upstream stay as greenline's text crediting pstack, its corollary is taken, the body stays not a stub, and the test line takes the break-or-refactor test.",
+  "authorisedBy": {
+    "date": "2026-10-22",
+    "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-08",
+      "words": "The method items carry the operator's rulings of 2026-10-08 on the intake R3, \"yes go ahead\", the verdicts and the contradictions standing as recommended, a test deleted only through sweep-tests and its mutation proof (contradiction 23) and an encodable instruction encoded while the rule table lives in the decision home (30)"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R21 of 2026-10-08 on harness-bound and orchestration content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms, its slash-command trigger dropped"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "the operator's ruling R22 of 2026-10-08 on the re-cut brief, \"yes amend, with one change\": the roster table's names stand, router, diagnose and architecture-survey among them, with the trial names idea-refine, constraint-driven-development, correct and improve-instructions"
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves, every change has one record with its working files and its folder, and a start that edits no file needs no mode and no record"
+    },
+    {
+      "date": "2026-10-07",
+      "words": "R16 of 2026-10-07, a start chosen from the situation a request begins in (\"update the agents md created by greenline product to mention the kind with the skill table and also prose about when to use what kind skill\")"
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-24",
+      "words": "The rulings of 2026-10-24 on J-112 S2, under the operator's words \"for smaller decisions go with your recommended suggestions\": the seven stub flags are not stubs and keep their text; the method upstream's edit pass at eb4db2b5 cut stays as written passages crediting pstack; elsewhere upstream's change is taken"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 37,
+        "taken": 34,
+        "exact": 31,
+        "retention": 0.9117647058823529,
+        "coverage": 0.918918918918919,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 345
+  }
+}

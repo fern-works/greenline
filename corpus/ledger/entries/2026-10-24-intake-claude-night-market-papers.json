@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-claude-night-market-papers",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ai-skill-arxiv-arxiv-search",
+    "sha256": "6afdb24496bf62737ea47c7382ba2b2ace89083012059f2e2c964bf06434e38f"
+  },
+  "source": {
+    "repository": "https://github.com/athola/claude-night-market",
+    "commit": "9f3eb003bedbd1d84389c5dd68711ea56c8c69b4",
+    "path": "plugins/tome/skills/papers"
+  },
+  "pin": "claude-night-market",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its source order and PDF route are the papers page's spine",
+  "reason": "Its source order, PDF route, extraction targets and honest exits become the spine of the research start's papers page, the text landing in J-117 S3; the rates, tool names and paid fallbacks stay out.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': athola's papers combines as the spine of the research start's papers page, placed on the start research by default with no block row; no rate numbers, no renting, buying or emailing, no address sent to Unpaywall, the owner deciding from the report"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-119, under the operator's words 'for smaller decisions go with your recommended suggestions': athola's papers combines as the spine of the research start's papers page, placed on the start research by default with no block row; no rate numbers, no renting, buying or emailing, no address sent to Unpaywall, the owner deciding from the report"
+    }
+  ],
+  "placement": {
+    "kind": "start",
+    "slot": "research",
+    "catches": "A researcher that cites a secondary write-up, stops at the first empty service, reads a PDF it could read as HTML, or reports a paper it never opened",
+    "evidence": "claimed",
+    "move": "add",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run in which a frame question's research cited a secondary source or a paper it did not read"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "frame",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "frame",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

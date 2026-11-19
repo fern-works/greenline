@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-dimillian-swiftui-performance-audit",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-dimillian-swiftui-liquid-glass",
+    "sha256": "c1890cf2c1301d2ee537bf1ccf7579de7ee73a46d17b160a937d628404876a3f"
+  },
+  "source": {
+    "repository": "https://github.com/dimillian/skills",
+    "commit": "05ba982bfeb0d77d3c97d4542b0ee15034d05f84",
+    "path": "swiftui-performance-audit"
+  },
+  "pin": "dimillian-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Summaries of Apple sessions, declined",
+  "reason": "Its references are summaries of Apple's sessions and articles.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': dimillian's performance audit is declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': dimillian's performance audit is declined"
+    }
+  ]
+}

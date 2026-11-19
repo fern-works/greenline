@@ -116,14 +116,16 @@ describe("the built bundle in a throwaway repository", () => {
     }
   });
 
-  it("the default roster installs the engineering methods and keeps assets opt-in", () => {
+  it("the default roster installs the engineering methods and the visual skills, and keeps the extra opt-in", () => {
     const standalone = freshRepo(root, "standalone");
     const r = run(standalone, "init", "--yes", "--json");
     expect(r.status).toBe(0);
     expect(envelope(r).ok).toBe(true);
     expect(existsSync(join(standalone, ".claude/skills/build/SKILL.md"))).toBe(true);
     expect(existsSync(join(standalone, ".claude/skills/domain-and-types/SKILL.md"))).toBe(true);
-    expect(existsSync(join(standalone, ".claude/skills/architecture-map"))).toBe(false);
+    // J-110 S4: the visual habits are defaults; product-description stays the one extra.
+    expect(existsSync(join(standalone, ".claude/skills/architecture-map/SKILL.md"))).toBe(true);
+    expect(existsSync(join(standalone, ".claude/skills/product-description"))).toBe(false);
     expect(existsSync(join(standalone, ".claude/skills/stack-standards"))).toBe(false);
     expect(run(standalone, "sync", "--json").status).toBe(0);
   });

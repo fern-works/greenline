@@ -196,7 +196,7 @@ describe("S16a renderAgentsPolicyBlock: the loop's prose, the modes and the rost
         "| check | inline | independent, 1 agent |",
         "| Fix rounds, per step | 0 | 1 |",
         "",
-        "The agents count the builder; check takes the mode's fix rounds.",
+        "The agents count the builder, never an agent a method starts; check takes the mode's fix rounds.",
         "",
         "A floor raises your proposal to at least the mode it names: careful for a public contract or secrets.",
         "",
@@ -501,7 +501,7 @@ describe("S17 renderProjection: a trial skill beside the line installs only wher
     );
     expect(files.map((f) => f.path)).toContain(".claude/skills/anticipate/SKILL.md");
     const block = files.find((f) => f.path === "AGENTS.md")?.content ?? "";
-    expect(block).toContain("3. `anticipate`\n");
+    expect(block).toContain("4. `anticipate`\n");
     expect(block).not.toContain("(trial, runs only where enabled)");
   });
 });
@@ -621,7 +621,7 @@ describe("S16b the ledger guide carries the skeleton of each mode", () => {
     expect(guide.split("\n").filter((line) => line === "## anticipate")).toHaveLength(3);
     expect(guide).toContain("## anticipate\n\nnone at regular");
     expect(guide).toContain(
-      "When the work is split into tickets, the planning record holds the sections of `frame`, `plan`, `anticipate`, `verify` and `close`, and each ticket's record those of `build`, `review`, `verify` and `close`. Each record holds its share whole, a step its mode does not run saying `none at <mode>`.",
+      "When the work is split into tickets, the planning record holds the sections of `frame`, `design`, `plan`, `anticipate`, `verify` and `close`, and each ticket's record those of `build`, `review`, `verify` and `close`. Each record holds its share whole, a step its mode does not run saying `none at <mode>`.",
     );
     expect(guide).toContain(
       "The `floors` field names each floor you found by its name: `security` for secrets or security; `data-migration` for a data migration; `concurrency` for concurrency; `public-contract` for a public contract; `unchecked-behavior` for a behavior change with no check that could fail.",

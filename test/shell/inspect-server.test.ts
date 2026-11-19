@@ -53,6 +53,29 @@ async function serve(root: string, release = fixtureInstallation()): Promise<str
   return handle.url;
 }
 
+/** An installed file's text from its own address (J-154 S3); undefined where none answers. */
+async function installedText(url: string, path: string): Promise<string | null | undefined> {
+  const response = await fetch(
+    `${url}api/practice/files/${path.split("/").map(encodeURIComponent).join("/")}`,
+  );
+  if (response.status !== 200) return undefined;
+  return (await response.json()).content;
+}
+
+/** The installed files' paths, from the settings' folders. */
+function installedPaths(state: {
+  readonly files: readonly {
+    readonly folder: string;
+    readonly files: readonly { readonly name: string }[];
+  }[];
+}): string[] {
+  return state.files.flatMap((folder) =>
+    folder.files.map((file) =>
+      folder.folder === "." ? file.name : `${folder.folder}/${file.name}`,
+    ),
+  );
+}
+
 afterEach(async () => {
   for (const handle of handles.splice(0)) await handle.close();
   for (const dir of tempDirs.splice(0)) rmSync(dir, { recursive: true, force: true });
@@ -74,14 +97,14 @@ describe("greenline inspect, served", () => {
     const installed = ".agents/skills/grilling/SKILL.md";
     rmSync(join(root, installed));
     symlinkSync(join(outside, "private.md"), join(root, installed));
-    const response = await fetch((await serve(root)) + "api/state");
+    const url = await serve(root);
+    const response = await fetch(url + "api/settings");
     const body = await response.text();
     expect(body).not.toContain("Private symlink witness.");
     const state = JSON.parse(body);
     expect(state.changes.unavailable).toEqual(expect.arrayContaining(["retained.md", installed]));
-    expect(
-      state.files.find((file: { path: string }) => file.path === "local-retained.md").content,
-    ).toBe("Local retained context.");
+    expect(await installedText(url, "local-retained.md")).toBe("Local retained context.");
+    expect(await installedText(url, "retained.md")).toBeNull();
   });
 
   it("refuses an escaping lock path without returning the sibling file", async () => {
@@ -96,10 +119,12 @@ describe("greenline inspect, served", () => {
     const lock = JSON.parse(readFileSync(path, "utf8"));
     lock.files["../outside.md"] = "a".repeat(64);
     writeFileSync(path, JSON.stringify(lock));
-    const response = await fetch((await serve(root)) + "api/state");
-    const body = await response.text();
+    const url = await serve(root);
+    const body = await (await fetch(url + "api/settings")).text();
     expect(body).not.toContain("Private sibling witness.");
-    expect(body).toContain("GL0104");
+    // The diagnostics are the practice's since J-154 S3; the sibling's address answers nothing.
+    expect(await (await fetch(url + "api/practice")).text()).toContain("GL0104");
+    expect(await installedText(url, "../outside.md")).toBeUndefined();
   });
 
   it("distinguishes an unavailable baseline, uncommitted installation, and edits in either harness", async () => {
@@ -111,7 +136,7 @@ describe("greenline inspect, served", () => {
       }).trim();
     git("init", "--quiet");
     const url = await serve(root);
-    const read = async () => (await fetch(url + "api/state")).json();
+    const read = async () => (await fetch(url + "api/settings")).json();
     const initial = await read();
     expect(initial.changes.baseline).toBeNull();
     expect(initial.changes.files).toEqual([]);
@@ -154,9 +179,7 @@ describe("greenline inspect, served", () => {
       writeFileSync(join(root, path), original + "\nA local edit.\n");
       const edited = await read();
       expect(edited.changes.files.map((file: { path: string }) => file.path)).toContain(path);
-      expect(edited.files.find((file: { path: string }) => file.path === path).content).toContain(
-        "A local edit.",
-      );
+      expect(await installedText(url, path)).toContain("A local edit.");
       writeFileSync(join(root, path), original);
     }
   });
@@ -183,21 +206,25 @@ describe("greenline inspect, served", () => {
     rmSync(join(root, path));
     mkdirSync(join(root, path));
     const url = await serve(root);
-    const state = await (await fetch(url + "api/state")).json();
+    const state = await (await fetch(url + "api/settings")).json();
     expect(state.changes.unavailable).toContain(path);
     expect(state.changes.files.some((file: { path: string }) => file.path === path)).toBe(false);
-    expect(state.files.find((file: { path: string }) => file.path === path).content).toBeNull();
+    expect(state.unreadable.map((file: { path: string }) => file.path)).toContain(path);
+    expect(await installedText(url, path)).toBeNull();
   });
 
   it("validates merged installation settings before writing a malformed manifest", async () => {
     const root = makeWorkspace();
     const url = await serve(root);
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/settings`)).json();
     const path = join(root, ".greenline/manifest.json");
     const before = readFileSync(path, "utf8");
     const response = await fetch(`${url}api/manifest`, {
       method: "POST",
-      body: JSON.stringify({ expectedRevision: state.editRevision, targets: ["codex", "codex"] }),
+      body: JSON.stringify({
+        expectedRevision: state.revisions.manifest,
+        targets: ["codex", "codex"],
+      }),
     });
     expect(response.status).toBe(400);
     expect(readFileSync(path, "utf8")).toBe(before);
@@ -206,7 +233,7 @@ describe("greenline inspect, served", () => {
   it("S16b edits the proceed and trials settings as it edits local policy, and refuses a value the modes do not hold", async () => {
     const root = makeWorkspace();
     const url = await serve(root);
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/settings`)).json();
     // J-93 S1: no step is a trial, so the fixture, which holds no trial skill, offers none.
     expect(state.settings).toEqual({
       proceed: ["none", "quick", "regular", "careful"],
@@ -217,7 +244,7 @@ describe("greenline inspect, served", () => {
     const saved = await fetch(`${url}api/manifest`, {
       method: "POST",
       body: JSON.stringify({
-        expectedRevision: state.editRevision,
+        expectedRevision: state.revisions.manifest,
         proceed: "quick",
         trials: [],
       }),
@@ -230,7 +257,7 @@ describe("greenline inspect, served", () => {
     const marker = JSON.parse(readFileSync(join(root, ".greenline/policy-changes.json"), "utf8"));
     expect(marker.changes).toEqual([expect.objectContaining({ path: ".greenline/manifest.json" })]);
     const before = readFileSync(path, "utf8");
-    const again = await (await fetch(`${url}api/state`)).json();
+    const again = await (await fetch(`${url}api/settings`)).json();
     for (const wrong of [
       { proceed: "fastest" },
       { trials: ["review"] },
@@ -238,7 +265,7 @@ describe("greenline inspect, served", () => {
     ]) {
       const refused = await fetch(`${url}api/manifest`, {
         method: "POST",
-        body: JSON.stringify({ expectedRevision: again.editRevision, ...wrong }),
+        body: JSON.stringify({ expectedRevision: again.revisions.manifest, ...wrong }),
       });
       expect(refused.status).toBe(400);
       expect(readFileSync(path, "utf8")).toBe(before);
@@ -260,7 +287,7 @@ describe("greenline inspect, served", () => {
     });
     const root = makeWorkspace(release);
     const url = await serve(root, release);
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/settings`)).json();
     expect(state.settings.trials).toEqual(["idea-sharpener"]);
     // The trials setting installs a trial skill, so the page never offers it among the skills.
     expect(state.skills.map((skill: { name: string }) => skill.name)).not.toContain(
@@ -274,7 +301,7 @@ describe("greenline inspect, served", () => {
     const saved = await fetch(`${url}api/manifest`, {
       method: "POST",
       body: JSON.stringify({
-        expectedRevision: state.editRevision,
+        expectedRevision: state.revisions.manifest,
         targets: ["codex", "claude-code"],
         skills: {
           include: listed.filter((skill) => skill.extra && skill.installed).map((s) => s.name),
@@ -288,51 +315,86 @@ describe("greenline inspect, served", () => {
     const written = JSON.parse(readFileSync(path, "utf8"));
     expect(written.trials).toEqual(["idea-sharpener"]);
     expect(written.skills.exclude).not.toContain("idea-sharpener");
-    const page = await (await fetch(url)).text();
-    expect(page).toContain("<h3>Trials</h3>");
-    expect(page).not.toContain("Trial steps");
+    // The installation's tab is an address of the shell, which draws the trials from the state read.
+    const shell = await fetch(`${url}practice/installation`);
+    expect(shell.status).toBe(200);
+    expect(await shell.text()).toContain('<script type="module" src="/inspector.mjs">');
   });
 
   it("refuses every stale editor and foreign browser origins without changing repository state", async () => {
     const root = makeWorkspace();
     const url = await serve(root);
-    const state = await (await fetch(`${url}api/state`)).json();
-    const agentsPath = join(root, "AGENTS.md");
-    const changed = readFileSync(agentsPath, "utf8") + "\nOperator added this rule.\n";
-    writeFileSync(agentsPath, changed);
-    for (const [endpoint, fields] of [
-      ["manifest", { skills: { exclude: ["grilling"], include: [] } }],
-      ["rulings", { body: "- Discard other edits." }],
-      ["policy", { body: "# Decisions\n" }],
-    ] as const) {
+    const state = await (await fetch(`${url}api/settings`)).json();
+    // Each editor is held to its own file's revision (J-165 S1): every file changed under it, each save refused.
+    const edits = [
+      [
+        "manifest",
+        ".greenline/manifest.json",
+        "manifest",
+        { skills: { exclude: ["grilling"], include: [] } },
+      ],
+      ["rulings", "AGENTS.md", "agents", { body: "- Discard other edits." }],
+      ["policy", ".greenline/DECISIONS.md", "decisions", { body: "# Decisions\n" }],
+    ] as const;
+    const changed = new Map<string, string>();
+    for (const [, file] of edits) {
+      const text = existsSync(join(root, file)) ? readFileSync(join(root, file), "utf8") : "";
+      const next = file.endsWith(".json")
+        ? JSON.stringify(JSON.parse(text), null, 4) + "\n"
+        : text + "\nOperator added this rule.\n";
+      writeFileSync(join(root, file), next);
+      changed.set(file, next);
+    }
+    for (const [endpoint, , revision, fields] of edits) {
       const response = await fetch(`${url}api/${endpoint}`, {
         method: "POST",
-        body: JSON.stringify({ expectedRevision: state.editRevision, ...fields }),
+        body: JSON.stringify({ expectedRevision: state.revisions[revision], ...fields }),
       });
-      expect(response.status).toBe(409);
+      expect(response.status, endpoint).toBe(409);
     }
-    expect(readFileSync(agentsPath, "utf8")).toBe(changed);
-    const fresh = await (await fetch(`${url}api/state`)).json();
+    for (const [file, text] of changed) expect(readFileSync(join(root, file), "utf8")).toBe(text);
+    const agentsPath = join(root, "AGENTS.md");
+    const fresh = await (await fetch(`${url}api/settings`)).json();
     const foreign = await fetch(`${url}api/rulings`, {
       method: "POST",
       headers: { origin: "https://unrelated.example" },
-      body: JSON.stringify({ expectedRevision: fresh.editRevision, body: "- Foreign edit." }),
+      body: JSON.stringify({ expectedRevision: fresh.revisions.agents, body: "- Foreign edit." }),
     });
     expect(foreign.status).toBe(403);
-    expect(readFileSync(agentsPath, "utf8")).toBe(changed);
+    expect(readFileSync(agentsPath, "utf8")).toBe(changed.get("AGENTS.md"));
   });
 
-  it("serves the page and one state read carrying the manifest, actual installed context, the decisions, receipts, and checks", async () => {
+  it("J-165 S1 saves one file though another changed since the page read them, each held to its own revision", async () => {
+    const root = makeWorkspace();
+    const url = await serve(root);
+    const state = await (await fetch(`${url}api/settings`)).json();
+    const agentsPath = join(root, "AGENTS.md");
+    writeFileSync(agentsPath, readFileSync(agentsPath, "utf8") + "\nOperator added this rule.\n");
+    const saved = await fetch(`${url}api/policy`, {
+      method: "POST",
+      body: JSON.stringify({ expectedRevision: state.revisions.decisions, body: "# Decisions\n" }),
+    });
+    expect(saved.status).toBe(200);
+    expect(readFileSync(join(root, ".greenline/DECISIONS.md"), "utf8")).toBe("# Decisions\n");
+    const after = await (await fetch(`${url}api/settings`)).json();
+    expect(after.revisions.manifest).toBe(state.revisions.manifest);
+    expect(after.revisions.decisions).not.toBe(state.revisions.decisions);
+    expect(after.revisions.agents).not.toBe(state.revisions.agents);
+  });
+
+  it("serves the page, the settings carrying the manifest, the installed files and the decisions, and the practice the receipts and the checks", async () => {
     const root = makeWorkspace();
     const url = await serve(root);
     const page = await fetch(url);
     expect(page.status).toBe(200);
-    expect(await page.text()).toContain("<h1>Installation</h1>");
-    const state = await (await fetch(`${url}api/state`)).json();
+    expect(page.headers.get("content-security-policy")).toContain("script-src 'self'");
+    expect(await page.text()).toContain('<script type="module" src="/inspector.mjs">');
+    const state = await (await fetch(`${url}api/settings`)).json();
     expect(state.installation).toBe(environment(root).installation.revision);
-    expect(state.editRevision).toMatch(/^[0-9a-f]{64}$/);
+    for (const file of ["manifest", "decisions", "agents"])
+      expect(state.revisions[file]).toMatch(/^[0-9a-f]{64}$/);
     expect(state.roots).toEqual([]);
-    expect(state.files.map((file: { path: string }) => file.path)).toEqual([
+    expect(installedPaths(state)).toEqual([
       ".agents/skills/delivery-review/SKILL.md",
       ".agents/skills/delivery-review/agents/openai.yaml",
       ".agents/skills/grilling/SKILL.md",
@@ -359,9 +421,10 @@ describe("greenline inspect, served", () => {
     ]);
     expect(state.ledger).toBeUndefined();
     expect(state.work).toBeUndefined();
-    expect(state.receipts).toEqual([]);
-    expect(state.receiptProblems).toEqual([]);
-    expect(Array.isArray(state.checks)).toBe(true);
+    const practice = await (await fetch(`${url}api/practice`)).json();
+    expect(practice.receipts).toEqual([]);
+    expect(practice.problems).toEqual([]);
+    expect(Array.isArray(practice.health.groups)).toBe(true);
   });
 
   it("shows the collections it can read beside a malformed one, and names that one", async () => {
@@ -371,18 +434,17 @@ describe("greenline inspect, served", () => {
     writeFileSync(join(receipts, `${RECEIPTS_FIXTURE_ID}.json`), `${RECEIPTS_FIXTURE}\n`);
     writeFileSync(join(receipts, "22222222-2222-4222-8222-222222222222.json"), "{ not json\n");
     const url = await serve(root);
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/practice`)).json();
     expect(state.receipts.map((request: { id: string }) => request.id)).toEqual([
       RECEIPTS_FIXTURE_ID,
     ]);
-    expect(state.receiptProblems).toEqual([
+    expect(state.problems).toEqual([
       {
         file: ".greenline/ledger/receipts/22222222-2222-4222-8222-222222222222.json",
         message: expect.stringContaining("request evidence"),
       },
     ]);
-    const page = await (await fetch(url)).text();
-    expect(page).toContain("state.receiptProblems.map");
+    expect(state.kind).toBe("practice");
   });
 
   it("shows each request collection with its source, publication and calls, never a body", async () => {
@@ -393,10 +455,8 @@ describe("greenline inspect, served", () => {
       `${RECEIPTS_FIXTURE}\n`,
     );
     const url = await serve(root);
-    const page = await (await fetch(url)).text();
-    expect(page).toContain("<h1>Receipts</h1>");
-    expect(page).toContain("function receiptHtml(request)");
-    const state = await (await fetch(`${url}api/state`)).json();
+    const state = await (await fetch(`${url}api/practice`)).json();
+    expect(state).toMatchObject({ kind: "practice", connector: false, problems: [] });
     expect(state.receipts).toEqual([
       expect.objectContaining({
         source: "garden",
@@ -426,7 +486,7 @@ describe("greenline inspect, served", () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        expectedRevision: (await (await fetch(`${url}api/state`)).json()).editRevision,
+        expectedRevision: (await (await fetch(`${url}api/settings`)).json()).revisions.manifest,
         skills: { exclude: ["grilling"], include: [] },
       }),
     });
@@ -440,15 +500,17 @@ describe("greenline inspect, served", () => {
     const marker = JSON.parse(readFileSync(join(root, ".greenline/policy-changes.json"), "utf8"));
     expect(marker.changes).toEqual([expect.objectContaining({ path: ".greenline/manifest.json" })]);
     expect(
-      body.state.files
-        .filter((file: { path: string }) => file.path.endsWith("/grilling/SKILL.md"))
-        .map((file: { path: string }) => file.path),
+      installedPaths(body.settings).filter((path) => path.endsWith("/grilling/SKILL.md")),
     ).toEqual([".agents/skills/grilling/SKILL.md", ".claude/skills/grilling/SKILL.md"]);
-    expect(body.state.checks.map((check: { code: string }) => check.code)).toContain("GL0112");
+    const codes = async (): Promise<string[]> =>
+      (await (await fetch(`${url}api/practice`)).json()).health.groups.map(
+        (group: { code: string }) => group.code,
+      );
+    expect(await codes()).toContain("GL0112");
     const synced = await (await fetch(`${url}api/sync`, { method: "POST" })).json();
     expect(synced.outcome.ok).toBe(true);
     expect(existsSync(join(root, ".agents/skills/grilling/SKILL.md"))).toBe(true);
-    expect(synced.state.checks.map((item: { code: string }) => item.code)).toContain("GL0112");
+    expect(await codes()).toContain("GL0112");
     const refused = await fetch(`${url}api/manifest`, {
       method: "POST",
       body: JSON.stringify({ profile: "gold" }),
@@ -463,7 +525,7 @@ describe("greenline inspect, served", () => {
     const response = await fetch(`${url}api/rulings`, {
       method: "POST",
       body: JSON.stringify({
-        expectedRevision: (await (await fetch(`${url}api/state`)).json()).editRevision,
+        expectedRevision: (await (await fetch(`${url}api/settings`)).json()).revisions.agents,
         body: "- Errors are thrown, never returned.\n- No default exports.",
       }),
     });
@@ -475,7 +537,7 @@ describe("greenline inspect, served", () => {
     const block =
       /<!-- greenline:managed begin policy -->[\s\S]*<!-- greenline:managed end policy -->/;
     expect(block.exec(after)?.[0]).toBe(block.exec(before)?.[0]);
-    const state = (await response.json()).state;
+    const state = (await response.json()).settings;
     expect(state.houseRulings.rulings).toEqual([
       "Errors are thrown, never returned.",
       "No default exports.",
@@ -486,7 +548,7 @@ describe("greenline inspect, served", () => {
 it("preserves a saved root decision and its edit evidence when a later sync conflicts", async () => {
   const root = makeWorkspace();
   const url = await serve(root);
-  const state = await (await fetch(`${url}api/state`)).json();
+  const state = await (await fetch(`${url}api/settings`)).json();
   const policy =
     "# Decisions\n```greenline-roots\n" +
     JSON.stringify([
@@ -502,11 +564,11 @@ it("preserves a saved root decision and its edit evidence when a later sync conf
     "\n```\n";
   const saved = await fetch(`${url}api/policy`, {
     method: "POST",
-    body: JSON.stringify({ expectedRevision: state.editRevision, body: policy }),
+    body: JSON.stringify({ expectedRevision: state.revisions.decisions, body: policy }),
   });
   expect(saved.status).toBe(200);
   const marker = readFileSync(join(root, ".greenline/policy-changes.json"), "utf8");
-  expect((await saved.json()).state.policyChanges).toEqual([
+  expect((await saved.json()).settings.policyChanges).toEqual([
     expect.objectContaining({ path: ".greenline/DECISIONS.md" }),
   ]);
   const agents = join(root, "AGENTS.md");

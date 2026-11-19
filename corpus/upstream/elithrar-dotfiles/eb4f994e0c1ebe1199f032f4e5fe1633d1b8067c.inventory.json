@@ -1,0 +1,47 @@
+{
+  "commit": "eb4f994e0c1ebe1199f032f4e5fe1633d1b8067c",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "e530efee0b04b31b6aa5066310cc79682572d94a2fac6097ad40ee1ca524a1c4"
+    },
+    {
+      "path": "neo-industrial-design/SKILL.md",
+      "sha256": "10602e7262cee75b77531a940dab185f3210121734dddc9c92b8e97491e541c3"
+    },
+    {
+      "path": "neo-industrial-design/agents/openai.yaml",
+      "sha256": "11799510960f4a779734100f6019156dc72a3de6d118c7265b1bb0ac0f7b402f"
+    },
+    {
+      "path": "neo-industrial-design/references/review.md",
+      "sha256": "db671195fd2ce3f74f71429f60e527d542f0f1f0237df08fb528ff2c5103e5c8"
+    },
+    {
+      "path": "neo-industrial-design/references/visual-system.md",
+      "sha256": "a6f3031360b02198d6d23b24e563e4ced7cc78ae6a9ccd92aac338d609dcb4ea"
+    },
+    {
+      "path": "web-perf/SKILL.md",
+      "sha256": "3e7ee7394181a1d9bec0d554b70f30c205f2acc93a95077950eff81497c88bf5"
+    },
+    {
+      "path": "web-perf/evals/evals.json",
+      "sha256": "54ccf302822cb1cf5dfbccf72b12ee1570ffc4c82ffe3ee0ee2c0315a7b0be09"
+    },
+    {
+      "path": "web-perf/references/devtools.md",
+      "sha256": "dd5857672e24a320fde68c22f43b410760eea565439ab8b74d08dc2922a77357"
+    }
+  ],
+  "entries": [
+    {
+      "name": "neo-industrial-design",
+      "path": ".agents/skills/neo-industrial-design"
+    },
+    {
+      "name": "web-perf",
+      "path": ".agents/skills/web-perf"
+    }
+  ]
+}

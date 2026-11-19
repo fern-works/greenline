@@ -1,0 +1,33 @@
+{
+  "site": "https://stripe.com/",
+  "pages": [
+    "/"
+  ],
+  "seen": "2026-10-24",
+  "capturedAt": "2026-10-24T13:20:42.409Z",
+  "widths": [
+    1440,
+    768,
+    390
+  ],
+  "tool": "headless Google Chrome over the DevTools protocol, read-only: no link followed, nothing clicked or submitted",
+  "licence": "ideas-only",
+  "files": [
+    {
+      "file": "1440.jpg",
+      "sha256": "eecca31d9e6abac05c1e099756b844a7e8848cd204d715ceb933ba6e834ad65c"
+    },
+    {
+      "file": "390.jpg",
+      "sha256": "efb137476d4caebf3a9c460c9b6804e5f34fe2cece40d3b08c86e6eaad4092f4"
+    },
+    {
+      "file": "768.jpg",
+      "sha256": "7c527187602c89e07e7008538994b889e4bd710b7094b879b0ba0dd118fa185e"
+    },
+    {
+      "file": "sheet.json",
+      "sha256": "496081a092e042003d77a51f3559cc110905ddef1f65396ede47c7b081026858"
+    }
+  ]
+}

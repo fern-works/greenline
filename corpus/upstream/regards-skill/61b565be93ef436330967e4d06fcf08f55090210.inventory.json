@@ -1,0 +1,59 @@
+{
+  "commit": "61b565be93ef436330967e4d06fcf08f55090210",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "8d18ba93562389065319904fa0db464476e83e25ed2e3361257bb1e5ab1cd95c"
+    },
+    {
+      "path": "references/colour.md",
+      "sha256": "6556bcc7eed48b7bc2d0d281c28bf57c1b75e94d7ca0bde49f5d9df8c6a09351"
+    },
+    {
+      "path": "references/copy.md",
+      "sha256": "676edbe75d5f3cfd8a793010ea9f730525ae074b231a674c2426264d3398262e"
+    },
+    {
+      "path": "references/critique.md",
+      "sha256": "5943ea74ebe015cf33de3f8e2116f4fb990a126ae47fa56b4e6e8932d748f5b8"
+    },
+    {
+      "path": "references/draw.md",
+      "sha256": "e04f671d58c10547b9cb56623ecc9c8d49837dab086e9d515ef0d003a25de631"
+    },
+    {
+      "path": "references/imagery.md",
+      "sha256": "c5e2b5e50a8f947a6ad65bb50ce2010a84972f777389bdeb61fd6a35ed019917"
+    },
+    {
+      "path": "references/layout.md",
+      "sha256": "87d915bfb9324cafa23d90d2b71e977c835c01f56ea96ada31f604ada81bf675"
+    },
+    {
+      "path": "references/motion.md",
+      "sha256": "12b193563cc4b5d1107f61b90cdbaa9850885b73433d06976fa44b52cde11965"
+    },
+    {
+      "path": "references/regards.md",
+      "sha256": "88dd3395a749f74863bd89fc81ccb023c82c370eab4aff9a7f125af5e2dab9a9"
+    },
+    {
+      "path": "references/research.md",
+      "sha256": "016d908b429099f49c665fb0ef649932f79dc35832e2e5689eceefdb1a0ec5c7"
+    },
+    {
+      "path": "references/tells.md",
+      "sha256": "31a759a787afdde60ec052086b7c2345d881b6cfadd3188af40df38eef404709"
+    },
+    {
+      "path": "references/type.md",
+      "sha256": "6353ff1d0ce2f9913628c88fbcb7dad3cc3877e61196848bce99e33a17d20611"
+    }
+  ],
+  "entries": [
+    {
+      "name": "references",
+      "path": "skills/regards-art-direction/references"
+    }
+  ]
+}

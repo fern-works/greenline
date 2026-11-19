@@ -81,13 +81,22 @@ const rootFiles = new Set(["package.json", "README.md", "LICENSE", "THIRD_PARTY_
 const FONT_LICENCE = "assets/inspect-fonts/OFL.txt";
 // The ledger's index ships and is never installed (the ledger plan's rulings D1 and D2).
 const LEDGER_INDEX = "provenance/INDEX.md";
+// The inspector's client app, Preact bundled in, with Preact's licence beside it under dist/bin.
+const CLIENT_APP = "dist/bin/inspector.mjs";
+const CLIENT_LICENCE = "dist/bin/inspector-preact-LICENSE.txt";
+const CLIENT_LICENCE_SOURCE = "assets/inspector/preact-LICENSE.txt";
+// The readers module, greenline/readers, and its types (J-150 S2), which the package's exports name.
+const READERS = new Set(["dist/readers/readers.mjs", "dist/readers/readers.d.mts"]);
 const unexpected = paths.filter(
   (path) =>
     !rootFiles.has(path) &&
     path !== "dist/bin/greenline.mjs" &&
     path !== "dist/corpus/installation.json" &&
     path !== FONT_LICENCE &&
-    path !== LEDGER_INDEX,
+    path !== LEDGER_INDEX &&
+    path !== CLIENT_APP &&
+    path !== CLIENT_LICENCE &&
+    !READERS.has(path),
 );
 assert.deepEqual(unexpected, [], `Unexpected consumer package paths: ${unexpected.join(", ")}`);
 for (const field of ["scripts", "devDependencies", "private", "packageManager"])
@@ -106,6 +115,14 @@ function requirePackagePath(owner, target) {
 }
 for (const path of Object.values(pkg.bin ?? {})) requirePackagePath("package.json", path);
 for (const path of pkg.files ?? []) requirePackagePath("package.json", path);
+// Every target the exports name, each condition's file, is in the tarball, as the bin and the files are.
+const exportTargets = (value) =>
+  value === null || value === undefined
+    ? []
+    : Object(value) === value
+      ? Object.values(value).flatMap(exportTargets)
+      : [String(value)];
+for (const path of exportTargets(pkg.exports)) requirePackagePath("package.json", path);
 const external = (path) => /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(path);
 const workspace = (path) =>
   /^(?:\.(?:greenline|agents|claude|git|github)\/|AGENTS(?:\.override)?\.md$|CLAUDE\.md$|GLOSSARY(?:-MAP)?\.md$)/.test(
@@ -169,6 +186,16 @@ for (const name of ["LICENSE", "README.md"]) {
 }
 assert(paths.includes("dist/corpus/installation.json"), "Missing installation payload");
 assert(paths.includes(FONT_LICENCE), "Missing the inspector fonts' licence");
+assert(paths.includes(CLIENT_APP), "Missing the inspector's client app");
+assert(
+  paths.includes(CLIENT_LICENCE),
+  "Missing Preact's licence beside the inspector's client app",
+);
+assert.equal(
+  read(CLIENT_LICENCE),
+  readFileSync(CLIENT_LICENCE_SOURCE, "utf8"),
+  `the packed ${CLIENT_LICENCE} is not ${CLIENT_LICENCE_SOURCE} byte for byte`,
+);
 assert.equal(
   read(FONT_LICENCE),
   readFileSync(FONT_LICENCE, "utf8"),
@@ -186,6 +213,9 @@ assert.deepEqual(installed, source, "Rebuild: packed methods differ from current
 const notices = read("THIRD_PARTY_NOTICES.md");
 assert.equal(installed.value.notices, notices, "Installed and packaged source notices differ");
 const manifest = JSON.parse(readFileSync("corpus/manifest.json", "utf8"));
+// A words source has no repository, pin or licence, so the notices leave it
+// out (workshop/components/recipes.md, "The recipe's fields", J-194 S1).
+const pinnedSources = manifest.sources.filter((entry) => entry.kind !== "words");
 const noticeRows = new Map(
   [...notices.matchAll(/^\|\s*`([a-z][a-z0-9-]*)`\s*\|\s*(.+?)\s*\|$/gm)].map((match) => [
     match[1],
@@ -202,13 +232,13 @@ const recipes = readdirSync("corpus/recipes")
 const named = new Set(recipes.flatMap((recipe) => recipe.sources));
 assert.deepEqual(
   [...noticeRows.keys()].sort(),
-  manifest.sources
+  pinnedSources
     .map((pinned) => pinned.name)
     .filter((name) => named.has(name))
     .sort(),
   "The sources the recipes name and the packed notices differ",
 );
-for (const pinned of manifest.sources.filter((source) => named.has(source.name))) {
+for (const pinned of pinnedSources.filter((entry) => named.has(entry.name))) {
   const row = noticeRows.get(pinned.name);
   const methods = row.split("|").at(-1);
   assert.deepEqual(
@@ -308,6 +338,23 @@ function runInstalledOffline() {
       ["commander", "greenline", "zod"],
       "the clean install holds greenline and its two dependencies only",
     );
+    // The readers module resolves through the installed package's exports, its dependency from the clean install (J-150 S2).
+    if (pkg.exports?.["./readers"] !== undefined) {
+      const readers = spawnSync(
+        process.execPath,
+        [
+          "--input-type=module",
+          "-e",
+          'const r = await import("greenline/readers"); if (r.replyPartsOf("Done.\\n\\nWaiting on: your word.").waiting !== "Waiting on: your word.") process.exit(3);',
+        ],
+        { cwd: install, encoding: "utf8" },
+      );
+      assert.equal(
+        readers.status,
+        0,
+        `greenline/readers did not import in the clean install: ${readers.stderr}`,
+      );
+    }
     const cli = join(install, "node_modules/greenline", pkg.bin.greenline);
     const marks = join(scratch, "marks");
     mkdirSync(marks);

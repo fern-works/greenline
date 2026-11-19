@@ -1,0 +1,53 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-06-verify-formally-trigger-rows-widened",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-06-improve-instructions-trigger-rows-widened",
+    "sha256": "560cb6a4b62c106fc8c3216220ee476f674bfab8c2381d8d6231cea6bb4d7f49"
+  },
+  "subject": "skill:verify-formally",
+  "recipe": "61fce70f9fa1a647b3b810d72f9d650fab453250c2f54ccb45d03d157c6b8164",
+  "result": "5d08bb2f7a563ab937b39411ec1a81ad7645f545f34d5a49e20fa4f0643422dd",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    }
+  ],
+  "gist": "Trigger rows widened by mode; the description names the same cases",
+  "reason": "The 0.2.0 series loaded few starts and habits; the skill's invocation cases widen as trigger rows loosened by mode within the reading budget, and its description names the same cases in the owner's words.",
+  "authorisedBy": {
+    "date": "2026-11-05",
+    "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; the coverage record a short note beside the verification files; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 141,
+        "taken": 131,
+        "exact": 119,
+        "retention": 0.9083969465648855,
+        "coverage": 0.9290780141843972,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 683
+  }
+}

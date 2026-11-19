@@ -37,17 +37,35 @@
           "gist": "Points at the skill's references page for paths and commands"
         },
         {
+          "passage": "written",
+          "text": "Before the first edit by hand, read [method.md](method.md): the lever, its proof against one unit done by hand, and the bar it clears.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Build the Lever: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-build-the-lever/SKILL.md",
           "segments": [
             "33fbc6d300da",
-            "c75043058758",
-            "65c36904df68",
-            "d54e5f1dd135",
+            "da222acc0e04",
+            "aeeff9791f49",
             "d3e2c6ff1d6d",
             "77f40ce4eb27",
-            "f417052f02df",
+            "e65816e5ca01",
             "251581460bf9",
             "407c3bdde488",
             "8b88741949a1",
@@ -66,7 +84,7 @@
             "06929fba5356",
             "a8968a1a28e2",
             "7f993fdfb022",
-            "df6ac8308f56",
+            "9d9a73223ad7",
             "a0ee46b6a52f",
             "7d37c3de1517"
           ],
@@ -169,6 +187,70 @@
         "path": "SKILL.md",
         "passage": 1
       }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-build-the-lever/SKILL.md",
+      "segment": "c75043058758",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "For work past a couple of obvious edits it builds the lever, so a codemod, script, generator, query or check stands in the diff; citing it with none there is not applying it.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading compares a section's claim with the diff. No cited run observed a failure."
+    },
+    {
+      "promise": "It proves the lever against one unit done by hand, and the check that proved it is recorded through greenline check -- <command>.",
+      "page": "method.md",
+      "kind": "record",
+      "where": ".greenline/ledger/<id>/checks/",
+      "cost": "free"
+    },
+    {
+      "promise": "The section of the step that ran names the lever and the check that proved it.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No lint reads a section for the lever's name. No cited run observed it."
+    },
+    {
+      "promise": "The lever is committed with the change, or copied into .greenline/ledger/<id>/ where it should not stay in the code.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Nothing checks that a lever the section names stands in a commit or in the folder. GL0452 only asks that a folder file be cited. No cited run observed it."
+    },
+    {
+      "promise": "It builds and runs the lever itself, one agent in one checkout, never fanning out delegates to hand-apply what a script can do.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "GL0402 only catches a count of agents over the mode's budget, never a fan-out within it. No cited run observed it."
+    }
+  ],
+  "triggers": [
+    {
+      "files": ["migration"],
+      "weight": 2,
+      "read": "part"
+    },
+    {
+      "words": [
+        "codemod",
+        "every file",
+        "all the files",
+        "across the codebase",
+        "rename all",
+        "many similar"
+      ],
+      "weight": 2,
+      "read": "part"
     }
   ]
 }

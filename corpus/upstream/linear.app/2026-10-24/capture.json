@@ -1,0 +1,33 @@
+{
+  "site": "https://linear.app/",
+  "pages": [
+    "/"
+  ],
+  "seen": "2026-10-24",
+  "capturedAt": "2026-10-24T13:19:56.051Z",
+  "widths": [
+    1440,
+    768,
+    390
+  ],
+  "tool": "headless Google Chrome over the DevTools protocol, read-only: no link followed, nothing clicked or submitted",
+  "licence": "ideas-only",
+  "files": [
+    {
+      "file": "1440.jpg",
+      "sha256": "60946ea91bae86ad4479c34902410fc4026104e33513f1e3ce347389c2633b27"
+    },
+    {
+      "file": "390.jpg",
+      "sha256": "88b9605a3710c7a5bc114d6ac7e548942dd314275ad090e215944375c9b3fa16"
+    },
+    {
+      "file": "768.jpg",
+      "sha256": "58a1f2e14a14138b9fc13b701f6b454bfb84483b53d806c2ce17279f4b2b558b"
+    },
+    {
+      "file": "sheet.json",
+      "sha256": "716c6821fd003a34909ddc86e64f18e45d2f6da9ab6099d67a5123920e5cb1cf"
+    }
+  ]
+}

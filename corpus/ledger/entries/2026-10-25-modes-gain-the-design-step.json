@@ -1,0 +1,54 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-25-modes-gain-the-design-step",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-25-frame-runs-discussions",
+    "sha256": "aedec69f207d3fab65a1521b6704f4bbb42c033d623e5e9a6dfad35ed0b85468"
+  },
+  "subject": "modes",
+  "recipe": "9e22136e78ecf593706699a41651864f376afc3bf85d8daf2eab3d9e2bdc7571",
+  "result": "5fbe3ea121fd6f5e09bff8283b76fb96d9471593974665995abe508f8dc82893",
+  "pages": [],
+  "gist": "The line gains design by the interface fact; ceilings rise for it",
+  "reason": "design joins the line between frame and plan, inline, written and independent by mode, where the record says the change touches an interface; the ceilings rise to the measure plus 100: 11040, 11981 and 13244.",
+  "authorisedBy": {
+    "date": "2026-10-25",
+    "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; the register's row of 2026-10-25 on the operator's card \"Raise for the interface practice (Recommended)\": the three ceilings rise to what the design step's rows and its front page measure at each mode, plus 100 words of reserve per mode for the marks row the version owes, the design step's words counting only where the record's interface fact is yes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\" and \"The builder's written verify, no fresh verifier (Recommended)\": three modes each keeping the whole record, max folded into careful, the anticipate trial careful's premise review, and each words budget a ceiling"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; the register's row of 2026-10-25 on the operator's card \"Raise for the interface practice (Recommended)\": the three ceilings rise to what the design step's rows and its front page measure at each mode, plus 100 words of reserve per mode for the marks row the version owes, the design step's words counting only where the record's interface fact is yes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

@@ -1,0 +1,942 @@
+{
+  "schema": "greenline.triggers/v1",
+  "skills": [
+    {
+      "name": "anatomy",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": [
+            "interactive figure",
+            "anatomy",
+            "explainer",
+            "click through",
+            "explanatory figure"
+          ],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": ["figure"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "architecture-map",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": [
+            "architecture map",
+            "map out",
+            "main parts",
+            "the map",
+            "how it fits together",
+            "fit together",
+            "big picture",
+            "onboard"
+          ],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": ["architecture"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "architecture-survey",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "survey the architecture",
+            "architecture review",
+            "tech debt",
+            "refactor what next",
+            "where do i start",
+            "is a mess",
+            "deepening"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["split", "restructure", "too big", "tangled"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "benchmark-checklist",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["benchmark"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": [
+            "benchmark",
+            "it is fast",
+            "faster",
+            "performance",
+            "latency",
+            "throughput",
+            "speedup"
+          ],
+          "weight": 2,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "boundaries",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["contract"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "files": ["contract"],
+          "steps": ["build"],
+          "modes": ["regular", "careful"],
+          "weight": 2,
+          "read": "whole"
+        },
+        {
+          "words": [
+            "validate",
+            "validation",
+            "error handling",
+            "fallback",
+            "default to",
+            "import",
+            "external api",
+            "user input"
+          ],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "build-the-lever",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["migration"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": [
+            "codemod",
+            "every file",
+            "all the files",
+            "across the codebase",
+            "rename all",
+            "many similar"
+          ],
+          "weight": 2,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "concurrency",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": [
+            "concurrent",
+            "concurrency",
+            "in parallel",
+            "race condition",
+            "at once",
+            "idempotent",
+            "retries",
+            "survive a crash",
+            "two writers"
+          ],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": [
+            "concurrent",
+            "concurrency",
+            "in parallel",
+            "race condition",
+            "at once",
+            "idempotent",
+            "retries",
+            "survive a crash",
+            "two writers"
+          ],
+          "steps": ["build"],
+          "modes": ["regular", "careful"],
+          "weight": 2,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "constraint-driven-development",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "set up constraints",
+            "define our standards",
+            "quality bar",
+            "skipping tests",
+            "silencing checks",
+            "from now on"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "correct",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "same mistake",
+            "keeps making",
+            "keeps doing",
+            "told you before",
+            "stop doing that",
+            "repeated mistake"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "deep-modules",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["module"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": [
+            "seam",
+            "module boundary",
+            "refactor",
+            "too many layers",
+            "hard to trace",
+            "module of their own",
+            "module of its own",
+            "split"
+          ],
+          "weight": 1,
+          "read": "part"
+        },
+        {
+          "steps": ["plan"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "design-survey",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "design side",
+            "design system",
+            "how it should look",
+            "how the board should look",
+            "write down how",
+            "design.md"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "diagnose",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "diagnose",
+            "debug",
+            "find out why",
+            "figure out why",
+            "fails",
+            "failing",
+            "throws",
+            "crashes",
+            "regression",
+            "is broken",
+            "stopped working"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["bug", "error", "missing", "wrong", "slow", "show up twice"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "diagram-design",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": [
+            "a diagram i can keep",
+            "keep the diagram",
+            "save the diagram",
+            "make the diagram",
+            "flowchart",
+            "sequence diagram",
+            "state chart",
+            "drawio",
+            "excalidraw"
+          ],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": ["diagram"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "domain-and-types",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["schema"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "files": ["schema"],
+          "steps": ["build"],
+          "modes": ["regular", "careful"],
+          "weight": 2,
+          "read": "whole"
+        },
+        {
+          "words": [
+            "state machine",
+            "stateful",
+            "new requirement",
+            "domain model",
+            "their states",
+            "statuses"
+          ],
+          "weight": 1,
+          "read": "part"
+        },
+        {
+          "words": [
+            "keep my choice",
+            "keep the choice",
+            "keeps the choice",
+            "keep their choice",
+            "remember my",
+            "remember the choice",
+            "persist",
+            "persists",
+            "persisted",
+            "a new type",
+            "an enum",
+            "a union type",
+            "a signature"
+          ],
+          "steps": ["build"],
+          "modes": ["regular", "careful"],
+          "weight": 2,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "explain",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "how does",
+            "how do",
+            "explain",
+            "walk me through",
+            "end to end",
+            "what happens when",
+            "map its subsystems",
+            "subsystems",
+            "atlas"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["how did you", "why does", "where is"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "groundwork",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "set this repo up",
+            "set the repo up",
+            "set it up properly",
+            "set up properly",
+            "working baseline",
+            "first green",
+            "scaffold"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["let's build", "let's start", "start building", "from scratch", "new project"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "guard-the-context-window",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": ["large output", "long log", "whole log", "huge file", "the full output"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "idea-refine",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "ideate",
+            "refine this idea",
+            "rough idea",
+            "vague idea",
+            "brainstorm",
+            "expand the options"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "improve-instructions",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "agents.md",
+            "claude.md",
+            "instructions file",
+            "tidy the instructions",
+            "shorten the instructions"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "interface-catalog",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["page"],
+          "steps": ["design"],
+          "weight": 2,
+          "read": "whole"
+        },
+        {
+          "files": ["page"],
+          "weight": 1,
+          "read": "part"
+        },
+        {
+          "words": [
+            "different looks",
+            "choose how it looks",
+            "pick a look",
+            "choose the look",
+            "show me some versions",
+            "deal three"
+          ],
+          "weight": 2,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "invariants",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "find every invariant my app relies on but doesn't explicitly enforce",
+            "invariant",
+            "invariants",
+            "relies on",
+            "rely on",
+            "nothing enforces",
+            "does not enforce",
+            "doesn't enforce"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "files": ["contract", "secret"],
+          "steps": ["frame"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "ponytail",
+      "kind": "habit",
+      "wholeRead": ["simplify.md"],
+      "rows": [
+        {
+          "steps": ["build"],
+          "modes": ["regular", "careful"],
+          "weight": 1,
+          "read": "part"
+        },
+        {
+          "words": [
+            "simplify",
+            "tidy",
+            "clean up the code",
+            "clean up this",
+            "clean up that",
+            "clean it up",
+            "clean this up",
+            "clean that up",
+            "cleaned up",
+            "refactor",
+            "what was deferred",
+            "shortcuts",
+            "left over"
+          ],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "pr-writing",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": ["commit message", "pull request", "pr title", "pr body", "reword"],
+          "weight": 2,
+          "read": "whole"
+        },
+        {
+          "steps": ["close"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "product-description",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "product description",
+            "describe the user experience",
+            "behaves for the user",
+            "behavior spec",
+            "behaviour spec",
+            "feature by feature"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "progress-check",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": [
+            "how far along",
+            "status update",
+            "report progress",
+            "check in on",
+            "keep me posted",
+            "keep me updated",
+            "how often you report"
+          ],
+          "weight": 1,
+          "read": "part"
+        },
+        {
+          "words": ["survey", "audit", "long diagnosis"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "prose",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["readme"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "words": [
+            "readme",
+            "docstring",
+            "doc comment",
+            "documentation",
+            "write up",
+            "reply did not land",
+            "doesn't make sense"
+          ],
+          "weight": 2,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "redesign",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "redesign",
+            "restyle",
+            "reskin",
+            "look and feel",
+            "make it look",
+            "denser",
+            "less cluttered",
+            "visual refresh",
+            "looks tired",
+            "look tired",
+            "look different",
+            "cleaner"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "research",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "research",
+            "look into",
+            "prior art",
+            "papers on",
+            "how do other projects",
+            "what do others do"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["i don't know", "not sure", "is it worth", "find out whether"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "router",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "what were we doing",
+            "where were we",
+            "pick up where",
+            "what should we work on",
+            "carry on with that change",
+            "resume the change"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["carry on", "go on with", "continue", "next step"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "secrets",
+      "kind": "habit",
+      "rows": [
+        {
+          "files": ["secret"],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["api key", "secret", "credential", "credentials", "password", "token", ".env"],
+          "weight": 2,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "show-me",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": ["show me", "diagram", "draw", "picture", "visualize", "visualise", "sketch"],
+          "weight": 2,
+          "read": "whole"
+        },
+        {
+          "files": ["schema", "module"],
+          "steps": ["build", "close"],
+          "weight": 1,
+          "read": "part"
+        },
+        {
+          "steps": ["verify", "close"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "state-machines",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "find all of the implicit state machines in my app",
+            "state machine",
+            "state machines",
+            "implicit states",
+            "states and transitions",
+            "state transitions"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "sweep-tests",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "prune the tests",
+            "prune tests",
+            "audit the tests",
+            "mutation",
+            "flaky tests",
+            "slow tests",
+            "tests break on refactors"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "tdd",
+      "kind": "habit",
+      "wholeRead": ["method.md", "tests.md"],
+      "rows": [
+        {
+          "files": ["test"],
+          "weight": 2,
+          "read": "part"
+        },
+        {
+          "files": ["test"],
+          "steps": ["build"],
+          "modes": ["regular", "careful"],
+          "weight": 2,
+          "read": "whole"
+        },
+        {
+          "words": [
+            "bug",
+            "regression",
+            "failing test",
+            "broken",
+            "test first",
+            "tests first",
+            "with a test",
+            "with tests",
+            "add a test",
+            "show me the tests"
+          ],
+          "steps": ["build"],
+          "weight": 2,
+          "read": "whole"
+        }
+      ]
+    },
+    {
+      "name": "to-questionnaire",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": ["can confirm", "someone else", "ask them", "questionnaire", "only they know"],
+          "weight": 2,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "use-garden",
+      "kind": "habit",
+      "rows": [
+        {
+          "words": [
+            "best practice",
+            "which library",
+            "should we use",
+            "is it worth",
+            "pitfall",
+            "recommended way",
+            "which approach"
+          ],
+          "weight": 2,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "verify-formally",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "formally",
+            "model checker",
+            "tla+",
+            "not just tested",
+            "whatever order",
+            "every order",
+            "invariant",
+            "prove it"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["race", "at once", "state machine", "every input"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "wayfinder",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "in tickets",
+            "decision tickets",
+            "several sessions",
+            "more than one session",
+            "map of decisions",
+            "huge chunk"
+          ],
+          "weight": 3,
+          "read": "whole"
+        },
+        {
+          "words": ["plan the work", "wanted list", "everything on my list", "big piece of work"],
+          "modes": ["careful"],
+          "weight": 1,
+          "read": "part"
+        }
+      ]
+    },
+    {
+      "name": "what-to-build",
+      "kind": "start",
+      "rows": [
+        {
+          "words": [
+            "what should we build",
+            "what to build",
+            "what next",
+            "build next",
+            "next feature",
+            "roadmap",
+            "any ideas",
+            "what's missing",
+            "is this done",
+            "quick win",
+            "quick wins"
+          ],
+          "weight": 3,
+          "read": "whole"
+        }
+      ]
+    }
+  ]
+}

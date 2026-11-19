@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-scandinavian-design",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-wshobson-interaction-design",
+    "sha256": "4e5d315182993065d2055811257f166845cdd92384327dbb79f20ebf9597b699"
+  },
+  "source": {
+    "repository": "https://github.com/ericzakariasson/scandinavian-design",
+    "commit": "295742307b97fa0fb848f9be2d6e229ca517c736",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held: no licence, and probes that spoof a browser",
+  "reason": "The richest critique method in scope has no licence file, and its probes evade bot protection; it waits for a licence.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': the Scandinavian design skill is held: no licence"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': the Scandinavian design skill is held: no licence"
+    }
+  ]
+}

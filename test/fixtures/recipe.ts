@@ -131,6 +131,10 @@ export interface FixtureDrop {
   reason: string;
   ruling?: string;
   replacedBy?: { path: string; passage: number };
+  /** The load test's verdict on the dropped passage (J-182 S1). */
+  verdict?: string;
+  /** The failure the load test named for the dropped passage (J-182 S1). */
+  failure?: string;
 }
 
 /** A copy as a recipe file states it: from a source's snapshot, or authored and held by its digest. */
@@ -155,7 +159,33 @@ export interface FixtureRecipe {
   drops: FixtureDrop[];
   credit?: { source: string; file: string; ruling: string };
   notStub?: { source: string; file: string; ruling: string }[];
+  keepers: FixtureKeeper[];
+  promises?: string;
 }
+
+/** One keeper as a recipe's JSON writes it, every field a test may plant or leave out. */
+export interface FixtureKeeper {
+  promise?: string;
+  page?: string;
+  kind?: string;
+  where?: string;
+  cost?: string;
+  irreversible?: string;
+  oracle?: string;
+  owed?: boolean;
+  warrants?: string;
+  need?: string;
+  reason?: string;
+}
+
+/** The fixture's one promise and its keeper, an oracle (J-153 S3). */
+export const FIXTURE_KEEPER = {
+  promise: "The agent restates the request before it touches the code.",
+  page: "SKILL.md",
+  kind: "oracle",
+  where: "The fixture's restating scenario",
+  cost: "free",
+} as const;
 
 /** The written passage the fixture joins to the paragraph before it. */
 export const WRITTEN = "Greenline adds this sentence to the paragraph.";
@@ -237,6 +267,7 @@ export function fixtureRecipe(): FixtureRecipe {
         replacedBy: { path: "SKILL.md", passage: 1 },
       },
     ],
+    keepers: [{ ...FIXTURE_KEEPER }],
   };
 }
 

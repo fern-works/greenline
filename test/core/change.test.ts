@@ -596,6 +596,7 @@ describe("the mismatches a record derives", () => {
       budget: { words: 1 },
       steps: {
         frame: { depth: "written" },
+        design: { depth: "written" },
         plan: { depth: "written" },
         anticipate: { depth: "none" },
         build: { depth: "written" },
@@ -656,6 +657,50 @@ describe("the mismatches a record derives", () => {
     ]);
   });
 
+  it("J-174 a cost past the mode's count that the owner accepted in the record's overrun line is no mismatch, and the line stands only beside a cost", () => {
+    const front = [
+      "mode: careful",
+      "choice: accepted",
+      'why: "w"',
+      "state: done",
+      "next: none",
+      "agents: 7",
+      "rounds: 1",
+    ];
+    const accepted = record([...front, 'overrun: "the extra helper is fine"']);
+    expect(accepted.cost).toEqual({ agents: 7, rounds: 1, overrun: "the extra helper is fine" });
+    expect(
+      mismatches(definition, accepted, plain).filter((found) => found.kind === "over-budget"),
+    ).toEqual([]);
+    const unaccepted = record(front);
+    expect(
+      mismatches(definition, unaccepted, plain).filter((found) => found.kind === "over-budget"),
+    ).toEqual([
+      { kind: "over-budget", cost: { agents: 7, rounds: 1 }, budget: { agents: 6, rounds: 4 } },
+    ]);
+    const alone = parseChangeRecord(
+      definition,
+      "2026-10-31-issue-tracker.md",
+      [
+        "---",
+        "mode: careful",
+        "choice: accepted",
+        'why: "w"',
+        "state: open",
+        'overrun: "the extra helper is fine"',
+        "---",
+        "",
+      ].join("\n"),
+    );
+    expect(alone._tag).toBe("err");
+    if (alone._tag === "err")
+      expect(alone.error.issues).toContainEqual({
+        path: "overrun",
+        message:
+          "the overrun line quotes the owner's words accepting the cost the record states: state agents and rounds beside it",
+      });
+  });
+
   it("J-73 S2 a cost at each mode's derived budget, the builder counted, is within it, and one more is over", () => {
     const costed = (mode: string, agents: number, rounds: number): ChangeRecord =>
       record([
@@ -670,7 +715,7 @@ describe("the mismatches a record derives", () => {
     const budgets: readonly [string, number, number][] = [
       ["quick", 1, 0],
       ["regular", 2, 2],
-      ["careful", 5, 4],
+      ["careful", 6, 4],
     ];
     for (const [mode, agents, rounds] of budgets) {
       expect(mismatches(definition, costed(mode, agents, rounds), plain)).toEqual([]);
@@ -872,6 +917,36 @@ describe("S16b the kinds in the record, read from the definition (rulings Q1 and
     );
   });
 
+  it("J-186 S1 admits the Interface section the design pages ask for, once, wherever it stands among the steps' sections (j179c-conduct-interface)", () => {
+    const lines = [
+      '- unlock Components: "Make the table\'s header row a warm orange."',
+      '- floor control-named at button.tsx:6: waived, "The icon button stays as it is."',
+    ];
+    for (const body of [
+      ["## frame", "x", "## design", "d", "## Interface", "", ...lines, "## plan", "p"],
+      ["## frame", "x", "## close", "c", "## Interface", ...lines],
+      ["## interface", ...lines, "## frame", "x"],
+    ]) {
+      const parsed = parse(openFront, body);
+      expect(parsed._tag, JSON.stringify(parsed)).toBe("ok");
+    }
+    const sections = record(openFront, [
+      "## design",
+      "d",
+      "## Interface",
+      ...lines,
+      "## plan",
+      "p",
+    ]);
+    expect(sections.sections.map((section) => [section.step, section.text])).toEqual([
+      ["design", "d"],
+      ["plan", "p"],
+    ]);
+    expect(parse(openFront, ["## Interface", "a", "## frame", "x", "## Interface", "b"])).toEqual(
+      refused("", "line 12: the record holds an Interface section already"),
+    );
+  });
+
   it("S16b a section for a step the mode runs at none holding work stays a mismatch with the raise, never a refusal", () => {
     const quick = record(openFront, ["## anticipate", "A premise review."]);
     expect(mismatches(definition, quick, plain)).toEqual([
@@ -908,13 +983,13 @@ describe("S16b the kinds in the record, read from the definition (rulings Q1 and
 
   it("S16b a section kind whose mechanism is not open stands after the steps", () => {
     const aside = withKinds(ASIDE);
-    const parse = (body: readonly string[]) =>
+    const parseAside = (body: readonly string[]) =>
       parseChangeRecord(aside, "2026-10-04-fix-typo.md", text(openFront, body));
-    const parsed = parse(["## frame", "x", "## aside", "y"]);
+    const parsed = parseAside(["## frame", "x", "## aside", "y"]);
     expect(parsed._tag === "ok" ? parsed.value.kindSections : parsed).toEqual([
       { kind: "aside", text: "y" },
     ]);
-    expect(parse(["## aside", "y", "## frame", "x"])).toEqual(
+    expect(parseAside(["## aside", "y", "## frame", "x"])).toEqual(
       refused(
         "",
         "line 10: the step 'frame' comes after the section 'aside', which stands after the steps' sections",
@@ -987,13 +1062,30 @@ describe("S16b the record skeleton reads every kind's contract from the definiti
     if (found === undefined) throw new Error(`no mode '${name}'`);
     return found;
   };
-  const head = (mode: string, lines: readonly string[] = []): readonly string[] => [
+  // Every line the mode owes, named with a placeholder the agent replaces (J-176 S1).
+  const head = (mode: string, lines: readonly string[] = [], starts = true): readonly string[] => [
     "---",
     `mode: ${mode}`,
-    "choice: <owner, accepted or standing>",
-    'why: "<why the change exists>"',
+    'choice: "<owner, accepted or standing>"',
+    'yes: "<the owner\'s words that answered the proposal, as they said them; leave the line out unless the choice is accepted>"',
+    'why: "<why the change exists, in one line>"',
+    'floors: "<each floor you found, as [security], or none>"',
     "state: open",
     'next: "<step>: <the action that resumes it>"',
+    'ground: "<branch, or worktree: <its path> for a worktree of its own>"',
+    'agent: "<harness>/<the model, as the harness states it>"',
+    'interface: "<no, or yes, site or app; leave the line out where the workspace names no interface roots>"',
+    'skills: "<the skills the change used, by name, as [frame, tdd], written at close>"',
+    ...(starts
+      ? [
+          'agents: "<the agents the line\'s depths started, the builder counted, written at close>"',
+          'rounds: "<the fix rounds and loops it ran, written at close>"',
+        ]
+      : []),
+    ...(starts
+      ? ['starts: "<each fresh agent the depths started, as [review 1], written at close>"']
+      : []),
+    'outcome: "<what landed, one sentence of your own under 200 characters, written at close>"',
     ...lines,
     "---",
     "",
@@ -1005,7 +1097,7 @@ describe("S16b the record skeleton reads every kind's contract from the definiti
     "",
   ];
 
-  it("J-93 S1 the regular skeleton: the start's section, then one section per step, a skipped step's its one line", () => {
+  it("J-93 S1 and J-123 S2 the regular skeleton: the start's section, then one section per step, a skipped step's its one line, design's both forms", () => {
     expect(renderRecordSkeleton(definition, modeOf(definition, "regular"))).toBe(
       [
         ...head("regular"),
@@ -1013,6 +1105,10 @@ describe("S16b the record skeleton reads every kind's contract from the definiti
         "## frame",
         "",
         "<the builder's section>",
+        "",
+        "## design",
+        "",
+        "<the builder's section> where interface is yes; none, no interface where it is no",
         "",
         "## plan",
         "",
@@ -1077,10 +1173,12 @@ describe("S16b the record skeleton reads every kind's contract from the definiti
   it("S16b on a fixture whose fourth kind has a line contract, the skeleton holds its line and no section", () => {
     const gated = withKinds(GATE, ASIDE);
     const quick = renderRecordSkeleton(gated, modeOf(gated, "quick"));
-    expect(quick.split("\n").slice(0, 9)).toEqual([
-      ...head("quick", [
-        'gate: "<one line by the gate skill that ran; leave the line out when none did>"',
-      ]),
+    expect(quick.split("\n").slice(0, 16)).toEqual([
+      ...head(
+        "quick",
+        ['gate: "<one line by the gate skill that ran; leave the line out when none did>"'],
+        false,
+      ),
     ]);
     expect(quick).not.toContain("## gate");
     expect(quick.trimEnd().split("\n").slice(-3)).toEqual([
@@ -1169,5 +1267,106 @@ describe("J-93 S3 the owner's landing and rebase words", () => {
 
   it("refuses a landing line that holds no text", () => {
     expect(parse([...quickFront, "landing: []"])._tag).toBe("err");
+  });
+});
+
+describe("J-114 S1 the ground, the agent and the discard line", () => {
+  it("reads the three lines, judged and as history alike", () => {
+    const front = [
+      ...quickFront,
+      'ground: "worktree: .worktrees/2026-10-04-fix-typo"',
+      "agent: claude-code/opus",
+      'discard: "throw the spike away, the owner, 2026-10-25"',
+    ];
+    const read = {
+      ground: { kind: "worktree", path: ".worktrees/2026-10-04-fix-typo" },
+      agent: "claude-code/opus",
+      discard: "throw the spike away, the owner, 2026-10-25",
+    };
+    expect(record(front)).toMatchObject(read);
+    const form = parseRecordForm("2026-10-04-fix-typo.md", text(front, []));
+    expect(form._tag === "ok" ? form.value : {}).toMatchObject({ ...read, lines: [] });
+    expect(record([...quickFront, "ground: branch"]).ground).toEqual({ kind: "branch" });
+    expect(record(quickFront).ground).toBeUndefined();
+  });
+
+  it("refuses a ground that is neither branch nor a worktree's path, and an agent that is not <harness>/<model>", () => {
+    const lines = ["ground: current", 'ground: "worktree:"', "agent: opus", 'agent: "/opus"'];
+    for (const line of lines) {
+      expect([line, parse([...quickFront, line])._tag]).toEqual([line, "err"]);
+      const form = parseRecordForm("2026-10-04-fix-typo.md", text([...quickFront, line], []));
+      expect([line, form._tag]).toEqual([line, "err"]);
+    }
+  });
+});
+
+describe("J-118 S3 the from line names the discussions a change was promoted from", () => {
+  it("reads one discussion or several, judged and as history alike", () => {
+    expect(record([...quickFront, "from: 2026-10-21-offline-mode"]).from).toEqual([
+      "2026-10-21-offline-mode",
+    ]);
+    expect(
+      record([...quickFront, "from: [2026-10-21-offline-mode, 2026-10-23-plugins]"]).from,
+    ).toEqual(["2026-10-21-offline-mode", "2026-10-23-plugins"]);
+    expect(record(quickFront).from).toBeUndefined();
+    const form = parseRecordForm(
+      "2026-10-04-fix-typo.md",
+      text([...quickFront, "from: 2026-10-21-offline-mode"], quickBody),
+    );
+    expect(form._tag === "ok" ? form.value.from : undefined).toEqual(["2026-10-21-offline-mode"]);
+  });
+
+  it("refuses an item that is no discussion's id", () => {
+    expect(parse([...quickFront, "from: offline"])).toEqual(
+      refused(
+        "from[0]",
+        "the from line names each discussion the change was promoted from by its id, a real date and a slug, and 'offline' is none (.greenline/ledger/README.md)",
+      ),
+    );
+  });
+});
+
+describe("J-168 S1 the close's outcome line", () => {
+  it("reads the outcome line as text, judged and as history alike, and refuses one that holds none", () => {
+    const front = [...quickFront, 'outcome: "The install line runs as the README writes it."'];
+    expect(record(front).outcome).toBe("The install line runs as the README writes it.");
+    const form = parseRecordForm("2026-10-04-fix-typo.md", text(front, []));
+    expect(form._tag === "ok" ? [form.value.outcome, form.value.lines] : []).toEqual([
+      "The install line runs as the README writes it.",
+      [],
+    ]);
+    expect(record(quickFront).outcome).toBeUndefined();
+    expect(parse([...quickFront, "outcome: []"])._tag).toBe("err");
+  });
+});
+
+describe("J-223 S1 the confirmed line: the careful skeleton's placeholder, and the line read", () => {
+  const modeNamed = (name: string): Mode => {
+    const found = definition.modes.find((entry) => entry.name === name);
+    if (found === undefined) throw new Error(`no mode '${name}'`);
+    return found;
+  };
+  const CONFIRMED =
+    "confirmed: \"<the owner's words that confirmed the frame's restatement, as they said them after it was put to them; written once they confirm it, and left out of a ticket's record, whose frame is its planning change's>\"";
+
+  it("writes the confirmed line's placeholder in the careful skeleton, after the yes line, and in no other mode's", () => {
+    const careful = renderRecordSkeleton(definition, modeNamed("careful")).split("\n");
+    const yes = careful.findIndex((line) => line.startsWith("yes: "));
+    expect(careful[yes + 1]).toBe(CONFIRMED);
+    for (const mode of ["quick", "regular"])
+      expect(renderRecordSkeleton(definition, modeNamed(mode))).not.toContain("confirmed:");
+  });
+
+  it("parses a confirmed line into the record and its form", () => {
+    const front = [
+      "mode: careful",
+      "choice: owner",
+      'why: "w"',
+      "state: open",
+      'confirmed: "Yes, that is what I want."',
+    ];
+    expect(record(front).confirmed).toBe("Yes, that is what I want.");
+    const form = parseRecordForm("2026-11-10-open-loans-csv.md", text(front, []));
+    expect(form._tag === "ok" ? form.value.confirmed : undefined).toBe("Yes, that is what I want.");
   });
 });

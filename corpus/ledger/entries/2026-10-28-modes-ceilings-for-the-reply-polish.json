@@ -1,0 +1,62 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-modes-ceilings-for-the-reply-polish",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-design-asks-the-waiver-once-per-workspace",
+    "sha256": "2ce57e6ba1d39c6154002009dc2078ce3f58e47e3a1b6b1f44eaf14235e66a15"
+  },
+  "subject": "modes",
+  "recipe": "baf9a3dcbe5f2c9dd7d198ecd6105f50b7e68d8c9e1c596082ae1a06a09357db",
+  "result": "062a8825b3cf446bf7276e765714f97ef9ef0eff6ad3df2fe0d7d2074327f5f8",
+  "pages": [],
+  "gist": "The three ceilings rise 100 words for the reply's polish",
+  "reason": "The block's reply section gains the facts block, the words rules and the tone rules, and each mode's ceiling rises by 100 words once for the release, as the register's row rules: 11240, 12181 and 13444.",
+  "authorisedBy": {
+    "date": "2026-10-27",
+    "words": "The register's row of 2026-10-27 on the reply's polish, ruled at the interview of that night on the operator's words \"everything needs to be 5 star\" and the card \"Brainstorm now, ship in 0.2.0\": the block's cap with garden enabled rises by 100 words, from 2,400 to 2,500, and each mode's ceiling by 100, once for the 0.2.0 release, for the reply section's facts block, words rules and tone rules"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-04",
+      "words": "The method accounts carry the starting definition the operator locked on 2026-10-04 with \"cool then lock everything in\", the four modes of R5 of that date, in the operator's words \"4 modes, less to more time less to more agent invocations and runs and looping\", and the kinds as data of R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\""
+    },
+    {
+      "date": "2026-10-07",
+      "words": "The words budget of S23 of the plan modes-records-recipes, one number per mode held as data in the definition under R19 of 2026-10-07, in the operator's words \"yes i like your kinds explanation, that is the way to go\", and the four modes as time budgets of R5 of 2026-10-04, \"4 modes, less to more time less to more agent invocations and runs and looping\"; the starting budgets are the measured words rounded up to the next five hundred, a baseline the behavioral runs tune and the operator may reset"
+    },
+    {
+      "date": "2026-10-14",
+      "words": "The operator's cards of 2026-10-14 on part 3 of the-whole-change, each \"Rule as proposed\": a mode's agents are derived, not stated, the most agents it may start being one, the builder, plus its independent steps' agents plus its looped steps' rounds, counted for the workspace's enabled trial steps, and the definition drops the field at schema 4; the fix rounds are per step, one fix pass after review's findings and one after verify's at medium and high; and the record's cost counts the builder, as the mode's number does"
+    },
+    {
+      "date": "2026-10-19",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56), \"we need only three modes I guess, quick, regular, careful ... Either way it needs to maintain artefacts for audit .. but we can change the spine for each\", and the cards of 2026-10-19, \"quick, regular, careful (Recommended)\" and \"The builder's written verify, no fresh verifier (Recommended)\": three modes each keeping the whole record, max folded into careful, the anticipate trial careful's premise review, and each words budget a ceiling"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The operator's words of 2026-10-22, \"we raise the ceiling\" (the register's row of that date: the block gains a section on how the agent talks to the owner, the agent's inline replies take that shape, with prose and progress-check folded into it and show-me kept as a habit), and J-107's picks of 2026-10-25, ruled on the worker's recommendations under the operator's words of 2026-10-24, \"for smaller decisions go with your recommended suggestions\": prose's answer rules and progress-check's in-change rules move into the block's reply section, their special occasions stay the habits', and each mode's ceiling is raised once for the version's whole edition"
+    },
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; the register's row of 2026-10-25 on the operator's card \"Raise for the interface practice (Recommended)\": the three ceilings rise to what the design step's rows and its front page measure at each mode, plus 100 words of reserve per mode for the marks row the version owes, the design step's words counting only where the record's interface fact is yes; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-27",
+      "words": "The operator's card of 2026-10-27, \"Raise the cap by 100 words\" (the register's row of 2026-10-27): the block's cap with garden enabled rises from 2,300 to 2,400 words and each mode's ceiling by 100, once for the 0.2.0 release, the reply's View row and any later line of that release drawing on that room."
+    },
+    {
+      "date": "2026-10-27",
+      "words": "The register's row of 2026-10-27 on the reply's polish, ruled at the interview of that night on the operator's words \"everything needs to be 5 star\" and the card \"Brainstorm now, ship in 0.2.0\": the block's cap with garden enabled rises by 100 words, from 2,400 to 2,500, and each mode's ceiling by 100, once for the 0.2.0 release, for the reply section's facts block, words rules and tone rules"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 0
+  }
+}

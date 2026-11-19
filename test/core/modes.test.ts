@@ -4,8 +4,10 @@ import { describe, expect, it } from "vitest";
 import {
   agentsAtMost,
   depthOf,
+  inapplicableLine,
   meetsFloor,
   noneLine,
+  stepApplies,
   parseModes,
   recordSections,
   renderModeTable,
@@ -78,6 +80,7 @@ interface SampleDefinition {
     readonly name: string;
     readonly whenSplit: string;
     readonly fixPass: boolean;
+    readonly appliesWhen?: string;
   }[];
   readonly modes: readonly SampleMode[];
   readonly floors: readonly SampleFloor[];
@@ -171,7 +174,7 @@ function issues(path: string, message: string) {
 }
 
 describe("the modes definition", () => {
-  it("J-93 S1 the corpus definition parses and renders the three modes' table in 15 lines", () => {
+  it("J-93 S1 and J-123 S2 the corpus definition parses and renders the three modes' table in 16 lines, design after frame", () => {
     const table = renderModeTable(corpus());
     expect(table).toBe(
       [
@@ -179,8 +182,9 @@ describe("the modes definition", () => {
         "| --- | --- | --- | --- |",
         "| Promise | quick, the builder alone | one fresh review and one fix pass | the premise attacked, two reviews and a fresh verifier |",
         "| Typical request | a settled one-commit fix | a bounded change with a clear goal | open decisions, a floor, or several tickets |",
-        "| Agents, at most | 1 | 2 | 5 |",
+        "| Agents, at most | 1 | 2 | 6 |",
         "| frame | inline | written | written |",
+        "| design | inline | written | independent, 1 agent |",
         "| plan | inline | written | written |",
         "| anticipate | none | none | independent, 1 agent |",
         "| build | inline | written | written |",
@@ -189,7 +193,7 @@ describe("the modes definition", () => {
         "| close | inline | written | written |",
         "| Fix rounds, per step | 0 | 1 | 2 |",
         "",
-        "The agents count the builder; review and verify each take the mode's fix rounds.",
+        "The agents count the builder, never an agent a method starts; review and verify each take the mode's fix rounds.",
         "",
       ].join("\n"),
     );
@@ -198,7 +202,7 @@ describe("the modes definition", () => {
   it("J-93 S1 the table explains a loop only where a mode loops", () => {
     const own = parsed(JSON.stringify(sample()));
     expect(renderModeTable(own)).toContain(
-      "The agents count the builder. A looped step repeats until clean, and its rounds include its fixes; outside a loop, sketch and check each take the mode's fix rounds.",
+      "The agents count the builder, never an agent a method starts. A looped step repeats until clean, and its rounds include its fixes; outside a loop, sketch and check each take the mode's fix rounds.",
     );
   });
 
@@ -363,10 +367,26 @@ describe("the parse refuses a kind", () => {
     );
   });
 
-  it("S23, J-93 S1 and J-93 S2 the corpus definition gives each mode its words budget, a ceiling the split lowered", () => {
+  it("S23, J-93 S1, J-93 S2, J-107 S3, J-123 S2, J-142 S3, J-144 S2 and J-147 S2 the corpus definition gives each mode its words budget, a ceiling the split lowered and the block edition, the design step, the View row, the reply's polish and the offer at every turn raised", () => {
     expect(
       Object.fromEntries(corpus().modes.map((mode) => [mode.name, mode.budget.words])),
-    ).toEqual({ quick: 9500, regular: 10400, careful: 11700 });
+    ).toEqual({ quick: 11384, regular: 12325, careful: 13588 });
+  });
+
+  it("J-123 S2 applies design by the record's interface fact, and refuses a fact a step may not name", () => {
+    const modes = corpus();
+    const design = modes.steps.find((step) => step.name === "design");
+    expect(design?.appliesWhen).toBe("interface");
+    expect(stepApplies(design ?? { appliesWhen: undefined }, { interface: false })).toBe(false);
+    expect(stepApplies(design ?? { appliesWhen: undefined }, { interface: true })).toBe(true);
+    expect(stepApplies({ appliesWhen: undefined }, { interface: false })).toBe(true);
+    expect(inapplicableLine("interface")).toBe("none, no interface");
+    const steps = sample().steps.map((step, index) =>
+      index === 0 ? { ...step, appliesWhen: "mood" } : step,
+    );
+    expect(refusal({ ...sample(), steps })).toEqual(
+      issues("steps[0].appliesWhen", "a step's fact is interface, not 'mood'"),
+    );
   });
 
   it("S23 refuses a mode that states no words budget, by the mode's name", () => {
@@ -646,6 +666,7 @@ describe("what the definition answers", () => {
     const modes = corpus();
     expect(recordSections(modes, modeOf(modes, "quick"))).toEqual([
       { step: "frame", depth: { depth: "inline" } },
+      { step: "design", depth: { depth: "inline" } },
       { step: "plan", depth: { depth: "inline" } },
       { step: "anticipate", depth: { depth: "none" } },
       { step: "build", depth: { depth: "inline" } },
@@ -655,6 +676,7 @@ describe("what the definition answers", () => {
     ]);
     expect(recordSections(modes, modeOf(modes, "regular"))).toEqual([
       { step: "frame", depth: { depth: "written" } },
+      { step: "design", depth: { depth: "written" } },
       { step: "plan", depth: { depth: "written" } },
       { step: "anticipate", depth: { depth: "none" } },
       { step: "build", depth: { depth: "written" } },
@@ -684,13 +706,13 @@ describe("what the definition answers", () => {
     expect(agentsAtMost(own, modeOf(own, "sure"))).toBe(5);
   });
 
-  it("J-93 S1 the corpus's modes start the builder alone, the builder and one reviewer, and the builder with four fresh agents", () => {
+  it("J-93 S1 and J-123 S2 the corpus's modes start the builder alone, the builder and one reviewer, and the builder with five fresh agents", () => {
     const modes = corpus();
     const derived = Object.fromEntries(
       modes.modes.map((mode) => [mode.name, agentsAtMost(modes, mode)]),
     );
-    // Careful: the builder, anticipate's premise reader, review's two and verify's one.
-    expect(derived).toEqual({ quick: 1, regular: 2, careful: 1 + 1 + 2 + 1 });
+    // Careful: the builder, design's agent, anticipate's premise reader, review's two and verify's one.
+    expect(derived).toEqual({ quick: 1, regular: 2, careful: 1 + 1 + 1 + 2 + 1 });
     // No mode loops: max's agents and rounds folded into careful.
     for (const mode of modes.modes)
       expect(

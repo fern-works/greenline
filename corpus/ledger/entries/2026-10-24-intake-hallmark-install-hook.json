@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-hallmark-install-hook",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-hallmark-picture",
+    "sha256": "52a4ef80dcf9fa82755ef4fa8b284312ff8eb07ceb843a74b41b339d933e76b7"
+  },
+  "source": {
+    "repository": "https://github.com/Nutlope/hallmark",
+    "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+    "path": "skills/hallmark/scripts/install-hook.mjs"
+  },
+  "pin": "hallmark",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Image generation or a harness-writing hook, declined",
+  "reason": "It needs a paid image key or writes harness settings; it stays in the staged scripts and is never drawn from.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's image generation, picture and hook scripts are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's image generation, picture and hook scripts are declined"
+    }
+  ]
+}

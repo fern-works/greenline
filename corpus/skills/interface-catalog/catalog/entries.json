@@ -1,0 +1,2715 @@
+{
+  "schema": "greenline.interface-catalog/v1",
+  "recipe": "corpus/interface/catalog/recipe.json",
+  "entries": [
+    {
+      "id": "graphite-night",
+      "kind": "palette",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["colour", "dark-mode"]
+      },
+      "tokens": {
+        "colors": {
+          "ground": "#08090a",
+          "raised": "#0f1011",
+          "raised-2": "#161718",
+          "ink": "#f7f8f8",
+          "ink-2": "#d0d6e0",
+          "muted": "#8a8f98",
+          "accent": "#5e6ad2",
+          "highlight": "#e4f222"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 18.73
+        },
+        {
+          "ink": "ink-2",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 13.64
+        },
+        {
+          "ink": "muted",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.13
+        },
+        {
+          "ink": "muted",
+          "ground": "raised",
+          "use": "text",
+          "ratio": 5.86
+        },
+        {
+          "ink": "ink",
+          "ground": "raised",
+          "use": "text",
+          "ratio": 17.9
+        },
+        {
+          "ink": "accent",
+          "ground": "ground",
+          "use": "large",
+          "ratio": 4.24
+        },
+        {
+          "ink": "ground",
+          "ground": "highlight",
+          "use": "text",
+          "ratio": 16.15
+        }
+      ],
+      "words": "A dark ground in near-black steps, where depth is three greys a breath apart rather than shadows, ink close to white, and one cool accent spent on less than one percent of the page with a sharp yellow-green kept for a single highlight. It suits a product whose own interface is dark, so the page and the product read as one material. Pitfall: the faintest grey the site uses for small captions measures about 3.3:1 on the raised step, under the floor; this entry leaves it out, and a fourth text step must stay at 4.5:1 or be used only at large sizes. The accent as text on the ground reaches 4.24:1, so it is for fills, rules and large text only. It is a dark scheme only: the site shows no light one, and a light pairing is not part of this entry.",
+      "provenance": {
+        "site": "https://linear.app/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/linear.app/2026-10-24/capture.json",
+        "sha256": "0040cbec17316ece030693153aff5fedbd8500af08c32e51c8394a695d1ea037",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "tight-grotesk-dark",
+      "kind": "type",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["type"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontFamily": "a variable neo-grotesk; free stand-in Inter",
+            "fontSize": "64px",
+            "lineHeight": "1.0",
+            "fontWeight": 510,
+            "letterSpacing": "-0.022em"
+          },
+          "section": {
+            "fontFamily": "same",
+            "fontSize": "48px",
+            "lineHeight": "1.0",
+            "fontWeight": 510,
+            "letterSpacing": "-0.022em"
+          },
+          "lead": {
+            "fontFamily": "same",
+            "fontSize": "20px",
+            "lineHeight": "1.33",
+            "fontWeight": 590,
+            "letterSpacing": "-0.012em"
+          },
+          "body": {
+            "fontFamily": "same",
+            "fontSize": "16px",
+            "lineHeight": "1.5",
+            "fontWeight": 400
+          },
+          "small": {
+            "fontFamily": "same",
+            "fontSize": "13px",
+            "lineHeight": "1.5",
+            "fontWeight": 400,
+            "letterSpacing": "-0.01em"
+          },
+          "code": {
+            "fontFamily": "a monospace",
+            "fontSize": "13px"
+          },
+          "display-phone": {
+            "fontSize": "38px",
+            "lineHeight": "1.1"
+          },
+          "section-phone": {
+            "fontSize": "24px",
+            "lineHeight": "1.33"
+          }
+        }
+      },
+      "words": "One grotesk family does every job, at a weight between regular and medium for headings, with display sizes set solid (line height 1.0) and tracked in by about two percent; the step from section to display is 4:3 and from body to section 3:1. Most running text is small, 13px, which suits dense product copy beside captures; on the site register keep body at 16px. A monospace appears only in code. Pitfall: tight tracking at 13px is near the legibility edge; do not tighten below the measured value.",
+      "provenance": {
+        "site": "https://linear.app/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/linear.app/2026-10-24/capture.json",
+        "sha256": "0040cbec17316ece030693153aff5fedbd8500af08c32e51c8394a695d1ea037",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "chaptered-product-tour",
+      "kind": "shape",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot claim+action above slot proof-image (product capture full width)",
+        "row 2: columns 12; slot list (customer marks, one line)",
+        "row 3: columns 10/2; slot statement",
+        "row 4: columns 4/4/4; slot proof-point | slot proof-point | slot proof-point",
+        "rows 5-8, repeated four times: columns 5/7; slot heading | slot lead+action; then columns 12; slot proof-image; then columns 4/4/4; slot list",
+        "row 9: columns 3/3/3/3; slot list (dated changes)",
+        "row 10: columns 6/6; slot quote | slot quote",
+        "row 11: columns 12 centred; slot claim+action",
+        "row 12: columns 2/2/2/2/2/2; slot list (footer)"
+      ],
+      "words": "A product page as a tour in chapters: a claim over a full-width capture of the product, a strip of customer marks, one statement, three principles, then four chapters of equal weight, each a heading beside a lead, a wide capture and three small links. It ends with dated changes, two quotes and a closing claim. It works when the product has four nameable jobs and real captures for each; without captures the chapters collapse into a list. At 390 every row stacks and the chapters keep their order.",
+      "provenance": {
+        "site": "https://linear.app/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/linear.app/2026-10-24/capture.json",
+        "sha256": "0040cbec17316ece030693153aff5fedbd8500af08c32e51c8394a695d1ea037",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "pill-compact-controls",
+      "kind": "app style",
+      "register": "app",
+      "platform": [],
+      "facets": {
+        "concern": ["layout"],
+        "component": ["navigation"]
+      },
+      "tokens": {
+        "rounded": {
+          "control": "9999px",
+          "card": "8px",
+          "panel": "12px"
+        },
+        "spacing": {
+          "base": "4px",
+          "steps": "4 8 12 16 24 32"
+        },
+        "components": {
+          "button": {
+            "height": "28px",
+            "paddingX": "12px",
+            "fontSize": "13px"
+          },
+          "navLink": {
+            "fontSize": "13px"
+          }
+        }
+      },
+      "words": "Small pill controls, 28px tall with 13px labels, on panels with modest 8 to 12px corners, spaced on a 4px step. It reads as a tool rather than a brochure. Pitfall: a 28px control is under the 44px touch reflex; on phones the hit area grows while the visual pill stays small, or the reflex is waived on the record.",
+      "provenance": {
+        "site": "https://linear.app/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/linear.app/2026-10-24/capture.json",
+        "sha256": "0040cbec17316ece030693153aff5fedbd8500af08c32e51c8394a695d1ea037",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "quick-hover-slow-reveal",
+      "kind": "motion",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["motion"]
+      },
+      "tokens": {
+        "motion": {
+          "hover": "100ms",
+          "state": "160ms",
+          "reveal": "700ms",
+          "easing": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          "easing-large": "cubic-bezier(0.32, 0.72, 0, 1)"
+        }
+      },
+      "words": "Hover and state changes are quick, 100 to 160ms, on a gentle ease-out; larger moves take a sheet-like curve and section reveals 700ms. Under reduced motion the page keeps its fades and drops most running animations (about a fifth remain), which is the tiered form the reduced-motion reflex asks for, not a blanket none.",
+      "provenance": {
+        "site": "https://linear.app/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/linear.app/2026-10-24/capture.json",
+        "sha256": "0040cbec17316ece030693153aff5fedbd8500af08c32e51c8394a695d1ea037",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "white-navy-violet",
+      "kind": "palette",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["colour"]
+      },
+      "tokens": {
+        "colors": {
+          "ground": "#ffffff",
+          "tint": "#f8fafd",
+          "tint-2": "#e5edf5",
+          "deep": "#0d1738",
+          "ink": "#061b31",
+          "body": "#50617a",
+          "muted": "#64748d",
+          "accent": "#533afd",
+          "on-accent": "#ffffff",
+          "on-deep": "#ffffff"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 17.37
+        },
+        {
+          "ink": "body",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.3
+        },
+        {
+          "ink": "body",
+          "ground": "tint",
+          "use": "text",
+          "ratio": 6.03
+        },
+        {
+          "ink": "muted",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 4.75
+        },
+        {
+          "ink": "accent",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.19
+        },
+        {
+          "ink": "on-accent",
+          "ground": "accent",
+          "use": "text",
+          "ratio": 6.19
+        },
+        {
+          "ink": "on-deep",
+          "ground": "deep",
+          "use": "text",
+          "ratio": 17.55
+        },
+        {
+          "ink": "ink",
+          "ground": "tint-2",
+          "use": "text",
+          "ratio": 14.69
+        }
+      ],
+      "words": "A white page banded by two cool tints and one deep navy band about a tenth of the page, ink a navy-black, body text a desaturated slate, and a saturated violet spent on links and the primary action. The deep band carries one statement and the figures. Pitfall: the site's lightest grey and its green status text measure 3.4 and 4.3:1 on white; this entry leaves both out. It is a light scheme only: the site shows no dark one, and a dark pairing is not part of this entry.",
+      "provenance": {
+        "site": "https://stripe.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+        "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "light-weight-grotesk",
+      "kind": "type",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["type"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontFamily": "a neo-grotesk with a 300 weight; free stand-in Inter at 300",
+            "fontSize": "48px",
+            "lineHeight": "1.15",
+            "fontWeight": 300,
+            "letterSpacing": "-0.02em"
+          },
+          "section": {
+            "fontFamily": "same",
+            "fontSize": "32px",
+            "lineHeight": "1.1",
+            "fontWeight": 300,
+            "letterSpacing": "-0.02em"
+          },
+          "card": {
+            "fontFamily": "same",
+            "fontSize": "22px",
+            "lineHeight": "1.1",
+            "fontWeight": 300,
+            "letterSpacing": "-0.01em"
+          },
+          "body": {
+            "fontFamily": "same",
+            "fontSize": "16px",
+            "lineHeight": "1.4",
+            "fontWeight": 300
+          },
+          "display-phone": {
+            "fontSize": "34px",
+            "lineHeight": "1.03"
+          },
+          "section-phone": {
+            "fontSize": "22px",
+            "lineHeight": "1.2"
+          }
+        }
+      },
+      "words": "Headings at a light 300 weight, never bold, so size and colour carry the hierarchy; display 48px over section 32px over card titles 22px, body 16px at 1.4. It reads calm and expensive with a lot on the page. Pitfall: a light weight under about 20px needs strong ink to hold contrast; keep body ink at 6:1 or more.",
+      "provenance": {
+        "site": "https://stripe.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+        "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "split-hero-capability-grid",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1: columns 6/6; slot claim+action | slot proof-image",
+        "row 2: columns 12; slot list (customer marks)",
+        "row 3: columns 4/4/4 over 4/4/4; slot proof-point with proof-image in each"
+      ],
+      "words": "The claim and one action on the left half, a product capture on the right, a strip of customer marks, then a grid of capability tiles, each a short heading with a small capture. It suits a product with several capabilities that can each be shown. At 390 the claim comes first and the tiles stack.",
+      "provenance": {
+        "site": "https://stripe.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+        "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "banded-platform-page",
+      "kind": "shape",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero", "footer"]
+      },
+      "sketch": [
+        "row 1: hero (see split-hero-capability-grid)",
+        "row 2: columns 12 on the deep band; slot statement",
+        "row 3: columns 3/3/3/3 on the deep band; slot proof-point (figures)",
+        "row 4: columns 6/6 repeated; slot heading+lead | slot proof-image",
+        "row 5: columns 12 on a tint band; slot heading then columns 4/4/4 slot proof-point",
+        "row 6: columns 4/4/4; slot list (news)",
+        "row 7: columns 6/6; slot claim+action | slot list",
+        "row 8: columns 2/2/2/2/2/2; slot list (footer)"
+      ],
+      "words": "A long platform page whose sections change ground, white, tint and deep navy, so each band is a chapter; figures sit on the dark band, case material in split rows, news in three columns, and a closing claim beside a list of next steps before a wide footer. Pitfall: the page is long (about 14,800px at 1440, 20,500 at 390); a smaller product needs half the bands.",
+      "provenance": {
+        "site": "https://stripe.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+        "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "layered-soft-elevation",
+      "kind": "material",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["colour"],
+        "component": ["card"]
+      },
+      "tokens": {
+        "rounded": {
+          "control": "4px",
+          "card": "6px"
+        },
+        "components": {
+          "card": {
+            "shadow": "0 30px 45px -30px rgba(50,50,93,0.25), 0 18px 36px -18px rgba(0,0,0,0.1)"
+          },
+          "button": {
+            "height": "40px",
+            "paddingX": "24px",
+            "radius": "4px"
+          }
+        }
+      },
+      "words": "Cards lifted by two long, soft, negatively spread shadows tinted toward the navy, on small 4 to 6px corners, with rectangular buttons 40 to 48px tall. The depth reads as light from above rather than a border. Pitfall: shadows on resting cards are a style reflex in the registry; this material declares them, so a direction that picks it waives that reflex in its rulings.",
+      "provenance": {
+        "site": "https://stripe.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+        "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "settled-ease-out-site",
+      "kind": "motion",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["motion"]
+      },
+      "tokens": {
+        "motion": {
+          "hover": "150ms",
+          "state": "300ms",
+          "reveal": "800ms",
+          "easing": "cubic-bezier(0.25, 1, 0.5, 1)",
+          "easing-reveal": "cubic-bezier(0.165, 0.84, 0.44, 1)"
+        }
+      },
+      "words": "State changes at 300ms and reveals at 800ms, both on strong ease-out curves that settle early, with 150ms hovers; continuous gradients drift on linear time. Under reduced motion most running animations stop (about one in eight remain). The 300ms state change sits on the app reflex boundary, so in the app register shorten it to 200ms.",
+      "provenance": {
+        "site": "https://stripe.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/stripe.com/2026-10-24/capture.json",
+        "sha256": "a7124c8d8498019c58cb01aa89821a2c44025ce48d56fd5f1257b8a3659e1848",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "monochrome-near-white",
+      "kind": "palette",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["colour", "dark-mode"]
+      },
+      "tokens": {
+        "colors": {
+          "ground": "#fafafa",
+          "surface": "#ffffff",
+          "ink": "#171717",
+          "body": "#4d4d4d",
+          "muted": "#666666",
+          "inverse": "#171717",
+          "on-inverse": "#ffffff",
+          "rule": "#ebebeb",
+          "dark-ground": "#000000",
+          "dark-ink": "#ededed",
+          "dark-body": "#a1a1a1"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 17.18
+        },
+        {
+          "ink": "body",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 8.1
+        },
+        {
+          "ink": "muted",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 5.5
+        },
+        {
+          "ink": "ink",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 17.93
+        },
+        {
+          "ink": "on-inverse",
+          "ground": "inverse",
+          "use": "text",
+          "ratio": 17.93
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 17.94
+        },
+        {
+          "ink": "dark-body",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 8.13
+        }
+      ],
+      "words": "No hue at all: a near-white ground, white surfaces, a near-black ink and inverse, mid-grey body text and a hairline rule, with a true-black dark scheme that mirrors it. Colour, when it comes, comes from the product shown in the captures. Pitfall: the site's lightest grey (#8f8f8f, 3.1:1) is under the floor for small text; this entry leaves it out.",
+      "provenance": {
+        "site": "https://vercel.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/vercel.com/2026-10-24/capture.json",
+        "sha256": "27859eb74bca3eb4aa4c1189db0562268898437a844c7681532feb167fa25af1",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "geometric-grotesk-tight",
+      "kind": "type",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["type"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontFamily": "a geometric grotesk (Geist, free under the OFL)",
+            "fontSize": "64px",
+            "lineHeight": "1.0",
+            "fontWeight": 400,
+            "letterSpacing": "-0.06em"
+          },
+          "section": {
+            "fontFamily": "same",
+            "fontSize": "56px",
+            "lineHeight": "1.0",
+            "fontWeight": 450,
+            "letterSpacing": "-0.06em"
+          },
+          "lead": {
+            "fontFamily": "same",
+            "fontSize": "24px",
+            "lineHeight": "1.33",
+            "fontWeight": 400,
+            "letterSpacing": "-0.04em"
+          },
+          "body": {
+            "fontFamily": "same",
+            "fontSize": "14px",
+            "lineHeight": "1.43",
+            "fontWeight": 400
+          },
+          "code": {
+            "fontFamily": "its monospace companion",
+            "fontSize": "13px"
+          },
+          "display-phone": {
+            "fontSize": "48px",
+            "lineHeight": "1.17"
+          },
+          "section-phone": {
+            "fontSize": "32px",
+            "lineHeight": "1.25"
+          }
+        }
+      },
+      "words": "Very tight display type, tracked in by six percent and set solid at a regular weight, over a small 14px body; the contrast between a huge regular headline and quiet small text is the whole voice. Pitfall: tracking this tight only works at display sizes and with a face drawn for it; at 390 the display drops to 48px and the tracking to about -0.06em still.",
+      "provenance": {
+        "site": "https://vercel.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/vercel.com/2026-10-24/capture.json",
+        "sha256": "27859eb74bca3eb4aa4c1189db0562268898437a844c7681532feb167fa25af1",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "split-hero-three-column",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1: columns 4/4/4; slot claim+action | slot mark (a single graphic) | slot list (three short lines)",
+        "row 2: columns 12; slot list (customer marks)"
+      ],
+      "words": "A claim with two actions on the left third, a single centred graphic, and three short lines on the right third that say who it is for. It works with a strong mark and a one-line claim; it fails with a long claim. At 390 the three columns stack, claim first.",
+      "provenance": {
+        "site": "https://vercel.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/vercel.com/2026-10-24/capture.json",
+        "sha256": "27859eb74bca3eb4aa4c1189db0562268898437a844c7681532feb167fa25af1",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "alternating-proof-chapters",
+      "kind": "shape",
+      "register": "site",
+      "platform": [],
+      "facets": {},
+      "sketch": [
+        "row 1: hero (see split-hero-three-column)",
+        "row 2 and on, alternating: columns 12 slot heading; then columns 8/4 slot proof-image | slot quote+list; then columns 4/8 slot quote+list | slot proof-image",
+        "last row: columns 2/2/2/2/2/2; slot list (footer)"
+      ],
+      "words": "After the hero, each chapter is a large heading, then a framed capture of a customer's product beside a one-line result and a short feature list, the sides alternating. The captures carry the colour. Limit: the capture rendered only the first two chapters; the rest of the page did not render in a headless full-page capture, so the count of chapters is not read.",
+      "provenance": {
+        "site": "https://vercel.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/vercel.com/2026-10-24/capture.json",
+        "sha256": "27859eb74bca3eb4aa4c1189db0562268898437a844c7681532feb167fa25af1",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "hairline-flat",
+      "kind": "material",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["colour"]
+      },
+      "tokens": {
+        "rounded": {
+          "card": "6px",
+          "control": "9999px"
+        },
+        "components": {
+          "card": {
+            "border": "1px solid rule",
+            "shadow": "none"
+          },
+          "button": {
+            "height": "32px or 40px"
+          }
+        },
+        "motion": {
+          "hover": "100ms",
+          "state": "150ms",
+          "easing": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "words": "Flat surfaces separated by hairline rules and small 6px corners, with pill buttons and no shadows at all; motion is a short 100 to 150ms on the standard curve, and under reduced motion nothing runs. It suits a technical audience and a product that shows itself in captures.",
+      "provenance": {
+        "site": "https://vercel.com/",
+        "pages": ["/"],
+        "seen": "2026-10-24",
+        "capture": "corpus/upstream/vercel.com/2026-10-24/capture.json",
+        "sha256": "27859eb74bca3eb4aa4c1189db0562268898437a844c7681532feb167fa25af1",
+        "licence": "ideas-only",
+        "basis": "measured from the site's computed styles and screenshots at 1440, 768 and 390"
+      }
+    },
+    {
+      "id": "job-subscribe",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["form", "hero"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot claim+form (name, one line, the email field)",
+        "row 2: columns 8/4; slot sample-issue | slot list (who writes it)",
+        "row 3: columns 12; slot list (dated archive)",
+        "row 4: columns 12; slot form (second field)"
+      ],
+      "words": "A page whose only job is an email address. The field sits in the first screen, often as the whole first screen, beside the name and one line. A sample or the latest issue earns the second ask; the archive, dated, is the proof. A reader count appears only when the owner supplies it. This is the one job whose close may be a field.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 9-13",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-book",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["form"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot proof-image (the room or the food) with slot claim small",
+        "row 2: columns 12; slot action (party, date, time, or the next free times)",
+        "row 3: columns 7/5; slot list (menu or schedule with prices) | slot action (booking again)",
+        "row 4: columns 6/6; slot list (how to find it) | slot list (hours and address)",
+        "row 5: columns 12; slot action (booking again)"
+      ],
+      "words": "A page that takes a reservation. The booking control opens from the navigation and the first screen and returns beside the menu or the classes, never only at the foot. A picture of the room or the food leads with little text over it. Hours and the address are a section of their own. A fine room may need only one picture, the menu and the booking.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 15-19",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-visit",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["list"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot proof-image (what is on now) with slot claim+action (today's hours, the address)",
+        "row 2: columns 12; slot list (coming up, dated, this week and next)",
+        "row 3: columns 3/3/3/3; slot list (the shelves, for a shop)",
+        "row 4: columns 12; slot list (getting there, hours, address)"
+      ],
+      "words": "A page that brings someone through the door. Today's hours and the address sit in the navigation or the first screen. What is on now is the lead picture, what is coming follows as dated rows, and a shop shows its shelves as tiles. Tickets or donations appear only when the owner names them. It ends on the practical details or a mailing list.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 21-25",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-attend",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["list", "pricing"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot claim (the date and the place as the headline) + slot action (tickets)",
+        "row 2: columns 12; slot list (lineup, names set large)",
+        "row 3: columns 12; slot list (the days as a schedule)",
+        "row 4: columns 4/4/4; slot pricing | slot pricing | slot pricing",
+        "row 5: columns 6/6; slot list (venue and travel) | slot list (questions)",
+        "row 6: columns 12; slot action (tickets again)"
+      ],
+      "words": "A page that sells tickets to a dated event. The date and the place are the headline and tickets sit in the navigation from the first screen. The lineup, set large, is the proof, then the days, the ticket tiers with prices, the venue and the questions. Figures appear only when given. Between editions the page shrinks to the date, the place and the list.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 27-31",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-buy",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["card", "pricing"]
+      },
+      "sketch": [
+        "row 1: columns 7/5; slot proof-image (the product) | slot action (price, options, buy)",
+        "row 2: columns 3/3/3/3; slot card (the range with prices)",
+        "row 3: columns 12; slot proof-image (the product in use, close)",
+        "row 4: columns 6/6; slot list (how it is made) | slot list (delivery and guarantee)",
+        "row 5: columns 12; slot action (the offer again)"
+      ],
+      "words": "A page that sells a physical thing. The product with its price and options leads, often as the first screen; a second buy action comes after the sections that earn it, or a bar keeps the price in view. The range, the product in use, how it is made and plain delivery facts follow. Reviews appear only when supplied. An email field belongs in the footer, not the close.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 33-37",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-try",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot claim + slot action (one download per platform, under the claim)",
+        "row 2: columns 12; slot proof-image (key art or the main screen)",
+        "row 3: columns 5/7; slot heading+lead | slot proof-image (a named moment), repeated",
+        "row 4: columns 6/6; slot proof-image (before) | slot proof-image (after)",
+        "row 5: columns 7/5; slot proof-image (one last screen) | slot action (download again)"
+      ],
+      "words": "A page that gets an app, a game or a desktop tool downloaded. The store or download buttons sit right under the headline, one per platform. Features are shown as named moments in real screens rather than icon tiles, with a before and after where it helps. A game page is short: five or six blocks are enough.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 39-43",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-sign-up",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["pricing", "hero"]
+      },
+      "sketch": [
+        "row 1: columns 6/6; slot claim+action (start free, its terms in one line) | slot proof-image (the product at work)",
+        "row 2: columns 5/7; slot heading+lead | slot proof-image (a named moment), repeated",
+        "row 3: columns 12; slot proof (a code sample or an integration)",
+        "row 4: columns 4/4/4; slot pricing (with a period switch)",
+        "row 5: columns 6/6; slot list (questions) | slot action (start free again)"
+      ],
+      "words": "A page that turns a visitor into a free account for software, an API or a developer tool. The start action sits in the navigation and the first screen with its terms in one line beneath; for a developer tool the install command can be the action. The product at work, named moments, a code sample, pricing with a period switch and questions follow. It never closes on a newsletter.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 45-49",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-hire",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["list"]
+      },
+      "sketch": [
+        "row 1: columns 12; slot claim small + slot action (a plain contact)",
+        "row 2: columns 12; slot list (projects: name, client, year, place, with pictures)",
+        "row 3: columns 12; slot proof-image (one project opened as a case)",
+        "row 4: columns 6/6; slot list (what the studio does) | slot list (where it is)",
+        "row 5: columns 12; slot action (contact again, per office)"
+      ],
+      "words": "A page that wins an enquiry for a studio, a freelancer or a practice. The work is the page: an index of projects with name, client, year and place, one opened as a case. The contact is plain, an address or a number, in the navigation and once more after the work; no form is needed. What the studio does is a short list.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 51-55",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-join",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["list", "pricing"]
+      },
+      "sketch": [
+        "row 1: columns 7/5; slot claim+action (join, or the first visit) | slot proof-image (a session, shown)",
+        "row 2: columns 12; slot list (when and where)",
+        "row 3: columns 12; slot pricing (membership rows with prices)",
+        "row 4: columns 6/6; slot list (first-visit guidance) | slot form (sign-up field)"
+      ],
+      "words": "A page that gets a member or a first visit for a club or a community. Joining, or the first visit, is the first screen's action. What a session is like is shown, then when and where, membership options as priced rows and guidance for a first visit. People appear only in the owner's own pictures.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 57-61",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "job-listen",
+      "kind": "anatomy by job",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["list"]
+      },
+      "sketch": [
+        "row 1: columns 6/6; slot proof-image (the cover) | slot claim+action (listen, watch, order, side by side)",
+        "row 2: columns 12; slot list (tracks or contents)",
+        "row 3: columns 12; slot list (dates with ticket links)",
+        "row 4: columns 3/3/3/3; slot card (earlier work as covers)"
+      ],
+      "words": "A page that gets a release played or ordered: a record, a film, an episode or an issue. The new release leads with its listen, watch or order actions side by side. Its contents follow, then dated appearances with ticket links and earlier work as covers. An artist page can be very short; with no release the act itself leads and the close is the enquiry.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/anatomy.md",
+        "at": "lines 63-67",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-even-split",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1 (fills the screen under the navigation, centred): columns 6/6; slot claim+action | slot proof-image"
+      ],
+      "words": "Claim and picture share the first screen in two equal halves, centred top to bottom. It is the most common generated first screen, so it is chosen only when the picture is the strongest thing the page has. The space under the content is one to one and a half times the space above it. Under 60rem it collapses to its content's height.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-wide-visual",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1 (fills the screen under the navigation): columns 5/7; slot claim+action | slot proof-image (60 to 75% of the screen tall, may bleed off the outer edge)"
+      ],
+      "words": "The picture takes the wider side, seven columns against five, and may run off the outer edge; the sides swap when a very large headline needs the width. The visual is at least 60% of the screen tall, and its centre sits near the text block's. The headline stays at seven words or fewer with one supporting sentence and one or two actions.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-short-band",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1 (50 to 60% of the screen): columns 8 centred; slot claim+action",
+        "row 2 (starts above the fold): columns 12; slot list (the first section)"
+      ],
+      "words": "A first screen that does not fill the screen: half to three fifths of it, so the first section shows above the fold. It suits references, documentation and utilities, where the visitor came to use the page rather than be persuaded by it. With no picture, the headline grows across eight to twelve columns, or this posture is taken and the first section starts by 640px.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-headline-at-base",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1 (fills the screen): columns 12; slot proof-image (a tall field)",
+        "row 2 (at the base of the first screen): columns 8/4; slot claim | slot action"
+      ],
+      "words": "A tall field of picture or colour above, with the headline resting at the bottom of the first screen. On very wide screens the headline grows to its cap before anything else moves. It inverts the usual centring: the weight sits low, so the space-below rule does not apply.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-single-column",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1 (fills the screen): one centred column of 44ch or less; slot claim (larger than usual)+action"
+      ],
+      "words": "One centred column no wider than about 44 characters, with a headline set larger than usual and nothing beside it. It suits a page led by words rather than a picture: a letter, a manifesto, a single idea. The lowest content sits within 160px of the fold.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-full-bleed",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"],
+        "concern": ["imagery"]
+      },
+      "sketch": [
+        "row 1 (92 to 100dvh): columns 12; slot proof-image (full bleed) with slot claim+action on its calmest part, low and left or centred"
+      ],
+      "words": "A photograph or canvas fills the whole first screen and the text rests on its calmest part, low and left or centred, with room around it and never squeezed into a corner. The text over the picture must still meet the contrast floor, so the calm part is chosen, or a scrim is added. On a phone it may stay full bleed.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-action-as-visual",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero", "form"]
+      },
+      "sketch": [
+        "row 1 (fills the screen under the navigation): columns 5/7; slot claim (shorter than usual) | slot action (set large: the field, the booking times, the buy box, the download with its screen)"
+      ],
+      "words": "The action is the picture. The email field with the latest issue, the booking times, the buy box with its options or the download with its screen is set large beside or under a shorter headline. It fits the jobs whose whole point is one act. A full working form is still a section or a close, not the default first screen.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hero-content-as-visual",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero", "list"]
+      },
+      "sketch": [
+        "row 1 (fills the screen under the navigation): columns 12; slot claim (small)",
+        "row 1 continued: columns 12; slot list (the lineup, the menu, the issues or the projects, set as the lead)"
+      ],
+      "words": "The content itself is the picture: the lineup, the menu, the list of issues or of projects, set as the page's lead with a small headline above it. It suits pages whose substance is a list a visitor came to scan, and keeps the first screen honest because nothing in it is decoration.",
+      "provenance": {
+        "repository": "https://github.com/Nutlope/hallmark",
+        "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+        "path": "skills/hallmark/references/layout.md",
+        "at": "lines 71-87",
+        "licence": "mit",
+        "pin": "hallmark",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "white-teal-greeting",
+      "kind": "app style",
+      "register": "app",
+      "platform": [],
+      "facets": {
+        "concern": ["colour", "type"]
+      },
+      "tokens": {
+        "colors": {
+          "ground": "#ffffff",
+          "surface": "#f9f9f9",
+          "raised": "#ffffff",
+          "border": "#eaeaea",
+          "rule": "#f3f3f3",
+          "control": "#d9d9d6",
+          "ink": "#1f201d",
+          "muted": "#636361",
+          "accent": "#1b6e66",
+          "positive": "#2e7d32",
+          "negative": "#b42318",
+          "warning": "#92400e"
+        },
+        "typography": {
+          "body": {
+            "fontFamily": "a humanist grotesk; free stand-in Instrument Sans"
+          },
+          "greeting": {
+            "fontFamily": "a soft display serif; free stand-in Instrument Serif"
+          }
+        },
+        "rounded": {
+          "card": "22px",
+          "control": "9999px"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 16.37
+        },
+        {
+          "ink": "muted",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.02
+        },
+        {
+          "ink": "muted",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 5.72
+        },
+        {
+          "ink": "accent",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.05
+        },
+        {
+          "ink": "positive",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 5.13
+        },
+        {
+          "ink": "negative",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.57
+        },
+        {
+          "ink": "warning",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 7.09
+        }
+      ],
+      "words": "A white product surface with near-black ink, one deep teal for the action and status colours kept for status. A serif greeting heads the home screen while everything else is a plain grotesk; cards are generously rounded and controls are pills. It suits a personal product that should feel calm and a little editorial. The teal is a moved value: the screens it was read from used a red, replaced so the accent never reads as an error.",
+      "provenance": {
+        "repository": "https://github.com/Leonxlnx/taste-skill",
+        "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+        "path": "skills/taste-skill/library/app.json",
+        "at": "lines 313-407",
+        "licence": "mit",
+        "pin": "taste-skill",
+        "basis": "authored from the source's study of 23 product screens, its values measured or medians, the accent moved by the source"
+      }
+    },
+    {
+      "id": "cobalt-on-mist",
+      "kind": "app style",
+      "register": "app",
+      "platform": [],
+      "facets": {
+        "concern": ["colour"]
+      },
+      "tokens": {
+        "colors": {
+          "ground": "#f3f5f7",
+          "surface": "#ffffff",
+          "raised": "#f2f8fd",
+          "border": "#e6e6e6",
+          "rule": "#f4f4f4",
+          "control": "#d6d9dd",
+          "ink": "#1b1d1f",
+          "muted": "#5c6064",
+          "accent": "#1d5fd6",
+          "accent-ground": "#dcf1ff",
+          "accent-strong-ink": "#0a3a80",
+          "positive": "#2f7a45",
+          "negative": "#c41c29",
+          "warning": "#92400e"
+        },
+        "typography": {
+          "body": {
+            "fontFamily": "a rounded geometric grotesk; free stand-in Manrope"
+          }
+        },
+        "rounded": {
+          "card": "20px",
+          "control": "10px"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 15.47
+        },
+        {
+          "ink": "ink",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 16.91
+        },
+        {
+          "ink": "muted",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 5.8
+        },
+        {
+          "ink": "muted",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 6.34
+        },
+        {
+          "ink": "accent",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 5.74
+        },
+        {
+          "ink": "accent-strong-ink",
+          "ground": "accent-ground",
+          "use": "text",
+          "ratio": 9.36
+        },
+        {
+          "ink": "positive",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 5.26
+        },
+        {
+          "ink": "negative",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 5.92
+        },
+        {
+          "ink": "warning",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 7.09
+        }
+      ],
+      "words": "White cards on a pale cool ground with a single cobalt doing every job of emphasis, and a soft blue tint with dark blue ink for selected and informational states. It suits a consumer product: friendly, light and legible. The cobalt was chosen by the source to read as blue rather than indigo; keep it off large fills so it stays a signal.",
+      "provenance": {
+        "repository": "https://github.com/Leonxlnx/taste-skill",
+        "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+        "path": "skills/taste-skill/library/app.json",
+        "at": "lines 408-509",
+        "licence": "mit",
+        "pin": "taste-skill",
+        "basis": "authored from the source's study of 23 product screens, its values measured or medians, the accent moved by the source"
+      }
+    },
+    {
+      "id": "open-plane-shell",
+      "kind": "shell",
+      "register": "app",
+      "platform": [],
+      "facets": {
+        "component": ["navigation"]
+      },
+      "sketch": [
+        "column 1 (230 to 256px, on the page ground, no separation or one hairline): slot navigation (rows 32px, pitch 34px, 16px outline icons, 14px labels, active item a neutral grey pill inset 8 to 12px)",
+        "column 2 (fluid, gutter 24 to 64px, or a centred 1100px column): no top bar; slot heading at 32 to 36px from the top above slot list"
+      ],
+      "words": "A sidebar that sits on the same ground as the page, separated by nothing or a single hairline, and no top bar at all: the page heading starts near the top of the working area. The active item is a quiet grey pill. It makes a product feel open and unboxed, and suits tools with a handful of sections. Pitfall: without a top bar, global search and the account need a home in the sidebar.",
+      "provenance": {
+        "repository": "https://github.com/Leonxlnx/taste-skill",
+        "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+        "path": "skills/taste-skill/library/app.json",
+        "at": "lines 704-728",
+        "licence": "mit",
+        "pin": "taste-skill",
+        "basis": "measured by the source on 5 of 23 product screens"
+      }
+    },
+    {
+      "id": "centred-column-shell",
+      "kind": "shell",
+      "register": "app",
+      "platform": [],
+      "facets": {
+        "component": ["navigation"]
+      },
+      "sketch": [
+        "row 1 (46 to 48px, on the page ground, no border): columns 12 within the column; slot navigation (logo on the column's left edge, links 14 to 15px)",
+        "row 2: one centred column 1088 to 1208px; slot heading above slot list"
+      ],
+      "words": "No sidebar: a thin top bar on the page ground with no border and one centred column holding everything, with wide side gutters on large screens. It suits a product with few destinations and long reading screens, such as reports or settings. Pitfall: past five or six destinations the bar crowds, and a sidebar shell serves better.",
+      "provenance": {
+        "repository": "https://github.com/Leonxlnx/taste-skill",
+        "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+        "path": "skills/taste-skill/library/app.json",
+        "at": "lines 794-812",
+        "licence": "mit",
+        "pin": "taste-skill",
+        "basis": "measured by the source on 3 of 23 product screens"
+      }
+    },
+    {
+      "id": "cold-kind-hues",
+      "kind": "app style",
+      "register": "app",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["colour", "states"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontSize": "40px",
+            "lineHeight": "44px",
+            "letterSpacing": "-0.025em"
+          },
+          "heading": {
+            "fontSize": "24px",
+            "lineHeight": "28px",
+            "letterSpacing": "-0.015em"
+          },
+          "body": {
+            "fontSize": "14px",
+            "lineHeight": "20px",
+            "fontWeight": 340,
+            "letterSpacing": "-0.01em"
+          },
+          "label": {
+            "fontSize": "14px",
+            "lineHeight": "16px"
+          },
+          "code": {
+            "fontSize": "13px",
+            "lineHeight": "20px"
+          }
+        },
+        "spacing": {
+          "steps": "2 4 8 12 16 20 24 32 40 60 80 120",
+          "container": "1120px",
+          "sidebar": "248px",
+          "topbar": "56px",
+          "gutter": "24px"
+        },
+        "rounded": {
+          "inner": "4px",
+          "soft": "6px",
+          "frame": "10px",
+          "full": "9999px"
+        },
+        "components": {
+          "control": {
+            "height": "32px"
+          },
+          "row": {
+            "height": "40px"
+          },
+          "measure": "68ch"
+        },
+        "motion": {
+          "press": "60ms",
+          "fast": "120ms",
+          "base": "160ms",
+          "slow": "180ms",
+          "easing": "cubic-bezier(0.2, 0, 0, 1)",
+          "pressScale": 0.98
+        },
+        "colors": {
+          "ink": "#101621",
+          "paper": "#fefeff",
+          "grey": "#eff1f3",
+          "canvas": "#fbfcfd",
+          "kind-1-ink": "#074c4d",
+          "kind-1-ground": "#d6fdfc",
+          "kind-3-ink": "#274562",
+          "kind-3-ground": "#e3eefa",
+          "warning-ink": "#855412",
+          "warning-ground": "#ffefde",
+          "failure-ink": "#b72728",
+          "failure-ground": "#ffe6e3",
+          "dark-ink": "#f0f4f7",
+          "dark-paper": "#0f131a",
+          "dark-grey": "#191e27",
+          "dark-warning-ink": "#f5ad5a",
+          "dark-failure-ink": "#fe8b82"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "paper",
+          "use": "text",
+          "ratio": 17.98
+        },
+        {
+          "ink": "ink",
+          "ground": "grey",
+          "use": "text",
+          "ratio": 16.01
+        },
+        {
+          "ink": "kind-1-ink",
+          "ground": "kind-1-ground",
+          "use": "text",
+          "ratio": 8.98
+        },
+        {
+          "ink": "kind-3-ink",
+          "ground": "kind-3-ground",
+          "use": "text",
+          "ratio": 8.46
+        },
+        {
+          "ink": "warning-ink",
+          "ground": "warning-ground",
+          "use": "text",
+          "ratio": 5.7
+        },
+        {
+          "ink": "failure-ink",
+          "ground": "failure-ground",
+          "use": "text",
+          "ratio": 5.3
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-paper",
+          "use": "text",
+          "ratio": 16.83
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-grey",
+          "use": "text",
+          "ratio": 15.11
+        },
+        {
+          "ink": "dark-warning-ink",
+          "ground": "dark-paper",
+          "use": "text",
+          "ratio": 9.76
+        },
+        {
+          "ink": "dark-failure-ink",
+          "ground": "dark-paper",
+          "use": "text",
+          "ratio": 8.18
+        }
+      ],
+      "words": "A cold, calm product style for agents and developer tools: a near-white paper with a blue-black ink, everything flat, and colour spent only on what a thing is (five pale kind hues, each with a wash and a darker label) and on what went wrong (warning and failure). Only overlays cast a shadow. Text sits at a light weight with slightly negative tracking. The shell is a sidebar with a sticky top bar and breadcrumb; a run or chat view pins its composer at the bottom.",
+      "provenance": {
+        "repository": "https://github.com/arla6ka/skills",
+        "commit": "840a386938a616bff48342dc94a966ebe7d91a97",
+        "path": "systems/quartz/tokens.css",
+        "at": "lines 2-318",
+        "licence": "mit",
+        "pin": "arla6ka-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "warm-lime-action",
+      "kind": "app style",
+      "register": "app",
+      "platform": ["web", "ios", "android"],
+      "facets": {
+        "concern": ["colour"]
+      },
+      "tokens": {
+        "colors": {
+          "page": "#ffffff",
+          "surface": "#f6f5f2",
+          "surface-2": "#efeeea",
+          "ink": "#0f0f0d",
+          "ink-2": "#4a4943",
+          "ink-3": "#6b6a63",
+          "line": "#e6e4df",
+          "accent": "#e4f222",
+          "ink-on-accent": "#0f0f0d",
+          "accent-dark": "#7c8700",
+          "positive": "#17703a",
+          "warning": "#8a5200",
+          "negative": "#b42323",
+          "dark-page": "#0e0e0c",
+          "dark-surface": "#1a1a17",
+          "dark-ink": "#f4f3ee",
+          "dark-ink-2": "#c9c7be",
+          "dark-ink-3": "#9a9890",
+          "dark-accent": "#cad649"
+        },
+        "typography": {
+          "body": {
+            "fontFamily": "a warm grotesk; free stand-in Hanken Grotesk",
+            "fontSize": "16px",
+            "lineHeight": 1.5
+          },
+          "steps": "12 14 16 18 22 28 36px",
+          "weights": "400 500 600",
+          "tracking": "-0.01em"
+        },
+        "rounded": {
+          "small": "6px",
+          "medium": "10px",
+          "field": "12px",
+          "panel": "16px",
+          "sheet": "24px",
+          "control": "9999px"
+        },
+        "components": {
+          "control": {
+            "heights": "32px 40px 48px"
+          }
+        },
+        "motion": {
+          "instant": "80ms",
+          "fast": "140ms",
+          "base": "200ms",
+          "slow": "280ms",
+          "easing": "cubic-bezier(0.16, 1, 0.3, 1)"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "page",
+          "use": "text",
+          "ratio": 19.19
+        },
+        {
+          "ink": "ink-2",
+          "ground": "page",
+          "use": "text",
+          "ratio": 9.03
+        },
+        {
+          "ink": "ink-3",
+          "ground": "page",
+          "use": "text",
+          "ratio": 5.43
+        },
+        {
+          "ink": "ink-3",
+          "ground": "surface",
+          "use": "text",
+          "ratio": 4.98
+        },
+        {
+          "ink": "ink-on-accent",
+          "ground": "accent",
+          "use": "text",
+          "ratio": 15.55
+        },
+        {
+          "ink": "accent-dark",
+          "ground": "page",
+          "use": "large",
+          "ratio": 3.95
+        },
+        {
+          "ink": "positive",
+          "ground": "page",
+          "use": "text",
+          "ratio": 6.15
+        },
+        {
+          "ink": "warning",
+          "ground": "page",
+          "use": "text",
+          "ratio": 6.39
+        },
+        {
+          "ink": "negative",
+          "ground": "page",
+          "use": "text",
+          "ratio": 6.55
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-page",
+          "use": "text",
+          "ratio": 17.39
+        },
+        {
+          "ink": "dark-ink-2",
+          "ground": "dark-page",
+          "use": "text",
+          "ratio": 11.41
+        },
+        {
+          "ink": "dark-ink-3",
+          "ground": "dark-surface",
+          "use": "text",
+          "ratio": 6.04
+        },
+        {
+          "ink": "dark-page",
+          "ground": "dark-accent",
+          "use": "text",
+          "ratio": 12.17
+        }
+      ],
+      "words": "A warm, light consumer style with one glowing action: off-white surfaces, a near-black ink and a vivid lime spent on the single main button, with dark text on it. Controls are pills and panels round generously. A screen holds one task in a narrow column with a sticky header and the main action pinned at the bottom above the home indicator. Pitfall: the lime itself never carries text on white; it is a fill.",
+      "provenance": {
+        "repository": "https://github.com/arla6ka/skills",
+        "commit": "840a386938a616bff48342dc94a966ebe7d91a97",
+        "path": "systems/lime/tokens.css",
+        "at": "lines 4-174",
+        "licence": "mit",
+        "pin": "arla6ka-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "flat-glass-press",
+      "kind": "app style",
+      "register": "app",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["colour", "motion"]
+      },
+      "tokens": {
+        "colors": {
+          "page": "#fbfbfa",
+          "paper": "#ffffff",
+          "frame": "#f1f1f0",
+          "field": "#efefef",
+          "ink": "#050505",
+          "positive-ink": "#1a7640",
+          "warning-ink": "#8a5a00",
+          "failure-ink": "#b23c29",
+          "positive-ground": "#e6f4ea",
+          "warning-ground": "#fbf0d9",
+          "negative-ground": "#fbe9e5",
+          "dark-page": "#0c0c0c",
+          "dark-paper": "#1f1f1f",
+          "dark-ink": "#f4f4f3"
+        },
+        "typography": {
+          "title": {
+            "fontSize": "28px",
+            "lineHeight": 1.2,
+            "fontWeight": 500
+          },
+          "heading": {
+            "fontSize": "20px",
+            "lineHeight": 1.3,
+            "fontWeight": 500,
+            "letterSpacing": "-0.025em"
+          },
+          "body": {
+            "fontSize": "14px",
+            "lineHeight": 1.5,
+            "fontWeight": 400
+          },
+          "label": {
+            "fontSize": "13px",
+            "fontWeight": 500,
+            "letterSpacing": "0.02em"
+          }
+        },
+        "spacing": {
+          "steps": "2 4 6 8 12 16 20 24 32 40",
+          "shell-inset": "3px"
+        },
+        "rounded": {
+          "shell": "14px",
+          "panel": "11px",
+          "overlay": "10px",
+          "tag": "6px",
+          "pill": "9999px"
+        },
+        "components": {
+          "control": {
+            "height": "32px"
+          },
+          "row": {
+            "height": "36px"
+          }
+        },
+        "motion": {
+          "press": "120ms",
+          "glass-press": "50ms",
+          "glass-release": "200ms",
+          "state": "160ms",
+          "overlay": "200ms",
+          "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          "pressScale": 0.97
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "page",
+          "use": "text",
+          "ratio": 19.68
+        },
+        {
+          "ink": "ink",
+          "ground": "frame",
+          "use": "text",
+          "ratio": 18.03
+        },
+        {
+          "ink": "positive-ink",
+          "ground": "positive-ground",
+          "use": "text",
+          "ratio": 4.99
+        },
+        {
+          "ink": "warning-ink",
+          "ground": "warning-ground",
+          "use": "text",
+          "ratio": 5.24
+        },
+        {
+          "ink": "failure-ink",
+          "ground": "negative-ground",
+          "use": "text",
+          "ratio": 5.01
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-page",
+          "use": "text",
+          "ratio": 17.77
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-paper",
+          "use": "text",
+          "ratio": 14.98
+        }
+      ],
+      "words": "A compact, glassy style for AI products where nothing casts a shadow: a panel inset by a few pixels inside a slightly darker shell frame, text as one ink at falling opacities, and translucent glass kept only for what the user presses, with a quick press and a slower release. Rows are 36px and controls 32px on a 4px grid. Pitfall: text set at low ink opacity must still be measured against its ground; the lightest steps are for disabled states.",
+      "provenance": {
+        "repository": "https://github.com/arla6ka/skills",
+        "commit": "840a386938a616bff48342dc94a966ebe7d91a97",
+        "path": "systems/glaze/tokens.css",
+        "at": "lines 2-209",
+        "licence": "mit",
+        "pin": "arla6ka-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "spring-tier-compact",
+      "kind": "app style",
+      "register": "app",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["motion", "type", "layout"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontSize": "28px",
+            "lineHeight": "34px",
+            "fontWeight": 700
+          },
+          "title": {
+            "fontSize": "16px",
+            "lineHeight": "22px",
+            "fontWeight": 550
+          },
+          "subtitle": {
+            "fontSize": "14px",
+            "lineHeight": "20px"
+          },
+          "body": {
+            "fontSize": "13px",
+            "lineHeight": "20px",
+            "fontWeight": 400
+          },
+          "caption": {
+            "fontSize": "12px",
+            "lineHeight": "16px"
+          },
+          "micro": {
+            "fontSize": "11px",
+            "lineHeight": "14px"
+          },
+          "opticalSize": "400 at 14, 550 at 18, 700 at 25"
+        },
+        "rounded": {
+          "item": "8px",
+          "container": "12px",
+          "pill-item": "20px",
+          "pill-container": "24px",
+          "nested": "outer minus inset minus border"
+        },
+        "components": {
+          "control": {
+            "height": "36px",
+            "compact": "28px"
+          },
+          "surfaces": "eight levels, each with its own shadow; light #fafafa, #fcfcfc, then #ffffff from level 3; dark #171717, #1e1e1e, #252525, #2c2c2c, #333333, #3a3a3a, #414141, #484848"
+        },
+        "motion": {
+          "fast": "0.08s spring, no bounce",
+          "moderate": "0.16s spring, critically damped",
+          "slow": "0.24s spring, bounce 0.12",
+          "exits": "0.06s, 0.12s, 0.16s: one tier quicker than the entrance"
+        }
+      },
+      "words": "A dense product style built on three spring tiers, each exit a tier quicker than its entrance, a two-step size ladder (36px default, 28px compact, with text, icons and padding stepping down together) and surfaces that lighten by level in dark mode while each level pairs with its own shadow. Weight is tied to optical size so semibold headings stay crisp at 13 to 16px. Radii nest: an inner radius is the outer minus the inset.",
+      "provenance": {
+        "repository": "https://github.com/mickadesign/fluid-functionalism",
+        "commit": "7387f361c07edee7b6447cc2d52301fef13ab180",
+        "path": "skills/fluid-functionalism/references/craft.md",
+        "at": "lines 61-113",
+        "licence": "mit",
+        "pin": "fluid-functionalism",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "strong-ease-out-ui",
+      "kind": "motion",
+      "register": "app",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["motion"]
+      },
+      "tokens": {
+        "motion": {
+          "ease-out": "cubic-bezier(0.23, 1, 0.32, 1)",
+          "ease-in-out": "cubic-bezier(0.77, 0, 0.175, 1)",
+          "ease-drawer": "cubic-bezier(0.32, 0.72, 0, 1)",
+          "press": "100 to 160ms, scale 0.97",
+          "tooltip": "125 to 200ms",
+          "dropdown": "150 to 250ms",
+          "modal": "200 to 500ms",
+          "ceiling": "300ms for interface motion",
+          "stagger": "30 to 80ms between items",
+          "spring": "duration 0.5s, bounce 0.1 to 0.3"
+        }
+      },
+      "words": "Interface motion that enters and leaves on a strong ease-out, moves on screen with an ease-in-out, and never eases in. Feedback is fast: a press in about a tenth of a second, menus under a quarter, everything in the interface under 300ms, and a drawer on its own longer curve. Things leave the way they came. A scale never starts from zero; it starts near 0.95 with a fade.",
+      "provenance": {
+        "repository": "https://github.com/emilkowalski/skills",
+        "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+        "path": "skills/animate/SKILL.md",
+        "at": "lines 102-193",
+        "licence": "mit",
+        "pin": "emilkowalski-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "duration-ratio-springs-native",
+      "kind": "motion",
+      "register": "app",
+      "platform": ["cross"],
+      "facets": {
+        "concern": ["motion"],
+        "framework": ["react-native"]
+      },
+      "tokens": {
+        "motion": {
+          "settle": "spring, duration 400ms, damping ratio 1",
+          "snap-back": "spring, duration 400ms, damping ratio 0.8, with the gesture's velocity",
+          "sheet": "spring, duration 300ms, damping ratio 0.8, with the gesture's velocity",
+          "hard-edge": "overshoot clamped",
+          "press": "100 to 150ms",
+          "toggle": "150 to 200ms",
+          "ease-out": "bezier(0.23, 1, 0.32, 1)",
+          "ease-sheet": "bezier(0.32, 0.72, 0, 1)",
+          "reduced": "the system's reduce-motion setting honoured on every spring"
+        }
+      },
+      "words": "Springs for a React Native app written as a duration and a damping ratio rather than mass and stiffness, so a designer can read them: a settle with no overshoot, a snap-back and a sheet with a little give that inherit the gesture's velocity, and clamping where the motion must not pass an edge. Screen transitions keep the platform's own timing. Every spring follows the system's reduce-motion setting.",
+      "provenance": {
+        "repository": "https://github.com/emilkowalski/skills",
+        "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+        "path": "skills/animate-expo/SKILL.md",
+        "at": "lines 110-199",
+        "licence": "mit",
+        "pin": "emilkowalski-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "micro-band-100-250",
+      "kind": "motion",
+      "register": "app",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["motion"]
+      },
+      "tokens": {
+        "motion": {
+          "band": "100 to 250ms for micro-interactions; past about 400ms a click response feels late",
+          "entrance": "cubic-bezier(0.16, 1, 0.3, 1)",
+          "overshoot": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+          "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "press": "scale 0.96",
+          "spring": "stiffness 400, damping 30; damping 12 for a visible bounce"
+        }
+      },
+      "words": "Small responses to a click or a hover live between 100 and 250ms, entering a little slower than they leave. Entrances use a long ease-out, moves a standard curve, and an overshoot curve is kept for the rare moment that should feel playful. A press shrinks by a few percent. It pairs with any app style that has no motion of its own.",
+      "provenance": {
+        "repository": "https://github.com/iart-ai/web-animation-skills",
+        "commit": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
+        "path": "skills/micro-interaction/SKILL.md",
+        "at": "lines 20-60",
+        "licence": "mit",
+        "pin": "web-animation-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "tiered-overlay-motion",
+      "kind": "motion",
+      "register": "app",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["motion"],
+        "component": ["modal", "dropdown"]
+      },
+      "tokens": {
+        "motion": {
+          "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "enter-fluid": "cubic-bezier(0.32, 0.72, 0, 1)",
+          "exit-quart": "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
+          "instant": "100ms",
+          "fast": "150ms",
+          "standard": "200ms",
+          "medium": "250ms",
+          "smooth-tier": "300ms",
+          "long": "350ms",
+          "exits": "20 to 33% faster than the entrance",
+          "scales": "overlay 0.95; dialog in 1.02, out 0.98; press 0.97; menu item 0.98"
+        }
+      },
+      "words": "Six duration tiers from 100 to 350ms assigned by component: menus and tooltip exits instant, overlays entering fast, dialogs and accordions standard, sheets entering smooth, and only navigation content allowed past 300ms. Exits run a fifth to a third faster than entrances and leave on an accelerating curve; entrances arrive on a fluid ease-out. Scales stay within a few percent of 1.",
+      "provenance": {
+        "repository": "https://github.com/PrototyperAI/prototyper-ui",
+        "commit": "eff1e06fa43a1fc3ba4e940b43b7ba0fa5b72339",
+        "path": "apps/docs/skill/animate-ui/SKILL.md",
+        "at": "lines 136-207",
+        "licence": "mit",
+        "pin": "prototyper-ui",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "hairline-shadow-border",
+      "kind": "material",
+      "register": "both",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["colour", "dark-mode"],
+        "component": ["card"]
+      },
+      "tokens": {
+        "components": {
+          "edge": "0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.06), 0 2px 4px 0 oklch(0 0 0 / 0.04)",
+          "edge-hover": "the same three layers at 0.08, 0.08 and 0.06",
+          "edge-dark": "0 0 0 1px oklch(1 0 0 / 0.08); hover 0.13",
+          "photo-edge": "1px at 10% black, inset by 1px; 10% white in dark",
+          "transition": "box-shadow 150ms ease-out"
+        },
+        "rounded": {
+          "rule": "outer radius equals inner radius plus padding plus border",
+          "example": "20px outside 8px padding around 12px"
+        }
+      },
+      "words": "Cards and inputs drawn with a hairline made of shadow instead of a border: a one-pixel ring at a few percent of black over two soft drops, so edges read crisply on any ground and deepen slightly on hover. A transparent border stays for forced-colours mode. Images get a one-pixel inset outline so light photos keep their edge. Nested corners stay concentric.",
+      "provenance": {
+        "repository": "https://github.com/jakubkrehel/skills",
+        "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+        "path": "skills/better-ui/surfaces.md",
+        "at": "lines 8-166",
+        "licence": "mit",
+        "pin": "jakubkrehel-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "five-role-scale",
+      "kind": "type",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["type"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontSize": "36px",
+            "lineHeight": 1.1,
+            "fontWeight": 600
+          },
+          "title": {
+            "fontSize": "24px",
+            "lineHeight": 1.2,
+            "fontWeight": 600
+          },
+          "heading": {
+            "fontSize": "18px",
+            "lineHeight": 1.3,
+            "fontWeight": 600
+          },
+          "body": {
+            "fontSize": "16px",
+            "lineHeight": 1.5,
+            "fontWeight": 400
+          },
+          "caption": {
+            "fontSize": "13px",
+            "lineHeight": 1.4,
+            "fontWeight": 400
+          },
+          "emphasis": "one weight step, 400 to 500"
+        }
+      },
+      "words": "Five roles and no more: display, title, heading, body and caption, with line height tightening as size grows and emphasis inside a role taking one weight step rather than a new size. It suits a product interface where hierarchy should come from a few clear steps. Pair it with any family that has a 500 and a 600.",
+      "provenance": {
+        "repository": "https://github.com/jakubkrehel/skills",
+        "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+        "path": "skills/better-typography/spacing-and-sizing.md",
+        "at": "lines 22-38",
+        "licence": "mit",
+        "pin": "jakubkrehel-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "layered-shadow-ring",
+      "kind": "material",
+      "register": "both",
+      "platform": ["web"],
+      "facets": {
+        "concern": ["colour", "dark-mode"]
+      },
+      "tokens": {
+        "components": {
+          "xs": "0 0 4px 0 rgba(0,0,0,.04)",
+          "md": "0 17.54px 23.39px rgba(0,0,0,.04), 0 9.4px 12.5px rgba(0,0,0,.03), 0 5.25px 7px rgba(0,0,0,.02), 0 2.79px 3.72px -2px rgba(0,0,0,.01), 0 1.16px 1.5px rgba(0,0,0,.01)",
+          "lg": "0 25px 50px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.04), 0 6px 12px rgba(0,0,0,.03), 0 3px 6px rgba(0,0,0,.02), 0 1.5px 3px rgba(0,0,0,.02)",
+          "xl": "0 40px 80px rgba(0,0,0,.06), 0 20px 40px rgba(0,0,0,.05), 0 10px 20px rgba(0,0,0,.04), 0 5px 10px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.02)",
+          "ring": "1px, black at 5% in light, white at 18% in dark"
+        }
+      },
+      "words": "Elevation built from five or six stacked shadows whose blur doubles and whose opacity falls at each layer, so a raised surface looks lit rather than outlined, finished with a one-pixel ring. In dark mode the ring turns to white at a higher opacity, because a faint dark ring disappears on a dark ground. Use one level per surface kind.",
+      "provenance": {
+        "repository": "https://github.com/flornkm/shadow-plugin",
+        "commit": "da27869da759283fa0e9dc1353449aa474b8bad0",
+        "path": "src/shadows.css",
+        "at": "lines 12-27",
+        "licence": "mit",
+        "pin": "shadow-plugin",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "devtools-semantic",
+      "kind": "app style",
+      "register": "app",
+      "platform": ["web", "desktop"],
+      "facets": {
+        "concern": ["colour", "type", "states"]
+      },
+      "tokens": {
+        "colors": {
+          "ink": "#262626",
+          "ink-2": "#525252",
+          "ground": "#ffffff",
+          "ground-2": "#f6f6f6",
+          "accent": "#49833e",
+          "dark-ink": "#e5e5e5",
+          "dark-ink-2": "#a3a3a3",
+          "dark-ground": "#111111",
+          "dark-ground-2": "#101010",
+          "alert-low": "#4d7c0f",
+          "alert-medium": "#b45309",
+          "alert-high": "#c2410c",
+          "alert-critical": "#b91c1c",
+          "dark-alert-low": "#bef264",
+          "dark-alert-medium": "#fcd34d",
+          "dark-alert-high": "#fdba74",
+          "dark-alert-critical": "#fca5a5"
+        },
+        "typography": {
+          "family": "a geometric sans with its mono; free stand-in DM Sans and DM Mono",
+          "micro": {
+            "fontSize": "10px",
+            "lineHeight": 1.4
+          },
+          "mini": {
+            "fontSize": "11px",
+            "lineHeight": 1.45
+          },
+          "compact": {
+            "fontSize": "12px",
+            "lineHeight": 1.5
+          }
+        },
+        "components": {
+          "layers": "navigation 30, dropdown 40, tooltip 45, toast 50, dialog backdrop 60, dialog 70, drawer backdrop 80, drawer 90; the order is the contract"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 15.13
+        },
+        {
+          "ink": "ink-2",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 7.81
+        },
+        {
+          "ink": "ink-2",
+          "ground": "ground-2",
+          "use": "text",
+          "ratio": 7.23
+        },
+        {
+          "ink": "accent",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 4.57
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 14.99
+        },
+        {
+          "ink": "dark-ink-2",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 7.49
+        },
+        {
+          "ink": "alert-low",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 4.99
+        },
+        {
+          "ink": "alert-medium",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 5.02
+        },
+        {
+          "ink": "alert-high",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 5.18
+        },
+        {
+          "ink": "alert-critical",
+          "ground": "ground",
+          "use": "text",
+          "ratio": 6.47
+        },
+        {
+          "ink": "dark-alert-low",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 14.45
+        },
+        {
+          "ink": "dark-alert-medium",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 13.1
+        },
+        {
+          "ink": "dark-alert-high",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 11.2
+        },
+        {
+          "ink": "dark-alert-critical",
+          "ground": "dark-ground",
+          "use": "text",
+          "ratio": 9.95
+        }
+      ],
+      "words": "A neutral developer-tool style: grey text roles on white or near-black, translucent grey for hover and active, a muted green as the one brand colour and a five-step severity ramp from neutral through low, medium and high to critical, each lighter in dark mode. Small text gets its own three steps for dense panels. Layers are named so overlays stack in one agreed order.",
+      "provenance": {
+        "repository": "https://github.com/antfu/design",
+        "commit": "2df66b0830c6e51f0087caeee6ee3de401172199",
+        "path": "skills/antfu-design/references/core-tokens.md",
+        "at": "lines 15-124",
+        "licence": "mit",
+        "pin": "antfu-design",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "stone-one-accent",
+      "kind": "palette",
+      "register": "both",
+      "platform": [],
+      "facets": {
+        "concern": ["colour", "dark-mode"]
+      },
+      "tokens": {
+        "colors": {
+          "page": "#fafaf9",
+          "card": "#f5f5f4",
+          "subtle": "#e7e5e4",
+          "ink": "#1c1917",
+          "ink-70": "#5f5d5b",
+          "accent": "#c8102e",
+          "accent-alternate": "#003b8e",
+          "dark-page": "#0c0a09",
+          "dark-card": "#1c1917",
+          "dark-ink": "#fafaf9",
+          "dark-ink-70": "#b3b2b1"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ink",
+          "ground": "page",
+          "use": "text",
+          "ratio": 16.74
+        },
+        {
+          "ink": "ink",
+          "ground": "card",
+          "use": "text",
+          "ratio": 16.03
+        },
+        {
+          "ink": "ink-70",
+          "ground": "page",
+          "use": "text",
+          "ratio": 6.28
+        },
+        {
+          "ink": "ink-70",
+          "ground": "card",
+          "use": "text",
+          "ratio": 6.01
+        },
+        {
+          "ink": "accent",
+          "ground": "page",
+          "use": "text",
+          "ratio": 5.63
+        },
+        {
+          "ink": "accent-alternate",
+          "ground": "page",
+          "use": "text",
+          "ratio": 9.97
+        },
+        {
+          "ink": "page",
+          "ground": "accent",
+          "use": "text",
+          "ratio": 5.63
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-page",
+          "use": "text",
+          "ratio": 18.92
+        },
+        {
+          "ink": "dark-ink",
+          "ground": "dark-card",
+          "use": "text",
+          "ratio": 16.74
+        },
+        {
+          "ink": "dark-ink-70",
+          "ground": "dark-page",
+          "use": "text",
+          "ratio": 9.33
+        }
+      ],
+      "words": "Warm stone greys from near-white to near-black with one strong accent, a Swiss red by default, used sparingly for a rule, a link or a single action. Text steps down by opacity of one ink rather than by new greys. The source allows steps at 40% and 20% opacity; those fail the contrast floor for text and are left out here, kept only for rules and disabled states.",
+      "provenance": {
+        "repository": "https://github.com/zeke/swiss-design-skill",
+        "commit": "285009f3dc4ba311f59bb757973274de2c9446c3",
+        "path": "swiss-design/SKILL.md",
+        "at": "lines 84-126",
+        "licence": "mit",
+        "pin": "swiss-design",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "light-plex-display",
+      "kind": "type",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["type"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontFamily": "a plex-class grotesk; free stand-in IBM Plex Sans",
+            "fontSize": "clamp(2rem, 6vw, 5rem)",
+            "lineHeight": 1,
+            "fontWeight": 300,
+            "letterSpacing": "-0.02em"
+          },
+          "h1": {
+            "fontSize": "48px",
+            "fontWeight": 300
+          },
+          "h2": {
+            "fontSize": "30px",
+            "fontWeight": 300
+          },
+          "h3": {
+            "fontSize": "20px",
+            "fontWeight": 400
+          },
+          "body": {
+            "fontSize": "16px"
+          },
+          "measure": "60ch",
+          "emphasis": "500, never 700"
+        }
+      },
+      "words": "Large display type at a light weight, set solid and tracked in a little, with headings that stay light and body text on a 60-character measure. Emphasis is medium, never bold. It reads as modern and exact, and needs a family with a true light weight; a system fallback without one turns it heavy.",
+      "provenance": {
+        "repository": "https://github.com/zeke/swiss-design-skill",
+        "commit": "285009f3dc4ba311f59bb757973274de2c9446c3",
+        "path": "swiss-design/SKILL.md",
+        "at": "lines 27-64",
+        "licence": "mit",
+        "pin": "swiss-design",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "eight-four-grid",
+      "kind": "shape",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["layout"]
+      },
+      "sketch": [
+        "grid: 12 columns on an 8px unit, gaps 16 to 32px, max width 1024 to 1152px, side padding 16 to 32px",
+        "row 1: columns 8/4; slot claim | slot list (supporting facts)",
+        "row 2: columns 12; slot proof-image",
+        "row 3: columns 8/4; slot heading+lead | slot action",
+        "sections spaced 64, 96 or 128px"
+      ],
+      "words": "A strict twelve-column page on an 8px unit where content takes eight columns and supporting matter takes four, sections separated by large, regular gaps. The asymmetry carries the hierarchy without boxes or colour. Pitfall: at 768 the four-column side drops below the eight; give it an order that still reads.",
+      "provenance": {
+        "repository": "https://github.com/zeke/swiss-design-skill",
+        "commit": "285009f3dc4ba311f59bb757973274de2c9446c3",
+        "path": "swiss-design/SKILL.md",
+        "at": "lines 133-155",
+        "licence": "mit",
+        "pin": "swiss-design",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "numeral-backed-claim",
+      "kind": "hero",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "component": ["hero"]
+      },
+      "sketch": [
+        "row 1 (min full screen, content centred vertically): columns 12; slot label (small caps) above a short accent rule above slot claim (max 3xl) above slot lead (52ch) above slot action (two buttons, solid and outlined)",
+        "background: a very large section numeral at 5% ink, top right, decorative and hidden from assistive technology"
+      ],
+      "words": "A text-only first screen: a small spaced label, a short accent rule, a light headline and a lead on a narrow measure, then a solid and an outlined button, with a huge pale section numeral behind at the top right. It gives a sober page a single graphic move. The numeral is decoration and must not compete with the headline's contrast.",
+      "provenance": {
+        "repository": "https://github.com/zeke/swiss-design-skill",
+        "commit": "285009f3dc4ba311f59bb757973274de2c9446c3",
+        "path": "swiss-design/references/components.md",
+        "at": "lines 277-305",
+        "licence": "mit",
+        "pin": "swiss-design",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "near-black-cream-orange",
+      "kind": "palette",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["colour"]
+      },
+      "tokens": {
+        "colors": {
+          "ground-dark": "#111310",
+          "ground-light": "#f2f0e7",
+          "orange": "#ff4f00",
+          "grey": "#a6aaa3",
+          "ground-green": "#17231d"
+        },
+        "rounded": {
+          "all": "0 to 4px"
+        },
+        "motion": {
+          "controls": "120 to 240ms",
+          "reveals": "300 to 600ms"
+        }
+      },
+      "contrast": [
+        {
+          "ink": "ground-light",
+          "ground": "ground-dark",
+          "use": "text",
+          "ratio": 16.36
+        },
+        {
+          "ink": "ground-dark",
+          "ground": "ground-light",
+          "use": "text",
+          "ratio": 16.36
+        },
+        {
+          "ink": "grey",
+          "ground": "ground-dark",
+          "use": "text",
+          "ratio": 7.92
+        },
+        {
+          "ink": "orange",
+          "ground": "ground-dark",
+          "use": "text",
+          "ratio": 5.67
+        },
+        {
+          "ink": "ground-dark",
+          "ground": "orange",
+          "use": "text",
+          "ratio": 5.67
+        },
+        {
+          "ink": "ground-light",
+          "ground": "ground-green",
+          "use": "text",
+          "ratio": 14.21
+        }
+      ],
+      "words": "An industrial palette with two grounds, a near-black and a warm cream, a mid grey for secondary text on the dark ground, a very dark green as a third ground, and one hot orange held under about a sixth of any screen. Corners are square or nearly so, and controls answer quickly while sections reveal slowly. Pitfall: grey and orange on the cream ground fail the contrast floor for text and are left out; orange carries text only on the dark ground, or sits as a fill under dark text.",
+      "provenance": {
+        "repository": "https://github.com/elithrar/dotfiles",
+        "commit": "eb4f994e0c1ebe1199f032f4e5fe1633d1b8067c",
+        "path": ".agents/skills/neo-industrial-design/references/visual-system.md",
+        "at": "lines 18-97",
+        "licence": "mit",
+        "pin": "elithrar-dotfiles",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "measured-fluid-site-scale",
+      "kind": "type",
+      "register": "site",
+      "platform": [],
+      "facets": {
+        "concern": ["type", "layout"]
+      },
+      "tokens": {
+        "typography": {
+          "display": {
+            "fontSize": "clamp(3rem, 1rem + 9vw, 9rem)",
+            "lineHeight": 1,
+            "letterSpacing": "-0.01em"
+          },
+          "head": {
+            "fontSize": "32 to 64px"
+          },
+          "lead": {
+            "fontSize": "20 to 26px"
+          },
+          "body": {
+            "fontSize": "17 to 19px"
+          },
+          "small": {
+            "fontSize": "13 to 14px"
+          },
+          "ratio": "headline about 4.3 times body; the best-scored sites near 4.7"
+        },
+        "spacing": {
+          "margin": "clamp(1rem, 2.2vw, 2rem)",
+          "gutter": "clamp(0.75rem, 1.4vw, 1.5rem)",
+          "section": "120 to 220px on desktop, 72 to 112px on a phone"
+        }
+      },
+      "words": "A site scale drawn from measurement rather than taste: the source read 202 sites at 1440 and 390 and found the first headline near 72px on desktop and 40px on a phone, about four times the body size, with generous section gaps. This entry turns that into a fluid display size, body text a little above 16px, and margins that grow with the screen.",
+      "provenance": {
+        "repository": "https://github.com/filipwojda/regards-skill",
+        "commit": "61b565be93ef436330967e4d06fcf08f55090210",
+        "path": "skills/regards-art-direction/references/type.md",
+        "at": "lines 19-53",
+        "licence": "mit",
+        "pin": "regards-skill",
+        "basis": "measured by the source on 202 sites at 1440 by 900 and 390 by 844, sites not named"
+      }
+    },
+    {
+      "id": "sectioned-tab-sidebar",
+      "kind": "shell",
+      "register": "app",
+      "platform": ["ios"],
+      "facets": {
+        "component": ["navigation", "tabs"],
+        "framework": ["swiftui"]
+      },
+      "sketch": [
+        "compact width: tab bar at the bottom; each tab its own navigation stack and sheets",
+        "regular width: the same tabs as a sidebar with section headers; sections that live only in the sidebar marked so",
+        "one tab may be pinned; a compose tab presents a sheet instead of switching"
+      ],
+      "words": "One tab model that shows as a bottom tab bar on a phone and as a sectioned sidebar on a tablet or desktop, with each tab owning its own navigation stack. Some sections appear only in the sidebar, and a compose tab opens a sheet rather than switching. It keeps one structure across sizes instead of two shells.",
+      "provenance": {
+        "repository": "https://github.com/dimillian/skills",
+        "commit": "05ba982bfeb0d77d3c97d4542b0ee15034d05f84",
+        "path": "swiftui-ui-patterns/references/tabview.md",
+        "at": "lines 27-101",
+        "licence": "mit",
+        "pin": "dimillian-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "pinned-input-bar",
+      "kind": "screen pattern",
+      "register": "app",
+      "platform": ["ios"],
+      "facets": {
+        "component": ["form", "list"],
+        "framework": ["swiftui"]
+      },
+      "sketch": [
+        "row 1 (fills the screen): slot list (messages or items, scrolling)",
+        "row 2 (in the bottom safe area, outside the scroll): slot form (the input bar); the keyboard dismisses as the list is dragged"
+      ],
+      "words": "A chat or capture screen whose input bar sits in the bottom safe area outside the scrolling list, so it rides above the keyboard and never scrolls away. Dragging the list dismisses the keyboard. It is the shape of any screen whose main act is typing into a stream.",
+      "provenance": {
+        "repository": "https://github.com/dimillian/skills",
+        "commit": "05ba982bfeb0d77d3c97d4542b0ee15034d05f84",
+        "path": "swiftui-ui-patterns/references/input-toolbar.md",
+        "at": "lines 9-36",
+        "licence": "mit",
+        "pin": "dimillian-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "tabs-become-sidebar",
+      "kind": "shell",
+      "register": "app",
+      "platform": ["cross"],
+      "facets": {
+        "component": ["navigation", "tabs"],
+        "framework": ["react-native"]
+      },
+      "sketch": [
+        "width under 768: tabs at the bottom",
+        "width 768 and over: the same tabs on the left as a sidebar, labels under icons for a compact rail",
+        "drawer alternative: permanent at 768 and over, over the content below"
+      ],
+      "words": "A React Native shell that keeps one set of tabs and moves them from the bottom to the left at 768 wide, either as a full sidebar or a compact icon rail with labels beneath. A drawer can follow the same rule, permanent on wide screens and over the content on narrow ones. It suits an app that ships to phones and tablets from one codebase.",
+      "provenance": {
+        "repository": "https://github.com/callstackincubator/agent-skills",
+        "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+        "path": "skills/react-navigation/references/bottom-tabs.md",
+        "at": "lines 296-348",
+        "licence": "mit",
+        "pin": "callstack-agent-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    },
+    {
+      "id": "standalone-web-root",
+      "kind": "shell",
+      "register": "app",
+      "platform": ["web", "ios"],
+      "facets": {
+        "component": ["navigation"],
+        "concern": ["layout"]
+      },
+      "sketch": [
+        "root: full height, its own scroll container with contained overscroll",
+        "row 1 (sticky): header 3.5rem plus the top safe-area inset, padded by that inset",
+        "row 2: slot list (the scrolling content)",
+        "row 3 (fixed): bottom navigation padded by the bottom safe-area inset plus 0.5rem"
+      ],
+      "words": "The frame of a web app added to the home screen and run without browser chrome: the page draws under a translucent status bar, the safe-area insets are mirrored into variables once, the header grows by the top inset and the bottom navigation by the bottom one, and the root element owns the scroll so overscroll does not drag the whole app. The top inset may be zero; never assume it.",
+      "provenance": {
+        "repository": "https://github.com/joe-bell/skills",
+        "commit": "6e79fd26ab3849f214b9a9ba2ac7cd6b6223e98a",
+        "path": "skills/apple-web-app/references/layout-and-touch.md",
+        "at": "lines 9-88",
+        "licence": "mit",
+        "pin": "joe-bell-skills",
+        "basis": "authored values in the source, not measured on a named site"
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-11-anatomy-sources-in-the-ledger",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-11-invariants-floor-left-out-named",
+    "sha256": "37c2ddb3e186d9e2a5b742d8321dbc0ce2487fe4187f0f8af4e13cc4a9b1b392"
+  },
+  "subject": "skill:anatomy",
+  "recipe": "1c374935ca6e9810f328a93066f3d270882d00f606a25a0e762eb8f4f3656f50",
+  "result": "47fcb8f4121cb8d1a29dd41bbaecc3232b7d246976c0e649f7858db1e241c296",
+  "pages": [
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "A figure's build script and model kept in its ledger folder",
+  "reason": "The landing passage keeps the figure's page alone in the visual home and copies its build script and model module into .greenline/ledger/<id>/sources/<slug>/, which the hooks admit, so the page and the guard agree (j201t-visuals finding 5, j201t-linear-visuals finding 7).",
+  "authorisedBy": {
+    "date": "2026-11-11",
+    "words": "J-227 S1, on the operator's words of 2026-11-10 on the fix round's layout, \"go with your recommendations for each\", and of 2026-11-10, under which a job is one record, one worker, one verdict reviewer on the whole diff and one fix cycle, and the register's row of 2026-11-05, \"The keeper over the oracle\": a figure's sources are record, copied into the change's ledger folder, since the keep takes one picture file and the hooks refuse any other file in the change's folder of the home"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': anatomy enters as a copy, a default habit flagged extra by the asset-tree rule until J-110 S4; the kit and the scripts taken, the tests, evals/ and agents/openai.yaml left out; the worked examples left out of the snapshot, since the refresh holds a directory by its last name and the corpus and the public export carry every snapshot byte; publish.mjs and session.mjs left out; figures only where the owner places them until J-110 S1; its block row is diagram-design's, shared, within regular's ceiling, its own row waiting for J-110 S4, which adds the visual rows under the raised ceiling; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-144's finalise words, the operator's words of 2026-10-27: the new agent reply upgrade should come before the codex qa runs and linear run and release; approved; the card Finalise as drafted; and of 2026-10-24: lock in all the jobs; the pointer-before-use reading of J-140 S4 routed to it: a skill's reference page is pointed at where the method that needs it starts"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-149's finalise words, the operator's words of 2026-10-28: all the greenline and workshop jobs should be done first in order, then we run the qas fresh on them, some fix loops and then release; we have to finish all implementation asap, fast route; and the card: Yes, go parallel, QA fresh at the end"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"okay we will do this as you laid out\", on the design laid before them, a computed situation line for the proposal widened to the skills a change owes, and the register's row of that day, \"The keeper over the oracle\": a skill's invocation cases are trigger rows carried as data, widened by rows and bounded by the mode's reading budget, never by sentences in the block"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "J-175 S1, on the operator's lock words of 2026-11-05, \"okay then please lock on both these jobs\", over the design they accepted that day, \"okay we will do this as you laid out\", and the register's rows of that day, \"The keeper over the oracle\" and \"The seven cuts\": the conduct the 0.2.0 series on Codex found missing enters the skills as words with the conduct row or scenario that tests it, and the words the mechanisms now hold leave"
+    },
+    {
+      "date": "2026-11-05",
+      "words": "The operator's words of 2026-11-05, \"I saw the linear run inspect and realised very less skills were invoked and I have a feeling that more could have been selected and used; we need widening of invocation cases and make it a bit loose\", and \"okay then please lock on both these jobs\": every start and habit carries its invocation cases as trigger rows, loosened by mode within the mode's reading budget, its description naming the same cases"
+    },
+    {
+      "date": "2026-11-06",
+      "words": "The operator's card of 2026-11-06, \"Finalise at 300 words a front (Recommended)\", on the sixth of the seven cuts of the card of 2026-11-05, \"Cut all seven (Recommended)\": the block under 1,500 words and a skill's front under 300; each front keeps the sentences its step reads first, and every other sentence moves unchanged, in its order, to the page the front points to"
+    },
+    {
+      "date": "2026-11-08",
+      "words": "J-204 S1, on the operator's words of 2026-11-08, \"you have my go, see this through release of 0.2.0\" and \"draft it the way you recommend and we fold this within 0.2.0 as well\", fast with the review waived, under the register's row of 2026-11-08, \"One offer per change at the caps\": the picture decision a table in show-me's method that the block points at, one offer of a kept picture per change at the caps in one line the turn's end counts, never a lost picture's remake, and a brief before every durable picture, read into its manifest and shown on its card"
+    },
+    {
+      "date": "2026-11-11",
+      "words": "J-227 S1, on the operator's words of 2026-11-10 on the fix round's layout, \"go with your recommendations for each\", and of 2026-11-10, under which a job is one record, one worker, one verdict reviewer on the whole diff and one fix cycle, and the register's row of 2026-11-05, \"The keeper over the oracle\": a figure's sources are record, copied into the change's ledger folder, since the keep takes one picture file and the hooks refuse any other file in the change's folder of the home"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "anatomy",
+        "segments": 2845,
+        "taken": 2811,
+        "exact": 2809,
+        "retention": 0.9992885094272501,
+        "coverage": 0.9880492091388401,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 764
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "commit": "462b78424e14ba6895a717733e1d57191dd9912f",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "37ac151e3959a8121fbab61b1f66fb5487d66feb6c6d5c0cc9f5e72b390bcb29"
+    },
+    {
+      "path": "interactive-hit-areas/SKILL.md",
+      "sha256": "4c50140e2f0148e54fffa61ef1c7e8dac5cd480642f1eb7baaac0c3f367d5ac5"
+    },
+    {
+      "path": "paper-to-code-components/SKILL.md",
+      "sha256": "ee07e8ca1a1b84a1bdd9b97c326f67d67a0aa85735c70305775ef48fbb8de93d"
+    },
+    {
+      "path": "reconcile-paper-sync/SKILL.md",
+      "sha256": "268da514450dc76a8205fa4dac24362dc84eae3921dfd2b8f7b19ebb805d4e82"
+    },
+    {
+      "path": "tailwind-token-consolidation/SKILL.md",
+      "sha256": "7c0f4321474c533fb98d42ad1347eed8ebd824e11f5c535a63bcf458a062a242"
+    }
+  ],
+  "entries": [
+    {
+      "name": "interactive-hit-areas",
+      "path": "skills/interactive-hit-areas"
+    },
+    {
+      "name": "tailwind-token-consolidation",
+      "path": "skills/tailwind-token-consolidation"
+    },
+    {
+      "name": "reconcile-paper-sync",
+      "path": "skills/reconcile-paper-sync"
+    },
+    {
+      "name": "paper-to-code-components",
+      "path": "skills/paper-to-code-components"
+    }
+  ]
+}

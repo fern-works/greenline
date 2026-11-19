@@ -1,3 +1,5 @@
+import type { CorpusSource, WordsPhrase, WordsSource } from "../core/corpus.ts";
+import type { TriggerRow } from "../core/habits-owed.ts";
 import { z } from "zod";
 import { sha256Hex } from "../commons/hash.ts";
 import { err, ok, type Result } from "../commons/result.ts";
@@ -16,6 +18,7 @@ import {
   type Edit,
   type Ending,
   type FrontMatterField,
+  type Keeper,
   type Passage,
   type ProseFile,
   type Recipe,
@@ -536,6 +539,8 @@ export function draftRecipe(input: DraftInput): Result<Drafted, RecipeRefused> {
     credit: input.stub
       ? { source, file: `${input.upstream}/SKILL.md`, ruling: FILL_MARKER }
       : undefined,
+    keepers: [],
+    promises: FILL_MARKER,
   };
   return ok({ recipe, todos: todoCount(recipe) });
 }
@@ -698,6 +703,8 @@ export function draftNative(input: NativeInput): Result<NativeDrafted, RecipeRef
     copies,
     drops: [],
     credit: undefined,
+    keepers: [],
+    promises: FILL_MARKER,
   };
   return ok({ recipe, todos: todoCount(recipe), normalized });
 }
@@ -756,7 +763,8 @@ function* accountsOf(recipe: Recipe): Generator<Account> {
 }
 
 function todoCount(recipe: Recipe): number {
-  let count = recipe.credit?.ruling === FILL_MARKER ? 1 : 0;
+  let count =
+    (recipe.credit?.ruling === FILL_MARKER ? 1 : 0) + (recipe.promises === FILL_MARKER ? 1 : 0);
   for (const entry of recipe.notStub ?? []) count += entry.ruling === FILL_MARKER ? 1 : 0;
   for (const account of accountsOf(recipe))
     count += (account.reason === FILL_MARKER ? 1 : 0) + (account.ruling === FILL_MARKER ? 1 : 0);
@@ -801,6 +809,67 @@ function printed(value: Printed, indent: string, head: number, tail: number): st
     .join(",\n")}\n${indent}}`;
 }
 
+/** A phrase of a words source as the manifest prints it, its fields in the schema's order. */
+function phrasePrinted(phrase: WordsPhrase): Printed {
+  return {
+    fields: [
+      ["id", scalar(phrase.id)],
+      ["text", scalar(phrase.text)],
+      ["date", scalar(phrase.date)],
+      ["where", phrase.where === undefined ? undefined : { strings: phrase.where }],
+      [
+        "dismissed",
+        phrase.dismissed === undefined
+          ? undefined
+          : { fields: [["failure", scalar(phrase.dismissed.failure)]] },
+      ],
+      [
+        "keeper",
+        phrase.keeper === undefined
+          ? undefined
+          : {
+              fields: [
+                ["kind", scalar(phrase.keeper.kind)],
+                ["where", scalar(phrase.keeper.where)],
+              ],
+            },
+      ],
+    ],
+  };
+}
+
+/**
+ * A source of the manifest in the form the formatter leaves as it is, as a
+ * recipe is written: two spaces, every object open, a list of strings on one
+ * line when it fits; its fields in the schema's order.
+ * @param source the source, pinned or of words
+ * @param indent the indentation of the line the source opens on
+ * @returns its JSON text from its opening brace, with no indentation before it
+ */
+export function sourceText(source: CorpusSource | WordsSource, indent: string): string {
+  const value: Printed =
+    "kind" in source
+      ? {
+          fields: [
+            ["name", scalar(source.name)],
+            ["kind", scalar(source.kind)],
+            ["author", scalar(source.author)],
+            ["phrases", { objects: source.phrases.map(phrasePrinted) }],
+          ],
+        }
+      : {
+          fields: [
+            ["name", scalar(source.name)],
+            ["repo", scalar(source.repo)],
+            ["commit", scalar(source.commit)],
+            ["snapshot", scalar(source.snapshot)],
+            ["license", scalar(source.license)],
+            ["holder", source.holder === undefined ? undefined : scalar(source.holder)],
+          ],
+        };
+  return printed(value, indent, indent.length, 0);
+}
+
 /** The accounts whose kind a recipe's text holds as the fill marker though their reason is stated. */
 type Unread = ReadonlySet<Account>;
 
@@ -835,6 +904,21 @@ function passageValue(item: Passage, unread: Unread): Printed {
         ["text", scalar(item.text)],
         ...accountFields(item, unread),
         ["credits", item.credits.length === 0 ? undefined : { strings: item.credits }],
+        ["phrase", item.phrase === undefined ? undefined : scalar(item.phrase)],
+        [
+          "edits",
+          item.edits === undefined
+            ? undefined
+            : {
+                objects: item.edits.map((edit) => ({
+                  fields: [
+                    ["find", scalar(edit.find)],
+                    ["replace", scalar(edit.replace)],
+                    ["reason", scalar(edit.reason)],
+                  ],
+                })),
+              },
+        ],
         join,
       ],
     };
@@ -860,6 +944,45 @@ function passageValue(item: Passage, unread: Unread): Printed {
             },
       ],
       join,
+    ],
+  };
+}
+
+/** A keeper as the recipe file prints it, its fields in the order the recipes page gives them. */
+function keeperValue(keeper: Keeper): Printed {
+  const optional = (value: string | undefined) => (value === undefined ? undefined : scalar(value));
+  return {
+    fields: [
+      ["promise", scalar(keeper.promise)],
+      ["page", scalar(keeper.page)],
+      ["kind", scalar(keeper.kind)],
+      ["where", optional(keeper.where)],
+      ["cost", optional(keeper.cost)],
+      ["irreversible", optional(keeper.irreversible)],
+      ["oracle", optional(keeper.oracle)],
+      ["owed", keeper.owed === true ? { scalar: "true" } : undefined],
+      ["warrants", optional(keeper.warrants)],
+      ["need", optional(keeper.need)],
+      ["reason", optional(keeper.reason)],
+    ],
+  };
+}
+
+/**
+ * One trigger row as the recipe writes it (J-176 S1): its conditions, its
+ * weight and its read, an absent condition left out.
+ * @param row the row
+ * @returns its printed value
+ */
+function triggerValue(row: TriggerRow): Printed {
+  return {
+    fields: [
+      ["words", row.words === undefined ? undefined : { strings: row.words }],
+      ["files", row.files === undefined ? undefined : { strings: row.files }],
+      ["steps", row.steps === undefined ? undefined : { strings: row.steps }],
+      ["modes", row.modes === undefined ? undefined : { strings: row.modes }],
+      ["weight", scalar(row.weight)],
+      ["read", scalar(row.read)],
     ],
   };
 }
@@ -937,6 +1060,8 @@ export function recipeText(recipe: Recipe, unread: Unread = new Set()): string {
               ["file", scalar(drop.file)],
               ["segment", scalar(drop.segment)],
               ...accountFields(drop, unread),
+              ["verdict", drop.verdict === undefined ? undefined : scalar(drop.verdict)],
+              ["failure", drop.failure === undefined ? undefined : scalar(drop.failure)],
               [
                 "replacedBy",
                 drop.replacedBy === undefined
@@ -978,6 +1103,13 @@ export function recipeText(recipe: Recipe, unread: Unread = new Set()): string {
               })),
             },
       ],
+      ["keepers", { objects: recipe.keepers.map(keeperValue) }],
+      ["promises", recipe.promises === undefined ? undefined : scalar(recipe.promises)],
+      [
+        "triggers",
+        recipe.triggers === undefined ? undefined : { objects: recipe.triggers.map(triggerValue) },
+      ],
+      ["wholeRead", recipe.wholeRead === undefined ? undefined : { strings: recipe.wholeRead }],
     ],
   };
   return `${printed(value, "", 0, 0)}\n`;

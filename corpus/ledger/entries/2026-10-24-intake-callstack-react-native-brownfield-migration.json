@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-callstack-react-native-brownfield-migration",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-callstack-upgrading-react-native",
+    "sha256": "9cf3b0f3d629444f350a001aab9e2967fa4268c0dac5ed54a261149bbdbd2985"
+  },
+  "source": {
+    "repository": "https://github.com/callstackincubator/agent-skills",
+    "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+    "path": "skills/react-native-brownfield-migration"
+  },
+  "pin": "callstack-agent-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Engineering outside the interface, declined",
+  "reason": "It is engineering and CI work outside the interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': callstack's engineering skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': callstack's engineering skills are declined"
+    }
+  ]
+}

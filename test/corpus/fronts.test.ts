@@ -3,7 +3,7 @@ import { copyFileSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { frontFindings, hasReferences } from "../../src/corpus/fronts.ts";
+import { FRONT_WORDS, frontFindings, frontWords, hasReferences } from "../../src/corpus/fronts.ts";
 import { frontsVerb } from "../../src/corpus/instrument.ts";
 import { checkRecipe, parseRecipe } from "../../src/corpus/recipe.ts";
 import {
@@ -100,6 +100,33 @@ describe("J-93 S2 the front rule", () => {
       { path: "SKILL.md", line: 3, what: "a workspace path", text: ".greenline/map/." },
       { path: "SKILL.md", line: 16, what: "a greenline command's flag", text: "`--change <id>`" },
     ]);
+  });
+
+  it("J-181 S1 finds a SKILL.md of 300 words, front matter and Handoff counted, on the line of its 300th word, and none of 299", () => {
+    // The fixture's SKILL.md reads 141 words, 149 more and a Handoff of 10: its last word is the 300th.
+    const handoff = written("## Handoff\n\nProduces: the check section of the record\nNext: none");
+    const recipe = fixtureRecipe();
+    recipe.files[0]?.passages.push(
+      written(Array.from({ length: 149 }, (_, index) => `word${String(index)}`).join(" ")),
+      handoff,
+    );
+    expect(frontFindings(checked(recipe))).toEqual([
+      {
+        path: "SKILL.md",
+        line: 21,
+        what: `a front of ${String(FRONT_WORDS)} words or more`,
+        text: "300 words by wordsOf",
+      },
+    ]);
+    const under = fixtureRecipe();
+    under.files[0]?.passages.push(
+      written(Array.from({ length: 148 }, (_, index) => `word${String(index)}`).join(" ")),
+      handoff,
+    );
+    expect(frontFindings(checked(under))).toEqual([]);
+    // The number lives in one place, and the count is the corpus's words.
+    expect(FRONT_WORDS).toBe(300);
+    expect(frontWords("A front's words: `wordsOf` counts them, 2 by 2.")).toBe(9);
   });
 
   it("tells whether a recipe names a references page", () => {

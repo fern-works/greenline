@@ -1,0 +1,51 @@
+{
+  "commit": "2f9be3206855bcb2d1d0af262c8bae25cba6658d",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "54c405ef24e71634b73c994133d028e7a96d1906f42615366296d6583dcaba8f"
+    },
+    {
+      "path": "commands/design-deslop.md",
+      "sha256": "46e8a7ead38c6ec08093fc8f734d742088e9f7b2225dc4ee938ddc930be316af"
+    },
+    {
+      "path": "commands/design-review.md",
+      "sha256": "dfa72fb496107a20174f45b1e7b3651c5214b4bd61276ba4b9d723a6e1a5362f"
+    },
+    {
+      "path": "interface-design/SKILL.md",
+      "sha256": "720b31a31276e899fbe3006a33cbfeaceb77a73ba4c27b80d29afd38c8b7b208"
+    },
+    {
+      "path": "interface-design/agents/openai.yaml",
+      "sha256": "752d0810d593b5cc88b34ea8e0c101b50d0ec1c4c8091be369544f73f3a2ea2e"
+    },
+    {
+      "path": "reference/examples/system-precision.md",
+      "sha256": "9fcf8381011d749c8d4d08c8f2779db32a3395d7132ff7e4877ebbd9632bda2f"
+    },
+    {
+      "path": "reference/examples/system-warmth.md",
+      "sha256": "c0c38c3075fa8b0bcbeb2d72098219d348825b6cabc3d8723b3d4c7c6c392fd5"
+    },
+    {
+      "path": "reference/system-template.md",
+      "sha256": "d76b413d43abb064746c3e16ced8b56046f7e73da14b2064db7377fee63d4856"
+    }
+  ],
+  "entries": [
+    {
+      "name": "interface-design",
+      "path": ".claude/skills/interface-design"
+    },
+    {
+      "name": "commands",
+      "path": ".claude/commands"
+    },
+    {
+      "name": "reference",
+      "path": "reference"
+    }
+  ]
+}

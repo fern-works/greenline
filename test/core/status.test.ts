@@ -59,7 +59,38 @@ const QUICK_BODY = [
   "## close",
   "Nothing to carry.",
 ];
-const quickDone = ["mode: quick", "choice: accepted", 'why: "a typo"', "state: done"];
+/** The lines a done quick record owes (J-176 S1), the agent's words each. */
+const QUICK_OWED = [
+  'yes: "Yes."',
+  // The floors line, owed from the open in every mode (J-226 S1).
+  "floors: none",
+  "ground: branch",
+  'agent: "claude-code/opus"',
+  "skills: [build]",
+];
+/** The lines a done careful or regular record owes (J-176 S1), its cost and its starts among them. */
+const carefulOwed = (starts: readonly string[]): readonly string[] => [
+  ...QUICK_OWED,
+  `agents: ${String(starts.length + 1)}`,
+  "rounds: 0",
+  `starts: [${starts.map((start) => `"${start}"`).join(", ")}]`,
+  // A done careful record quotes the owner's words that confirmed its frame (J-223 S1).
+  'confirmed: "Yes, that is it."',
+];
+/** A careful frame whole by the lint (J-223 S1): every subject node closed with a reason, and its restatement. */
+const CAREFUL_FRAME = [
+  "x",
+  "- closed [purpose, scope, adjacent, journey, surface, data]: the fixture's request settles each",
+  "- closed [behaviour, security, performance, operations, verification, constraints]: the same",
+];
+const quickDone = [
+  "mode: quick",
+  "choice: accepted",
+  'why: "a typo"',
+  "state: done",
+  'outcome: "The change landed."',
+  ...QUICK_OWED,
+];
 const quickOpen = ["mode: quick", "choice: accepted", 'why: "a typo"', "state: open"];
 
 function recordText(front: readonly string[], body: readonly string[]): string {
@@ -118,6 +149,7 @@ function folder(
     reports,
     briefs,
     hookRuns: [],
+    loads: [],
     checks: runs.map((facts, index) => ({ file: `checks/${index}.json`, parsed: ok(facts) })),
   });
 }
@@ -294,6 +326,7 @@ describe("the changes view: what it reads", () => {
       reports: [],
       briefs: [],
       hookRuns: [],
+      loads: [],
       checks: [
         {
           file: "checks/x.json",
@@ -477,7 +510,13 @@ describe("the changes view: findings", () => {
       change("2026-10-01-renamed-step", quickDone, QUICK_BODY, old, later),
       change(
         "2026-10-02-removed-mode",
-        ["mode: careful", "choice: owner", 'why: "w"', "state: done"],
+        [
+          "mode: careful",
+          "choice: owner",
+          'why: "w"',
+          "state: done",
+          'outcome: "The change landed."',
+        ],
         [],
         old,
         later,
@@ -541,29 +580,33 @@ describe("the changes view: findings", () => {
       "choice: accepted",
       'why: "w"',
       "state: done",
+      'outcome: "The change landed."',
       'gate: "the licence check passed"',
+      ...carefulOwed(["anticipate 1", "review 1", "review 2", "verify 1"]),
     ];
     const body = [
       "## start",
       "diagnose reproduced it.",
       "## frame",
-      "x",
+      ...CAREFUL_FRAME,
       "## plan",
       "x",
       "## anticipate",
-      "x",
+      "[a](2026-10-04-a/anticipate-1.md)",
       "## build",
       "x",
       "## review",
-      "x",
+      "[one](2026-10-04-a/review-1.md), [two](2026-10-04-a/review-2.md)",
       "## verify",
-      "x",
+      "[v](2026-10-04-a/verify-1.md)",
       "## close",
       "x",
     ];
+    // Each fresh agent's report the careful record cites stands in its folder (J-149 S1's record lint).
+    const reports = ["anticipate-1.md", "review-1.md", "review-2.md", "verify-1.md"];
     // Judged on the definition it was written under, it matches.
     const current = derive({
-      ...changesInput([change("2026-10-04-a", front, body, folder([run(["t"])]), before)]),
+      ...changesInput([change("2026-10-04-a", front, body, folder([run(["t"])], reports), before)]),
       definition: before,
     });
     expect(current.findings).toEqual([]);
@@ -577,7 +620,7 @@ describe("the changes view: findings", () => {
           "2026-10-04-a",
           front,
           body,
-          folder([run(["t"], { installation: MOVED_ON })]),
+          folder([run(["t"], { installation: MOVED_ON })], reports),
           after,
         ),
       ]),
@@ -588,13 +631,26 @@ describe("the changes view: findings", () => {
   });
 
   it("J-93 S1 status reports a done record's skipped step with no section saying so, and a run step's missing section", () => {
-    const regularDone = ["mode: regular", "choice: accepted", 'why: "w"', "state: done"];
+    const regularDone = [
+      "mode: regular",
+      "choice: accepted",
+      'why: "w"',
+      "state: done",
+      'outcome: "The change landed."',
+      ...carefulOwed(["review 1"]),
+    ];
     const ran = ["frame", "plan", "build", "review", "verify", "close"];
-    const without = ran.flatMap((name) => [`## ${name}`, "x"]);
+    // The review at regular cites its reviewer's report (J-149 S1's record lint).
+    const without = ran.flatMap((name) => [
+      `## ${name}`,
+      name === "review" ? "[the review](2026-10-04-a/review-1.md)" : "x",
+    ]);
     const whole = [...without.slice(0, 4), "## anticipate", "none at regular", ...without.slice(4)];
     const judged = (bodyLines: readonly string[]) =>
       derive(
-        changesInput([change("2026-10-04-a", regularDone, bodyLines, folder([run(["t"])]))]),
+        changesInput([
+          change("2026-10-04-a", regularDone, bodyLines, folder([run(["t"])], ["review-1.md"])),
+        ]),
       ).findings.map((note) => note.message);
     expect(judged(whole)).toEqual([]);
     expect(judged(without)).toEqual([
@@ -604,6 +660,82 @@ describe("the changes view: findings", () => {
     expect(judged(unreviewed)).toEqual([
       "the done change '2026-10-04-a' does not match what its mode asks of this record: the done record has no 'review' section its mode requires: write it",
     ]);
+  });
+
+  it("J-149 S1 status names the record lint's breaches, a finding on a done record and a notice on an open one", () => {
+    const frame = ["## frame", "- Q1 [scope] Archived rows too?", "  - decided: owner"];
+    const quick = (state: string) => [
+      "mode: quick",
+      "choice: accepted",
+      'why: "w"',
+      `state: ${state}`,
+      ...(state === "done"
+        ? ["next: none", 'outcome: "Archived rows stay out."', ...QUICK_OWED]
+        : []),
+    ];
+    const open = derive(changesInput([change("2026-10-04-a", quick("open"), frame)]));
+    expect(open.findings.filter((note) => note.kind === "record-form")).toEqual([]);
+    expect(
+      open.notices.filter((note) => note.kind === "record-form-open").map((note) => note.message),
+    ).toEqual([
+      "correct the open change '2026-10-04-a''s record before done, which git's hooks refuse while it stands: frame question Q1 holds no answer: write the answer taken and who decided, or answer: open with decided: owner where the owner left it open",
+    ]);
+    const done = derive(
+      changesInput([change("2026-10-04-a", quick("done"), frame, folder([run(["t"])]))]),
+    );
+    expect(done.findings.filter((note) => note.kind === "record-form")).toHaveLength(1);
+  });
+
+  it("J-173 S1 status names a done record's unlinked visuals and check runs as findings, and a folder link cites the runs", () => {
+    const quick = [
+      "mode: quick",
+      "choice: accepted",
+      'why: "w"',
+      "state: done",
+      "next: none",
+      'outcome: "Archived rows stay out."',
+      ...QUICK_OWED,
+    ];
+    const reports = ["visuals.json", "interface/20261031T130840811Z-5e65f4.json"];
+    const withVisuals = (body: readonly string[]) =>
+      derive(
+        changesInput([
+          change(
+            "2026-10-04-a",
+            quick,
+            body,
+            ok({
+              reports,
+              briefs: [],
+              hookRuns: [],
+              loads: [],
+              checks: [{ file: "checks/0.json", parsed: ok(run(["t"])) }],
+              visuals: 1,
+            }),
+          ),
+        ]),
+      );
+    const unlinked = withVisuals(["## frame", "x"]);
+    expect(
+      unlinked.findings.filter((note) => note.kind === "record-form").map((note) => note.message),
+    ).toEqual([
+      "correct the done change '2026-10-04-a''s record, or open a new change where its install moved on: the done record does not link its visuals: its folder's visuals.json lists 1 under .greenline/visuals/2026-10-04-a/; link them once, as [visuals](2026-10-04-a/visuals.json), in the close section",
+      "correct the done change '2026-10-04-a''s record, or open a new change where its install moved on: the done record links 0 of the 1 runs of the interface check under its folder, 2026-10-04-a/interface/20261031T130840811Z-5e65f4.json among them: link the runs from the verify section, each by its path or all at once as [interface check](2026-10-04-a/interface/)",
+    ]);
+    // The links file is greenline's: its uncited notice names the link alone.
+    expect(
+      unlinked.notices.filter((note) => note.kind === "uncited").map((note) => note.message),
+    ).toContain(
+      "link 'visuals.json' from the record of '2026-10-04-a': the change is finished, its record links to the file nowhere, and greenline wrote it, so it stays",
+    );
+    const linked = withVisuals([
+      "## frame",
+      "x",
+      "## close",
+      "[visuals](2026-10-04-a/visuals.json), [interface check](2026-10-04-a/interface/)",
+    ]);
+    expect(linked.findings.filter((note) => note.kind === "record-form")).toEqual([]);
+    expect(linked.notices.filter((note) => note.kind === "uncited")).toEqual([]);
   });
 
   it("J-73 S2 status judges a record's cost against its mode's agents and rounds derived from its depths", () => {
@@ -619,11 +751,42 @@ describe("the changes view: findings", () => {
       derive(changesInput([change("2026-10-04-a", front, [])])).findings.map(
         (note) => note.message,
       );
-    // Careful may start 5 agents, the builder counted, over 4 rounds.
-    expect(judged(carefulOpen(5, 4))).toEqual([]);
-    expect(judged(carefulOpen(6, 4))).toEqual([
-      "the open change '2026-10-04-a' does not match what its mode asks of this record: it cost 6 agents and 4 rounds, over the mode's 5 and 4: raise the mode, or correct the cost",
+    // Careful may start 6 agents, the builder and design's agent counted, over 4 rounds.
+    expect(judged(carefulOpen(6, 4))).toEqual([]);
+    expect(judged(carefulOpen(7, 4))).toEqual([
+      "the open change '2026-10-04-a' does not match what its mode asks of this record: it cost 7 agents and 4 rounds, over the mode's 6 and 4: raise the mode, or correct the cost",
     ]);
+  });
+
+  it("J-174 status reads a cost past the count as accepted where the record's overrun line quotes the owner, GL0402 silent, and the view names the acceptance", () => {
+    const front = [
+      "mode: careful",
+      "choice: owner",
+      'why: "w"',
+      "state: open",
+      "agents: 7",
+      "rounds: 1",
+      'overrun: "the extra helper is fine"',
+    ];
+    const outcome = derive(changesInput([change("2026-10-04-a", front, [])]), {
+      view: "resume",
+      change: "2026-10-04-a",
+    });
+    expect(outcome.findings).toEqual([]);
+    expect(renderChangesText(outcome.report)).toContain(
+      "  cost: 7 agents, 1 round, past careful's 6 agents on the owner's words, \"the extra helper is fine\"\n",
+    );
+    const within = derive(
+      changesInput([
+        change(
+          "2026-10-04-a",
+          ["mode: careful", "choice: owner", 'why: "w"', "state: open", "agents: 6", "rounds: 1"],
+          [],
+        ),
+      ]),
+      { view: "resume", change: "2026-10-04-a" },
+    );
+    expect(renderChangesText(within.report)).toContain("  cost: 6 agents, 1 round\n");
   });
 
   it("S16b the step reached is the one the next line names; an open record with none reads its sections", () => {
@@ -914,7 +1077,14 @@ describe("the changes view: notices", () => {
     ];
     const planning = change(
       "2026-10-04-plan",
-      ["mode: careful", "choice: owner", 'why: "w"', "state: done", "plan: 001-login"],
+      [
+        "mode: careful",
+        "choice: owner",
+        'why: "w"',
+        "state: done",
+        'outcome: "The change landed."',
+        "plan: 001-login",
+      ],
       [],
       folder([run(["t"], { installation: MOVED_ON })]),
     );
@@ -937,6 +1107,7 @@ describe("the changes view: notices", () => {
         "choice: accepted",
         'why: "w"',
         "state: done",
+        'outcome: "The change landed."',
         "plan: 001-login",
         "ticket: T1",
       ],
@@ -1405,6 +1576,7 @@ describe("the changes view: what it shows", () => {
         "choice: accepted",
         'why: "w"',
         "state: done",
+        'outcome: "The change landed."',
         "plan: 001-login",
         "ticket: T1",
       ],
@@ -1478,6 +1650,39 @@ describe("the changes view: what it shows", () => {
     expect(text).toContain("  next: review: rerun the reviewer");
     expect(text).toContain("  step reached: review");
     expect(text).toContain("  checks: none");
+    expect(text).toContain("  ground: not stated\n  agent: not stated\n");
+    expect(text).not.toContain("  discard:");
+  });
+
+  it("J-114 S1 the resume view prints the record's ground, agent and discard lines as it states them", () => {
+    const outcome = derive(
+      changesInput([
+        change(
+          "2026-10-25-a",
+          [
+            ...quickOpen,
+            'ground: "worktree: .worktrees/2026-10-25-a"',
+            "agent: claude-code/opus",
+            'discard: "drop the spike, the owner"',
+          ],
+          ["## plan", "one line at quick"],
+        ),
+      ]),
+      { view: "resume", change: "2026-10-25-a" },
+    );
+    if (outcome.report.view !== "resume") throw new Error("not the resume view");
+    expect(outcome.report.change).toMatchObject({
+      ground: "worktree: .worktrees/2026-10-25-a",
+      agent: "claude-code/opus",
+      discard: "drop the spike, the owner",
+    });
+    expect(renderChangesText(outcome.report)).toContain(
+      [
+        "  ground: worktree: .worktrees/2026-10-25-a",
+        "  agent: claude-code/opus",
+        "  discard: drop the spike, the owner",
+      ].join("\n"),
+    );
   });
 });
 
@@ -1717,6 +1922,7 @@ describe("the changes view: recorded facts kept, and a probe marked", () => {
       reports: [],
       briefs: [],
       hookRuns: [],
+      loads: [],
       checks: entries.map(([name, facts]) => ({ file: `checks/${name}`, parsed: ok(facts) })),
     });
   }
@@ -1745,7 +1951,7 @@ describe("the changes view: recorded facts kept, and a probe marked", () => {
       [
         "fact-missing",
         `.greenline/ledger/2026-10-04-a/checks/${B}`,
-        `the check facts '${C}' of '2026-10-04-a' follow '${B}', which is not in its folder: a recorded fact is never removed or edited; restore it from history where it was committed, and say in the record what it held`,
+        `restore the check facts '${B}' of '2026-10-04-a' from history where they were committed, and say in the record what they held: '${C}' follows them and they are not in the folder, and a recorded fact is never removed or edited`,
       ],
     ]);
   });
@@ -1790,6 +1996,7 @@ describe("the changes view: recorded facts kept, and a probe marked", () => {
             reports: [],
             briefs: [],
             hookRuns: [],
+            loads: [],
             checks: [
               {
                 file: `checks/${A}`,
@@ -1894,6 +2101,7 @@ describe("J-89 S1 the briefs greenline brief wrote", () => {
         tickets: undefined,
         skillPages: [],
         scratch: `/repo/.greenline/tmp/${ID}/${step}-${String(round)}`,
+        nonce: "0a1b2c3d",
       },
     );
     if (brief._tag === "refused") throw new Error(brief.message);
@@ -1949,14 +2157,26 @@ describe("J-89 S1 the briefs greenline brief wrote", () => {
       expect(note?.message).toContain(`greenline brief --change ${ID}`);
       expect(note?.message).toContain("never opens, copies, diffs or derives");
     }
-    const done = ["mode: careful", "choice: accepted", 'why: "w"', "state: done"];
+    const done = [
+      "mode: careful",
+      "choice: accepted",
+      'why: "w"',
+      "state: done",
+      'outcome: "The change landed."',
+    ];
     const finished = derive(changesInput([change(ID, done, highBody, onDisk([unmarked]))]));
     expect(findingKinds(finished)).toContain("brief-unwritten");
   });
 
   it("names a finished change's brief no link of its record cites, as any file of its folder", () => {
     const review = written("review", 1);
-    const done = ["mode: quick", "choice: accepted", 'why: "w"', "state: done"];
+    const done = [
+      "mode: quick",
+      "choice: accepted",
+      'why: "w"',
+      "state: done",
+      'outcome: "The change landed."',
+    ];
     const uncited = derive(
       changesInput([change(ID, done, QUICK_BODY, folder([run(["t"])], [review.file], [review]))]),
     );
@@ -2210,6 +2430,7 @@ describe("J-89 S3 a cost below the starts its record names", () => {
             "choice: accepted",
             'why: "w"',
             "state: done",
+            'outcome: "The change landed."',
             "agents: 1",
             "rounds: 0",
           ],
@@ -2252,6 +2473,7 @@ describe("J-93 S3 the declared checks and the harness's events in the changes vi
         file: `checks/h${index}.json`,
         parsed: ok(runFacts),
       })),
+      loads: [],
     });
 
   it("shows each declared check's latest run, check's or a hook's, in the resume view, a hook's never a finding", () => {
@@ -2292,8 +2514,55 @@ describe("J-93 S3 the declared checks and the harness's events in the changes vi
         derive(changesInput([done(agents)], { agentsCounted: new Map([["2026-10-04-a", 2]]) })),
       ).finished.flatMap((view) => view.nudges);
     expect(nudges(1)).toEqual([
-      "its harness's events counted 2 fresh agents and its record states agents: 1; the cost counts the builder and each fresh agent",
+      "its harness's events counted 2 fresh agents and its record states agents: 1; the cost counts the builder and each fresh agent a step started, and an agent a method started, a picture's helper among them, is counted nowhere and listed nowhere, neither in the record's starts nor in its agents count",
     ]);
     expect(nudges(3)).toEqual([]);
+  });
+});
+
+describe("J-176 S1 planned work's ticket list stands before the wait", () => {
+  const planning = (extra: readonly string[]): ChangeOnDisk =>
+    change(
+      "2026-10-04-plan",
+      [
+        "mode: careful",
+        "choice: owner",
+        'why: "the login work"',
+        "state: open",
+        'next: "plan: wait for the owner to approve the ticket list"',
+        ...extra,
+      ],
+      ["## frame", "x"],
+    );
+  const listNotice = (entry: ChangeOnDisk, plans: readonly PlanOnDisk[]): readonly string[] =>
+    derive({ ...changesInput([entry]), disk: { changes: [entry], plans, working: [] } })
+      .notices.filter((note) => note.message.startsWith("write the ticket list before"))
+      .map((note) => note.message);
+
+  it("names a wait on the ticket list with no plan line, or a plan that holds no tickets.md", () => {
+    expect(listNotice(planning([]), [])).toEqual([
+      `write the ticket list before '2026-10-04-plan' waits on it: .greenline/plans/<NNN-name>/tickets.md with each ticket's mode, and the record's plan line naming that directory; the owner approves the list on disk, and the record waits on "wait for the owner to approve the ticket list" with no plan line`,
+    ]);
+    const empty: PlanOnDisk = {
+      name: "001-login",
+      contents: ok({ tickets: undefined, documents: [] }),
+    };
+    expect(listNotice(planning(["plan: 001-login"]), [empty])[0]).toContain(
+      "while 001-login holds no tickets.md",
+    );
+  });
+
+  it("says nothing once the list stands on disk", () => {
+    const written: PlanOnDisk = {
+      name: "001-login",
+      contents: ok({
+        tickets: {
+          file: "tickets.md",
+          parsed: parseTicketsFile(definition, "tickets.md", ticketsText(["T1"])),
+        },
+        documents: [],
+      }),
+    };
+    expect(listNotice(planning(["plan: 001-login"]), [written])).toEqual([]);
   });
 });

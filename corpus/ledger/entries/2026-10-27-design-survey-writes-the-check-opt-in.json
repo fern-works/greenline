@@ -1,0 +1,99 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-27-design-survey-writes-the-check-opt-in",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-27-frame-writes-the-reported-model",
+    "sha256": "bae887462fd817ad142823d4392810d3b0684e92613b768b09be0c9ec2403563"
+  },
+  "subject": "skill:design-survey",
+  "recipe": "8d8e81394a706889120c8c90967c9411947490c300e1bcbb7d5c1cf6bc2007b5",
+  "result": "16733a2b6c6b69b5cec103f734eaa11912362e53e144dc206054cf96879495e9",
+  "pages": [
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The survey asks once for the check opt-in and writes it",
+  "reason": "The survey asks the owner once whether the interface check holds the close and writes the answer as the block's check, since a replay left it out and the hold never engaged (J-143 S3).",
+  "authorisedBy": {
+    "date": "2026-10-27",
+    "words": "J-143's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; lock in all the jobs; and of 2026-10-27: everything decided mid implementation becomes part of the 0.2.0 release; the product and workshop jobs first, then the codex and linear runs on the final 0.2.0 build"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-25",
+      "words": "The register's row of 2026-10-24 on the interface practice's step and home, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): the line gains a step, design, between frame and plan, with a depth per mode, inline at quick, written at regular and independent at careful, and an applicability that follows the record's interface fact, where the fact is no the section being one line and the step's words not charged to the change's budget; the home is DESIGN.md in Google's format at the root, nested per root when registers diverge, with the Interface section in the decisions book; The register's rows of 2026-10-24 on the interface practice, on the operator's words of 2026-10-24 (\"lock in all the jobs\"): interface rules carry one of three tiers everywhere they appear, floor, reflex and finish, a ban on a style never a floor; every rule, page section, catalog entry and scenario carries the facets register, platform, framework, concern and component, selected by the facets in play; a study takes a design's language, never its expression; and J-122's verdicts, ruled on 2026-10-24, sending each entering family's units to the step's pages and the two starts in greenline's words; and the operator's words of 2026-10-24, \"drive the implementation of the full job board till the end. only stop for me if theres a new finding or design architecture choice where you would need my decisions for smaller decisions go with your recommended suggestions\""
+    },
+    {
+      "date": "2026-10-27",
+      "words": "J-143's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; lock in all the jobs; and of 2026-10-27: everything decided mid implementation becomes part of the 0.2.0 release; the product and workshop jobs first, then the codex and linear runs on the final 0.2.0 build"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "fluid-functionalism",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "hallmark",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "ibelick-ui-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "interface-design",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "jakubkrehel-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      },
+      {
+        "source": "kemiljk-skills",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 910
+  }
+}

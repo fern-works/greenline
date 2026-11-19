@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-transitions-dev-transitions-dev",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-transitions-dev-transitions-polish",
+    "sha256": "2568e15423ae2dbdd5586e23f73ea61ed5aab4ffbc21e169f654d307980c9d12"
+  },
+  "source": {
+    "repository": "https://github.com/Jakubantalik/transitions.dev",
+    "commit": "54fbee8e9d698598b4e7ceabb2fb43ea30beacfc",
+    "path": "skills/transitions-dev"
+  },
+  "licence": "ideas-only",
+  "verdict": "hold",
+  "gist": "Restricted recipe skill held; used as a reference only",
+  "reason": "Its recipes fall under the licence that forbids redistributing them as a library; they are named and never drawn from.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's restricted skills and recipes are held as references only"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's restricted skills and recipes are held as references only"
+    }
+  ]
+}

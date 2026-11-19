@@ -57,20 +57,19 @@ describe("the holder and the credits", () => {
     const bare = { ...fixture, sources: [{ ...fixture.sources[0], holder: "An Author" }] };
     expect(parseCorpusManifest(JSON.stringify(bare), "c")._tag).toBe("err");
   });
-  it("S16a parses a credits note on an extra skill and refuses one on a skill that is not extra", () => {
+  it("S16a parses a credits note on an upstream copy, a default since J-110 S4, and refuses one on a native skill", () => {
     const credited = {
       ...fixture,
-      skills: [
-        { ...fixture.skills[0], extra: true, credits: "icon catalog credits Tabler Icons (MIT)." },
-      ],
+      skills: [{ ...fixture.skills[0], credits: "icon catalog credits Tabler Icons (MIT)." }],
     };
     const parsed = parseCorpusManifest(JSON.stringify(credited), "c");
     expect(parsed._tag === "ok" && parsed.value.skills[0]?.credits).toBe(
       "icon catalog credits Tabler Icons (MIT).",
     );
+    const { upstream: _upstream, ...native } = fixture.skills[0] ?? { upstream: undefined };
     const loose = {
       ...fixture,
-      skills: [{ ...fixture.skills[0], credits: "icon catalog credits Tabler Icons (MIT)." }],
+      skills: [{ ...native, credits: "icon catalog credits Tabler Icons (MIT)." }],
     };
     expect(parseCorpusManifest(JSON.stringify(loose), "c")._tag).toBe("err");
   });
@@ -367,5 +366,144 @@ describe("parseCorpusManifest", () => {
       intents: [{ intent: "Shape a change", skills: ["router"] }],
     });
     expect(parseCorpusManifest(pinned, "c")._tag).toBe("err");
+  });
+});
+
+describe("J-194 S1 a words source, the phrases the operator brings", () => {
+  /** A phrase as a test writes it, each field open to planting or leaving out. */
+  interface PhraseJson {
+    id?: string;
+    text?: string;
+    date?: string;
+    where?: string[];
+    dismissed?: { failure: string };
+    keeper?: { kind: string; where: string };
+  }
+  /** A words source as a test writes it, a pin field among those it may plant. */
+  interface WordsJson {
+    name?: string;
+    kind?: string;
+    author?: string;
+    phrases?: PhraseJson[];
+    repo?: string;
+    commit?: string;
+    snapshot?: string;
+    license?: string;
+  }
+  const PLACED = {
+    id: "irreducible-constraints",
+    text: "Reduce this problem to its irreducible constraints and rebuild it from zero.",
+    date: "2026-11-07",
+    where: ["corpus/skills/frame/SKILL.md"],
+    keeper: { kind: "record", where: "the frame section's constraints line" },
+  };
+  const DISMISSED = {
+    id: "rabbithole",
+    text: "are you in a rabbithole duct taping custom fixes together?",
+    date: "2026-11-07",
+    dismissed: { failure: "the agent keeps patching where a native way exists" },
+  };
+  const words = {
+    name: "phrasebook-2026-11-07",
+    kind: "words",
+    author: "the operator",
+    phrases: [PLACED, DISMISSED],
+  };
+  const issuesOf = (text: string): readonly string[] => {
+    const result = parseCorpusManifest(text, "c");
+    return result._tag === "ok"
+      ? ["parsed"]
+      : result.error.issues.map((issue) => `${issue.path}: ${issue.message}`);
+  };
+  const withWords = (source: WordsJson): string =>
+    JSON.stringify({ ...fixture, sources: [...fixture.sources, source] });
+  const withPhrase = (phrase: PhraseJson): string => withWords({ ...words, phrases: [phrase] });
+
+  it("admits a words source after the pinned ones, read apart from the pins the lock records", () => {
+    const result = parseCorpusManifest(withWords(words), "c");
+    expect(result._tag).toBe("ok");
+    if (result._tag !== "ok") return;
+    expect(result.value.sources.map((source) => source.name)).toEqual(["example-skills"]);
+    expect(result.value.words).toEqual([words]);
+  });
+
+  it("reads a manifest with no words source as holding none", () => {
+    const result = parseCorpusManifest(validManifest(), "c");
+    expect(result._tag === "ok" && result.value.words).toEqual([]);
+  });
+
+  it("refuses a words source carrying a repository, a commit, a snapshot or a licence", () => {
+    const { repo, commit, snapshot, license } = fixture.sources[0];
+    for (const [field, value] of Object.entries({ repo, commit, snapshot, license }))
+      expect(issuesOf(withWords({ ...words, [field]: value }))).toEqual([
+        `sources[1]: a words source carries no repository, commit, snapshot, license or holder; '${field}' is one`,
+      ]);
+  });
+
+  it("refuses a phrase with no text or no date, and a words source with no phrase or no author", () => {
+    const { text: _text, ...noText } = PLACED;
+    const { date: _date, ...noDate } = PLACED;
+    expect(issuesOf(withPhrase(noText))[0]).toMatch(/^sources\[1\]\.phrases\[0\]\.text: /);
+    expect(issuesOf(withPhrase(noDate))[0]).toMatch(/^sources\[1\]\.phrases\[0\]\.date: /);
+    expect(issuesOf(withPhrase({ ...PLACED, date: "7 November" }))[0]).toMatch(
+      /^sources\[1\]\.phrases\[0\]\.date: /,
+    );
+    expect(issuesOf(withWords({ ...words, phrases: [] }))[0]).toMatch(/^sources\[1\]\.phrases: /);
+    const { author: _author, ...noAuthor } = words;
+    expect(issuesOf(withWords(noAuthor))[0]).toMatch(/^sources\[1\]\.author: /);
+  });
+
+  it("refuses a line break or white space at either end in a phrase, a failure, an author or a keeper", () => {
+    expect(issuesOf(withPhrase({ ...PLACED, text: "One sentence.\nAnother." }))[0]).toMatch(
+      /^sources\[1\]\.phrases\[0\]\.text: /,
+    );
+    expect(
+      issuesOf(withPhrase({ ...DISMISSED, dismissed: { failure: "a failure\nsplit" } }))[0],
+    ).toMatch(/^sources\[1\]\.phrases\[0\]\.dismissed\.failure: /);
+    expect(
+      issuesOf(withPhrase({ ...PLACED, keeper: { kind: "record", where: " a line " } }))[0],
+    ).toMatch(/^sources\[1\]\.phrases\[0\]\.keeper\.where: /);
+    expect(issuesOf(withWords({ ...words, author: "the operator " }))[0]).toMatch(
+      /^sources\[1\]\.author: /,
+    );
+  });
+
+  it("refuses a phrase with both a home and a dismissal, with neither, and a keeper beside a dismissal", () => {
+    expect(issuesOf(withPhrase({ ...PLACED, dismissed: DISMISSED.dismissed }))).toEqual([
+      "sources[1].phrases[0]: a phrase states its home in where or its failure in dismissed, never both",
+    ]);
+    const { where: _where, keeper: _keeper, ...homeless } = PLACED;
+    expect(issuesOf(withPhrase(homeless))).toEqual([
+      "sources[1].phrases[0]: a phrase states its home in where or its failure in dismissed",
+    ]);
+    expect(issuesOf(withPhrase({ ...DISMISSED, keeper: PLACED.keeper }))).toEqual([
+      "sources[1].phrases[0]: a keeper stands only beside a home",
+    ]);
+  });
+
+  it("refuses a words source before a pinned one, a name two sources share, a phrase id twice and a vendored skill naming a words source", () => {
+    expect(issuesOf(JSON.stringify({ ...fixture, sources: [words, ...fixture.sources] }))).toEqual([
+      "sources[0]: a words source stands after every pinned source",
+    ]);
+    expect(issuesOf(withWords({ ...words, name: "example-skills" }))).toEqual([
+      "sources[1].name: duplicate source 'example-skills'",
+    ]);
+    expect(
+      issuesOf(withWords({ ...words, phrases: [PLACED, { ...PLACED, text: "Another." }] })),
+    ).toEqual(["sources[1].phrases[1].id: duplicate phrase 'irreducible-constraints'"]);
+    expect(
+      issuesOf(
+        JSON.stringify({
+          ...fixture,
+          sources: [...fixture.sources, words],
+          skills: [
+            {
+              ...fixture.skills[0],
+              upstream: { ...fixture.skills[0].upstream, family: words.name },
+            },
+          ],
+        }),
+      ),
+    ).toEqual(["skills[0].upstream.family: unknown source 'phrasebook-2026-11-07'"]);
   });
 });

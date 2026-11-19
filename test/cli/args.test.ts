@@ -90,7 +90,7 @@ describe("parseArgs", () => {
     expect(invocation.message).not.toContain("unknown command 'connectors'");
   });
 
-  it("J-73 S4, J-89 S1 and J-93 S3 the root help lists the ten command groups, tidy, brief, event and hook among them, and neither removed command", () => {
+  it("J-73 S4, J-89 S1, J-93 S3, J-142 S1 and J-176 S1 the root help lists the sixteen command groups, tidy, brief, view, open, picture, research, event and hook among them, and neither removed command", () => {
     const invocation = parseArgs(["--help"], "1.2.3");
     if (invocation.kind !== "help") throw new Error("help expected");
     const commands = [...invocation.text.matchAll(/^  ([a-z]+)\b/gm)].map((match) => match[1]);
@@ -102,6 +102,16 @@ describe("parseArgs", () => {
       "inspect",
       "connectors",
       "check",
+      // J-123 S6: the interface catalog's deal.
+      "deal",
+      // J-124 S2: the marks on captures.
+      "mark",
+      // J-142 S1: an artefact's address in the viewer.
+      "view",
+      // J-176 S1: the record's skeleton, the visual home's one door and a research report's.
+      "open",
+      "picture",
+      "research",
       "brief",
       "event",
       "hook",

@@ -1,5 +1,6 @@
 import type { CheckedRecipe } from "./recipe.ts";
 import { frontMatterBlock, placeProse } from "./render.ts";
+import { wordsOf } from "./segments.ts";
 
 /**
  * The split's front rule (J-93 S2, N-56 item 2;
@@ -11,18 +12,39 @@ import { frontMatterBlock, placeProse } from "./render.ts";
  * `Durable output:` line, which the handoff check and the loop read where
  * they stand, and a fenced code block, which is upstream's code or example:
  * a script there may need greenline's home to run, as constraint-driven
- * development's floor guard defaults its bar to the decisions book. Pure:
- * the instrument hands it a checked recipe and reports what it finds.
+ * development's floor guard defaults its bar to the decisions book.
+ *
+ * The front's cap (the register's row of 2026-11-05, "The seven cuts", its
+ * sixth, at the number ruled on 2026-11-06; J-180 S1, J-181 S1): `SKILL.md`
+ * as a workspace receives it, its front matter and its Handoff section
+ * included, holds under {@link FRONT_WORDS} words by `wordsOf`, the first
+ * move of its step; every later moment's method stands on a page of the
+ * front its pointer names (`workshop/components/roster-skill.md`, "The
+ * front and the references"). The rule and the goldens' test count with
+ * {@link frontWords}, so the number lives here once. Pure: the instrument
+ * hands it a checked recipe and reports what it finds.
  */
 
-/** One mechanic a front's text holds, by file and line. */
+/** A front's `SKILL.md` holds fewer words than this. */
+export const FRONT_WORDS = 300;
+
+/**
+ * A front's words, the count its cap reads.
+ * @param text the `SKILL.md` as a workspace receives it, front matter included
+ * @returns its words by `wordsOf`
+ */
+export function frontWords(text: string): number {
+  return wordsOf(text).length;
+}
+
+/** One thing a front's text holds that the rule refuses, by file and line: a mechanic, or a `SKILL.md` at its cap. */
 export interface FrontFinding {
   readonly path: string;
-  /** The line it stands on in the rendered file, from 1. */
+  /** The line it stands on in the rendered file, from 1: a mechanic's, or the line of a long front's {@link FRONT_WORDS}th word. */
   readonly line: number;
-  /** What the text names: a command, a path or a record form. */
+  /** What the text names, a command, a path or a record form, or a front of {@link FRONT_WORDS} words or more. */
   readonly what: string;
-  /** The text matched. */
+  /** The text matched, or a long front's count. */
   readonly text: string;
 }
 
@@ -37,6 +59,7 @@ const VERBS = [
   "event",
   "init",
   "inspect",
+  "mark",
   "status",
   "sync",
   "tidy",
@@ -113,9 +136,32 @@ function searched(text: string, skill: boolean): string {
 }
 
 /**
- * Every mechanic the front of a checked recipe holds.
+ * A `SKILL.md` at its cap, as a finding on the line of its {@link FRONT_WORDS}th word.
+ * @param text the `SKILL.md` as a workspace receives it
+ * @returns the finding, or undefined when the front holds fewer words than the cap
+ */
+function longFront(text: string): FrontFinding | undefined {
+  const words = frontWords(text);
+  if (words < FRONT_WORDS) return undefined;
+  // A word never spans a line, so the lines' counts add up to the front's.
+  const lines = text.split("\n");
+  let line = 0;
+  for (let seen = 0; line < lines.length; line += 1) {
+    seen += wordsOf(lines[line] ?? "").length;
+    if (seen >= FRONT_WORDS) break;
+  }
+  return {
+    path: "SKILL.md",
+    line: line + 1,
+    what: `a front of ${String(FRONT_WORDS)} words or more`,
+    text: `${String(words)} words by wordsOf`,
+  };
+}
+
+/**
+ * Every mechanic the front of a checked recipe holds, and its `SKILL.md` at its cap.
  * @param checked a recipe the snapshots accepted
- * @returns each finding, by file in the recipe's order and then by place; empty when the front is clean
+ * @returns each finding, by file in the recipe's order and then by place, a long `SKILL.md` after its mechanics; empty when the front is clean
  */
 export function frontFindings(checked: CheckedRecipe): readonly FrontFinding[] {
   const findings: FrontFinding[] = [];
@@ -141,6 +187,8 @@ export function frontFindings(checked: CheckedRecipe): readonly FrontFinding[] {
         what: item.what,
         text: item.text,
       });
+    const long = file.path === "SKILL.md" ? longFront(head + rendered) : undefined;
+    if (long !== undefined) findings.push(long);
   }
   return findings;
 }

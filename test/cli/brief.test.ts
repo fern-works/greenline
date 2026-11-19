@@ -103,6 +103,63 @@ describe("J-89 S1 greenline brief", () => {
     expect(result.out).toBe(`.greenline/ledger/${ID}/brief-verify-1.md\n`);
   });
 
+  it("J-133 S1 carries the design section and design's critique page to review, its capture page to verify, on an interface change", () => {
+    const INTERFACE = record(
+      [
+        "mode: careful",
+        "choice: accepted",
+        'why: "the members page"',
+        "state: open",
+        'interface: "yes, app"',
+      ],
+      [
+        "## frame",
+        "x",
+        "## design",
+        "components: table",
+        "The owner picked the hairline table, ink on paper.",
+        "## plan",
+        "- The members page lists every member.",
+        "## build",
+        "Diagnosis: the timer.",
+      ],
+    );
+    const root = workspace({ [ID]: INTERFACE });
+    for (const page of ["critique", "capture"]) {
+      mkdirSync(join(root, ".claude", "skills", "design", "references"), { recursive: true });
+      writeFileSync(join(root, ".claude", "skills", "design", "references", `${page}.md`), "#\n");
+    }
+    expect(brief(root, REVIEW).code).toBe(0);
+    const review = readFileSync(
+      join(root, ".greenline", "ledger", ID, "brief-review-1.md"),
+      "utf8",
+    );
+    expect(review).toContain("## The interface");
+    expect(review).toContain(
+      "components: table\nThe owner picked the hairline table, ink on paper.",
+    );
+    expect(review).toContain(
+      "Read design's critique page, `.claude/skills/design/references/critique.md`, and review the interface by it.",
+    );
+    expect(review).not.toContain("Diagnosis: the timer.");
+    expect(review.indexOf("## The interface")).toBeLessThan(review.indexOf("## Your report"));
+    expect(brief(root, ["--change", ID, "--step", "verify", "--round", "1"]).code).toBe(0);
+    const verify = readFileSync(
+      join(root, ".greenline", "ledger", ID, "brief-verify-1.md"),
+      "utf8",
+    );
+    expect(verify).toContain("The owner picked the hairline table, ink on paper.");
+    expect(verify).toContain(
+      "Read design's capture page, `.claude/skills/design/references/capture.md`, and capture each page the change touched with `greenline check interface --url <address> --path <page>`",
+    );
+    // A change that touches no interface carries no such section.
+    const plain = workspace();
+    expect(brief(plain, REVIEW).code).toBe(0);
+    expect(
+      readFileSync(join(plain, ".greenline", "ledger", ID, "brief-review-1.md"), "utf8"),
+    ).not.toContain("## The interface");
+  });
+
   it("never writes over a brief that stands, and writes nothing on any refusal", () => {
     const root = workspace();
     expect(brief(root, REVIEW).code).toBe(0);
@@ -150,7 +207,41 @@ describe("J-89 S1 greenline brief", () => {
     const result = brief(workspace(), ["--help"]);
     expect(result.code).toBe(0);
     expect(result.out).toContain(
-      "Usage: greenline brief --change <id> --step review|verify --round <n>",
+      "Usage: greenline brief --change <id> --step design|anticipate|review|verify --round <n>",
+    );
+  });
+});
+
+describe("J-192 S1 greenline brief takes anticipate", () => {
+  it("writes anticipate's brief with its artifact and contract, the nonce its report cites, and prints its path", () => {
+    const root = workspace();
+    const result = brief(root, [
+      "--change",
+      ID,
+      "--step",
+      "anticipate",
+      "--round",
+      "1",
+      "--artifact",
+      "src/export.js",
+      "--contract",
+      "An overdue loan's row carries its due date.",
+    ]);
+    expect(result.err).toContain("start the agent with this path and nothing else");
+    expect(result.code).toBe(0);
+    const path = `.greenline/ledger/${ID}/brief-anticipate-1.md`;
+    expect(result.out).toBe(`${path}\n`);
+    const text = readFileSync(join(root, path), "utf8");
+    expect(readBrief(ID, "brief-anticipate-1.md", text).kind).toBe("written");
+    expect(text).toMatch(/Its first line is `<!-- brief nonce [0-9a-f]{8} -->`/);
+    expect(existsSync(join(root, ".greenline", "tmp", ID, "anticipate-1"))).toBe(true);
+  });
+
+  it("refuses a step the line starts no fresh agent at, naming the steps it takes", () => {
+    const result = brief(workspace(), ["--change", ID, "--step", "build", "--round", "1"]);
+    expect(result.code).toBe(2);
+    expect(result.err).toContain(
+      "the command writes the brief of each step that starts a fresh agent, design, anticipate, review and verify, not 'build'",
     );
   });
 });

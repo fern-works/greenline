@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-transitions-dev-transitions-polish",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-apple-design-skill",
+    "sha256": "a03065b75b016b1f29918ad6fa1ce4b9a29bcd5a82d65f05434d2c875c7cffb1"
+  },
+  "source": {
+    "repository": "https://github.com/Jakubantalik/transitions.dev",
+    "commit": "54fbee8e9d698598b4e7ceabb2fb43ea30beacfc",
+    "path": "skills/transitions-polish"
+  },
+  "licence": "ideas-only",
+  "verdict": "hold",
+  "gist": "Restricted skill held; used as a reference only",
+  "reason": "Its licence forbids redistributing the transitions as a library, so its when-rules are read as a reference and never drawn from.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's restricted skills and recipes are held as references only"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's restricted skills and recipes are held as references only"
+    }
+  ]
+}

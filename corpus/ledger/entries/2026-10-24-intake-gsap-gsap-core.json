@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-gsap-gsap-core",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-feel-vocabulary",
+    "sha256": "cc2b50acf1c51ae0ffbc5ac422247c01b0da9f7796413e88a8a22bc4631662e5"
+  },
+  "source": {
+    "repository": "https://github.com/greensock/gsap-skills",
+    "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+    "path": "skills/gsap-core"
+  },
+  "pin": "gsap-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "The library's documentation restated, declined",
+  "reason": "It restates the library's own documentation, which is not interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': GSAP's core, timeline, plugins and utils skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': GSAP's core, timeline, plugins and utils skills are declined"
+    }
+  ]
+}

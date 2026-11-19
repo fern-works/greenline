@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-accesslint",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ai-skill-arxiv-arxiv-analyze",
+    "sha256": "75ad8aefcae90530079b3c05404122aea76acd25728e2bff1febe2f0cc2df08e"
+  },
+  "source": {
+    "repository": "https://github.com/AccessLint/claude-marketplace",
+    "commit": "2e9d7336678302d0bc08848e92542560295b34d3",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held until a licence file confirms the declared MIT",
+  "reason": "Its evidence grades, keyboard walk and sampling would serve critique and capture, but the repository has no licence file; it waits for one.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': AccessLint is held until a licence file confirms the MIT its README and manifests declare"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': AccessLint is held until a licence file confirms the MIT its README and manifests declare"
+    }
+  ]
+}

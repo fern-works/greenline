@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-ui-ux-pro-max-colors",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-millionco-paper-flex",
+    "sha256": "05d4475fef6f0b6e0f814a416f8cc081bb68a8c018b22048ff174da5a1f12933"
+  },
+  "source": {
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "commit": "d14efff8ed1faa4187f004f79926f428c8074ec7",
+    "path": ".claude/skills/ui-ux-pro-max/data/colors.csv"
+  },
+  "pin": "ui-ux-pro-max",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "An unsourced taste table, declined",
+  "reason": "Its rows name no site seen and derive from the repository's own tables.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ui-ux-pro-max's unsourced palettes, pairings and industry tables are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ui-ux-pro-max's unsourced palettes, pairings and industry tables are declined"
+    }
+  ]
+}

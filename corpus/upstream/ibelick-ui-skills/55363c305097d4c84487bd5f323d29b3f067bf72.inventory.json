@@ -1,0 +1,59 @@
+{
+  "commit": "55363c305097d4c84487bd5f323d29b3f067bf72",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b"
+    },
+    {
+      "path": "create-design-md/SKILL.md",
+      "sha256": "adba4fa94a9ca0291811ac26405e8fe15c1a6375743a80971c6f895bb837eeed"
+    },
+    {
+      "path": "fixing-accessibility/SKILL.md",
+      "sha256": "549261e8a53b53a1a20c0ddbf736821e5fc0876ad82eee76e0efab8e9ee9dadf"
+    },
+    {
+      "path": "fixing-metadata/SKILL.md",
+      "sha256": "b8315ff95a92dcfa48c33e2b4838a31d9448bd46252aab45726549ce865d6547"
+    },
+    {
+      "path": "fixing-motion-performance/SKILL.md",
+      "sha256": "0a2d654902bc04263ce68c8c02967ef03f17b482e855360a5463211d99d7baa9"
+    },
+    {
+      "path": "improve-ui/SKILL.md",
+      "sha256": "fa2ac808f6d9dab7bb3620880b014d2c18e227e5b006102856038096e573e69a"
+    },
+    {
+      "path": "improve-ui/agents/openai.yaml",
+      "sha256": "933af431364517518cbcfcd4e70eb8e8b390ead920abc48c071a4eedb6747183"
+    },
+    {
+      "path": "improve-ui/references/plan-template.md",
+      "sha256": "8faca7a14659a7f951d3b89fb730a43a4ce99966cc00481bf83d82b90f34b868"
+    }
+  ],
+  "entries": [
+    {
+      "name": "improve-ui",
+      "path": "skills/improve-ui"
+    },
+    {
+      "name": "create-design-md",
+      "path": "skills/create-design-md"
+    },
+    {
+      "name": "fixing-accessibility",
+      "path": "skills/fixing-accessibility"
+    },
+    {
+      "name": "fixing-motion-performance",
+      "path": "skills/fixing-motion-performance"
+    },
+    {
+      "name": "fixing-metadata",
+      "path": "skills/fixing-metadata"
+    }
+  ]
+}

@@ -53,8 +53,10 @@ describe("upstream snapshot byte-equivalence (every pinned family)", () => {
 
     it(`${family.name}: every vendored file hashes to its recorded pin`, () => {
       for (const file of inventory.files) {
-        const content = readFileSync(join(snapshotRoot, file.path), "utf8");
-        const sha = createHash("sha256").update(content, "utf8").digest("hex");
+        // The bytes, not a decoded string: a snapshot may hold a binary file
+        // (anatomy's printed sheets, J-111), which a UTF-8 decoding alters.
+        const content = readFileSync(join(snapshotRoot, file.path));
+        const sha = createHash("sha256").update(content).digest("hex");
         expect(sha, `${file.path} diverges from the pinned snapshot`).toBe(file.sha256);
       }
     });

@@ -11,6 +11,7 @@ import {
 } from "./contract.ts";
 import type { SkillFacts, SkillSource } from "./skill.ts";
 import { kindSlotIssue, type CorpusIntent } from "./corpus.ts";
+import { triggersSchema, type Triggers } from "./habits-owed.ts";
 import { modesDefinition, type ModesDefinition } from "./modes.ts";
 
 /** Only engineering methods and runtime prose are installed; published guidance is garden's and never installed. */
@@ -29,6 +30,8 @@ export interface InstallationInput {
   readonly workGuide: string;
   readonly ledgerGuide: string;
   readonly notices: string;
+  /** Each habit's and start's trigger rows, which status reads for the skills a change owes (J-176 S1); none where the corpus renders none. */
+  readonly triggers?: Triggers | undefined;
 }
 /**
  * The line of the ledger guide, `corpus/runtime/ledger.md`, that the
@@ -90,6 +93,7 @@ const input = z
     workGuide: text,
     ledgerGuide: text,
     notices: text,
+    triggers: triggersSchema.optional(),
   })
   .strict();
 const stored = input.extend({
@@ -132,6 +136,31 @@ export function buildInstallation(
     const issue = kindSlotIssue(parsed.data.modes, skill);
     if (issue !== undefined)
       return contractFailure("installation", [{ path: `skills.${skill.name}`, message: issue }]);
+  }
+  // Each skill a trigger row names is a skill of the payload, of the kind the rows state, placed beside the line (J-176 S1).
+  for (const entry of parsed.data.triggers?.skills ?? []) {
+    const skill = parsed.data.skills.find((each) => each.name === entry.name);
+    // Each page a whole read includes is a file the skill carries (J-203 S1).
+    const carried = new Set((skill?.supportFiles ?? []).map((file) => file.path));
+    const missing = (entry.wholeRead ?? []).find((page) => !carried.has(page));
+    if (missing !== undefined)
+      return contractFailure("installation", [
+        {
+          path: `triggers.${entry.name}.wholeRead`,
+          message: `A page a whole read includes is a file the skill carries; ${missing} is not.`,
+        },
+      ]);
+    const kind = skill?.kind;
+    const beside =
+      parsed.data.modes.kinds.find((each) => each.name === entry.kind)?.place === "beside";
+    if (kind !== entry.kind || !beside)
+      return contractFailure("installation", [
+        {
+          path: `triggers.${entry.name}`,
+          message:
+            "A trigger row names a skill of the payload, of its kind, placed beside the line.",
+        },
+      ]);
   }
   // The block keys each kind's skills by its intent rows, so one row names skills of one kind.
   const kindOf = new Map(parsed.data.skills.map((skill) => [skill.name, skill.kind]));

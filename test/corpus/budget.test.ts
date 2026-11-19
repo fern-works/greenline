@@ -4,6 +4,7 @@ import {
   copyFileSync,
   mkdirSync,
   mkdtempSync,
+  readdirSync,
   readFileSync,
   rmSync,
   symlinkSync,
@@ -171,17 +172,17 @@ function recipe(excess?: { readonly words: number; readonly ruling: string }): M
  * mode's fix rounds" (12) and "per step" (2). J-93 S1 took 16 away with the
  * trial step: "A trial step runs only where the workspace enabled it." (10),
  * the row's "(trial)" (1) and the line's "(trial, runs only where enabled)"
- * (5).
+ * (5). J-145 S1 added 6 to the note: "never an agent a method starts".
  */
-const BLOCK = { default: 112, garden: 126 };
+const BLOCK = { default: 118, garden: 132 };
 
 describe("S23 the budget of each mode", () => {
   it("J-73 S2 totals each mode's agents and rounds, derived from its depths, the steps it runs and the words an agent reads there", () => {
     const report = budgetReport(installation(), undefined, []);
     expect(report.block).toEqual(BLOCK);
     expect(report.line).toEqual([
-      { step: "sketch", skills: ["sketch"], words: 15 },
-      { step: "check", skills: ["check"], words: 16 },
+      { step: "sketch", skills: ["sketch"], words: 15, moments: [] },
+      { step: "check", skills: ["check"], words: 16, moments: [] },
     ]);
     expect(report.modes).toEqual([
       {
@@ -189,9 +190,13 @@ describe("S23 the budget of each mode", () => {
         agents: 1,
         fixRounds: 0,
         rounds: 0,
-        steps: [{ step: "check", skills: ["check"], words: 16, depth: { depth: "inline" } }],
+        steps: [
+          { step: "check", skills: ["check"], words: 16, moments: [], depth: { depth: "inline" } },
+        ],
         pages: [],
         total: { default: BLOCK.default + 16, garden: BLOCK.garden + 16 },
+        // No step of the fixture applies by a record fact, so a change without one reads the same.
+        withoutFacts: { default: BLOCK.default + 16, garden: BLOCK.garden + 16 },
         budget: 1000,
         excess: 0,
         ruled: null,
@@ -209,17 +214,20 @@ describe("S23 the budget of each mode", () => {
             step: "sketch",
             skills: ["sketch"],
             words: 15,
+            moments: [],
             depth: { depth: "independent", agents: 2 },
           },
           {
             step: "check",
             skills: ["check"],
             words: 16,
+            moments: [],
             depth: { depth: "looped", rounds: 2 },
           },
         ],
         pages: [],
         total: { default: BLOCK.default + 31, garden: BLOCK.garden + 31 },
+        withoutFacts: { default: BLOCK.default + 31, garden: BLOCK.garden + 31 },
         budget: 2000,
         excess: 0,
         ruled: null,
@@ -345,6 +353,25 @@ describe("S23 the budget of each mode", () => {
     ).toEqual(report.refused);
   });
 
+  it("J-123 S2 leaves a step that applies by a record fact out of a change without the fact, and judges the larger total", () => {
+    const base = installation({ quick: 1000, careful: 150 });
+    const gated: Installation = {
+      ...base,
+      modes: {
+        ...base.modes,
+        steps: base.modes.steps.map((step) =>
+          step.name === "sketch" ? { ...step, appliesWhen: "interface" } : step,
+        ),
+      },
+    };
+    const careful = budgetReport(gated, undefined, []).modes[1];
+    expect([careful?.total.garden, careful?.withoutFacts.garden]).toEqual([
+      BLOCK.garden + 31,
+      BLOCK.garden + 16,
+    ]);
+    expect(careful?.excess).toBe(BLOCK.garden + 31 - 150);
+  });
+
   it("S23 a ruling on the excess in the mode's account lets it pass, and a smaller one is refused again", () => {
     const over = installation({ quick: 1000, careful: 150 });
     const excess = BLOCK.garden + 31 - 150;
@@ -375,14 +402,15 @@ describe("S23 the budget of each mode", () => {
         "| Rounds, fixes and loops | 0 | 3 |",
         "| sketch, 15 words | none | independent, 2 agents |",
         "| check, 16 words | inline | looped, 2 rounds |",
-        "| The block | 112 | 112 |",
-        "| The block, garden enabled | 126 | 126 |",
+        "| The block | 118 | 118 |",
+        "| The block, garden enabled | 132 | 132 |",
         "| The steps' SKILL.md | 16 | 31 |",
         "| Front pages only its depths name | 0 | 0 |",
-        "| Words read | 128 | 143 |",
-        "| Words read, garden enabled | 142 | 157 |",
+        "| Words read | 134 | 149 |",
+        "| Words read, garden enabled | 148 | 163 |",
+        "| Words read, garden enabled, no step a record fact gates | 148 | 163 |",
         "| Words budget | 1000 | 150 |",
-        "| Against the budget | within | 7 over, refused |",
+        "| Against the budget | within | 13 over, refused |",
         "",
         "## Read apart, on demand",
         "",
@@ -398,7 +426,7 @@ describe("S23 the budget of each mode", () => {
         "",
         "## Refused",
         "",
-        "- careful: mode 'careful' reads 157 words, 7 over its words budget of 150, and the modes recipe's account for 'mode:careful' names no ruling on an excess",
+        "- careful: mode 'careful' reads 163 words, 13 over its words budget of 150, and the modes recipe's account for 'mode:careful' names no ruling on an excess",
         "",
       ].join("\n"),
     );
@@ -509,6 +537,86 @@ describe("J-98 S2 a front page only some modes' depths name counts against their
   });
 });
 
+/**
+ * The check step cut as J-180 S1 cut every front (J-181 S1; the register's
+ * row of 2026-11-06, "The words budget bounds the first move"): its
+ * `SKILL.md` points at its method page, `method.md`, and names the moment it
+ * is read, and at its references page. The words, counted by hand:
+ * `method.md` 8; `references/list.md` 6, which no page links.
+ */
+const CHECK_WITH_METHOD = skill("check", {
+  kind: "step",
+  slot: "check",
+  description: "Check the fixture change.",
+  body: "# Check\n\nBefore the run read [method.md](method.md); write [it](references/greenline.md).\n",
+  supportFiles: [
+    { path: "method.md", content: "# Method\n\nRun every check, then read each result.\n" },
+    { path: "references/list.md", content: "# The list\n\nEvery item is verified.\n" },
+    { path: "references/greenline.md", content: "# Mechanics\n\nWrite the check section.\n" },
+  ],
+});
+
+describe("J-181 S1 the moment pages, printed per step beside each mode and uncapped", () => {
+  const withMethod = SKILLS.map((entry) => (entry.name === "check" ? CHECK_WITH_METHOD : entry));
+
+  it("J-181 S1 names each page of a step's front its SKILL.md points to, with its words, and counts none of them against a ceiling", () => {
+    const report = budgetReport(
+      installation(undefined, withMethod),
+      undefined,
+      [],
+      CHECK_REFERENCES,
+    );
+    expect(report.line).toEqual([
+      { step: "sketch", skills: ["sketch"], words: 15, moments: [] },
+      {
+        step: "check",
+        skills: ["check"],
+        words: wordsOf(
+          '---\nname: "check"\ndescription: "Check the fixture change."\n---\n\n# Check\n\nBefore the run read [method.md](method.md); write [it](references/greenline.md).\n',
+        ).length,
+        moments: [{ skill: "check", path: "method.md", words: 8 }],
+      },
+    ]);
+    // The method page is read at its moment: the ceiling counts the first move alone.
+    const check = report.line[1]?.words ?? 0;
+    expect(report.modes.map(({ mode, total }) => ({ mode, total }))).toEqual([
+      { mode: "quick", total: { default: BLOCK.default + check, garden: BLOCK.garden + check } },
+      {
+        mode: "careful",
+        total: { default: BLOCK.default + 15 + check, garden: BLOCK.garden + 15 + check },
+      },
+    ]);
+  });
+
+  it("J-181 S1 prints the moment pages per step, each mode's column naming the words where the mode runs the step", () => {
+    const report = budgetReport(
+      installation(undefined, withMethod),
+      undefined,
+      [],
+      CHECK_REFERENCES,
+    );
+    const table = renderBudgetTable(report);
+    expect(table).toContain(
+      [
+        "## The moment pages, per step, uncapped",
+        "",
+        "A step's front points at each page below and names the moment it is read; the ceiling above bounds the first move, and these pages stand outside it.",
+        "",
+        "| Step | Pages | quick | careful |",
+        "| --- | --- | --- | --- |",
+        "| sketch | none | not run | 0 |",
+        "| check | `method.md` of `check`, 8 words | 8 | 8 |",
+        "| Moment pages |  | 8 | 8 |",
+        "",
+      ].join("\n"),
+    );
+    // A roster whose fronts point at no page prints no such section.
+    expect(renderBudgetTable(budgetReport(installation(), undefined, []))).not.toContain(
+      "## The moment pages",
+    );
+  });
+});
+
 describe("S23 the budget verb", () => {
   it("S23 reads the rulings from the corpus's modes recipe and fails on a refusal", () => {
     const corpus = temporary("greenline-budget-");
@@ -553,10 +661,29 @@ describe("S23 the budget verb", () => {
         line: [],
         modes: [],
         skills: [],
+        keepers: {
+          promises: 0,
+          none: [],
+          kept: 0,
+          byKind: { fact: 0, hold: 0, record: 0, oracle: 0, gap: 0 },
+          byCost: { free: 0, cheap: 0, dear: 0 },
+          gaps: { mechanism: 0, prose: 0 },
+          holds: [],
+          owed: 0,
+        },
         refused: [{ mode: "*", message: "corpus runtime: unavailable" }],
       },
       failed: true,
     });
+  });
+
+  it("J-153 S3 refuses a skill's recipe it cannot read, since the keepers it counts would be short", () => {
+    const corpus = temporary("greenline-budget-");
+    mkdirSync(join(corpus, "recipes"));
+    writeFileSync(join(corpus, "recipes/probe.json"), "{");
+    expect(budgetVerb(corpus, { _tag: "ok", value: installation() }, []).output.refused).toEqual([
+      { mode: "*", message: "corpus/recipes/probe.json : the recipe is not valid JSON" },
+    ]);
   });
 });
 
@@ -661,8 +788,19 @@ describe("S23 the corpus-budget gate row", () => {
       gateTree((root) => {
         const corpus = join(root, "corpus");
         mkdirSync(join(corpus, "runtime"), { recursive: true });
-        for (const path of ["manifest.json", "skills", "recipes"])
+        for (const path of ["manifest.json", "skills"])
           symlinkSync(join(repository, "corpus", path), join(corpus, path));
+        // The recipes as they stand, the modes recipe's excesses taken out, so the tight ceiling meets no ruling (J-107 S3 gave each mode one).
+        mkdirSync(join(corpus, "recipes"));
+        for (const file of readdirSync(join(repository, "corpus/recipes")))
+          if (file !== "modes.json")
+            symlinkSync(join(repository, "corpus/recipes", file), join(corpus, "recipes", file));
+        // SAFETY: the modes recipe the corpus verifies is an object whose parts are objects.
+        const unruled = JSON.parse(
+          readFileSync(join(repository, "corpus/recipes/modes.json"), "utf8"),
+        ) as { parts: { excess?: unknown }[] };
+        for (const part of unruled.parts) delete part.excess;
+        writeFileSync(join(corpus, "recipes/modes.json"), `${JSON.stringify(unruled, null, 2)}\n`);
         for (const guide of ["agent.md", "work.md", "ledger.md"])
           copyFileSync(join(repository, "corpus/runtime", guide), join(corpus, "runtime", guide));
         const definition = readFileSync(join(repository, "corpus/runtime/modes.json"), "utf8");
@@ -677,6 +815,47 @@ describe("S23 the corpus-budget gate row", () => {
     expect(result.status).toBe(1);
     expect(result.line).toMatch(
       /^corpus-budget FAIL — corpus-budget refused 1: quick: mode 'quick' reads \d+ words, \d+ over its words budget of 100, and the modes recipe's account for 'mode:quick' names no ruling on an excess$/,
+    );
+  });
+
+  it("J-153 S3 prints the keepers by kind and by cost, and fails a corpus whose holds name more hook rules than the cap", () => {
+    const passing = runRow(
+      gateTree((root) => symlinkSync(join(repository, "corpus"), join(root, "corpus"), "dir")),
+    );
+    expect(passing.stdout).toMatch(
+      /keepers: \d+ promises, \d+ kept \(fact \d+, hold \d+, record \d+, oracle \d+, gap \d+; free \d+, cheap \d+, dear \d+\), \d+ hook rules held \(cap \d+\)/,
+    );
+    const result = runRow(
+      gateTree((root) => {
+        const corpus = join(root, "corpus");
+        mkdirSync(corpus);
+        for (const path of ["manifest.json", "skills", "runtime"])
+          symlinkSync(join(repository, "corpus", path), join(corpus, path));
+        mkdirSync(join(corpus, "recipes"));
+        for (const file of readdirSync(join(repository, "corpus/recipes")))
+          if (file !== "secrets.json")
+            symlinkSync(join(repository, "corpus/recipes", file), join(corpus, "recipes", file));
+        // SAFETY: a skill's recipe is an object whose keepers are a list.
+        const planted = JSON.parse(
+          readFileSync(join(repository, "corpus/recipes/secrets.json"), "utf8"),
+        ) as { keepers: unknown[] };
+        for (let at = 0; at < 40; at += 1)
+          planted.keepers.push({
+            promise: `A planted promise ${String(at)}.`,
+            page: "SKILL.md",
+            kind: "hold",
+            where: `planted-rule-${String(at)}`,
+            cost: "cheap",
+          });
+        writeFileSync(
+          join(corpus, "recipes/secrets.json"),
+          `${JSON.stringify(planted, null, 2)}\n`,
+        );
+      }),
+    );
+    expect(result.status).toBe(1);
+    expect(result.line).toMatch(
+      /^corpus-budget FAIL — corpus-budget refused 1: the holds name \d+ hook rules, past the cap of \d+ \(.*planted-rule-0.*\); retire or merge one, or a register row raises the cap$/,
     );
   });
 });

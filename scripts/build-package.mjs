@@ -20,6 +20,7 @@ if (process.argv[2] === "--refuse-root-pack") {
     "license",
     "author",
     "bin",
+    "exports",
     "files",
     "type",
     "dependencies",
@@ -50,7 +51,13 @@ if (process.argv[2] === "--refuse-root-pack") {
     ["LICENSE", licence],
     ["THIRD_PARTY_NOTICES.md", "THIRD_PARTY_NOTICES.md"],
     ["dist/bin/greenline.mjs", "dist/bin/greenline.mjs"],
+    // The inspector's client app, Preact bundled in, and Preact's MIT licence beside it.
+    ["dist/bin/inspector.mjs", "dist/bin/inspector.mjs"],
+    ["dist/bin/inspector-preact-LICENSE.txt", "assets/inspector/preact-LICENSE.txt"],
     ["dist/corpus/installation.json", "dist/corpus/installation.json"],
+    // The readers module, greenline/readers, and its types (J-150 S2).
+    ["dist/readers/readers.mjs", "dist/readers/readers.mjs"],
+    ["dist/readers/readers.d.mts", "dist/readers/readers.d.mts"],
     // The inspector embeds the Geist fonts in the bundle; their licence travels with it.
     ["assets/inspect-fonts/OFL.txt", "assets/inspect-fonts/OFL.txt"],
   ]) {

@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Prune or audit a test suite with mutation proof, as its own announced task on a green suite. Invoke it by name when tests break on refactors that change no behavior, coverage is high but defects still ship, or production code carries seams only tests use."
+      "value": "Prune or audit a test suite with mutation proof, as its own announced task on a green suite. Invoke it by name when tests break on refactors that change no behavior, coverage is high but defects still ship, or production code carries seams only tests use, and when the owner asks to prune or audit the tests or names flaky or slow tests."
     }
   ],
   "sources": ["freddie-northam"],
@@ -24,7 +24,7 @@
         },
         {
           "passage": "written",
-          "text": "Sweep tests is the start for a test suite that needs pruning or an audit. It fires by name, when tests break on refactors that change no behavior, when coverage is high but defects still ship, or when production code carries seams only tests use, and it runs on a green suite as a change of its own, never inside another change's build: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming sweep-tests, and run the line from `frame`, the sweep itself being the change's build. Propose regular or above, since the sweep's result is reviewed by an agent other than the sweeper only where the review step runs independent; where the owner chooses quick, no review runs, and the close section names that limit. A red check goes to diagnose. It deletes nothing it has not proved by mutation, adds no test, and never certifies its own review without naming that limit.",
+          "text": "Sweep tests is the start for a test suite that needs pruning or an audit.",
           "kind": "method",
           "reason": "one opening paragraph in the skill's voice after the title: a standing program, not an initiative stage, fired by name on a green suite in its own dedicated ticket and never inside another ticket's build; a red check goes to diagnosing-bugs and the review of the committed result to delivery-review; it deletes nothing unproved by mutation, adds no test and never certifies its own review; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
           "gist": "Opens sweep-tests: prune a green suite as a change of its own",
@@ -32,10 +32,53 @@
         },
         {
           "passage": "written",
+          "text": "A red check goes to diagnose. It deletes nothing it has not proved by mutation, adds no test, and never certifies its own review without naming that limit.",
+          "kind": "method",
+          "reason": "one opening paragraph in the skill's voice after the title: a standing program, not an initiative stage, fired by name on a green suite in its own dedicated ticket and never inside another ticket's build; a red check goes to diagnosing-bugs and the review of the committed result to delivery-review; it deletes nothing unproved by mutation, adds no test and never certifies its own review; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "Opens sweep-tests: prune a green suite as a change of its own",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record, a start hands the job to a mode the owner approves, and what a record relies on lives in the change's folder; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names and steps; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution",
+          "join": " "
+        },
+        {
+          "passage": "written",
           "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the gate, read [method.md](method.md): its own change, the review's reach, the gate, the proof of each deletion, the report, the batches, the seams and what not to do.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: a green suite and the request to sweep it\nProduces: the before and after mutation results at different paths, the deletion and seam table, and the baselines and kills, in the change's folder under .greenline/ledger/<id>/; the sweep committed as the change's build\nNext: frame, under the mode the owner approves; the sweep is the change's build, and review and verify follow at the depths its mode gives",
+          "kind": "pointer",
+          "reason": "the sweep's evidence and its review: the Report section says the baselines, survivors and kills, both reports, the table and the resulting checks stay with the sweep's ticket under its evidence home, acceptance is judged against those measurements since an aggregate score cannot prove each baseline mutant remains killed, and the committed result goes to delivery-review like any implementation with the sweeper never writing its own review record; the Handoff section names the green suite and the sweep's own ticket consumed, the reports and table produced under .greenline/work/evidence/TKT-NNN/ with the ticket implementing then implemented, and delivery-review next; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "Evidence stays in the change's folder, and review judges the sweep"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Test value sweep: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "It fires by name, when tests break on refactors that change no behavior, when coverage is high but defects still ship, or when production code carries seams only tests use, and it runs on a green suite as a change of its own, never inside another change's build: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming sweep-tests, and run the line from `frame`, the sweep itself being the change's build. Propose regular or above, since the sweep's result is reviewed by an agent other than the sweeper only where the review step runs independent; where the owner chooses quick, no review runs, and the close section names that limit.",
+          "kind": "method",
+          "reason": "one opening paragraph in the skill's voice after the title: a standing program, not an initiative stage, fired by name on a green suite in its own dedicated ticket and never inside another ticket's build; a red check goes to diagnosing-bugs and the review of the committed result to delivery-review; it deletes nothing unproved by mutation, adds no test and never certifies its own review; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
+          "gist": "Opens sweep-tests: prune a green suite as a change of its own",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": every change has one record, a start hands the job to a mode the owner approves, and what a record relies on lives in the change's folder; R16 of 2026-10-07, a start chosen from the situation a request begins in; and R22 of 2026-10-08, \"yes amend, with one change\", the roster table's names and steps; the operator's card of 2026-10-19 naming the three modes, \"quick, regular, careful (Recommended)\": the old names and the trial step in a skill's prose are corrected by the smallest substitution"
         },
         {
           "passage": "taken",
@@ -325,13 +368,6 @@
             "5100f885a715",
             "20ffee0a0018"
           ]
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: a green suite and the request to sweep it\nProduces: the before and after mutation results at different paths, the deletion and seam table, and the baselines and kills, in the change's folder under .greenline/ledger/<id>/; the sweep committed as the change's build\nNext: frame, under the mode the owner approves; the sweep is the change's build, and review and verify follow at the depths its mode gives",
-          "kind": "pointer",
-          "reason": "the sweep's evidence and its review: the Report section says the baselines, survivors and kills, both reports, the table and the resulting checks stay with the sweep's ticket under its evidence home, acceptance is judged against those measurements since an aggregate score cannot prove each baseline mutant remains killed, and the committed result goes to delivery-review like any implementation with the sweeper never writing its own review record; the Handoff section names the green suite and the sweep's own ticket consumed, the reports and table produced under .greenline/work/evidence/TKT-NNN/ with the ticket implementing then implemented, and delivery-review next; re-cut at S17: the sweep is a change of its own run on the line, its reports in the change's folder, with no ticket lifecycle or retired skill named.",
-          "gist": "Evidence stays in the change's folder, and review judges the sweep"
         }
       ]
     },
@@ -373,8 +409,8 @@
       "gist": "Repairing the source now goes through diagnose, with a restart once green",
       "ruling": "series-s7-roster-2026-09-11: the operator's ruling of 2026-09-11 that the plan's open items be finished with the maintainer's recommendations; the recommendation, recorded in that file, keeps the nine method edits",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 4
+        "path": "method.md",
+        "passage": 3
       }
     },
     {
@@ -393,8 +429,8 @@
       "reason": "the <skill-dir> in upstream's command is this skill's installed directory, found by the glob **/sweep-tests/bin/mutate.mjs under the installed skills rather than by assuming a harness; the command itself is unchanged",
       "gist": "Locates bin/mutate.mjs by glob under the installed skills; the command is unchanged",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -405,8 +441,8 @@
       "reason": "the before-report and the after-report go to different paths under the sweep ticket's evidence home, .greenline/work/evidence/TKT-NNN/",
       "gist": "Before and after reports go to different paths in the change's folder",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 12
+        "path": "method.md",
+        "passage": 11
       }
     },
     {
@@ -417,9 +453,90 @@
       "reason": "upstream's 'the report names one killer for each mutant' holds only for a runner that reports per-test identities; the bundled mutate.mjs reports suite-level killed and survived outcomes and names no killer, so that attribution is never invented and its absence is not evidence that a test is redundant; the rest of the paragraph (run order, not ownership; shortlist, never proof; the rerun is the proof) is upstream's",
       "gist": "The bundled tool names no killer; never invent one or infer redundancy",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 14
+        "path": "method.md",
+        "passage": 13
       }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "The sweep runs as its own change: propose its mode and wait for the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "Propose regular or above. Where the owner chooses quick, no review runs and the close names that limit, so the sweep never certifies its own review without saying so.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No scenario reaches this start, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "The record opens with a ## start section naming sweep-tests.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No status reading requires the start section, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Run only on a green suite: a red check goes to diagnose, and no test is touched or deleted while a check is red.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "done-checks holds only the close, not a deletion made while a check is red. No run observed this fail, so the second condition fails."
+    },
+    {
+      "promise": "Delete nothing not proved by mutation. Record every baseline mutant with its source hash and test command, and require every baseline mutant still to exist and be killed at the end. A deletion that cannot be proved is said and its test kept.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This reaches the owner's test suite, but no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Write the before and after mutation reports to different paths in the change's folder, beside the baselines, the kills and the table.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "GL0405 and GL0452 read only cited or uncited files, not whether both reports exist. No run observed this fail, so the second condition fails."
+    },
+    {
+      "promise": "Add no test and change nothing outside the test suite and its seams. Leave a seam whose caller is a test in another file, and report it.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Close with the two scores and one table of each deleted test and removed seam.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is the close's shape, and no run observed it fail, so the second condition fails."
+    },
+    {
+      "promise": "Commit the sweep's result with the change's trailer.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "message-trailer",
+      "cost": "cheap",
+      "oracle": "The commits and the landing"
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "prune the tests",
+        "prune tests",
+        "audit the tests",
+        "mutation",
+        "flaky tests",
+        "slow tests",
+        "tests break on refactors"
+      ],
+      "weight": 3,
+      "read": "whole"
     }
   ]
 }

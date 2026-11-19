@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Give sparse, evidence-based progress updates during long-running work: observable milestones weighted by work and risk, an update only when something material changed, one rounded-down bar. Use while long work with several milestones runs between replies, never for a short answer or work with no intermediate state; and the moment the owner asks to change how or how often you report progress, whether more updates, total silence or an estimated clock, BEFORE any such preference is saved anywhere."
+      "value": "Give sparse, evidence-based progress updates during long work with no change open: observable milestones weighted by work and risk, an update only when something material changed, one rounded-down bar. Use while a survey, a long diagnosis or other long work with several milestones runs outside a change's steps, never for a short answer, for work with no intermediate state or inside a change, whose progress line the block's reply section owns; and the moment the owner asks to change how or how often you report progress (\"keep me posted\"), whether more updates, total silence or an estimated clock, BEFORE any such preference is saved anywhere."
     }
   ],
   "sources": ["tjcages"],
@@ -24,10 +24,18 @@
         },
         {
           "passage": "written",
-          "text": "progress-check is the habit for the moment long work runs between replies: a\nchange with several milestones, a build of many slices, delegated agents\nrunning one after another. It never fires on a short answer or on work whose\nonly honest states are started and finished, and its cadence is judgment,\nnever spam. It also fires the moment the owner asks to change how or how often\nyou report, whether more updates, silence or an estimated clock: follow the\npreference within the current task, keep reporting actionable blockers, and\nsave nothing anywhere unless the owner asks for a lasting rule (Persist a\npreference, below). It writes no record of its own: progress stays in the\nconversation, the evidence behind it belongs to the change record's sections\nand the checks the change recorded, and an estimated clock is an\nunmeasured claim this habit never makes.",
+          "text": "progress-check is the habit for long work with no change open: a survey, a\nlong diagnosis, delegated agents running one after another outside a change's\nsteps. Inside a change the block's reply section owns progress: its progress\nline counts the change's steps, and a line says when a step ends. This habit\nnever fires on a short answer or on work whose only honest states are started\nand finished, and its cadence is judgment, never spam.",
           "kind": "scope",
-          "reason": "The opening paragraph in the habit's own voice: the situations its block rows key it by, long work running between replies (a change with several milestones, a build of many slices, delegated agents one after another) and the owner asking to change how or how often progress is reported; never a short answer or two-state work, on a cadence that is judgment; that it writes no record of its own, the evidence being the change record's and its checks'; and that an estimated clock is never claimed. Re-cut at S18b onto the change record, in place of a ticket held at implementing and its execution account. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
-          "gist": "Opens the habit: long work between replies, never a short answer"
+          "reason": "The opening paragraph in the habit's own voice, re-cut for the reply shape: inside a change the block's reply section carries the progress line on the change's steps and the line when a step ends, so the habit keeps long work with no change open (a survey, a long diagnosis, delegated agents outside a change's steps) and the owner asking to change how or how often progress is reported; never a short answer or two-state work, on a cadence that is judgment; that it writes no record of its own; and that an estimated clock is never claimed. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the habit: long work with no change open"
+        },
+        {
+          "passage": "written",
+          "text": "It\nwrites no record of its own: progress stays in the conversation, and an\nestimated clock is an unmeasured claim this habit never makes.",
+          "kind": "scope",
+          "reason": "The opening paragraph in the habit's own voice, re-cut for the reply shape: inside a change the block's reply section carries the progress line on the change's steps and the line when a step ends, so the habit keeps long work with no change open (a survey, a long diagnosis, delegated agents outside a change's steps) and the owner asking to change how or how often progress is reported; never a short answer or two-state work, on a cadence that is judgment; that it writes no record of its own; and that an estimated clock is never claimed. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the habit: long work with no change open",
+          "join": " "
         },
         {
           "passage": "written",
@@ -35,6 +43,39 @@
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first update, read [method.md](method.md): a change of reporting the owner asks for, the mode, reporting progress and persisting a preference.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "Durable output: none. Applied on its own cadence while long work runs, and the moment the owner asks to change how or how often you report, before any preference is saved anywhere.",
+          "kind": "harness",
+          "reason": "The habit's closing line: Durable output none, applied on its own cadence while long work runs and the moment the owner asks to change the cadence, before any preference is saved. Re-cut at S18b in the habit's words, in place of the worker moment.",
+          "gist": "Closes on nothing durable, applied during long work or a cadence request"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Progress Check: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "It also fires the\nmoment the owner asks to change how or how often you report, whether more\nupdates, silence or an estimated clock: follow the preference within the\ncurrent task, keep reporting actionable blockers, and save nothing anywhere\nunless the owner asks for a lasting rule (Persist a preference, below).",
+          "kind": "scope",
+          "reason": "The opening paragraph in the habit's own voice, re-cut for the reply shape: inside a change the block's reply section carries the progress line on the change's steps and the line when a step ends, so the habit keeps long work with no change open (a survey, a long diagnosis, delegated agents outside a change's steps) and the owner asking to change how or how often progress is reported; never a short answer or two-state work, on a cadence that is judgment; that it writes no record of its own; and that an estimated clock is never claimed. Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
+          "gist": "Opens the habit: long work with no change open"
         },
         {
           "passage": "taken",
@@ -64,10 +105,10 @@
         },
         {
           "passage": "written",
-          "text": "Where a change owns the work, the\n   milestones are its acceptance items and every update quotes their evidence.",
+          "text": "Where a change owns the work, the\n   status line's progress line counts its steps instead of these milestones.",
           "kind": "pointer",
-          "reason": "Milestone evidence belongs to the change's acceptance items and the checks greenline check recorded for it, so every update quotes that evidence, the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform). Re-cut at S18b onto the change record, in place of the owning ticket and its execution account.",
-          "gist": "Milestones are the change's acceptance items, each update quoting their evidence",
+          "reason": "Inside a change the block's reply section owns progress, its line counting the steps the change's mode runs, so a change's work takes no milestones of this habit; the update is conversation with no parallel progress file or tracker, and METHODOLOGY.md section 7 keeps no 0/1/2 readiness score (its sixth item scored a global persistence greenline does not perform). J-175 S1 (the register's rows of 2026-11-05, \"The keeper over the oracle\" and \"The seven cuts\"; the 0.2.0 series on Codex): the progress line is the status line's, the block no longer carrying one (J-176 S1).",
+          "gist": "Inside a change, the block's progress line counts the steps",
           "join": " "
         },
         {
@@ -79,9 +120,9 @@
         },
         {
           "passage": "written",
-          "text": "3. Send a routine update only when turns of work have passed since the previous\n   routine update or a step of the change has ended, **and** one of these is\n   true: a milestone completed, verified progress rose by at least 10 percentage\n   points, or the next action materially changed. Never estimate elapsed time to\n   open the gate; an estimated clock is an unmeasured claim.",
+          "text": "3. Send a routine update only when turns of work have passed since the previous\n   routine update or a milestone of the work has ended, **and** one of these is\n   true: a milestone completed, verified progress rose by at least 10 percentage\n   points, or the next action materially changed. Never estimate elapsed time to\n   open the gate; an estimated clock is an unmeasured claim.",
           "kind": "harness",
-          "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode. Re-cut at S18b: the end of a step replaces a ticket's status transition.",
+          "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode. Re-cut at S18b: the end of a step replaces a ticket's status transition. Since J-107 S3 the habit serves work with no change open, so the gate's other half is a milestone's end, a step's end being the block's progress line's.",
           "gist": "Routine updates follow turns of work or a step's end, not minutes",
           "credits": ["tjcages"],
           "join": "\n"
@@ -95,9 +136,9 @@
         },
         {
           "passage": "written",
-          "text": "The update is conversation and nothing else: milestone evidence belongs to the\nchange record and its checks, and no parallel progress file or tracker is\ncreated.",
+          "text": "The update is conversation and nothing else: milestone evidence stays in\nthe reply and the checks the work ran, and no parallel progress file or\ntracker is created.",
           "kind": "pointer",
-          "reason": "Milestone evidence belongs to the change record and its checks, so the update is conversation with no parallel progress file or tracker. Re-cut at S18b onto the change record, in place of the owning ticket and its execution account.",
+          "reason": "Milestone evidence belongs to the change record and its checks, so the update is conversation with no parallel progress file or tracker. Re-cut at S18b onto the change record, in place of the owning ticket and its execution account. Since J-107 S3 the habit serves work with no change open, so its evidence is the reply's and the checks', not a change record's.",
           "gist": "Updates stay in conversation; no progress file or tracker is created"
         },
         {
@@ -151,13 +192,6 @@
           "kind": "home",
           "reason": "A reporting preference is followed within the current task and saved nowhere; a lasting rule is recorded only on the operator's request as a house ruling in the repository's user-owned instruction home in the format .greenline/WORK.md defines, never in a machine-global instruction file, and the next context reads it without a second confirmation; the section that described the global install (SKILL.md and METHODOLOGY.md section 5) now carries this rule under a heading that names it. (carried from fold-2026-09-11; the word operator became owner where the copy names the workspace's person, and request owner became request holder (the internal refactor's step 1, ruling 10, 2026-09-12)) Since J-93 S2 the front names greenline's homes and commands by their nouns, their paths and commands on the skill's references page.",
           "gist": "Preferences last the task; a lasting rule needs the owner's request"
-        },
-        {
-          "passage": "written",
-          "text": "Durable output: none. Applied on its own cadence while long work runs, and the moment the owner asks to change how or how often you report, before any preference is saved anywhere.",
-          "kind": "harness",
-          "reason": "The habit's closing line: Durable output none, applied on its own cadence while long work runs and the moment the owner asks to change the cadence, before any preference is saved. Re-cut at S18b in the habit's words, in place of the worker moment.",
-          "gist": "Closes on nothing durable, applied during long work or a cadence request"
         }
       ]
     },
@@ -417,8 +451,8 @@
       "reason": "The agent has no wall clock and its unit of reply is the turn, so the 30-minute half of the routine-update gate is re-anchored in SKILL.md step 3 and METHODOLOGY.md section 3 to turns of work since the previous routine update or the end of a step of the change, the change half (a milestone, ten verified points, a different next action) unchanged and an estimated elapsed time never used to open the gate; section 8's open gap names the turn-and-step cadence in place of the 30-minute default and drops the global-install gap that went with the removed mode.",
       "gist": "Re-anchors the update gate from thirty minutes to turns of work",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -656,6 +690,85 @@
         "path": "METHODOLOGY.md",
         "passage": 8
       }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Inside a change, the status line's progress line owns progress and this habit's bar does not appear. It never fires on a short answer.",
+      "page": "SKILL.md",
+      "kind": "oracle",
+      "where": "The reply shape",
+      "cost": "free"
+    },
+    {
+      "promise": "A request to change how or how often progress is reported is followed within the current task and saved nowhere unless the owner asks for a lasting rule.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading flags an unasked saved preference, and no run names one."
+    },
+    {
+      "promise": "It never makes an estimated clock claim.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is reply content on the agent's own turn, so condition 1 fails. No run cites it."
+    },
+    {
+      "promise": "One baseline update is sent after scope is understood. A routine update is sent only when its gate opens, and an unchanged bar or a \"still working\" message is never sent.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is reply cadence with no reader, and no run cites it."
+    },
+    {
+      "promise": "A new blocker the owner can act on, and completion, are reported immediately. 100% is used only after every gate passes.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reader ties a reply to a blocker or to the gates, and no run cites a delay."
+    },
+    {
+      "promise": "No parallel progress file or tracker is created.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading names a stray progress file, and no run cites one."
+    },
+    {
+      "promise": "Each update has at most three items and ends with exactly one 20-cell inline-code bar, rounded down to 5%, with nothing after it. Only the coordinator shows it in multi-agent work.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is reply shape with no turn-end reader. The replay's F3 composed progress lines after closes with no change open (part 004 F4, 004/004), but those read as the block's line, not this habit's bar."
+    },
+    {
+      "promise": "A lasting reporting rule the owner asks for is written as a house ruling in the repository's instruction home, in the work guide's format.",
+      "page": "method.md",
+      "kind": "record",
+      "where": "the house rulings in AGENTS.md, which greenline status prints",
+      "cost": "free"
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "how far along",
+        "status update",
+        "report progress",
+        "check in on",
+        "keep me posted",
+        "keep me updated",
+        "how often you report"
+      ],
+      "weight": 1,
+      "read": "part"
+    },
+    {
+      "words": ["survey", "audit", "long diagnosis"],
+      "modes": ["careful"],
+      "weight": 1,
+      "read": "part"
     }
   ]
 }

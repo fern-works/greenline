@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-transitions-dev-agent-lib",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-transitions-dev-transitions-dev",
+    "sha256": "43759565fb5dfc9e8ed0642c1640a6e69bff00e6ee23eacfb9de971c2b1ff534"
+  },
+  "source": {
+    "repository": "https://github.com/Jakubantalik/transitions.dev",
+    "commit": "54fbee8e9d698598b4e7ceabb2fb43ea30beacfc",
+    "path": "agent/lib"
+  },
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Scanner code held unsnapshotted; its rules enter restated",
+  "reason": "Its directory carries recipe data generated from the restricted skills, so no snapshot holds it; its six rules enter the registry restated and the scanner is rebuilt from its description.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's agent/lib is held unsnapshotted since its recipe data derives from the restricted skills; its six rules enter the registry restated with the commit as provenance"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': transitions.dev's agent/lib is held unsnapshotted since its recipe data derives from the restricted skills; its six rules enter the registry restated with the commit as provenance"
+    }
+  ]
+}

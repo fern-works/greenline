@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Writes the repository's quality bar down as a contract in its decision home, a command behind every number, and guards it against an agent quietly lowering it: a new suppression, a skipped or deleted test, a stripped assertion, an unimplemented stub, a threshold edited down. Use when no quality bar is written down, when the owner says \"set up constraints\" or \"define our standards\", or when an agent keeps silencing checks or skipping tests to reach green."
+      "value": "Writes the repository's quality bar down as a contract in its decision home, a command behind every number, and guards it against an agent quietly lowering it: a new suppression, a skipped or deleted test, a stripped assertion, an unimplemented stub, a threshold edited down. Use when no quality bar is written down, when the owner says \"set up constraints\", \"define our standards\" or sets a rule to hold from now on, or when an agent keeps silencing checks or skipping tests to reach green."
     }
   ],
   "sources": ["addyosmani"],
@@ -24,7 +24,7 @@
         },
         {
           "passage": "written",
-          "text": "constraint-driven-development is a trial start for a repository whose quality bar is not written down, or whose checks were loosened to reach green. Writing the bar is a change: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming constraint-driven-development, and run the line from `frame`; the interview below is the frame step's, its four questions asked at any depth since each has a default, and the bar is written at the build step. Install only what the owner picked: an option is not an obligation to install a dependency, as groundwork says, and a default the owner takes with \"I don't know\" is no pick: what it would install is proposed with its cost and installed only on the owner's yes.",
+          "text": "constraint-driven-development is a trial start for a repository whose quality bar is not written down, or whose checks were loosened to reach green.",
           "kind": "method",
           "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the bar written as a change on the line, and groundwork's rule that only the owner's picks are installed (contradiction 29), a default taken on \"I don't know\" included, since Q1's default installs tools.",
           "gist": "Opens the start: the bar is a change; defaults install nothing unpicked",
@@ -32,10 +32,53 @@
         },
         {
           "passage": "written",
+          "text": "Install only what the owner picked: an option is not an obligation to install a dependency, as groundwork says, and a default the owner takes with \"I don't know\" is no pick: what it would install is proposed with its cost and installed only on the owner's yes.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the bar written as a change on the line, and groundwork's rule that only the owner's picks are installed (contradiction 29), a default taken on \"I don't know\" included, since Q1's default installs tools.",
+          "gist": "Opens the start: the bar is a change; defaults install nothing unpicked",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves and every check runs through greenline check; R16 of 2026-10-07, a start chosen from the situation a request begins in; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, a default taken on \"I don't know\" installing nothing the owner did not pick among it",
+          "join": " "
+        },
+        {
+          "passage": "written",
           "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first question, read [method.md](method.md): the change it runs as, loading the constraints, and the six steps from detection to the ratchets, with the escalation path.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the repository, its stack, its checks and its CI; the owner's answers to the four questions; the decision home\nProduces: through the change, the bar in the decision home's `## Constraints` section, a command behind every number, the measured values a ratchet holds, and the floor guard as one of the repository's checks\nNext: frame, under the mode the owner approves",
+          "kind": "pointer",
+          "reason": "A start's handoff: the bar and the guard produced through the change, and the step its hand reaches, frame under the approved mode.",
+          "gist": "Hands over the bar and the floor guard; next is frame"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Constraint-Driven Development: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "Writing the bar is a change: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section naming constraint-driven-development, and run the line from `frame`; the interview below is the frame step's, its four questions asked at any depth since each has a default, and the bar is written at the build step.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, the bar written as a change on the line, and groundwork's rule that only the owner's picks are installed (contradiction 29), a default taken on \"I don't know\" included, since Q1's default installs tools.",
+          "gist": "Opens the start: the bar is a change; defaults install nothing unpicked",
+          "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start hands the job to a mode the owner approves and every check runs through greenline check; R16 of 2026-10-07, a start chosen from the situation a request begins in; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, a default taken on \"I don't know\" installing nothing the owner did not pick among it"
         },
         {
           "passage": "taken",
@@ -459,13 +502,6 @@
             }
           ],
           "join": " "
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the repository, its stack, its checks and its CI; the owner's answers to the four questions; the decision home\nProduces: through the change, the bar in the decision home's `## Constraints` section, a command behind every number, the measured values a ratchet holds, and the floor guard as one of the repository's checks\nNext: frame, under the mode the owner approves",
-          "kind": "pointer",
-          "reason": "A start's handoff: the bar and the guard produced through the change, and the step its hand reaches, frame under the approved mode.",
-          "gist": "Hands over the bar and the floor guard; next is frame"
         }
       ]
     },
@@ -743,8 +779,8 @@
       "gist": "Coverage needs a provider; with none there is no number yet",
       "ruling": "The operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\" and, for the floor guard, \"Exempt its own bar and file\": the start is cured of what the evaluation found, the coverage row saying a number needs a coverage provider among it",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -756,8 +792,8 @@
       "gist": "Links frame's interview page, its differences, one round and the answers' home",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): constraint-driven-development enters as a copy of its method core, its steps 1 to 3 and 5 to 7, its escalation path and its floor guard as a support file, a trial start under that name; its tool, install and default-threshold tables are garden's; its bar lives in the decision home; and groundwork's side of contradiction 29 stands, an option being no obligation to install; the operator's card answers of 2026-10-12 on the first evaluation's brief, \"The roster after the cut\": the pointer is the exact link to frame's interview page and the start says in one sentence how its four questions run at every depth; and the card of 2026-10-14, \"The record's frame section\": a start's four frame answers live in the change record's frame section",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 11
+        "path": "method.md",
+        "passage": 10
       }
     },
     {
@@ -920,8 +956,8 @@
       "reason": "Step 3 writes the bar into the decision home, where upstream wrote CONSTRAINTS.md at the repository root (R21).",
       "gist": "CONSTRAINTS.md at the root gives way to the bar in decisions",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -932,8 +968,8 @@
       "reason": "Step 3 writes the bar into the decision home, where upstream wrote CONSTRAINTS.md at the repository root (R21).",
       "gist": "CONSTRAINTS.md at the root gives way to the bar in decisions",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -944,8 +980,8 @@
       "reason": "Step 3 writes the bar into the decision home, where upstream wrote CONSTRAINTS.md at the repository root (R21).",
       "gist": "CONSTRAINTS.md at the root gives way to the bar in decisions",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -957,8 +993,8 @@
       "gist": "No line is added to AGENTS.md or CLAUDE.md; decisions already hold it",
       "ruling": "The operator's ruling R21 of 2026-10-08 on harness-bound content (\"harness specific skills have be re thought in to being usable on all harnesses\") and the R3 ruling of that day, \"yes go ahead\", on the portable forms: the bar lives in the decision home, which the block already reads, with no line in the agent instructions file, and the floor guard runs as one of the repository's own checks through greenline check, never a harness hook",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 10
+        "path": "method.md",
+        "passage": 9
       }
     },
     {
@@ -1473,8 +1509,8 @@
       "reason": "The written level is the bar in the decision home.",
       "gist": "The written level is now the bar in the decisions document",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 18
+        "path": "method.md",
+        "passage": 17
       }
     },
     {
@@ -1812,6 +1848,92 @@
         "path": "references/floor-guard.md",
         "passage": 3
       }
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Writing the bar is a change, proposed with its mode, and nothing is written before the owner's yes.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "The change's record opens with a ## start section naming constraint-driven-development.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks start sections. No observed failure."
+    },
+    {
+      "promise": "Only what the owner picked is installed; a default taken with \"I don't know\" is proposed with its cost and installed only on the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "It reaches the owner's dependencies, but no guard reads an install command and no run observed this fail (the Linear replay's installs were groundwork's, verdict question 9)."
+    },
+    {
+      "promise": "In a non-interactive context the interview is not run; the floor is applied only as a change the proceed setting allows without waiting, otherwise proposed, and the rest is flagged for a person.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "standing-choice",
+      "cost": "cheap"
+    },
+    {
+      "promise": "What detection found is reported in two lines before any question.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Reply shape with no observed failure."
+    },
+    {
+      "promise": "The four questions are asked in one round, each with its guess, the agent waits, and the answers are recorded in the change record's frame section.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The verdict's F7 found frame answers missing in other changes of the Linear replay, not in a run of this start. J-149 S1's record lint, planned and not landed, would hold it as a side effect."
+    },
+    {
+      "promise": "The bar is written as one ## Constraints section in the decision home, each number with the command that produces it, and no line goes into the agent instructions file.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks the section's form. No observed failure."
+    },
+    {
+      "promise": "The floor guard runs as one of the repository's checks through greenline check with --bar, never as a harness hook, and a floor violation or a guard that cannot run blocks the change.",
+      "page": "method.md",
+      "kind": "hold",
+      "where": "done-checks",
+      "cost": "cheap"
+    },
+    {
+      "promise": "In CI the job calls the guard directly on each change with the whole history and --base naming the merge target.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "CI configuration that no reading checks. No observed failure."
+    },
+    {
+      "promise": "The guard keeps the reference contract: exit 0, 1 or 2 with a 2 never read as a 0, and the rule and location reported, never a matched secret value.",
+      "page": "references/floor-guard.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The guard is the agent's adapted script, which nothing checks against the contract. No observed failure."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "set up constraints",
+        "define our standards",
+        "quality bar",
+        "skipping tests",
+        "silencing checks",
+        "from now on"
+      ],
+      "weight": 3,
+      "read": "whole"
     }
   ]
 }

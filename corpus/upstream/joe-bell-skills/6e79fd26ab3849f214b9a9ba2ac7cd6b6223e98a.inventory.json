@@ -1,0 +1,71 @@
+{
+  "commit": "6e79fd26ab3849f214b9a9ba2ac7cd6b6223e98a",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "9d86e3fba7e394967d93b77777e4a1b42b6d69c928c374a52daaf2f1a53dbcc2"
+    },
+    {
+      "path": "apple-web-app/SKILL.md",
+      "sha256": "f61f0bb14edf982feccf25fb56584af7d60a34f8f02c87aae486943cc12b043f"
+    },
+    {
+      "path": "apple-web-app/references/conformance-checklist.md",
+      "sha256": "595857df2d314c3aa166e1c5128ef44ac1dbdae823115d4b35615e30538602a0"
+    },
+    {
+      "path": "apple-web-app/references/head-and-icons.md",
+      "sha256": "afd637c2c92e840d362b04e9df04a95ff4218db1f1d9fed2e58224d2a5238a78"
+    },
+    {
+      "path": "apple-web-app/references/install-ux.md",
+      "sha256": "6dc8aa0115929c2d7e0427f491679c37b2e70f4da852ad02aa99268ef38017cf"
+    },
+    {
+      "path": "apple-web-app/references/ios-26-notes.md",
+      "sha256": "689d1e71c905be96ee885f1de0f84dfb16fa4b86136eb7d5ff3e1ad696f8c450"
+    },
+    {
+      "path": "apple-web-app/references/ios-devices.md",
+      "sha256": "af19a36a181fffb5a451325e4cf828fa091cb68c1fd772dd52a64c9f7c664070"
+    },
+    {
+      "path": "apple-web-app/references/layout-and-touch.md",
+      "sha256": "7f214beeba36e5133df72f8d018573a260188eff7345172dc073f43d747a7e98"
+    },
+    {
+      "path": "apple-web-app/references/macos-add-to-dock.md",
+      "sha256": "cd3391133ee4a162cf8e8e60ec6f9270d9289c9cc516452e8dccbaddd77832a3"
+    },
+    {
+      "path": "apple-web-app/references/maintenance.md",
+      "sha256": "6a9685ab5f2274388e77825de9d0827d40e6c9a4c28292a14f98b2a8289e37cc"
+    },
+    {
+      "path": "apple-web-app/references/overlays-and-keyboard.md",
+      "sha256": "8d6a4a7cb68fb500c7319ff69d4fcbb14fb6e8fad9d3ab80d4c51bfacb049261"
+    },
+    {
+      "path": "apple-web-app/references/sources.md",
+      "sha256": "b7a08cbb697c10cc439e94d6a73d40fb9d5889f66b400ed005f9d0791d3ead56"
+    },
+    {
+      "path": "apple-web-app/references/splash-screens.md",
+      "sha256": "57c83a84ed2087a171c2ade95f8aa280eeeb76432d84dbb89cafe9d854e5061f"
+    },
+    {
+      "path": "apple-web-app/references/tailwind-css-v4.md",
+      "sha256": "0dc214438dfa865eaa719af462783b1a62c556b20e647e9d79e9d27ecf2787f3"
+    },
+    {
+      "path": "apple-web-app/references/theme-color-and-status-bar.md",
+      "sha256": "a75a1865f7511d628c6ff98937d85906c4d768af4985e0a8fb7d0d0dfe292a8a"
+    }
+  ],
+  "entries": [
+    {
+      "name": "apple-web-app",
+      "path": "skills/apple-web-app"
+    }
+  ]
+}

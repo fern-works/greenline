@@ -1,0 +1,27 @@
+{
+  "commit": "2206ff935b4affa9ad249a5399a3e8e29f5f6edd",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "16bea8955d23cdd5a33ca52d78c287e475a42ad96238e707a9f344ab6bc635db"
+    },
+    {
+      "path": "enforce/SKILL.md",
+      "sha256": "1bf9337b6056994d1936c4f6f0edde7f572c8568648cd81330db0b08c083680c"
+    },
+    {
+      "path": "enforce-format/SKILL.md",
+      "sha256": "4204a8aad81686f5fbaea1278c320591397dc100307a882ec4b2d1f3987686b9"
+    }
+  ],
+  "entries": [
+    {
+      "name": "enforce",
+      "path": "references/enforce.md"
+    },
+    {
+      "name": "enforce-format",
+      "path": "references/enforce-format.md"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-feel-vocabulary",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-feel-runtime",
+    "sha256": "d5004ee40c76087e2942102739788959461d3ec018a4cb07cfb4b73f3f2d3f45"
+  },
+  "source": {
+    "repository": "https://github.com/diip3sh/feel",
+    "commit": "c9b22fa42b25757852d7c3aa621344d13882a519",
+    "path": "references/vocabulary.md"
+  },
+  "pin": "feel",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "A spring vocabulary held: its value is the source's words",
+  "reason": "A vocabulary's value is the source's own words, which the catalog's provenance rule keeps out of an entry; the why behind the words is garden's.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': feel's spring vocabulary is held, since its value is the source's own words"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': feel's spring vocabulary is held, since its value is the source's own words"
+    }
+  ]
+}

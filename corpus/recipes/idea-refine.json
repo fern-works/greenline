@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Refines a raw idea the owner brings into a sharp, actionable concept through structured divergent and convergent thinking: sharpening questions, five to eight variations, two or three directions stress-tested, the hidden assumptions named and a not-doing list, in a one-pager in the reply. Use when an idea is still vague, before any change, or when the owner wants to expand options before converging on one; on \"ideate\" or \"refine this idea\"."
+      "value": "Refines a raw idea the owner brings into a sharp, actionable concept through structured divergent and convergent thinking: sharpening questions, five to eight variations, two or three directions stress-tested, the hidden assumptions named and a not-doing list, in a one-pager in the reply. Use when an idea is still vague, before any change, or when the owner wants to expand options before converging on one; on \"ideate\", \"brainstorm\", \"a rough idea\" or \"refine this idea\"."
     }
   ],
   "sources": ["addyosmani"],
@@ -20,11 +20,11 @@
           "passage": "taken",
           "source": "addyosmani",
           "file": "idea-refine/SKILL.md",
-          "segments": ["145a06048cf4", "91900613fafa"]
+          "segments": ["145a06048cf4", "7337f3d0aa29", "91900613fafa"]
         },
         {
           "passage": "written",
-          "text": "idea-refine is a trial start for an idea the owner brings that is still vague, before any change. It runs as a conversation in the reply, edits no file, and needs no mode and no record. It differs from what-to-build, which proposes ideas from the repository's own evidence: here the idea is the owner's, in the request's own words. A direction the owner takes up becomes a change like any other: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section carrying the one-pager's problem statement, direction, assumptions and not-doing list, and run the line from `frame`.",
+          "text": "idea-refine is a trial start for an idea the owner brings that is still vague, before any change. It runs as a conversation in the reply, edits no file, and needs no mode and no record.",
           "kind": "method",
           "reason": "The opening in the start's own voice: when the block's situation sends an agent here, that the conversation edits no file, how it differs from what-to-build, and a direction taken up becoming a change under an approved mode, its record's start section carrying the one-pager.",
           "gist": "Opens idea-refine: shape the owner's vague idea in conversation, editing nothing",
@@ -32,10 +32,75 @@
         },
         {
           "passage": "written",
+          "text": "A direction the owner takes up becomes a change like any other: propose its mode and wait, as AGENTS.md says, open its record with a `## start` section carrying the one-pager's problem statement, direction, assumptions and not-doing list, and run the line from `frame`.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, that the conversation edits no file, how it differs from what-to-build, and a direction taken up becoming a change under an approved mode, its record's start section carrying the one-pager.",
+          "gist": "Opens idea-refine: shape the owner's vague idea in conversation, editing nothing",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a direction taken up becomes a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in",
+          "join": " "
+        },
+        {
+          "passage": "written",
           "text": "Greenline's paths and commands for this skill stand on its references page, [references/greenline.md](references/greenline.md): read it when the work lands in the workspace.",
           "kind": "pointer",
           "reason": "The front points at the skill's references page, where greenline's paths and commands for it stand since J-93 S2, so the front holds the method alone.",
           "gist": "Points at the skill's references page for paths and commands"
+        },
+        {
+          "passage": "written",
+          "text": "Before the first question, read [method.md](method.md): when to use it, the three phases, the one-pager and the anti-patterns.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand on the method page, in their order and unchanged, and the front points there at the moment they are needed.",
+          "gist": "Points at the method page at the moment it is needed"
+        },
+        {
+          "passage": "written",
+          "text": "## Handoff\n\nConsumes: the owner's idea, in the request's own words; the repository, when the idea sits inside one\nProduces: the one-pager in the reply: the problem statement, the recommended direction, the key assumptions, the MVP scope and the not-doing list; nothing durable until the owner's yes\nNext: frame, under the mode the owner approves, for a direction the owner takes up",
+          "kind": "pointer",
+          "reason": "A start's handoff: the one-pager in the reply, and the step its hand reaches, frame under the approved mode for a direction taken up.",
+          "gist": "Hands over the one-pager; frame follows a direction taken up"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Idea Refine: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "It differs from what-to-build, which proposes ideas from the repository's own evidence: here the idea is the owner's, in the request's own words.",
+          "kind": "method",
+          "reason": "The opening in the start's own voice: when the block's situation sends an agent here, that the conversation edits no file, how it differs from what-to-build, and a direction taken up becoming a change under an approved mode, its record's start section carrying the one-pager.",
+          "gist": "Opens idea-refine: shape the owner's vague idea in conversation, editing nothing",
+          "ruling": "The operator's rulings of 2026-10-04, \"cool then lock everything in\": a start that edits no file needs no mode and no record, and a direction taken up becomes a change under the mode the owner approves; R16 of 2026-10-07, a start chosen from the situation a request begins in"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "idea-refine/SKILL.md",
+          "segments": [
+            "07933d588e41",
+            "f160bc916c7c",
+            "c6bcfcd1b2c7",
+            "79faf0414b20",
+            "121163cfbd45"
+          ],
+          "edits": [
+            {
+              "segment": "121163cfbd45",
+              "find": ", \"Stress-test my plan\"",
+              "replace": "",
+              "kind": "scope",
+              "reason": "Stress-testing a plan is the anticipate step's direct ask, so this start's triggers keep the idea's two.",
+              "gist": "Stress-testing a plan is the anticipate step's ask, not this start's"
+            }
+          ]
         },
         {
           "passage": "taken",
@@ -50,12 +115,6 @@
             "22d3970e7d2e",
             "accd535b5260"
           ]
-        },
-        {
-          "passage": "taken",
-          "source": "addyosmani",
-          "file": "idea-refine/SKILL.md",
-          "segments": ["4c1953d93233", "d18e7f2db580", "c7c2599a6e79"]
         },
         {
           "passage": "taken",
@@ -267,6 +326,14 @@
             "f8c5ae88f4f4",
             "a232d54e3df3",
             "a653f5805ff0",
+            "3c989b652646",
+            "3025f172a1d3",
+            "4199ba454d6d",
+            "bb362c8ac016",
+            "107fad32ed15",
+            "17a2c9578986",
+            "706a11d69423",
+            "2eb8b3f51b77",
             "052cfba57d12",
             "424131eaf4d0",
             "63be35b0ca84",
@@ -285,13 +352,6 @@
             "aac382cb7466",
             "8a6565606a5f"
           ]
-        },
-        {
-          "passage": "written",
-          "text": "## Handoff\n\nConsumes: the owner's idea, in the request's own words; the repository, when the idea sits inside one\nProduces: the one-pager in the reply: the problem statement, the recommended direction, the key assumptions, the MVP scope and the not-doing list; nothing durable until the owner's yes\nNext: frame, under the mode the owner approves, for a direction the owner takes up",
-          "kind": "pointer",
-          "reason": "A start's handoff: the one-pager in the reply, and the step its hand reaches, frame under the approved mode for a direction taken up.",
-          "gist": "Hands over the one-pager; frame follows a direction taken up"
         }
       ]
     },
@@ -865,8 +925,8 @@
       "file": "idea-refine/SKILL.md",
       "segment": "4f0076ccd616",
       "kind": "scope",
-      "reason": "Stress-testing a plan is the anticipate step's direct ask, so this start's triggers keep the idea's two.",
-      "gist": "Stress-testing a plan is the anticipate step's ask, not this start's"
+      "reason": "removed upstream at aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "gist": "Upstream removed this text at commit aeac41d4"
     },
     {
       "source": "addyosmani",
@@ -877,8 +937,8 @@
       "gist": "The one-pager goes to the reply, not a file in docs/ideas",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): idea-refine enters as a copy, a trial start named idea-refine; it keeps its assumption audit and its minimum-product rules and drops refinement-criteria's product-strategy taxonomy; and its one-pager stays in the reply and the change record, never a docs/ideas file, what-to-build's rule that a list of ideas is not project state winning (contradiction 33)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 6
+        "path": "method.md",
+        "passage": 5
       }
     },
     {
@@ -889,8 +949,8 @@
       "reason": "One harness's question tool gives way to questions asked in the reply.",
       "gist": "Questions are asked in the reply, not through AskUserQuestion",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 10
+        "path": "method.md",
+        "passage": 9
       }
     },
     {
@@ -901,8 +961,8 @@
       "reason": "One harness's search tools give way to searching and reading the repository.",
       "gist": "Glob, Grep and Read give way to searching and reading the repository",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 12
+        "path": "method.md",
+        "passage": 11
       }
     },
     {
@@ -914,8 +974,8 @@
       "gist": "The full rubric narrows to the assumption audit and MVP rules",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): idea-refine enters as a copy, a trial start named idea-refine; it keeps its assumption audit and its minimum-product rules and drops refinement-criteria's product-strategy taxonomy; and its one-pager stays in the reply and the change record, never a docs/ideas file, what-to-build's rule that a list of ideas is not project state winning (contradiction 33)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 14
+        "path": "method.md",
+        "passage": 13
       }
     },
     {
@@ -927,8 +987,8 @@
       "gist": "Offering to save to docs/ideas goes; the record carries a taken direction",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): idea-refine enters as a copy, a trial start named idea-refine; it keeps its assumption audit and its minimum-product rules and drops refinement-criteria's product-strategy taxonomy; and its one-pager stays in the reply and the change record, never a docs/ideas file, what-to-build's rule that a list of ideas is not project state winning (contradiction 33)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 16
+        "path": "method.md",
+        "passage": 15
       }
     },
     {
@@ -940,8 +1000,8 @@
       "gist": "Offering to save to docs/ideas goes; the record carries a taken direction",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): idea-refine enters as a copy, a trial start named idea-refine; it keeps its assumption audit and its minimum-product rules and drops refinement-criteria's product-strategy taxonomy; and its one-pager stays in the reply and the change record, never a docs/ideas file, what-to-build's rule that a list of ideas is not project state winning (contradiction 33)",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 16
+        "path": "method.md",
+        "passage": 15
       }
     },
     {
@@ -1658,6 +1718,96 @@
       "reason": "The product-strategy taxonomy, the evaluation dimensions, their red flags and the decision matrix, is dropped as ruled; the assumption audit and the MVP rules stay.",
       "gist": "The product-strategy taxonomy and decision matrix are dropped as ruled",
       "ruling": "The operator's rulings of 2026-10-08 on the intake R3 (\"yes go ahead\") and on the re-cut brief R22 (\"yes amend, with one change\"): idea-refine enters as a copy, a trial start named idea-refine; it keeps its assumption audit and its minimum-product rules and drops refinement-criteria's product-strategy taxonomy; and its one-pager stays in the reply and the change record, never a docs/ideas file, what-to-build's rule that a list of ideas is not project state winning (contradiction 33)"
+    },
+    {
+      "source": "addyosmani",
+      "file": "idea-refine/SKILL.md",
+      "segment": "344dc0dc448a",
+      "kind": "pointer",
+      "reason": "The not-for line names interview-me and spec-driven-development, which greenline carries inside frame and plan; the opening paragraph says what this start is not.",
+      "gist": "Names skills greenline carries inside frame and plan; the opening says it"
+    },
+    {
+      "source": "addyosmani",
+      "file": "idea-refine/SKILL.md",
+      "segment": "4c1953d93233",
+      "kind": "scope",
+      "reason": "removed upstream at aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "gist": "Upstream removed this text at commit aeac41d4"
+    },
+    {
+      "source": "addyosmani",
+      "file": "idea-refine/SKILL.md",
+      "segment": "d18e7f2db580",
+      "kind": "scope",
+      "reason": "removed upstream at aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "gist": "Upstream removed this text at commit aeac41d4"
+    },
+    {
+      "source": "addyosmani",
+      "file": "idea-refine/SKILL.md",
+      "segment": "c7c2599a6e79",
+      "kind": "scope",
+      "reason": "removed upstream at aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "gist": "Upstream removed this text at commit aeac41d4"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "The session runs as a conversation in the reply, edits no file and opens no record; nothing is durable until the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "no-open-change",
+      "cost": "cheap"
+    },
+    {
+      "promise": "Three to five sharpening questions are asked in the reply, and the agent waits for the answers before going on.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "The reply's shape at one turn. No run of this start is cited."
+    },
+    {
+      "promise": "Five to eight variations are given, then two or three directions, each stress-tested with its assumptions, what could kill it and what it ignores named.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Reply content with no observed failure."
+    },
+    {
+      "promise": "The result is a one-pager in the reply (problem statement, recommended direction, key assumptions, MVP scope, not-doing list, open questions), and it stays in the reply.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "Reply content with no observed failure."
+    },
+    {
+      "promise": "A direction the owner takes up is proposed with its mode, and no implementation starts before the owner's yes.",
+      "page": "SKILL.md",
+      "kind": "hold",
+      "where": "owner-yes",
+      "cost": "cheap"
+    },
+    {
+      "promise": "That change's ## start section carries the one-pager's problem statement, direction, assumptions and not-doing list.",
+      "page": "SKILL.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading checks a start section's contents. No observed failure."
+    }
+  ],
+  "triggers": [
+    {
+      "words": [
+        "ideate",
+        "refine this idea",
+        "rough idea",
+        "vague idea",
+        "brainstorm",
+        "expand the options"
+      ],
+      "weight": 3,
+      "read": "whole"
     }
   ]
 }

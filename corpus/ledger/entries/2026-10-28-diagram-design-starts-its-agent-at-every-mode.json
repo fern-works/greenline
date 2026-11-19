@@ -1,0 +1,73 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-diagram-design-starts-its-agent-at-every-mode",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-show-me-starts-the-visual-agent-at-every-mode",
+    "sha256": "5be567e0165474e7e0301895d6db81e41c00799c42f0122ed86f21d6528f30c9"
+  },
+  "subject": "skill:diagram-design",
+  "recipe": "7600eabd9fc3c5f4fab074422cff81377d2a1e80d1055e650dc2e6b99e0bee8f",
+  "result": "85d1628f3f275a2736b14db38f6f56a98d6caddcabb312b0efe6925a43c8d8f2",
+  "pages": [
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "The diagram's fresh agent stands outside the mode's count",
+  "reason": "diagram-design's references page says the offer's fresh agent draws the diagram at every mode, quick included, never the session itself, since an agent a method starts stands outside the mode's count of agents (J-145 S1).",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "J-145 S1, under J-145's finalise words, the operator's card of 2026-10-28, Finalise as drafted, on the standing words of 2026-10-24: drive the implementation of the full job board till the end; lock in all the jobs. The series' blocking finding on the pictures: the agent drew the durable visual itself, reading the mode's agents at most as forbidding the fresh agent a method starts"
+  },
+  "ruling": [
+    {
+      "date": "2026-09-11",
+      "words": "The method items carry the operator's ruling of 2026-09-11 (series-s7-roster-2026-09-11), in the operator's words as review-contracts-2026-09-26 records them: \"whatever the plan still owed be finished with the maintainer's recommendations\""
+    },
+    {
+      "date": "2026-10-04",
+      "words": "the operator's rulings of 2026-10-04, \"cool then lock everything in\": every change in every mode has one record its steps write, which replaced the tickets' execution accounts, and a habit writes none of its own"
+    },
+    {
+      "date": "2026-10-08",
+      "words": "R21 of 2026-10-08: a candidate bound to orchestration, a harness's mechanisms or subagent configuration is never taken as written; its portable form is taken (\"greenline is supposed to work in any harness cli\"), ruled with \"yes go ahead\""
+    },
+    {
+      "date": "2026-10-09",
+      "words": "J-59, on the operator's words of 2026-10-09 ('okay then implement all of this'): a gist of at most twelve words on every account whose reason is stated; no text, measure or method changes"
+    },
+    {
+      "date": "2026-10-18",
+      "words": "The operator's words of 2026-10-18 on the redesign (N-56, items 2 and 7), \"we need the upstream prose upfront and references hold how to work meaning the artefacts etc\" and, on the ingest procedures, \"we wanna have there prose .. what we don't wanna have is there artefact system and fit them to use ours\"; and J-93 S2's finalise words of 2026-10-19, \"Fast route, merged slices, parallel jobs (Recommended)\": a skill's front is the upstream prose its recipe cuts, and its mechanics, where its work lands, its section's form, its depths at each mode and its commands, stand on its references page"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "The operator's card of 2026-10-22, \"One refresh job now, before the visual jobs (Recommended)\", and J-112's finalise words of 2026-10-24, \"lock in all the jobs\": the five moved sources refreshed to their heads, each change read and taken only where it improves the method"
+    },
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-145 S1, under J-145's finalise words, the operator's card of 2026-10-28, Finalise as drafted, on the standing words of 2026-10-24: drive the implementation of the full job board till the end; lock in all the jobs. The series' blocking finding on the pictures: the agent drew the durable visual itself, reading the mode's agents at most as forbidding the fresh agent a method starts"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "cathrynlavery",
+        "segments": 7512,
+        "taken": 7478,
+        "exact": 7471,
+        "retention": 0.9990639208344477,
+        "coverage": 0.9954739084132055,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 972
+  }
+}

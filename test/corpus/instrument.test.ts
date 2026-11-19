@@ -71,6 +71,32 @@ describe("the verbs", () => {
     });
   });
 
+  it("verify passes over a studied site's capture beside the snapshots and still lists an unpinned snapshot", () => {
+    const root = temporary("greenline-recipes-");
+    const corpus = join(root, "corpus");
+    writeFixtureCorpus(corpus, { skillDirectory: true, recorded: true });
+    expect(viewsVerb(corpus, true).failed).toBe(false);
+    writeTree(
+      corpus,
+      new Map([
+        ["upstream/example.test/2026-10-24/capture.json", '{"site":"https://example.test/"}\n'],
+        ["upstream/example.test/2026-10-24/sheet.json", "{}\n"],
+      ]),
+    );
+    expect(verifyVerb(corpus, []).output.snapshots).toEqual([]);
+    expect(verifyVerb(corpus, []).failed).toBe(false);
+    writeTree(corpus, new Map([["upstream/left-behind/0123456/SKILL.md", "# Left\n"]]));
+    expect(verifyVerb(corpus, []).output.snapshots).toEqual([
+      {
+        source: "left-behind",
+        commit: "0123456",
+        snapshot: "upstream/left-behind/0123456",
+        recipes: [],
+        removable: true,
+      },
+    ]);
+  });
+
   it("verify names a view that is not committed and one that differs from its rendering, and checks none for a named skill", () => {
     const root = temporary("greenline-recipes-");
     const corpus = join(root, "corpus");
@@ -149,6 +175,7 @@ describe("the verbs", () => {
           source: SOURCE,
           segments: 12,
           taken: 11,
+          passages: 4,
           exact: 10,
           retention: 10 / 11,
           coverage: 11 / 12,

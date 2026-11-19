@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plans</title>
+    <style>
+      body {
+        margin: 0;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+        color: #1c1c1a;
+        background: #ffffff;
+      }
+      main {
+        padding: 24px;
+      }
+      .cta {
+        display: inline-block;
+        padding: 12px 20px;
+        border: 0;
+        background: #1f3a5f;
+        color: #ffffff;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1
+        data-inspector-relative-path="src/pages/Home.tsx"
+        data-inspector-line="12"
+        data-inspector-column="5"
+      >
+        Plans for every team
+      </h1>
+      <p data-v-inspector="src/components/Lede.vue:4:3">Start free, pay as you grow.</p>
+      <button class="cta" id="start-trial" type="button">Start a trial</button>
+      <a href="/pricing" data-testid="pricing-link">See pricing</a>
+      <p><span id="svelte-note">Cancel any time.</span></p>
+      <footer><small id="react-note">Made here</small></footer>
+    </main>
+    <script>
+      document.getElementById("svelte-note").__svelte_meta = {
+        loc: { file: "src/lib/Note.svelte", line: 7, column: 2 },
+      };
+      document.getElementById("react-note").__reactFiber$planted = {
+        _debugSource: null,
+        return: {
+          _debugSource: {
+            fileName: "__ROOT__/src/components/Footer.tsx",
+            lineNumber: 21,
+            columnNumber: 9,
+          },
+        },
+      };
+      document.getElementById("start-trial").__reactFiber$planted = {
+        _debugSource: { fileName: "./src/components/Cta.tsx", lineNumber: 8, columnNumber: 7 },
+      };
+    </script>
+  </body>
+</html>

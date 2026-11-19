@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-impeccable-live",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-taste-photos",
+    "sha256": "9b757f5566379097931fa79647c39101077b936f9cf3f0dd06bcd19f50dae250"
+  },
+  "source": {
+    "repository": "https://github.com/pbakaus/impeccable",
+    "commit": "e3818550d291a5157f309124dc1872d96ec81bf2",
+    "path": "skill/reference/live.md"
+  },
+  "licence": "permissive-other",
+  "verdict": "decline",
+  "gist": "A live variant daemon, declined",
+  "reason": "Its live mode runs a daemon, edits content-security settings and makes tool output outrank the document.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's live mode and generate are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': impeccable's live mode and generate are declined"
+    }
+  ]
+}

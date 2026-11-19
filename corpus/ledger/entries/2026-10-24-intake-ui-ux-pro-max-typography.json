@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-ui-ux-pro-max-typography",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-ui-ux-pro-max-colors",
+    "sha256": "a2d01509c6475f8ca66b1060743538f9e820a7c49e772c6b45a04ab05e5a5861"
+  },
+  "source": {
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "commit": "d14efff8ed1faa4187f004f79926f428c8074ec7",
+    "path": ".claude/skills/ui-ux-pro-max/data/typography.csv"
+  },
+  "pin": "ui-ux-pro-max",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "An unsourced taste table, declined",
+  "reason": "Its rows name no site seen and derive from the repository's own tables.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ui-ux-pro-max's unsourced palettes, pairings and industry tables are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ui-ux-pro-max's unsourced palettes, pairings and industry tables are declined"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-jakubkrehel-variant",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-jakubkrehel-technical-drawing",
+    "sha256": "c07130edf15a0c72486fd45aade6db63a45c30c425e5ae3eee894ab17263fd84"
+  },
+  "source": {
+    "repository": "https://github.com/jakubkrehel/skills",
+    "commit": "4c66b1fa86e9ab70187b43d7da9b6fdb29f2ef63",
+    "path": "skills/variant"
+  },
+  "pin": "jakubkrehel-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A variant picker duplicating the prototype skill, declined",
+  "reason": "Its picker on the real page duplicates greenline's prototype skill; its floor list is carried by the family's other parts.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': jakubkrehel's variant is declined as a duplicate of the prototype skill"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': jakubkrehel's variant is declined as a duplicate of the prototype skill"
+    }
+  ]
+}

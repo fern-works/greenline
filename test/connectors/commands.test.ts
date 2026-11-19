@@ -7,6 +7,7 @@ import {
   symlinkSync,
   writeFileSync,
 } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { once } from "node:events";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
@@ -85,6 +86,35 @@ function recordingExecutable(root: string): RecordingExecutable {
   chmodSync(path, 0o755);
   return { path, marker };
 }
+
+describe("J-229 S1 the installation left uncommitted after enable and disable", () => {
+  it("enable and disable in a committed workspace print the warning sync prints", () => {
+    const root = mkdtempSync(join(tmpdir(), "gl-connectors-committed-"));
+    roots.push(root);
+    const git = (...args: string[]): string =>
+      execFileSync("git", ["-c", "user.name=F", "-c", "user.email=f@example.com", ...args], {
+        cwd: root,
+        encoding: "utf8",
+      });
+    git("init", "--quiet", "-b", "main");
+    expect(run(root, ["init", "--yes"]).code).toBe(0);
+    git("add", "--all");
+    git("commit", "--quiet", "-m", "the installation");
+    const warning =
+      /commit the \d+ installed files? that differ from HEAD with the work of the change that is open, or of the next one: \d+ under \.greenline\/ and \d+ outside it, which git status lists; greenline never commits, and pre-commit refuses a commit of them alone while no change is open; warning GL0115/;
+    const enabled = run(root, ["connectors", "enable", "garden", "--url", URL]);
+    expect(enabled.code).toBe(0);
+    expect(enabled.err).toMatch(warning);
+    git("add", "--all");
+    git("commit", "--quiet", "-m", "garden enabled");
+    const disabled = run(root, ["connectors", "disable", "garden"]);
+    expect(disabled.code).toBe(0);
+    expect(disabled.err).toMatch(warning);
+    expect(
+      run(root, ["connectors", "enable", "garden", "--url", URL, "--dry-run"]).err,
+    ).not.toContain("GL0115");
+  });
+});
 
 describe("connectors enable and disable through the write planner", () => {
   it("enable garden writes the entry, installs use-garden and adds its pointer, all through the planner", () => {
@@ -498,7 +528,7 @@ describe("status reports the connectors offline", () => {
     const human = run(root, ["status"], { environment: { PATH: empty } });
     expect(human.out).toContain("    executable: garden (not found)\n");
     expect(human.out).toContain("    key: GARDEN_API_KEY not set\n");
-    expect(human.err).toContain("WARNING GL0125");
+    expect(human.err).toContain("; warning GL0125");
   });
 
   it("S20 a receipts folder that cannot be read is one GL0401 finding at the folder", () => {

@@ -1,8 +1,9 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Result } from "../commons/result.ts";
 import { contractFailure, type ContractParseFailed } from "../core/contract.ts";
 import { buildInstallation, parseInstallation, type Installation } from "../core/installation.ts";
+import { parseTriggers, type Triggers } from "../core/habits-owed.ts";
 import { parseModes } from "../core/modes.ts";
 import { loadCorpus, loadCorpusIntents, loadLedgerGuide, loadSourcePins } from "./corpus.ts";
 
@@ -37,6 +38,14 @@ export function compileInstallation(root: string): Result<Installation, Contract
     return contractFailure(root, [
       { path: "installation", message: "Installation inputs are unavailable." },
     ]);
+  // The trigger rows the instrument renders from the recipes (J-176 S1), where the corpus holds them.
+  const triggersPath = join(root, "runtime/triggers.json");
+  let triggers: Triggers | undefined;
+  if (existsSync(triggersPath)) {
+    const read = parseTriggers(readFileSync(triggersPath, "utf8"), triggersPath);
+    if (read._tag === "err") return read;
+    triggers = read.value;
+  }
   try {
     return buildInstallation({
       skills: skills.value,
@@ -47,6 +56,7 @@ export function compileInstallation(root: string): Result<Installation, Contract
       agentGuide: readFileSync(join(root, "runtime/agent.md"), "utf8"),
       workGuide: readFileSync(join(root, "runtime/work.md"), "utf8"),
       notices: readFileSync(join(root, "../THIRD_PARTY_NOTICES.md"), "utf8"),
+      triggers,
     });
   } catch {
     return contractFailure(root, [

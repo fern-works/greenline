@@ -1,0 +1,33 @@
+{
+  "site": "https://vercel.com/",
+  "pages": [
+    "/"
+  ],
+  "seen": "2026-10-24",
+  "capturedAt": "2026-10-24T13:21:35.428Z",
+  "widths": [
+    1440,
+    768,
+    390
+  ],
+  "tool": "headless Google Chrome over the DevTools protocol, read-only: no link followed, nothing clicked or submitted",
+  "licence": "ideas-only",
+  "files": [
+    {
+      "file": "1440.jpg",
+      "sha256": "35acc1dce85ea43f64ec037c927af52dc96ef7063b25bfd6d1aa0e92dba1037f"
+    },
+    {
+      "file": "390.jpg",
+      "sha256": "464a0e2d00dc3927ddb796608c4ac8a0bb92a299dad8cf0000751d80aefc0d9b"
+    },
+    {
+      "file": "768.jpg",
+      "sha256": "7c3450f63427b2c15ef537c61db03232dc93e9fce29f3e4bc49aa101f279ebe2"
+    },
+    {
+      "file": "sheet.json",
+      "sha256": "6f7120138d7074e913a5b82a9050889b80d8fd4095447e3161bb52ff0893012c"
+    }
+  ]
+}

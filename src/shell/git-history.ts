@@ -6,7 +6,15 @@ import type {
   PathStatus,
 } from "../core/change-history.ts";
 import type { CommitsSince } from "../core/status.ts";
-import { commitTreeId, readGit, workingTreeChanges } from "./code-tree.ts";
+import {
+  commitTreeId,
+  FixedAnswers,
+  isPracticeFile,
+  OBJECT_ID,
+  practiceFiles,
+  readGit,
+  workingTreeChanges,
+} from "./code-tree.ts";
 
 /**
  * The history reader (`workshop/components/artifact-system.md`): the commits
@@ -28,8 +36,6 @@ const FORMAT =
 
 // A change record: a date-and-slug Markdown file directly under the ledger.
 const RECORDS = ":(glob).greenline/ledger/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*.md";
-// Every path but the workspace's own.
-const CODE = [".", ":(exclude).greenline"] as const;
 
 function statusOf(letter: string): PathStatus {
   // --no-renames and no copy detection leave A, M, D and T; anything else reads as a modification.
@@ -120,8 +126,9 @@ export function readGitHistory(root: string): GitHistory {
 /**
  * The files that differ between a commit and a later commit, or the working
  * tree by the rule of its tree id (`workingTreeChanges` in
- * `src/shell/code-tree.ts`), with `.greenline/` left out. Neither reads or
- * writes the owner's index: two commits compare tree to tree.
+ * `src/shell/code-tree.ts`), with the practice's own files left out:
+ * `.greenline/` and every file the lock names now. Neither reads or writes
+ * the owner's index: two commits compare tree to tree.
  * @param root the repository root
  * @param from the commit a check ran on
  * @param to a later commit, or the working tree
@@ -129,6 +136,28 @@ export function readGitHistory(root: string): GitHistory {
  */
 export function changedFiles(root: string, from: string, to: CodeTarget): FilesReading {
   if (to.kind === "working-tree") return workingTreeChanges(root, from);
+  const hash = to.hash;
+  const practice = practiceFiles(root);
+  const read = (): FilesReading => {
+    const files = commitsDiffer(root, from, hash);
+    return files.kind === "files"
+      ? { kind: "files", files: files.files.filter((path) => !isPracticeFile(practice, path)) }
+      : files;
+  };
+  // Two commits named by their whole ids differ in the same files for good, for the same paths left out.
+  return OBJECT_ID.test(from) && OBJECT_ID.test(hash)
+    ? betweenCommits.answer(
+        root,
+        `${from}\0${hash}\0${practice.key}`,
+        read,
+        (files) => files.kind === "files",
+      )
+    : read();
+}
+
+const betweenCommits = new FixedAnswers<FilesReading>();
+
+function commitsDiffer(root: string, from: string, to: string): FilesReading {
   const diff = readGit(root, [
     "diff-tree",
     "-r",
@@ -136,9 +165,10 @@ export function changedFiles(root: string, from: string, to: CodeTarget): FilesR
     "-z",
     "--no-renames",
     from,
-    to.hash,
+    to,
     "--",
-    ...CODE,
+    ".",
+    ":(exclude).greenline",
   ]);
   return diff._tag === "ok"
     ? {
@@ -153,8 +183,8 @@ export function changedFiles(root: string, from: string, to: CodeTarget): FilesR
 
 /**
  * The commits of code on the branch after the commit a check's last run
- * started on: those HEAD reaches and it does not, that change a path outside
- * `.greenline/`, newest first, with the tree id of the oldest by the code's
+ * started on: those HEAD reaches and it does not, that change a path of the
+ * code, the practice's own files left out, newest first, with the tree id of the oldest by the code's
  * rule, so the commit made of the code the run saw can be told apart; every
  * such commit when the run recorded none. A commit HEAD no longer reaches,
  * such as one a rebase replaced, is unknown, since nothing on the branch
@@ -177,18 +207,36 @@ export function codeCommitsSince(root: string, from: string | null): CommitsSinc
         reason: `the commit ${from.slice(0, 12)} the last recorded check started on is not on the branch`,
       };
   }
+  // The commits that change a path outside `.greenline/`, as git's walk simplifies them, each
+  // with the paths it changed there; a short command, whatever the lock names (J-229 S1).
   const listed = readGit(root, [
-    "rev-list",
+    "log",
     "--topo-order",
+    "-z",
+    "--no-renames",
+    "--name-only",
+    // The root commit's paths are listed whatever the owner's log.showRoot says.
+    "--root",
+    "--format=%x1e%H%x00%P%x00",
     from === null ? "HEAD" : `${from}..HEAD`,
     "--",
-    ...CODE,
+    ".",
+    ":(exclude).greenline",
   ]);
   if (listed._tag === "err") return { kind: "unknown", reason: listed.error.message };
-  const hashes = listed.value
-    .split("\n")
-    .map((line) => line.trim())
-    .filter((line) => line !== "");
+  const practice = practiceFiles(root);
+  // A commit of the practice's own files alone is no commit of code; a merge git lists keeps its place, as before.
+  const hashes = listed.value.split("\x1e").flatMap((record): string[] => {
+    // git ends the header with a newline before the first path.
+    const [hash = "", parents = "", ...paths] = record
+      .split("\0")
+      .map((part) => part.replace(/^\n/, ""));
+    if (!/^[0-9a-f]{40,64}$/.test(hash)) return [];
+    const merge = parents.split(" ").filter((parent) => parent !== "").length > 1;
+    return merge || paths.some((path) => path !== "" && !isPracticeFile(practice, path))
+      ? [hash]
+      : [];
+  });
   const oldest = hashes.at(-1);
   return {
     kind: "commits",

@@ -1,0 +1,55 @@
+{
+  "commit": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "6b4d67d192cedc90cabeac71e2fc1e24f158638192b8bf93d639b28bc42b62f1"
+    },
+    {
+      "path": "react-navigation/SKILL.md",
+      "sha256": "f127331ac68f2966168c5c12bb65217eac310804b91d2210f447672d1cbd0f1c"
+    },
+    {
+      "path": "react-navigation/agents/openai.yaml",
+      "sha256": "32f012fd4338b24473fab6994ed12444ee3995b40ecdf3ee840bc21b653f3524"
+    },
+    {
+      "path": "react-navigation/references/bottom-tabs.md",
+      "sha256": "a3a5531fbd9e4f61801c490d5292dc69483678bf09fdac5c71c561eff529fda3"
+    },
+    {
+      "path": "react-navigation/references/drawers.md",
+      "sha256": "0f23f2521852a5da0626a4ab32094c9b3db61d0d41dffca62164ebdbb1652a9a"
+    },
+    {
+      "path": "react-navigation/references/form-sheet.md",
+      "sha256": "b1aa00832f512ff64930e059058c9d9cf0a320c9c44aaea093c0472f85271b12"
+    },
+    {
+      "path": "react-navigation/references/header.md",
+      "sha256": "fe5a2e655f815d8d2e02fa6f9b1e2e4797d8441028014b016eebd8efa38d3a84"
+    },
+    {
+      "path": "react-navigation/references/material-top-tabs.md",
+      "sha256": "8b8ab60b6c5c3a61eb6c95f10cbc9c871834a10dfce07fda2719c87ffa4e7a11"
+    },
+    {
+      "path": "react-navigation/references/native-bottom-tabs.md",
+      "sha256": "365348895d64f9b5df64e2abc50edfa5ef249069960a6baab83b2157c13efd5b"
+    },
+    {
+      "path": "react-navigation/references/safe-areas.md",
+      "sha256": "319c6aa77e2ae417f2e8475b3e842afbdb6bce01f546167f09609585e5428dd1"
+    },
+    {
+      "path": "react-navigation/references/stacks.md",
+      "sha256": "734021ed72e83fc846e0dd19441e1ec0765db30d3cf1a21e5ba53b0ca53815aa"
+    }
+  ],
+  "entries": [
+    {
+      "name": "react-navigation",
+      "path": "skills/react-navigation"
+    }
+  ]
+}

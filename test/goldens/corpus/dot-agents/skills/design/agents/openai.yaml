@@ -1,0 +1,5 @@
+interface:
+  display_name: "Design"
+  short_description: "Settle how a change's interface looks and behaves before the plan: read the home's lock, ask the owner once, deal or compose three directions, show them, and write the lock the owner picks, at the depth the change's mode gives the design step. Use when the mode reaches design on a change whose record says it touches an interface."
+policy:
+  allow_implicit_invocation: false

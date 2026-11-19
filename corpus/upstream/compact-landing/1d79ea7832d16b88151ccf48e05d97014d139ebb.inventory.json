@@ -1,0 +1,31 @@
+{
+  "commit": "1d79ea7832d16b88151ccf48e05d97014d139ebb",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "c0d53cbcf3b4e9cfa23c0ce575a1568d34f763eaf74917fb525a61d5624752ca"
+    },
+    {
+      "path": "compact-landing/SKILL.md",
+      "sha256": "8a39394a6cae39cf1c56b4c04ee3cb9489246e9d9e01d2e42bb871d64c69fdba"
+    },
+    {
+      "path": "compact-landing/agents/openai.yaml",
+      "sha256": "801269fd331b491771a9af83f587bddebc7d9da85afc2541e66ed7489d344936"
+    },
+    {
+      "path": "compact-landing/references/style-dna.md",
+      "sha256": "842c77fa00ee908c4fc27c4eed05bd7671a647c7cf9589f072d099331e8d3eff"
+    },
+    {
+      "path": "compact-landing/scripts/pick-direction.mjs",
+      "sha256": "3f99a1b186d62f301623dbd10e6ee03f12dcac0e3f4780f2dd02c8d7ebd69c3d"
+    }
+  ],
+  "entries": [
+    {
+      "name": "compact-landing",
+      "path": "skills/compact-landing"
+    }
+  ]
+}

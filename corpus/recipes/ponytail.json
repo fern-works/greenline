@@ -8,7 +8,7 @@
     },
     {
       "field": "description",
-      "value": "Minimalism at any step: before writing code the request leaves open, climb the lazy-senior ladder (does it need to exist, is it already in the repo, does the stdlib or platform cover it, can it be one line) and build only on a measured need; subtract before you add; keep call chains flat; migrate every caller and delete the old API in one wave; mark each deliberate shortcut with a ponytail: comment naming its ceiling. Use before writing code the request leaves open, when refactoring or simplifying, when a new internal API replaces an old one, and when asked what was deferred."
+      "value": "Minimalism at any step: before writing code the request leaves open, climb the lazy-senior ladder (does it need to exist, is it already in the repo, does the stdlib or platform cover it, can it be one line) and build only on a measured need; subtract before you add; keep call chains flat; migrate every caller and delete the old API in one wave; mark each deliberate shortcut with a ponytail: comment naming its ceiling. Use before writing code the request leaves open, when refactoring, tidying, cleaning up or simplifying, when a new internal API replaces an old one, and when asked what was deferred."
     }
   ],
   "sources": ["addyosmani", "ponytail", "pstack"],
@@ -24,7 +24,34 @@
         },
         {
           "passage": "written",
-          "text": "ponytail is the habit for the moment code the request leaves open is about to be written, a refactor or a simplification of code that works begun, a new internal API introduced while old callers remain, or the owner asks what was deferred, at whatever step the work is in, most often build; code the request plainly asks for does not load it. It writes no record of its own: a shortcut it takes is marked in the code and named in the build section of the change record. Where the ladder says reuse or skip, the change's acceptance still decides the scope, and tdd still decides the tests: a smaller implementation satisfies them too. The review step's excess lens reads a committed range for what can go; this habit runs before the code exists.",
+          "text": "ponytail is the habit for the moment code the request leaves open is about to be written, a refactor or a simplification of code that works begun, a new internal API introduced while old callers remain, or the owner asks what was deferred, at whatever step the work is in, most often build; a request to simplify, refactor or clean up working code loads it, and new code the request plainly asks for does not. It writes no record of its own: a shortcut it takes is marked in the code and named in the build section of the change record. Where the ladder says reuse or skip, the change's acceptance still decides the scope, and tdd still decides the tests: a smaller implementation satisfies them too.",
+          "kind": "method",
+          "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, code the request leaves open and not new code it plainly asks for, since QA runs loaded it ahead of its situation (J-60, the fourth family), and a request to simplify, refactor or clean up working code, which the clause on code the request plainly asks for could keep from simplify.md (J-185); that it writes no record of its own and the build section names a shortcut, that acceptance and tdd still bound a smaller implementation, and where the review step's excess lens stands beside it.",
+          "gist": "Opens the habit: code the request leaves open, bounded by acceptance",
+          "ruling": "The operator's card of 2026-10-15 on the QA series, \"One fix job after the fifth family\", with the delegation of 2026-10-16 whose words finalise the fix job's slices: a start or a habit loads only in the situation its row names, architecture-survey at an orientation and never as one where a change record exists, secrets only with a secret in reach and ponytail before code the request leaves open; a start is named in the record only when it ran; the survey never opens its report; a session with nothing to resume says so and asks for the request; diagnose ranks its hypotheses before the first probe and keeps them ranked; and ponytail builds only on a measured need and reads simplify.md before a refactor; the operator's card of 2026-11-07, \"J-185 rulings\", \"All four as recommended\", whose words finalised the amendment: a request to simplify, refactor or clean up working code loads the habit and reads simplify.md whole"
+        },
+        {
+          "passage": "written",
+          "text": "Before writing code the request leaves open, read [method.md](method.md): the ladder and its rungs, the refactor's page at the first, subtracting before you add, keeping it flat, and the deferred debt; before simplifying, refactoring or cleaning up code that works, read [simplify.md](simplify.md) whole.",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words and points at the method page at the moment it is needed; a request to simplify, refactor or clean up working code is pointed at simplify.md from the front, its first move (J-185).",
+          "gist": "Points at the method page, and at simplify.md for a simplification"
+        }
+      ]
+    },
+    {
+      "path": "method.md",
+      "passages": [
+        {
+          "passage": "written",
+          "text": "# Ponytail, lazy senior dev mode: the method",
+          "kind": "pointer",
+          "reason": "J-180 S1 cut the front under 300 words: the sentences it moved stand here, on the page of method its pointers name, in their order and unchanged.",
+          "gist": "The page holds the method the front moved, in order"
+        },
+        {
+          "passage": "written",
+          "text": "The review step's excess lens reads a committed range for what can go; this habit runs before the code exists.",
           "kind": "method",
           "reason": "One opening paragraph in the habit's own voice: the situations the block's rows key it by, code the request leaves open and not code it plainly asks for, since QA runs loaded it ahead of its situation (J-60, the fourth family); that it writes no record of its own and the build section names a shortcut, that acceptance and tdd still bound a smaller implementation, and where the review step's excess lens stands beside it.",
           "gist": "Opens the habit: code the request leaves open, bounded by acceptance",
@@ -40,7 +67,23 @@
             "e355935534f3",
             "5968d3ca95ae",
             "def51d8bfcd9",
-            "9f1053fe65bc",
+            "9f1053fe65bc"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "Replacing code that already works, a scan by an index or a loop by a library call, is a refactor: read [simplify.md](simplify.md) whole before its first edit.",
+          "kind": "method",
+          "reason": "The ladder's first rung names a refactor of working code and sends it to simplify.md before its first edit, where the method starts, since a QA run replaced a working scan with an index without reading the page the closing section names (J-109 S4, the merged skills); the closing section keeps its sentence as the reminder.",
+          "gist": "The first rung sends a refactor to simplify.md before editing",
+          "ruling": "J-132's finalise words, the operator's words of 2026-10-24: drive the implementation of the full job board till the end; for smaller decisions go with your recommended suggestions; and the register's row of 2026-10-26, the judge's grade governs a stop: the merged-skills run's two blocking findings cured by putting each page where its method starts, ponytail's simplify page before a refactor's first edit, and tdd's references page, its bug-fix page and tests.md's checks in the rules of the loop",
+          "join": " "
+        },
+        {
+          "passage": "taken",
+          "source": "ponytail",
+          "file": "ponytail/SKILL.md",
+          "segments": [
             "02a36a4f8202",
             "88fb788aeae8",
             "c3fb13b8748e",
@@ -52,7 +95,8 @@
             "d18971382ddb",
             "65f2354bfda1",
             "f375948aee44"
-          ]
+          ],
+          "join": "\n"
         },
         {
           "passage": "written",
@@ -118,12 +162,12 @@
             "99e347256f6a",
             "02600da0dc65",
             "cad13cb4d841",
-            "f62a241ed2b1",
             "dd86052c43ce",
             "40e6bf5d0a4e",
             "b2414bc3b1eb",
             "f0c63a375bce"
-          ]
+          ],
+          "join": "\n\n"
         },
         {
           "passage": "written",
@@ -133,31 +177,29 @@
           "gist": "Laziness protocol becomes Keep it flat: call chain, decisions and threading"
         },
         {
-          "passage": "taken",
-          "source": "pstack",
-          "file": "principle-laziness-protocol/SKILL.md",
-          "segments": [
-            "8d8ad6c792e8",
-            "11ec93ffcfe4",
-            "9deccbfaaaba",
-            "86e3ddab0d6b",
-            "30cb99c86245",
-            "552f3e8e7c84",
-            "5ccf1a15d403"
-          ]
+          "passage": "written",
+          "text": "- **Maintain a flat call hierarchy.** Avoid deep call chains. A rich interface that hides substantial work is not a deep call chain. If answering a question requires tracing through more than 3 files or layers, flatten it.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
         },
         {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-laziness-protocol/SKILL.md",
-          "segments": [
-            "9f33df7d72c4",
-            "6eedc41e6cc1",
-            "31063688f2a5",
-            "a5c68232e64f",
-            "b47d743e0b1d",
-            "3e6f103994c7"
-          ],
+          "segments": ["30cb99c86245", "552f3e8e7c84", "5ccf1a15d403"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "- **Question the threading.** If a task asks you to pass a new signal through types, schemas, pipelines, or similar layers, stop and look for a more direct path.\n- **Sweat the small leaks.** Remove tiny pass-throughs, representation leaks, and duplicated choices before they spread. Small leaks compound into permanent coordination costs.\n\n**The test:** If a human developer would find the code exhausting to maintain, it is a bad solution.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"],
           "join": "\n"
         },
         {
@@ -168,32 +210,32 @@
           "gist": "Migrate-callers-then-delete becomes a section of the habit"
         },
         {
-          "passage": "taken",
-          "source": "pstack",
-          "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
-          "segments": [
-            "be7d2bd73f40",
-            "13ca5b0bbdee",
-            "46248444f49e",
-            "a68c7759a968",
-            "0da675c70ecc"
-          ]
+          "passage": "written",
+          "text": "When we decide a new API is the right design, migrate callers and remove the old API in the same refactor wave instead of preserving compatibility layers.\n\n**Rule:**\n- Do not keep legacy API paths only because internal callers still exist\n- Inventory callers, migrate them, and delete the old API immediately\n- Treat temporary adapters as exceptional and time-boxed, not default architecture",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
         },
         {
           "passage": "taken",
           "source": "pstack",
           "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
-          "segments": [
-            "2a3927aeba4e",
-            "32a13f061782",
-            "e89c45a6fc34",
-            "f88d2e28f6f1",
-            "0bb67c797e77"
-          ]
+          "segments": ["2a3927aeba4e", "32a13f061782", "e89c45a6fc34", "f88d2e28f6f1"]
         },
         {
           "passage": "written",
-          "text": "## Refactoring and deferrals\n\nReplacing code that already works is a refactor, a scan by an index or a loop by a library call included: before its first edit, read [simplify.md](simplify.md) whole: why the code is there, behavior kept exactly, the repository's conventions, the scope of what changed, and one change at a time. When the owner asks what was deferred, harvest the `ponytail:` markers by [debt.md](debt.md).",
+          "text": "Keeping both old and new APIs creates dual-path complexity, slows cleanup, and makes the codebase feel append-only.",
+          "kind": "method",
+          "reason": "Upstream's edit pass at eb4db2b5 cut this rule from a body its description still promises, so greenline keeps its text as a written passage crediting pstack.",
+          "gist": "Keeps the rules upstream's edit pass cut, crediting pstack",
+          "ruling": "the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': upstream's edit pass at eb4db2b5 cut the method from this body while its description still promises it; greenline keeps its text as a written passage crediting pstack",
+          "credits": ["pstack"]
+        },
+        {
+          "passage": "written",
+          "text": "## Refactoring and deferrals\n\nReplacing code that already works is a refactor, a scan by an index or a loop by a library call included: before its first edit, read [simplify.md](simplify.md) whole: the goal and when not to simplify, behavior kept exactly, the repository's conventions, clarity and balance, the scope of what changed, why the code is there, comments and dead code, one change at a time, and the verify step that may revert. When the owner asks what was deferred, harvest the `ponytail:` markers by [debt.md](debt.md).",
           "kind": "method",
           "reason": "code-simplification's selected passages and ponytail-debt's harvest live on simplify.md and debt.md, read only on their branch, so the body names each page and what it holds; replacing working code is a refactor that reads simplify.md whole first, since a QA run replaced a working scan with an index and left it unread (J-60, the fifth family).",
           "gist": "A refactor, replacing working code included, reads simplify.md first",
@@ -212,10 +254,28 @@
           "gist": "Opens the page read before simplifying code that already works"
         },
         {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["355d2434794a", "705f1e9c4d04"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": [
+            "4e9dc1e16d49",
+            "0c38a3d4ca8e",
+            "207fc12754a6",
+            "57720693ee81",
+            "a31a4b6670db"
+          ]
+        },
+        {
           "passage": "written",
           "text": "## Preserve behavior exactly",
           "kind": "scope",
-          "reason": "The first principle's heading, its number dropped with the principles not taken.",
+          "reason": "The first principle's heading, its number dropped like every heading on the page.",
           "gist": "Heads the first principle: behaviour kept exactly"
         },
         {
@@ -228,7 +288,7 @@
           "passage": "written",
           "text": "## Follow the repository's conventions",
           "kind": "scope",
-          "reason": "The second principle's heading, its number dropped with the principles not taken.",
+          "reason": "The second principle's heading, its number dropped like every heading on the page.",
           "gist": "Heads the second principle: follow the repository's conventions"
         },
         {
@@ -249,9 +309,52 @@
         },
         {
           "passage": "written",
+          "text": "## Prefer clarity over cleverness",
+          "kind": "scope",
+          "reason": "The third principle's heading, its number dropped like every heading on the page.",
+          "gist": "Heads the third principle: clarity over cleverness"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["705b30f6a245", "25b5576b9f0d", "f20129a0d54a"]
+        },
+        {
+          "passage": "written",
+          "text": "## Maintain balance",
+          "kind": "scope",
+          "reason": "The fourth principle's heading, its number dropped like every heading on the page.",
+          "gist": "Heads the fourth principle: balance against over-simplification"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": [
+            "ed5f9f6a95cc",
+            "caacf0a0d3b2",
+            "599944160e61",
+            "9530d3f1649a",
+            "c70aaa81ec79"
+          ],
+          "edits": [
+            {
+              "segment": "c70aaa81ec79",
+              "find": "extensibility or testability",
+              "replace": "testability or for an extension a declared plan names",
+              "kind": "method",
+              "reason": "The extensibility trap stays dropped: an abstraction kept for an extension nobody requested loses to No abstractions that weren't explicitly requested, and a seam a declared plan names is kept (contradiction 25).",
+              "gist": "Keeps a seam for testability or a declared plan, not extensibility",
+              "ruling": "The operator's card of 2026-11-07, \"J-185 rulings\", \"All four as recommended\": the comprehension goal and its new-team-member test are the measure of a simplification, the ladder's line unchanged (contradiction 24); the extensibility trap stays dropped while the three balance traps return and a seam a declared plan names is kept (25); the Rule of 500 is a tooling sentence under step 3, the bar of triviality standing (26); a comment that says why stays at the simplifying moment unless the why now stands in the code, and the review lens's comments rule stands at review, two moments and no sixth exception"
+            }
+          ]
+        },
+        {
+          "passage": "written",
           "text": "## Scope to what changed",
           "kind": "scope",
-          "reason": "The fifth principle's heading, its number dropped with the principles not taken.",
+          "reason": "The fifth principle's heading, its number dropped like every heading on the page.",
           "gist": "Heads the fifth principle: simplify only the code that changed"
         },
         {
@@ -282,6 +385,50 @@
         },
         {
           "passage": "written",
+          "text": "## Comments and dead code",
+          "kind": "scope",
+          "reason": "The process's second step takes a heading over the two rows of its tables the page keeps; the rest restate the ladder, the rules and the review step's excess lens.",
+          "gist": "The second step's heading names the two rows the page keeps"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["b66e209f7bd3#2", "8f7da293d566#2"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["15bf4a3c1cea"],
+          "join": "\n"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["3bfc550fa2e9"],
+          "join": "\n"
+        },
+        {
+          "passage": "written",
+          "text": "While you simplify, a comment that says why stays unless the why now stands in the code; at review, the review step's excess lens reads comments by its own rule.",
+          "kind": "method",
+          "reason": "The why-comments row's qualifier is the simplifying moment's rule: a why comment stays unless the why now stands in the code, and the review step's excess lens keeps its own comments rule at review.",
+          "gist": "A why comment stays while simplifying unless the code now says why",
+          "ruling": "The operator's card of 2026-11-07, \"J-185 rulings\", \"All four as recommended\": the comprehension goal and its new-team-member test are the measure of a simplification, the ladder's line unchanged (contradiction 24); the extensibility trap stays dropped while the three balance traps return and a seam a declared plan names is kept (25); the Rule of 500 is a tooling sentence under step 3, the bar of triviality standing (26); a comment that says why stays at the simplifying moment unless the why now stands in the code, and the review lens's comments rule stands at review, two moments and no sixth exception",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "written",
+          "text": "Prop drilling through intermediate components: consider whether context or composition solves this better. This is a judgment call: flag it, don't auto-refactor.",
+          "kind": "scope",
+          "reason": "The language guidance stays garden's, but its last example's prohibition is the habit's: a judgment-call restructuring is flagged, never refactored unasked; a fence is one segment, so its two sentences are written in the source's words.",
+          "gist": "A judgment-call restructuring is flagged, not refactored unasked",
+          "credits": ["addyosmani"]
+        },
+        {
+          "passage": "written",
           "text": "## One change at a time",
           "kind": "scope",
           "reason": "The process's third step takes a heading of its own.",
@@ -306,7 +453,50 @@
           "passage": "taken",
           "source": "addyosmani",
           "file": "code-simplification/SKILL.md",
-          "segments": ["3a23ed21e0f6", "b41beb4594f4", "a80095fae0d6"]
+          "segments": [
+            "3a23ed21e0f6",
+            "b41beb4594f4",
+            "a80095fae0d6",
+            "25a336a97f76",
+            "9abe2a80d408"
+          ]
+        },
+        {
+          "passage": "written",
+          "text": "## Verify the result",
+          "kind": "scope",
+          "reason": "The process's fourth step takes a heading of its own.",
+          "gist": "The fourth step, verify the result, gets its own heading"
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["2164e782cc9b", "a5938ba0207f", "55c7c30b47c3", "376e8b712fb9"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["052cfba57d12"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["ee814f9723b1"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["80937328f4f7", "99d83e24433f"]
+        },
+        {
+          "passage": "taken",
+          "source": "addyosmani",
+          "file": "code-simplification/SKILL.md",
+          "segments": ["977f47427531"]
         }
       ]
     },
@@ -373,8 +563,8 @@
       "reason": "The title becomes a section of the habit.",
       "gist": "The title becomes a section of the habit",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 5
+        "path": "method.md",
+        "passage": 7
       }
     },
     {
@@ -382,16 +572,16 @@
       "file": "principle-subtract-before-you-add/SKILL.md",
       "segment": "a042838c599a",
       "kind": "scope",
-      "reason": "The why restates the ladder's deletion over addition.",
-      "gist": "The why repeats the ladder's deletion over addition"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-subtract-before-you-add/SKILL.md",
       "segment": "1df56fe059ac",
       "kind": "scope",
-      "reason": "The why restates the ladder's deletion over addition.",
-      "gist": "The why repeats the ladder's deletion over addition"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
@@ -417,8 +607,8 @@
       "reason": "The title becomes a section of the habit.",
       "gist": "The title becomes a section of the habit",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 8
+        "path": "method.md",
+        "passage": 10
       }
     },
     {
@@ -426,18 +616,18 @@
       "file": "principle-laziness-protocol/SKILL.md",
       "segment": "c8dc28ba7e1d",
       "kind": "scope",
-      "reason": "The aim restates the ladder's opening.",
-      "gist": "The aim repeats the ladder's opening"
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     },
     {
       "source": "pstack",
       "file": "principle-laziness-protocol/SKILL.md",
       "segment": "0dd6088b07f8",
       "kind": "scope",
-      "reason": "Prefer deletion restates the rule Deletion over addition.",
-      "gist": "Prefer deletion repeats the rule deletion over addition",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 2
       }
     },
@@ -446,10 +636,10 @@
       "file": "principle-laziness-protocol/SKILL.md",
       "segment": "e7b9b43c1ea7",
       "kind": "scope",
-      "reason": "Prefer deletion restates the rule Deletion over addition.",
-      "gist": "Prefer deletion repeats the rule deletion over addition",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 2
       }
     },
@@ -461,7 +651,7 @@
       "reason": "Minimize the diff restates the rule Shortest working diff wins.",
       "gist": "Minimising the diff repeats the rule that the shortest working diff wins",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 2
       }
     },
@@ -473,7 +663,7 @@
       "reason": "Minimize the diff restates the rule Shortest working diff wins.",
       "gist": "Minimising the diff repeats the rule that the shortest working diff wins",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 2
       }
     },
@@ -485,7 +675,7 @@
       "reason": "Minimize the diff restates the rule Shortest working diff wins.",
       "gist": "Minimising the diff repeats the rule that the shortest working diff wins",
       "replacedBy": {
-        "path": "SKILL.md",
+        "path": "method.md",
         "passage": 2
       }
     },
@@ -497,8 +687,8 @@
       "reason": "The title becomes a section of the habit.",
       "gist": "The title becomes a section of the habit",
       "replacedBy": {
-        "path": "SKILL.md",
-        "passage": 11
+        "path": "method.md",
+        "passage": 14
       }
     },
     {
@@ -517,6 +707,7 @@
       "kind": "scope",
       "reason": "The title and the credit to a Claude Code plugin give way to the page's own title (R21).",
       "gist": "Title and plugin credit give way to the page's own title",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
         "passage": 0
@@ -529,6 +720,7 @@
       "kind": "scope",
       "reason": "The title and the credit to a Claude Code plugin give way to the page's own title (R21).",
       "gist": "Title and plugin credit give way to the page's own title",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
         "passage": 0
@@ -541,6 +733,7 @@
       "kind": "scope",
       "reason": "The title and the credit to a Claude Code plugin give way to the page's own title (R21).",
       "gist": "Title and plugin credit give way to the page's own title",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
         "passage": 0
@@ -552,7 +745,8 @@
       "segment": "7337f3d0aa29",
       "kind": "scope",
       "reason": "The overview restates behavior preserved exactly, taken below.",
-      "gist": "The overview repeats behaviour preserved exactly, kept below"
+      "gist": "The overview repeats behaviour preserved exactly, kept below",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -560,24 +754,8 @@
       "segment": "022ff37745ed",
       "kind": "scope",
       "reason": "The overview restates behavior preserved exactly, taken below.",
-      "gist": "The overview repeats behaviour preserved exactly, kept below"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "355d2434794a",
-      "kind": "method",
-      "reason": "The goal is not fewer lines gives way to the ladder's one line where it reads without a pause (contradiction 24).",
-      "gist": "The ladder prefers one line where it reads without a pause",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "705f1e9c4d04",
-      "kind": "scope",
-      "reason": "The new team member's test restates Boring over clever.",
-      "gist": "The new-team-member test repeats boring over clever"
+      "gist": "The overview repeats behaviour preserved exactly, kept below",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -585,7 +763,9 @@
       "segment": "07933d588e41",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -593,7 +773,9 @@
       "segment": "4d001651c286",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -601,7 +783,9 @@
       "segment": "9bbecfb2edbf",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -609,7 +793,9 @@
       "segment": "284036f32789",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -617,7 +803,9 @@
       "segment": "93c727039d2c",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -625,7 +813,9 @@
       "segment": "eb6c8dc01b48",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -633,47 +823,9 @@
       "segment": "a2f85f59a323",
       "kind": "scope",
       "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "4e9dc1e16d49",
-      "kind": "scope",
-      "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "0c38a3d4ca8e",
-      "kind": "scope",
-      "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "207fc12754a6",
-      "kind": "scope",
-      "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "57720693ee81",
-      "kind": "scope",
-      "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "a31a4b6670db",
-      "kind": "scope",
-      "reason": "When to use is the habit's opening and the block's row.",
-      "gist": "When to use is the habit's opening and the block's row"
+      "gist": "When to use is the habit's opening and the block's row",
+      "verdict": "duplicate",
+      "failure": "an agent meeting tangled code it was not asked to simplify, or reviewing it, does not load this page; the habit's rows key it to a requested refactor or simplification, and review reads its own lenses"
     },
     {
       "source": "addyosmani",
@@ -681,7 +833,8 @@
       "segment": "e6df7cb624a5",
       "kind": "scope",
       "reason": "The five principles' heading gives way to the page's own headings.",
-      "gist": "The five principles' heading gives way to the page's own"
+      "gist": "The five principles' heading gives way to the page's own",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -690,9 +843,10 @@
       "kind": "scope",
       "reason": "The first principle's heading drops its number.",
       "gist": "Drops the number from the first principle's heading",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
-        "passage": 1
+        "passage": 3
       }
     },
     {
@@ -702,108 +856,7 @@
       "kind": "scope",
       "reason": "The second principle's heading drops its number.",
       "gist": "Drops the number from the second principle's heading",
-      "replacedBy": {
-        "path": "simplify.md",
-        "passage": 3
-      }
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "753e7893083d",
-      "kind": "scope",
-      "reason": "Clarity over cleverness restates Boring over clever.",
-      "gist": "Clarity over cleverness repeats boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "705b30f6a245",
-      "kind": "scope",
-      "reason": "Clarity over cleverness restates Boring over clever.",
-      "gist": "Clarity over cleverness repeats boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "25b5576b9f0d",
-      "kind": "scope",
-      "reason": "Clarity over cleverness restates Boring over clever.",
-      "gist": "Clarity over cleverness repeats boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "f20129a0d54a",
-      "kind": "scope",
-      "reason": "Clarity over cleverness restates Boring over clever.",
-      "gist": "Clarity over cleverness repeats boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "3d668b8ba826",
-      "kind": "scope",
-      "reason": "The traps of over-simplification restate the ladder's understanding first and Boring over clever.",
-      "gist": "Over-simplification traps repeat understanding first and boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "ed5f9f6a95cc",
-      "kind": "scope",
-      "reason": "The traps of over-simplification restate the ladder's understanding first and Boring over clever.",
-      "gist": "Over-simplification traps repeat understanding first and boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "caacf0a0d3b2",
-      "kind": "scope",
-      "reason": "The traps of over-simplification restate the ladder's understanding first and Boring over clever.",
-      "gist": "Over-simplification traps repeat understanding first and boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "599944160e61",
-      "kind": "scope",
-      "reason": "The traps of over-simplification restate the ladder's understanding first and Boring over clever.",
-      "gist": "Over-simplification traps repeat understanding first and boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "9530d3f1649a",
-      "kind": "scope",
-      "reason": "The traps of over-simplification restate the ladder's understanding first and Boring over clever.",
-      "gist": "Over-simplification traps repeat understanding first and boring over clever"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "c70aaa81ec79",
-      "kind": "method",
-      "reason": "An abstraction kept for extensibility loses to No abstractions that weren't explicitly requested (contradiction 25).",
-      "gist": "Abstractions kept for extensibility lose to the rule against unrequested ones",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "eb01cfe8b623",
-      "kind": "method",
-      "reason": "Fewer lines is not the goal gives way to the ladder's one line (contradiction 24).",
-      "gist": "Upstream's line-count warning gives way to the ladder's one-line rung",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "862eb1b378a5",
-      "kind": "scope",
-      "reason": "The fifth principle's heading drops its number.",
-      "gist": "Drops the number from the fifth principle's heading",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
         "passage": 5
@@ -812,18 +865,11 @@
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
-      "segment": "43e7249f2c96",
+      "segment": "753e7893083d",
       "kind": "scope",
-      "reason": "The process's heading gives way to the page's own headings.",
-      "gist": "The process heading gives way to the page's own headings"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "bd37f3a943a8",
-      "kind": "scope",
-      "reason": "The first step's heading becomes the page's.",
-      "gist": "The first step's heading becomes the page's",
+      "reason": "The third principle's heading drops its number.",
+      "gist": "Drops the number from the third principle's heading",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
         "passage": 7
@@ -832,210 +878,277 @@
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
+      "segment": "3d668b8ba826",
+      "kind": "scope",
+      "reason": "The fourth principle's heading drops its number.",
+      "gist": "Drops the number from the fourth principle's heading",
+      "verdict": "decoration",
+      "replacedBy": {
+        "path": "simplify.md",
+        "passage": 9
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "code-simplification/SKILL.md",
+      "segment": "eb01cfe8b623",
+      "kind": "scope",
+      "reason": "The line-count trap restates the goal at the page's head.",
+      "gist": "The line-count trap repeats the goal at the page's head",
+      "verdict": "duplicate",
+      "failure": "an agent holding the ladder's one-line rung may compress logic into one line; the goal at the page's head and the ternary example of clarity over cleverness answer it"
+    },
+    {
+      "source": "addyosmani",
+      "file": "code-simplification/SKILL.md",
+      "segment": "862eb1b378a5",
+      "kind": "scope",
+      "reason": "The fifth principle's heading drops its number.",
+      "gist": "Drops the number from the fifth principle's heading",
+      "verdict": "decoration",
+      "replacedBy": {
+        "path": "simplify.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "code-simplification/SKILL.md",
+      "segment": "43e7249f2c96",
+      "kind": "scope",
+      "reason": "The process's heading gives way to the page's own headings.",
+      "gist": "The process heading gives way to the page's own headings",
+      "verdict": "decoration"
+    },
+    {
+      "source": "addyosmani",
+      "file": "code-simplification/SKILL.md",
+      "segment": "bd37f3a943a8",
+      "kind": "scope",
+      "reason": "The first step's heading becomes the page's.",
+      "gist": "The first step's heading becomes the page's",
+      "verdict": "decoration",
+      "replacedBy": {
+        "path": "simplify.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "addyosmani",
+      "file": "code-simplification/SKILL.md",
       "segment": "f57d62102e41",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The second step's heading gives way to the page's heading over the two rows it keeps.",
+      "gist": "The second step's heading gives way to the two rows' heading",
+      "verdict": "decoration",
+      "replacedBy": {
+        "path": "simplify.md",
+        "passage": 15
+      }
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "d90d8a0d6208",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "b7f5840952f9",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "b66e209f7bd3",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "8f7da293d566",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "f3bd4a79e1cc",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "dfd08bb80cc7",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "e3f46decc18e",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "6c48586120de",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "72e5dc9f2a25",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The structural signals were left out as restating the ladder, the rules and the review step's lenses; only nested ternaries and repeated conditionals do, so the failure is recorded for a later amendment.",
+      "gist": "Structural signals left out; their failure recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "the simplifying agent has no signal list, and leaves deep nesting, long functions and boolean parameter flags in place"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "0452c41d8755",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "b66e209f7bd3#2",
-      "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "8f7da293d566#2",
-      "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The naming rows and the what-comments row restate the review step's smell baseline and its excess lens.",
+      "gist": "Naming and what-comment rows repeat the review step's lenses",
+      "verdict": "duplicate",
+      "failure": "unclear names and what comments survive the simplifying pass until review, where the smell baseline and the excess lens read them"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "cb9726276dd4",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The naming rows and the what-comments row restate the review step's smell baseline and its excess lens.",
+      "gist": "Naming and what-comment rows repeat the review step's lenses",
+      "verdict": "duplicate",
+      "failure": "unclear names and what comments survive the simplifying pass until review, where the smell baseline and the excess lens read them"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "e7a547b8d75c",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The naming rows and the what-comments row restate the review step's smell baseline and its excess lens.",
+      "gist": "Naming and what-comment rows repeat the review step's lenses",
+      "verdict": "duplicate",
+      "failure": "unclear names and what comments survive the simplifying pass until review, where the smell baseline and the excess lens read them"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "48e6b872217c",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The naming rows and the what-comments row restate the review step's smell baseline and its excess lens.",
+      "gist": "Naming and what-comment rows repeat the review step's lenses",
+      "verdict": "duplicate",
+      "failure": "unclear names and what comments survive the simplifying pass until review, where the smell baseline and the excess lens read them"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "49a46813cf83",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "15bf4a3c1cea",
-      "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The naming rows and the what-comments row restate the review step's smell baseline and its excess lens.",
+      "gist": "Naming and what-comment rows repeat the review step's lenses",
+      "verdict": "duplicate",
+      "failure": "unclear names and what comments survive the simplifying pass until review, where the smell baseline and the excess lens read them"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "f079bb69a321",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundancy rows restate the review step's excess lens and its smell baseline.",
+      "gist": "Redundancy rows repeat the review step's excess lens and smells",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "b66e209f7bd3#3",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundancy rows restate the review step's excess lens and its smell baseline.",
+      "gist": "Redundancy rows repeat the review step's excess lens and smells",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "8f7da293d566#3",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundancy rows restate the review step's excess lens and its smell baseline.",
+      "gist": "Redundancy rows repeat the review step's excess lens and smells",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "6ad35283ee43",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "3bfc550fa2e9",
-      "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundancy rows restate the review step's excess lens and its smell baseline.",
+      "gist": "Redundancy rows repeat the review step's excess lens and smells",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "a5e85444067e",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundancy rows restate the review step's excess lens and its smell baseline.",
+      "gist": "Redundancy rows repeat the review step's excess lens and smells",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "2aa89a00ce3e",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundancy rows restate the review step's excess lens and its smell baseline.",
+      "gist": "Redundancy rows repeat the review step's excess lens and smells",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "bc4625609fd8",
       "kind": "scope",
-      "reason": "The opportunity tables restate the ladder, the rules and the review step's excess lens.",
-      "gist": "The opportunity tables repeat the ladder, its rules and review's excess lens"
+      "reason": "The redundant type assertion row was left out with the redundancy rows, though no roster passage names it; the failure is recorded for a later amendment.",
+      "gist": "Redundant type assertions left out; recorded for a later amendment",
+      "verdict": "load-bearing",
+      "failure": "a cast to a type already inferred is left in place"
     },
     {
       "source": "addyosmani",
@@ -1044,9 +1157,10 @@
       "kind": "scope",
       "reason": "The third step's heading becomes the page's.",
       "gist": "The third step's heading becomes the page's",
+      "verdict": "decoration",
       "replacedBy": {
         "path": "simplify.md",
-        "passage": 9
+        "passage": 21
       }
     },
     {
@@ -1056,68 +1170,25 @@
       "kind": "scope",
       "reason": "Two PRs become two commits, the split the line runs.",
       "gist": "Two PRs become two commits, the split the line runs",
+      "verdict": "load-bearing",
+      "failure": "a refactor and a feature may share one pull request; the written sentence beside it splits them into two commits",
       "replacedBy": {
         "path": "simplify.md",
-        "passage": 11
+        "passage": 23
       }
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "25a336a97f76",
-      "kind": "method",
-      "reason": "The rule of 500 loses to the bar of triviality, not repetition (contradiction 26).",
-      "gist": "The rule of 500 gives way to build-the-lever's bar: triviality, not repetition",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "9abe2a80d408",
-      "kind": "method",
-      "reason": "The rule of 500 loses to the bar of triviality, not repetition (contradiction 26).",
-      "gist": "The rule of 500 gives way to build-the-lever's bar: triviality, not repetition",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "d736b931642b",
       "kind": "scope",
-      "reason": "Verifying the result restates the review step that follows the build.",
-      "gist": "Verifying the result repeats the review step that follows the build"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "2164e782cc9b",
-      "kind": "scope",
-      "reason": "Verifying the result restates the review step that follows the build.",
-      "gist": "Verifying the result repeats the review step that follows the build"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "a5938ba0207f",
-      "kind": "scope",
-      "reason": "Verifying the result restates the review step that follows the build.",
-      "gist": "Verifying the result repeats the review step that follows the build"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "55c7c30b47c3",
-      "kind": "scope",
-      "reason": "Verifying the result restates the review step that follows the build.",
-      "gist": "Verifying the result repeats the review step that follows the build"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "376e8b712fb9",
-      "kind": "scope",
-      "reason": "Verifying the result restates the review step that follows the build.",
-      "gist": "Verifying the result repeats the review step that follows the build"
+      "reason": "The fourth step's heading becomes the page's.",
+      "gist": "The fourth step's heading becomes the page's",
+      "verdict": "decoration",
+      "replacedBy": {
+        "path": "simplify.md",
+        "passage": 25
+      }
     },
     {
       "source": "addyosmani",
@@ -1126,7 +1197,8 @@
       "kind": "method",
       "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
       "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -1135,7 +1207,8 @@
       "kind": "method",
       "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
       "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -1144,7 +1217,9 @@
       "kind": "method",
       "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
       "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "load-bearing",
+      "failure": "the agent misses a language's simplification idioms its own knowledge lacks; garden's guidance holds them"
     },
     {
       "source": "addyosmani",
@@ -1153,7 +1228,8 @@
       "kind": "method",
       "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
       "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -1162,7 +1238,9 @@
       "kind": "method",
       "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
       "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "load-bearing",
+      "failure": "the agent misses a language's simplification idioms its own knowledge lacks; garden's guidance holds them"
     },
     {
       "source": "addyosmani",
@@ -1171,16 +1249,23 @@
       "kind": "method",
       "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
       "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
       "file": "code-simplification/SKILL.md",
       "segment": "303e94f0163a",
       "kind": "method",
-      "reason": "The TypeScript, Python and React guidance is knowledge consulted for an engineering choice, handed to garden's maintainer.",
-      "gist": "Language-specific guidance is engineering knowledge, handed to garden's maintainer",
-      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21"
+      "reason": "The React guidance is knowledge handed to garden's maintainer, save its last example's prohibition, which the page states in the source's words.",
+      "gist": "React guidance goes to garden; its prohibition stays on the page",
+      "ruling": "the operator's rulings of 2026-10-08 on the intake R3 (\"everything is good\", and \"yes go ahead\" on the portable forms of R21), the verdicts standing and every contradiction ruled as recommended: one line where it reads without a pause, which \"Boring over clever\" already bounds (contradiction 24), no abstraction kept for an extensibility nobody requested (25), the bar for automation triviality and not a line count (26), and a test removed only through sweep-tests and its mutation proof (23); the language section of code-simplification garden's, and its \"Read CLAUDE.md\" the agent instructions file and the repository's conventions under R21",
+      "verdict": "load-bearing",
+      "failure": "a judgment-call restructuring such as prop drilling is refactored unasked; the page states its prohibition as a written sentence",
+      "replacedBy": {
+        "path": "simplify.md",
+        "passage": 20
+      }
     },
     {
       "source": "addyosmani",
@@ -1188,7 +1273,8 @@
       "segment": "3c989b652646",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -1196,7 +1282,8 @@
       "segment": "3025f172a1d3",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -1204,7 +1291,8 @@
       "segment": "4199ba454d6d",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "decoration"
     },
     {
       "source": "addyosmani",
@@ -1212,7 +1300,8 @@
       "segment": "600e0dfa031f",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1220,7 +1309,9 @@
       "segment": "21ba735809ae",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate",
+      "failure": "an agent holding the ladder's one-line rung may compress logic into one line; the goal at the page's head and the ternary example of clarity over cleverness answer it"
     },
     {
       "source": "addyosmani",
@@ -1228,7 +1319,8 @@
       "segment": "36472f3dbc38",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1236,7 +1328,8 @@
       "segment": "93fafe42f2e9",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1244,7 +1337,8 @@
       "segment": "2e3d82859504",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1252,7 +1346,9 @@
       "segment": "82e2948a9423",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate",
+      "failure": "an agent finding no reason in the history may keep a path the source would remove as residue of iteration; the Fence's own sentence, decide if the reason still applies, answers it"
     },
     {
       "source": "addyosmani",
@@ -1260,15 +1356,8 @@
       "segment": "fd60c36e4c5e",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "052cfba57d12",
-      "kind": "scope",
-      "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1276,15 +1365,8 @@
       "segment": "3ad39bd88b86",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "ee814f9723b1",
-      "kind": "scope",
-      "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1292,7 +1374,9 @@
       "segment": "e06b7a105cd5",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate",
+      "failure": "an agent may rename to its own taste; the conventions passage answers it"
     },
     {
       "source": "addyosmani",
@@ -1300,7 +1384,9 @@
       "segment": "dec500be6a18",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate",
+      "failure": "an agent may remove a guard it judges speculative; behavior preserved exactly, error behavior included, answers it"
     },
     {
       "source": "addyosmani",
@@ -1308,7 +1394,8 @@
       "segment": "2626e1749b23",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1316,7 +1403,8 @@
       "segment": "4b66c585d1b4",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1324,23 +1412,9 @@
       "segment": "849c03f4801a",
       "kind": "scope",
       "reason": "The rationalizations and red flags restate the principles as their violations.",
-      "gist": "The rationalisations and red flags restate the principles as violations"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "80937328f4f7",
-      "kind": "scope",
-      "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "99d83e24433f",
-      "kind": "scope",
-      "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The rationalisations and red flags restate the principles as violations",
+      "verdict": "duplicate",
+      "failure": "an agent may tidy beyond the change; scope to what changed answers it"
     },
     {
       "source": "addyosmani",
@@ -1348,7 +1422,8 @@
       "segment": "0ab54c4935e5",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1356,7 +1431,9 @@
       "segment": "e4478a5e9eab",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate",
+      "failure": "the pass itself never checks build warnings or lint; the verify step's checks run them"
     },
     {
       "source": "addyosmani",
@@ -1364,7 +1441,9 @@
       "segment": "9287245a1b14",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate",
+      "failure": "the pass itself never checks build warnings or lint; the verify step's checks run them"
     },
     {
       "source": "addyosmani",
@@ -1372,7 +1451,8 @@
       "segment": "d4c8d90156a7",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1380,7 +1460,8 @@
       "segment": "5b736350b2ad",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1388,7 +1469,8 @@
       "segment": "82fc76207a31",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate"
     },
     {
       "source": "addyosmani",
@@ -1396,15 +1478,9 @@
       "segment": "f07f3ab12c47",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
-    },
-    {
-      "source": "addyosmani",
-      "file": "code-simplification/SKILL.md",
-      "segment": "977f47427531",
-      "kind": "scope",
-      "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate",
+      "failure": "an agent may remove a guard it judges speculative; behavior preserved exactly, error behavior included, answers it"
     },
     {
       "source": "addyosmani",
@@ -1412,7 +1488,8 @@
       "segment": "42eb192fa935",
       "kind": "scope",
       "reason": "The checklist restates the principles and the review step; its CLAUDE.md is the harness's (R21).",
-      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's"
+      "gist": "The checklist repeats the principles and review; CLAUDE.md is one harness's",
+      "verdict": "duplicate"
     },
     {
       "source": "ponytail",
@@ -1433,6 +1510,317 @@
       "kind": "harness",
       "reason": "The plugin's commands to leave its mode have no meaning here: the harvest is one reply.",
       "gist": "The plugin's leave-mode commands mean nothing here; the harvest is one reply"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "8d8ad6c792e8",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "11ec93ffcfe4",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "9deccbfaaaba",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "86e3ddab0d6b",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 11
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "9f33df7d72c4",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "6eedc41e6cc1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "31063688f2a5",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "a5c68232e64f",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "b47d743e0b1d",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "segment": "3e6f103994c7",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 13
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "segment": "be7d2bd73f40",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 15
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "segment": "13ca5b0bbdee",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 15
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "segment": "46248444f49e",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 15
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "segment": "a68c7759a968",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 15
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "segment": "0da675c70ecc",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 15
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "segment": "0bb67c797e77",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5",
+      "replacedBy": {
+        "path": "method.md",
+        "passage": 17
+      }
+    },
+    {
+      "source": "pstack",
+      "file": "principle-subtract-before-you-add/SKILL.md",
+      "segment": "f62a241ed2b1",
+      "kind": "scope",
+      "reason": "removed upstream at eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "gist": "Upstream removed this text at commit eb4db2b5"
     }
-  ]
+  ],
+  "notStub": [
+    {
+      "source": "pstack",
+      "file": "principle-subtract-before-you-add/SKILL.md",
+      "ruling": "Not a stub: rechecked at eb4db2b5, where upstream's edit pass cut the body to 95 words; greenline keeps the cut rules as written passages and takes the sentences that remain, so the source stays measured; the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': not a stub, keep the text"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-laziness-protocol/SKILL.md",
+      "ruling": "Not a stub: rechecked at eb4db2b5, where upstream's edit pass cut the body to 44 words; greenline keeps the cut rules as written passages and takes the sentences that remain, so the source stays measured; the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': not a stub, keep the text"
+    },
+    {
+      "source": "pstack",
+      "file": "principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "ruling": "Not a stub: rechecked at eb4db2b5, where upstream's edit pass cut the body to 51 words; greenline keeps the cut rules as written passages and takes the sentences that remain, so the source stays measured; the ruling of 2026-10-24 on J-112, under the operator's words 'for smaller decisions go with your recommended suggestions': not a stub, keep the text"
+    }
+  ],
+  "keepers": [
+    {
+      "promise": "Before writing code the request leaves open, the habit's page is loaded and its ladder climbed. New code the request plainly asks for does not load it.",
+      "page": "method.md",
+      "kind": "fact",
+      "where": "GL0460",
+      "cost": "free",
+      "oracle": "Starts and habits"
+    },
+    {
+      "promise": "A deliberate shortcut with a known ceiling is marked in the code with a ponytail: comment naming the ceiling and the upgrade path, and is named in the build section of the change record.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No reading compares the markers in the diff with the build section, and no run names a missing marker."
+    },
+    {
+      "promise": "Replacing code that already works is a refactor, and simplify.md is read whole before its first edit.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "Starts and habits",
+      "cost": "free"
+    },
+    {
+      "promise": "It builds only on a measured need. It questions a complex request, and where the measurement shows no need it says so with the numbers and builds nothing unless the owner still asks.",
+      "page": "method.md",
+      "kind": "oracle",
+      "where": "Starts and habits",
+      "cost": "free"
+    },
+    {
+      "promise": "Non-trivial logic leaves one runnable check behind.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "done-checks holds only the declared checks and does not require a new one. No run names logic left without a check."
+    },
+    {
+      "promise": "When a new internal API replaces an old one, the callers are migrated and the old API is deleted in the same wave, with no compatibility layer.",
+      "page": "method.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is code shape that no hook or status reads. No run cites it."
+    },
+    {
+      "promise": "A simplification is measured by whether a new team member would understand the code faster, not by fewer lines, and a pass that leaves the code harder to understand or review is reverted.",
+      "page": "simplify.md",
+      "kind": "oracle",
+      "where": "The merged skills",
+      "cost": "free"
+    },
+    {
+      "promise": "A refactor is committed apart from feature or fix work and stays scoped to what changed, with no drive-by refactors unless asked.",
+      "page": "simplify.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "No commit rule tells a refactor from a feature, and no run names a mixed commit."
+    },
+    {
+      "promise": "Asked what was deferred, it harvests the ponytail: markers into the reply in the stated row form, ending with the count line. It changes nothing and writes no file, and where a change asked for the harvest, the step's section carries it.",
+      "page": "debt.md",
+      "kind": "gap",
+      "warrants": "prose",
+      "reason": "This is a reply to an owner's question, with no outward act. No run exercises it."
+    }
+  ],
+  "triggers": [
+    {
+      "steps": ["build"],
+      "modes": ["regular", "careful"],
+      "weight": 1,
+      "read": "part"
+    },
+    {
+      "words": [
+        "simplify",
+        "tidy",
+        "clean up the code",
+        "clean up this",
+        "clean up that",
+        "clean it up",
+        "clean this up",
+        "clean that up",
+        "cleaned up",
+        "refactor",
+        "what was deferred",
+        "shortcuts",
+        "left over"
+      ],
+      "weight": 1,
+      "read": "part"
+    }
+  ],
+  "wholeRead": ["simplify.md"]
 }

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Redesign"
+  short_description: "Change how a working interface looks without breaking what it does: capture the before, write the kept list of what must survive, audit, state the constraint, and hand the change on at careful. Use when the owner asks for a page, a screen or a site to be redesigned, or for a working page to look denser, cleaner, less tired or like another product while it keeps what it does."
+policy:
+  allow_implicit_invocation: false

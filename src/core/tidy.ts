@@ -1,4 +1,5 @@
 import { parseRecordForm } from "./change.ts";
+import { parseDiscussionRecord } from "./discussion.ts";
 
 /**
  * What `greenline tidy` decides about one change's working folder,
@@ -38,7 +39,11 @@ export type TidyReason =
   | { readonly kind: "not-a-change-id"; readonly name: string }
   | { readonly kind: "not-a-folder" }
   | { readonly kind: "redirected" }
-  | { readonly kind: "unreadable"; readonly detail: string };
+  | { readonly kind: "unreadable"; readonly detail: string }
+  | { readonly kind: "no-discussion" }
+  | { readonly kind: "discussion-unparsed"; readonly issues: string }
+  | { readonly kind: "discussion-unfinished"; readonly state: "open" | "parked" }
+  | { readonly kind: "not-a-discussion-id"; readonly name: string };
 
 /** Remove the folder, or keep it and say why. */
 export type TidyVerdict =
@@ -299,6 +304,47 @@ export function tidyVerdict(
 }
 
 /**
+ * Decide one discussion's working folder, `.greenline/tmp/<id>/`, from its
+ * record and the ledger (J-118 S1): remove it only when the record parses,
+ * its state is declined, promoted or merged, and no ledger file cites a
+ * path in the folder. The reports it cites stand in its folder under the
+ * ledger, permanent; the reader's scratch is working, and goes here.
+ * @param id the discussion's id, already checked to be one
+ * @param record the record's text, or undefined when there is none
+ * @param ledger every file of the ledger, the record among them
+ * @param disk the shell's view of the disk, when it has one
+ * @returns the verdict, with the reason when the folder is kept
+ */
+export function discussionTidyVerdict(
+  id: string,
+  record: string | undefined,
+  ledger: readonly LedgerText[],
+  disk?: TidyDisk,
+): TidyVerdict {
+  if (record === undefined) return { kind: "keep", reason: { kind: "no-discussion" } };
+  const read = parseDiscussionRecord(`${id}.md`, record);
+  if (read._tag === "err")
+    return {
+      kind: "keep",
+      reason: {
+        kind: "discussion-unparsed",
+        issues: read.error.issues
+          .map((issue) => (issue.path === "" ? issue.message : `${issue.path}: ${issue.message}`))
+          .join("; "),
+      },
+    };
+  const state = read.value.state;
+  if (state === "open" || state === "parked")
+    return { kind: "keep", reason: { kind: "discussion-unfinished", state } };
+  const folder = `${WORKING}/${id}`;
+  const place: FolderPlace = disk === undefined ? { folder } : { folder, root: disk.root };
+  const cited = citationsInto(place, ledger, disk?.reaches)[0];
+  if (cited !== undefined)
+    return { kind: "keep", reason: { kind: "cited", by: cited.path, target: cited.target } };
+  return { kind: "remove" };
+}
+
+/**
  * Why a folder was kept, as one sentence with what to do.
  * @param reason the reason
  * @returns the sentence
@@ -321,5 +367,13 @@ export function tidyReasonSentence(reason: TidyReason): string {
       return "it is a link, a mount of another file system, or resolves outside the repository: tidy removes nothing through it";
     case "unreadable":
       return `${reason.detail}: it cannot be read, so whether a record cites a working file, or which folders stand, is unknown: make it readable, then run tidy again`;
+    case "no-discussion":
+      return "no discussion record under .greenline/ledger/discussions/ has this id: keep the folder, or remove it by hand once you know it serves nothing";
+    case "discussion-unparsed":
+      return `the discussion record does not parse (${reason.issues}): correct it, then run tidy again`;
+    case "discussion-unfinished":
+      return `the discussion is ${reason.state}, and its working files serve it until it is declined, promoted or merged`;
+    case "not-a-discussion-id":
+      return `'${reason.name}' is not a discussion id, a real date and a slug`;
   }
 }

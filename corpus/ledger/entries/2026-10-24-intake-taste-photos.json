@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-taste-photos",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-taste-sites",
+    "sha256": "a560fb500720e5977cbc55a60a35ece9f0231a750a0bfbfbe68e9be32f4db231"
+  },
+  "source": {
+    "repository": "https://github.com/Leonxlnx/taste-skill",
+    "commit": "6010f91a9935f1c167dfc500fb1a475681892e6b",
+    "path": "skills/taste-skill/library/photos.json"
+  },
+  "pin": "taste-skill",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "Hotlinked stock photo sets, declined",
+  "reason": "Its photo sets hotlink a stock service, which breaks the offline install and carries other licences.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Taste's photos.json is declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Taste's photos.json is declined"
+    }
+  ]
+}

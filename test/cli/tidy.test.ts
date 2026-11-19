@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import {
   existsSync,
   mkdirSync,
@@ -235,5 +236,173 @@ describe("J-73 S4 greenline tidy through the CLI", () => {
     const run = tidy(root);
     expect(run.code).toBe(0);
     expect(run.out).toContain("  nothing to remove\n");
+  });
+});
+
+describe("J-114 S3 tidy --worktree removes a done change's worktree on the owner's word", () => {
+  /** A repository whose change works in a worktree of its own: the main checkout, the worktree and the change. */
+  interface Grounded {
+    readonly root: string;
+    readonly tree: string;
+    readonly id: string;
+  }
+
+  /** A real repository whose change works in a worktree of its own, at `.worktrees/<id>`. */
+  function grounded(state: string): Grounded {
+    const root = mkdtempSync(join(tmpdir(), "tidy-worktree-"));
+    roots.push(root);
+    const git = (cwd: string, ...args: string[]): string =>
+      execFileSync("git", ["-c", "user.name=F", "-c", "user.email=f@example.com", ...args], {
+        cwd,
+        encoding: "utf8",
+      });
+    git(root, "init", "--quiet", "-b", "main");
+    const rec = new RecordingWriter();
+    if (
+      runCli(["init", "--yes"], rec.writer, VERSION, {
+        cwd: root,
+        version: VERSION,
+        installation,
+      }) !== 0
+    )
+      throw new Error(`init failed: ${rec.err}`);
+    git(root, "add", ".");
+    git(root, "commit", "--quiet", "--no-verify", "-m", "the workspace");
+    const id = "2026-10-25-grounded";
+    git(root, "worktree", "add", "--quiet", "-b", `greenline/${id}`, `.worktrees/${id}`);
+    const tree = join(root, ".worktrees", id);
+    write(tree, {
+      [`.greenline/ledger/${id}.md`]: record(state, [`ground: "worktree: .worktrees/${id}"`]),
+    });
+    git(tree, "add", ".");
+    git(tree, "commit", "--quiet", "--no-verify", "-m", "the record");
+    return { root, tree, id };
+  }
+
+  it("removes a clean worktree of a done change, run from the main checkout, and keeps the branch", () => {
+    const { root, tree, id } = grounded("done");
+    // An ignored working file is no uncommitted work.
+    write(tree, { [`.greenline/tmp/${id}/note.md`]: "x\n" });
+    const run = tidy(root, "--change", id, "--worktree");
+    expect(run.code, run.err).toBe(0);
+    expect(run.out).toContain(`  removed the worktree .worktrees/${id}\n`);
+    expect(existsSync(tree)).toBe(false);
+    const branches = execFileSync("git", ["branch", "--list", `greenline/${id}`], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    expect(branches).toContain(`greenline/${id}`);
+    // Run again, it finds none to remove and refuses nothing.
+    const json = tidy(root, "--change", id, "--worktree", "--json");
+    expect(json.code, json.err).toBe(0);
+    expect(JSON.parse(json.out).tidy.worktree).toEqual({
+      path: null,
+      removed: false,
+      reason: `no worktree has greenline/${id} checked out, so there is none to remove`,
+    });
+  });
+
+  it("refuses a worktree with uncommitted work, an open change's and the one tidy runs in, and --worktree without --change", () => {
+    const dirty = grounded("done");
+    write(dirty.tree, { "src/new.ts": "export {};\n" });
+    const kept = tidy(dirty.root, "--change", dirty.id, "--worktree");
+    expect(kept.code).not.toBe(0);
+    expect(kept.err).toContain(
+      `kept the worktree .worktrees/${dirty.id}: it holds uncommitted work (?? src/`,
+    );
+    expect(existsSync(dirty.tree)).toBe(true);
+    const open = grounded("open");
+    const unfinished = tidy(open.root, "--change", open.id, "--worktree");
+    expect(unfinished.err).toContain(
+      "the change is open, and its worktree serves it until it is done or dropped",
+    );
+    expect(existsSync(open.tree)).toBe(true);
+    const inside = grounded("done");
+    const own = tidy(inside.tree, "--change", inside.id, "--worktree");
+    expect(own.err).toContain("tidy runs in that worktree; run it from the main checkout");
+    expect(existsSync(inside.tree)).toBe(true);
+    const bare = tidy(inside.root, "--worktree");
+    expect(bare.code).not.toBe(0);
+    expect(bare.err).toContain("--worktree names the change whose worktree goes");
+  });
+
+  // J-228 S1, j201t-linear-visuals F14: the worktree keeps an open copy of a record the main checkout holds done.
+  it("removes a clean worktree left with an open copy of a record the checkout tidy runs in holds done, and keeps the branch", () => {
+    const { root, tree, id } = grounded("open");
+    write(root, { [`.greenline/ledger/${id}.md`]: record("done") });
+    const run = tidy(root, "--change", id, "--worktree");
+    expect(run.out).toContain(`  removed the worktree .worktrees/${id}\n`);
+    expect(existsSync(tree)).toBe(false);
+    expect(
+      execFileSync("git", ["branch", "--list", `greenline/${id}`], { cwd: root, encoding: "utf8" }),
+    ).toContain(`greenline/${id}`);
+  });
+
+  it("keeps a left worktree that holds uncommitted work, and a change open in both checkouts", () => {
+    const dirty = grounded("open");
+    write(dirty.root, { [`.greenline/ledger/${dirty.id}.md`]: record("done") });
+    write(dirty.tree, { "src/new.ts": "export {};\n" });
+    const kept = tidy(dirty.root, "--change", dirty.id, "--worktree");
+    expect(kept.err).toContain(
+      `kept the worktree .worktrees/${dirty.id}: it holds uncommitted work (?? src/`,
+    );
+    expect(existsSync(dirty.tree)).toBe(true);
+    const both = grounded("open");
+    write(both.root, { [`.greenline/ledger/${both.id}.md`]: record("open") });
+    const open = tidy(both.root, "--change", both.id, "--worktree");
+    expect(open.err).toContain(
+      "the change is open, and its worktree serves it until it is done or dropped",
+    );
+    expect(existsSync(both.tree)).toBe(true);
+  });
+});
+
+describe("J-118 S1 greenline tidy --discussion through the CLI", () => {
+  const TALK = "2026-10-21-offline-mode";
+  const talk = (state: string, extra: readonly string[]): string =>
+    ["---", 'idea: "offline"', `state: ${state}`, ...extra, "---", ""].join("\n");
+
+  it("parses --discussion, refuses it beside --change or --worktree, and refuses a name that is no discussion id", () => {
+    expect(parseArgs(["tidy", "--discussion", TALK], VERSION)).toMatchObject({
+      kind: "run",
+      request: { command: "tidy", tidy: { change: undefined, discussion: TALK } },
+    });
+    for (const argv of [
+      ["tidy", "--discussion", TALK, "--change", "2026-10-14-a"],
+      ["tidy", "--discussion", TALK, "--worktree"],
+      ["tidy", "--discussion", "../.."],
+    ]) {
+      const parsed = parseArgs(argv, VERSION);
+      expect(parsed.kind, argv.join(" ")).toBe("usage-error");
+    }
+  });
+
+  it("removes a declined discussion's working files and reports them, and refuses an open one's with GL0470", () => {
+    const root = repository();
+    write(root, {
+      [`.greenline/ledger/discussions/${TALK}.md`]: talk("declined", [
+        'reason: "online-only"',
+        'words: "drop it"',
+      ]),
+      [`.greenline/tmp/${TALK}/research-1/page.html`]: "x\n",
+    });
+    const removed = tidy(root, "--discussion", TALK, "--json");
+    expect(removed.code, removed.err).toBe(0);
+    expect(JSON.parse(removed.out)).toMatchObject({
+      command: "tidy",
+      ok: true,
+      tidy: { removed: [`.greenline/tmp/${TALK}`], kept: [] },
+    });
+    expect(existsSync(join(root, ".greenline/tmp", TALK))).toBe(false);
+    write(root, {
+      [`.greenline/ledger/discussions/${TALK}.md`]: talk("open", []),
+      [`.greenline/tmp/${TALK}/a.txt`]: "x\n",
+    });
+    const open = tidy(root, "--discussion", TALK);
+    expect(open.code).not.toBe(0);
+    expect(open.err).toContain(
+      `  kept .greenline/tmp/${TALK}/: the discussion is open, and its working files serve it until it is declined, promoted or merged; error GL0470`,
+    );
+    expect(existsSync(join(root, ".greenline/tmp", TALK))).toBe(true);
   });
 });

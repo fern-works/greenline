@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-balise-affinity-mcp",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-balise-affinity",
+    "sha256": "cf3d598809a1ec661ab2afdb0a6c0656e9d13c8209dd5cccf5ed1a2728c4b6c6"
+  },
+  "source": {
+    "repository": "https://github.com/mrstev3n/balise-skills",
+    "commit": "f596a61fa8f4471054b1ed75d17bc6699db4572d",
+    "path": "skills/balise-affinity-mcp"
+  },
+  "licence": "permissive-other",
+  "verdict": "decline",
+  "gist": "Outside the interface practice, declined",
+  "reason": "Its subject lies outside greenline's interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': balise's off-practice skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': balise's off-practice skills are declined"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-explain-refreshes-at-close-and-seeds-the-documents",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-architecture-map-reads-the-product-tiers-and-refreshes-at-close",
+    "sha256": "a0f807952ac06d631779edcb567bda3ddd6d1c843dcd7832a84c9f67c8a9076b"
+  },
+  "subject": "skill:explain",
+  "recipe": "903703fbe623483cc727185a03168482ad9b327589926556e0b252f7bd909c9e",
+  "result": "9912451d1f3ad3aa25c94b7187c619a80ebf1a9d77b016a5e21b39d908c00f47",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Close's refresh, documents index, offer to keep a page",
+  "reason": "explain states the one maker rule, offers to keep a page it explained, seeds the documents index, and leaves the touched pages' refresh to the close, up to three (J-147 S1, S2, S4).",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-22",
+      "words": "the register's rows of 2026-10-22 on the visual system, on the operator's words of 2026-10-22 (\"we will include all good sources, we will use each source for specific kind of diagram representation\" and \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\"): one home for every durable visual, .greenline/visuals/, each visual with its manifest; every visual source a permanent default, each for its kind of picture; the atlas a system of its own whose refresh is offered, never taken unasked; and the register's row of 2026-10-24, no migration code (J-110)"
+    },
+    {
+      "date": "2026-10-28",
+      "words": "J-147, under J-147's finalise words, the operator's words of 2026-10-28: and we get this done earliest so this can be seen in the qa runs as they work or not; and the card of 2026-10-28: Adopt both, with the improvements; on the register's rows of 2026-10-28 on the visual system's flow, the documents' drift, the one maker rule and the offer at every turn with the permanent pages refreshed at the close. The series' finding on the pictures: over 101 runs the agent never offered a lasting visual on its own, never proposed the atlas's first pages and never refreshed a subsystem page"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 0,
+        "taken": 0,
+        "exact": 0,
+        "retention": null,
+        "coverage": null,
+        "meetsMinimum": null,
+        "creditLine": true
+      }
+    ],
+    "growth": 1744
+  }
+}

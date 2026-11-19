@@ -14,8 +14,8 @@ import {
   statSync,
   symlinkSync,
 } from "node:fs";
-import { tmpdir } from "node:os";
-import { GREEN_LINE, outcome, skip } from "./lib/gate-outcome.mjs";
+import { availableParallelism, loadavg, tmpdir } from "node:os";
+import { GREEN_LINE, outcome, passWithNote, skip } from "./lib/gate-outcome.mjs";
 import { checkCommit, parseCommits, walkPlan } from "./lib/commit-subject.mjs";
 import { nameLeaks, scannedFile } from "./lib/name-boundary.mjs";
 import { join, resolve, sep } from "node:path";
@@ -39,6 +39,12 @@ if (checkTask) privateStorage.recordWorkshopInterrupt(checkTask);
 if (checkTask) privateStorage.protectWorkshopChildren(checkTask);
 
 const full = process.argv.includes("--full");
+// A narrowed full tier the overseer may run by hand (docs/CODE-STANDARDS.md,
+// "The full tier"); a slice's gate is the fast tier. Beside --full,
+// --no-public leaves the public-gate row out and --no-coverage runs the
+// vitest row without coverage; each is listed as a skip naming its flag.
+const noPublic = process.argv.includes("--no-public");
+const noCoverage = process.argv.includes("--no-coverage");
 // The public tree (workshop/components/public-export.md): under --public,
 // the rows named here run and every other row is left out, since the tree
 // holds the kept set only; the rows outside the set fetch the workshop's
@@ -71,19 +77,27 @@ const PUBLIC_ROWS = new Set([
 ]);
 const inRepository = () => existsSync(".git");
 // The toolchain rows, registered below in one loop: name, command, whether
-// sources are needed. Named here so the gate-row-names row can read them.
+// sources are needed, the tier and any environment the command adds. Named
+// here so the gate-row-names row can read them.
 const TOOLCHAIN_ALL = [
   ["typecheck", "tsc -p tsconfig.json", false, "fast"],
   ["oxlint", "oxlint .", false, "fast"],
   ["oxfmt", "oxfmt --check .", false, "fast"],
+  // The full tier and the public gate run the slow project beside the fast
+  // one (vitest.config.ts); the fast tier runs the fast project alone (J-127 S2).
   [
     "vitest",
-    full ? "vitest run --coverage --passWithNoTests" : "vitest run --passWithNoTests",
+    full && !noCoverage
+      ? "vitest run --coverage --passWithNoTests"
+      : "vitest run --passWithNoTests",
     false,
     "fast",
+    full || publicOnly ? { GREENLINE_SLOW_TESTS: "1" } : {},
   ],
   ["depcruise", "depcruise src --config .dependency-cruiser.cjs", true, "fast"],
-  ["knip", "knip", true, "full"],
+  // Knip runs in the fast tier, a slice's gate: a round's slices gathered three
+  // knip reds none of them ran while it sat in the full tier (J-233 S1).
+  ["knip", "knip", true, "fast"],
   ["jscpd", "jscpd src", true, "full"],
 ];
 const TOOLCHAIN_ROWS = TOOLCHAIN_ALL.filter(([, , , tier]) => full || tier === "fast");
@@ -110,7 +124,8 @@ const row = async (name, fn) => {
   try {
     const o = outcome(await fn());
     rows.push([name, o.status, o.reason]);
-    process.stdout.write(`  ✓ ${name} ${o.status === "SKIP" ? "SKIP" : "ok"} (${dt()})\n`);
+    const note = o.status === "PASS" && o.reason ? `: ${o.reason}` : "";
+    process.stdout.write(`  ✓ ${name} ${o.status === "SKIP" ? "SKIP" : "ok"} (${dt()})${note}\n`);
   } catch (e) {
     const message = String(e.message ?? e);
     rows.push([
@@ -142,8 +157,12 @@ const files = (dir) => {
 };
 // Tooling territory and the vendored pack are exempt from source sweeps
 // (docs/CODE-STANDARDS.md §11); this gate file may name the tokens it bans.
+// The frozen upstream snapshots under corpus/upstream/ are records, never
+// house code, as the name-boundary row already treats them (FROZEN_SNAPSHOTS
+// in scripts/lib/private-names.mjs): their bytes stay as upstream wrote them.
 const SWEEP_EXEMPT = (f) =>
   f.startsWith(".agents/") ||
+  f.startsWith("corpus/upstream/") ||
   f.startsWith(".claude/") ||
   f.startsWith("tools/oxlint/anti-slop/") ||
   f === "scripts/check.mjs";
@@ -280,6 +299,25 @@ await row("subagents-parity", async () => {
   if (problems.length)
     throw new Error(`subagent homes refused ${problems.length}: ${problems.join("; ")}`);
 });
+// ROW: the lifecycle sequences (J-140 S2; docs/CODE-STANDARDS.md, "Testing"):
+// the suite under test/shell/sequences/ drives each documented lifecycle
+// through real git and the installed hooks. The hook and guard sources bind
+// it (HOOK_SOURCES, scripts/lib/walk-class.mjs): the fast tier runs it when
+// the candidate changed one of them, against HEAD, and names its skip
+// otherwise; the full tier runs it always.
+await row("lifecycle-sequences", async () => {
+  if (!inRepository()) return skip("no git repository here (a built public tree)");
+  const { lifecycleSequencesRow } = await import("./lib/lifecycle-sequences.mjs");
+  const listed = (args) =>
+    execFileSync("git", args, { encoding: "utf8" }).split("\0").filter(Boolean);
+  const changed = [
+    ...listed(["diff", "--name-only", "-z", "--no-renames", "HEAD", "--"]),
+    ...listed(["ls-files", "--others", "--exclude-standard", "-z"]),
+  ];
+  const result = lifecycleSequencesRow({ full, changed });
+  if (!result.ran) return skip(result.reason);
+  process.stdout.write(`  lifecycle-sequences: ran because ${result.reason}\n`);
+});
 // ROW: the guards fire on a planted violation and pass a lawful read (the
 // triangulation plan, T8): synthetic events through the hook protocol, a
 // planted write and a read per guard and a non-redirection writer, the
@@ -400,6 +438,31 @@ await row("guards-drill", async () => {
           },
           0,
           "granted worker write",
+        ],
+        // A redirection names no word of the proof (J-127); a word after the proof does.
+        [
+          "PreToolUse",
+          {
+            ...worker,
+            tool_name: "Bash",
+            tool_input: {
+              command: `node scripts/ceremony.mjs prove ${record} protocol > ${base}/prove.out 2>&1`,
+            },
+          },
+          0,
+          "worker proof with a redirection",
+        ],
+        [
+          "PreToolUse",
+          {
+            ...worker,
+            tool_name: "Bash",
+            tool_input: {
+              command: `node scripts/ceremony.mjs prove ${record} protocol extra > ${base}/prove.out 2>&1`,
+            },
+          },
+          2,
+          "worker proof with a word after the proof",
         ],
         [
           "PreToolUse",
@@ -530,13 +593,18 @@ await row("agents-md-budget", () => {
 // every consumer session, so its size is a cost the overseer reads here.
 // J-93 S1 cut the block to under 1,500 words as the corpus counts
 // them (docs/SPEC.md §8; docs/work/notes/N-56.md, item 2); this row counts
-// by white space, which reads higher, so its cap is the lean goldens' count
-// near 1,700 plus a small margin, holding the cut rather than catching
-// only runaway growth as the old cap of 8000 did.
+// by white space, which reads higher. J-107 S3 set its cap once for the
+// version's one edition of the block (the register's rows of 2026-10-22 and
+// 2026-10-23; J-107's picks, item 7): the whole edition's 2,501 white-space
+// words measured on 2026-10-24, rounded up to the next hundred, plus 200 for
+// the design step's words J-123 adds, holding the edition rather than
+// catching only runaway growth as the old cap of 8000 did.
 await row("managed-block-budget", () => {
   const caps = [
-    ["test/goldens/corpus/AGENTS.md", 1800],
-    ["test/goldens/garden-enabled/AGENTS.md", 1800],
+    // The operator's card of 2026-10-27 raised the block's cap by 100 words once for the 0.2.0 release (J-142 S3),
+    // and the register's row of 2026-10-27 on the reply's polish by 100 more (J-144 S2).
+    ["test/goldens/corpus/AGENTS.md", 3000],
+    ["test/goldens/garden-enabled/AGENTS.md", 3000],
   ];
   for (const [golden, cap] of caps) {
     const words = readFileSync(golden, "utf8").split(/\s+/).filter(Boolean).length;
@@ -558,7 +626,8 @@ await row("cutover", () => {
 // the cut is located in HEAD's own history, and the stage E disposition says so).
 await row("commit-subject", () => {
   if (!inRepository()) return skip("no git repository here (a built public tree)");
-  const git = (...args) => execFileSync("git", args, { encoding: "utf8" });
+  const git = (...args) =>
+    execFileSync("git", args, { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
   const shallow = git("rev-parse", "--is-shallow-repository").trim() === "true";
   const cut = full
     ? git(
@@ -699,6 +768,22 @@ await row("doc-pins", async () => {
     throw new Error(`document pins refused ${problems.length}: ${problems.slice(0, 8).join("; ")}`);
 });
 
+// ROW: the reply's links to the viewer (J-140 S6;
+// workshop/components/reply-links.md): every turn kind of the block's rubric
+// has a row in the links page's turn table, every home of the work guide's
+// homes table a view that lists it or a line saying why none, and every view
+// the page names is one the inspector lists, each view of which has its row.
+// It reads only greenline's own pages, never a workspace's.
+await row("reply-links", async () => {
+  const { REPLY_LINK_PAGES, replyLinkProblems } = await import("./lib/reply-links.mjs");
+  const pages = Object.fromEntries(
+    Object.entries(REPLY_LINK_PAGES).map(([name, path]) => [name, readFileSync(path, "utf8")]),
+  );
+  const problems = replyLinkProblems(pages);
+  if (problems.length)
+    throw new Error(`reply links refused ${problems.length}: ${problems.slice(0, 8).join("; ")}`);
+});
+
 // ROW: the pointer walk — operating surfaces cite only paths, sections, and skills that exist
 await row("docs-pointers", async () => {
   const { checkPaths, exemptions } = await import("./lib/path-scan.mjs");
@@ -829,17 +914,59 @@ await row("corpus", () => {
       ...report.ledger.map((l) => `${l.skill}: ${l.message}`),
       ...report.views.map((v) => `${v.path}: ${v.message}`),
     ];
-    throw new Error(`corpus refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
+    // A pointer finding alone is the corpus-pointers row's, not this one's (J-140 S4).
+    if (findings.length || !report.pointers?.length)
+      throw new Error(`corpus refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
   }
   if (report.recipes === 0 && report.entries === 0)
     process.stdout.write("  corpus: no recipe and no entry on disk; nothing to verify\n");
+});
+// ROW: the pointer-before-use reading over the roster (J-140 S4;
+// craft-writing-for-agents, "Context pointers"): each installed skill's
+// pointers to its reference pages, a page refused whose first pointer stands
+// only in the skill's last section in a sentence naming no condition. The
+// row's named exceptions, POINTER_EXCEPTIONS in scripts/lib/corpus-pointers.mjs,
+// are pages a recorded follow-up moves, each naming its job: today anatomy's
+// references/walkthrough.md, followed up in J-144. An exception the reading no
+// longer finds is itself refused, so the list cannot outlive its cure.
+await row("corpus-pointers", async () => {
+  if (!existsSync("scripts/lib/corpus-pointers.mjs"))
+    return skip("the pointer reading is the workshop's, absent from the public tree");
+  const { pointerVerdict, rosterPointerFindings } = await import("./lib/corpus-pointers.mjs");
+  const verdict = pointerVerdict(rosterPointerFindings("corpus"));
+  for (const entry of verdict.excepted)
+    process.stdout.write(
+      `  excepted ${entry.skill}: ${entry.page}, followed up in ${entry.followUp}\n`,
+    );
+  const problems = [
+    ...verdict.stale.map(
+      (entry) =>
+        `the exception ${entry.skill}: ${entry.page} (${entry.followUp}) is no longer refused; remove it`,
+    ),
+    ...verdict.refused.map((item) => `${item.skill}: ${item.message}`),
+  ];
+  if (problems.length)
+    throw new Error(`pointers refused ${problems.length}: ${problems.slice(0, 8).join("; ")}`);
 });
 // ROW: the words budget (workshop/components/modes.md, "The words budget"):
 // `scripts/corpus.mjs budget` over every mode of the definition, failing on
 // a mode whose words read pass its budget without the operator's ruling in
 // the modes recipe. With corpus-ceilings, which compares each ceiling with
 // HEAD's, the gate's reading of the words budget; the block's own cap is
-// managed-block-budget's. It runs in the public tree too.
+// managed-block-budget's. It runs in the public tree too. Beside the words,
+// the keepers the recipes list (J-153 S3; workshop/components/recipes.md,
+// "The keepers"; the register's row of 2026-10-28 on the keeper test): the
+// row prints them by kind and by cost, and caps the hook rules of kind hold,
+// each a refusal or a turn's-end hold a session can meet, at HOLD_CAP; a recipe that adds a
+// hold past it fails the row until another is retired or merged, and only a
+// register row raises the cap. Set at J-153 S4, on the brief's word, from the
+// audit: 21 hook rules the roster's holds name today, and 7 the fix round's
+// jobs add (J-148 S2's merge words and S3's marks at done, J-149 S1's record
+// lint at done, S2's card reading, S3's state at a resume and S5's reply
+// hold, J-151 S2's research hold). It is provisional: the register's keeper
+// test row sets the cap from the apparatus's first measurement of the hooks'
+// time per turn (J-152), and a register row moves it then.
+const HOLD_CAP = 28;
 await row("corpus-budget", () => {
   const run = spawnSync(process.execPath, ["scripts/corpus.mjs", "budget"], { encoding: "utf8" });
   let report;
@@ -852,10 +979,25 @@ await row("corpus-budget", () => {
     process.stdout.write(
       `  ${mode.mode}: ${Math.max(mode.total.default, mode.total.garden)} words read (budget ${mode.budget})\n`,
     );
+  const keepers = report.keepers;
+  if (keepers)
+    process.stdout.write(
+      `  keepers: ${keepers.promises} promises, ${keepers.kept} kept (${Object.entries(
+        keepers.byKind,
+      )
+        .map(([kind, count]) => `${kind} ${count}`)
+        .join(", ")}; ${Object.entries(keepers.byCost)
+        .map(([cost, count]) => `${cost} ${count}`)
+        .join(", ")}), ${keepers.holds.length} hook rules held (cap ${HOLD_CAP})\n`,
+    );
   if (run.status !== 0) {
     const findings = report.refused.map((r) => `${r.mode}: ${r.message}`);
     throw new Error(`corpus-budget refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
   }
+  if (keepers && keepers.holds.length > HOLD_CAP)
+    throw new Error(
+      `corpus-budget refused 1: the holds name ${keepers.holds.length} hook rules, past the cap of ${HOLD_CAP} (${keepers.holds.join(", ")}); retire or merge one, or a register row raises the cap`,
+    );
 });
 // ROW: the fronts hold the upstream prose alone (J-93 S2, N-56 item 2;
 // workshop/components/recipes.md, "The front and the references"):
@@ -883,6 +1025,93 @@ await row("corpus-fronts", () => {
     ];
     throw new Error(`corpus-fronts refused ${findings.length}: ${findings.slice(0, 8).join("; ")}`);
   }
+});
+// ROW: the interface rule registry is whole (J-123 S4;
+// workshop/components/interface-rules.md, "Which rows prove it"): the list
+// corpus/interface/rules.json reads under its schema with no id twice, each
+// rule's sentence stands with its id and its tier on the design step's page
+// its facets give it, each rule of the static engines has a detector in
+// code, and each render rule a judge (src/core/interface-render.ts), which
+// measures it in a browser at verify or names why it is unmeasured.
+await row("interface-rules", async () => {
+  if (!existsSync("corpus/interface/rules.json")) return skip("no interface rule list yet");
+  const { parseRuleList, rulePage } = await import("../src/core/interface-registry.ts");
+  const { staticRuleIds } = await import("../src/core/interface-static.ts");
+  const { renderRuleIds } = await import("../src/core/interface-render.ts");
+  const judges = new Set(renderRuleIds());
+  const parsed = parseRuleList(readFileSync("corpus/interface/rules.json", "utf8"));
+  if (!parsed.ok)
+    throw new Error(`interface-rules refused the list: ${parsed.issues.slice(0, 8).join("; ")}`);
+  const detectors = new Set(staticRuleIds());
+  const refused = [];
+  for (const rule of parsed.rules) {
+    const page = `corpus/skills/design/${rulePage(rule)}`;
+    const text = existsSync(page) ? readFileSync(page, "utf8") : undefined;
+    const line = `- \`${rule.id}\`, ${rule.tier}: ${rule.sentence}`;
+    if (text === undefined) refused.push(`${rule.id}: its page ${page} stands nowhere`);
+    else if (!text.includes(line))
+      refused.push(`${rule.id}: ${page} does not carry its line '${line.slice(0, 80)}'`);
+    if (rule.engine !== "render" && !detectors.has(rule.id))
+      refused.push(
+        `${rule.id}: a ${rule.engine} rule with no detector in src/core/interface-static.ts`,
+      );
+  }
+  for (const rule of parsed.rules)
+    if (rule.engine === "render" && !judges.has(rule.id))
+      refused.push(`${rule.id}: a render rule with no judge in src/core/interface-render.ts`);
+  for (const id of detectors)
+    if (!parsed.rules.some((rule) => rule.id === id && rule.engine !== "render"))
+      refused.push(`${id}: a detector for no static rule of the list`);
+  for (const id of judges)
+    if (!parsed.rules.some((rule) => rule.id === id && rule.engine === "render"))
+      refused.push(`${id}: a judge for no render rule of the list`);
+  process.stdout.write(
+    `  ${parsed.rules.length} rules, ${detectors.size} static detectors, ${judges.size} render judges\n`,
+  );
+  if (refused.length)
+    throw new Error(`interface-rules refused ${refused.length}: ${refused.slice(0, 8).join("; ")}`);
+});
+// ROW: the interface catalog holds (J-123 S6;
+// workshop/components/interface-catalog.md, "Which rows prove it"): every
+// entry reads under the schema with its provenance, no id twice, every
+// entry's own colours meet the floor in the pairs it names at the ratios it
+// records, every entry with tokens or a sketch renders its specimen, the
+// recipe names every entry once and no entry it lacks, and the extra skill
+// carries the same bytes.
+await row("interface-catalog", async () => {
+  const entriesPath = "corpus/interface/catalog/entries.json";
+  if (!existsSync(entriesPath)) return skip("no interface catalog yet");
+  const { catalogIssues, parseCatalog, specimenHtml } =
+    await import("../src/core/interface-catalog.ts");
+  const text = readFileSync(entriesPath, "utf8");
+  const refused = [...catalogIssues(text)];
+  const entries = parseCatalog(text) ?? [];
+  for (const entry of entries)
+    if ((entry.tokens !== undefined || entry.sketch !== undefined) && !specimenHtml(entry))
+      refused.push(`${entry.id}: no specimen renders`);
+  const recipe = JSON.parse(readFileSync("corpus/interface/catalog/recipe.json", "utf8"));
+  const named = [...recipe.families, ...recipe.sites].flatMap((source) => source.entries);
+  const ids = new Set(entries.map((entry) => entry.id));
+  for (const id of named)
+    if (!ids.has(id)) refused.push(`${id}: the recipe names an entry the catalog lacks`);
+  for (const id of ids)
+    if (named.filter((name) => name === id).length !== 1)
+      refused.push(
+        `${id}: the recipe names it ${String(named.filter((name) => name === id).length)} times`,
+      );
+  const copy = "corpus/skills/interface-catalog/catalog/entries.json";
+  if (
+    existsSync("corpus/skills/interface-catalog") &&
+    (!existsSync(copy) || readFileSync(copy, "utf8") !== text)
+  )
+    refused.push(`${copy} differs from ${entriesPath}`);
+  process.stdout.write(
+    `  ${entries.length} entries, each with a specimen where it has tokens or a sketch\n`,
+  );
+  if (refused.length)
+    throw new Error(
+      `interface-catalog refused ${refused.length}: ${refused.slice(0, 8).join("; ")}`,
+    );
 });
 // ROW: the ceilings hold. Each mode's words budget is a ceiling a slice
 // lowers and never raises without the operator's ruling (N-56 item 2, J-93
@@ -937,10 +1166,12 @@ await row("corpus-optin-assets", async () => {
     visit(dir);
     return out;
   };
-  // A skill with an asset tree is extra and installs on request; an extra
+  // A skill with an asset tree is extra and installs on request, the visual
+  // skills the register's row of 2026-10-22 makes defaults aside; an extra
   // carries files beside its SKILL.md, since its tree is why it waits for
   // the request (the plan modes-records-recipes, "The roster";
-  // scripts/lib/asset-tree.mjs holds the rule and its threshold).
+  // scripts/lib/asset-tree.mjs holds the rule, its threshold and its
+  // allowance).
   const { assetTreeIssues } = await import("./lib/asset-tree.mjs");
   const bad = assetTreeIssues(manifest.skills, (name) => {
     const dir = join("corpus", "skills", name);
@@ -1006,13 +1237,30 @@ await row("tsdown-build", () => {
   if (!existsSync(cliBundle)) throw new Error(`missing CLI bundle: ${cliBundle}`);
 });
 
-for (const [name, cmd, needsSrc] of TOOLCHAIN_ROWS) {
-  await row(name, () => {
+for (const [name, cmd, needsSrc, , env = {}] of TOOLCHAIN_ROWS) {
+  await row(name, async () => {
     if (!existsSync("node_modules"))
       return skip("toolchain not installed (run pnpm install --frozen-lockfile)");
     if (needsSrc && !existsSync("src")) return skip("no sources yet (M1 not started)");
+    // The vitest row, on a red under a load above the machine's parallelism,
+    // the highest of the one-minute load before the suite and the one-minute
+    // and five-minute loads after it, runs the failed files alone once and
+    // names the three and the files when they pass (the register's row of
+    // 2026-10-30; J-157 S1, J-159 S1).
+    if (name === "vitest") {
+      const { runVitest, vitestRow } = await import("./lib/vitest-rerun.mjs");
+      const runEnv = { ...process.env, ...env };
+      const verdict = vitestRow({
+        runSuite: () => runVitest(cmd.split(" ").slice(1), runEnv),
+        runAlone: (failed) => runVitest(["run", "--no-file-parallelism", ...failed], runEnv),
+        load: () => loadavg(),
+        cores: availableParallelism(),
+      });
+      if (!verdict.ok) throw new Error(`${cmd} failed: ${verdict.finding}`);
+      return verdict.note ? passWithNote(verdict.note) : undefined;
+    }
     try {
-      execSync(`npx --no-install ${cmd}`, { stdio: "pipe" });
+      execSync(`npx --no-install ${cmd}`, { stdio: "pipe", env: { ...process.env, ...env } });
     } catch (error) {
       // A tool prints its finding on stderr or stdout: the row names the first
       // lines of the one and the last of the other, not only the exit.
@@ -1028,6 +1276,11 @@ for (const [name, cmd, needsSrc] of TOOLCHAIN_ROWS) {
     }
   });
 }
+// --no-coverage runs the vitest row without coverage; the summary lists
+// coverage as a skip naming the flag, so it reads as not run.
+if (full && noCoverage) {
+  await row("coverage", () => skip("left out by --no-coverage"));
+}
 await row("consumer-package", () => {
   const out = execFileSync(process.execPath, ["scripts/check-consumer-package.mjs"], {
     encoding: "utf8",
@@ -1037,6 +1290,23 @@ await row("consumer-package", () => {
   if (notRun) return skip(notRun[0]);
 });
 if (full) {
+  // ROW: the inspector's render check (J-120): the client app the build wrote,
+  // served over two fixture workspaces and read in headless Chrome at 320, 768
+  // and 1280 wide, every page and the catalogue drawn with no console error,
+  // failed request or sideways scroll, the palette and the keys driven. With no
+  // browser on the machine the row is unproven, never passed.
+  await row("inspect-render", () => {
+    if (!existsSync("src")) return skip("no sources yet (M1 not started)");
+    const run = spawnSync(process.execPath, ["scripts/check-inspect-render.mjs"], {
+      encoding: "utf8",
+      timeout: 600_000,
+    });
+    if (run.status === 3) return skip(run.stdout.trim() || "no browser found");
+    if (run.status !== 0)
+      throw new Error(
+        `${(run.stdout + run.stderr).trim().split("\n").slice(0, 10).join(" / ") || `exit ${run.status}`}`,
+      );
+  });
   await row("cli-smoke", () => {
     if (!existsSync("src")) return skip("no sources yet (M1 not started)");
     const cliBundle = "dist/bin/greenline.mjs";
@@ -1093,30 +1363,31 @@ if (full) {
     }
   });
 }
-// ROW: the public tree (workshop/components/public-export.md): every
-// tracked path classified as kept or refused, every rule of the kept set
-// naming a tracked path, every kept source file's static imports naming
-// kept files, the tree built into a temporary directory with no refused
-// path, no private name and no guidance unit identity in it, and
-// typechecked there.
+// ROW: the public tree (workshop/components/public-export.md): every path
+// of the candidate, tracked or untracked and not ignored, classified as kept
+// or refused, every rule of the kept set naming a path the candidate holds,
+// every kept source file's static imports naming kept files, the tree built
+// into a temporary directory with no refused path, no private name and no
+// guidance unit identity in it, and typechecked there. A worker's new module
+// is untracked until the land stages it, and its git is read-only (J-211 S2).
 await row("public-tree", async () => {
   const {
     buildPublicTree,
+    candidateParts,
     importClosureIssues,
-    partition,
     privateNameIssues,
     readKeptSet,
     staleRuleIssues,
-    trackedFiles,
+    workingFiles,
   } = await import("./lib/public-tree.mjs");
   const set = readKeptSet(".");
-  const tracked = trackedFiles(".");
-  const parts = partition(tracked, set);
+  const parts = candidateParts(".", set);
   if (parts.unclassified.length > 0)
     throw new Error(
-      `${parts.unclassified.length} tracked path(s) are neither kept nor refused: ${parts.unclassified.slice(0, 8).join(", ")}`,
+      `${parts.unclassified.length} path(s) are neither kept nor refused: ${parts.unclassified.slice(0, 8).join(", ")}`,
     );
-  const stale = staleRuleIssues(tracked, set);
+  // A rule names a file the candidate holds: a new file is untracked until its commit (J-140).
+  const stale = staleRuleIssues(workingFiles("."), set);
   if (stale.length > 0)
     throw new Error(`${stale.length} rule(s) of the kept set are stale: ${stale.join("; ")}`);
   const closure = importClosureIssues(".", parts.kept, set);
@@ -1162,6 +1433,7 @@ await row("public-tree", async () => {
 // skip every inner row and pass with nothing proven.
 if (full) {
   await row("public-gate", async () => {
+    if (noPublic) return skip("left out by --no-public");
     const { buildPublicTree, partition, publicGateEnvironment, readKeptSet, workingFiles } =
       await import("./lib/public-tree.mjs");
     if (!existsSync("node_modules")) return skip("no node_modules; the public rows cannot run");
@@ -1180,6 +1452,11 @@ if (full) {
         throw new Error(
           `the public row set failed in the built tree:\n${run.stdout.split("\n").slice(-25).join("\n")}`,
         );
+      // The public vitest row's rerun under load is named here too, so the
+      // private gate's last lines say the public suite passed only alone.
+      const { rerunNoteIn } = await import("./lib/vitest-rerun.mjs");
+      const rerun = rerunNoteIn(run.stdout);
+      if (rerun) return passWithNote(`its vitest row ${rerun}`);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
@@ -1220,6 +1497,11 @@ const firstLines = (message) =>
     .slice(0, 2)
     .join(" / ")
     .slice(0, 400);
+// A row that passed with a note, a rerun under load, says so just above the
+// last line, so a proof receipt that keeps only the tail names it.
+const noted = rows.filter(([, s, m]) => s === "PASS" && m);
+if (noted.length) console.log("");
+for (const [n, , m] of noted) console.log(`${n}: ${m}`);
 console.log(
   failed.length
     ? `\nCHECK: ${failed.length} row(s) FAILED: ${failed.map(([n, , m]) => `${n} — ${firstLines(m)}`).join("; ")}`

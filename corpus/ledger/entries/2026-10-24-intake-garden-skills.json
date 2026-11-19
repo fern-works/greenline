@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-garden-skills",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-raphaelsalaja",
+    "sha256": "57f31703caa6f5a41ac988bc9c0ef109b04da03d421566cde1f14b28f5294c9e"
+  },
+  "source": {
+    "repository": "https://github.com/ConardLi/garden-skills",
+    "commit": "7a6d5a72e4f44bb4cc0c23c01b3d97205c723b68",
+    "path": "."
+  },
+  "licence": "refused",
+  "verdict": "hold",
+  "gist": "Held: no holder named, and a third party's prompt behind it",
+  "reason": "Its licence file names no holder, and its web design skill says it distills a third party's system prompt; it waits for a named holder and a comparison clearing that derivation.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ConardLi's garden-skills is held until its licence file names a holder and its skill is shown not to carry a third party's prompt"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': ConardLi's garden-skills is held until its licence file names a holder and its skill is shown not to carry a third party's prompt"
+    }
+  ]
+}

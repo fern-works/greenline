@@ -1,3 +1,4 @@
+import { randomBytes } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Result } from "../../commons/result.ts";
@@ -5,6 +6,8 @@ import {
   AXES,
   BRIEF_STEPS,
   composeBrief,
+  isBriefStep,
+  skillPageOf,
   type Axis,
   type BriefRequest,
   type BriefStep,
@@ -17,10 +20,11 @@ import { findGitRoot } from "../git.ts";
 import { EXIT_FAILURE, EXIT_OK, EXIT_USAGE, type CliWriter } from "./output.ts";
 
 /**
- * `greenline brief --change <id> --step review|verify --round <n>`
+ * `greenline brief --change <id> --step <step> --round <n>`
  * (`workshop/components/cli-contracts.md`, "The brief command",
- * `docs/SPEC.md` section 4): write the brief a fresh agent of the review or
- * the verify step is started with, from the change record, its acceptance
+ * `docs/SPEC.md` section 4): write the brief a fresh agent of any step that
+ * starts one, design, anticipate, review or verify (J-192 S1), is started
+ * with, from the change record, its acceptance
  * and the step's template, into the change's folder as
  * `brief-<step>-<n>.md`, its first line the command's mark, and print its
  * path, the one thing the builder hands the agent. The brief names the
@@ -34,30 +38,38 @@ export interface BriefEnvironment {
   readonly cwd: string;
   /** The installation, read only once the arguments are valid, so help needs none. */
   readonly installation: () => Result<Installation, ContractParseFailed>;
+  /** The brief's nonce, which a test may fix; eight hex characters by default (J-176 S1). */
+  readonly nonce?: () => string;
 }
 
 const USAGE = [
-  "Usage: greenline brief --change <id> --step review|verify --round <n> [--axis standards|spec] [--intent <paragraph>]",
+  "Usage: greenline brief --change <id> --step design|anticipate|review|verify --round <n> [--axis standards|spec] [--intent <paragraph>] [--artifact <text> --contract <text>] [--extras <paragraph>]",
   "",
-  "Write the brief a fresh agent of the review or the verify step is started",
-  "with, from the change record: its front matter, its acceptance (the plan",
-  "section, a ticket's acceptance or the frame section), the change's id, the",
-  "agent's report path and the skill page it reads whole, then the step's",
-  "extras. The file is .greenline/ledger/<id>/brief-<step>-<n>.md, its first",
-  "line the command's mark, and its path is printed: start the agent with that",
-  "path and nothing else. The builder never opens, copies, diffs or derives a",
-  "brief file, and status reports one the command did not write. A brief that",
-  "stands is never written over.",
+  "Write the brief a fresh agent of any step that starts one is started with,",
+  "from the change record: its front matter, its acceptance (the plan section,",
+  "a ticket's acceptance or the frame section), the change's id, the agent's",
+  "report path, the nonce its report cites on its first line and the skill",
+  "page it reads whole, then the step's extras. The file is",
+  ".greenline/ledger/<id>/brief-<step>-<n>.md, its first line the command's",
+  "mark, and its path is printed: start the agent with that path and nothing",
+  "else. The builder never writes, opens, copies, diffs or derives a brief",
+  "file, and status reports one the command did not write. A brief that stands",
+  "is never written over.",
   "",
   "Options:",
   "  --change <id>         the open change the agent serves",
-  "  --step <step>         review or verify",
+  "  --step <step>         design, anticipate, review or verify",
   "  --round <n>           the agent's number at the independent depth, the",
   "                        round's at the looped depth",
   "  --axis <axis>         review's one axis where two agents review one after",
   "                        another: standards for the first, spec for the second",
   "  --intent <paragraph>  review's extra, the builder's paragraph of intent;",
-  "                        required for review, refused for verify",
+  "                        required for review, refused for every other step",
+  "  --artifact <text>     anticipate's extra, the artifact the claims rest on;",
+  "                        required for anticipate with --contract",
+  "  --contract <text>     anticipate's extra, the artifact's contract; never",
+  "                        the claim",
+  "  --extras <paragraph>  design's extras, the ask's answers and the lock",
   "  -h, --help            show this help",
   "",
 ].join("\n");
@@ -68,10 +80,20 @@ type Parsed =
   | { readonly kind: "write"; readonly request: BriefRequest }
   | { readonly kind: "refused"; readonly message: string };
 
-const VALUED: readonly string[] = ["--change", "--step", "--round", "--axis", "--intent"];
+const VALUED: readonly string[] = [
+  "--change",
+  "--step",
+  "--round",
+  "--axis",
+  "--intent",
+  "--artifact",
+  "--contract",
+  "--extras",
+];
 
-function isStep(value: string): value is BriefStep {
-  return BRIEF_STEPS.some((step) => step === value);
+/** The steps the command briefs, named as a sentence names them. */
+function stepsNamed(): string {
+  return `${BRIEF_STEPS.slice(0, -1).join(", ")} and ${BRIEF_STEPS.at(-1) ?? ""}`;
 }
 
 function isAxis(value: string): value is Axis {
@@ -99,10 +121,10 @@ function parseBriefArgs(argv: readonly string[]): Parsed {
   const axis = values.get("--axis");
   if (change === undefined || step === undefined || round === undefined)
     return { kind: "refused", message: "--change, --step and --round are required" };
-  if (!isStep(step))
+  if (!isBriefStep(step))
     return {
       kind: "refused",
-      message: `the command writes the briefs of ${BRIEF_STEPS.join(" and ")}, not '${step}'; anticipate's brief stays the builder's`,
+      message: `the command writes the brief of each step that starts a fresh agent, ${stepsNamed()}, not '${step}'`,
     };
   if (!/^[1-9]\d*$/.test(round))
     return { kind: "refused", message: `--round is a whole number from 1, not '${round}'` };
@@ -110,7 +132,16 @@ function parseBriefArgs(argv: readonly string[]): Parsed {
     return { kind: "refused", message: `--axis is ${AXES.join(" or ")}, not '${axis}'` };
   return {
     kind: "write",
-    request: { change, step, round: Number(round), axis, intent: values.get("--intent") },
+    request: {
+      change,
+      step,
+      round: Number(round),
+      axis,
+      intent: values.get("--intent"),
+      artifact: values.get("--artifact"),
+      contract: values.get("--contract"),
+      extras: values.get("--extras"),
+    },
   };
 }
 
@@ -130,12 +161,25 @@ function ticketsOf(
   }
 }
 
-/** The installed paths of the page the step's agent reads whole, in each harness tree that holds it. */
-function skillPages(root: string, step: BriefStep): readonly string[] {
-  const page = step === "review" ? "review/references/brief.md" : "verify/SKILL.md";
+/** The installed paths of a skill's page, in each harness tree that holds it. */
+function installedPages(root: string, page: string): readonly string[] {
   return [".claude/skills", ".agents/skills"]
     .map((tree) => `${tree}/${page}`)
     .filter((path) => existsSync(join(root, path)));
+}
+
+/** The installed paths of the page the step's agent reads whole. */
+function skillPages(root: string, step: BriefStep): readonly string[] {
+  return installedPages(root, skillPageOf(step));
+}
+
+/** The installed paths of design's page for the step on an interface change (J-133 S1): its critique page for review, its capture page for verify. */
+function designPages(root: string, step: BriefStep): readonly string[] {
+  if (step !== "review" && step !== "verify") return [];
+  return installedPages(
+    root,
+    step === "review" ? "design/references/critique.md" : "design/references/capture.md",
+  );
 }
 
 /**
@@ -203,7 +247,9 @@ export function runBriefCli(
       record.belongs?.ticket === undefined ? undefined : record.belongs.plan,
     ),
     skillPages: skillPages(root, request.step),
+    designPages: designPages(root, request.step),
     scratch,
+    nonce: env.nonce?.() ?? randomBytes(4).toString("hex"),
   });
   if (brief._tag === "refused") return refuse(brief.message);
   const path = join(root, brief.file);

@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-prototyper-ui-skill",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-prototyper-create-component",
+    "sha256": "db6314d658e2a17db892add5e9f45fc6e8a57abd27e276069e371dabae01e896"
+  },
+  "source": {
+    "repository": "https://github.com/PrototyperAI/prototyper-ui",
+    "commit": "eff1e06fa43a1fc3ba4e940b43b7ba0fa5b72339",
+    "path": "apps/docs/skill/SKILL.md"
+  },
+  "pin": "prototyper-ui",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A library guide with fetch-first and an MCP, declined",
+  "reason": "It guides one library's use and orders fetching its site first through an MCP server.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Prototyper's create-component and prototyper-ui skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Prototyper's create-component and prototyper-ui skills are declined"
+    }
+  ]
+}

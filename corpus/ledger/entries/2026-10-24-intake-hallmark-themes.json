@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-hallmark-themes",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-transitions-dev-agent-skill",
+    "sha256": "624c6dae038fa8fc3a893690340e67ca3d106db640b3fa43974dcf44f98ef5e5"
+  },
+  "source": {
+    "repository": "https://github.com/Nutlope/hallmark",
+    "commit": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+    "path": "skills/hallmark/references/themes"
+  },
+  "pin": "hallmark",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "Forty-eight authored themes held; the schema taken",
+  "reason": "The themes are authored values, several contradicting their own contract; they wait for independent sources while the theme schema informs the catalog.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's 48 themes are held; its schema informs the catalog"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': Hallmark's 48 themes are held; its schema informs the catalog"
+    }
+  ]
+}

@@ -36,8 +36,9 @@ it can be checked again.
 ## “What should we build next?”
 
 The agent can explore ideas against current product evidence and recorded
-decisions. Discussion alone creates no change and no record. Choosing an
-idea hands it to a mode: the agent proposes one for the idea's first change
+decisions. Exploring an idea creates no change: the agent keeps it as a
+[discussion](./discussions.md), a record of its own beside your changes,
+until you promote it. Choosing an idea hands it to a mode: the agent proposes one for the idea's first change
 and waits.
 
 ## “Find out which design works”
@@ -45,7 +46,9 @@ and waits.
 Frame answers such a question by work rather than by asking. A bounded
 prototype answers it through execution, in the change's working files or on
 a throwaway branch, never in the shipping code. Research reads primary
-sources and records what remains uncertain. Both return their answer to the
+sources and records what remains uncertain: frame proposes each topic to
+you first, and a topic you accept is read by one fresh agent working by
+the `research` skill, in papers, on the web or in other projects' code. Both return their answer to the
 change's frame section. A read-only request keeps repository bytes
 unchanged.
 

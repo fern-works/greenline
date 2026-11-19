@@ -1,7 +1,8 @@
 /** The dependency spine, executable (docs/CODE-STANDARDS.md §4).
  * Layers (dependencies point left): commons <- core <- shell, and
  * commons <- core <- corpus beside the shell: the corpus builds and
- * verifies the roster, and what runs in a workspace never imports it.
+ * verifies the roster, and what runs in a workspace never imports it;
+ * the readers module, greenline/readers, stands on the core alone.
  * This config binds; the book teaches it.
  */
 module.exports = {
@@ -33,6 +34,14 @@ module.exports = {
       comment: "What runs in a workspace (commons, core, shell) never imports the corpus code.",
       from: { path: "^src/(commons|core|shell)/" },
       to: { path: "^src/corpus/" },
+    },
+    {
+      name: "readers-on-core",
+      severity: "error",
+      comment:
+        "The readers module, greenline/readers, re-exports the core's pure readers: it imports only the core and the commons, never the shell or the corpus code.",
+      from: { path: "^src/readers/" },
+      to: { path: "^src/", pathNot: "^src/(commons|core|readers)/" },
     },
     {
       name: "corpus-above-core",

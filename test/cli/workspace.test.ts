@@ -1,7 +1,17 @@
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { uncommittedInstallation } from "../../src/shell/code-tree.ts";
 import { sha256Hex } from "../../src/commons/hash.ts";
 import { splitManagedBlock } from "../../src/core/managed-block.ts";
 import {
@@ -762,6 +772,7 @@ describe("S20 status diagnoses the installation", () => {
         "command",
         "connectors",
         "diagnostics",
+        "discussions",
         "effects",
         "hooks",
         "houseRulings",
@@ -897,5 +908,161 @@ describe("init epilogue and the default roster", () => {
     });
     expect(code).toBe(2);
     expect(rec.err).toContain("unknown option");
+  });
+});
+
+describe("J-229 S1 sync and status name the installation left uncommitted", () => {
+  const ID = "2026-11-10-find-by-year";
+  const originalPath = process.env["PATH"] ?? "";
+  let shim = "";
+
+  beforeAll(() => {
+    // The greenline a real git's hooks reach: the hook and event commands, run from source.
+    shim = mkdtempSync(join(tmpdir(), "greenline-shim-"));
+    const entry = join(import.meta.dirname, "../helpers/hooks-entry.ts");
+    writeFileSync(
+      join(shim, "greenline"),
+      `#!/bin/sh\nexec "${process.execPath}" "${entry}" "$@"\n`,
+    );
+    chmodSync(join(shim, "greenline"), 0o755);
+  });
+  afterEach(() => {
+    process.env["PATH"] = originalPath;
+  });
+  afterAll(() => {
+    rmSync(shim, { recursive: true, force: true });
+  });
+
+  /** A real repository with one commit of the owner's code, before greenline. */
+  function realRepository() {
+    const root = mkdtempSync(join(tmpdir(), "greenline-upgrade-"));
+    tempDirs.push(root);
+    const git = (...args: string[]): Run => {
+      const ran = spawnSync(
+        "git",
+        ["-c", "user.name=F", "-c", "user.email=f@example.com", ...args],
+        {
+          cwd: root,
+          encoding: "utf8",
+          env: { ...process.env, GIT_EDITOR: "true" },
+        },
+      );
+      return { code: ran.status ?? -1, out: ran.stdout, err: ran.stderr };
+    };
+    git("init", "--quiet", "-b", "main");
+    writeFileSync(join(root, "README.md"), "the shelf\n");
+    git("add", "--all");
+    git("commit", "--quiet", "-m", "start");
+    return { root, git };
+  }
+
+  const WARNING =
+    /^ {2}commit the (\d+) installed files? that differ from HEAD with the work of the change that is open, or of the next one: (\d+) under \.greenline\/ and (\d+) outside it, which git status lists; greenline never commits, and pre-commit refuses a commit of them alone while no change is open; warning GL0115 \(\.greenline\/lock\.json\)$/m;
+
+  /** The record of a change open on main, the owner's yes on it. */
+  const opened = [
+    "---",
+    "mode: quick",
+    "choice: accepted",
+    'yes: "Yes, go ahead."',
+    'why: "The desk needs the books by year."',
+    "floors: none",
+    "state: open",
+    'next: "build: write findByYear"',
+    "ground: branch",
+    'agent: "claude-code/claude-sonnet-5-5"',
+    "---",
+    "",
+    "## frame",
+    "",
+    "The ask.",
+    "",
+  ].join("\n");
+
+  it("right after init the status warns, a commit of the installation alone is refused, and once a change's commit carries it neither warns and the commit is the change's", () => {
+    const { root, git } = realRepository();
+    expect(run(root, ["init", "--yes"]).code).toBe(0);
+    const reading = uncommittedInstallation(root);
+    if (reading.kind !== "files") throw new Error(reading.reason);
+    expect(reading.workspace).toContain(".greenline/lock.json");
+    expect(reading.workspace).toContain(".greenline/manifest.json");
+    expect(reading.outside).toContain("AGENTS.md");
+    const warned = run(root, ["status"]);
+    const [, total, under, outside] = WARNING.exec(warned.err) ?? [];
+    expect(Number(total)).toBe(reading.workspace.length + reading.outside.length);
+    expect([Number(under), Number(outside)]).toEqual([
+      reading.workspace.length,
+      reading.outside.length,
+    ]);
+    // With no change open, pre-commit refuses a commit of them alone, as it did before.
+    process.env["PATH"] = [shim, originalPath].join(":");
+    git("add", "--all");
+    const alone = git("commit", "--quiet", "-m", "chore: the installation");
+    expect(alone.code).not.toBe(0);
+    expect(alone.err).toContain("no change is open on main");
+    // The change's commit carries them with its work, and its trailer.
+    mkdirSync(join(root, ".greenline", "ledger"), { recursive: true });
+    writeFileSync(join(root, ".greenline", "ledger", `${ID}.md`), opened);
+    mkdirSync(join(root, "src"));
+    writeFileSync(join(root, "src", "shelf.js"), "export const findByYear = () => [];\n");
+    git("add", "--all");
+    const carried = git("commit", "--quiet", "-m", "feat: find books by year");
+    expect(carried.code, carried.err).toBe(0);
+    expect(git("log", "-1", "--format=%(trailers:key=Greenline-Change,valueonly)").out.trim()).toBe(
+      ID,
+    );
+    const after = run(root, ["status"]);
+    expect(after.err).not.toContain("GL0115");
+    expect(after.out).toContain(
+      "history: every commit since the first change record belongs to a change",
+    );
+  });
+
+  it("a sync that changes installed files in a committed workspace warns, its dry run does not, the status warns, and the counts keep .greenline/ apart", () => {
+    const { root, git } = realRepository();
+    writeFileSync(join(root, ".gitignore"), ".greenline/THIRD_PARTY_NOTICES.md\n");
+    expect(run(root, ["init", "--yes"]).code).toBe(0);
+    git("add", "--all");
+    git("commit", "--quiet", "-m", "the installation, by hand while no hook runs");
+    expect(run(root, ["status"]).err).not.toContain("GL0115");
+    const upgraded = {
+      cwd: root,
+      version: VERSION,
+      installation: fixtureInstallation({
+        skills: fixtureSkills,
+        agentGuide: "# Guide\nUse repository evidence, as 0.2.0 says it.\n",
+        workGuide: "# Work\nOne ticket records intent, as 0.2.0 says it.\n",
+      }),
+    };
+    const sync = (...args: string[]): Run => {
+      const rec = new RecordingWriter();
+      const code = runCli(["sync", ...args], rec.writer, VERSION, upgraded);
+      return { code, out: rec.out, err: rec.err };
+    };
+    const synced = sync();
+    expect(synced.code).toBe(0);
+    // A dry run writes nothing and warns of nothing, even while the sync's files stand uncommitted.
+    const dry = sync("--dry-run");
+    expect(dry.code).toBe(0);
+    expect(dry.err).not.toContain("GL0115");
+    const reading = uncommittedInstallation(root);
+    if (reading.kind !== "files") throw new Error(reading.reason);
+    // The work guide and the lock that records it under .greenline/, the block outside it.
+    expect(reading.workspace).toEqual([".greenline/WORK.md", ".greenline/lock.json"]);
+    expect(reading.outside).toEqual(["AGENTS.md"]);
+    expect(WARNING.exec(synced.err)?.slice(1)).toEqual(["3", "2", "1"]);
+    expect(WARNING.exec(run(root, ["status"]).err)?.slice(1)).toEqual(["3", "2", "1"]);
+  });
+
+  it("names no file git ignores, the owner's ignore rule being their word on it", () => {
+    const { root } = realRepository();
+    writeFileSync(join(root, ".gitignore"), ".greenline/THIRD_PARTY_NOTICES.md\nagents/\n");
+    expect(run(root, ["init", "--yes"]).code).toBe(0);
+    expect(existsSync(join(root, ".greenline", "THIRD_PARTY_NOTICES.md"))).toBe(true);
+    const reading = uncommittedInstallation(root);
+    if (reading.kind !== "files") throw new Error(reading.reason);
+    expect(reading.workspace).not.toContain(".greenline/THIRD_PARTY_NOTICES.md");
+    expect(reading.outside.filter((path) => path.startsWith("agents/"))).toEqual([]);
+    expect(reading.outside).toContain("AGENTS.md");
   });
 });

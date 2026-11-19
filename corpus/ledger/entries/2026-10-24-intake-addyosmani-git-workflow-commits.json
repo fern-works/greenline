@@ -1,0 +1,82 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-addyosmani-git-workflow-commits",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-cursor-team-kit-make-pr-history-cleanup",
+    "sha256": "e72061e5909c78d17c92208459c77ea2ed4de2518a8e268123667cf838f5c05e"
+  },
+  "source": {
+    "repository": "https://github.com/addyosmani/agent-skills",
+    "commit": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+    "path": "skills/git-workflow-and-versioning"
+  },
+  "pin": "addyosmani",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its commit cadence, atomicity and why-messages join build's commits",
+  "reason": "Its atomic commits, separate concerns, why-messages and short-lived branch join build's commit page, the text landing in J-114 S2. Its versioning, debugging, generated-file and pre-commit hook knowledge goes to garden.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': git-workflow-and-versioning combines into build's commit page as a mixed source, its semantic versions, tags, changelog, generated files, bisect and husky handed to garden; a failed slice fixed forward, a discard on the owner's word as the record's discard line; the ruled 500-line note on the PR and no number per commit; its parallel-worktree part declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': git-workflow-and-versioning combines into build's commit page as a mixed source, its semantic versions, tags, changelog, generated files, bisect and husky handed to garden; a failed slice fixed forward, a discard on the owner's word as the record's discard line; the ruled 500-line note on the PR and no number per commit; its parallel-worktree part declined"
+    }
+  ],
+  "handoff": {
+    "recipient": "garden",
+    "parts": [
+      {
+        "part": "semantic versioning, the tag as the source of truth and the changelog for people",
+        "locator": "skills/git-workflow-and-versioning/SKILL.md, \"Release & Versioning\""
+      },
+      {
+        "part": "generated files and the ignore file",
+        "locator": "skills/git-workflow-and-versioning/SKILL.md, \"Handling Generated Files\""
+      },
+      {
+        "part": "bisect, log and blame",
+        "locator": "skills/git-workflow-and-versioning/SKILL.md, \"Using Git for Debugging\""
+      },
+      {
+        "part": "pre-commit hooks with husky and lint-staged",
+        "locator": "skills/git-workflow-and-versioning/SKILL.md, \"Pre-Commit Hygiene\""
+      }
+    ]
+  },
+  "placement": {
+    "kind": "step",
+    "slot": "build",
+    "catches": "A change committed in one batch, a commit mixing a refactor or formatting with behaviour, or a message restating the diff instead of the why",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "add",
+      "needs": "an observed run where a commit made outside a change's build broke the form, making the commit form a habit"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "build",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "build",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "build",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

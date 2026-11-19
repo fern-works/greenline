@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
-import { existsSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { existsSync, readFileSync, realpathSync, statSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { z } from "zod";
 import { err, ok, type Result } from "../commons/result.ts";
 
@@ -136,4 +136,99 @@ export function addTrailer(
     trailer,
     file,
   ]);
+}
+
+/**
+ * Write trailers into a commit message file in place, in the order given, as
+ * the last lines of its last paragraph: each one added where the message
+ * lacks it, and an existing one of the same key moved down to its place, so
+ * the change's trailer stays the last line below the agent's.
+ * @param root the repository root
+ * @param file the message file git named
+ * @param trailers the trailer lines, in the order they stand
+ * @returns nothing, or why git did not write them
+ */
+export function addTrailers(
+  root: string,
+  file: string,
+  trailers: readonly string[],
+): Result<void, GitWriteFailed> {
+  return gitWrite(root, [
+    "interpret-trailers",
+    "--in-place",
+    "--if-exists",
+    "replace",
+    ...trailers.flatMap((trailer) => ["--trailer", trailer]),
+    file,
+  ]);
+}
+
+/**
+ * Remove a linked worktree with `git worktree remove`, never forced, so git
+ * refuses one that holds modified or untracked files; the branch stays.
+ * @param root the repository root
+ * @param path the worktree's path
+ * @returns nothing, or why git did not remove it
+ */
+export function removeWorktree(root: string, path: string): Result<void, GitWriteFailed> {
+  return gitWrite(root, ["worktree", "remove", path]);
+}
+
+/*
+ * The one home of a session's facts the owner's words are read by (J-199
+ * S1; the run j196c-conduct-runner, whose keep in a worktree of the
+ * change's own found no message of the owner's): the turn counter, the
+ * turn's words and the owner's journal stand in the main checkout's
+ * `.greenline/tmp/sessions/` for every worktree of the repository, resolved
+ * through git's common directory, so a reading finds them wherever the
+ * command runs. Read from the disk alone, no git process: the `.git`
+ * directory itself, or the `gitdir` a linked worktree's `.git` file names,
+ * through its `commondir`. A bare repository's or a submodule's checkout,
+ * whose common directory is no `.git`, keeps its own.
+ */
+
+/** The sessions' folder, from a checkout's root. */
+const SESSIONS = join(".greenline", "tmp", "sessions");
+
+/**
+ * The git directory every worktree of the repository shares, read from the
+ * disk; undefined where the root holds no `.git` that reads.
+ * @param root a checkout's root
+ * @returns the common directory's real path, or undefined
+ */
+export function commonGitDirectory(root: string): string | undefined {
+  const dotGit = join(root, ".git");
+  try {
+    if (statSync(dotGit).isDirectory()) return realpathSync(dotGit);
+    const pointer = /^gitdir:\s*(.+?)\s*$/m.exec(readFileSync(dotGit, "utf8"))?.[1];
+    if (pointer === undefined) return undefined;
+    const gitdir = resolve(root, pointer);
+    const common = join(gitdir, "commondir");
+    return realpathSync(
+      existsSync(common) ? resolve(gitdir, readFileSync(common, "utf8").trim()) : gitdir,
+    );
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * The main checkout of the repository a root stands in: the directory
+ * holding the common `.git`, or the root itself where none reads so.
+ * @param root a checkout's root, the main one's or a linked worktree's
+ * @returns the main checkout's root
+ */
+export function mainCheckout(root: string): string {
+  const common = commonGitDirectory(root);
+  return common === undefined || basename(common) !== ".git" ? root : dirname(common);
+}
+
+/**
+ * The sessions' home the turn counter, the turn's words and the owner's
+ * journal stand in: the main checkout's, for every worktree.
+ * @param root a checkout's root
+ * @returns the folder's path
+ */
+export function sessionsHome(root: string): string {
+  return join(mainCheckout(root), SESSIONS);
 }

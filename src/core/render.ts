@@ -317,6 +317,26 @@ function byNameThenPath(a: DesiredFile, b: DesiredFile): number {
 }
 
 /**
+ * The skills a workspace's settings install, by name. A trial skill beside
+ * the line installs only where the workspace's `trials` names it, as a
+ * connector's skill installs only while it is enabled; no skill on the line
+ * is a trial (J-93 S1). The owed skills read the same roster (J-178 S1).
+ * @param manifest the workspace's settings
+ * @param installation the installation
+ * @returns the installed skills, by name
+ */
+export function installedSkills(
+  manifest: Manifest,
+  installation: Installation,
+): readonly SkillSource[] {
+  const trialSkills = new Set(trialSkillNames(installation.modes, installation.skills));
+  const mounted = (skill: SkillSource): boolean =>
+    isSkillMounted(skill, manifest.skills, manifest.connectors) &&
+    (!trialSkills.has(skill.name) || manifest.trials.includes(skill.name));
+  return [...installation.skills].filter(mounted).sort((a, b) => (a.name < b.name ? -1 : 1));
+}
+
+/**
  * Compose the entire desired set for a workspace: harness projections,
  * the activation catalog, and both managed policy blocks. Blocks are
  * emitted even with zero skills so the owned region always exists.
@@ -328,14 +348,8 @@ export function renderProjection(
   present: ReadonlySet<Harness> = new Set(),
 ): readonly DesiredFile[] {
   const { skills, intents, ledgerGuide, agentGuide, workGuide } = installation;
-  // A trial skill beside the line installs only where the workspace's
-  // `trials` names it, as a connector's skill installs only while it is
-  // enabled; no skill on the line is a trial (J-93 S1).
+  const selected = installedSkills(manifest, installation);
   const trialSkills = new Set(trialSkillNames(installation.modes, skills));
-  const mounted = (skill: SkillSource): boolean =>
-    isSkillMounted(skill, manifest.skills, manifest.connectors) &&
-    (!trialSkills.has(skill.name) || manifest.trials.includes(skill.name));
-  const selected = [...skills].filter(mounted).sort((a, b) => (a.name < b.name ? -1 : 1));
   const files: DesiredFile[] = [];
 
   if (manifest.targets.includes("codex") && selected.length > 0) {

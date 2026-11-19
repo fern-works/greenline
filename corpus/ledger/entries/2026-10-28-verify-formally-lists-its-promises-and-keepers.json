@@ -1,0 +1,45 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-28-verify-formally-lists-its-promises-and-keepers",
+  "kind": "change",
+  "previous": {
+    "id": "2026-10-28-use-garden-lists-its-promises-and-keepers",
+    "sha256": "d7f1fe7f13f8146bb9adb666c4150e60974998d85b081d94058f1b9e0adb8a98"
+  },
+  "subject": "skill:verify-formally",
+  "recipe": "53f464fefcf4bffc1d701a43309b98893b789ef7d5185eef71589e882c455805",
+  "result": "ccbfce511bc080ec6870575d1e081c2ba4e1e284a0ffd0b196732d5cda8d3fc6",
+  "pages": [],
+  "gist": "Each promise listed with the keeper that holds it, or its gap",
+  "reason": "The roster audit lists the 10 promises the skill's pages state, 1 held by a fact, a hold, a record or an oracle and 9 gaps marked by the keeper test. No page changes.",
+  "authorisedBy": {
+    "date": "2026-10-28",
+    "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-111, under the operator's words 'for smaller decisions go with your recommended suggestions': create-formal-verification-skill and maintain-formal-verification-skill combine into one start verify-formally, create as the base and maintain as its upkeep page, a default start whose rows point at frame; the coverage record a short note beside the verification files; the harness-neutral form; and the operator's words of 2026-10-22 on the visual sources, \"nothing goes to trial, all the visual systems are done now and permanently part of the greenline agent and system\""
+    },
+    {
+      "date": "2026-10-28",
+      "words": "The operator's words of 2026-10-28 on the keeper of a prose method, \"ingestion of prose skills from upstream kind of needs a thinking in direction of a cli based keeper, holder kind of architecture which makes sure the prose worked\", with the card \"Draft J-153 now, with the roster audit\" and the card \"Adopt the four-part test with the cost classes and the caps\": a feature of greenline is prose plus its keeper, and each skill's recipe lists the promises its pages state, each with the fact, hold, record or oracle that keeps it, or its gap marked by the keeper test (J-153 S4)"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [
+      {
+        "source": "pstack",
+        "segments": 141,
+        "taken": 131,
+        "exact": 119,
+        "retention": 0.9083969465648855,
+        "coverage": 0.9290780141843972,
+        "meetsMinimum": true,
+        "creditLine": false
+      }
+    ],
+    "growth": 683
+  }
+}

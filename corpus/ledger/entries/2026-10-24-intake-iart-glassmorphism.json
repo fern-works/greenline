@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-iart-glassmorphism",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-iart-ascii-animation",
+    "sha256": "1a9cd6f78dce8eb44272a582afdfa69786a5ae0cac9b9b2603a0b3e4c28de9e9"
+  },
+  "source": {
+    "repository": "https://github.com/iart-ai/web-animation-skills",
+    "commit": "b6dba3eb759726845a44163ff0bad70dd9e7fbb6",
+    "path": "skills/glassmorphism"
+  },
+  "pin": "web-animation-skills",
+  "licence": "mit",
+  "verdict": "hold",
+  "gist": "A glass material named for a vendor's style, held",
+  "reason": "Its material is named for a vendor's style with no independent witness; it waits for one.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': iart's glass material is held"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': iart's glass material is held"
+    }
+  ]
+}

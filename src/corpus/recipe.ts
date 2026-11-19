@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { shouldNeverHappen } from "../commons/defect.ts";
+import type { WordsPhrase } from "../core/corpus.ts";
+import { triggerRowSchema, wholeReadSchema, type TriggerRow } from "../core/habits-owed.ts";
 import { err, ok, type Result } from "../commons/result.ts";
 import {
   contractFailure,
@@ -34,7 +36,9 @@ import {
  * only written passages and no credit is a native skill, with a credit a
  * stub; a recipe that takes an upstream skill body under the stub trigger
  * names it in `notStub` with the operator's ruling that it is not a stub
- * (`measure.ts`). {@link parseRecipe} refuses what one field or the record alone shows;
+ * (`measure.ts`). A recipe lists its skill's promises in `keepers`, each
+ * with the keeper that holds it or its gap, or states `promises: "none"`
+ * beside an empty list (J-153 S3, "The keepers"). {@link parseRecipe} refuses what one field or the record alone shows;
  * {@link checkRecipe} refuses what only the snapshots show, naming the
  * segment.
  */
@@ -114,11 +118,26 @@ export interface TakenPassage {
   readonly join?: string | undefined;
 }
 
-/** Text greenline writes, with its kind, reason and the sources it credits. */
+/** One find and replace on a phrase's text, with its reason: a recorded change to the operator's words (J-194 S1). */
+export interface PhraseEdit {
+  readonly find: string;
+  readonly replace: string;
+  readonly reason: string;
+}
+
+/**
+ * Text greenline writes, with its kind, reason and the sources it credits.
+ * A phrase passage names its `phrase`, credits its one words source, and
+ * holds the phrase's text verbatim or as its recorded `edits` leave it.
+ */
 export interface WrittenPassage extends Account {
   readonly passage: "written";
   readonly text: string;
   readonly credits: readonly SourceName[];
+  /** The id of the phrase of the credited words source the passage lifts (J-194 S1). */
+  readonly phrase?: string | undefined;
+  /** The changes to the phrase's text, in order, each with its reason; only on a phrase passage. */
+  readonly edits?: readonly PhraseEdit[] | undefined;
   /** The exact white space placed before the passage (the join rule, `render.ts`). */
   readonly join?: string | undefined;
 }
@@ -195,6 +214,21 @@ export interface PassageRef {
   readonly passage: number;
 }
 
+/**
+ * The load test's four verdicts on a passage of a source (J-182 S1,
+ * `workshop/skills/craft-passage-reading/SKILL.md`): load-bearing, kept
+ * whole; scaffolding, kept with the passage it carries; duplicate, a passage
+ * the roster already states; decoration, which changes nothing the agent
+ * does.
+ */
+export const LOAD_VERDICTS = ["load-bearing", "scaffolding", "duplicate", "decoration"] as const;
+
+/** One of {@link LOAD_VERDICTS}. */
+export type LoadVerdict = (typeof LOAD_VERDICTS)[number];
+
+/** The verdicts whose drop names the failure the load test found (J-182 S1). */
+const FAILURE_REQUIRED: readonly LoadVerdict[] = ["load-bearing", "scaffolding"];
+
 /** The account of one segment the recipe does not take. */
 export interface Drop extends Account {
   readonly source: SourceName;
@@ -202,6 +236,10 @@ export interface Drop extends Account {
   readonly segment: SegmentId;
   /** The passage that replaced the segment, when one did. */
   readonly replacedBy?: PassageRef | undefined;
+  /** The load test's verdict on the dropped passage, once the test has read it (J-182 S1). */
+  readonly verdict?: LoadVerdict | undefined;
+  /** The failure the load test named: what the agent does wrong without the passage; required on a load-bearing or scaffolding drop. */
+  readonly failure?: string | undefined;
 }
 
 /** A stub's credit: the tiny upstream skill it was written from and the operator's ruling. */
@@ -220,6 +258,51 @@ export interface NotStub {
   readonly source: SourceName;
   readonly file: string;
   readonly ruling: string;
+}
+
+/**
+ * The kinds of a promise's keeper (`docs/VOCABULARY.md`, "Keeper"): a fact
+ * the CLI reads and prints, a hold where the harness allows one, a record
+ * the owner can see afterwards, an oracle that tests what stays judgment;
+ * and `gap`, a promise no mechanism holds today.
+ */
+export const KEEPER_KINDS = ["fact", "hold", "record", "oracle", "gap"] as const;
+
+/** One of {@link KEEPER_KINDS}. */
+export type KeeperKind = (typeof KEEPER_KINDS)[number];
+
+/** A keeper's cost class at run time; `never`, a model call or a second agent, is refused by definition. */
+export const KEEPER_COSTS = ["free", "cheap", "dear"] as const;
+
+/** One of {@link KEEPER_COSTS}. */
+export type KeeperCost = (typeof KEEPER_COSTS)[number];
+
+/** What a gap warrants by the keeper test: a mechanism, or prose with its oracle. */
+export const GAP_WARRANTS = ["mechanism", "prose"] as const;
+
+/** One promise a skill's page states and the keeper that holds it, or its gap (`workshop/components/recipes.md`, "The keepers"). */
+export interface Keeper {
+  /** The promise in a sentence, true to the page that states it. */
+  readonly promise: string;
+  /** The page of the skill's directory that states it. */
+  readonly page: string;
+  readonly kind: KeeperKind;
+  /** The fact's line, the hook's rule name, the record's field or the scenario's title; a gap names none. */
+  readonly where?: string | undefined;
+  /** The keeper's cost class; on a gap that warrants a mechanism, the cost of the keeper it needs. */
+  readonly cost?: KeeperCost | undefined;
+  /** On a `dear` keeper, the irreversible act its promise guards. */
+  readonly irreversible?: string | undefined;
+  /** The conduct row or scenario that tests the promise beside its keeper, or a gap's. */
+  readonly oracle?: string | undefined;
+  /** The oracle named is one a later job adds, not one that exists today. */
+  readonly owed?: true | undefined;
+  /** On a gap: what the keeper test leads to. */
+  readonly warrants?: (typeof GAP_WARRANTS)[number] | undefined;
+  /** On a gap that warrants a mechanism: the keeper it would need. */
+  readonly need?: string | undefined;
+  /** On a gap: the keeper test's reading. */
+  readonly reason?: string | undefined;
 }
 
 /** One field of `SKILL.md`'s front matter, in order. */
@@ -241,6 +324,24 @@ export interface Recipe {
   readonly credit?: Credit | undefined;
   /** The taken bodies under the stub trigger the operator ruled are not stubs; never beside a credit. */
   readonly notStub?: readonly NotStub[] | undefined;
+  /** The skill's promises, each with its keeper or its gap; empty only beside `promises: "none"`. */
+  readonly keepers: readonly Keeper[];
+  /** `"none"` beside an empty `keepers` for a skill whose pages promise nothing; `draft` leaves the fill marker. */
+  readonly promises?: string | undefined;
+  /**
+   * The skill's invocation cases as data (J-176 S1): the trigger rows a
+   * habit or a start carries, which `views` renders into
+   * `corpus/runtime/triggers.json` and status reads for the skills a change
+   * owes; absent for a skill nothing owes by a row.
+   */
+  readonly triggers?: readonly TriggerRow[] | undefined;
+  /**
+   * The pages a whole read includes beyond `SKILL.md` (J-203 S1), each a
+   * prose page of the directory, beside the trigger rows that owe the read;
+   * `views` renders them into the triggers file, and the owes line and the
+   * done door hold a skill owed whole until each is read whole.
+   */
+  readonly wholeRead?: readonly string[] | undefined;
 }
 
 /** The recipe's schema identifier. */
@@ -373,10 +474,47 @@ const passage = z.discriminatedUnion("passage", [
         "written text neither starts nor ends with white space",
       ),
       credits: z.array(sourceName).default([]),
+      phrase: z
+        .string()
+        .regex(/^[a-z][a-z0-9]*(-[a-z0-9]+)*$/)
+        .optional(),
+      edits: z
+        .array(z.object({ find: text, replace: z.string(), reason: text }).strict())
+        .optional(),
       join,
     })
     .strict(),
 ]);
+/** The refusal of a recipe with no `keepers`, naming the rule (J-153 S3). */
+const NO_KEEPERS =
+  'the recipe lists no keepers: each promise its pages state names its keeper or its gap, or the recipe states promises: "none" beside an empty list (workshop/components/recipes.md, "The keepers")';
+const keeperEntry = z
+  .object({
+    promise: text,
+    page: relativePath,
+    kind: z.enum(KEEPER_KINDS, {
+      error: (issue) =>
+        issue.input === undefined
+          ? "a promise with no keeper: name its fact, hold, record or oracle, or its gap"
+          : `a keeper's kind is one of ${KEEPER_KINDS.join(", ")}`,
+    }),
+    where: text.optional(),
+    cost: z
+      .enum(KEEPER_COSTS, {
+        error: (issue) =>
+          issue.input === "never"
+            ? "the cost class never, a model call or a second agent, is refused by definition"
+            : "a keeper's cost is free, cheap or dear",
+      })
+      .optional(),
+    irreversible: text.optional(),
+    oracle: text.optional(),
+    owed: z.literal(true).optional(),
+    warrants: z.enum(GAP_WARRANTS).optional(),
+    need: text.optional(),
+    reason: text.optional(),
+  })
+  .strict();
 const declared = z
   .object({
     schema: z.literal(RECIPE_SCHEMA),
@@ -409,14 +547,45 @@ const declared = z
             .object({ path: relativePath, passage: z.number().int().min(0) })
             .strict()
             .optional(),
+          verdict: z
+            .enum(LOAD_VERDICTS, {
+              error: () =>
+                `a drop's verdict is one of ${LOAD_VERDICTS.slice(0, -1).join(", ")} and ${LOAD_VERDICTS.at(-1) ?? ""}`,
+            })
+            .optional(),
+          failure: text.optional(),
         })
-        .strict(),
+        .strict()
+        .superRefine((drop, context) => {
+          if (
+            drop.verdict !== undefined &&
+            FAILURE_REQUIRED.includes(drop.verdict) &&
+            drop.failure === undefined
+          )
+            context.addIssue({
+              code: "custom",
+              path: ["failure"],
+              message: `a ${drop.verdict} drop names the failure its load test named, the behaviour the agent loses without the passage`,
+            });
+          if (drop.failure !== undefined && drop.verdict === undefined)
+            context.addIssue({
+              code: "custom",
+              path: ["verdict"],
+              message: "a drop that names a failure carries the load test's verdict that named it",
+            });
+        }),
     ),
     credit: z.object({ source: sourceName, file: relativePath, ruling: text }).strict().optional(),
     notStub: z
       .array(z.object({ source: sourceName, file: relativePath, ruling: text }).strict())
       .min(1)
       .optional(),
+    keepers: z.array(keeperEntry, {
+      error: (issue) => (issue.input === undefined ? NO_KEEPERS : undefined),
+    }),
+    promises: z.literal("none").optional(),
+    triggers: z.array(triggerRowSchema).min(1).optional(),
+    wholeRead: wholeReadSchema.optional(),
   })
   .strict();
 
@@ -439,9 +608,85 @@ function* accounts(value: Declared): Generator<readonly [Account, readonly (stri
   for (const [d, drop] of value.drops.entries()) yield [drop, ["drops", d]];
 }
 
-/** The refusals the record alone shows: the front matter, the paths, the joins, the rulings and the sources. */
-function recordIssues(value: Declared): readonly Issue[] {
+/**
+ * The keepers' refusals (J-153 S3, `workshop/components/recipes.md`, "The
+ * keepers"): an empty list without `promises: "none"`, that word beside a
+ * promise, a keeper with no `where` or no cost, a gap with a `where`, no
+ * `warrants` or no reason, a gap that warrants a mechanism with no `need` or
+ * no cost, a `dear` keeper with no `irreversible` act or that act on another
+ * cost, `owed` with no oracle named, an oracle keeper naming its scenario
+ * outside `where`, and a gap's fields on a keeper.
+ * @param keepers the recipe's keepers
+ * @param promises its `promises` word
+ * @returns every issue, each at its entry's path
+ */
+function keeperIssues(keepers: readonly Keeper[], promises: string | undefined): readonly Issue[] {
   const issues: Issue[] = [];
+  if (keepers.length === 0 && promises !== "none")
+    issues.push({ path: ["keepers"], message: NO_KEEPERS });
+  if (keepers.length > 0 && promises !== undefined)
+    issues.push({
+      path: ["promises"],
+      message: 'promises: "none" stands only beside an empty keepers list',
+    });
+  for (const [index, keeper] of keepers.entries()) {
+    const at = (field: string) => ["keepers", index, field];
+    const gap = keeper.kind === "gap";
+    if (!gap && keeper.where === undefined)
+      issues.push({
+        path: at("where"),
+        message: `a ${keeper.kind} keeper names where it stands: the fact's line, the hook's rule, the record's field or the scenario's title`,
+      });
+    if (!gap && keeper.cost === undefined)
+      issues.push({ path: at("cost"), message: "a keeper states its cost: free, cheap or dear" });
+    if (!gap && (keeper.warrants ?? keeper.need ?? keeper.reason) !== undefined)
+      issues.push({
+        path: at("kind"),
+        message: "only a gap carries warrants, need and reason",
+      });
+    if (gap && keeper.where !== undefined)
+      issues.push({ path: at("where"), message: "a gap names no where: no mechanism holds it" });
+    if (gap && keeper.warrants === undefined)
+      issues.push({
+        path: at("warrants"),
+        message: "a gap states what the keeper test leads to: mechanism or prose",
+      });
+    if (gap && keeper.reason === undefined)
+      issues.push({ path: at("reason"), message: "a gap states the keeper test's reading" });
+    if (gap && keeper.warrants === "mechanism" && keeper.need === undefined)
+      issues.push({
+        path: at("need"),
+        message: "a gap that warrants a mechanism names the keeper it needs",
+      });
+    if (gap && keeper.warrants === "mechanism" && keeper.cost === undefined)
+      issues.push({
+        path: at("cost"),
+        message: "a gap that warrants a mechanism states the cost of the keeper it needs",
+      });
+    if (keeper.cost === "dear" && keeper.irreversible === undefined)
+      issues.push({
+        path: at("irreversible"),
+        message: "a dear keeper names the irreversible act its promise guards",
+      });
+    if (keeper.cost !== "dear" && keeper.irreversible !== undefined)
+      issues.push({
+        path: at("irreversible"),
+        message: "only a dear keeper names an irreversible act",
+      });
+    if (keeper.owed === true && keeper.oracle === undefined && keeper.kind !== "oracle")
+      issues.push({ path: at("owed"), message: "owed marks an oracle, and the entry names none" });
+    if (keeper.kind === "oracle" && keeper.oracle !== undefined)
+      issues.push({
+        path: at("oracle"),
+        message: "an oracle keeper names its conduct row or scenario in where",
+      });
+  }
+  return issues;
+}
+
+/** The refusals the record alone shows: the front matter, the paths, the joins, the rulings, the sources and the keepers. */
+function recordIssues(value: Declared): readonly Issue[] {
+  const issues: Issue[] = [...keeperIssues(value.keepers, value.promises)];
   const fields = value.frontMatter.map((entry) => entry.field);
   if (fields[0] !== "name" || fields[1] !== "description")
     issues.push({
@@ -458,6 +703,21 @@ function recordIssues(value: Declared): readonly Issue[] {
       issues.push({ path: ["frontMatter", index], message: `duplicate field '${field}'` });
   if (value.files[0]?.path !== "SKILL.md")
     issues.push({ path: ["files", 0, "path"], message: "the first prose file is SKILL.md" });
+  // The pages a whole read includes are the skill's own prose pages, and a row owes the read (J-203 S1).
+  if (value.wholeRead !== undefined) {
+    const prose = new Set(value.files.map((file) => file.path));
+    for (const [index, page] of value.wholeRead.entries())
+      if (!prose.has(page))
+        issues.push({
+          path: ["wholeRead", index],
+          message: `'${page}' is no prose page of the skill directory`,
+        });
+    if (value.triggers === undefined)
+      issues.push({
+        path: ["wholeRead"],
+        message: "the pages a whole read includes stand beside the trigger rows that owe the read",
+      });
+  }
   const paths = [...value.files.map((file) => file.path), ...value.copies.map((copy) => copy.path)];
   for (const [index, path] of paths.entries())
     if (paths.indexOf(path) < index)
@@ -480,6 +740,20 @@ function recordIssues(value: Declared): readonly Issue[] {
           message: "a references page credits no source: upstream prose stands in the front",
         });
   }
+  for (const [f, file] of value.files.entries())
+    for (const [p, item] of file.passages.entries()) {
+      if (item.passage !== "written") continue;
+      if (item.phrase === undefined && item.edits !== undefined)
+        issues.push({
+          path: ["files", f, "passages", p],
+          message: "edits stand only on a phrase passage, which names its phrase",
+        });
+      if (item.phrase !== undefined && item.credits.length !== 1)
+        issues.push({
+          path: ["files", f, "passages", p, "credits"],
+          message: "a phrase passage credits exactly one source, its words source",
+        });
+    }
   for (const [f, file] of value.files.entries())
     if (file.passages[0]?.join !== undefined)
       issues.push({
@@ -588,8 +862,10 @@ function todoIssues(value: JsonValue, path: readonly (string | number)[]): reado
  * and reason or of the kind `method`, an ending outside the three, a join
  * before a file's first passage, a source that is not listed or listed
  * and not used, a references part on `SKILL.md`, taken text or a credit on
- * a references page, a `notStub` ruling beside a credit, a body ruled twice, and
- * a gist outside its rule ({@link gistIssues}).
+ * a references page, a `notStub` ruling beside a credit, a body ruled twice,
+ * a gist outside its rule ({@link gistIssues}), a drop's verdict outside the
+ * load test's four ({@link LOAD_VERDICTS}), a load-bearing or scaffolding
+ * drop without its failure, and a failure on a drop without a verdict.
  * @param input the recipe file's text
  * @param source where the text came from, for the refusal
  * @returns the recipe, or every issue found
@@ -606,10 +882,12 @@ export function parseRecipe(input: string, source: string): Result<Recipe, Contr
     : contractFailure(source, issuesFrom(parsed.error.issues));
 }
 
-/** The frozen snapshots a recipe reads, by the manifest's source names. */
+/** The frozen snapshots a recipe reads, by the manifest's source names, and the manifest's words sources. */
 export interface Snapshots {
   /** The names the manifest pins. */
   readonly sources: ReadonlySet<string>;
+  /** The phrases of each words source, by its name (J-194 S1); none when absent. */
+  readonly words?: ReadonlyMap<string, readonly WordsPhrase[]> | undefined;
   /** A file's text inside a source's snapshot; undefined when there is none. */
   readonly text: (source: SourceName, file: string) => string | undefined;
   /** A file's bytes inside a source's snapshot; undefined when there is none. */
@@ -692,6 +970,126 @@ export interface CheckedRecipe {
   readonly copies: readonly CopiedFile[];
   /** The authored files, which the rendering never writes and `verify` requires at their digests. */
   readonly authored: readonly AuthoredFile[];
+  /** The recipe's words sources, which a phrase passage credits and the measure leaves out (J-194 S1). */
+  readonly words: readonly SourceName[];
+}
+
+/**
+ * The home a phrase names for a page of a roster skill's directory.
+ * @param skill the skill's name
+ * @param page the page's path in its directory
+ * @returns `corpus/skills/<skill>/<page>`
+ */
+function recipeHome(skill: string, page: string): string {
+  return `corpus/skills/${skill}/${page}`;
+}
+
+/**
+ * The skill and the page a phrase's home names, when it names a page of a roster skill's directory.
+ * @param home a phrase's home
+ * @returns the skill and the page, or undefined for a home outside `corpus/skills/`
+ */
+export function homeOf(
+  home: string,
+): { readonly skill: string; readonly page: string } | undefined {
+  const match = /^corpus\/skills\/([^/]+)\/(.+)$/.exec(home);
+  return match?.[1] === undefined || match[2] === undefined
+    ? undefined
+    : { skill: match[1], page: match[2] };
+}
+
+/** A recipe's use of a words source other than a phrase passage's credit: nothing is taken, copied or dropped from one. */
+function wordsMisuse(
+  recipe: Recipe,
+  words: ReadonlyMap<string, readonly WordsPhrase[]>,
+): readonly RecipeIssue[] {
+  const named = [
+    ...recipe.files.flatMap((file) =>
+      file.passages.flatMap((item) => (item.passage === "taken" ? [item.source] : [])),
+    ),
+    ...recipe.copies.flatMap((copy) => (isAuthored(copy) ? [] : [copy.source])),
+    ...recipe.drops.map((drop) => drop.source),
+    ...(recipe.credit === undefined ? [] : [recipe.credit.source]),
+    ...(recipe.notStub ?? []).map((entry) => entry.source),
+  ];
+  return [...new Set(named.filter((name) => words.has(name)))].map((name) => ({
+    message: `'${name}' is a words source: a phrase passage credits it, and nothing is taken, copied or dropped from it`,
+  }));
+}
+
+/** The occurrences of a text inside another. */
+function occurrences(within: string, find: string): number {
+  let count = 0;
+  for (let at = within.indexOf(find); at !== -1; at = within.indexOf(find, at + 1)) count += 1;
+  return count;
+}
+
+/**
+ * The phrase passages held to their phrases: each credits a words source the
+ * manifest holds, names a phrase of it that is not dismissed and whose home
+ * is the page it stands on, and holds the phrase's text verbatim or as its
+ * recorded edits leave it; and no other written passage credits a words source.
+ */
+function phraseIssues(
+  recipe: Recipe,
+  words: ReadonlyMap<string, readonly WordsPhrase[]>,
+): readonly RecipeIssue[] {
+  const issues: RecipeIssue[] = [];
+  for (const file of recipe.files)
+    for (const item of file.passages) {
+      if (item.passage !== "written") continue;
+      if (item.phrase === undefined) {
+        for (const credit of item.credits)
+          if (words.has(credit))
+            issues.push({
+              message: `a written passage of '${file.path}' credits the words source '${credit}' and names no phrase: a words source is credited by a phrase passage alone`,
+            });
+        continue;
+      }
+      const [source] = item.credits;
+      const phrases = source === undefined ? undefined : words.get(source);
+      if (source === undefined || phrases === undefined) {
+        issues.push({
+          message: `phrase passage of '${file.path}' credits '${source ?? ""}', which is no words source`,
+        });
+        continue;
+      }
+      const named = `phrase '${item.phrase}' of '${source}'`;
+      const phrase = phrases.find((candidate) => candidate.id === item.phrase);
+      if (phrase === undefined) {
+        issues.push({ message: `'${source}' holds no phrase '${item.phrase}'` });
+        continue;
+      }
+      if (phrase.where === undefined) {
+        issues.push({ message: `${named} is dismissed, so no passage takes it` });
+        continue;
+      }
+      const home = recipeHome(recipe.name, file.path);
+      if (!phrase.where.includes(home))
+        issues.push({
+          message: `${named} has no home at ${home}: its where names ${phrase.where.join(", ")}`,
+        });
+      let current = phrase.text;
+      let applied = true;
+      for (const edit of item.edits ?? []) {
+        if (occurrences(current, edit.find) !== 1) {
+          issues.push({
+            message: `an edit of ${named} finds '${edit.find}', which does not occur exactly once`,
+          });
+          applied = false;
+          break;
+        }
+        current = current.replace(edit.find, () => edit.replace);
+      }
+      if (applied && current !== item.text)
+        issues.push({
+          message:
+            (item.edits ?? []).length === 0
+              ? `the phrase passage of '${file.path}' drifts from ${named} with no edit recorded: record each change as an edit with its reason, or lift the phrase as written`
+              : `the phrase passage of '${file.path}' differs from ${named} as its recorded edits leave it`,
+        });
+    }
+  return issues;
 }
 
 function fileKey(source: string, file: string): string {
@@ -957,7 +1355,10 @@ export function checkRecipe(
   recipe: Recipe,
   snapshots: Snapshots,
 ): Result<CheckedRecipe, RecipeRefused> {
-  const unpinned = recipe.sources.filter((name) => !snapshots.sources.has(name));
+  const words = snapshots.words ?? new Map<string, readonly WordsPhrase[]>();
+  const unpinned = recipe.sources.filter(
+    (name) => !snapshots.sources.has(name) && !words.has(name),
+  );
   if (unpinned.length > 0)
     return err(
       new RecipeRefused(
@@ -965,6 +1366,8 @@ export function checkRecipe(
         unpinned.map((name) => ({ message: `the manifest pins no source '${name}'` })),
       ),
     );
+  const misused = wordsMisuse(recipe, words);
+  if (misused.length > 0) return err(new RecipeRefused(recipe.name, misused));
   const { sourceFiles, copies, issues: missing } = readNamed(recipe, snapshots);
   if (missing.length > 0) return err(new RecipeRefused(recipe.name, missing));
 
@@ -994,6 +1397,7 @@ export function checkRecipe(
         });
     }
   issues.push(...repeatIssues(recipe, sourceFiles));
+  issues.push(...phraseIssues(recipe, words));
   return issues.length > 0
     ? err(new RecipeRefused(recipe.name, issues))
     : ok({
@@ -1004,5 +1408,6 @@ export function checkRecipe(
         authored: recipe.copies.flatMap((copy) =>
           isAuthored(copy) ? [{ path: copy.path, sha256: copy.sha256 }] : [],
         ),
+        words: recipe.sources.filter((name) => words.has(name)),
       });
 }

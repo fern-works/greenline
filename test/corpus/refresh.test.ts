@@ -399,7 +399,10 @@ describe("manifestWithSources", () => {
     const text = readFileSync(join(repository, "corpus", "manifest.json"), "utf8");
     const manifest = parseCorpusManifest(text, "corpus/manifest.json");
     if (manifest._tag === "err") throw manifest.error;
-    expect(manifestWithSources(text, manifest.value.sources)).toBe(text);
+    // J-195 S1: the tree's words source stands after the pinned ones, and comes back with them.
+    expect(manifestWithSources(text, [...manifest.value.sources, ...manifest.value.words])).toBe(
+      text,
+    );
   });
 });
 
@@ -1174,5 +1177,125 @@ describe("scripts/corpus.mjs refresh in this tree", () => {
     const result = run("refresh", "mattpocock-skills", "--write");
     expect(result.status).toBe(1);
     expect(result.output).toMatchObject({ verb: "refresh" });
+  });
+});
+
+describe("J-194 S1 refresh beside a words source", () => {
+  const WORDS = {
+    name: "phrasebook-fixture",
+    kind: "words",
+    author: "the operator",
+    phrases: [
+      {
+        id: "native-way",
+        text: "Is there a native way?",
+        date: "2026-11-07",
+        where: ["src/shell/cli/event.ts"],
+      },
+    ],
+  };
+  function withWords(corpus: string): void {
+    const path = join(corpus, "manifest.json");
+    // SAFETY: the fixture manifest; the parse in the refresh checks the result.
+    const manifest = JSON.parse(readFileSync(path, "utf8")) as { sources: unknown[] };
+    manifest.sources.push(WORDS);
+    writeFileSync(path, `${JSON.stringify(manifest, null, 2)}\n`);
+  }
+
+  it("moves a pin with --write and keeps the words source, after every pinned one", () => {
+    const { corpus, upstream } = corpusWithUpstream();
+    withWords(corpus);
+    const next = upstream.commits[1] ?? "";
+    expect(refreshVerb(corpus, request(next, { write: true })).output.refused).toEqual([]);
+    const manifest = parseCorpusManifest(readText(corpus, "manifest.json"), "manifest.json");
+    if (manifest._tag === "err") throw manifest.error;
+    expect(manifest.value.words).toEqual([WORDS]);
+    expect(manifest.value.sources.find((pinned) => pinned.name === SOURCE)?.commit).toBe(next);
+  });
+
+  it("keeps a phrase passage's phrase and recorded edits in a recipe it rewrites", () => {
+    const { corpus, upstream } = corpusWithUpstream();
+    const recipe = fixtureRecipe();
+    recipe.sources.push(WORDS.name);
+    const passage = {
+      passage: "written",
+      text: "Is there a native path?",
+      kind: "method",
+      reason: "the operator's phrase, lifted as written",
+      ruling: "the operator's words of 2026-11-07",
+      credits: [WORDS.name],
+      phrase: "native-way",
+      edits: [{ find: "way", replace: "path", reason: "the page's word" }],
+    };
+    // SAFETY: the fixture's passage type predates the phrase field; the recipe's parse reads the JSON.
+    recipe.files[0]?.passages.push(passage as never);
+    writeFileSync(join(corpus, "recipes", "fixture-skill.json"), fixtureText(recipe));
+    const path = join(corpus, "manifest.json");
+    // SAFETY: the fixture manifest; the refresh's parse checks the result.
+    const manifest = JSON.parse(readFileSync(path, "utf8")) as { sources: object[] };
+    manifest.sources.push({
+      ...WORDS,
+      phrases: [{ ...WORDS.phrases[0], where: ["corpus/skills/fixture-skill/SKILL.md"] }],
+    });
+    writeFileSync(path, `${JSON.stringify(manifest, null, 2)}\n`);
+    const next = upstream.commits[1] ?? "";
+    expect(refreshVerb(corpus, request(next, { write: true })).output.refused).toEqual([]);
+    const rewritten = parseRecipe(
+      filled(readText(corpus, "recipes/fixture-skill.json")),
+      "fixture",
+    );
+    if (rewritten._tag === "err") throw rewritten.error;
+    expect(rewritten.value.files[0]?.passages.at(-1)).toMatchObject({
+      phrase: "native-way",
+      edits: [{ find: "way", replace: "path", reason: "the page's word" }],
+    });
+  });
+
+  it("writes a words source in the form the formatter leaves as it is", () => {
+    const text = readFileSync(join(repository, "corpus", "manifest.json"), "utf8");
+    const words = [
+      "    {",
+      '      "name": "phrasebook-fixture",',
+      '      "kind": "words",',
+      '      "author": "the operator",',
+      '      "phrases": [',
+      "        {",
+      '          "id": "native-way",',
+      '          "text": "Is there a native way?",',
+      '          "date": "2026-11-07",',
+      '          "where": ["src/shell/cli/event.ts"],',
+      '          "keeper": {',
+      '            "kind": "fact",',
+      '            "where": "the line the mirror prints"',
+      "          }",
+      "        }",
+      "      ]",
+      "    }",
+    ].join("\n");
+    const close = text.indexOf("\n  ]", text.indexOf('\n  "sources": ['));
+    const formed = `${text.slice(0, close)},\n${words}${text.slice(close)}`;
+    const manifest = parseCorpusManifest(formed, "corpus/manifest.json");
+    if (manifest._tag === "err") throw manifest.error;
+    expect(manifestWithSources(formed, [...manifest.value.sources, ...manifest.value.words])).toBe(
+      formed,
+    );
+  });
+
+  it("refuses to refresh a words source, which has no head", () => {
+    const { corpus, upstream } = corpusWithUpstream();
+    withWords(corpus);
+    expect(
+      refreshVerb(corpus, request(upstream.commits[1] ?? "", { source: WORDS.name })).output
+        .refused,
+    ).toEqual([
+      {
+        skill: "*",
+        issues: [
+          {
+            message: `'${WORDS.name}' is a words source: it has no repository and no head to refresh, and its phrases change in the manifest by hand`,
+          },
+        ],
+      },
+    ]);
   });
 });

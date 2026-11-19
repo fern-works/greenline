@@ -1,0 +1,35 @@
+{
+  "commit": "bbbe55b4c91ecd0555b819e3f547a7a3f379c8f5",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "0c55161751232dde5819fd1ddad82be0e2b5152db9d35f4184f255e62ef753a1"
+    },
+    {
+      "path": "arxiv-analyze/SKILL.md",
+      "sha256": "638aaacebc6f871bcadc32693ab02618b4cffe99d5837fd760ddcef2c2c8aa0b"
+    },
+    {
+      "path": "arxiv-analyze/scripts/arxiv_fetch.py",
+      "sha256": "66ec4b647a498650bbbc1f926e82ff2a638d8ff7eaca89ef4673825616e36c86"
+    },
+    {
+      "path": "arxiv-search/SKILL.md",
+      "sha256": "b8fbffb289d3713c183cc7091b1562932723f2b5b95dd8d113bd3cea237903f0"
+    },
+    {
+      "path": "arxiv-search/scripts/arxiv_search.py",
+      "sha256": "fb1ffef9eec8a330e645dc3072755184232c63f3b1e511586e0ecae7a9c9f2ba"
+    }
+  ],
+  "entries": [
+    {
+      "name": "arxiv-search",
+      "path": "skills/arxiv-search"
+    },
+    {
+      "name": "arxiv-analyze",
+      "path": "skills/arxiv-analyze"
+    }
+  ]
+}

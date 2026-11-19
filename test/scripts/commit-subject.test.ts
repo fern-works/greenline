@@ -28,6 +28,16 @@ describe("checkCommit", () => {
       "subject is 73 characters (cap 72)",
     ]);
   });
+  it("J-211 S2 admits a merge commit's subject as chore(merge): and refuses merge: and git's own merge subject, in the hook's words", () => {
+    const merge = `chore(merge): J-211 S1 from the d checkout, the guard's reads\n\nThe body.\n\n${trailer}\n`;
+    expect(messageRefusal(merge)).toBeUndefined();
+    expect(messageRefusal(merge.replace("chore(merge):", "merge:"))).toBe(
+      "commit subject refused: merge: J-211 S1 from the d checkout, the guard's reads: subject is not type(scope): outcome with one of docs, feat, fix, refactor, qa, chore, export",
+    );
+    expect(messageRefusal(`Merge branch 'side'\n\nThe body.\n\n${trailer}\n`)).toBe(
+      "commit subject refused: Merge branch 'side': subject is not type(scope): outcome with one of docs, feat, fix, refactor, qa, chore, export",
+    );
+  });
   it("refuses a type not in use", () => {
     expect(checkCommit({ ...good, subject: "style(x): tidy" })).toEqual([
       "subject is not type(scope): outcome with one of docs, feat, fix, refactor, qa, chore, export",

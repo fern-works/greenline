@@ -1,0 +1,61 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-cursor-team-kit-make-pr-history-cleanup",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-mattpocock-skills-git-guardrails",
+    "sha256": "0fa769e58d29c9d234d543e277cb45f0b904b4f88a0bc0bd864233edf8f6f1ea"
+  },
+  "source": {
+    "repository": "https://github.com/cursor/plugins",
+    "commit": "d0ef80d86795816da932a153458c5dbe192d294e",
+    "path": "cursor-team-kit/skills/make-pr-easy-to-review"
+  },
+  "pin": "cursor-team-kit",
+  "licence": "mit",
+  "verdict": "combine",
+  "gist": "Its history cleanup, tree checked, joins close's landing",
+  "reason": "Its history cleanup, planned first with the tree checked before and after, joins close's landing under the rebase line, the text landing in J-114 S2. Its reviewer guidance stays in pr-writing.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': make-pr-easy-to-review's prior combine reused and extended, its history cleanup a page of close's front under the rebase line, the new entry on close's row"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-115, under the operator's words 'for smaller decisions go with your recommended suggestions': make-pr-easy-to-review's prior combine reused and extended, its history cleanup a page of close's front under the rebase line, the new entry on close's row"
+    }
+  ],
+  "placement": {
+    "kind": "step",
+    "slot": "close",
+    "catches": "A history rewrite that changes the code it claims only to regroup, or a regrouped branch pushed with a tree no check ran on",
+    "evidence": "claimed",
+    "move": "strengthen",
+    "boldest": {
+      "move": "strengthen",
+      "needs": "an observed run where a reviewer asked for a regrouping after the landing, putting the cleanup in pr-writing too"
+    },
+    "modes": [
+      {
+        "mode": "quick",
+        "step": "close",
+        "depth": "inline",
+        "cost": 0
+      },
+      {
+        "mode": "regular",
+        "step": "close",
+        "depth": "written",
+        "cost": 0
+      },
+      {
+        "mode": "careful",
+        "step": "close",
+        "depth": "written",
+        "cost": 0
+      }
+    ],
+    "ships": "default"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-balise-idea",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-balise-brand-naming",
+    "sha256": "0c051e16185e0dc7137065e4503d84fe0cb4f1015beeed2fbad2401e0c914180"
+  },
+  "source": {
+    "repository": "https://github.com/mrstev3n/balise-skills",
+    "commit": "f596a61fa8f4471054b1ed75d17bc6699db4572d",
+    "path": "skills/balise-idea"
+  },
+  "licence": "permissive-other",
+  "verdict": "decline",
+  "gist": "Outside the interface practice, declined",
+  "reason": "Its subject lies outside greenline's interface practice.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': balise's off-practice skills are declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': balise's off-practice skills are declined"
+    }
+  ]
+}

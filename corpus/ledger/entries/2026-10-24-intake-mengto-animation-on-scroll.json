@@ -1,0 +1,29 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-10-24-intake-mengto-animation-on-scroll",
+  "kind": "source",
+  "previous": {
+    "id": "2026-10-24-intake-mengto-company-logos",
+    "sha256": "eba0cf01d38cbfa2143d99f97ed32c5f7d45d4be6ba1a6b096c304f632e351ed"
+  },
+  "source": {
+    "repository": "https://github.com/MengTo/Skills",
+    "commit": "398cd41c86ba42fbb30e944ae507f463648f08b7",
+    "path": "agent-skills/web-design/animation-on-scroll"
+  },
+  "pin": "mengto-skills",
+  "licence": "mit",
+  "verdict": "decline",
+  "gist": "A reveal with no reduced path, declined",
+  "reason": "It has no reduced-motion path and leaves content hidden if its observer never fires.",
+  "authorisedBy": {
+    "date": "2026-10-24",
+    "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': MengTo's animation-on-scroll is declined"
+  },
+  "ruling": [
+    {
+      "date": "2026-10-24",
+      "words": "the ruling of 2026-10-24 on J-122, under the operator's words 'for smaller decisions go with your recommended suggestions': MengTo's animation-on-scroll is declined"
+    }
+  ]
+}

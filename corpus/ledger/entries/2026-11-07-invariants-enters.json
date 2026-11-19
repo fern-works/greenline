@@ -1,0 +1,40 @@
+{
+  "schema": "greenline.entry/v2",
+  "id": "2026-11-07-invariants-enters",
+  "kind": "change",
+  "previous": {
+    "id": "2026-11-07-state-machines-enters",
+    "sha256": "72ff7c994c8bec660b7b71b23daa40b7d5d21585ccbb3d2eb93b526771ec564a"
+  },
+  "subject": "skill:invariants",
+  "recipe": "7e65de31340f821d0369939c3d5ab17951bc2eaffc05043175e448c33703ef8e",
+  "result": "0d85d7cb3508389efc13f554da7fd5af3fecdf101cee8f579d7ae6af99addd67",
+  "pages": [
+    {
+      "path": "SKILL.md"
+    },
+    {
+      "path": "method.md"
+    },
+    {
+      "path": "references/greenline.md"
+    }
+  ],
+  "gist": "Adds the start invariants from the operator's phrase",
+  "reason": "Adds invariants, a start the owner opens by name, whose trigger is the operator's phrase and whose product is the three-part list, its marked entries floors on the situation line.",
+  "authorisedBy": {
+    "date": "2026-11-07",
+    "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+  },
+  "ruling": [
+    {
+      "date": "2026-11-07",
+      "words": "the operator's words of 2026-11-07 on the phrasebook, \"there are more such high quality phrases which i believe unlock quality of an llm\" and \"we should lift phrases as they are with minimal changes\": each phrase placed by its type through the phrase mode, a start for an artefact and a sentence on a step's method page for a stance, every change to a phrase an edit recorded with its reason"
+    }
+  ],
+  "measure": {
+    "stub": false,
+    "sources": [],
+    "growth": 776
+  }
+}

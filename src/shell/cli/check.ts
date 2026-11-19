@@ -38,6 +38,9 @@ import { createNodeFileIo } from "../fs/io.ts";
 import { withWorkspaceWrite } from "../fs/workspace-write.ts";
 import { readRepositoryManifest } from "../repository-state.ts";
 import { declaredChecks, workspaceManifest } from "../hooks.ts";
+import { runCheckFiles } from "../file-tokens.ts";
+import { runCheckInterface } from "../interface-check.ts";
+import { checksOfChange } from "../../core/interface-check.ts";
 
 /**
  * `greenline check [--change <id>] [--step <step> [--round <n>]] -- <command>`
@@ -81,6 +84,9 @@ const USAGE = [
   "Usage: greenline check [--change <id>] [--step <step> [--round <n>]] -- <command> [args...]",
   "       greenline check [--change <id>] --probe <fact>",
   "       greenline check --declare [--name <name>] [--dir <dir>] -- <command> [args...]",
+  "       greenline check files [--max-tokens <n>] [<path>...]",
+  "       greenline check interface [--change <id>] [--url <address> --path <address>] [<path>...]",
+  "       greenline check interface --survey",
   "",
   "Run one repository command for a change and record its facts under",
   ".greenline/ledger/<id>/checks/: the arguments, the outcome, the duration,",
@@ -95,7 +101,8 @@ const USAGE = [
   "Every run of a check on the change's code goes through check, its red runs",
   "included: 'greenline check -- npm test' records it for the open change at the",
   "step its record is in. A run whose green the change never claims, a probe,",
-  "runs plainly; one recorded by mistake is marked with --probe.",
+  "goes through check too and is then marked with --probe, so no run cited",
+  "stays plain.",
   "",
   "Options:",
   "  --change <id>   the change the check belongs to (default: the only open change)",
@@ -106,14 +113,30 @@ const USAGE = [
   "                  names: the command runs with TMPDIR, TMP and TEMP set to",
   "                  the agent's scratch folder, .greenline/tmp/<id>/<step>-<n>/",
   "  --probe <fact>  run nothing: mark a recorded fact, by its file name or its",
-  "                  path from the repository root, as a probe run as a check by",
-  "                  mistake, a run whose green the change never claims; status",
-  "                  leaves it out of the checks",
+  "                  path from the repository root, as a probe, a run whose",
+  "                  green the change never claims; status leaves it out of the",
+  "                  checks",
   "  --declare       run nothing: add the command to the checks the manifest",
   "                  declares, which a recorded command is matched against and",
   "                  the close is read by; --name names it (default: made from",
   "                  the command) and --dir gives its directory (default: .)",
   "  -h, --help      show this help",
+  "",
+  "check files reads the files named, else the staged files, else the files",
+  "the working tree changed or added, and fails on an authored file over the",
+  "cap, its bytes over four, saying how to split it: --max-tokens, else the",
+  "manifest's fileTokens.cap, else 5000. Lockfiles, generated files, vendored",
+  "trees, data and the manifest's fileTokens.exempt globs are exempt. Declare",
+  "it as a check, and record its runs with greenline check -- greenline check",
+  "files, never as a git hook.",
+  "",
+  "check interface checks the interface files named, else those the change",
+  "touched, against the interface rules by tier, a floor finding or an unwaived",
+  "reflex making it red, and writes the findings under the change's folder;",
+  "'greenline check interface --help' says more. Where the manifest's interface",
+  "block sets check, a change whose record says interface: yes is held to it as",
+  "a declared check; record its runs with greenline check -- greenline check",
+  "interface.",
   "",
 ].join("\n");
 
@@ -403,6 +426,20 @@ export async function runCheckCli(
     writer.stderr.write(`greenline check: ${message}\n`);
     return EXIT_FAILURE;
   };
+  // The file token cap's verb runs on its own, recording nothing itself (J-114 S4).
+  if (argv[0] === "files") {
+    const at = findGitRoot(env.cwd);
+    return at === undefined
+      ? refuse("check runs inside a Git repository")
+      : runCheckFiles(at, env.cwd, argv.slice(1), writer);
+  }
+  // The interface check runs on its own, its findings by tier in the change's folder (J-123 S4).
+  if (argv[0] === "interface") {
+    const at = findGitRoot(env.cwd);
+    return at === undefined
+      ? refuse("check runs inside a Git repository")
+      : await runCheckInterface(at, env.cwd, argv.slice(1), writer, env.environment);
+  }
   const parsed = parseCheckArgs(argv);
   if (parsed.kind === "help") {
     writer.stdout.write(USAGE);
@@ -503,8 +540,10 @@ export async function runCheckCli(
   // A command a declared check matches runs in that check's directory, the one `check` was started from deciding between several.
   const text = parsed.command.join(" ");
   const from = relative(root, env.cwd).split(sep).join("/");
+  // The checks the change is held to, the interface check under the opt-in among them, so its run carries its name (J-135 S2).
+  const manifest = workspaceManifest(root);
   const declaration = declaredForRun(
-    declaredChecks(workspaceManifest(root)),
+    checksOfChange(declaredChecks(manifest), manifest?.interface, record.interface),
     text,
     from === "" ? ROOT_DIR : from,
   );

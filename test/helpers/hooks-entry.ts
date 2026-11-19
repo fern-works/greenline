@@ -21,14 +21,15 @@ const stdin = (): string => {
 };
 const cwd = process.cwd();
 // The modes' order from the product's own definition, as the shipped entry reads it from its bundle.
-const modes = (): readonly string[] | undefined => {
+const line = () => {
   const path = join(import.meta.dirname, "../../corpus/runtime/modes.json");
   const parsed = parseModes(readFileSync(path, "utf8"), path);
-  return parsed._tag === "ok" ? parsed.value.modes.map((mode) => mode.name) : undefined;
+  return parsed._tag === "ok" ? parsed.value : undefined;
 };
+const modes = (): readonly string[] | undefined => line()?.modes.map((mode) => mode.name);
 process.exitCode =
   command === "hook"
-    ? runHookCli(rest, writer, { cwd, stdin, modes })
+    ? runHookCli(rest, writer, { cwd, stdin, modes, line })
     : command === "event"
-      ? runEventCli(rest, writer, { cwd, stdin, modes })
+      ? runEventCli(rest, writer, { cwd, stdin, modes, line })
       : 0;

@@ -9,3 +9,11 @@ The practice is installed with `greenline init --targets <harness>...`; `greenli
 ## The setup change's commit
 
 The setup change commits the installed practice with its own work, so a teammate's clone holds the practice its records are made under: every file `greenline init` wrote, the paths `.greenline/lock.json` lists, with the lock and `.greenline/manifest.json`. That is AGENTS.md and CLAUDE.md, the harness folders init wrote (`.agents/`, `.claude/`, `.codex/` and any other), `agents/openai.yaml`, and under `.greenline/` `WORK.md`, `ledger/README.md`, `hooks/`, `tmp/.gitignore` and `THIRD_PARTY_NOTICES.md`, beside the decisions book and the change's record. Stage them by name as any commit of the change; after the commit, `git status` shows none of them untracked. Open the setup change's record before that commit, never after it: the commit that records the practice carries the record, `.greenline/ledger/<id>.md`, and the change's trailer, and while no change is open the hooks refuse it.
+
+## The interface
+
+Where `.greenline/manifest.json` names interface roots and no DESIGN.md stands, offer the start `design-survey` in one sentence, to write the home with the owner; take it only on the owner's yes.
+
+## The map
+
+The map's first pages are made only on the owner's ask, by the `explain` start's discovery: a fresh agent reads the repository and writes a page per subsystem with the map over them. Nothing is offered.
