@@ -14,6 +14,7 @@ import type {
   MarkView,
   NotesReading,
   PictureDocument,
+  SettingsDocument,
   VisualView,
 } from "../../../core/inspector/documents.ts";
 import {
@@ -1243,17 +1244,37 @@ function DecisionsView(props: {
   return h(
     PlaceSection,
     { view: "knowledge", place: props.place, lede: LEDES.knowledge },
-    drawReading(
-      settings,
-      (document) =>
-        h(PolicyEditor, {
-          settings: document,
-          home: props.home.state === "ready" ? props.home.document.home : null,
-          saved,
-        }),
-      "the decisions book",
-      "text",
-    ),
+    decisionsBook(settings, props.home, saved),
+  );
+}
+
+/**
+ * The decisions book from its two reads (J-237 S1): it reads as reading
+ * until the settings and the knowledge home have both landed, so the editor
+ * and its root statements are drawn together; a failed read of the home
+ * draws the editor with no home.
+ * @param settings the settings document's reading
+ * @param home the knowledge home's reading
+ * @param saved what a save reports to
+ * @returns the book, or its reading state
+ */
+export function decisionsBook(
+  settings: Reading<SettingsDocument>,
+  home: Reading<HomeDocument>,
+  saved: Saved,
+): ComponentChild {
+  const both: Reading<SettingsDocument> =
+    settings.state === "ready" && home.state === "reading" ? { state: "reading" } : settings;
+  return drawReading(
+    both,
+    (document) =>
+      h(PolicyEditor, {
+        settings: document,
+        home: home.state === "ready" ? home.document.home : null,
+        saved,
+      }),
+    "the decisions book",
+    "text",
   );
 }
 

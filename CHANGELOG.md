@@ -6,7 +6,16 @@ commit; a release moves the lines into the version's section.
 
 ## Unreleased
 
-## 0.2.0 (2026-11-12)
+## 0.2.1 (2026-11-20)
+
+greenline 0.2.1 installs with no advisory reported, its zod dependency moved past the advisory 0.2.0 carried, and the inspector draws its decisions page once, the editor and its root statements together.
+
+### The dependency and the inspector
+
+- The zod dependency moves from 4.4.3 to 4.6.7, past the advisory GHSA-mrhx-c7xc-m3w5 on versions below 4.6.6, so an install of greenline no longer reports it.
+- The inspector's decisions page shows its loading state until both its reads have landed, so the root statements no longer appear a moment after the editor.
+
+## 0.2.0 (2026-11-19)
 
 greenline 0.2.0 makes the agent's work easier to read, to see and to steer. Its replies are short, what happened, what it waits on and the viewer's address, while `greenline status` carries the facts and the progress of a change; where a picture explains better than words it draws one, and on your ask keeps a durable one beside the repository's map and its journeys in one home. Where a change's work goes, a branch or a worktree of its own, is offered at the proposal, every commit names the agent that made it, and the harness hook holds the destructive git commands until your words lift them. Each skill the agent loads is recorded as a fact of the change, and a change is not done while a skill it owes is neither loaded nor named. frame thinks a request through its subjects, reads the code first and proposes research, a careful change builds nothing until you confirm its frame, and an idea that is not yet work is kept as a discussion until you promote it into changes. The inspector is a local app of five places: Desk, Changes, Interface, Knowledge and Practice. A design practice deals directions you can see, keeps your design system in DESIGN.md and reads the real page at three widths, and you can mark what is wrong on a capture for the agent to fix by its element, closed only when you say so.
 

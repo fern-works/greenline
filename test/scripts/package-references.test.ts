@@ -21,7 +21,7 @@ function packageFixture(readme: string, scripts?: { build: string }): string {
     version: "0.1.0",
     files: ["dist/bin", "dist/corpus", "THIRD_PARTY_NOTICES.md"],
     bin: { greenline: "dist/bin/greenline.mjs" },
-    dependencies: { commander: "15.0.0", zod: "4.4.3" },
+    dependencies: { commander: "15.0.0", zod: "4.6.7" },
   };
   writeFileSync(
     join(root, "package.json"),

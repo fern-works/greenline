@@ -550,7 +550,7 @@ describe("the released changes", () => {
     ]);
   });
 
-  it("reads this tree's changelog as three released versions, 0.2.0 dated 2026-11-12 and 0.1.0 each with two summary paragraphs and nine groups, then 0.0.1 with its four rows in one untitled group", () => {
+  it("reads this tree's changelog as four released versions, 0.2.1 dated 2026-11-20 with one summary paragraph and one group of two, 0.2.0 dated 2026-11-19 and 0.1.0 each with two summary paragraphs and nine groups, then 0.0.1 with its four rows in one untitled group", () => {
     const text = readFileSync(join(repository, "CHANGELOG.md"), "utf8");
     const released = releasedChanges(text);
     expect(
@@ -561,9 +561,10 @@ describe("the released changes", () => {
         release.groups.map((group) => [group.title, group.items.length]),
       ]),
     ).toEqual([
+      ["0.2.1", "2026-11-20", 1, [["The dependency and the inspector", 2]]],
       [
         "0.2.0",
-        "2026-11-12",
+        "2026-11-19",
         2,
         [
           ["The replies and the pictures", 6],
@@ -595,14 +596,25 @@ describe("the released changes", () => {
       ],
       ["0.0.1", "2026-08-28", 0, [["", 4]]],
     ]);
-    // The release ritual dated 0.2.0's heading (J-109 S8), Unreleased left empty; its section names five places.
-    expect(text).toMatch(/^## Unreleased\n\n## 0\.2\.0 \(2026-11-12\)$/m);
+    // The release commit of 0.2.1 (J-237 S2) leaves Unreleased empty, moves the patch's two
+    // lines, the zod pin and the decisions page (J-237 S1), into 0.2.1's section unchanged, and
+    // dates 0.2.0 by its publish day; 0.2.0's section names five places.
+    expect(text).toMatch(/^## Unreleased\n\n## 0\.2\.1 \(2026-11-20\)\n/m);
+    expect(text).toMatch(/^## 0\.2\.0 \(2026-11-19\)$/m);
+    expect(released[0]?.summary[0]).toMatch(
+      /^greenline 0\.2\.1 installs with no advisory reported/,
+    );
+    expect(released[0]?.summary[0]).toContain("draws its decisions page once");
+    expect(released[0]?.groups[0]?.items).toEqual([
+      "The zod dependency moves from 4.4.3 to 4.6.7, past the advisory GHSA-mrhx-c7xc-m3w5 on versions below 4.6.6, so an install of greenline no longer reports it.",
+      "The inspector's decisions page shows its loading state until both its reads have landed, so the root statements no longer appear a moment after the editor.",
+    ]);
     expect(text).not.toMatch(/seven views/);
-    expect(released[0]?.summary[0]).toMatch(/^greenline 0\.2\.0 makes the agent's work easier/);
-    expect(released[0]?.summary[0]).toContain("Desk, Changes, Interface, Knowledge and Practice");
-    expect(released[0]?.groups[0]?.items[0]).toMatch(/^The agent's reply holds three parts/);
-    expect(released[1]?.summary[0]).toMatch(/^greenline 0\.1\.0 installs a practice/);
-    expect(released[1]?.groups[0]?.items[0]).toMatch(/^A greenline install needs no account/);
-    expect(released[2]?.groups[0]?.items[0]).toMatch(/^Commands: `npx greenline init` initializes/);
+    expect(released[1]?.summary[0]).toMatch(/^greenline 0\.2\.0 makes the agent's work easier/);
+    expect(released[1]?.summary[0]).toContain("Desk, Changes, Interface, Knowledge and Practice");
+    expect(released[1]?.groups[0]?.items[0]).toMatch(/^The agent's reply holds three parts/);
+    expect(released[2]?.summary[0]).toMatch(/^greenline 0\.1\.0 installs a practice/);
+    expect(released[2]?.groups[0]?.items[0]).toMatch(/^A greenline install needs no account/);
+    expect(released[3]?.groups[0]?.items[0]).toMatch(/^Commands: `npx greenline init` initializes/);
   });
 });

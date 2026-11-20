@@ -5,14 +5,14 @@ You need no account, no key and no service.
 
 ## Install
 
-greenline 0.2.0 is on npm and needs Node.js 22 or newer. In a Git repository:
+greenline 0.2.1 is on npm and needs Node.js 22 or newer. In a Git repository:
 
 ```bash
-npx greenline@0.2.0 init --targets codex,claude-code
+npx greenline@0.2.1 init --targets codex,claude-code
 ```
 
 The git hooks init registers run `greenline` from the `PATH`, so install it
-there too, `npm install --global greenline@0.2.0`; while it is missing they
+there too, `npm install --global greenline@0.2.1`; while it is missing they
 let every commit through, and `greenline status` says so. The source of
 the tool and the skills is public at https://github.com/fern-works/greenline
 under the MIT licence.

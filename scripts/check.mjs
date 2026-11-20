@@ -1291,8 +1291,8 @@ await row("consumer-package", () => {
 });
 if (full) {
   // ROW: the inspector's render check (J-120): the client app the build wrote,
-  // served over two fixture workspaces and read in headless Chrome at 320, 768
-  // and 1280 wide, every page and the catalogue drawn with no console error,
+  // served over two fixture workspaces and read in headless Chrome at 390, 768
+  // and 1440 wide, every page and the catalogue drawn with no console error,
   // failed request or sideways scroll, the palette and the keys driven. With no
   // browser on the machine the row is unproven, never passed.
   await row("inspect-render", () => {

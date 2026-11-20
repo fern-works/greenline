@@ -17,7 +17,7 @@ it("G3 rejects an unexpected packed directory without requiring its name in a de
         name: "greenline-package-fixture",
         version: "0.0.0",
         files: ["dist/bin", "unexpected"],
-        dependencies: { commander: "15.0.0", zod: "4.4.3" },
+        dependencies: { commander: "15.0.0", zod: "4.6.7" },
       }),
     );
     const result = spawnSync(
@@ -47,7 +47,7 @@ it("R6 lets a root file name the workspace glossary homes GLOSSARY.md and GLOSSA
         name: "greenline-package-fixture",
         version: "0.0.0",
         files: ["dist/bin", "README.md"],
-        dependencies: { commander: "15.0.0", zod: "4.4.3" },
+        dependencies: { commander: "15.0.0", zod: "4.6.7" },
       }),
     );
     const result = spawnSync(
@@ -82,7 +82,7 @@ it("J-150 S2 refuses a package whose exports name a file the tarball lacks", () 
             import: "./dist/readers/readers.mjs",
           },
         },
-        dependencies: { commander: "15.0.0", zod: "4.4.3" },
+        dependencies: { commander: "15.0.0", zod: "4.6.7" },
       }),
     );
     const result = spawnSync(
